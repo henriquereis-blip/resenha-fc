@@ -38,7 +38,7 @@ function stage52(po){
   po.ties=[];
   if(po.kind==='ac'){
     const cur=po.al,n=cur.length;if(n<2){po.champ=cur[0];return false}
-    po.sn={16:'Oitavas',8:'Quartas',4:'Semifinal',2:'Final'}[n]||'Fase';
+    po.sn={16:'Oitavas',8:'Quartas',6:'Quartas',4:'Semifinal',3:'Semifinal',2:'Final'}[n]||'Fase';
     for(let i=0;i<Math.floor(n/2);i++)po.ties.push(mk(cur[i],cur[n-1-i],po.cty==='ARG'?'single':'two'));
     po.bye=n%2?cur[(n-1)/2]:null;return true;
   }
@@ -78,6 +78,12 @@ function run52(po){
 function fin52(po){
   const logO=po.log.map(x=>({stage:x.stage,t:x.t,w:C52(x.w),l:C52(x.l)}));
   G.lg51=G.lg51||{};
+  if(po.acc){/* playoff de acesso da pirâmide: o vencedor entra no pyrPlan via bracket() */
+    G.pyr.accS=G.season;G.pyr.forced={w:po.champ,ids:po.ids,txt:po.log.map(x=>x.t).join(' · ')};
+    const up=po.champ===G.user;
+    addNews(up?'🎉 '+po.label+': seu clube conquistou o ACESSO!':'📰 '+po.label+': '+nm52(po.champ)+' garantiu o acesso.');
+    if(po.ph){ph52(false);po.ph=false}G.po51=null;return;
+  }
   award51(po.label,C52(po.champ),logO);
   if(!po.mid)G.lg51.pres={s:G.season,label:po.label,champ:{name:nm52(po.champ)},log:logO.map(x=>({stage:x.stage,t:x.t}))};
   if(po.ph){ph52(false);po.ph=false}
@@ -89,8 +95,8 @@ function ph52(add){
   for(const a of new Set([G.fixtures,G.dfx&&G.dfx[div]].filter(Boolean))){if(add)a.push((a[a.length-1]||[]).map(p=>p.slice()));else a.pop()}
 }
 /* começa um mata-mata jogável */
-function po51Init(I,kind,label,mid,top){
-  const po={kind,cty:I.k,label,mid:!!mid,s:G.season,ms:0,ties:[],log:[],rk:{},pend:false,ph:false};
+function po51Init(I,kind,label,mid,top,acc){
+  const po={kind,cty:I.k,acc:!!acc,ids:(top||[]).map(r=>r.id),label,mid:!!mid,s:G.season,ms:0,ties:[],log:[],rk:{},pend:false,ph:false};
   const rows=allRows(I.div);
   if(kind==='ac'){po.al=top.map(r=>r.id);top.forEach((r,i)=>po.rk[r.id]=i)}
   else{const [E,W]=mlsConf51(rows);rows.forEach((r,i)=>po.rk[r.id]=i);po.T={E:E.slice(0,9).map(r=>r.id),W:W.slice(0,9).map(r=>r.id)};po.c={E:[],W:[]}}
@@ -181,6 +187,29 @@ const _fr52=finishRound;finishRound=function(){
       }
     }
   }catch(e){console.error('end52 '+e.message)}
+  return out;
+};
+/* playoff de acesso (pirâmide): você está na faixa de playoff da sua divisão? */
+function qualAcc52(){
+  const P=G.pyr;if(!P||!G.abroad)return null;const c=userClub(),d=c.div,t=tierOf(d);if(t<2)return null;
+  const lo=(PYR[P.k]||[])[t-1];if(!lo||!lo.po||lo.pool)return null;
+  const L=P.dv.filter(x=>x.t===t),dirN=Math.floor((lo.up||0)/L.length),rows=allRows(d);
+  const pl=rows.slice(lo.po[0]-1,lo.po[1]).filter(r=>rows.indexOf(r)>=dirN&&r.name);
+  return pl.length>1&&pl.includes(c)?{pl,lo,d}:null;
+}
+const _br52=bracket;bracket=function(list,log){
+  const f=G.pyr&&G.pyr.forced;
+  if(f&&f.ids.length===list.length&&list.every(r=>r.name&&f.ids.includes(r.id))){const w=list.find(r=>r.id===f.w);log.push(f.txt);G.pyr.forced=null;return w}
+  return _br52(list,log);
+};
+const _fr52b=finishRound;finishRound=function(){
+  const out=_fr52b.apply(this,arguments);
+  try{
+    if(out==='seasonEnd'&&!G.po51&&G.pyr&&G.pyr.planS!==G.season&&G.pyr.accS!==G.season){
+      const q=qualAcc52();
+      if(q){const r=po51Init({k:G.pyr.k,div:q.d},'ac',q.lo.n+' · playoff de acesso',false,q.pl,true);if(r.pending){save();return 'next'}}
+    }
+  }catch(e){console.error('acc52 '+e.message)}
   return out;
 };
 const _ns52=newSeason;newSeason=function(){if(G.po51&&G.po51.ph){try{ph52(false)}catch(e){}}G.po51=null;return _ns52.apply(this,arguments)};
