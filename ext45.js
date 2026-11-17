@@ -56,7 +56,7 @@ async function sbPull(slot){
 Object.assign(A,{
   sbin(){sbDo('in')},sbup(){sbDo('up')},
   sbout(){sbStore(null);SB.info=null;SB.msg='Saiu da conta.';render()},
-  sbsave(){SB.msg='Salvando…';render();sbPush(0).then(()=>render())},
+  sbsave(){SB.msg='Salvando…';render();sbPush(0).then(ok=>{render();if(ok)sbInfo()})},
   sbload(){SB.msg='Baixando…';render();sbPull(0).then(raw=>{
     if(!raw){SB.msg='Nenhum save na nuvem ainda.';render();return}
     SKV.setItem(SAVE_KEY,raw);loadSave();G.phase=G.phase||'play';S.modal=null;S.prof=null;S.match=null;G.view='inicio';SB.msg='Jogo carregado da nuvem ✔';render()
