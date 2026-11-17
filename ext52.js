@@ -52,6 +52,7 @@ function stage52(po){
 }
 /* fecha a fase: registra no log e prepara a próxima */
 function close52(po){
+  if(po.rep)po.lastTie=JSON.parse(JSON.stringify(po.ties[0]));
   for(const t of po.ties)po.log.push({stage:po.sn+(t.tag?' '+t.tag:''),t:tt52(t),w:t.w,l:t.w===t.a?t.b:t.a});
   const ws=po.ties.map(t=>t.w);
   if(po.kind==='ac'){po.al=ws.concat(po.bye!=null?[po.bye]:[]).sort((x,y)=>po.rk[x]-po.rk[y])}
@@ -78,6 +79,14 @@ function run52(po){
 function fin52(po){
   const logO=po.log.map(x=>({stage:x.stage,t:x.t,w:C52(x.w),l:C52(x.l)}));
   G.lg51=G.lg51||{};
+  if(po.rep){/* repescagem elite x 2ª divisão: o resultado entra no pyrPlan via tie() */
+    const tt=po.lastTie,w=po.champ,l=w===tt.a?tt.b:tt.a,wa=w===tt.a;
+    const gW=tt.res.reduce((s,g)=>s+(wa?g[0]:g[1]),0),gL=tt.res.reduce((s,g)=>s+(wa?g[1]:g[0]),0);
+    G.pyr.repS=G.season;G.pyr.forced2={def:po.ids[0],ch:po.ids[1],w,gW,gL};
+    const me=w===G.user;
+    addNews(me?'🎉 '+po.label+': você venceu a repescagem!':'📰 '+po.label+': '+nm52(w)+' venceu a repescagem.');
+    if(po.ph){ph52(false);po.ph=false}G.po51=null;return;
+  }
   if(po.acc){/* playoff de acesso da pirâmide: o vencedor entra no pyrPlan via bracket() */
     G.pyr.accS=G.season;G.pyr.forced={w:po.champ,ids:po.ids,txt:po.log.map(x=>x.t).join(' · ')};
     const up=po.champ===G.user;
@@ -95,8 +104,8 @@ function ph52(add){
   for(const a of new Set([G.fixtures,G.dfx&&G.dfx[div]].filter(Boolean))){if(add)a.push((a[a.length-1]||[]).map(p=>p.slice()));else a.pop()}
 }
 /* começa um mata-mata jogável */
-function po51Init(I,kind,label,mid,top,acc){
-  const po={kind,cty:I.k,acc:!!acc,ids:(top||[]).map(r=>r.id),label,mid:!!mid,s:G.season,ms:0,ties:[],log:[],rk:{},pend:false,ph:false};
+function po51Init(I,kind,label,mid,top,acc,rep){
+  const po={kind,cty:I.k,acc:!!acc,rep:!!rep,ids:(top||[]).map(r=>r.id),label,mid:!!mid,s:G.season,ms:0,ties:[],log:[],rk:{},pend:false,ph:false};
   const rows=allRows(I.div);
   if(kind==='ac'){po.al=top.map(r=>r.id);top.forEach((r,i)=>po.rk[r.id]=i)}
   else{const [E,W]=mlsConf51(rows);rows.forEach((r,i)=>po.rk[r.id]=i);po.T={E:E.slice(0,9).map(r=>r.id),W:W.slice(0,9).map(r=>r.id)};po.c={E:[],W:[]}}
@@ -154,7 +163,7 @@ function finishPo51(){
     adv=t.w===G.user;
     const done=run52(po);
     if(done){
-      const champ=po.champ===G.user;note=champ?'CAMPEÃO: '+po.label+'!':'Eliminado: '+sn+'.';
+      const champ=po.champ===G.user;note=champ?((po.acc||po.rep)?'VENCEU: '+po.label+'!':'CAMPEÃO: '+po.label+'!'):'Eliminado: '+sn+'.';
       po.pend=false;
     }else note='Você avançou! Próxima fase: '+po.sn+'.';
     if(done){fin52(po)}
@@ -197,6 +206,42 @@ function qualAcc52(){
   const pl=rows.slice(lo.po[0]-1,lo.po[1]).filter(r=>rows.indexOf(r)>=dirN&&r.name);
   return pl.length>1&&pl.includes(c)?{pl,lo,d}:null;
 }
+/* repescagem (GER/FRA/POR): contexto do limite entre as divisões tIdx e tIdx+1 */
+function chalCtx52(tIdx){
+  const P=G.pyr,T=PYR[P.k]||[],up=T[tIdx-1],lo=T[tIdx];
+  if(!up||!lo||!up.rpo||!lo.chal)return null;
+  const U=P.dv.filter(x=>x.t===tIdx),L=P.dv.filter(x=>x.t===tIdx+1);if(U.length!==1||L.length!==1)return null;
+  const n=up.dn||0,ur=allRows(U[0].d),def=ur[ur.length-n-1],lrows=allRows(L[0].d),pro=lrows.slice(0,lo.up||0);
+  const pl=lrows.filter(r=>!pro.includes(r)).slice(0,Math.max(1,lo.chal[1]-lo.chal[0]+1));
+  if(!def||!def.name||!pl.length||pl.some(r=>!r.name))return null;
+  return {up,lo,def,pl};
+}
+function chal52(){
+  const P=G.pyr,c=userClub(),tu=tierOf(c.div);
+  for(const tIdx of [tu,tu-1]){
+    if(tIdx<1)continue;const x=chalCtx52(tIdx);if(!x)continue;
+    const involved=x.def===c||x.pl.includes(c);if(!involved)continue;
+    const I={k:P.k,div:c.div};
+    /* A) você está na chave de 3 ou mais clubes da 2ª divisão (França) */
+    if(x.pl.length>1&&x.pl.includes(c)&&P.accS!==G.season){
+      return po51Init(I,'ac',x.lo.n+' · playoff pela repescagem',false,x.pl,true);
+    }
+    if(P.repS===G.season)return null;
+    /* B) o duelo final: 16º da elite x vencedor da chave */
+    let ch=x.pl[0];
+    if(x.pl.length>1){const f=P.forced&&P.forced.ids.length===x.pl.length&&x.pl.every(r=>P.forced.ids.includes(r.id))?P.forced:null;
+      if(f)ch=x.pl.find(r=>r.id===f.w);
+      else{const lg=[];ch=_br52(x.pl,lg);P.forced={w:ch.id,ids:x.pl.map(r=>r.id),txt:lg.join(' · ')}}}
+    if(x.def!==c&&ch!==c){P.repS=G.season;return null}
+    return po51Init(I,'ac',x.up.n+' x '+x.lo.n+' · repescagem',false,[x.def,ch],false,true);
+  }
+  return null;
+}
+const _tie52=tie;tie=function(A,B,seed){
+  const f=G.pyr&&G.pyr.forced2;
+  if(f&&A&&B&&A.id===f.def&&B.id===f.ch&&A.name&&B.name){const w=f.w===A.id?A:B,l=w===A?B:A;G.pyr.forced2=null;return [w,l,f.gW,f.gL]}
+  return _tie52.apply(this,arguments);
+};
 const _br52=bracket;bracket=function(list,log){
   const f=G.pyr&&G.pyr.forced;
   if(f&&f.ids.length===list.length&&list.every(r=>r.name&&f.ids.includes(r.id))){const w=list.find(r=>r.id===f.w);log.push(f.txt);G.pyr.forced=null;return w}
@@ -205,9 +250,10 @@ const _br52=bracket;bracket=function(list,log){
 const _fr52b=finishRound;finishRound=function(){
   const out=_fr52b.apply(this,arguments);
   try{
-    if(out==='seasonEnd'&&!G.po51&&G.pyr&&G.pyr.planS!==G.season&&G.pyr.accS!==G.season){
-      const q=qualAcc52();
+    if(out==='seasonEnd'&&!G.po51&&G.pyr&&G.pyr.planS!==G.season&&(G.pyr.accS!==G.season||G.pyr.repS!==G.season)){
+      const q=G.pyr.accS!==G.season?qualAcc52():null;
       if(q){const r=po51Init({k:G.pyr.k,div:q.d},'ac',q.lo.n+' · playoff de acesso',false,q.pl,true);if(r.pending){save();return 'next'}}
+      else if(G.pyr.repS!==G.season){const r=chal52();if(r&&r.pending){save();return 'next'}}
     }
   }catch(e){console.error('acc52 '+e.message)}
   return out;
