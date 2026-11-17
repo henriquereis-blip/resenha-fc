@@ -8390,12 +8390,14 @@ setInterval(()=>{try{if(S.step==='mpo'&&MP.code&&!document.hidden&&navigator.onL
    - MLS: 15 clubes por conferência; no fim, playoffs (9 por conferência: wild card, melhor de 3, semi e final de conferência, MLS Cup).
    Por enquanto as partidas dos outros clubes e as suas são simuladas na hora (resultado no jornal); jogar as partidas vem na próxima etapa (L1.2). */
 const MLS_EAST=new Set(['Inter Miami','Columbus Crew','Philadelphia Union','FC Cincinnati','New York City FC','Atlanta United','New York Red Bulls','Orlando City','Nashville SC','New England Revolution','Toronto FC','Charlotte FC','Chicago Fire','CF Montréal','D.C. United']);
+/* nº de classificados ao mata-mata: Argentina = 16 (8 por zona, aqui os 16 melhores da tabela), jogo único */
+function po51n(I){return I.k==='ARG'?16:(I.R.po||8)}
 function lg51(){
   try{
     if(!G||!G.abroad||!G.pyr||G.user==null)return null;const u=G.clubs[G.user];if(!u||u.div<4||tierOf(u.div)!==1)return null;
     const k=G.pyr.k,R=WRULES[k]||{};
     if(k==='USA')return {k,R,div:u.div,kind:'mls'};
-    if(R.fmt==='ac'&&k!=='ARG')return {k,R,div:u.div,kind:'ac'};
+    if(R.fmt==='ac')return {k,R,div:u.div,kind:'ac'};
   }catch(e){}
   return null;
 }
@@ -8411,10 +8413,11 @@ function bo3(A,B){let wa=0,wb=0,sc=[];while(wa<2&&wb<2){const h=(wa+wb)%2===0?A:
     const winA=(h===A)?x>y:y>x;if(winA)wa++;else wb++;sc.push(h===A?[x,y]:[y,x])}
   const aw=wa>wb;return {w:aw?A:B,l:aw?B:A,sc:sc.map(([x,y])=>aw?x+'–'+y:y+'–'+x).join(' / ')}}
 /* liguilla de 8: quartas, semi e final em 2 jogos (função tie do ext44) */
-function liguilla51(top){
-  const log=[];let cur=top.slice();let names={8:'Quartas',4:'Semifinal',2:'Final'};
+function liguilla51(top,single){
+  const log=[];let cur=top.slice();let names={16:'Oitavas',8:'Quartas',4:'Semifinal',2:'Final'};
   while(cur.length>1){const nx=[],n=cur.length;
-    for(let i=0;i<Math.floor(n/2);i++){const r=tie(cur[i],cur[n-1-i],cur[i]);nx.push(r[0]);log.push({stage:names[n]||'Fase',t:rn51(r[0])+' '+r[2]+'–'+r[3]+' '+rn51(r[1]),w:r[0],l:r[1]})}
+    for(let i=0;i<Math.floor(n/2);i++){if(single){const m=one51(cur[i],cur[n-1-i]);nx.push(m.w);log.push({stage:names[n]||'Fase',t:fmt51(m),w:m.w,l:m.l});continue}
+      const r=tie(cur[i],cur[n-1-i],cur[i]);nx.push(r[0]);log.push({stage:names[n]||'Fase',t:rn51(r[0])+' '+r[2]+'–'+r[3]+' '+rn51(r[1]),w:r[0],l:r[1]})}
     cur=nx.sort((a,b)=>top.indexOf(a)-top.indexOf(b))}
   return {champ:cur[0],log};
 }
@@ -8442,15 +8445,15 @@ function award51(name,champ,log,vice){
 }
 /* ---------- Apertura / Clausura ---------- */
 function acRun51(I,label){
-  const rows=allRows(I.div),top=rows.slice(0,I.R.po||8);if(top.length<4)return null;
-  const r=liguilla51(top);award51(label,r.champ,r.log);return {champ:r.champ,log:r.log,label,qual:top.includes(userClub())}
+  const rows=allRows(I.div),top=rows.slice(0,po51n(I));if(top.length<4)return null;
+  const r=liguilla51(top,I.k==='ARG');award51(label,r.champ,r.log);return {champ:r.champ,log:r.log,label,qual:top.includes(userClub())}
 }
 function acHalf51(){
   const I=lg51();if(!I||I.kind!=='ac')return;
   G.lg51=G.lg51||{};if(G.lg51.half===G.season)return;
   const half=Math.floor(NR()/2);if(G.round!==half)return;
   G.lg51.half=G.season;
-  const lab='Apertura';const top0=allRows(I.div).slice(0,I.R.po||8);
+  const lab='Apertura';const top0=allRows(I.div).slice(0,po51n(I));
   const res=(typeof po51Init==='function'&&top0.length>=4&&top0.includes(userClub()))?po51Init(I,'ac',lab+' ('+wlOf(I.k).lg+')',true,top0):acRun51(I,lab+' ('+wlOf(I.k).lg+')');
   const first=allRows(I.div);G.lg51.first=first.slice(0,8).map(r=>r.name);
   for(const c of G.clubs.filter(c=>c.div===I.div&&!c.stub)){c.pp=(c.pp||0)+c.P;c.P=c.J=c.V=c.E=c.D=c.GP=c.GC=0}
@@ -8521,12 +8524,12 @@ function tt52(t){
 }
 /* monta os confrontos da fase atual; false = acabou */
 function stage52(po){
-  const mk=(a,b,m,tag)=>{if(po.rk[b]<po.rk[a])[a,b]=[b,a];return {a,b,m,res:[],pen:null,w:null,tag:tag||'',u:a===G.user||b===G.user,pk:po.cty==='COL'}};
+  const mk=(a,b,m,tag)=>{if(po.rk[b]<po.rk[a])[a,b]=[b,a];return {a,b,m,res:[],pen:null,w:null,tag:tag||'',u:a===G.user||b===G.user,pk:po.cty==='COL'||po.cty==='ARG'}};
   po.ties=[];
   if(po.kind==='ac'){
     const cur=po.al,n=cur.length;if(n<2){po.champ=cur[0];return false}
-    po.sn={8:'Quartas',4:'Semifinal',2:'Final'}[n]||'Fase';
-    for(let i=0;i<Math.floor(n/2);i++)po.ties.push(mk(cur[i],cur[n-1-i],'two'));
+    po.sn={16:'Oitavas',8:'Quartas',4:'Semifinal',2:'Final'}[n]||'Fase';
+    for(let i=0;i<Math.floor(n/2);i++)po.ties.push(mk(cur[i],cur[n-1-i],po.cty==='ARG'?'single':'two'));
     po.bye=n%2?cur[(n-1)/2]:null;return true;
   }
   const S=[['E','Leste'],['W','Oeste']];
@@ -8591,7 +8594,7 @@ function po51Init(I,kind,label,mid,top){
 /* o seu clube está entre os classificados no fim da temporada? */
 function qual52(I){
   const rows=allRows(I.div),u=userClub();
-  if(I.kind==='ac'){const top=rows.slice(0,I.R.po||8);return top.length>=4&&top.includes(u)?top:null}
+  if(I.kind==='ac'){const top=rows.slice(0,po51n(I));return top.length>=4&&top.includes(u)?top:null}
   const [E,W]=mlsConf51(rows);if(E.length<9||W.length<9)return null;
   return (E.slice(0,9).includes(u)||W.slice(0,9).includes(u))?rows:null;
 }

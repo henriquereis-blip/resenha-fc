@@ -1,5 +1,5 @@
 const {chromium}=require('playwright');(async()=>{const b=await chromium.launch();const errs=[];
-for(const [k,idx] of [["MEX",0],["COL",1],["USA",0],["MEX",16],["USA",14]]){
+for(const [k,idx] of [["ARG",6],["ARG",14],["MEX",3],["COL",2],["USA",9]]){
 const p=await (await b.newContext({viewport:{width:390,height:780}})).newPage();p.on('pageerror',e=>errs.push(k+' '+e.message));p.on('console',m=>{if(m.type()==='error')errs.push(k+' '+m.text())});
 await p.goto('file://'+__dirname+'/resenha-fc-v2.html');await p.waitForTimeout(300);
 const T=async(f,a)=>{try{return await p.evaluate(f,a)}catch(e){console.log(k,'FALHA',e.message.slice(0,160));return null}};
