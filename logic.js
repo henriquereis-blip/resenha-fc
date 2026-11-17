@@ -62,6 +62,7 @@ const SKV=(function(){
     };
   }
   init();
+  try{if(navigator.storage&&navigator.storage.persist)navigator.storage.persist()}catch(e){}
   document.addEventListener('visibilitychange',()=>{if(document.hidden)api.flush()});
   window.addEventListener('pagehide',()=>api.flush());
   return api;
