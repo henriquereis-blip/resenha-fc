@@ -1272,7 +1272,7 @@ function tapSlot(k,i){
 function vStart(){
   const has=(()=>{try{return !!SKV.getItem(SAVE_KEY)}catch(e){return false}})();
   const list=G.clubs.filter(c=>c.div===(S.cdiv||0)).sort((a,b)=>b.rep-a.rep);
-  let h=`<div class="wrap"><div class="logo"><b>RESENHA</b><span>FC</span></div><p class="lead">O manager de futebol da resenha. Demo do Brasil, jogando sozinho.</p>
+  let h=`<div class="wrap"><div class="logo"><b>RESENHA</b><span>FC</span></div><p class="lead">Melhor que Brasfoot, menos burocrático que Football Manager. Demo do Brasil, jogando sozinho.</p>
   ${has?`<button class="btn big" data-a="cont">Continuar carreira</button>`:''}
   <label class="fld">Seu nome de técnico<input id="coach" value="${esc(S.coachName)}" placeholder="Ex.: Henrique" maxlength="24"></label>
   <h2>1 · Escolha o clube</h2><div class="seg sm">${['A','B','C','D'].map((x,i)=>`<button class="${(S.cdiv||0)===i?'on':''}" data-a="cdiv" data-v="${i}">Série ${x}</button>`).join('')}</div><div class="clubs">${list.map(c=>`<button class="club ${S.sc===c.id?'sel':''}" data-a="pickclub" data-id="${c.id}">${crest(c,34)}<span class="cn">${c.name}<small>${finTag(c)}</small></span><span class="rep">${c.rep}</span></button>`).join('')}</div>`;
@@ -1667,7 +1667,7 @@ function render(){
   if(S.modal)body=vModal();else if(S.prof!==null)body=vPerfil();else if(S.paper)body=vJornal();else body=(views[G.view]||vInicio)();
   const ab=G.newAch&&G.newAch.length?`<button class="achb" data-a="achok">${G.newAch.map(id=>ACH[id][0]+' Conquista: '+ACH[id][1]).join(' · ')}</button>`:'';
   const cur=G.view==='elenco'?'inicio':G.view;
-  const bottom=S.modal?'':`<nav class="nav2"><button class="${cur==='inicio'&&!S.paper&&S.prof===null?'on':''}" data-a="nav" data-v="inicio">🏠<small>Início</small></button><button class="${cur==='tatica'?'on':''}" data-a="nav" data-v="tatica">📋<small>Tática</small></button>${G.round<NR()?`<button class="go" data-a="play">⚽<small>JOGAR</small></button>`:`<button class="go" data-a="nav" data-v="inicio">⚽<small>FIM</small></button>`}<button class="${cur==='clube'?'on':''}" data-a="nav" data-v="clube">💵<small>Clube</small></button><button data-a="paper">📰<small>Jornal</small></button></nav>`;
+  const bottom=S.modal?'':`<nav class="nav2"><button class="${cur==='inicio'&&!S.paper&&S.prof===null?'on':''}" data-a="nav" data-v="inicio">🏠<small>Início</small></button><button class="${cur==='tatica'?'on':''}" data-a="nav" data-v="tatica">📋<small>Tática</small></button>${G.round<NR()?`<button class="go" data-a="play">⚽<small>JOGAR</small></button>`:`<button class="go" data-a="nav" data-v="inicio">⚽<small>FIM</small></button>`}<button class="${cur==='mercado'?'on':''}" data-a="nav" data-v="mercado">🔍<small>Mercado</small></button><button data-a="paper">📰<small>Jornal</small></button></nav>`;
   app.innerHTML=`<header class="top2"><div class="ic">${icons.map(([k,e,l])=>`<button class="${cur===k&&!S.paper&&S.prof===null?'on':''}" data-a="nav" data-v="${k}"><span>${e}</span><small>${l}</small></button>`).join('')}</div><div class="dt">${gdate()}</div></header>${ab}
   <main class="main">${body}</main>${bottom}${toastH()}`;
   bind();
@@ -4960,7 +4960,7 @@ function slotRow(i){
 }
 function vTitle(){
   const f=slotInfo(0);
-  return `<div class="wrap ti20"><div class="logo"><b>RESENHA</b><span>FC</span></div><p class="lead">O manager de futebol da resenha.</p>
+  return `<div class="wrap ti20"><div class="logo"><b>RESENHA</b><span>FC</span></div><p class="lead">Melhor que Brasfoot, menos burocrático que Football Manager.</p>
   ${f?`<button class="mb20 pri" data-a="cont"><span class="ic">▶</span><span><b>Continuar carreira</b><small>${esc(f.club)} · temporada ${f.season}, rodada ${Math.min(f.round+1,38)}</small></span></button>`:''}
   <button class="mb20 ${f?'':'pri'}" data-a="newgame"><span class="ic">✨</span><span><b>Novo jogo</b><small>Crie seu treinador, escolha liga e clube</small></span></button>
   <button class="mb20" data-a="step" data-v="saves"><span class="ic">💾</span><span><b>Saves</b><small>Carregar ou apagar jogos salvos</small></span></button>
@@ -5759,7 +5759,7 @@ function backBar(){
   else if(!MAINV.includes(G.view))lbl='Voltar';
   if(!lbl)return;
   const prev=!S.modal&&S.prof===null&&!S.paper?(S.vstack&&S.vstack.length?S.vstack[S.vstack.length-1]:'inicio'):null;
-  const sub=prev?(prev==='inicio'?'Início':VNAME[prev]||prev==='tatica'&&'Tática'||prev==='clube'&&'Clube'||''):'';
+  const sub=prev?(prev==='inicio'?'Início':VNAME[prev]||prev==='tatica'&&'Tática'||prev==='clube'&&'Finanças'||''):'';
   main.insertAdjacentHTML('afterbegin',`<button class="backbar" data-a="back"><b>‹</b> Voltar${sub?`<small>${sub}</small>`:''}</button>`);
 }
 Object.assign(A,{
@@ -7990,7 +7990,7 @@ const _fr45=finishRound;finishRound=function(){const r=_fr45.apply(this,argument
 document.addEventListener('visibilitychange',()=>{try{if(document.hidden&&SB.ses&&G&&G.phase!=='start'&&!S.match&&Date.now()-SB.last>20000)sbPush(0,true)}catch(e){}});
 /* ext46: menu do topo = 5 categorias coloridas + abas sublinhadas + botão "Tudo" (grade com todas as telas) */
 const CAT46=[
-  ['clube','🏟️','Clube','dir',['dir','estadio','base','torcida','marketing'],'#f0b43a'],
+  ['clube','🏟️','Clube','dir',['clube','dir','estadio','base','torcida','marketing'],'#f0b43a'],
   ['equipe','👔','Equipe','meutec',['meutec','assist','staff','medico','treino','vest'],'#35f0a0'],
   ['comp','🏆','Torneios','agenda',['agenda','liga','comp'],'#5ab0ff'],
   ['mundo','🌎','Mundo','mercado',['mercado','times','tecnicos'],'#c58bff'],
@@ -7998,6 +7998,7 @@ const CAT46=[
 ];
 const IC46={dir:'🏛️',estadio:'🏟️',base:'🌱',torcida:'🔥',marketing:'📣',meutec:'🧠',assist:'🎲',staff:'🧑‍💼',medico:'🩺',treino:'🏋️',vest:'🗣️',agenda:'📅',liga:'🏆',comp:'🌎',mercado:'🔍',times:'👕',tecnicos:'🧢',historia:'📜',opcoes:'⚙️'};
 const NM46={dir:'Diretoria',estadio:'Estádio',base:'Base',torcida:'Torcida',marketing:'Marketing',meutec:'Técnico',assist:'Auxiliar',staff:'Comissão',medico:'Médico',treino:'Treino',vest:'Vestiário',agenda:'Agenda',liga:'Tabelas',comp:'Copas',mercado:'Procura',times:'Times',tecnicos:'Técnicos',historia:'História',opcoes:'Opções'};
+IC46.clube='💵';NM46.clube='Finanças';
 (function(){const st=document.createElement('style');st.textContent=`
 .top2 .ic.n46{display:block;overflow:visible!important;padding:2px 4px 0!important}
 .n46 .c46{display:grid;grid-template-columns:repeat(6,1fr);gap:2px}
@@ -8054,7 +8055,7 @@ vTitle=function(){
   const f=slotInfo(0),n=(SB.list||[]).length;
   if(SB.ses&&sbOk()&&!SB.listOk&&!SB.tried){SB.tried=1;sbList()}
   const cl=!sbOk()?'':SB.ses?(SB.listOk?(n?' · ☁️ '+n+' na nuvem':' · ☁️ conectado'):''):' · entre pra usar a nuvem';
-  return `<div class="wrap ti20"><div class="logo"><b>RESENHA</b><span>FC</span></div><p class="lead">O manager de futebol da resenha.</p>
+  return `<div class="wrap ti20"><div class="logo"><b>RESENHA</b><span>FC</span></div><p class="lead">Melhor que Brasfoot, menos burocrático que Football Manager.</p>
   ${f?`<button class="mb20 pri" data-a="cont"><span class="ic">▶</span><span><b>Continuar carreira</b><small>${esc(f.club)} · temporada ${f.season}, rodada ${Math.min(f.round+1,NR())}</small></span></button>`:''}
   <button class="mb20 ${f?'':'pri'}" data-a="newgame"><span class="ic">✨</span><span><b>Começar jogo novo</b><small>Crie seu treinador, escolha liga e clube</small></span></button>
   <button class="mb20" data-a="step" data-v="saves"><span class="ic">💾</span><span><b>Saves</b><small>Carregar ou apagar jogos${cl}</small></span></button>
@@ -8111,7 +8112,7 @@ async function migrate48(){
 }
 /* tela de entrada obrigatória */
 function vGate(){
-  return `<div class="wrap ti20"><div class="logo"><b>RESENHA</b><span>FC</span></div><p class="lead">O manager de futebol da resenha.</p>
+  return `<div class="wrap ti20"><div class="logo"><b>RESENHA</b><span>FC</span></div><p class="lead">Melhor que Brasfoot, menos burocrático que Football Manager.</p>
   <div class="card"><div class="k">👤 Entre pra jogar</div>${sbLogin()}</div>
   <p class="hint">${navigator.onLine?"":"📴 Sem internet? Pode entrar mesmo assim: o jogo fica no aparelho e sobe quando a conexão voltar. "}Seu jogo fica salvo na sua conta, na nuvem: dá pra continuar de qualquer aparelho e nada se perde se o celular limpar os dados.</p></div>`;
 }
@@ -8128,7 +8129,7 @@ const _vt48=vTitle;vTitle=function(){
   let cont='';
   if(hasLocal&&(!r0||lt>Date.parse(r0.updated_at)+2000)){const f=sumOf(SKV.getItem(SAVE_KEY));cont=`<button class="mb20 pri" data-a="cont48"><span class="ic">▶</span><span><b>Continuar carreira</b><small>${esc(f.club)} · temporada ${f.season}, rodada ${Math.min(f.round+1,NR())} · ${st48()}</small></span></button>`}
   else if(r0)cont=`<button class="mb20 pri" data-a="cont48"><span class="ic">▶</span><span><b>Continuar carreira</b><small>${esc(r0.club||'')} · temporada ${r0.season}, rodada ${r0.round+1} · ☁️ na nuvem</small></span></button>`;
-  return `<div class="wrap ti20"><div class="logo"><b>RESENHA</b><span>FC</span></div><p class="lead">O manager de futebol da resenha.</p>
+  return `<div class="wrap ti20"><div class="logo"><b>RESENHA</b><span>FC</span></div><p class="lead">Melhor que Brasfoot, menos burocrático que Football Manager.</p>
   ${cont}
   <button class="mb20 ${cont?'':'pri'}" data-a="newgame"><span class="ic">✨</span><span><b>Começar jogo novo</b><small>Crie seu treinador, escolha liga e clube</small></span></button>
   <button class="mb20" data-a="step" data-v="saves"><span class="ic">💾</span><span><b>Saves</b><small>${SB.listOk?(n?n+' save'+(n>1?'s':'')+' na nuvem':'Nenhum save ainda'):(navigator.onLine?'Buscando seus saves…':'📴 sem internet')} · ${esc(SB.ses.email||'')}</small></span></button>

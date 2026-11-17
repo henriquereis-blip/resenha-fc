@@ -14,7 +14,7 @@ vTitle=function(){
   const f=slotInfo(0),n=(SB.list||[]).length;
   if(SB.ses&&sbOk()&&!SB.listOk&&!SB.tried){SB.tried=1;sbList()}
   const cl=!sbOk()?'':SB.ses?(SB.listOk?(n?' · ☁️ '+n+' na nuvem':' · ☁️ conectado'):''):' · entre pra usar a nuvem';
-  return `<div class="wrap ti20"><div class="logo"><b>RESENHA</b><span>FC</span></div><p class="lead">O manager de futebol da resenha.</p>
+  return `<div class="wrap ti20"><div class="logo"><b>RESENHA</b><span>FC</span></div><p class="lead">Melhor que Brasfoot, menos burocrático que Football Manager.</p>
   ${f?`<button class="mb20 pri" data-a="cont"><span class="ic">▶</span><span><b>Continuar carreira</b><small>${esc(f.club)} · temporada ${f.season}, rodada ${Math.min(f.round+1,NR())}</small></span></button>`:''}
   <button class="mb20 ${f?'':'pri'}" data-a="newgame"><span class="ic">✨</span><span><b>Começar jogo novo</b><small>Crie seu treinador, escolha liga e clube</small></span></button>
   <button class="mb20" data-a="step" data-v="saves"><span class="ic">💾</span><span><b>Saves</b><small>Carregar ou apagar jogos${cl}</small></span></button>

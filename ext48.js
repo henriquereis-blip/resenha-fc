@@ -23,7 +23,7 @@ async function migrate48(){
 }
 /* tela de entrada obrigatória */
 function vGate(){
-  return `<div class="wrap ti20"><div class="logo"><b>RESENHA</b><span>FC</span></div><p class="lead">O manager de futebol da resenha.</p>
+  return `<div class="wrap ti20"><div class="logo"><b>RESENHA</b><span>FC</span></div><p class="lead">Melhor que Brasfoot, menos burocrático que Football Manager.</p>
   <div class="card"><div class="k">👤 Entre pra jogar</div>${sbLogin()}</div>
   <p class="hint">${navigator.onLine?"":"📴 Sem internet? Pode entrar mesmo assim: o jogo fica no aparelho e sobe quando a conexão voltar. "}Seu jogo fica salvo na sua conta, na nuvem: dá pra continuar de qualquer aparelho e nada se perde se o celular limpar os dados.</p></div>`;
 }
@@ -40,7 +40,7 @@ const _vt48=vTitle;vTitle=function(){
   let cont='';
   if(hasLocal&&(!r0||lt>Date.parse(r0.updated_at)+2000)){const f=sumOf(SKV.getItem(SAVE_KEY));cont=`<button class="mb20 pri" data-a="cont48"><span class="ic">▶</span><span><b>Continuar carreira</b><small>${esc(f.club)} · temporada ${f.season}, rodada ${Math.min(f.round+1,NR())} · ${st48()}</small></span></button>`}
   else if(r0)cont=`<button class="mb20 pri" data-a="cont48"><span class="ic">▶</span><span><b>Continuar carreira</b><small>${esc(r0.club||'')} · temporada ${r0.season}, rodada ${r0.round+1} · ☁️ na nuvem</small></span></button>`;
-  return `<div class="wrap ti20"><div class="logo"><b>RESENHA</b><span>FC</span></div><p class="lead">O manager de futebol da resenha.</p>
+  return `<div class="wrap ti20"><div class="logo"><b>RESENHA</b><span>FC</span></div><p class="lead">Melhor que Brasfoot, menos burocrático que Football Manager.</p>
   ${cont}
   <button class="mb20 ${cont?'':'pri'}" data-a="newgame"><span class="ic">✨</span><span><b>Começar jogo novo</b><small>Crie seu treinador, escolha liga e clube</small></span></button>
   <button class="mb20" data-a="step" data-v="saves"><span class="ic">💾</span><span><b>Saves</b><small>${SB.listOk?(n?n+' save'+(n>1?'s':'')+' na nuvem':'Nenhum save ainda'):(navigator.onLine?'Buscando seus saves…':'📴 sem internet')} · ${esc(SB.ses.email||'')}</small></span></button>

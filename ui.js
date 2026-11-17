@@ -108,7 +108,7 @@ function tapSlot(k,i){
 function vStart(){
   const has=(()=>{try{return !!SKV.getItem(SAVE_KEY)}catch(e){return false}})();
   const list=G.clubs.filter(c=>c.div===(S.cdiv||0)).sort((a,b)=>b.rep-a.rep);
-  let h=`<div class="wrap"><div class="logo"><b>RESENHA</b><span>FC</span></div><p class="lead">O manager de futebol da resenha. Demo do Brasil, jogando sozinho.</p>
+  let h=`<div class="wrap"><div class="logo"><b>RESENHA</b><span>FC</span></div><p class="lead">Melhor que Brasfoot, menos burocrático que Football Manager. Demo do Brasil, jogando sozinho.</p>
   ${has?`<button class="btn big" data-a="cont">Continuar carreira</button>`:''}
   <label class="fld">Seu nome de técnico<input id="coach" value="${esc(S.coachName)}" placeholder="Ex.: Henrique" maxlength="24"></label>
   <h2>1 · Escolha o clube</h2><div class="seg sm">${['A','B','C','D'].map((x,i)=>`<button class="${(S.cdiv||0)===i?'on':''}" data-a="cdiv" data-v="${i}">Série ${x}</button>`).join('')}</div><div class="clubs">${list.map(c=>`<button class="club ${S.sc===c.id?'sel':''}" data-a="pickclub" data-id="${c.id}">${crest(c,34)}<span class="cn">${c.name}<small>${finTag(c)}</small></span><span class="rep">${c.rep}</span></button>`).join('')}</div>`;

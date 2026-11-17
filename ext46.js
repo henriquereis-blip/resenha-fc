@@ -1,6 +1,6 @@
 /* ext46: menu do topo = 5 categorias coloridas + abas sublinhadas + botão "Tudo" (grade com todas as telas) */
 const CAT46=[
-  ['clube','🏟️','Clube','dir',['dir','estadio','base','torcida','marketing'],'#f0b43a'],
+  ['clube','🏟️','Clube','dir',['clube','dir','estadio','base','torcida','marketing'],'#f0b43a'],
   ['equipe','👔','Equipe','meutec',['meutec','assist','staff','medico','treino','vest'],'#35f0a0'],
   ['comp','🏆','Torneios','agenda',['agenda','liga','comp'],'#5ab0ff'],
   ['mundo','🌎','Mundo','mercado',['mercado','times','tecnicos'],'#c58bff'],
@@ -8,6 +8,7 @@ const CAT46=[
 ];
 const IC46={dir:'🏛️',estadio:'🏟️',base:'🌱',torcida:'🔥',marketing:'📣',meutec:'🧠',assist:'🎲',staff:'🧑‍💼',medico:'🩺',treino:'🏋️',vest:'🗣️',agenda:'📅',liga:'🏆',comp:'🌎',mercado:'🔍',times:'👕',tecnicos:'🧢',historia:'📜',opcoes:'⚙️'};
 const NM46={dir:'Diretoria',estadio:'Estádio',base:'Base',torcida:'Torcida',marketing:'Marketing',meutec:'Técnico',assist:'Auxiliar',staff:'Comissão',medico:'Médico',treino:'Treino',vest:'Vestiário',agenda:'Agenda',liga:'Tabelas',comp:'Copas',mercado:'Procura',times:'Times',tecnicos:'Técnicos',historia:'História',opcoes:'Opções'};
+IC46.clube='💵';NM46.clube='Finanças';
 (function(){const st=document.createElement('style');st.textContent=`
 .top2 .ic.n46{display:block;overflow:visible!important;padding:2px 4px 0!important}
 .n46 .c46{display:grid;grid-template-columns:repeat(6,1fr);gap:2px}

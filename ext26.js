@@ -64,7 +64,7 @@ function backBar(){
   else if(!MAINV.includes(G.view))lbl='Voltar';
   if(!lbl)return;
   const prev=!S.modal&&S.prof===null&&!S.paper?(S.vstack&&S.vstack.length?S.vstack[S.vstack.length-1]:'inicio'):null;
-  const sub=prev?(prev==='inicio'?'Início':VNAME[prev]||prev==='tatica'&&'Tática'||prev==='clube'&&'Clube'||''):'';
+  const sub=prev?(prev==='inicio'?'Início':VNAME[prev]||prev==='tatica'&&'Tática'||prev==='clube'&&'Finanças'||''):'';
   main.insertAdjacentHTML('afterbegin',`<button class="backbar" data-a="back"><b>‹</b> Voltar${sub?`<small>${sub}</small>`:''}</button>`);
 }
 Object.assign(A,{
