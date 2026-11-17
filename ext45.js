@@ -38,9 +38,9 @@ async function sbUnpack(d){
 async function sbPush(cs,quiet){
   if(!SB.ses||!sbOk()||SB.busy)return false;SB.busy=true;
   try{save();SKV.flush();const raw=SKV.getItem(SAVE_KEY);if(!raw)throw new Error('sem save local');
-    const c=userClub(),data=await sbPack(raw);
+    const c=userClub(),sea=G.season,rnd=G.round,data=await sbPack(raw);
     const r=await sbReq('/rest/v1/saves?on_conflict=user_id,slot',{method:'POST',headers:{Prefer:'resolution=merge-duplicates,return=minimal'},
-      body:JSON.stringify({user_id:SB.ses.uid,slot:cs,data,club:c?c.name:null,season:G.season,round:G.round,updated_at:new Date().toISOString()})});
+      body:JSON.stringify({user_id:SB.ses.uid,slot:cs,data,club:c?c.name:null,season:sea,round:rnd,updated_at:new Date().toISOString()})});
     if(!r.ok){const j=await r.json().catch(()=>({}));throw new Error(sbErr(j))}
     SB.last=Date.now();SB.msg=quiet?SB.msg:(cs?'Salvo no slot '+cs+' ✔':'Salvo ✔');return true}
   catch(e){SB.msg='Falha ao salvar: '+e.message;return false}
@@ -96,5 +96,5 @@ const _vt45=vTitle;vTitle=function(){
   if(SB.ses&&!SB.listOk&&!SB.tried){SB.tried=1;sbList()}
   return h.replace('<p class="foot">','<button class="mb20" data-a="step" data-v="saves"><span class="ic">☁️</span><span><b>Saves na nuvem</b><small>'+sub+'</small></span></button><p class="foot">')};
 /* autosave na nuvem: a cada 3 rodadas e ao sair do app (só logado) */
-const _fr45=finishRound;finishRound=function(){const r=_fr45.apply(this,arguments);try{if(SB.ses&&G.round>0&&G.round%3===0&&Date.now()-SB.last>20000)sbPush(0,true)}catch(e){}return r};
+const _fr45=finishRound;finishRound=function(){const r=_fr45.apply(this,arguments);try{if(SB.ses&&!sbOk()&&G.round>0&&G.round%3===0&&Date.now()-SB.last>20000)sbPush(0,true)}catch(e){}return r};
 document.addEventListener('visibilitychange',()=>{try{if(document.hidden&&SB.ses&&G&&G.phase!=='start'&&!S.match&&Date.now()-SB.last>20000)sbPush(0,true)}catch(e){}});
