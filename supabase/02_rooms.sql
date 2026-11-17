@@ -1,0 +1,3 @@
+-- Salas do multiplayer online (aplicado no Supabase em 17/11/2026 via migrations multiplayer_rooms_tables e multiplayer_rooms_functions)
+-- Tabelas: rooms(code, host, status), room_members(room_code, user_id, nick, club). RLS: só membros da sala leem.
+-- Funções (security definer, só authenticated): create_room, join_room, leave_room, set_room_club, start_room, is_room_member.
