@@ -1,0 +1,2 @@
+const {chromium}=require('playwright');(async()=>{const b=await chromium.launch();const p=await (await b.newContext()).newPage();await p.goto('file://'+__dirname+'/resenha-fc-test.html');await p.waitForTimeout(300);
+console.log(await p.evaluate(()=>{startCareer(1,'T','Direto',null);const c=userClub();return JSON.stringify(Object.keys(c))+' '+c.color+' '+(c.c2||c.color2||c.alt||'')+' '+C(G.clubs[5].id).color}));await b.close()})();

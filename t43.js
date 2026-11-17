@@ -1,0 +1,13 @@
+const {chromium}=require('playwright');(async()=>{const b=await chromium.launch();const p=await (await b.newContext({viewport:{width:390,height:780},hasTouch:true})).newPage();const errs=[];p.on('pageerror',e=>errs.push(e.message));
+await p.goto('file://'+__dirname+'/resenha-fc-v2.html');await p.waitForTimeout(300);
+await p.evaluate(()=>{localStorage.clear();S.mg=mgNew('equil');S.obj='equ';startCareer(3,'T','Direto',null);ex();G.phase='play';S.modal=null;G.view='inicio';
+ for(let i=0;i<3;i++){startRound();while(!roundDone())stepAll();finishRound();ex()}G.phase='play';render()});
+const Y=()=>p.evaluate(()=>Math.round(scrollY));const res=[];
+const test=async(nome,setup,open,esperaMais)=>{await p.evaluate(setup);await p.waitForTimeout(80);await p.evaluate(()=>window.scrollTo(0,500));await p.waitForTimeout(80);const y0=await Y();
+ await p.evaluate(()=>{window.__ylast=0;document.addEventListener('click',()=>{window.__ylast=Math.round(scrollY)},true)});await open();await p.waitForTimeout(150);const yc=await p.evaluate(()=>window.__yo);await p.click('[data-a="back"]');await p.waitForTimeout(300);const y1=await Y();const ya=await p.evaluate(()=>window.__ylast);res.push(nome+': antes '+y0+' ultimo-clique-abrir '+ya+' depois '+y1+(Math.abs(ya-y1)<=3?' OK':' FALHOU'))};
+await test('elenco→perfil→voltar',()=>{G.view='inicio';S.prof=null;render();window.scrollTo(0,0)},async()=>{const rid=await p.evaluate(()=>document.querySelectorAll('tr[data-a="hrow"]')[12].dataset.id);await p.click('tr[data-a="hrow"][data-id="'+rid+'"]');await p.waitForTimeout(80);await p.click('tr[data-a="hrow"][data-id="'+rid+'"]')});
+await test('mercado→perfil→voltar',()=>{Object.values(G.players).filter(x=>x.club>=0&&x.club!==G.user).slice(0,40).forEach(x=>x.listed=true);G.view='mercado';S.tab='venda';S.prof=null;render();window.scrollTo(0,0)},async()=>{await (await p.$$('.mrow[data-a="prof"]'))[14].click()});
+await test('liga→time→voltar (Tabelas→Times)',()=>{G.view='liga';S.prof=null;render();window.scrollTo(0,0)},async()=>{await p.evaluate(()=>{const e=document.querySelector('[data-a="clk"]');e&&e.click()})});
+await test('clube→tela filha→voltar',()=>{G.view='clube';S.prof=null;render();window.scrollTo(0,0)},async()=>{await p.evaluate(()=>{const e=[...document.querySelectorAll('[data-a="nav"]')].find(x=>x.dataset.v==='estadio');e&&e.click()})});
+await test('jornal→voltar',()=>{G.view='inicio';S.paper=false;S.prof=null;render();window.scrollTo(0,0)},async()=>{await p.evaluate(()=>{S.paper=true;render();window.scrollTo(0,0)})});
+console.log(res.join('\n'));console.log(errs);await b.close()})();

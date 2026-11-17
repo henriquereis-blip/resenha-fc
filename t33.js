@@ -1,0 +1,8 @@
+const {chromium}=require('playwright');(async()=>{const b=await chromium.launch();const ctx=await b.newContext({viewport:{width:390,height:780},deviceScaleFactor:1,hasTouch:true,isMobile:true});const p=await ctx.newPage();const errs=[];p.on('pageerror',e=>errs.push(e.message));
+await p.route(/^https?:\/\/(?!file)/,r=>r.abort());await p.goto('file://'+__dirname+'/resenha-fc-test.html');
+const tap=async(sel,txt)=>p.evaluate(([sel,txt])=>{const e=[...document.querySelectorAll(sel)].find(x=>!txt||x.textContent.includes(txt));if(e){e.click();return 1}return 0},[sel,txt]);
+await tap('[data-a="newgame"]');await p.fill('#coach','H');await tap('[data-a="step"][data-v="club"]');await tap('[data-a="pickclub"]','Vasco');await tap('[data-a="step"]','Escolher o Vasco');
+await tap('[data-a="pickphil"]','Passe');await tap('[data-a="pickasst"]');await tap('[data-a="pickobj"]');await tap('[data-a="begin"]');await p.waitForTimeout(300);
+await tap('[data-a="spnpick"]');await tap('[data-a="spnpick"]');await tap('[data-a="spnmode"]');await tap('[data-a="nav"][data-v="opcoes"]');await p.waitForTimeout(300);
+await p.evaluate(()=>{const d=document.getElementById('impt');if(d)d.scrollIntoView({block:'center'})});await p.waitForTimeout(200);await p.screenshot({path:'opc34.png'});
+console.log('hdr',await p.evaluate(()=>['.top2','.top2 .ic','.top2 .ic button','.top2 .mbar','.top2 .ic button span','.top2 .ic small'].map(s=>{const e=document.querySelector(s);return e?s+':'+Math.round(e.getBoundingClientRect().height)+'/'+getComputedStyle(e).padding:s+':none'}).join(' | ')),'fam33',await p.evaluate(()=>!!document.getElementById('impt')),errs);await b.close()})();

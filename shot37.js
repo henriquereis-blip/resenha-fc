@@ -1,0 +1,10 @@
+const {chromium}=require('playwright');(async()=>{const b=await chromium.launch();const ctx=await b.newContext({viewport:{width:390,height:780},deviceScaleFactor:2,isMobile:true,hasTouch:true});const p=await ctx.newPage();const errs=[];p.on('pageerror',e=>errs.push(e.message));
+await p.goto('file://'+__dirname+'/resenha-fc-test.html');await p.waitForTimeout(400);
+await p.evaluate(()=>{S.mg=mgNew('equil');S.obj='equ';startCareer(1,'T','Direto',null);ex();for(let r=0;r<22;r++){startRound();autoPick(userClub());while(!roundDone())stepAll();finishRound()}G.phase='play';G.view='comp';S.ctab='mundo';S.wc=null;render()});
+await p.waitForTimeout(300);await p.screenshot({path:'p17/m1.png',fullPage:false});
+await p.evaluate(()=>{window.scrollTo(0,700)});await p.waitForTimeout(150);await p.screenshot({path:'p17/m2.png'});
+await p.evaluate(()=>{S.wc='ENG';render();window.scrollTo(0,0)});await p.waitForTimeout(200);await p.screenshot({path:'p17/m3.png'});
+await p.evaluate(()=>{S.wc='ARG';render();window.scrollTo(0,0)});await p.waitForTimeout(200);await p.screenshot({path:'p17/m4.png'});
+await p.evaluate(()=>{let n=0;while(n<40&&!G.inbox.some(m=>m.acts&&m.acts[0]&&m.acts[0].k==='xsell')){xMarket37(8,'mid');n++}const m=G.inbox.find(m=>m.acts&&m.acts[0]&&m.acts[0].k==='xsell');S.wc=null;G.view='inicio';A.mopen({id:m.id});window.scrollTo(0,0)});
+await p.waitForTimeout(200);await p.screenshot({path:'p17/m5.png'});
+console.log(errs);await b.close()})();

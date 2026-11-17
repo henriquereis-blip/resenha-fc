@@ -1,0 +1,26 @@
+[
+ {
+  "f": "p8/01_inicio.png",
+  "c": "Início com próximo jogo normal"
+ },
+ {
+  "f": "p8/02_proximo_extra.png",
+  "c": "Início quando o próximo jogo é de copa: o painel mostra a competição e a fase"
+ },
+ {
+  "f": "p8/03_copas_cup.png",
+  "c": "Copas: Copa do Brasil, fase atual, seu confronto e resultados"
+ },
+ {
+  "f": "p8/04_copas_cont.png",
+  "c": "Copas: competição continental, seu grupo com tabela"
+ },
+ {
+  "f": "p8/05_copas_fim.png",
+  "c": "Copas no fim da temporada"
+ },
+ {
+  "f": "p8/06_cont_fim.png",
+  "c": "Continental no fim da temporada"
+ }
+]

@@ -1,0 +1,3 @@
+const {chromium}=require('playwright');(async()=>{const b=await chromium.launch();const ctx=await b.newContext({viewport:{width:390,height:780},deviceScaleFactor:2,isMobile:true,hasTouch:true});const p=await ctx.newPage();const errs=[];p.on('pageerror',e=>errs.push(e.message));p.on('console',m=>{if(m.type()==='error')errs.push(m.text())});
+await p.goto('file://'+__dirname+'/resenha-fc-test.html');await p.waitForTimeout(500);await p.screenshot({path:'logo1.png'});
+console.log(await p.evaluate(()=>{const l=document.querySelector('.logo');return l?l.outerHTML.slice(0,200)+' | '+JSON.stringify(l.getBoundingClientRect())+' | '+getComputedStyle(l).display+' '+getComputedStyle(l).color+' '+getComputedStyle(l).fontSize:'no .logo'}),errs);await b.close()})();

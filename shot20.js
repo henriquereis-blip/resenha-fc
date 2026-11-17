@@ -1,0 +1,16 @@
+const {chromium}=require('playwright');const fs=require('fs');
+(async()=>{const b=await chromium.launch();const errs=[];const man=[];
+ const p=await b.newPage({viewport:{width:400,height:820},deviceScaleFactor:2});
+ await p.route(/^https?:\/\/(?!file)/,r=>r.abort());p.on('pageerror',e=>errs.push(e.message));
+ await p.goto('file://'+__dirname+'/resenha-fc-v2.html');
+ let n=0;const shot=async(name,cap)=>{n++;const f='p7/'+String(n).padStart(2,'0')+'_'+name+'.png';await p.screenshot({path:f});man.push({f,c:cap})};
+ await shot('abertura','Abertura do jogo (novo tema escuro)');
+ await p.click('[data-a="pickclub"][data-id="1"]');await shot('escolha_clube','Escolha de clube');
+ await p.click('[data-a="pickphil"]');await p.click('[data-a="pickasst"]');await p.click('[data-a="pickobj"]');await p.click('[data-a="begin"]');await shot('patrocinio','Escolha de patrocinador');await p.click('[data-a="pickspon"]');
+ await p.evaluate(()=>{for(let i=0;i<4;i++){startRound();autoPick(userClub());while(!roundDone())stepAll();finishRound();if(G.press)answerPress(0)}render()});
+ const go=async(v,c,sc)=>{await p.evaluate(v=>{S.modal=null;S.prof=null;S.paper=false;G.view=v;render();window.scrollTo(0,0)},v);await p.waitForTimeout(120);if(sc)await p.evaluate(y=>window.scrollTo(0,y),sc);await shot(v+(sc?'_b':''),c)};
+ await go('inicio','Início (painel do clube)');
+ await p.evaluate(()=>window.scrollTo(0,500));await shot('inicio_b','Início, parte de baixo');
+ await go('tatica','Tática');await go('liga','Tabelas');await go('mercado','Mercado');await go('clube','Clube/finanças');await go('dir','Diretoria');await go('torcida','Torcida');await go('marketing','Marketing');await go('base','Base');await go('staff','Comissão e contratos');await go('treino','Treino');await go('medico','Médico');
+ await p.evaluate(()=>{S.paper=true;render();window.scrollTo(0,0)});await shot('jornal','Jornal');
+ fs.writeFileSync('p7/manifest.json',JSON.stringify(man,null,1));console.log(errs,n);await b.close()})();

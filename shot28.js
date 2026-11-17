@@ -1,0 +1,17 @@
+const {chromium}=require('playwright');const fs=require('fs');
+(async()=>{const b=await chromium.launch();const ctx=await b.newContext({viewport:{width:390,height:780},deviceScaleFactor:2,hasTouch:true,isMobile:true});const p=await ctx.newPage();
+await p.route(/^https?:\/\/(?!file)/,r=>r.abort());await p.goto('file://'+__dirname+'/resenha-fc-v2.html');
+fs.mkdirSync('p12',{recursive:true});const man=[];let n=0;
+const shot=async(cap)=>{n++;const f='p12/'+String(n).padStart(2,'0')+'.png';await p.screenshot({path:f});man.push({f,c:'Foto '+n+' – '+cap})};
+await p.evaluate(()=>{newWorld();G.phase='play';S.mg=mgNew('equil');S.obj='equ';startCareer(G.clubs.find(c=>c.sig==='VAS').id,'Henrique','Passe',null);G.sponsor=null;S.modal=null;G.view='inicio';ex();render()});
+await p.waitForTimeout(300);
+await p.evaluate(()=>{paperLine('Vasco aposta na juventude para a temporada','Diretoria quer reforço barato e base forte, dizem bastidores.');S.paper=true;render();window.scrollTo(0,0)});await p.waitForTimeout(200);await shot('Jornal agora com contraste de verdade: texto escuro sobre papel claro');
+await p.evaluate(()=>{S.paper=false;G.view='inicio';const c=userClub();c.squad.slice(12,15).forEach(id=>A.plist({id}));S.modal=null;render();window.scrollTo(0,0)});await p.waitForTimeout(200);await shot('Barra do topo: janela de transferências (verde/vermelha) e ✉️ com contador');
+await p.evaluate(()=>{S.prof=userClub().squad[12];render();window.scrollTo(0,0)});await p.waitForTimeout(200);await p.evaluate(()=>{document.querySelector('.ask28')&&document.querySelector('.ask28').scrollIntoView({block:'center'})});await shot('Jogador à venda: preço pedido, interesse dos clubes, −10%/+10% e corte automático');
+await p.evaluate(()=>{S.prof=null;for(let r=0;r<4;r++){startRound();autoPick(userClub());while(!roundDone())stepAll();finishRound()};S.modal={t:'inbox'};render();window.scrollTo(0,0)});await p.waitForTimeout(200);await shot('Caixa de entrada: propostas, "nenhuma proposta", Copinha e avisos da janela');
+await p.evaluate(()=>{const m=G.inbox.find(x=>x.kind==='nooffer')||G.inbox.find(x=>x.kind==='offer');S.modal={t:'inbox',id:m.id};render();window.scrollTo(0,0)});await p.waitForTimeout(200);await shot('E-mail aberto com as opções: baixar preço, cortar por rodada ou esperar');
+await p.evaluate(()=>{S.modal={t:'sponsor'};A.pickspon({i:0});window.scrollTo(0,0)});await p.waitForTimeout(200);await shot('Patrocínio master: escolha 1 ou 3 temporadas (3 paga +5%, mas fica preso)');
+await p.evaluate(()=>{S.spYrs=3;A.spnmode({m:'parc'});S.modal={t:'sponsor'};render();window.scrollTo(0,0)});await p.waitForTimeout(200);await shot('Contrato assinado = travado. Rescindir só pagando multa');
+await p.evaluate(()=>{S.modal=null;G.view='marketing';render();window.scrollTo(0,0)});await p.waitForTimeout(200);await shot('Marketing: lista de contratos com prazo + NAMING RIGHTS bem à vista');
+await p.evaluate(()=>{startMatch&&0});
+fs.writeFileSync('p12/manifest.json',JSON.stringify(man));await b.close()})();

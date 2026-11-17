@@ -1,0 +1,12 @@
+const {chromium}=require('playwright');(async()=>{const b=await chromium.launch();const ctx=await b.newContext({viewport:{width:390,height:780},deviceScaleFactor:2,isMobile:true,hasTouch:true});const p=await ctx.newPage();const errs=[];p.on('pageerror',e=>errs.push(e.message));
+await p.goto('file://'+__dirname+'/resenha-fc-test.html');await p.waitForTimeout(400);
+await p.evaluate(()=>{S.mg=mgNew('equil');S.obj='equ';startCareer(1,'T','Direto',null);ex();G.phase='play';G.view='mercado';S.tab='livres';render()});
+await p.waitForTimeout(200);
+const r=await p.evaluate(()=>{const ic=document.querySelector('.top2 .ic');ic.scrollLeft=ic.scrollWidth;return ic.scrollLeft});
+const btn=await p.$('.top2 .ic button[data-v="historia"]');
+await btn.click();await p.waitForTimeout(300);
+const after=await p.evaluate(()=>{const ic=document.querySelector('.top2 .ic');return {sl:ic.scrollLeft,view:G.view,top:Math.round(document.querySelector('.top2').getBoundingClientRect().top)}});
+await p.evaluate(()=>window.scrollTo(0,600));await p.waitForTimeout(200);
+const sc=await p.evaluate(()=>({top:Math.round(document.querySelector('.top2').getBoundingClientRect().top),y:window.scrollY}));
+console.log('antes',r,'depois',JSON.stringify(after),'rolado',JSON.stringify(sc),errs);
+await p.screenshot({path:'p17/h1.png'});await b.close()})();

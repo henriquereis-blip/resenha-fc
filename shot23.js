@@ -1,0 +1,18 @@
+const {chromium}=require('playwright');const fs=require('fs');
+(async()=>{const b=await chromium.launch();const errs=[];const man=[];
+ const p=await b.newPage({viewport:{width:400,height:820},deviceScaleFactor:2});
+ await p.route(/^https?:\/\/(?!file)/,r=>r.abort());p.on('pageerror',e=>errs.push(e.message));
+ await p.goto('file://'+__dirname+'/resenha-fc-v2.html');
+ let n=0;const shot=async(name,cap,full)=>{n++;await p.evaluate(()=>{const t=document.querySelector('.toast');if(t)t.remove()});const f='p10/'+String(n).padStart(2,'0')+'_'+name+'.png';await p.screenshot({path:f,fullPage:!!full});man.push({file:f,cap:'Foto '+n+' – '+cap})};
+ const start=(sig,d)=>p.evaluate(([sig])=>{newWorld();G.phase='play';S.mg=mgNew('equil');S.obj='equ';startCareer(G.clubs.find(c=>c.sig===sig).id,'Henrique','Passe',null);S.modal=null;},[sig]);
+ const go=(tab)=>p.evaluate(t=>{S.modal=null;S.ctab=t;G.view='comp';render();window.scrollTo(0,0)},tab);
+ await start('SAN');
+ await go('est');await p.waitForTimeout(100);await shot('est_sp','Paulistão (Série A1 de SP): 16 clubes, 8 jogos, top 8 no mata-mata');
+ await go('cup');await shot('tom_copa','Tom da Copa do Brasil (verde mais escuro que a liga)');
+ await p.evaluate(()=>{G.view='liga';S.modal=null;render();window.scrollTo(0,0)});await shot('tom_liga','Tom da tabela da Série A (mesmo verde, outro tom)');
+ await start('FLA');
+ const r=await p.evaluate(()=>{const o=[];for(let g=0;g<400&&G.round<38;g++){ex();if(!G.sponsor)G.sponsor=sponsorOffers()[0];extraSync();if(G.nt.pend){o.push('pend r'+G.round+' '+G.nt.pend.type);break}startRound();autoPick(userClub());while(!roundDone())stepAll();G.board.conf=100;finishRound()}return o});console.log(r);
+ await p.evaluate(()=>{G.view='inicio';S.modal=null;render();window.scrollTo(0,0)});await shot('inicio_fifa','Início com banner de data FIFA (convocação)');
+ await go('sel');await shot('sel_pend','Aba Seleções: convocados, % de chance de dispensa e eliminatórias');
+ await p.evaluate(()=>{G.view='tatica';S.modal=null;render();window.scrollTo(0,0)});await shot('tatica','Tática');
+ fs.writeFileSync('p10/manifest.json',JSON.stringify(man,null,1));console.log('errs',errs);await b.close()})();

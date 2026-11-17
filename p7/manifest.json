@@ -1,0 +1,70 @@
+[
+ {
+  "f": "p7/01_abertura.png",
+  "c": "Abertura do jogo (novo tema escuro)"
+ },
+ {
+  "f": "p7/02_escolha_clube.png",
+  "c": "Escolha de clube"
+ },
+ {
+  "f": "p7/03_patrocinio.png",
+  "c": "Escolha de patrocinador"
+ },
+ {
+  "f": "p7/04_inicio.png",
+  "c": "Início (painel do clube)"
+ },
+ {
+  "f": "p7/05_inicio_b.png",
+  "c": "Início, parte de baixo"
+ },
+ {
+  "f": "p7/06_tatica.png",
+  "c": "Tática"
+ },
+ {
+  "f": "p7/07_liga.png",
+  "c": "Tabelas"
+ },
+ {
+  "f": "p7/08_mercado.png",
+  "c": "Mercado"
+ },
+ {
+  "f": "p7/09_clube.png",
+  "c": "Clube/finanças"
+ },
+ {
+  "f": "p7/10_dir.png",
+  "c": "Diretoria"
+ },
+ {
+  "f": "p7/11_torcida.png",
+  "c": "Torcida"
+ },
+ {
+  "f": "p7/12_marketing.png",
+  "c": "Marketing"
+ },
+ {
+  "f": "p7/13_base.png",
+  "c": "Base"
+ },
+ {
+  "f": "p7/14_staff.png",
+  "c": "Comissão e contratos"
+ },
+ {
+  "f": "p7/15_treino.png",
+  "c": "Treino"
+ },
+ {
+  "f": "p7/16_medico.png",
+  "c": "Médico"
+ },
+ {
+  "f": "p7/17_jornal.png",
+  "c": "Jornal"
+ }
+]

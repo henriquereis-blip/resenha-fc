@@ -1,0 +1,1 @@
+const {chromium}=require('playwright');(async()=>{const b=await chromium.launch();const p=await b.newPage();await p.goto('file:///home/claude/rel_dados.html');await p.pdf({path:'../Resenha-FC-relatorio-dados.pdf',format:'A4',printBackground:true});await p.screenshot({path:'rel1.png',fullPage:false});await b.close()})();

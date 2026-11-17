@@ -1,0 +1,2 @@
+const {chromium}=require('playwright');(async()=>{const b=await chromium.launch();const p=await (await b.newContext()).newPage();await p.goto('file://'+__dirname+'/resenha-fc-v2.html');await p.waitForTimeout(300);
+console.log(await p.evaluate(()=>{startCareer(3,'T','Direto',null);ex();const W=wd();const k=Object.keys(W.lg)[0];const x=W.lg[k].cl[0];const L=coachRank('geral');return JSON.stringify(x)+'\n'+JSON.stringify(L[0])+'\n'+JSON.stringify(Object.keys(W.lg))+' '+JSON.stringify(W.hist.slice(0,1))}));await b.close()})();

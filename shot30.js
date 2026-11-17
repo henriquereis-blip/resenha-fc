@@ -1,0 +1,12 @@
+const {chromium}=require('playwright');const fs=require('fs');
+(async()=>{const b=await chromium.launch();const ctx=await b.newContext({viewport:{width:390,height:780},deviceScaleFactor:2});const p=await ctx.newPage();
+await p.route(/^https?:\/\/(?!file)/,r=>r.abort());await p.goto('file://'+__dirname+'/resenha-fc-v2.html');
+fs.mkdirSync('p13',{recursive:true});const man=[];let n=0;
+const shot=async(cap)=>{n++;const f='p13/'+String(n).padStart(2,'0')+'.png';await p.screenshot({path:f});man.push({f,c:cap})};
+await p.evaluate(()=>{newWorld();G.phase='play';S.mg=mgNew('equil');S.obj='equ';startCareer(G.clubs.find(c=>c.sig==='VAS').id,'Henrique','Passe',null);G.sponsor=sponsorOffers()[0];S.modal=null;G.view='inicio';ex();render()});
+await p.evaluate(()=>{S.modal={t:'posrules'};render();window.scrollTo(0,0)});await shot('Regras completas de jogador fora de posição (tabela de/pra, em %)');
+await p.evaluate(()=>{S.modal=null;G.view='dir';render();window.scrollTo(0,0)});await p.evaluate(()=>{const e=[...document.querySelectorAll('h3')].find(x=>x.textContent.includes('Presidentes'));e&&e.scrollIntoView()});await shot('Diretoria: presidentes com história e promessa de campanha, e botão "Ouvir propostas"');
+await p.evaluate(()=>{A.leave();for(let r=0;r<4;r++){startRound();autoPick(userClub());while(!roundDone())stepAll();finishRound()};const m=G.inbox.find(x=>x.kind==='job'&&x.acts.length);S.modal={t:'inbox',id:m.id};render();window.scrollTo(0,0)});await shot('Propostas de emprego chegam por e-mail ~2 rodadas depois (rival aparece com aviso)');
+await p.evaluate(()=>{const m=G.inbox.find(x=>x.kind==='dir');S.modal=m?{t:'inbox',id:m.id}:{t:'inbox'};render();window.scrollTo(0,0)});await shot('Diretor de futebol: dica de reforço olhando carência do elenco e orçamento');
+await p.evaluate(()=>{S.modal=null;G.view='historia';render();window.scrollTo(0,0);const e=[...document.querySelectorAll('h3')].find(x=>x.textContent.includes('Clássicos'));e&&e.scrollIntoView()});await shot('Clássicos: retrospecto contra os rivais');
+fs.writeFileSync('p13/manifest.json',JSON.stringify(man));await b.close()})();

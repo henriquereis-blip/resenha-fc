@@ -1,0 +1,14 @@
+const {chromium}=require('playwright');
+(async()=>{const b=await chromium.launch();const errs=[];
+ const p=await b.newPage({viewport:{width:400,height:820},deviceScaleFactor:2});
+ await p.route(/^https?:\/\/(?!file)/,r=>r.abort());p.on('pageerror',e=>errs.push(e.message));
+ await p.goto('file://'+__dirname+'/resenha-fc-v2.html');
+ await p.click('[data-a="pickclub"][data-id="8"]');await p.click('[data-a="pickphil"]');await p.click('[data-a="pickasst"]');
+ await p.click('[data-a="pickobj"]');await p.click('[data-a="begin"]');await p.click('[data-a="pickspon"]');
+ await p.evaluate(()=>{for(let i=0;i<6;i++){startRound();autoPick(userClub());while(!roundDone())stepAll();finishRound();if(G.press)answerPress(0)}S.paper=true;render()});
+ await p.waitForTimeout(200);
+ const n=await p.evaluate(()=>document.querySelectorAll('.lk').length);console.log('links no jornal',n);
+ await p.evaluate(()=>window.scrollTo(0,300));await p.screenshot({path:'p5/04_nomes_clicaveis.png'});
+ const clicked=await p.evaluate(()=>{const e=document.querySelector('.lk[data-a="plk"]');if(!e)return 'sem';e.click();return 'ok'});
+ await p.waitForTimeout(250);await p.screenshot({path:'p5/05_clicou_jogador.png'});
+ console.log(clicked,errs);await b.close()})();

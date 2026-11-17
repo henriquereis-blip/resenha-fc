@@ -1,0 +1,2 @@
+const {chromium}=require('playwright');(async()=>{const b=await chromium.launch();const p=await b.newPage();await p.goto('file://'+__dirname+'/resenha-fc-v2.html');await p.waitForTimeout(300);
+console.log(await p.evaluate(()=>{localStorage.clear();S.mg=mgNew('equil');S.obj='equ';startCareer(3,'T','Direto',null);ex();const c=G.clubs[5];const sq=c.squad.map(id=>G.players[id]);const cc=Object.assign({},c);delete cc.squad;return 'club sem squad '+JSON.stringify(cc).length+' | squad '+JSON.stringify(sq).length+' | save '+JSON.stringify(G).length}));await b.close()})();

@@ -1,0 +1,4 @@
+const {chromium}=require('playwright');(async()=>{const b=await chromium.launch();const p=await (await b.newContext()).newPage();await p.goto('file://'+__dirname+'/resenha-fc-v2.html');await p.waitForTimeout(300);
+console.log(await p.evaluate(()=>{startCareer(25,'T','Direto',null);ex();G.phase='play';for(let i=0;i<3;i++){startRound();while(!roundDone())stepAll();finishRound();ex()}
+ const c=G.clubs[30],u=userClub();const o={};for(const k of Object.keys(u)){const v=u[k];o[k]=(Array.isArray(v)?'[]'+v.length:typeof v==='object'&&v?'{'+Object.keys(v).slice(0,6).join(',')+'}':String(v).slice(0,18))}
+ const ak=new Set(Object.keys(c));return 'USER-only keys: '+Object.keys(u).filter(k=>!ak.has(k)).join(',')+'\nAI keys: '+Object.keys(c).join(',')+'\nUSER vals: '+JSON.stringify(o)}));await b.close()})();

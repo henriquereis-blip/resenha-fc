@@ -1,0 +1,46 @@
+[
+ {
+  "f": "p3/01_tatica.png",
+  "c": "Tática nova (estilo FIFA): cartões de formação com entrosamento, estilos, efeitos no jogo e campo flat com camisa, nota e energia"
+ },
+ {
+  "f": "p3/02_tatica_troca.png",
+  "c": "Mesma tela depois de trocar para 4-2-3-1 e Posse: entrosamento baixo e efeito negativo aparecem nos chips"
+ },
+ {
+  "f": "p3/03_treino.png",
+  "c": "Treinos: foco da semana, intensidade e entrosamento por estilo/formação"
+ },
+ {
+  "f": "p3/04_vestiario.png",
+  "c": "Vestiário: clima do grupo, psicólogo, conflitos abertos com botão de dado"
+ },
+ {
+  "f": "p3/05_vestiario_baixo.png",
+  "c": "Vestiário (parte de baixo): jogadores desmotivados e tempo de jogo combinado no contrato"
+ },
+ {
+  "f": "p3/06_auxiliar.png",
+  "c": "Auxiliar estilo mestre de D&D: dicas que podem estar certas ou erradas; seguir = rolar d20 contra CD"
+ },
+ {
+  "f": "p3/07_auxiliar_dado.png",
+  "c": "Depois de seguir uma dica: resultado do dado aparece no aviso e a dica vai para Resolvidas"
+ },
+ {
+  "f": "p3/08_jogo_min12.png",
+  "c": "Durante o jogo (12'): placar, campo, pressão e a nova Rodada ao vivo com todos os jogos"
+ },
+ {
+  "f": "p3/09_jogo_min34.png",
+  "c": "Durante o jogo (34'): rodada ao vivo destaca gols recentes e sua posição na tabela em tempo real"
+ },
+ {
+  "f": "p3/10_intervalo.png",
+  "c": "Intervalo: tela de tática com visual FIFA, cartões de formação e estilo ajustáveis"
+ },
+ {
+  "f": "p3/11_jogo_min68.png",
+  "c": "Durante o jogo (68'): placares dos outros jogos mudando e feed de últimos gols"
+ }
+]

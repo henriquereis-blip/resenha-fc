@@ -1,0 +1,12 @@
+const {chromium}=require('playwright');
+(async()=>{const b=await chromium.launch();const p=await b.newPage({viewport:{width:390,height:780},deviceScaleFactor:2});
+const errs=[];p.on('pageerror',e=>errs.push(e.message));await p.route(/^https?:\/\/(?!file)/,r=>r.abort());
+await p.goto('file://'+__dirname+'/resenha-fc-v2.html');
+await p.evaluate(()=>{newWorld();G.phase='play';S.mg=mgNew('equil');S.obj='equ';startCareer(G.clubs.find(c=>c.sig==='FLA').id,'H','Passe',null);G.sponsor=sponsorOffers()[0];S.modal=null;G.view='tatica';render()});
+await p.waitForTimeout(200);
+const info=await p.evaluate(()=>({h:document.documentElement.scrollHeight,vh:innerHeight,pitch:!!document.querySelector('.pitch'),pr:document.querySelector('.pitch')?.getBoundingClientRect().toJSON(),body:getComputedStyle(document.body).overflow,html:getComputedStyle(document.documentElement).overflow}));
+console.log(JSON.stringify(info));
+await p.screenshot({path:'m_tatica.png'});
+await p.evaluate(()=>{startMatch&&startMatch()});await p.waitForTimeout(300);
+const i2=await p.evaluate(()=>({h:document.documentElement.scrollHeight,vh:innerHeight,body:getComputedStyle(document.body).overflow,y:scrollY,cls:document.body.className,mods:[...document.querySelectorAll('[class*=match],.mw,.live')].slice(0,5).map(e=>e.className)}));
+console.log(JSON.stringify(i2));await p.screenshot({path:'m_jogo.png'});console.log(errs);await b.close()})();

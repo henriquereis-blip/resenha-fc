@@ -1,0 +1,94 @@
+[
+ {
+  "f": "p9/01_titulo.png",
+  "c": "Tela inicial: Continuar carreira, Novo jogo e Saves"
+ },
+ {
+  "f": "p9/02_saves.png",
+  "c": "Saves: automático e 3 slots, com clube, temporada e rodada"
+ },
+ {
+  "f": "p9/03_treinador.png",
+  "c": "Passo 1: criar o treinador (nome e atributos que mudam o jogo)"
+ },
+ {
+  "f": "p9/04_treinador_b.png",
+  "c": "Passo 1: distribuição de pontos do treinador"
+ },
+ {
+  "f": "p9/05_liga_clube.png",
+  "c": "Passo 2: escolher a liga (Série A–D) e o clube"
+ },
+ {
+  "f": "p9/06_serie_b.png",
+  "c": "Passo 2: trocando para a Série B"
+ },
+ {
+  "f": "p9/07_previa_resumo.png",
+  "c": "Prévia do clube (antes de escolher): resumo, força, base, expectativa e destaques"
+ },
+ {
+  "f": "p9/08_previa_elenco.png",
+  "c": "Prévia: elenco completo com posição, idade, nota, potencial e valor"
+ },
+ {
+  "f": "p9/09_previa_fin.png",
+  "c": "Prévia: finanças do clube antes de decidir"
+ },
+ {
+  "f": "p9/10_filosofia.png",
+  "c": "Passo 3: filosofia, auxiliar e reunião com a diretoria"
+ },
+ {
+  "f": "p9/11_diretoria.png",
+  "c": "Passo 3: situação financeira e objetivo da diretoria"
+ },
+ {
+  "f": "p9/12_inicio.png",
+  "c": "Início: agora com confiança de diretoria, ELENCO e torcida"
+ },
+ {
+  "f": "p9/13_vest_confianca.png",
+  "c": "Vestiário: card de confiança do elenco (aqui em 28, rendendo menos)"
+ },
+ {
+  "f": "p9/14_tatica_auto.png",
+  "c": "Tática: seleção automática (nota, descansados, jovens) e opção de aplicar ao trocar formação"
+ },
+ {
+  "f": "p9/15_tatica_desc.png",
+  "c": "Depois de montar por descansados: os cansados (48%) saem do time"
+ },
+ {
+  "f": "p9/16_tabela_A.png",
+  "c": "Tabela da Série A: cada campeonato com seu próprio tom de fundo"
+ },
+ {
+  "f": "p9/17_tabela_B.png",
+  "c": "Tabela da Série B: cada campeonato com seu próprio tom de fundo"
+ },
+ {
+  "f": "p9/18_tabela_C.png",
+  "c": "Tabela da Série C: cada campeonato com seu próprio tom de fundo"
+ },
+ {
+  "f": "p9/19_tabela_D.png",
+  "c": "Tabela da Série D: cada campeonato com seu próprio tom de fundo"
+ },
+ {
+  "f": "p9/20_estadual.png",
+  "c": "Copas > Estadual: tabela do campeonato estadual e próxima rodada"
+ },
+ {
+  "f": "p9/21_prox_estadual.png",
+  "c": "Início: o próximo jogo é do estadual (rodada 1 de 5)"
+ },
+ {
+  "f": "p9/22_estadual_fim.png",
+  "c": "Estadual no fim da temporada: tabela final, final e campeão"
+ },
+ {
+  "f": "p9/23_opcoes.png",
+  "c": "Opções: salvar em slots e voltar ao menu principal"
+ }
+]
