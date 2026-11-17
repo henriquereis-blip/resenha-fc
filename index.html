@@ -7909,7 +7909,7 @@ async function sbAuth(kind,em,pw){
   const j=await r.json().catch(()=>({}));
   if(!r.ok)throw new Error(sbErr(j));
   if(!j.access_token)throw new Error('Cadastro criado, mas o Supabase ainda pede confirmação por e-mail. Confirma o e-mail ou desliga a confirmação no painel.');
-  sbStore(sbSes(j));
+  sbStore(sbSes(j));SB.tried=0;
 }
 function sbErr(j){const m=(j&&(j.msg||j.error_description||j.message||j.error))||'erro';
   if(/Invalid login/i.test(m))return 'E-mail ou senha errados.';if(/already registered|already exists/i.test(m))return 'Esse e-mail já tem conta. Usa Entrar.';
@@ -7924,48 +7924,66 @@ async function sbUnpack(d){
   if(d.slice(0,3)!=='gz:')return d;
   const bin=atob(d.slice(3)),u=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)u[i]=bin.charCodeAt(i);
   return await new Response(new Blob([u]).stream().pipeThrough(new DecompressionStream('gzip'))).text()}
-async function sbPush(slot,quiet){
+async function sbPush(cs,quiet){
   if(!SB.ses||!sbOk()||SB.busy)return false;SB.busy=true;
-  try{save();SKV.flush();const raw=SKV.getItem(slot?slotKey(slot):SAVE_KEY);if(!raw)throw new Error('sem save local');
+  try{save();SKV.flush();const raw=SKV.getItem(SAVE_KEY);if(!raw)throw new Error('sem save local');
     const c=userClub(),data=await sbPack(raw);
     const r=await sbReq('/rest/v1/saves?on_conflict=user_id,slot',{method:'POST',headers:{Prefer:'resolution=merge-duplicates,return=minimal'},
-      body:JSON.stringify({user_id:SB.ses.uid,slot,data,club:c?c.name:null,season:G.season,round:G.round,updated_at:new Date().toISOString()})});
+      body:JSON.stringify({user_id:SB.ses.uid,slot:cs,data,club:c?c.name:null,season:G.season,round:G.round,updated_at:new Date().toISOString()})});
     if(!r.ok){const j=await r.json().catch(()=>({}));throw new Error(sbErr(j))}
-    SB.last=Date.now();SB.msg=quiet?SB.msg:'Salvo na nuvem ✔';return true}
+    SB.last=Date.now();SB.msg=quiet?SB.msg:(cs?'Salvo no slot '+cs+' ✔':'Salvo ✔');return true}
   catch(e){SB.msg='Falha ao salvar: '+e.message;return false}
   finally{SB.busy=false}
 }
-async function sbInfo(){
+async function sbList(){
   if(!SB.ses||!sbOk())return;
-  try{const r=await sbReq('/rest/v1/saves?select=slot,club,season,round,updated_at&slot=eq.0');if(r.ok){const a=await r.json();SB.info=a[0]||null;if(typeof render==='function'&&G&&G.view==='opcoes')render()}}catch(e){}
+  try{const r=await sbReq('/rest/v1/saves?select=slot,club,season,round,updated_at&order=slot.asc');if(r.ok){SB.list=await r.json();SB.listOk=1;
+    if(typeof render==='function'&&G&&(G.phase==='start'||G.view==='opcoes'))render()}}catch(e){}
 }
-async function sbPull(slot){
-  const r=await sbReq('/rest/v1/saves?select=data&slot=eq.'+slot);if(!r.ok)throw new Error('falha ao baixar');
+async function sbPull(cs){
+  const r=await sbReq('/rest/v1/saves?select=data&slot=eq.'+cs);if(!r.ok)throw new Error('falha ao baixar');
   const a=await r.json();if(!a.length)return null;const raw=await sbUnpack(a[0].data);JSON.parse(raw);return raw}
+const sbRow=cs=>(SB.list||[]).find(x=>x.slot===cs);
+const sbName=cs=>cs===0?'Automático':'Slot '+cs;
+const sbWhen=t=>{try{return new Date(t).toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})}catch(e){return ''}};
 Object.assign(A,{
   sbin(){sbDo('in')},sbup(){sbDo('up')},
-  sbout(){sbStore(null);SB.info=null;SB.msg='Saiu da conta.';render()},
-  sbsave(){SB.msg='Salvando…';render();sbPush(0).then(ok=>{render();if(ok)sbInfo()})},
-  sbload(){SB.msg='Baixando…';render();sbPull(0).then(raw=>{
-    if(!raw){SB.msg='Nenhum save na nuvem ainda.';render();return}
-    SKV.setItem(SAVE_KEY,raw);loadSave();G.phase=G.phase||'play';S.modal=null;S.prof=null;S.match=null;G.view='inicio';SB.msg='Jogo carregado da nuvem ✔';render()
-  }).catch(e=>{SB.msg='Falha: '+e.message;render()})}
+  sbout(){sbStore(null);SB.list=null;SB.listOk=0;SB.msg='Saiu da conta.';render()},
+  sbsave(d){const cs=+d.i;SB.msg='Salvando…';render();sbPush(cs).then(ok=>{render();if(ok)sbList()})},
+  sbload(d){const cs=+d.i;SB.msg='Baixando…';render();sbPull(cs).then(raw=>{
+    if(!raw){SB.msg='Slot vazio.';render();return}
+    SKV.setItem(SAVE_KEY,raw);S.modal=null;S.prof=null;S.match=null;SB.msg='Carregado da nuvem ✔';
+    if(loadSave()){G.phase=G.phase||'play';if(G.round>=NR()){if(!G.summary)endSeason();G.phase='seasonEnd';S.modal={t:'season'}}G.view='inicio'}
+    render();window.scrollTo(0,0)
+  }).catch(e=>{SB.msg='Falha: '+e.message;render()})},
+  sbdel(d){const cs=+d.i;sbReq('/rest/v1/saves?slot=eq.'+cs,{method:'DELETE'}).then(r=>{SB.msg=r.ok?'Apagado ✔':'Falha ao apagar';return sbList()}).then(()=>render())}
 });
 function sbDo(kind){
   const em=(document.getElementById('sb_em')||{}).value||'',pw=(document.getElementById('sb_pw')||{}).value||'';
   if(!em||!pw){SB.msg='Preenche e-mail e senha.';render();return}
   SB.msg='Entrando…';render();
-  sbAuth(kind,em.trim(),pw).then(()=>{SB.msg=kind==='up'?'Conta criada ✔':'Logado ✔';sbInfo();render()}).catch(e=>{SB.msg=(e&&e.message==='Failed to fetch'?'Sem conexão com o servidor (Failed to fetch). ':'')+(e&&e.message||'erro');render()})
+  sbAuth(kind,em.trim(),pw).then(()=>{SB.msg=kind==='up'?'Conta criada ✔':'Logado ✔';SB.tried=0;sbList();render()}).catch(e=>{SB.msg=(e&&e.message==='Failed to fetch'?'Sem conexão com o servidor (Failed to fetch). ':'')+(e&&e.message||'erro');render()})
 }
+function sbLogin(){return `<p class="news">Entra pra guardar seus saves na nuvem (5 slots + automático) e jogar de qualquer aparelho. ${esc(SB.msg)}</p><input id="sb_em" class="fsel" type="email" placeholder="e-mail" autocomplete="email" style="margin-bottom:6px"><input id="sb_pw" class="fsel" type="password" placeholder="senha (6+ caracteres)" autocomplete="current-password" style="margin-bottom:8px"><button class="btn sm" data-a="sbin">Entrar</button> <button class="btn sm ghost" data-a="sbup">Criar conta</button>`}
+function sbSlots(ingame){
+  if(!SB.listOk&&!SB.tried){SB.tried=1;sbList()}
+  return [0,1,2,3,4,5].map(cs=>{const r=sbRow(cs);if(cs===0&&!r&&!ingame)return '';
+    const nm=r?`${sbName(cs)} · ${esc(r.club||'?')}`:`${sbName(cs)}`,sub=r?`temporada ${r.season}, rodada ${r.round} · ${sbWhen(r.updated_at)}`:'vazio';
+    const bt=(r?`<button class="btn sm" data-a="sbload" data-i="${cs}">Carregar</button>`:'')+(ingame&&cs>0?`<button class="btn sm ${r?'ghost':''}" data-a="sbsave" data-i="${cs}">${r?'Sobrescrever':'Salvar aqui'}</button>`:'')+(r&&cs>0?`<button class="btn sm ghost" data-a="sbdel" data-i="${cs}">🗑</button>`:'');
+    return `<div style="border:1px solid var(--line);border-radius:12px;padding:9px 11px;margin:0 0 8px;${r?'':'opacity:.75'}"><div style="font-weight:700">${nm}</div><div class="hint" style="margin:2px 0 ${bt?'8px':'0'}">${sub}</div>${bt?`<div style="display:flex;gap:6px;flex-wrap:wrap">${bt}</div>`:''}</div>`}).join('')}
+function sbCard(ingame){
+  const t=`<div class="k">☁️ Saves na nuvem${SB.ses?' · '+esc(SB.ses.email||''):''}</div>`;
+  if(!sbOk())return `<div class="card">${t}<p class="news">Saves na nuvem funcionam na versão do site: <b>henriquereis-blip.github.io/resenha-fc</b>. Abre por lá.</p></div>`;
+  if(!SB.ses)return `<div class="card">${t}${sbLogin()}</div>`;
+  return `<div class="card">${t}<p class="news">${esc(SB.msg)||'Seus jogos guardados online.'}</p>${sbSlots(ingame)}<button class="btn sm ghost" data-a="sbout">Sair da conta</button></div>`}
 const _vo45=vOpcoes;vOpcoes=function(){
-  let h=_vo45.apply(this,arguments),card;
-  if(!sbOk())card=`<div class="card"><div class="k">👤 Conta online</div><p class="news">Login e save na nuvem funcionam na versão do site: <b>henriquereis-blip.github.io/resenha-fc</b>. Abre por lá.</p></div>`;
-  else if(!SB.ses)card=`<div class="card"><div class="k">👤 Conta online <span class="hint">(v46.1)</span></div><p class="news">Cria uma conta pra guardar o save na nuvem e jogar de qualquer aparelho. ${esc(SB.msg)}</p><input id="sb_em" class="fsel" type="email" placeholder="e-mail" autocomplete="email" style="margin-bottom:6px"><input id="sb_pw" class="fsel" type="password" placeholder="senha (6+ caracteres)" autocomplete="current-password" style="margin-bottom:8px"><button class="btn sm" data-a="sbin">Entrar</button> <button class="btn sm ghost" data-a="sbup">Criar conta</button></div>`;
-  else{const i=SB.info,t=i?new Date(i.updated_at).toLocaleString('pt-BR'):null;
-    card=`<div class="card"><div class="k">👤 ${esc(SB.ses.email||'Conta online')}</div><p class="news">${i?`Na nuvem: <b>${esc(i.club||'?')}</b>, temporada ${i.season}, rodada ${i.round} (${t}).`:'Nada salvo na nuvem ainda.'} ${esc(SB.msg)}</p><button class="btn sm" data-a="sbsave">Salvar na nuvem</button> <button class="btn sm ghost" data-a="sbload">Carregar da nuvem</button> <button class="btn sm ghost" data-a="sbout">Sair</button></div>`;
-    if(!SB.info&&!SB.tried){SB.tried=1;sbInfo()}}
-  return h.replace('<div class="card"><div class="k">Salvar jogo</div>',card+'<div class="card"><div class="k">Salvar jogo</div>');
-};
+  return _vo45.apply(this,arguments).replace('<div class="card"><div class="k">Salvar jogo</div>',sbCard(true)+'<div class="card"><div class="k">Salvar jogo</div>')};
+const _vsv45=vSaves;vSaves=function(){return _vsv45.apply(this,arguments).replace('<p class="foot keep">',sbCard(false)+'<p class="foot keep">').replace(/(<p class="foot">Dentro do jogo)/,sbCard(false)+'$1')};
+const _vt45=vTitle;vTitle=function(){
+  let h=_vt45.apply(this,arguments);
+  const n=(SB.list||[]).length,sub=!sbOk()?'Disponível na versão do site':SB.ses?(SB.listOk?(n?n+' save'+(n>1?'s':'')+' na nuvem · '+esc(SB.ses.email||''):'Nenhum save na nuvem ainda'):'Buscando…'):'Entre pra guardar seus saves online';
+  if(SB.ses&&!SB.listOk&&!SB.tried){SB.tried=1;sbList()}
+  return h.replace('<p class="foot">','<button class="mb20" data-a="step" data-v="saves"><span class="ic">☁️</span><span><b>Saves na nuvem</b><small>'+sub+'</small></span></button><p class="foot">')};
 /* autosave na nuvem: a cada 3 rodadas e ao sair do app (só logado) */
 const _fr45=finishRound;finishRound=function(){const r=_fr45.apply(this,arguments);try{if(SB.ses&&G.round>0&&G.round%3===0&&Date.now()-SB.last>20000)sbPush(0,true)}catch(e){}return r};
 document.addEventListener('visibilitychange',()=>{try{if(document.hidden&&SB.ses&&G&&G.phase!=='start'&&!S.match&&Date.now()-SB.last>20000)sbPush(0,true)}catch(e){}});
