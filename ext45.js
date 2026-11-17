@@ -5,7 +5,7 @@ const sbOk=()=>/^https?:/.test(location.protocol)&&/github\.io|localhost|127\.0\
 function sbStore(s){SB.ses=s;try{s?localStorage.setItem('rfc_sb',JSON.stringify(s)):localStorage.removeItem('rfc_sb')}catch(e){}}
 async function sbReq(path,o){
   o=o||{};const h=Object.assign({apikey:SB.key,'content-type':'application/json'},o.headers||{});
-  if(o.auth!==false&&SB.ses)h.authorization='Bearer '+SB.ses.access_token;else h.authorization='Bearer '+SB.key;
+  if(o.auth!==false&&SB.ses)h.authorization='Bearer '+SB.ses.access_token;
   let r=await fetch(SB.url+path,{method:o.method||'GET',headers:h,body:o.body});
   if(r.status===401&&o.auth!==false&&SB.ses&&SB.ses.refresh_token&&!o.retry){
     const rr=await fetch(SB.url+'/auth/v1/token?grant_type=refresh_token',{method:'POST',headers:{apikey:SB.key,'content-type':'application/json'},body:JSON.stringify({refresh_token:SB.ses.refresh_token})});
@@ -66,12 +66,12 @@ function sbDo(kind){
   const em=(document.getElementById('sb_em')||{}).value||'',pw=(document.getElementById('sb_pw')||{}).value||'';
   if(!em||!pw){SB.msg='Preenche e-mail e senha.';render();return}
   SB.msg='Entrando…';render();
-  sbAuth(kind,em.trim(),pw).then(()=>{SB.msg=kind==='up'?'Conta criada ✔':'Logado ✔';sbInfo();render()}).catch(e=>{SB.msg=e.message;render()})
+  sbAuth(kind,em.trim(),pw).then(()=>{SB.msg=kind==='up'?'Conta criada ✔':'Logado ✔';sbInfo();render()}).catch(e=>{SB.msg=(e&&e.message==='Failed to fetch'?'Sem conexão com o servidor (Failed to fetch). ':'')+(e&&e.message||'erro');render()})
 }
 const _vo45=vOpcoes;vOpcoes=function(){
   let h=_vo45.apply(this,arguments),card;
   if(!sbOk())card=`<div class="card"><div class="k">👤 Conta online</div><p class="news">Login e save na nuvem funcionam na versão do site: <b>henriquereis-blip.github.io/resenha-fc</b>. Abre por lá.</p></div>`;
-  else if(!SB.ses)card=`<div class="card"><div class="k">👤 Conta online</div><p class="news">Cria uma conta pra guardar o save na nuvem e jogar de qualquer aparelho. ${esc(SB.msg)}</p><input id="sb_em" class="fsel" type="email" placeholder="e-mail" autocomplete="email" style="margin-bottom:6px"><input id="sb_pw" class="fsel" type="password" placeholder="senha (6+ caracteres)" autocomplete="current-password" style="margin-bottom:8px"><button class="btn sm" data-a="sbin">Entrar</button> <button class="btn sm ghost" data-a="sbup">Criar conta</button></div>`;
+  else if(!SB.ses)card=`<div class="card"><div class="k">👤 Conta online <span class="hint">(v46.1)</span></div><p class="news">Cria uma conta pra guardar o save na nuvem e jogar de qualquer aparelho. ${esc(SB.msg)}</p><input id="sb_em" class="fsel" type="email" placeholder="e-mail" autocomplete="email" style="margin-bottom:6px"><input id="sb_pw" class="fsel" type="password" placeholder="senha (6+ caracteres)" autocomplete="current-password" style="margin-bottom:8px"><button class="btn sm" data-a="sbin">Entrar</button> <button class="btn sm ghost" data-a="sbup">Criar conta</button></div>`;
   else{const i=SB.info,t=i?new Date(i.updated_at).toLocaleString('pt-BR'):null;
     card=`<div class="card"><div class="k">👤 ${esc(SB.ses.email||'Conta online')}</div><p class="news">${i?`Na nuvem: <b>${esc(i.club||'?')}</b>, temporada ${i.season}, rodada ${i.round} (${t}).`:'Nada salvo na nuvem ainda.'} ${esc(SB.msg)}</p><button class="btn sm" data-a="sbsave">Salvar na nuvem</button> <button class="btn sm ghost" data-a="sbload">Carregar da nuvem</button> <button class="btn sm ghost" data-a="sbout">Sair</button></div>`;
     if(!SB.info&&!SB.tried){SB.tried=1;sbInfo()}}
