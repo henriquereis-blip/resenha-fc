@@ -19,8 +19,8 @@ vTitle=function(){
   <button class="mb20 ${f?'':'pri'}" data-a="newgame"><span class="ic">✨</span><span><b>Começar jogo novo</b><small>Crie seu treinador, escolha liga e clube</small></span></button>
   <button class="mb20" data-a="step" data-v="saves"><span class="ic">💾</span><span><b>Saves</b><small>Carregar ou apagar jogos${cl}</small></span></button>
   <div class="k" style="margin:16px 4px 6px">Multiplayer</div>
-  <button class="mb20" data-a="step" data-v="mpl"><span class="ic">👥</span><span><b>Multiplayer local</b><small>Vários técnicos no mesmo aparelho · em breve</small></span></button>
-  <button class="mb20" data-a="mpo"><span class="ic">🌐</span><span><b>Multiplayer online</b><small>${SB.ses?'Conectado como '+esc((SB.prof&&SB.prof.nick)||SB.ses.email||''):'Entre na conta pra jogar com os primos'} · em breve</small></span></button>
+  <button class="mb20" data-a="step" data-v="mpl"><span class="ic">👥</span><span><b>Multiplayer local</b><small>Vários técnicos no mesmo aparelho</small></span></button>
+  <button class="mb20" data-a="mpo"><span class="ic">🌐</span><span><b>Multiplayer online</b><small>${SB.ses?'Conectado como '+esc((SB.prof&&SB.prof.nick)||SB.ses.email||''):'Entre na conta pra jogar com os primos'}</small></span></button>
   <p class="foot">Elencos baseados em dados de memória (podem estar desatualizados). Atributos e escudos são inventados.</p></div>`;
 };
 function vMpLocal(){

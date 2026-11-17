@@ -45,8 +45,8 @@ const _vt48=vTitle;vTitle=function(){
   <button class="mb20 ${cont?'':'pri'}" data-a="newgame"><span class="ic">✨</span><span><b>Começar jogo novo</b><small>Crie seu treinador, escolha liga e clube</small></span></button>
   <button class="mb20" data-a="step" data-v="saves"><span class="ic">💾</span><span><b>Saves</b><small>${SB.listOk?(n?n+' save'+(n>1?'s':'')+' na nuvem':'Nenhum save ainda'):(navigator.onLine?'Buscando seus saves…':'📴 sem internet')} · ${esc(SB.ses.email||'')}</small></span></button>
   <div class="k" style="margin:16px 4px 6px">Multiplayer</div>
-  <button class="mb20" data-a="step" data-v="mpl"><span class="ic">👥</span><span><b>Multiplayer local</b><small>Vários técnicos no mesmo aparelho · em breve</small></span></button>
-  <button class="mb20" data-a="mpo"><span class="ic">🌐</span><span><b>Multiplayer online</b><small>Conectado como ${esc((SB.prof&&SB.prof.nick)||SB.ses.email||'')} · em breve</small></span></button>
+  <button class="mb20" data-a="step" data-v="mpl"><span class="ic">👥</span><span><b>Multiplayer local</b><small>Vários técnicos no mesmo aparelho</small></span></button>
+  <button class="mb20" data-a="mpo"><span class="ic">🌐</span><span><b>Multiplayer online</b><small>Conectado como ${esc((SB.prof&&SB.prof.nick)||SB.ses.email||'')}</small></span></button>
   <button class="btn sm ghost" data-a="sbout" style="margin:10px 0 0">Sair da conta</button>
   <p class="foot">Elencos baseados em dados de memória (podem estar desatualizados). Atributos e escudos são inventados.</p></div>`};
 const _cont48=A.cont;
