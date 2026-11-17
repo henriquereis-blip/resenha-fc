@@ -63,7 +63,8 @@ function acHalf51(){
   G.lg51=G.lg51||{};if(G.lg51.half===G.season)return;
   const half=Math.floor(NR()/2);if(G.round!==half)return;
   G.lg51.half=G.season;
-  const lab=(I.k==='COL'?'Apertura':'Apertura');const res=acRun51(I,lab+' ('+wlOf(I.k).lg+')');
+  const lab='Apertura';const top0=allRows(I.div).slice(0,I.R.po||8);
+  const res=(typeof po51Init==='function'&&top0.length>=4&&top0.includes(userClub()))?po51Init(I,'ac',lab+' ('+wlOf(I.k).lg+')',true,top0):acRun51(I,lab+' ('+wlOf(I.k).lg+')');
   const first=allRows(I.div);G.lg51.first=first.slice(0,8).map(r=>r.name);
   for(const c of G.clubs.filter(c=>c.div===I.div&&!c.stub)){c.pp=(c.pp||0)+c.P;c.P=c.J=c.V=c.E=c.D=c.GP=c.GC=0}
   if(res)addNews('Começa o Clausura: tabela zerada.');
@@ -89,7 +90,8 @@ function mlsRun51(I){
 const _fr51=finishRound;finishRound=function(){const r=_fr51.apply(this,arguments);try{acHalf51()}catch(e){console.error('acHalf51 '+e.message)}return r};
 const _es51=endSeason;endSeason=function(){
   let res=null,I=null;
-  try{I=lg51();if(I&&(!G.lg51||G.lg51.end!==G.season)){G.lg51=G.lg51||{};G.lg51.end=G.season;res=I.kind==='mls'?mlsRun51(I):acRun51(I,'Clausura ('+wlOf(I.k).lg+')')}}catch(e){console.error('end51 '+e.message)}
+  try{I=lg51();if(G.lg51&&G.lg51.pres&&G.lg51.pres.s===G.season){res=G.lg51.pres}
+    else if(I&&(!G.lg51||G.lg51.end!==G.season)){G.lg51=G.lg51||{};G.lg51.end=G.season;res=I.kind==='mls'?mlsRun51(I):acRun51(I,'Clausura ('+wlOf(I.k).lg+')')}}catch(e){console.error('end51 '+e.message)}
   const r=_es51.apply(this,arguments);
   try{if(res&&G.summary){const nm=rn51(res.champ);
       G.summary.champ=nm;if(G.hist.length)G.hist[G.hist.length-1].champ=nm;

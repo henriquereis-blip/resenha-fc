@@ -29,7 +29,7 @@ function wSigGen(){
   for(const L of WLD)for(const c of L.cl){
     const fc=(typeof FCPOOL!=='undefined'?FCPOOL:[]).find(x=>x[0]===c[0]);
     if(fc){out[c[0]]=fc[1];continue}
-    const raw=c[0].normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^A-Za-z ]/g,'').toUpperCase();
+    const raw=c[0].normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^A-Za-z ]/g,'').toUpperCase();
     const ws=raw.split(' ').filter(Boolean);const letters=ws.join('');
     let cand=[ws[0].slice(0,3),(ws[0][0]||'')+(ws[1]?ws[1].slice(0,2):ws[0].slice(1,3)),letters.slice(0,3)];
     let sg=cand.find(x=>x.length===3&&!used.has(x));
