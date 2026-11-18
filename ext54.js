@@ -75,6 +75,11 @@ const _vc54=vComp;vComp=function(){
     /* troca o conteúdo da Copa do Brasil pela chave da copa nacional, mantendo título e abas */
     const i=h.indexOf('</div>',h.indexOf('class="seg"'));
     const head=i>0?h.slice(0,i+6):h;
-    return head+poCard+card+hh+'</div>';
+    let card2='';const n2=G.nc2&&G.nc2.s===G.season?G.nc2:null;
+    if(n2){const sn2=n2.champ!=null?'Encerrada':NCN[n2.pairs.length*2]||'Fase',al2=!n2.out&&n2.champ==null;
+      const sl2=al2&&n2.slots[n2.st]!=null?` · seu próximo jogo na rodada ${n2.slots[n2.st]+1} do campeonato`:'';
+      const b2=n2.champ===G.user?'<span class="badge gold">Você é o campeão!</span>':n2.champ!=null?`<span class="badge bad">${n2.out?'Eliminado em '+esc(n2.out)+' · ':''}Campeão: ${esc(C(n2.champ).name)}</span>`:'<span class="badge ok">Você segue vivo</span>';
+      card2=`<div class="card"><div class="k">${esc(n2.name)} · temporada ${2026+G.season} · ${n2.size} clubes</div><div class="big">${sn2}</div><p class="news" style="margin:4px 0 8px">${b2}${sl2}</p>${ncBracket54(n2)}</div>`}
+    return head+poCard+card+card2+hh+'</div>';
   }catch(e){console.error('br54 '+e.message);return h}
 };

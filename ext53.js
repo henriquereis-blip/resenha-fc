@@ -3,11 +3,13 @@
    Mesmo truque das copas/playoffs: o jogo entra no lugar de uma rodada do campeonato (G._lg/G._x) sem consumir rodada.
    Estado salvo em G.nc (só ids). Outros jogos são simulados na hora, ao fim de cada fase. */
 const NCUP={ENG:[64,'FA Cup'],ESP:[32,'Copa del Rey'],ITA:[32,'Coppa Italia'],GER:[32,'DFB-Pokal'],FRA:[32,'Coupe de France'],POR:[32,'Taça de Portugal'],ARG:[32,'Copa Argentina'],NED:[32,'KNVB Beker'],BEL:[32,'Croky Cup'],TUR:[32,'Copa da Turquia'],SCO:[16,'Scottish Cup'],JPN:[32,'Copa do Imperador'],KOR:[16,'Copa da Coreia'],CHN:[32,'Copa da China'],AUS:[8,'Australia Cup'],EGY:[16,'Copa do Egito'],MAR:[16,'Copa do Trono'],RSA:[16,'Nedbank Cup'],PAR:[8,'Copa Paraguay'],ECU:[16,'Copa Ecuador'],BOL:[16,'Copa Bolivia'],VEN:[8,'Copa Venezuela'],PER:[16,'Copa Bicentenario']};
+const NCUP2={ENG:[32,'EFL Cup']};NCUP.USA=[16,'US Open Cup'];
 const NCN={64:'32 avos',32:'16 avos',16:'Oitavas',8:'Quartas',4:'Semifinal',2:'Final'};
 const ncStage=nc=>NCN[nc.pairs.length*2]||'Fase';
-function ncInit(){
-  const cf=NCUP[G.abroad.k];if(!cf)return null;
-  const rows=G.clubs.filter(c=>!c.stub&&c.div>=4&&c.div<99&&c.name).sort((a,b)=>tierOf(a.div)-tierOf(b.div)||b.rep-a.rep);
+function ncInit(cf){
+  cf=cf||NCUP[G.abroad.k];if(!cf)return null;
+  const CAN=G.abroad.k==='USA'?['Toronto FC','CF Montréal','Vancouver Whitecaps']:[];
+  const rows=G.clubs.filter(c=>!c.stub&&c.div>=4&&c.div<99&&c.name&&!CAN.includes(c.name)||c.id===G.user).sort((a,b)=>tierOf(a.div)-tierOf(b.div)||b.rep-a.rep);
   let size=cf[0];while(size>rows.length)size/=2;if(size<8)return null;
   let t=rows.slice(0,size).map(c=>c.id);
   if(!t.includes(G.user)){t.pop();t.push(G.user)}
@@ -30,19 +32,22 @@ function ncAdvance(nc,userRes){
 function ncRest(nc){for(let g=0;g<8&&!nc.champ;g++)ncAdvance(nc,null)}
 const _ex53=extraSync;extraSync=function(){
   try{
-    if(G&&G.abroad&&NCUP[G.abroad.k]&&G.user!=null&&G.phase==='play'&&!G._lg&&G.round<NR()&&!(G.po51&&G.po51.pend)){
-      if(!G.nc||G.nc.s!==G.season)G.nc=ncInit();
-      const nc=G.nc;
-      if(nc&&!nc.champ&&!nc.out&&G.round>=nc.slots[nc.st]){
-        const pr=nc.pairs.find(p=>p.includes(G.user));
-        if(pr){G._lg=G.fixtures[G.round];G.fixtures[G.round]=[pr.slice()];G._x={kind:'nc',ko:true,label:nc.name+' · '+ncStage(nc)};return}
+    if(G&&G.abroad&&G.user!=null&&G.phase==='play'&&!G._lg&&G.round<NR()&&!(G.po51&&G.po51.pend)){
+      for(const [key,tab] of [['nc',NCUP],['nc2',NCUP2]]){
+        const cf=tab[G.abroad.k];if(!cf)continue;
+        if(!G[key]||G[key].s!==G.season)G[key]=ncInit(cf);
+        const nc=G[key];
+        if(nc&&!nc.champ&&!nc.out&&G.round>=nc.slots[nc.st]){
+          const pr=nc.pairs.find(p=>p.includes(G.user));
+          if(pr){G._lg=G.fixtures[G.round];G.fixtures[G.round]=[pr.slice()];G._x={kind:'nc',key,ko:true,label:nc.name+' · '+ncStage(nc)};return}
+        }
       }
     }
   }catch(e){console.error('extraSync53 '+e.message)}
   return _ex53.apply(this,arguments);
 };
 function finishNc(){
-  const nc=G.nc,x=G._x,um=R.ms[R.ui],us=userSide(um),c=userClub();
+  const x=G._x,nc=G[x.key||'nc'],um=R.ms[R.ui],us=userSide(um),c=userClub();
   const gf=us==='h'?um.hg:um.ag,ga=us==='h'?um.ag:um.hg;
   for(const m of R.ms)for(const [k,s] of [['h',m.h],['a',m.a]]){
     const won=k==='h'?m.hg>m.ag:m.ag>m.hg,lost=k==='h'?m.hg<m.ag:m.ag<m.hg;

@@ -8853,11 +8853,13 @@ const _ns52=newSeason;newSeason=function(){if(G.po51&&G.po51.ph){try{ph52(false)
    Mesmo truque das copas/playoffs: o jogo entra no lugar de uma rodada do campeonato (G._lg/G._x) sem consumir rodada.
    Estado salvo em G.nc (só ids). Outros jogos são simulados na hora, ao fim de cada fase. */
 const NCUP={ENG:[64,'FA Cup'],ESP:[32,'Copa del Rey'],ITA:[32,'Coppa Italia'],GER:[32,'DFB-Pokal'],FRA:[32,'Coupe de France'],POR:[32,'Taça de Portugal'],ARG:[32,'Copa Argentina'],NED:[32,'KNVB Beker'],BEL:[32,'Croky Cup'],TUR:[32,'Copa da Turquia'],SCO:[16,'Scottish Cup'],JPN:[32,'Copa do Imperador'],KOR:[16,'Copa da Coreia'],CHN:[32,'Copa da China'],AUS:[8,'Australia Cup'],EGY:[16,'Copa do Egito'],MAR:[16,'Copa do Trono'],RSA:[16,'Nedbank Cup'],PAR:[8,'Copa Paraguay'],ECU:[16,'Copa Ecuador'],BOL:[16,'Copa Bolivia'],VEN:[8,'Copa Venezuela'],PER:[16,'Copa Bicentenario']};
+const NCUP2={ENG:[32,'EFL Cup']};NCUP.USA=[16,'US Open Cup'];
 const NCN={64:'32 avos',32:'16 avos',16:'Oitavas',8:'Quartas',4:'Semifinal',2:'Final'};
 const ncStage=nc=>NCN[nc.pairs.length*2]||'Fase';
-function ncInit(){
-  const cf=NCUP[G.abroad.k];if(!cf)return null;
-  const rows=G.clubs.filter(c=>!c.stub&&c.div>=4&&c.div<99&&c.name).sort((a,b)=>tierOf(a.div)-tierOf(b.div)||b.rep-a.rep);
+function ncInit(cf){
+  cf=cf||NCUP[G.abroad.k];if(!cf)return null;
+  const CAN=G.abroad.k==='USA'?['Toronto FC','CF Montréal','Vancouver Whitecaps']:[];
+  const rows=G.clubs.filter(c=>!c.stub&&c.div>=4&&c.div<99&&c.name&&!CAN.includes(c.name)||c.id===G.user).sort((a,b)=>tierOf(a.div)-tierOf(b.div)||b.rep-a.rep);
   let size=cf[0];while(size>rows.length)size/=2;if(size<8)return null;
   let t=rows.slice(0,size).map(c=>c.id);
   if(!t.includes(G.user)){t.pop();t.push(G.user)}
@@ -8880,19 +8882,22 @@ function ncAdvance(nc,userRes){
 function ncRest(nc){for(let g=0;g<8&&!nc.champ;g++)ncAdvance(nc,null)}
 const _ex53=extraSync;extraSync=function(){
   try{
-    if(G&&G.abroad&&NCUP[G.abroad.k]&&G.user!=null&&G.phase==='play'&&!G._lg&&G.round<NR()&&!(G.po51&&G.po51.pend)){
-      if(!G.nc||G.nc.s!==G.season)G.nc=ncInit();
-      const nc=G.nc;
-      if(nc&&!nc.champ&&!nc.out&&G.round>=nc.slots[nc.st]){
-        const pr=nc.pairs.find(p=>p.includes(G.user));
-        if(pr){G._lg=G.fixtures[G.round];G.fixtures[G.round]=[pr.slice()];G._x={kind:'nc',ko:true,label:nc.name+' · '+ncStage(nc)};return}
+    if(G&&G.abroad&&G.user!=null&&G.phase==='play'&&!G._lg&&G.round<NR()&&!(G.po51&&G.po51.pend)){
+      for(const [key,tab] of [['nc',NCUP],['nc2',NCUP2]]){
+        const cf=tab[G.abroad.k];if(!cf)continue;
+        if(!G[key]||G[key].s!==G.season)G[key]=ncInit(cf);
+        const nc=G[key];
+        if(nc&&!nc.champ&&!nc.out&&G.round>=nc.slots[nc.st]){
+          const pr=nc.pairs.find(p=>p.includes(G.user));
+          if(pr){G._lg=G.fixtures[G.round];G.fixtures[G.round]=[pr.slice()];G._x={kind:'nc',key,ko:true,label:nc.name+' · '+ncStage(nc)};return}
+        }
       }
     }
   }catch(e){console.error('extraSync53 '+e.message)}
   return _ex53.apply(this,arguments);
 };
 function finishNc(){
-  const nc=G.nc,x=G._x,um=R.ms[R.ui],us=userSide(um),c=userClub();
+  const x=G._x,nc=G[x.key||'nc'],um=R.ms[R.ui],us=userSide(um),c=userClub();
   const gf=us==='h'?um.hg:um.ag,ga=us==='h'?um.ag:um.hg;
   for(const m of R.ms)for(const [k,s] of [['h',m.h],['a',m.a]]){
     const won=k==='h'?m.hg>m.ag:m.ag>m.hg,lost=k==='h'?m.hg<m.ag:m.ag<m.hg;
@@ -9002,7 +9007,12 @@ const _vc54=vComp;vComp=function(){
     /* troca o conteúdo da Copa do Brasil pela chave da copa nacional, mantendo título e abas */
     const i=h.indexOf('</div>',h.indexOf('class="seg"'));
     const head=i>0?h.slice(0,i+6):h;
-    return head+poCard+card+hh+'</div>';
+    let card2='';const n2=G.nc2&&G.nc2.s===G.season?G.nc2:null;
+    if(n2){const sn2=n2.champ!=null?'Encerrada':NCN[n2.pairs.length*2]||'Fase',al2=!n2.out&&n2.champ==null;
+      const sl2=al2&&n2.slots[n2.st]!=null?` · seu próximo jogo na rodada ${n2.slots[n2.st]+1} do campeonato`:'';
+      const b2=n2.champ===G.user?'<span class="badge gold">Você é o campeão!</span>':n2.champ!=null?`<span class="badge bad">${n2.out?'Eliminado em '+esc(n2.out)+' · ':''}Campeão: ${esc(C(n2.champ).name)}</span>`:'<span class="badge ok">Você segue vivo</span>';
+      card2=`<div class="card"><div class="k">${esc(n2.name)} · temporada ${2026+G.season} · ${n2.size} clubes</div><div class="big">${sn2}</div><p class="news" style="margin:4px 0 8px">${b2}${sl2}</p>${ncBracket54(n2)}</div>`}
+    return head+poCard+card+card2+hh+'</div>';
   }catch(e){console.error('br54 '+e.message);return h}
 };
 /* ext55: Argentina com ZONA A e ZONA B (carreira no exterior).
@@ -9060,6 +9070,32 @@ const _vl55=vLiga;vLiga=function(){
   return h.replace(/(<div class="seg sm scroll">)/,seg+'$1').replace(/(<p class="foot">[\s\S]*?<\/p>)/,'$1'+note);
 };
 Object.assign(A,{zt(d){S.zt=d.v||null;render()}});
+/* ext56: supercopas (campeão da liga x campeão da copa) nos países com carreira no exterior.
+   Disputada na virada da temporada, em jogo único (pênaltis se empatar). Se o campeão da liga também levou a copa, o vice entra no lugar.
+   Simulada na hora: sai no jornal e no histórico. Se o seu clube joga, o prêmio e a moral entram. */
+const SUPER56={ENG:'Community Shield',ESP:'Supercopa de España',ITA:'Supercoppa Italiana',GER:'DFL-Supercup',FRA:'Trophée des Champions',POR:'Supertaça Cândido de Oliveira',ARG:'Supercopa Argentina',NED:'Johan Cruyff Schaal',BEL:'Supercopa da Bélgica',TUR:'Süper Kupa',EGY:'Supercopa do Egito',KSA:'Supercopa Saudita'};
+const _ns56=newSeason;newSeason=function(){
+  let prev=null;
+  try{if(G&&G.abroad&&SUPER56[G.abroad.k]&&G.hist&&G.hist.length){prev={s:G.season,champ:G.hist[G.hist.length-1].champ,k:G.abroad.k}}}catch(e){}
+  const r=_ns56.apply(this,arguments);
+  try{if(prev&&G.abroad&&G.abroad.k===prev.k){
+    const cup=(G.ncHist||[]).filter(x=>x.s===prev.s&&!/EFL|Liga/.test(x.n||'')).slice(-1)[0];
+    const find=n=>G.clubs.find(c=>!c.stub&&c.div>=4&&c.name===n);
+    let A=find(prev.champ),B=cup?find(cup.champ):null;
+    if(A&&B&&A===B){const rows=G.clubs.filter(c=>!c.stub&&tierOf(c.div)===1&&c.name&&c!==A).sort((a,b)=>b.rep-a.rep);B=rows[0]||null}
+    if(A&&B&&A!==B){
+      const g=wMatch({r:rRat(A),f:1},{r:rRat(B),f:1});let pen=null,w=g[0]>g[1]?A:g[0]<g[1]?B:null;
+      if(!w){pen=shootout(rRat(A),rRat(B));w=pen[0]>pen[1]?A:B}
+      const nm=SUPER56[prev.k],me=G.clubs[G.user];
+      const txt=A.name+' '+g[0]+'–'+g[1]+' '+B.name+(pen?' ('+pen[0]+'–'+pen[1]+' pên.)':'');
+      paperLine(w.name+' conquista a '+nm,txt);
+      G.superHist=(G.superHist||[]).concat({s:prev.s,n:nm,champ:w.name,t:txt}).slice(-12);
+      if(me&&(me===A||me===B)){
+        if(w===me){const pz=+(1.5*Math.max(.7,scaleOf(me)/100)).toFixed(1);G.fin.caixa=+(G.fin.caixa+pz).toFixed(1);me.humor=clamp(me.humor+5,5,100);G.trophyEst=(G.trophyEst||0)+1;addNews('🏆 Campeão da '+nm+'! Prêmio R$ '+pz+' mi. ('+txt+')')}
+        else addNews('Você perdeu a '+nm+': '+txt+'.')}
+      else addNews(nm+': '+w.name+' levou ('+txt+').')}
+  }}catch(e){console.error('super56 '+e.message)}
+  return r};
 newWorld();G.phase='start';render();
 </script>
 <script>if("serviceWorker"in navigator&&/^https?:/.test(location.protocol))addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}))</script></body></html>
