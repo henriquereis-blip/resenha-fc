@@ -1,0 +1,15 @@
+const {chromium}=require('playwright');(async()=>{const b=await chromium.launch();const errs=[];const p=await (await b.newContext()).newPage();p.on('pageerror',e=>errs.push(e.message));p.on('console',m=>{if(m.type()==='error')errs.push(m.text())});
+await p.route('http://localhost/x.html',r=>r.fulfill({status:200,contentType:'text/html; charset=utf-8',body:require('fs').readFileSync(__dirname+'/resenha-fc-v2.html','utf8')}));await p.goto('http://localhost/x.html');await p.waitForTimeout(800);
+console.log(await p.evaluate(async()=>{localStorage.clear();const calls=[];mpRpc=async(fn,a)=>{calls.push(fn+':'+a.p_code+':'+a.p_round+':'+a.p_pts);return null};
+SB.ses={uid:'u1',access_token:'x'};SB.prof={nick:'Henrique'};SB.profTried=1;
+S.mpRoom='ABCD';S.sc=3;S.sp='Direto';S.asst=[{n:'A',ph:'Direto'}];S.sa=0;S.obj='equ';S.coachName='Henrique';
+A.begin();await new Promise(r=>setTimeout(r,50));
+const out=['mpRoom='+G.mpRoom+' user='+G.user];
+ex();G.phase='play';S.modal=null;window.ro=()=>{G.board.conf=95;startRound();while(!roundDone())stepAll();return finishRound()};
+const r1=ro();_scLast=0;const r2=ro();out.push('r='+r1+','+r2+' G.round='+G.round+' uc='+JSON.stringify(G.uc).slice(0,80));await new Promise(r=>setTimeout(r,50));
+out.push(JSON.stringify(calls)+' round='+G.round);
+MP.code='ABCD';MP.room={code:'ABCD',host:'u1',status:'playing'};MP.members=[{user_id:'u1',nick:'Henrique',club:3},{user_id:'u2',nick:'Primo',club:5}];
+MP.scores=[{user_id:'u1',club_name:'X',season:1,round:2,pts:75,titles:1,v:3,e:1,d:0}];
+const h=vMpOnline();out.push('card='+h.includes('Liga dos Primos')+' board='+h.includes('75 pts')+' wait='+h.includes('Ainda não jogaram: Primo'));
+G=JSON.parse(JSON.stringify(G));out.push('json mpRoom='+G.mpRoom);return out.join('\n')}));
+console.log(errs.slice(0,5));await b.close()})();

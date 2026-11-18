@@ -1,0 +1,2 @@
+-- Liga dos Primos: pontuação por sala (aplicado como migration room_scores)
+-- room_scores(room_code, user_id, club_name, season, round, pts, titles, v, e, d, updated_at); RLS: só membros da sala leem; escrita só pela função push_score (security definer).
