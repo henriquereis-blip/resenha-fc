@@ -1,0 +1,10 @@
+const {chromium}=require('playwright');(async()=>{const b=await chromium.launch();const errs=[];
+const p=await (await b.newContext()).newPage();p.on('pageerror',e=>errs.push(e.message));p.on('console',m=>{if(m.type()==='error')errs.push(m.text())});
+await p.goto('file://'+__dirname+'/resenha-fc-v2.html');await p.waitForTimeout(300);
+console.log(await p.evaluate(()=>{localStorage.clear();S.mg=mgNew('equil');S.obj='equ';startCareer(3,'T','Direto',null);ex();G.phase='play';
+ wd();for(const k of ['NED','BEL','TUR','SCO'])delete G.wd.lg[k];G=JSON.parse(JSON.stringify(G));
+ wd();const ks=Object.keys(G.wd.lg);const ids=Object.values(G.wd.lg).flatMap(l=>l.cl.map(c=>c.id));
+ const dup=ids.length-new Set(ids).size;const names=Object.values(G.wd.lg).flatMap(l=>l.cl.map(c=>c.n));const dn=names.length-new Set(names).size;
+ const sg=Object.values(G.wd.lg).flatMap(l=>l.cl.map(c=>c.sg));
+ return 'ligas='+ks.length+' idsDup='+dup+' nomesDup='+dn+' semSig='+sg.filter(x=>!x).length+' PARn='+G.wd.lg.PAR.cl.map(c=>c.n).join('|')}));
+console.log(errs);await b.close()})();

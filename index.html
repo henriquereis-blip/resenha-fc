@@ -5309,9 +5309,9 @@ const NTW=[6,17,25,29,34];            // rodada do campeonato em que cai cada da
 const NATF={'Arrascaeta':'URU','De La Cruz':'URU','Gustavo Gómez':'PAR','Germán Cano':'ARG','Calleri':'ARG','Richard Ríos':'COL','Rodrigo Garro':'ARG','Jhon Arias':'COL','Savarino':'VEN','Flaco López':'ARG','Borré':'COL','Emiliano Martínez':'ARG','Rossi':'ARG','Agustín Rossi':'ARG','Ramón Sosa':'PAR','Enner Valencia':'ECU','Pulgar':'CHI','Memphis Depay':'NED'};
 const natOf=p=>p.nat||NATF[String(p.name).replace('*','')]||'BRA';
 const QT=['BRA','ARG','URU','COL','ECU','PAR','CHI','PER','BOL','VEN'];
-const NR0={BRA:0,ARG:80,URU:76,COL:76,ECU:72,PAR:69,CHI:66,PER:64,BOL:62,VEN:63,FRA:84,ESP:83,ENG:82,POR:81,GER:80,ITA:79,NED:79,BEL:77,CRO:76,MEX:73,USA:72,JPN:72,KOR:70,SEN:71,MAR:72,CAN:66,CRC:61,PAN:61,JAM:59,AUS:66,SUI:73,DEN:74};
+const NR0={BRA:0,ARG:80,URU:76,COL:76,ECU:72,PAR:69,CHI:66,PER:64,BOL:62,VEN:63,FRA:84,ESP:83,ENG:82,POR:81,GER:80,ITA:79,NED:79,BEL:77,CRO:76,MEX:73,USA:72,JPN:72,KOR:70,SEN:71,MAR:72,CAN:66,CRC:61,PAN:61,JAM:59,AUS:66,SUI:73,DEN:74,TUR:72,SCO:70};
 const FRI=['FRA','ESP','ENG','POR','GER','ITA','NED','BEL','CRO','MEX','USA','JPN','SEN','MAR','SUI','DEN','KOR','AUS'];
-const NTN={BRA:'Brasil',ARG:'Argentina',URU:'Uruguai',COL:'Colômbia',ECU:'Equador',PAR:'Paraguai',CHI:'Chile',PER:'Peru',BOL:'Bolívia',VEN:'Venezuela',FRA:'França',ESP:'Espanha',ENG:'Inglaterra',POR:'Portugal',GER:'Alemanha',ITA:'Itália',NED:'Holanda',BEL:'Bélgica',CRO:'Croácia',MEX:'México',USA:'EUA',JPN:'Japão',KOR:'Coreia',SEN:'Senegal',MAR:'Marrocos',CAN:'Canadá',CRC:'Costa Rica',PAN:'Panamá',JAM:'Jamaica',AUS:'Austrália',SUI:'Suíça',DEN:'Dinamarca'};
+const NTN={BRA:'Brasil',ARG:'Argentina',URU:'Uruguai',COL:'Colômbia',ECU:'Equador',PAR:'Paraguai',CHI:'Chile',PER:'Peru',BOL:'Bolívia',VEN:'Venezuela',FRA:'França',ESP:'Espanha',ENG:'Inglaterra',POR:'Portugal',GER:'Alemanha',ITA:'Itália',NED:'Holanda',BEL:'Bélgica',CRO:'Croácia',MEX:'México',USA:'EUA',JPN:'Japão',KOR:'Coreia',SEN:'Senegal',MAR:'Marrocos',CAN:'Canadá',CRC:'Costa Rica',PAN:'Panamá',JAM:'Jamaica',AUS:'Austrália',SUI:'Suíça',DEN:'Dinamarca',TUR:'Turquia',SCO:'Escócia'};
 const WTYPE={ami:'Amistoso',elim:'Eliminatórias',dec:'Eliminatórias (jogo decisivo)',ca:'Copa América',wc:'Copa do Mundo'};
 
 function ntBox(){
@@ -6800,6 +6800,10 @@ const WLD=[
 {k:'PER',n:'Peru',f:'🇵🇪',lg:'Liga 1',cl:[['Alianza Lima',66],['Universitario',66],['Sporting Cristal',64],['Melgar',62],['Cusco FC',58],['Cienciano',58],['Deportivo Garcilaso',58],['Alianza Atlético',55],['Sport Boys',54],['Atlético Grau',54],['Los Chankas',54],['Sport Huancayo',53],['Juan Pablo II College',52],['UTC',52],['Comerciantes Unidos',51],['ADT',51],['Cajamarca',50],['Deportivo Moquegua',50]]},
 {k:'BOL',n:'Bolívia',f:'🇧🇴',lg:'División Profesional',cl:[['Bolívar',62],['The Strongest',62],['Always Ready',60],['Oriente Petrolero',55],['Real Potosí',54],['Aurora',54],['Blooming',54],['Guabirá',53],['Nacional Potosí',52],['Independiente Petrolero',52],['San Antonio Bulo Bulo',50],['Totora Real Oruro',49],['ABB',48],['Universitario de Vinto',48],['Real Tomayapo',47],['Gualberto Villarroel',47]]},
 {k:'VEN',n:'Venezuela',f:'🇻🇪',lg:'Liga FUTVE',cl:[['Deportivo Táchira',60],['Carabobo',60],['Caracas',60],['Metropolitanos',58],['Deportivo La Guaira',57],['Academia Puerto Cabello',56],['Portuguesa',55],['Monagas SC',55],['Zamora FC',55],['Universidad Central',54],['Estudiantes de Mérida',54],['Rayo Zuliano',52],['Trujillanos',52],['Anzoátegui',51]]},
+{k:'NED',n:'Holanda',f:'🇳🇱',lg:'Eredivisie',cl:[['PSV Eindhoven',82],['Ajax',79],['Feyenoord',79],['AZ',77],['Twente',75],['Utrecht',72],['N.E.C.',69],['Go Ahead Eagles',68],['Sparta Rotterdam',68],['Heerenveen',68],['Groningen',64],['Fortuna Sittard',62],['PEC Zwolle',62],['Willem II',62],['Excelsior',60],['Telstar',58],['Cambuur',58],['ADO Den Haag',58]]},
+{k:'BEL',n:'Bélgica',f:'🇧🇪',lg:'Pro League',cl:[['Club Brugge',78],['Union SG',76],['Anderlecht',76],['Genk',73],['Gent',72],['Antwerp',70],['Standard Liège',68],['Charleroi',66],['Mechelen',66],['Westerlo',64],['OH Leuven',64],['Sint-Truiden',64],['Cercle Brugge',63],['Zulte Waregem',61],['Beveren',60],['Kortrijk',59],['La Louvière',58],['Lommel SK',57]]},
+{k:'TUR',n:'Turquia',f:'🇹🇷',lg:'Süper Lig',cl:[['Galatasaray',82],['Fenerbahçe',81],['Beşiktaş',77],['Trabzonspor',74],['Başakşehir',70],['Samsunspor',66],['Göztepe',66],['Konyaspor',62],['Alanyaspor',62],['Rizespor',62],['Eyüpspor',62],['Kasımpaşa',61],['Kocaelispor',60],['Gaziantep',59],['Gençlerbirliği',59],['Amedspor',58],['Çorum',56],['Erzurumspor',56]]},
+{k:'SCO',n:'Escócia',f:'🏴󠁧󠁢󠁳󠁣󠁴󠁿',lg:'Scottish Premiership',cl:[['Celtic',74],['Rangers',72],['Heart of Midlothian',66],['Aberdeen',64],['Hibernian',64],['Motherwell',60],['Dundee United',58],['Kilmarnock',57],['St Mirren',57],['Falkirk',56],['Dundee',56],['St Johnstone',53]]},
 ];
 /* cores e padrões (escudos inventados, mas com as cores certas dos grandes) */
 const WCOL={'Manchester City':['#6cabdd','#ffffff','#6cabdd','solid'],'Arsenal':['#e30613','#ffffff','#e30613','solid'],'Liverpool':['#c8102e','#ffffff','#c8102e','solid'],'Chelsea':['#034694','#ffffff','#034694','solid'],'Manchester United':['#da291c','#111111','#da291c','solid'],'Tottenham':['#ffffff','#132257','#ffffff','solid'],'Newcastle':['#111111','#ffffff','#111111','v'],'Aston Villa':['#670e36','#95bfe5','#670e36','half'],
@@ -6830,7 +6834,7 @@ const WSIG=wSigGen();
 /* clubes sul-americanos novos entram no pool da Libertadores/Sul-Americana */
 (function(){
   const have=new Set(FCPOOL.map(x=>x[0]));
-  for(const L of WLD){if(!['ARG','URU','COL','CHI','PAR','ECU','PER','BOL','VEN'].includes(L.k))continue;
+  for(const L of WLD){if(!['ARG','URU','COL','CHI','PAR','ECU','PER','BOL','VEN','NED','BEL','TUR','SCO'].includes(L.k))continue;
     for(const c of L.cl){if(have.has(c[0]))continue;const col=WCOL[c[0]]||[...WPAL[wHash(c[0])%WPAL.length],''];
       const a=WCOL[c[0]]?col:[col[0],col[1],col[0],col[2]];FCPOOL.push([c[0].replace(/-(URU|PAR|ECU)$/,' ($1)'),WSIG[c[0]],c[1],a[0],a[1],a[2],a[3]])}}
 })();
@@ -6854,7 +6858,11 @@ const WRULES={
  ECU:{fmt:'liga',rd:30,rel:2,lib:4,sul:4,txt:['16 clubes, 30 rodadas; título pela tabela (simplificado: o real tem hexagonal final).','Libertadores: 4 vagas; Sul-Americana: 4.','2 rebaixados.']},
  PER:{fmt:'liga',rd:34,rel:2,lib:4,sul:4,txt:['18 clubes, 34 rodadas; título pela tabela (simplificado: o real tem Apertura, Clausura e final).','Libertadores: 4 vagas; Sul-Americana: 4.','2 rebaixados pela tabela acumulada.']},
  BOL:{fmt:'liga',rd:30,rel:0,lib:4,sul:3,txt:['16 clubes, 30 rodadas; título pela tabela (simplificado).','Libertadores: 4 vagas; Sul-Americana: 3.','Sem descenso por enquanto: a segunda divisão boliviana (Copa Simón Bolívar) ainda não está no jogo.']},
- VEN:{fmt:'liga',rd:26,rel:0,lib:3,sul:3,txt:['14 clubes, 26 rodadas; título pela tabela (simplificado).','Libertadores: 3 vagas; Sul-Americana: 3.','Sem descenso por enquanto: a segunda divisão venezuelana ainda não está no jogo.']}
+ VEN:{fmt:'liga',rd:26,rel:0,lib:3,sul:3,txt:['14 clubes, 26 rodadas; título pela tabela (simplificado).','Libertadores: 3 vagas; Sul-Americana: 3.','Sem descenso por enquanto: a segunda divisão venezuelana ainda não está no jogo.']},
+ NED:{fmt:'liga',rd:34,rel:2,ucl:2,uel:2,txt:['18 clubes, 34 rodadas, 2 rebaixados (o 16º joga repescagem na vida real; aqui simplificado).','Champions: 2 vagas; Europa/Conference: 2.']},
+ BEL:{fmt:'liga',rd:34,rel:2,ucl:1,uel:2,txt:['18 clubes, 34 rodadas, sem playoffs a partir de 2026-27; 2 rebaixados.','Champions: 1 vaga; Europa/Conference: 2.']},
+ TUR:{fmt:'liga',rd:34,rel:3,ucl:2,uel:2,txt:['18 clubes, 34 rodadas, 3 rebaixados.','Champions: 2 vagas; Europa/Conference: 2.','Limite de estrangeiros no elenco.']},
+ SCO:{fmt:'liga',rd:22,rel:1,ucl:1,uel:2,txt:['12 clubes. Real: 33 rodadas + divisão em dois grupos de 6 (38 jogos); aqui simplificado em 22 rodadas (ida e volta).','Champions: 1 vaga; Europa/Conference: 2.','1 rebaixado.']},
 };
 
 function wRnd(){return Math.random()}
@@ -6931,13 +6939,17 @@ const _ns37=newSeason;newSeason=function(){try{wEnd()}catch(e){}try{xMarket37(8,
 const _fr37b=finishRound;finishRound=function(){const r=_fr37b.apply(this,arguments);try{if(G.round===19)xMarket37(6,'mid')}catch(e){console.error('xm37b '+e.message)}return r};
 
 /* ---------- mercado internacional ---------- */
-const NAT37={ARG:[28,'ARG'],URU:[14,'URU'],COL:[14,'COL'],CHI:[11,'CHI'],POR:[12,'POR'],ESP:[9,'ESP'],ITA:[5,'ITA'],FRA:[4,'FRA'],ENG:[2,'ENG'],GER:[1,'GER'],MEX:[6,'MEX'],USA:[4,'USA'],KSA:[2,'KSA'],PAR:[10,'PAR'],ECU:[9,'ECU'],PER:[6,'PER'],BOL:[3,'BOL'],VEN:[4,'VEN']};
+const NAT37={ARG:[28,'ARG'],URU:[14,'URU'],COL:[14,'COL'],CHI:[11,'CHI'],POR:[12,'POR'],ESP:[9,'ESP'],ITA:[5,'ITA'],FRA:[4,'FRA'],ENG:[2,'ENG'],GER:[1,'GER'],MEX:[6,'MEX'],USA:[4,'USA'],KSA:[2,'KSA'],PAR:[10,'PAR'],ECU:[9,'ECU'],PER:[6,'PER'],BOL:[3,'BOL'],VEN:[4,'VEN'],NED:[6,'NED'],BEL:[4,'BEL'],TUR:[5,'TUR'],SCO:[3,'SCO']};
 const NMP={
  PAR:[['Derlis','Óscar','Gustavo','Fabián','Ángel','Júnior','Richard','Alan'],['Benítez','Giménez','Villalba','Cáceres','Ayala','Duarte','Bobadilla','Samudio']],
  ECU:[['Kevin','Jhon','Byron','Joao','Gonzalo','Pervis','Moisés','Ángelo'],['Caicedo','Estupiñán','Preciado','Mina','Plata','Cifuentes','Sornoza','Arboleda']],
  PER:[['Edison','Yoshimar','Christian','Renato','Luis','Alex','Wilder','Paolo'],['Flores','Yotún','Cueva','Tapia','Advíncula','Carrillo','Quispe','Sánchez']],
  BOL:[['Marcelo','Carlos','Ramiro','Henry','Jaime','Roberto','Erwin','Diego'],['Quispe','Mamani','Vaca','Justiniano','Arce','Saucedo','Chura','Condori']],
  VEN:[['Yeferson','Darwin','Josef','Salomón','Jhon','Néstor','Jefferson','Wuilker'],['Rondón','Soteldo','Martínez','Machís','Savarino','Cásseres','Rincón','Bello']],
+ NED:[['Daan','Sven','Jesse','Thijs','Lars','Bram','Joey','Tijjani'],['de Jong','van Dijk','Bakker','Visser','Smit','Mulder','de Vries','Janssen']],
+ BEL:[['Thomas','Wout','Dries','Jelle','Yannick','Arne','Koen','Hans'],['Peeters','Janssens','Maes','Jacobs','Mertens','Willems','Claes','Goossens']],
+ TUR:[['Emre','Burak','Mehmet','Arda','Cenk','Hakan','Kerem','Orkun'],['Yılmaz','Kaya','Demir','Çelik','Şahin','Yıldız','Öztürk','Aydın']],
+ SCO:[['Callum','Kieran','Lewis','Ryan','Scott','Craig','Jamie','Euan'],['McGregor','Campbell','Stewart','Robertson','Henderson','Murray','Reid','Fraser']],
  ARG:[['Matías','Nicolás','Franco','Facundo','Lautaro','Santiago','Agustín','Gonzalo','Ezequiel','Julián','Maximiliano','Leandro'],['Fernández','Gómez','Romero','Acosta','Benítez','Herrera','Giménez','Sosa','Medina','Ledesma','Paredes','Villalba']],
  URU:[['Maximiliano','Federico','Nicolás','Darwin','Brian','Mathías','Facundo','Rodrigo'],['Rodríguez','Silva','Techera','Olivera','Viña','Cabrera','Píriz','Bentancur']],
  COL:[['Juan','Jhon','Duván','Yerry','Wilmar','Cristian','Brayan','Luis'],['Martínez','Ramírez','Cuesta','Mosquera','Cuadrado','Borja','Córdoba','Murillo']],
@@ -7214,7 +7226,8 @@ function wPair(list){const out=[];const n=list.length;for(let i=0;i<n/2;i++)out.
 function wTie(a,b){const [g1,g2]=wMatch(a,b);const [h2,h1]=wMatch(b,a);const A=g1+h1,B=g2+h2;return A>B?a:B>A?b:(Math.random()<.5+(a.r-b.r)/70?a:b)}
 function wBracket(list){let cur=list.slice();while(cur.length>1){cur=wPair(cur).map(([a,b])=>wTie(a,b))}return cur[0]}
 wUcl=function(){
-  let teams=[].concat(wTeamsTop('ENG',0,4),wTeamsTop('ESP',0,4),wTeamsTop('ITA',0,4),wTeamsTop('GER',0,4),wTeamsTop('FRA',0,3),wTeamsTop('POR',0,2),wTeamsTop('ENG',4,5),wTeamsTop('ESP',4,5),wTeamsTop('ITA',4,5));
+  let teams=[].concat(wTeamsTop('ENG',0,4),wTeamsTop('ESP',0,4),wTeamsTop('ITA',0,4),wTeamsTop('GER',0,4),wTeamsTop('FRA',0,3),wTeamsTop('POR',0,2),wTeamsTop('ENG',4,5),wTeamsTop('ESP',4,5),wTeamsTop('ITA',4,5),wTeamsTop('NED',0,2),wTeamsTop('BEL',0,1),wTeamsTop('TUR',0,2),wTeamsTop('SCO',0,1));
+  teams=teams.sort((a,b)=>b.r*b.f-a.r*a.f).slice(0,24);
   const pts=new Map(teams.map(t=>[t,0]));
   for(let r=0;r<8;r++){const sh=shuffle(teams.slice());for(let i=0;i<sh.length-1;i+=2){const [a,b]=[sh[i],sh[i+1]];const [ga,gb]=wMatch(a,b);if(ga>gb)pts.set(a,pts.get(a)+3);else if(gb>ga)pts.set(b,pts.get(b)+3);else{pts.set(a,pts.get(a)+1);pts.set(b,pts.get(b)+1)}}}
   const order=teams.slice().sort((a,b)=>pts.get(b)-pts.get(a)||b.r*b.f-a.r*a.f);
@@ -7225,8 +7238,8 @@ wUcl=function(){
   return {ch:cur[0],vice:last?last[1]:null};
 };
 function wUel(){
-  const teams=[].concat(wTeamsTop('ENG',5,7),wTeamsTop('ESP',5,7),wTeamsTop('ITA',5,7),wTeamsTop('GER',5,7),wTeamsTop('FRA',3,5),wTeamsTop('POR',2,4),wTeamsTop('ENG',7,8),wTeamsTop('ESP',7,8));
-  return wBracket(teams.sort((a,b)=>b.r-a.r));
+  const teams=[].concat(wTeamsTop('ENG',5,7),wTeamsTop('ESP',5,7),wTeamsTop('ITA',5,7),wTeamsTop('GER',5,7),wTeamsTop('FRA',3,5),wTeamsTop('POR',2,4),wTeamsTop('ENG',7,8),wTeamsTop('ESP',7,8),wTeamsTop('NED',2,4),wTeamsTop('BEL',1,3),wTeamsTop('TUR',2,3),wTeamsTop('SCO',1,2));
+  return wBracket(teams.sort((a,b)=>b.r-a.r).slice(0,16));
 }
 function wSA(){
   const bra=tableRows(0).slice(0,6).map(c=>({n:c.name,sg:c.sig,r:c.rep,f:1,c1:c.c1,c2:c.c2,c3:c.c3,pat:c.pat,id:c.id,bra:1}));
@@ -7483,7 +7496,7 @@ const _r40=render;render=function(){
    Clube estrangeiro vira clube completo (div 4, ids 80..99) com a liga inteira do país jogando 38 rodadas.
    O Brasil segue sendo simulado pelo servidor. A liga lite do país é sincronizada com a tabela real. */
 const BRN=80;
-const LFAC={ENG:1.3,ESP:1.25,GER:1.2,ITA:1.2,FRA:1,POR:.8,ARG:.7,URU:.55,COL:.6,CHI:.6,PAR:.55,ECU:.55,PER:.5,BOL:.45,VEN:.45,MEX:.9,USA:.9,KSA:1};
+const LFAC={ENG:1.3,ESP:1.25,GER:1.2,ITA:1.2,FRA:1,POR:.8,ARG:.7,URU:.55,COL:.6,CHI:.6,NED:.85,BEL:.8,TUR:.85,SCO:.7,PAR:.55,ECU:.55,PER:.5,BOL:.45,VEN:.45,MEX:.9,USA:.9,KSA:1};
 function wlOf(k){return WLD.find(x=>x.k===k)}
 function liteById(id){const W=G.wd;if(!W)return null;for(const k in W.lg){const x=W.lg[k].cl.find(c=>c.id===id);if(x)return {x,k}}return null}
 function uniqSig42(sg){let s=String(sg||'XXX').slice(0,3).toUpperCase(),i=0;const base=s;while(G.clubs.some(c=>c.sig===s)){s=base.slice(0,2)+String.fromCharCode(65+(i%26));i++}return s}
@@ -7696,6 +7709,10 @@ const PYR={
  URU:[{n:'Primera División',c:16,dn:2},{n:'Segunda División',c:16,up:2}],
  COL:[{n:'Liga BetPlay',c:20,dn:2},{n:'Primera B',c:20,up:2}],
  CHI:[{n:'Primera División',c:16,dn:2},{n:'Primera B',c:16,up:2}],
+ NED:[{n:'Eredivisie',c:18,dn:2},{n:'Eerste Divisie',c:16,up:2}],
+ BEL:[{n:'Pro League',c:18,dn:2},{n:'Challenger Pro League',c:10,up:2}],
+ TUR:[{n:'Süper Lig',c:18,dn:3},{n:'TFF 1. Lig',c:20,up:3}],
+ SCO:[{n:'Scottish Premiership',c:12,rd:22,dn:1},{n:'Scottish Championship',c:10,rd:18,up:1}],
  PAR:[{n:'Primera División',c:12,dn:2},{n:'División Intermedia',c:16,up:2}],
  ECU:[{n:'Liga Pro',c:16,dn:2},{n:'Serie B',c:12,up:2}],
  PER:[{n:'Liga 1',c:18,dn:2},{n:'Liga 2',c:18,up:2}],
@@ -7731,6 +7748,10 @@ ARG:[0,['Colón 62,Quilmes 58,Ferro Carril Oeste 57,Chacarita 56,Atlanta 55,Almi
 URU:[0,'Torque 53,Rampla Juniors 53,Miramar Misiones 52,Villa Española 52,Deportivo Maldonado 52,Rentistas 52,Bella Vista 51,Atenas 51,Central Español 50,Sud América 50,Uruguay Montevideo 50,Tacuarembó 50,Villa Teresa 49,Canadian 49,Artigas 48,Salto 48'],
 COL:[0,'Deportivo Pereira 58,Patriotas 55,Unión Magdalena 55,Atlético Huila 54,Cortuluá 54,Real Cartagena 53,Barranquilla FC 53,Atlético FC 53,Real Santander 53,Tigres FC 52,Internacional de Palmira 52,Orsomarso 52,Quindío 52,Bogotá FC 52,Valledupar 51,Boca Juniors de Cali 51,Universitario Popayán 51,Leones 50,Real Soacha 50,Deportivo Rionegro 50'],
 CHI:[0,'Santiago Wanderers 56,Magallanes 55,Universidad de Concepción 55,Deportes Temuco 54,Deportes Copiapó 54,Deportes Antofagasta 54,San Luis de Quillota 53,Rangers de Talca 53,Santiago Morning 53,Deportes Limache 53,Deportes Recoleta 52,Deportes Puerto Montt 52,Deportes Concepción 52,Unión San Felipe 52,Barnechea 50,San Marcos de Arica 50'],
+NED:[0,'NAC Breda 57,Heracles Almelo 57,Volendam 56,Vitesse 56,De Graafschap 55,RKC Waalwijk 55,Roda JC Kerkrade 54,Almere City 53,Emmen 52,VVV-Venlo 52,Den Bosch 51,Dordrecht 51,Eindhoven 50,MVV Maastricht 50,TOP Oss 49,Helmond Sport 49'],
+BEL:[0,'Dender 58,Eupen 55,Beerschot VA 55,Sporting Hasselt 54,Lokeren 53,Seraing 52,RFC Liège 52,Lierse SK 52,Patro Eisden 51,Francs Borains 50'],
+TUR:[0,'Kayserispor 60,Antalyaspor 60,Fatih Karagümrük 60,Bursaspor 58,Sivasspor 57,Bodrumspor 55,Keçiörengücü 54,Pendikspor 54,Esenler Erokspor 53,İstanbulspor 53,Iğdır 52,Batman Petrolspor 52,Muğlaspor 52,Bandırmaspor 52,Manisa 52,Sarıyer 52,Ümraniyespor 52,Boluspor 52,Mardin 1969 51,Vanspor 50'],
+SCO:[0,'Dunfermline Athletic 55,Partick Thistle 54,Livingston 53,Inverness Caledonian Thistle 52,Raith Rovers 52,Ayr United 50,Arbroath 50,Queen\'s Park 50,Greenock Morton 50,Stenhousemuir 47'],
 PAR:[0,'Sol de América 52,Tacuary 51,12 de Junio 51,Resistencia 49,3 de Noviembre 50,General Caballero JLM 50,Guaireña 50,Deportivo Capiatá 50,Deportivo Santaní 49,Independiente CG 49,Sportivo Carapeguá 48,Encarnación 48,Fernando de la Mora 48,Paraguarí 47,Tembetary 47,Benjamín Aceval 47'],
 ECU:[0,'El Nacional 53,Independiente Juniors 52,9 de Octubre 50,Gualaceo 50,Cumbayá 49,San Antonio 48,Atlético Vinotinto 48,Cuenca Juniors 48,Liga de Portoviejo 48,Vargas Torres 47,22 de Julio 47,Mineros de Bolívar 47'],
 PER:[0,'Universidad César Vallejo 53,Carlos Mannucci 52,Universidad San Martín 51,Deportivo Binacional 51,Academia Cantolao 50,Unión Comercio 50,Ayacucho FC 50,ADA de Jaén 49,Pirata FC 49,Alianza Universidad 49,Bentín Tacna Heroica 48,Comerciantes FC 48,Deportivo Llacuabamba 48,FC San Marcos 47,Santos FC Nazca 47,Unión Minas 46,Estudiantil CNI 46,Sport Huancayo II 46'],

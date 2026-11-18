@@ -18,6 +18,10 @@ const WLD=[
 {k:'PER',n:'Peru',f:'🇵🇪',lg:'Liga 1',cl:[['Alianza Lima',66],['Universitario',66],['Sporting Cristal',64],['Melgar',62],['Cusco FC',58],['Cienciano',58],['Deportivo Garcilaso',58],['Alianza Atlético',55],['Sport Boys',54],['Atlético Grau',54],['Los Chankas',54],['Sport Huancayo',53],['Juan Pablo II College',52],['UTC',52],['Comerciantes Unidos',51],['ADT',51],['Cajamarca',50],['Deportivo Moquegua',50]]},
 {k:'BOL',n:'Bolívia',f:'🇧🇴',lg:'División Profesional',cl:[['Bolívar',62],['The Strongest',62],['Always Ready',60],['Oriente Petrolero',55],['Real Potosí',54],['Aurora',54],['Blooming',54],['Guabirá',53],['Nacional Potosí',52],['Independiente Petrolero',52],['San Antonio Bulo Bulo',50],['Totora Real Oruro',49],['ABB',48],['Universitario de Vinto',48],['Real Tomayapo',47],['Gualberto Villarroel',47]]},
 {k:'VEN',n:'Venezuela',f:'🇻🇪',lg:'Liga FUTVE',cl:[['Deportivo Táchira',60],['Carabobo',60],['Caracas',60],['Metropolitanos',58],['Deportivo La Guaira',57],['Academia Puerto Cabello',56],['Portuguesa',55],['Monagas SC',55],['Zamora FC',55],['Universidad Central',54],['Estudiantes de Mérida',54],['Rayo Zuliano',52],['Trujillanos',52],['Anzoátegui',51]]},
+{k:'NED',n:'Holanda',f:'🇳🇱',lg:'Eredivisie',cl:[['PSV Eindhoven',82],['Ajax',79],['Feyenoord',79],['AZ',77],['Twente',75],['Utrecht',72],['N.E.C.',69],['Go Ahead Eagles',68],['Sparta Rotterdam',68],['Heerenveen',68],['Groningen',64],['Fortuna Sittard',62],['PEC Zwolle',62],['Willem II',62],['Excelsior',60],['Telstar',58],['Cambuur',58],['ADO Den Haag',58]]},
+{k:'BEL',n:'Bélgica',f:'🇧🇪',lg:'Pro League',cl:[['Club Brugge',78],['Union SG',76],['Anderlecht',76],['Genk',73],['Gent',72],['Antwerp',70],['Standard Liège',68],['Charleroi',66],['Mechelen',66],['Westerlo',64],['OH Leuven',64],['Sint-Truiden',64],['Cercle Brugge',63],['Zulte Waregem',61],['Beveren',60],['Kortrijk',59],['La Louvière',58],['Lommel SK',57]]},
+{k:'TUR',n:'Turquia',f:'🇹🇷',lg:'Süper Lig',cl:[['Galatasaray',82],['Fenerbahçe',81],['Beşiktaş',77],['Trabzonspor',74],['Başakşehir',70],['Samsunspor',66],['Göztepe',66],['Konyaspor',62],['Alanyaspor',62],['Rizespor',62],['Eyüpspor',62],['Kasımpaşa',61],['Kocaelispor',60],['Gaziantep',59],['Gençlerbirliği',59],['Amedspor',58],['Çorum',56],['Erzurumspor',56]]},
+{k:'SCO',n:'Escócia',f:'🏴󠁧󠁢󠁳󠁣󠁴󠁿',lg:'Scottish Premiership',cl:[['Celtic',74],['Rangers',72],['Heart of Midlothian',66],['Aberdeen',64],['Hibernian',64],['Motherwell',60],['Dundee United',58],['Kilmarnock',57],['St Mirren',57],['Falkirk',56],['Dundee',56],['St Johnstone',53]]},
 ];
 /* cores e padrões (escudos inventados, mas com as cores certas dos grandes) */
 const WCOL={'Manchester City':['#6cabdd','#ffffff','#6cabdd','solid'],'Arsenal':['#e30613','#ffffff','#e30613','solid'],'Liverpool':['#c8102e','#ffffff','#c8102e','solid'],'Chelsea':['#034694','#ffffff','#034694','solid'],'Manchester United':['#da291c','#111111','#da291c','solid'],'Tottenham':['#ffffff','#132257','#ffffff','solid'],'Newcastle':['#111111','#ffffff','#111111','v'],'Aston Villa':['#670e36','#95bfe5','#670e36','half'],
@@ -48,7 +52,7 @@ const WSIG=wSigGen();
 /* clubes sul-americanos novos entram no pool da Libertadores/Sul-Americana */
 (function(){
   const have=new Set(FCPOOL.map(x=>x[0]));
-  for(const L of WLD){if(!['ARG','URU','COL','CHI','PAR','ECU','PER','BOL','VEN'].includes(L.k))continue;
+  for(const L of WLD){if(!['ARG','URU','COL','CHI','PAR','ECU','PER','BOL','VEN','NED','BEL','TUR','SCO'].includes(L.k))continue;
     for(const c of L.cl){if(have.has(c[0]))continue;const col=WCOL[c[0]]||[...WPAL[wHash(c[0])%WPAL.length],''];
       const a=WCOL[c[0]]?col:[col[0],col[1],col[0],col[2]];FCPOOL.push([c[0].replace(/-(URU|PAR|ECU)$/,' ($1)'),WSIG[c[0]],c[1],a[0],a[1],a[2],a[3]])}}
 })();
@@ -72,7 +76,11 @@ const WRULES={
  ECU:{fmt:'liga',rd:30,rel:2,lib:4,sul:4,txt:['16 clubes, 30 rodadas; título pela tabela (simplificado: o real tem hexagonal final).','Libertadores: 4 vagas; Sul-Americana: 4.','2 rebaixados.']},
  PER:{fmt:'liga',rd:34,rel:2,lib:4,sul:4,txt:['18 clubes, 34 rodadas; título pela tabela (simplificado: o real tem Apertura, Clausura e final).','Libertadores: 4 vagas; Sul-Americana: 4.','2 rebaixados pela tabela acumulada.']},
  BOL:{fmt:'liga',rd:30,rel:0,lib:4,sul:3,txt:['16 clubes, 30 rodadas; título pela tabela (simplificado).','Libertadores: 4 vagas; Sul-Americana: 3.','Sem descenso por enquanto: a segunda divisão boliviana (Copa Simón Bolívar) ainda não está no jogo.']},
- VEN:{fmt:'liga',rd:26,rel:0,lib:3,sul:3,txt:['14 clubes, 26 rodadas; título pela tabela (simplificado).','Libertadores: 3 vagas; Sul-Americana: 3.','Sem descenso por enquanto: a segunda divisão venezuelana ainda não está no jogo.']}
+ VEN:{fmt:'liga',rd:26,rel:0,lib:3,sul:3,txt:['14 clubes, 26 rodadas; título pela tabela (simplificado).','Libertadores: 3 vagas; Sul-Americana: 3.','Sem descenso por enquanto: a segunda divisão venezuelana ainda não está no jogo.']},
+ NED:{fmt:'liga',rd:34,rel:2,ucl:2,uel:2,txt:['18 clubes, 34 rodadas, 2 rebaixados (o 16º joga repescagem na vida real; aqui simplificado).','Champions: 2 vagas; Europa/Conference: 2.']},
+ BEL:{fmt:'liga',rd:34,rel:2,ucl:1,uel:2,txt:['18 clubes, 34 rodadas, sem playoffs a partir de 2026-27; 2 rebaixados.','Champions: 1 vaga; Europa/Conference: 2.']},
+ TUR:{fmt:'liga',rd:34,rel:3,ucl:2,uel:2,txt:['18 clubes, 34 rodadas, 3 rebaixados.','Champions: 2 vagas; Europa/Conference: 2.','Limite de estrangeiros no elenco.']},
+ SCO:{fmt:'liga',rd:22,rel:1,ucl:1,uel:2,txt:['12 clubes. Real: 33 rodadas + divisão em dois grupos de 6 (38 jogos); aqui simplificado em 22 rodadas (ida e volta).','Champions: 1 vaga; Europa/Conference: 2.','1 rebaixado.']},
 };
 
 function wRnd(){return Math.random()}
@@ -149,13 +157,17 @@ const _ns37=newSeason;newSeason=function(){try{wEnd()}catch(e){}try{xMarket37(8,
 const _fr37b=finishRound;finishRound=function(){const r=_fr37b.apply(this,arguments);try{if(G.round===19)xMarket37(6,'mid')}catch(e){console.error('xm37b '+e.message)}return r};
 
 /* ---------- mercado internacional ---------- */
-const NAT37={ARG:[28,'ARG'],URU:[14,'URU'],COL:[14,'COL'],CHI:[11,'CHI'],POR:[12,'POR'],ESP:[9,'ESP'],ITA:[5,'ITA'],FRA:[4,'FRA'],ENG:[2,'ENG'],GER:[1,'GER'],MEX:[6,'MEX'],USA:[4,'USA'],KSA:[2,'KSA'],PAR:[10,'PAR'],ECU:[9,'ECU'],PER:[6,'PER'],BOL:[3,'BOL'],VEN:[4,'VEN']};
+const NAT37={ARG:[28,'ARG'],URU:[14,'URU'],COL:[14,'COL'],CHI:[11,'CHI'],POR:[12,'POR'],ESP:[9,'ESP'],ITA:[5,'ITA'],FRA:[4,'FRA'],ENG:[2,'ENG'],GER:[1,'GER'],MEX:[6,'MEX'],USA:[4,'USA'],KSA:[2,'KSA'],PAR:[10,'PAR'],ECU:[9,'ECU'],PER:[6,'PER'],BOL:[3,'BOL'],VEN:[4,'VEN'],NED:[6,'NED'],BEL:[4,'BEL'],TUR:[5,'TUR'],SCO:[3,'SCO']};
 const NMP={
  PAR:[['Derlis','Óscar','Gustavo','Fabián','Ángel','Júnior','Richard','Alan'],['Benítez','Giménez','Villalba','Cáceres','Ayala','Duarte','Bobadilla','Samudio']],
  ECU:[['Kevin','Jhon','Byron','Joao','Gonzalo','Pervis','Moisés','Ángelo'],['Caicedo','Estupiñán','Preciado','Mina','Plata','Cifuentes','Sornoza','Arboleda']],
  PER:[['Edison','Yoshimar','Christian','Renato','Luis','Alex','Wilder','Paolo'],['Flores','Yotún','Cueva','Tapia','Advíncula','Carrillo','Quispe','Sánchez']],
  BOL:[['Marcelo','Carlos','Ramiro','Henry','Jaime','Roberto','Erwin','Diego'],['Quispe','Mamani','Vaca','Justiniano','Arce','Saucedo','Chura','Condori']],
  VEN:[['Yeferson','Darwin','Josef','Salomón','Jhon','Néstor','Jefferson','Wuilker'],['Rondón','Soteldo','Martínez','Machís','Savarino','Cásseres','Rincón','Bello']],
+ NED:[['Daan','Sven','Jesse','Thijs','Lars','Bram','Joey','Tijjani'],['de Jong','van Dijk','Bakker','Visser','Smit','Mulder','de Vries','Janssen']],
+ BEL:[['Thomas','Wout','Dries','Jelle','Yannick','Arne','Koen','Hans'],['Peeters','Janssens','Maes','Jacobs','Mertens','Willems','Claes','Goossens']],
+ TUR:[['Emre','Burak','Mehmet','Arda','Cenk','Hakan','Kerem','Orkun'],['Yılmaz','Kaya','Demir','Çelik','Şahin','Yıldız','Öztürk','Aydın']],
+ SCO:[['Callum','Kieran','Lewis','Ryan','Scott','Craig','Jamie','Euan'],['McGregor','Campbell','Stewart','Robertson','Henderson','Murray','Reid','Fraser']],
  ARG:[['Matías','Nicolás','Franco','Facundo','Lautaro','Santiago','Agustín','Gonzalo','Ezequiel','Julián','Maximiliano','Leandro'],['Fernández','Gómez','Romero','Acosta','Benítez','Herrera','Giménez','Sosa','Medina','Ledesma','Paredes','Villalba']],
  URU:[['Maximiliano','Federico','Nicolás','Darwin','Brian','Mathías','Facundo','Rodrigo'],['Rodríguez','Silva','Techera','Olivera','Viña','Cabrera','Píriz','Bentancur']],
  COL:[['Juan','Jhon','Duván','Yerry','Wilmar','Cristian','Brayan','Luis'],['Martínez','Ramírez','Cuesta','Mosquera','Cuadrado','Borja','Córdoba','Murillo']],
