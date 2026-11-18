@@ -103,8 +103,8 @@ function extraSync(){
   }
 }
 hookAround('startRound','ext18_sr18',function(next,A){extraSync();const r=next();if(G._lg)r.xtra=true;return r});
-const _rd18=render;render=function(){try{extraSync()}catch(e){console.error('extraSync '+e.message)}_rd18();
-  try{if(G&&G._lg&&G._x){const e=document.querySelector('.nxh');if(e)e.textContent=G._x.label}}catch(e){}};
+hookAround('render','rd18',function(next,__a){try{extraSync()}catch(e){console.error('extraSync '+e.message)}next();
+  try{if(G&&G._lg&&G._x){const e=document.querySelector('.nxh');if(e)e.textContent=G._x.label}}catch(e){}});
 
 /* ---------- fim da partida extra ---------- */
 function finishExtra(){
@@ -173,8 +173,8 @@ function qualInit(){ // início de carreira: tradição define a vaga continenta
   if(c.div===0){const rk=G.clubs.filter(x=>x.div===0).sort((a,b)=>b.rep-a.rep).map(x=>x.id);const i=rk.indexOf(c.id);
     if(i<6)contInit('LIB');else if(i<12)contInit('SUL')}
 }
-const _sc18=startCareer;startCareer=function(){_sc18.apply(this,arguments);try{qualInit()}catch(e){console.error('qi '+e.message)}save()};
-const _tj18=takeJob;takeJob=function(){const r=_tj18.apply(this,arguments);try{G._lg=null;G._x=null;fcClean();G.fc=[];G.cont=null;if(G.cup&&!userInPairs(G.cup.pairs)&&G.cup.st<5){}}catch(e){}return r};
-const _ls18=loadSave;loadSave=function(){const ok=_ls18();if(ok){try{G._lg=null;G._x=null;if(!G.cup)cupInit()}catch(e){}}return ok};
+hookAround('startCareer','sc18',function(next,__a){next();try{qualInit()}catch(e){console.error('qi '+e.message)}save()});
+hookAround('takeJob','tj18',function(next,__a){const r=next();try{G._lg=null;G._x=null;fcClean();G.fc=[];G.cont=null;if(G.cup&&!userInPairs(G.cup.pairs)&&G.cup.st<5){}}catch(e){}return r});
+hookAround('loadSave','ls18',function(next,__a){const ok=next();if(ok){try{G._lg=null;G._x=null;if(!G.cup)cupInit()}catch(e){}}return ok});
 
-const _sv18=save;save=function(){const sw=(G&&G._lg)?G.fixtures[G.round]:null;if(sw)G.fixtures[G.round]=G._lg;try{return _sv18.apply(this,arguments)}finally{if(sw)G.fixtures[G.round]=sw}};
+hookAround('save','sv18',function(next,__a){const sw=(G&&G._lg)?G.fixtures[G.round]:null;if(sw)G.fixtures[G.round]=G._lg;try{return next()}finally{if(sw)G.fixtures[G.round]=sw}});

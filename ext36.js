@@ -7,10 +7,10 @@ hookAround('finishRound','ext36_fr36',function(next,A){
   try{G.clubs.forEach((c,i)=>{const co=coachOf36(c);if(!co)return;const d=co.pts-before[i];if(d>0){const w=DW36[c.div||0]||.25;co.pts=+(before[i]+d*w).toFixed(1)}})}catch(e){console.error('fr36 '+e.message)}
   return r;
 });
-const _es36=endSeason;endSeason=function(){
+hookAround('endSeason','es36',function(next,__a){
   const ud=G.clubs[G.user]?G.clubs[G.user].div:0;
   const urows=tableRows(ud);
-  const r=_es36.apply(this,arguments);
+  const r=next();
   try{
     if(G.dw36!==G.season){
       G.dw36=G.season;
@@ -35,4 +35,4 @@ const _es36=endSeason;endSeason=function(){
     }
   }catch(e){console.error('es36 '+e.message)}
   return r;
-};
+});

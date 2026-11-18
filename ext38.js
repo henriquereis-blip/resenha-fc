@@ -93,12 +93,12 @@ function nPreList(label,codes,fin){
    :(mine.length?'Pré-lista (35 a 55 nomes por seleção, só esses podem ser chamados depois como reposição por lesão). Seus jogadores citados:\n'+names.join('\n'):'Nenhum jogador seu aparece na pré-lista de '+label+'.'),[],'pl'+label+(fin?'f':'p')+yearOf());
 }
 /* ganchos */
-const _na38=ntAnnounce;ntAnnounce=function(i){
+hookAround('ntAnnounce','na38',function(next,__a){let [i]=__a;
   const cy=cyOf();
   try{
     if(i===0&&(cy===1||cy===3)){const codes=cy===3?nPoolFor('wc'):[...nPoolFor('euro'),...QT,'MEX','USA','CAN','CRC','PAN','JAM'];nBox().pre.codes=codes;nBox().pre.cy=cy;nPreList(cy===3?'Copa do Mundo':'Eurocopa e Copa América',codes,false)}
   }catch(e){console.error('pre38 '+e.message)}
-  _na38.apply(this,arguments);
+  next();
   try{
     if(i===1){
       const B=nBox(),pd=ntBox().pend;let codes=[];
@@ -111,12 +111,12 @@ const _na38=ntAnnounce;ntAnnounce=function(i){
       if(cy===1||cy===3||extra.length||(pd&&pd.ids.length))nPreList(cy===3?'Copa do Mundo':cy===1?'Eurocopa e Copa América':'torneios do meio do ano',codes,true);
     }
   }catch(e){console.error('fin38 '+e.message)}
-};
-const _ap38=ntAskPct;ntAskPct=function(id){const pd=ntBox().pend;if(pd&&pd.fz&&pd.fz.includes(id))return 0;return _ap38.apply(this,arguments)};
-const _ne38=ntExecute;ntExecute=function(){
-  const pd=ntBox().pend,i=pd?pd.i:-1;_ne38.apply(this,arguments);
+});
+hookAround('ntAskPct','ap38',function(next,__a){let [id]=__a;const pd=ntBox().pend;if(pd&&pd.fz&&pd.fz.includes(id))return 0;return next()});
+hookAround('ntExecute','ne38',function(next,__a){
+  const pd=ntBox().pend,i=pd?pd.i:-1;next();
   try{if(i===1){const cy=cyOf();for(const e of fevOf(cy,1))nRunEvent(e);if(cy===1)nRunEvent({id:'euro',t:'Eurocopa'})}}catch(e){console.error('run38 '+e.message)}
-};
+});
 /* ntWC: 48 seleções */
 ntWC=function(pd,goers){
   const b=ntBox();const pool=nBox().pools['wc'+yearOf()]||nPoolFor('wc');
@@ -215,7 +215,7 @@ function wCwc(){
     mail('win','🌍 Mundial de Clubes: '+(lv>=5?'CAMPEÃO!':'você foi até '+lab),'Seu clube disputou o Mundial de Clubes de 32 times e chegou em: '+lab+'.\n\nSeus jogos:\n'+path.join('\n')+'\n\nPremiação: '+mi(prize)+'.',[],'cwc'+G.season);
     userClub().humor=clamp(userClub().humor+(lv>=5?15:4),5,100)}
 }
-const _we38=wEnd;wEnd=function(){const was=G.wd&&G.wd.es===G.season;_we38.apply(this,arguments);try{if(!was)wCont()}catch(e){console.error('wCont '+e.message)}};
+hookAround('wEnd','we38',function(next,__a){const was=G.wd&&G.wd.es===G.season;next();try{if(!was)wCont()}catch(e){console.error('wCont '+e.message)}});
 /* início de temporada: Copa da Ásia (jan) no começo do ciclo; Gold Cup 2029 já vem pelo ciclo */
 hookAround('finishRound','ext38_fr38',function(next,A){const rd=G.round;const r=next();try{if(rd===4&&cyOf()===0)nRunEvent(FCAL[0])}catch(e){console.error('asia38 '+e.message)}return r});
 
@@ -233,13 +233,13 @@ function wmRefresh(){
   }
   W.mk={s:G.season,r:G.round,l:out.sort((a,b)=>b.ovr-a.ovr)};
 }
-const _vm38=vMercado;vMercado=function(){
+hookAround('vMercado','vm38',function(next,__a){
   const saved=S.tab;
   if(saved!=='mundo'){
-    const h0=_vm38();const m0=h0.match(/<div class="seg sm scroll">[\s\S]*?<\/div>/);if(!m0)return h0;
+    const h0=next();const m0=h0.match(/<div class="seg sm scroll">[\s\S]*?<\/div>/);if(!m0)return h0;
     return h0.replace(m0[0],m0[0].replace(/(data-t="ofertas">[^<]*<\/button>)/,'$1<button class="" data-a="tab" data-t="mundo">Mundo</button>'));
   }
-  S.tab='ofertas';let h;try{h=_vm38()}finally{S.tab=saved}
+  S.tab='ofertas';let h;try{h=next()}finally{S.tab=saved}
   const m=h.match(/<div class="seg sm scroll">[\s\S]*?<\/div>/);if(!m)return h;
   let tabs=m[0].replace(/(data-t="ofertas">[^<]*<\/button>)/,'$1<button class="on" data-a="tab" data-t="mundo">Mundo</button>');
   tabs=tabs.replace(/class="on"( data-a="tab" data-t="ofertas")/,'class=""$1');
@@ -247,7 +247,7 @@ const _vm38=vMercado;vMercado=function(){
   const op=winOpen();
   const rows=W.mk.l.map((p,i)=>`<div class="mrow"><span class="pos">${ROLEABB[p.role]||p.role}</span><span class="nm">${esc(p.n)}<small>${esc(p.club)} · ${NTN[p.nat]||p.nat} · ${p.age}a · OVR ${p.ovr}</small></span><span class="col"><b>${mi(p.fee)}</b><button class="btn sm" data-a="wbuy" data-i="${i}" ${op?'':'disabled'}>Contratar</button></span></div>`).join('');
   return `<div class="wrap">${tabs}<div class="hint">Jogadores de clubes dos 10+ países do jogo. Só dá pra contratar com o mercado aberto. A lista renova a cada janela. Elenco: ${userClub().squad.length}/30. ${op?'':'🔴 Mercado fechado.'}</div>${rows}</div>`;
-};
+});
 Object.assign(A,{wbuy(d){
   const W=wd(),p=W.mk&&W.mk.l[+d.i],c=userClub();
   if(!p){return}

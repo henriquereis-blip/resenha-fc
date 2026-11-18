@@ -46,14 +46,14 @@ function fitAll(){
 /* ---- Voltar em todo lugar ---- */
 const MAINV=['inicio','tatica','clube','elenco'];
 const VNAME={agenda:'Agenda',liga:'Tabelas',meutec:'Técnico',dir:'Diretoria',medico:'Médico',treino:'Treino',vest:'Vestiário',assist:'Auxiliar',staff:'Comissão',comp:'Copas',marketing:'Marketing',torcida:'Torcida',estadio:'Estádio',base:'Base',juniores:'Juniores',tecnicos:'Técnicos',historia:'História',mercado:'Mercado',times:'Times',opcoes:'Opções'};
-const _rd26=render;render=function(){
+hookAround('render','rd26',function(next,__a){
   try{if(G&&G.phase!=='start'&&!S.match){
     S.vstack=S.vstack||[];
     if(S._lv!==undefined&&G.view!==S._lv){if(!S._pop&&S._lv&&S.vstack[S.vstack.length-1]!==S._lv)S.vstack.push(S._lv);if(S.vstack.length>14)S.vstack.shift()}
     S._lv=G.view;S._pop=false}}catch(e){}
-  _rd26();
+  next();
   try{backBar()}catch(e){console.error('backBar '+e.message)}
-};
+});
 function backBar(){
   if(!G||G.phase==='start'||S.match)return;
   const main=document.querySelector('.main');if(!main||main.querySelector('.backbar,.back'))return;

@@ -56,7 +56,7 @@ function mpScreen(){
   :`<div class="card"><div class="k">Seu clube</div><select id="mp_club" class="fsel" style="margin-bottom:8px"><option value="">Escolha…</option>${opts}</select><button class="btn sm" data-a="mpclub">Confirmar clube</button></div>
   ${host?`<div class="card"><div class="k">Começar</div><p class="news">${allPick?(MP.members.length<2?'Dá pra começar sozinho pra testar, mas o legal é chamar os primos.':'Todo mundo já escolheu. Pode iniciar.'):'Espera todo mundo escolher um clube.'}</p><button class="btn" data-a="mpstart" ${allPick?'':'disabled'}>Iniciar liga</button></div>`:'<p class="hint">Quando todos escolherem o clube, o dono da sala inicia a liga.</p>'}`}
   <button class="btn sm ghost" data-a="mpleave">Sair da sala</button></div>`}
-const _vmo50=vMpOnline;vMpOnline=function(){const h=_vmo50.apply(this,arguments);return h.includes('Tudo pronto')?mpScreen():h};
+hookAround('vMpOnline','vmo50',function(next,__a){const h=next();return h.includes('Tudo pronto')?mpScreen():h});
 Object.assign(A,{
   mpnew(){MP.msg='';mpRpc('create_room',{p_nick:SB.prof.nick}).then(c=>{mpSetCode(c);MP.room=null;MP.sig='';mpPoll();mpRen()}).catch(e=>{MP.msg=e.message;mpRen()});toast('Criando sala…')},
   mpjoin(){const c=((document.getElementById('mp_code')||{}).value||'').trim().toUpperCase();

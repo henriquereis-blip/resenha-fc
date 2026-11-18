@@ -63,8 +63,8 @@ function jogoPay(){
   if(t>0){G.fin.caixa=+(G.fin.caixa+t).toFixed(2);try{ex();G.mk.acc.spx+=t}catch(e){}}
   return t;
 }
-const _fx24=finishExtra;finishExtra=function(){const r=_fx24.apply(this,arguments);try{jogoPay()}catch(e){console.error('jogoPay '+e.message)}return r};
-if(typeof finishEst==='function'){const _fe24=finishEst;finishEst=function(){const r=_fe24.apply(this,arguments);try{jogoPay()}catch(e){}return r}}
+hookAround('finishExtra','fx24',function(next,__a){const r=next();try{jogoPay()}catch(e){console.error('jogoPay '+e.message)}return r});
+if(typeof finishEst==='function'){hookAround('finishEst','fe24',function(next,__a){const r=next();try{jogoPay()}catch(e){}return r});}
 
 /* ---------- patrocínios extras (manga, costas, calção, material) ---------- */
 function slotOffers(sl){
@@ -81,13 +81,13 @@ function slotOffers(sl){
   });
 }
 function slotAnnual(){return Object.values(G.mk.slots).reduce((s,x)=>s+(x?payOf(x):0),0)}
-const _es24=endSeason;endSeason=function(){
-  const r=_es24.apply(this,arguments);
+hookAround('endSeason','es24',function(next,__a){
+  const r=next();
   try{ex();const c=userClub(),pos=posOf(c);let b=0;
     for(const k in G.mk.slots){const s=G.mk.slots[k];if(!s)continue;if(s.topN&&pos<=s.topN)b+=s.topBonus||0;if(pos===1)b+=s.title||0}
     if(b>0){b=+b.toFixed(1);G.fin.caixa=+(G.fin.caixa+b).toFixed(1);G.mk.acc.spx+=b;if(G.summary)G.summary.sp=+((G.summary.sp||0)+b).toFixed(1)}}catch(e){console.error('es24 '+e.message)}
   return r;
-};
+});
 hookAfter('newSeason','ext24_ns24',function(r,A){
   try{ex();let t=0;for(const k in G.mk.slots){const s=G.mk.slots[k];if(s&&s.mode==='vista')t+=s.val*SPN_VISTA}
     if(t>0){t=+t.toFixed(1);G.fin.caixa=+(G.fin.caixa+t).toFixed(1);G.mk.acc.spx+=t;addNews('Patrocínios extras renovados à vista: entrou '+mi(t)+'.')}}catch(e){}
@@ -101,14 +101,14 @@ function spnOfferHtml(o,i){
   if(o.titleBonus)lines.push(`<div class="res"><span>Título</span><b>+${mi(o.titleBonus)}</b></div>`);
   return `<button class="offer sp24" data-a="spnpick" data-i="${i}"><b>${esc(o.name)}</b><small>${o.desc}</small>${lines.join('')}<div class="res ev"><span>Valor esperado no ano</span><b>${mi(o.ev)}</b></div><small>Teto se tudo der certo: ${mi(o.max)}</small></button>`;
 }
-const _vm24=vModal;vModal=function(){
+hookAround('vModal','vm24',function(next,__a){
   const md=S.modal;
-  if(!md||md.t!=='sponsor')return _vm24.apply(this,arguments);
+  if(!md||md.t!=='sponsor')return next();
   const offs=sponsorOffers();
   if(md.i===undefined||md.i===null)return `<div class="wrap"><h2>Patrocinador master</h2><p class="news">Contrato de uma temporada. As ofertas têm valor esperado parecido: o que muda é o risco. Fixo é tranquilo; bônus paga mais se o time render acima do esperado e menos se render abaixo.</p>${offs.map(spnOfferHtml).join('')}</div>`;
   const o=offs[md.i];
   return `<div class="wrap"><button class="btn ghost sm" data-a="spnback">← Voltar às ofertas</button><h2>${esc(o.name)}</h2><p class="news">Como você quer receber o fixo de ${mi(o.fixed)}? Bônus (se houver) entram à parte, quando forem conquistados.</p>${spnModes(o.fixed).map(m=>`<button class="offer sp24" data-a="spnmode" data-m="${m.m}"><b>${m.lbl}</b><small>${m.sub}</small><div class="res"><span>${m.now?'Entra agora':'Total no ano (liga)'}</span><b>${mi(m.total)}</b></div></button>`).join('')}</div>`;
-};
+});
 Object.assign(A,{
   pickspon(d){S.modal={t:'sponsor',i:+d.i};render();window.scrollTo(0,0)},
   spnpick(d){S.modal={t:'sponsor',i:+d.i};render();window.scrollTo(0,0)},

@@ -11,8 +11,8 @@ const STARS57=[
 ['Michael Olise','PNT','Bayern de Munique',89,24,'FRA'],['Lamine Yamal','PNT','Barcelona',89,19,'ESP'],['Khvicha Kvaratskhelia','PNT','Paris Saint-Germain',89,25,'GEO'],['Luis Díaz','PNT','Bayern de Munique',87,29,'COL'],['Lionel Messi','PNT','Inter Miami',88,39,'ARG'],['Vinícius Júnior','PNT','Real Madrid',89,26,'BRA'],['Bukayo Saka','PNT','Arsenal',88,25,'ENG'],['Raphinha','PNT','Barcelona',88,29,'BRA'],['Désiré Doué','PNT','Paris Saint-Germain',84,21,'FRA'],['Jérémy Doku','PNT','Manchester City',85,24,'BEL'],['Antoine Semenyo','PNT','Manchester City',84,26,'GHA'],['Bradley Barcola','PNT','Paris Saint-Germain',82,24,'FRA'],['Ademola Lookman','PNT','Atlético de Madrid',83,29,'NGA'],['Kenan Yıldız','PNT','Juventus',84,21,'TUR'],['Anthony Gordon','PNT','Barcelona',83,25,'ENG'],['Bryan Mbeumo','PNT','Manchester United',83,27,'CMR'],['Mohamed Salah','PNT','Trabzonspor',85,34,'EGY'],['Jacob Ramsey','PNT','Aston Villa',78,25,'ENG'],
 ['Harry Kane','ATA','Bayern de Munique',90,33,'ENG'],['Kylian Mbappé','ATA','Real Madrid',90,27,'FRA'],['Erling Haaland','ATA','Manchester City',92,26,'NOR'],['Ousmane Dembélé','ATA','Paris Saint-Germain',89,29,'FRA'],['Julián Álvarez','ATA','Atlético de Madrid',87,26,'ARG'],['Lautaro Martínez','ATA','Inter de Milão',87,29,'ARG'],['Kai Havertz','ATA','Arsenal',85,27,'GER'],['João Pedro','ATA','Chelsea',85,24,'BRA'],['Victor Osimhen','ATA','Galatasaray',85,27,'NGA'],['Hugo Ekitike','ATA','Liverpool',85,24,'FRA'],['Igor Thiago','ATA','Brentford',83,25,'BRA'],['Ollie Watkins','ATA','Aston Villa',83,30,'ENG'],['Robert Lewandowski','ATA','Chicago Fire',83,38,'POL'],['Cristiano Ronaldo','ATA','Al-Nassr',84,41,'POR'],['Antoine Griezmann','ATA','Orlando City',82,35,'FRA'],['Marcus Thuram','ATA','Inter de Milão',83,29,'FRA'],['Donyell Malen','ATA','Roma',82,27,'NED'],['Mikel Oyarzabal','ATA','Real Sociedad',82,29,'ESP'],['Viktor Gyökeres','ATA','Arsenal',84,28,'SWE'],['Alexander Sørloth','ATA','Atlético de Madrid',81,30,'NOR']
 ];
-const _mk57=mkNat42;mkNat42=function(){
-  const c=_mk57.apply(this,arguments);
+hookAround('mkNat42','mk57',function(next,__a){
+  const c=next();
   try{const ss=STARS57.filter(s=>s[2]===c.name);
     if(ss.length){const used=new Set();
       for(const [nm,role,,ov,age,nat] of ss){
@@ -24,4 +24,4 @@ const _mk57=mkNat42;mkNat42=function(){
         try{NATF[nm]=nat}catch(e){}NMS.add(nm)}
       autoPick(c)}
   }catch(e){console.error('stars57 '+e.message)}
-  return c};
+  return c});

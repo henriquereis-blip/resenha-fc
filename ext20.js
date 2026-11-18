@@ -16,12 +16,12 @@ function sqcOf(){if(!G)return 60;if(G.sqc===undefined)G.sqc=60;return G.sqc}
 const sqcCls=v=>v>=65?'ok':v>=40?'warn':'bad';
 const sqcTxt=v=>v>=75?'Elenco fechado com você':v>=60?'Elenco confiante':v>=45?'Elenco desconfiado':v>=30?'Elenco rachado':'Vestiário em guerra';
 function sqcFx(){const v=sqcOf();return v<50?-(50-v)*.001:v>75?(v-75)*.0006:0}
-const _eff20=eff;eff=function(p,slot,en,phil){
-  let o=_eff20.apply(this,arguments);
+hookAround('eff','eff20',function(next,__a){let [p,slot,en,phil]=__a;
+  let o=next();
   if(en!==undefined&&en<70)o*=1-(70-en)*.0012;                 // cansaço forte
   if(G&&p.club===G.user)o*=1+sqcFx();                          // confiança do elenco
   return o;
-};
+});
 function sqcTick(played,gf,ga){
   const c=userClub();if(!c)return;
   let d=gf>ga?2.4:gf<ga?-3:-.2;
@@ -62,19 +62,19 @@ hookAround('finishRound','ext20_fr20',function(next,A){
   }}catch(e){console.error('ext20 '+e.message)}
   return out;
 });
-const _sc20=startCareer;startCareer=function(){_sc20.apply(this,arguments);sqcStart(62);G.autoMode={mode:'nota',val:{desc:75,jov:23},on:false};save()};
-const _tj20=takeJob;takeJob=function(){const r=_tj20.apply(this,arguments);sqcStart(55);return r};
-const _ls20=loadSave;loadSave=function(){const ok=_ls20();if(ok&&G){if(G.sqc===undefined)sqcStart(62);if(!G.autoMode)G.autoMode={mode:'nota',val:{desc:75,jov:23},on:false}}return ok};
+hookAround('startCareer','sc20',function(next,__a){next();sqcStart(62);G.autoMode={mode:'nota',val:{desc:75,jov:23},on:false};save()});
+hookAround('takeJob','tj20',function(next,__a){const r=next();sqcStart(55);return r});
+hookAround('loadSave','ls20',function(next,__a){const ok=next();if(ok&&G){if(G.sqc===undefined)sqcStart(62);if(!G.autoMode)G.autoMode={mode:'nota',val:{desc:75,jov:23},on:false}}return ok});
 
 /* ---------- seleção automática por critério ---------- */
-const _ss20=slotScore;slotScore=function(p,slot,phil){
-  let s=_ss20.apply(this,arguments);const a=G&&G._ap;
+hookAround('slotScore','ss20',function(next,__a){let [p,slot,phil]=__a;
+  let s=next();const a=G&&G._ap;
   if(a){
     if(a.mode==='desc'&&p.en<a.v)s-=(a.v-p.en)*.9+10;
     if(a.mode==='jov'&&p.age>a.v)s-=(p.age-a.v)*3.2;
   }
   return s;
-};
+});
 function autoPickMode(c,mode,v){
   G._ap=mode==='nota'?null:{mode,v};
   try{autoPick(c)}finally{G._ap=null}

@@ -33,9 +33,9 @@ function promoteYouth(c,i){
 }
 function logX(p,from,to,fee){G.xfers.unshift({s:G.season,r:G.round+1,name:nameOf(p),from,to,fee:+fee.toFixed(2)});G.xfers=G.xfers.slice(0,80)}
 /* patches */
-const _mk=makeBid;makeBid=function(pid,fee){ex();const p=P(pid),from=p.club;const r=_mk(pid,fee);if(r.ok)logX(p,from,G.user,fee);return r};
-const _sp=sellPlayer;sellPlayer=function(id){ex();const o=G.offers.find(x=>x.id===id);const r=_sp(id);if(!r&&o)logX(P(o.pid),G.user,o.buyer,o.fee);return r};
-const _sf=signFree;signFree=function(pid){ex();const lu=valueOf(P(pid))*0.1;const r=_sf(pid);if(!r)logX(P(pid),-1,G.user,lu);return r};
+hookAround('makeBid','mk',function(next,__a){let [pid,fee]=__a;ex();const p=P(pid),from=p.club;const r=next(pid,fee);if(r.ok)logX(p,from,G.user,fee);return r});
+hookAround('sellPlayer','sp',function(next,__a){let [id]=__a;ex();const o=G.offers.find(x=>x.id===id);const r=next(id);if(!r&&o)logX(P(o.pid),G.user,o.buyer,o.fee);return r});
+hookAround('signFree','sf',function(next,__a){let [pid]=__a;ex();const lu=valueOf(P(pid))*0.1;const r=next(pid);if(!r)logX(P(pid),-1,G.user,lu);return r});
 hookAround('finishRound','ext_fr',function(next,A){
   ex();const out=next();
   const res=G.lastRound.results;
@@ -51,14 +51,14 @@ hookAround('finishRound','ext_fr',function(next,A){
   for(const c of G.clubs){c.youth.forEach(y=>{y.dev=Math.min(100,y.dev+ri(0,2))})}
   return out;
 });
-const _es=endSeason;endSeason=function(){
+hookAround('endSeason','es',function(next,__a){
   ex();const rows=tableRows();
   rows.forEach((c,i)=>{c.retro.push({s:G.season,pos:i+1,J:c.J,V:c.V,E:c.E,D:c.D,GP:c.GP,GC:c.GC});
     const co=c.id===G.user?G.uc:c.coach;
     if(i===0){c.tro[0]++;co.titles++;co.pts+=60}else if(i<4)co.pts+=15;
   });
-  return _es();
-};
+  return next();
+});
 hookAround('newSeason','ext_ns',function(next,A){
   ex();
   for(const p of Object.values(G.players)){if(p.club>=0&&C(p.club)){p.car=p.car||[];p.car.push({s:G.season,club:C(p.club).sig,J:p.games,G:p.goals,A:p.ast,nm:p.rn?+(p.rsum/p.rn).toFixed(2):null})}}
@@ -101,8 +101,8 @@ function mkPen(m,k){
 }
 const _smin=stepMinute;stepMinute=function(m){_smin(m);if(!m.done&&m.min>3&&m.min<90&&Math.random()<(TUNE.pen||0.0012)*2)mkPen(m,Math.random()<0.55?'h':'a')};
 /* ===== técnicos: critérios múltiplos ===== */
-const _sub=subPlayer;subPlayer=function(m,k,o,i){const r=_sub(m,k,o,i);if(r&&R&&m===R.ms[R.ui]&&k===userSide(m)){m.tac=m.tac||[];m.tac.push({min:m.min,diff:k==='h'?m.hg-m.ag:m.ag-m.hg})}return r};
-const _ap=answerPress;answerPress=function(i){ex();const b=G.board.conf,h=userClub().humor;_ap(i);G.uc.imp=(G.uc.imp||0)+(G.board.conf-b)+(userClub().humor-h)*0.5+(i<0?-1:0.5)};
+hookAround('subPlayer','sub',function(next,__a){let [m,k,o,i]=__a;const r=next(m,k,o,i);if(r&&R&&m===R.ms[R.ui]&&k===userSide(m)){m.tac=m.tac||[];m.tac.push({min:m.min,diff:k==='h'?m.hg-m.ag:m.ag-m.hg})}return r});
+hookAround('answerPress','ap',function(next,__a){let [i]=__a;ex();const b=G.board.conf,h=userClub().humor;next(i);G.uc.imp=(G.uc.imp||0)+(G.board.conf-b)+(userClub().humor-h)*0.5+(i<0?-1:0.5)});
 hookAround('finishRound','ext_fr2',function(next,A){
   ex();const um=R.ms[R.ui],k=userSide(um);const tac=(um.tac||[]).slice();const fin=k==='h'?um.hg-um.ag:um.ag-um.hg;const cb=G.board.conf;
   const out=next();const u=G.uc;

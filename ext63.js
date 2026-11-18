@@ -63,11 +63,11 @@ const _fr63=finishRound;finishRound=function(){const a=arguments;if(!MPB&&mpsOn(
 const _es63=endSeason;endSeason=function(){const a=arguments;if(!MPB&&mpsOn())return passAll63(()=>{const r=_es63.apply(null,a);if(G.summary){G.summary.fired=false;G.summary.jobs=[]}return r},false);return _es63.apply(this,a)};
 function syncFx63(){const m=G.mps;m.hs.forEach((h,k)=>{const f=cl63(G.dfx[G.clubs[h.club].div]||[]);if(m.cur===k)G.fixtures=f;else if(h.ctx)h.ctx.fixtures=f})}
 const _ns63=newSeason;newSeason=function(){const a=arguments;if(!MPB&&mpsOn()){const r=passAll63(()=>_ns63.apply(null,a),false);syncFx63();return r}return _ns63.apply(this,a)};
-const _sf63=shouldFire;shouldFire=function(){if(mpsOn())return false;return _sf63.apply(this,arguments)};
+hookAround('shouldFire','sf63',function(next,__a){if(mpsOn())return false;return next()});
 /* escalação dos outros humanos não pode ser sobrescrita pela IA ao preparar a rodada */
-const _ap63=autoPick;autoPick=function(c){if(MPP&&G.mps&&G.mps.hs.some(h=>h.club===c.id&&h.club!==G.user))return;return _ap63.apply(this,arguments)};
-const _pr63=prepareRound;prepareRound=function(){const was=MPP;MPP=true;
-  try{_pr63.apply(this,arguments);if(G.mps)G.mps.hs.forEach(h=>{if(h.club!==G.user&&G.clubs[h.club]){try{fixLineup(G.clubs[h.club])}catch(e){}}})}finally{MPP=was}};
+hookAround('autoPick','ap63',function(next,__a){let [c]=__a;if(MPP&&G.mps&&G.mps.hs.some(h=>h.club===c.id&&h.club!==G.user))return;return next()});
+hookAround('prepareRound','pr63',function(next,__a){const was=MPP;MPP=true;
+  try{next();if(G.mps)G.mps.hs.forEach(h=>{if(h.club!==G.user&&G.clubs[h.club]){try{fixLineup(G.clubs[h.club])}catch(e){}}})}finally{MPP=was}});
 /* ---- rodada de grupo ---- */
 function gBuild63(){
   const m=G.mps;swapTo63(0);
@@ -107,9 +107,9 @@ function nextTurn63(){
 const _mgo63=A.mgo,_mtg63=A.mtoggle;
 A.mgo=function(){if(MPT&&mpsOn()){nextTurn63();return}return _mgo63.apply(this,arguments)};
 A.mtoggle=function(){if(MPT&&mpsOn()&&S.paused){nextTurn63();return}return _mtg63.apply(this,arguments)};
-const _em63=endMatch;endMatch=function(){
-  if(mpsOn()&&R&&R.mpg){_em63.apply(this,arguments);G.mps.rd={i:0,out:G.lastOutcome};return}
-  return _em63.apply(this,arguments)};
+hookAround('endMatch','em63',function(next,__a){
+  if(mpsOn()&&R&&R.mpg){next();G.mps.rd={i:0,out:G.lastOutcome};return}
+  return next()});
 function seasonGroup63(){
   swapTo63(0);endSeason();G.phase='seasonEnd';G.mps.se={done:[]};
   hand63(0,'Resumo da temporada.',()=>{S.modal={t:'season'};G.view='inicio'});
@@ -136,8 +136,8 @@ A.newseason=function(){
 A.mphand=function(){const h=MPH;MPH=null;if(!h)return;swapTo63(h.k);S.modal=null;S.prof=null;S.panel=false;if(h.cb)h.cb();render();window.scrollTo(0,0)};
 A.mpass=function(){const m=G.mps;if(!mpsOn()||S.match)return;const k=(m.cur+1)%m.hs.length;hand63(k,'Sua vez de mexer no clube.',()=>{G.view='inicio'})};
 /* ---- render: tela de "passa o aparelho", pausas com turnos e botão de passar a vez ---- */
-const _rd63=render;render=function(){
-  _rd63.apply(this,arguments);
+hookAround('render','rd63',function(next,__a){
+  next();
   try{
     const app=document.getElementById('app');
     let pill=document.getElementById('mps63');
@@ -153,16 +153,16 @@ const _rd63=render;render=function(){
       document.body.appendChild(pill)}
     const m=G.mps;pill.textContent='👥 '+m.hs[m.cur].nick+(m.ready&&m.ready[m.cur]?' ✔':'')+' · passar a vez';
   }catch(e){console.error('rd63 '+e.message)}
-};
+});
 /* ---- criação do grupo: nomes, um por um escolhem clube na MESMA divisão ---- */
-const _vml63=vMpLocal;vMpLocal=function(){
-  let h=_vml63.apply(this,arguments);
+hookAround('vMpLocal','vml63',function(next,__a){
+  let h=next();
   const card=`<div class="card"><div class="k">🏟️ Mesma liga</div><p class="news">Todos no mesmo campeonato (Brasil), cada um com um clube da mesma divisão, jogando uns contra os outros. Passem o aparelho: cada um prepara o time e, na rodada, cada um ajusta a tática no intervalo do seu jogo. Ninguém é demitido nesse modo.</p>
   <input id="mps_names" class="fsel" maxlength="90" placeholder="Nomes separados por vírgula (2 a 5). Ex.: Henrique, Rafa, Lipe" style="margin-bottom:8px"><button class="btn" data-a="mpsnew">Criar liga com os primos</button></div>`;
   h=h.replace('<div class="k">👥 Passa o aparelho</div>','<div class="k">👥 Ligas separadas</div>');
   h=h.replace('Cada um joga no seu ritmo (a liga de cada um é separada). Mesma liga ao mesmo tempo ainda não existe.','Em ligas separadas, cada primo joga a própria liga no seu ritmo.');
   return h.replace('<div class="card"><div class="k">👥 Ligas separadas</div>',card+'<div class="card"><div class="k">👥 Ligas separadas</div>');
-};
+});
 A.mpsnew=function(){
   const v=((document.getElementById('mps_names')||{}).value||'');
   const names=[...new Set(v.split(/[,;\n]/).map(s=>s.trim()).filter(Boolean))].slice(0,5);

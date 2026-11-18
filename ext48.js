@@ -1,6 +1,6 @@
 /* ext48: modo "nuvem primeiro" (só no site): login obrigatório, saves só na nuvem; o celular guarda só uma cópia escondida de segurança */
 const cloud48=()=>sbOk();
-const _sv48=save;save=function(){try{if(G&&G.phase!=='start')G._t=Date.now()}catch(e){}return _sv48.apply(this,arguments)};
+hookAround('save','sv48',function(next,__a){try{if(G&&G.phase!=='start')G._t=Date.now()}catch(e){}return next()});
 const localT48=()=>{try{const r=SKV.getItem(SAVE_KEY);if(!r)return 0;const m=r.match(/"_t":(\d+)/);return m?+m[1]:1}catch(e){return 0}};
 function localWipe48(){try{SKV.removeItem(SAVE_KEY);for(let i=1;i<=4;i++)SKV.removeItem(slotKey(i));SKV.flush()}catch(e){}}
 async function sbPutRaw(cs,raw){
@@ -27,12 +27,12 @@ function vGate(){
   <div class="card"><div class="k">👤 Entre pra jogar</div>${sbLogin()}</div>
   <p class="hint">${navigator.onLine?"":"📴 Sem internet? Pode entrar mesmo assim: o jogo fica no aparelho e sobe quando a conexão voltar. "}Seu jogo fica salvo na sua conta, na nuvem: dá pra continuar de qualquer aparelho e nada se perde se o celular limpar os dados.</p></div>`;
 }
-const _vs48=vStart;vStart=function(){
+hookAround('vStart','vs48',function(next,__a){
   if(cloud48()&&!SB.ses)return vGate();
-  return _vs48.apply(this,arguments)};
+  return next()});
 /* tela inicial no modo nuvem */
-const _vt48=vTitle;vTitle=function(){
-  if(!cloud48())return _vt48.apply(this,arguments);
+hookAround('vTitle','vt48',function(next,__a){
+  if(!cloud48())return next();
   if(SB.ses&&!SB.listOk&&!SB.tried){SB.tried=1;sbList()}
   migrate48();sync48();
   const r0=sbRow(0),lt=localT48(),hasLocal=lt>0&&(()=>{try{return !!sumOf(SKV.getItem(SAVE_KEY))}catch(e){return false}})();
@@ -48,7 +48,7 @@ const _vt48=vTitle;vTitle=function(){
   <button class="mb20" data-a="step" data-v="mpl"><span class="ic">👥</span><span><b>Multiplayer local</b><small>Vários técnicos no mesmo aparelho</small></span></button>
   <button class="mb20" data-a="mpo"><span class="ic">🌐</span><span><b>Multiplayer online</b><small>Conectado como ${esc((SB.prof&&SB.prof.nick)||SB.ses.email||'')}</small></span></button>
   <button class="btn sm ghost" data-a="sbout" style="margin:10px 0 0">Sair da conta</button>
-  <p class="foot">Elencos baseados em dados de memória (podem estar desatualizados). Atributos e escudos são inventados.</p></div>`};
+  <p class="foot">Elencos baseados em dados de memória (podem estar desatualizados). Atributos e escudos são inventados.</p></div>`});
 const _cont48=A.cont;
 Object.assign(A,{
   cont48(){
@@ -58,12 +58,12 @@ Object.assign(A,{
     sbPull(0).then(raw=>{if(!raw){toast('Save não encontrado na nuvem.');return}SKV.setItem(SAVE_KEY,raw);setSync48(localT48(),r0&&r0.updated_at);_cont48()}).catch(e=>toast('Falha: '+e.message))}
 });
 /* Saves: só os da nuvem */
-const _vsv48=vSaves;vSaves=function(){
-  if(!cloud48())return _vsv48.apply(this,arguments);
-  return `<div class="wrap"><button class="back" data-a="step" data-v="home">‹ Início</button><h2>Saves</h2>${sbCard(false)}<p class="foot">Dentro do jogo, em Opções, você salva nos slots 1 a 5. O jogo salva no aparelho a cada rodada e sobe pra nuvem sozinho; sem internet você joga normal e ele sincroniza quando voltar. ${st48()}</p></div>`};
+hookAround('vSaves','vsv48',function(next,__a){
+  if(!cloud48())return next();
+  return `<div class="wrap"><button class="back" data-a="step" data-v="home">‹ Início</button><h2>Saves</h2>${sbCard(false)}<p class="foot">Dentro do jogo, em Opções, você salva nos slots 1 a 5. O jogo salva no aparelho a cada rodada e sobe pra nuvem sozinho; sem internet você joga normal e ele sincroniza quando voltar. ${st48()}</p></div>`});
 /* Opções: sem save local */
-const _rd48=render;render=function(){_rd48.apply(this,arguments);
-  try{if(cloud48()&&G&&G.phase!=='start'&&G.view==='opcoes')document.querySelectorAll('.main .card').forEach(c=>{const k=(c.querySelector('.k')||{}).textContent||'';if(k==='Salvar jogo'||/Backup na nuvem/.test(k)&&!/Saves/.test(k))c.remove()})}catch(e){}};
+hookAround('render','rd48',function(next,__a){next();
+  try{if(cloud48()&&G&&G.phase!=='start'&&G.view==='opcoes')document.querySelectorAll('.main .card').forEach(c=>{const k=(c.querySelector('.k')||{}).textContent||'';if(k==='Salvar jogo'||/Backup na nuvem/.test(k)&&!/Saves/.test(k))c.remove()})}catch(e){}});
 /* voltar ao menu: o jogo continua no aparelho e sobe pra nuvem assim que der */
 const _tm48=A.tomenu;A.tomenu=function(){
   const go=cloud48()&&SB.ses&&G&&G.phase!=='start';
@@ -114,7 +114,7 @@ async function lvHash(pw,salt){
 async function lvSet(em,pw,uid){try{const salt=Math.random().toString(36).slice(2)+Date.now().toString(36);
   localStorage.setItem(lvKey(em),JSON.stringify({salt,hash:await lvHash(pw,salt),uid:uid||''}))}catch(e){}}
 const lvGet=em=>{try{return JSON.parse(localStorage.getItem(lvKey(em))||'null')}catch(e){return null}};
-const _ss48=sbStore;sbStore=function(s){try{if(s&&s.email&&s.access_token)localStorage.setItem('rfc_sbl_'+s.email.toLowerCase(),JSON.stringify(s))}catch(e){}return _ss48.apply(this,arguments)};
+hookAround('sbStore','ss48',function(next,__a){let [s]=__a;try{if(s&&s.email&&s.access_token)localStorage.setItem('rfc_sbl_'+s.email.toLowerCase(),JSON.stringify(s))}catch(e){}return next()});
 const _sa48=sbAuth;sbAuth=async function(kind,em,pw){await _sa48.apply(this,arguments);try{await lvSet(em,pw,SB.ses&&SB.ses.uid)}catch(e){}};
 async function offLogin48(){
   const em=((document.getElementById('sb_em')||{}).value||'').trim().toLowerCase(),pw=(document.getElementById('sb_pw')||{}).value||'';
@@ -128,17 +128,17 @@ async function offLogin48(){
     SB.msg='Entrou sem internet com a conta salva neste aparelho.'}
   else{sbStore({email:em,pend:true});SB.msg='Sem internet: você joga no aparelho e, quando a internet voltar, eu peço a senha pra subir o jogo.'}
   SB.tried=0;SB.listOk=0;SB.mig=0;render()}
-const _sd48=sbDo;sbDo=function(kind){if(cloud48()&&!navigator.onLine){offLogin48();return}return _sd48.apply(this,arguments)};
+hookAround('sbDo','sd48',function(next,__a){let [kind]=__a;if(cloud48()&&!navigator.onLine){offLogin48();return}return next()});
 /* conta "pendente" (entrou offline sem sessão válida) não fala com o servidor até confirmar a senha */
 const pend48=()=>!!(SB.ses&&SB.ses.pend);
 const _sl48=sbList;sbList=async function(){if(pend48())return;return _sl48.apply(this,arguments)};
 const _sp48b=sbPush;sbPush=async function(){if(pend48()){SB.msg='Confirma a senha na tela inicial pra subir o jogo.';return false}return _sp48b.apply(this,arguments)};
 const _sy48=sync48;sync48=async function(){if(pend48())return;return _sy48.apply(this,arguments)};
 /* aviso na tela inicial quando a internet volta e ainda falta confirmar a senha */
-const _vt48b=vTitle;vTitle=function(){
-  let h=_vt48b.apply(this,arguments);
+hookAround('vTitle','vt48b',function(next,__a){
+  let h=next();
   if(cloud48()&&pend48()&&navigator.onLine)h=h.replace('<button class="mb20',`<div class="card"><div class="k">☁️ Confirma sua conta</div><p class="news">A internet voltou! Digita a senha pra subir seu jogo pra nuvem. ${esc(SB.msg)}</p><input id="sb_em" class="fsel" type="email" value="${esc(SB.ses.email)}" readonly style="margin-bottom:6px"><input id="sb_pw" class="fsel" type="password" placeholder="senha" autocomplete="current-password" style="margin-bottom:8px"><button class="btn" data-a="sbin">Entrar</button></div><button class="mb20`);
-  return h};
+  return h});
 /* conflito: se o save do aparelho ainda não subiu e a nuvem tem um mais novo, guarda o do aparelho num slot livre antes de baixar */
 const _c48b=A.cont48;A.cont48=function(){
   const lt=localT48(),r0=sbRow(0);

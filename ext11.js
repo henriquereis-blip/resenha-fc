@@ -210,9 +210,9 @@ function trackGoals(){
   }
   if(l&&l.home&&c.cap){g.att.s+=l.att/c.cap;g.att.n++}
 }
-const _sp11=sellPlayer;sellPlayer=function(oid){
-  const o=G.offers.find(x=>x.id===oid);const r=_sp11(oid);if(!r&&o&&G.goals)G.goals.sold+=o.fee;return r;
-};
+hookAround('sellPlayer','sp11',function(next,__a){let [oid]=__a;
+  const o=G.offers.find(x=>x.id===oid);const r=next(oid);if(!r&&o&&G.goals)G.goals.sold+=o.fee;return r;
+});
 function goalProg(g){
   const G0=G.goals,c=userClub(),rows=G.clubs;let v=0,ok=false,txt='';
   switch(g.k){
@@ -238,8 +238,8 @@ function goalProg(g){
 }
 
 /* ---- encerramento da temporada: balanço das metas, paciência, eleição ---- */
-const _es11=endSeason;endSeason=function(){
-  ex();ex11a();_es11();
+hookAround('endSeason','es11',function(next,__a){
+  ex();ex11a();next();
   try{
     const c=userClub(),g=G.goals,s=G.summary;if(!s||!g)return;
     const met=s.pos<=s.meta;let cDelta=0,done=0,fail=0;
@@ -254,7 +254,7 @@ const _es11=endSeason;endSeason=function(){
     holdElection(s);
     save();
   }catch(e){console.error('endSeason11',e)}
-};
+});
 
 /* ============ ELEIÇÕES ============ */
 const PRESP=[
@@ -306,8 +306,8 @@ hookAround('newSeason','ext11_ns11b',function(next,A){
     if(G.pat.bd>60)G.fin.caixa=+(G.fin.caixa+scaleOf(c)*.01*(G.pat.bd-60)/40).toFixed(2);
   }catch(er){console.error('ns elec',er)}
 });
-const _gp11=genPress;genPress=function(um){
-  _gp11(um);
+hookAround('genPress','gp11',function(next,__a){let [um]=__a;
+  next(um);
   try{ensureEl();const e=G.el;
     if(!G.press&&G.season>=e.termEnd&&!e.asked&&G.round>=16){e.asked=true;
       G.press={who:'Eleição no clube',q:'A campanha esquenta no '+userClub().name+'. O presidente '+e.pres.name+' busca a reeleição. Você declara apoio?',id:G.round,
@@ -315,21 +315,21 @@ const _gp11=genPress;genPress=function(um){
       paperLine('Campanha eleitoral esquenta no '+userClub().name,'Chapas disputam o voto dos sócios no fim da temporada.');
     }else if(G.season>=e.termEnd&&G.round>=24&&G.round%5===0)paperLine('Eleição no '+userClub().name+': bastidores agitados','Oposição critica a gestão, situação aposta no bom momento do time.');
   }catch(er){console.error('genPress11',er)}
-};
-const _ap11=answerPress;answerPress=function(i){const q=G.press;_ap11(i);if(q&&q.opts&&i>=0&&q.opts[i]&&q.opts[i].st&&G.el)G.el.stance=q.opts[i].st};
+});
+hookAround('answerPress','ap11',function(next,__a){let [i]=__a;const q=G.press;next(i);if(q&&q.opts&&i>=0&&q.opts[i]&&q.opts[i].st&&G.el)G.el.stance=q.opts[i].st});
 shouldFire=function(){
   if(![9,19,29,37].includes(G.round))return false;
   const pat=G.pat?G.pat.bd:50;const k=clamp(1.35-pat/125,.5,1.35);
   return Math.random()<k/(1+Math.exp((G.board.conf-32)/7));
 };
 
-const _sc11=startCareer;startCareer=function(id,coach,phil,asst){_sc11(id,coach,phil,asst);ex();G.x11=0;G.el=null;ex11a();G.pat={bd:55,fan:55};ensureEl();G.el.termEnd=G.season+2;newSeasonGoals();save()};
-const _tj11=takeJob;takeJob=function(id){
-  const r=_tj11(id);
+hookAround('startCareer','sc11',function(next,__a){let [id,coach,phil,asst]=__a;next(id,coach,phil,asst);ex();G.x11=0;G.el=null;ex11a();G.pat={bd:55,fan:55};ensureEl();G.el.termEnd=G.season+2;newSeasonGoals();save()});
+hookAround('takeJob','tj11',function(next,__a){let [id]=__a;
+  const r=next(id);
   try{ex();ex11a();const l=medLv(userClub());G.med.doc=l.doc;G.med.fisio=l.fisio;G.med.prep=l.prep;
     G.pat={bd:48,fan:50};G.el=null;ensureEl();newSeasonGoals();G.goals.cash0=G.fin.caixa;G.goals.debt0=userClub().debt;save()}catch(e){console.error('tj11',e)}
   return r;
-};
+});
 
 /* a confiança do técnico não fica "travada" em 100: ela volta devagar para a média */
-const _br11=boardRound;boardRound=function(m){_br11(m);if(G.board)G.board.conf=clamp(+(G.board.conf+(62-G.board.conf)*0.012).toFixed(1),0,100)};
+hookAround('boardRound','br11',function(next,__a){let [m]=__a;next(m);if(G.board)G.board.conf=clamp(+(G.board.conf+(62-G.board.conf)*0.012).toFixed(1),0,100)});

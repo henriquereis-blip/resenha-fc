@@ -24,10 +24,10 @@ document.addEventListener('click',e=>{
   const b=e.target&&e.target.closest?e.target.closest('[data-a]'):null;if(!b)return;
   if(_isBack43(b)){_bk43=true;clearTimeout(_bkT43);_bkT43=setTimeout(()=>{_bk43=false},500)}
 },true);
-const _r43=render;render=function(){
+hookAround('render','r43',function(next,__a){
   let y=0;try{y=_sy43()}catch(e){}
   try{if(_ps43!=null)_pos43[_ps43]=y}catch(e){}
-  const r=_r43.apply(this,arguments);
+  const r=next();
   try{
     const s=_sig43();
     if(_bk43){const t=_pos43[s];if(t>0)_rs43(t)}
@@ -35,4 +35,4 @@ const _r43=render;render=function(){
     const ks=Object.keys(_pos43);if(ks.length>60)delete _pos43[ks[0]];
   }catch(e){}
   return r;
-};
+});

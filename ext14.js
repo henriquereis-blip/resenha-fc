@@ -12,17 +12,17 @@ function tvIncome(c){
 const overheadRate=c=>0.06+0.012*Math.max(0,c.rep-60);        // folha administrativa, CT, base, segurança, viagens
 const salPrem=c=>Math.max(0,c.rep-68)*0.012;                   // craque cobra mais para jogar em clube grande
 function structCost(c){const pay=c.squad.reduce((s,id)=>s+salOf(P(id)),0);return (c.tv+c.spBase)*overheadRate(c)+pay*salPrem(c)}
-const _fin14=financeRound;financeRound=function(m){
-  _fin14(m);const c=userClub(),f=G.fin;
+hookAround('financeRound','fin14',function(next,__a){let [m]=__a;
+  next(m);const c=userClub(),f=G.fin;
   const d=(tvIncome(c)-c.tv)/38-structCost(c)/38;
   f.caixa=+(f.caixa+d).toFixed(2);
   if(f.last){f.last.tv=+(tvIncome(c)/38).toFixed(2);f.last.mant=+(f.last.mant+structCost(c)/38).toFixed(2);f.last.net=+(f.last.net+d).toFixed(2)}
-};
-const _ai14=aiFinance;aiFinance=function(){
+});
+hookAround('aiFinance','ai14',function(next,__a){
   const before={};for(const c of G.clubs)if(c.id!==G.user)before[c.id]=c.caixa;
-  _ai14();
+  next();
   for(const c of G.clubs){if(c.id===G.user)continue;c.caixa=+(c.caixa+((tvIncome(c)-c.tv)*1.3-structCost(c))/38).toFixed(2)}
-};
+});
 hookBefore('newSeason','ext14_ns14',function(){
   for(const d of [0,1,2,3]){tableRows(d).forEach((c,i)=>{c.lastPos=i+1})}
   });
@@ -83,8 +83,8 @@ function rollInfo(dc,bonus){const need=clamp(dc-bonus,2,20);const pct=clamp(Math
   const lab=pct>=75?'Fácil':pct>=50?'Média':pct>=30?'Difícil':'Muito difícil';return {need,pct,lab}}
 const rollTxt=r=>`precisa ${r.need}+ no d20 · ${r.pct}% · ${r.lab}`;
 function confDC(x){return 11+(P(x.a).pg<0?2:0)+(x.sev-1)}
-const _sc14=startCareer;startCareer=function(id,coach,phil,asst){_sc14(id,coach,phil,asst);G.kit3={season:-1,cur:null,hist:[],done:true};save()};
-const _tj14=takeJob;takeJob=function(){const r=_tj14.apply(this,arguments);try{G.kit3={season:-1,cur:null,hist:[],done:true}}catch(e){}return r};
+hookAround('startCareer','sc14',function(next,__a){let [id,coach,phil,asst]=__a;next(id,coach,phil,asst);G.kit3={season:-1,cur:null,hist:[],done:true};save()});
+hookAround('takeJob','tj14',function(next,__a){const r=next();try{G.kit3={season:-1,cur:null,hist:[],done:true}}catch(e){}return r});
 
 /* caixa alto vira inflação salarial: elenco, agentes e diretoria cobram mais quando o clube está rico */
 hookBefore('newSeason','ext14_ns14b',function(){

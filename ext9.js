@@ -149,12 +149,12 @@ function baseCands(r){
 }
 function ctCost(){const b=G.mk.base;return +(scaleOf(userClub())*.05*(b.ct+1)).toFixed(1)}
 function staffCostYear(){const b=G.mk.base;return Object.values(b.staff).reduce((s,x)=>s+(x?x.sal:0),0)}
-const _py9=promoteYouth;promoteYouth=function(c,i){
-  const y=c.youth[i];const r=_py9(c,i);
+hookAround('promoteYouth','py9',function(next,__a){let [c,i]=__a;
+  const y=c.youth[i];const r=next(c,i);
   if(!r&&c.id===G.user){const id=c.squad[c.squad.length-1],p=P(id);const ix=baseIdx(c);
     p.ovr=clamp(p.ovr+Math.round(ix/28),44,82);p.pot=clamp(Math.max(p.pot,p.ovr)+Math.round(ix/30),p.ovr,94);p.fromBase=G.season;G.mk.base.grads.push({pid:id,s:G.season,stars:y?y.stars:3})}
   return r;
-};
+});
 function sellYouth(i){
   const c=userClub(),y=c.youth[i];if(!y)return 'Jogador não encontrado.';
   const val=+(y.value*(2.2+baseIdx(c)/60)*(1+y.dev/120)).toFixed(2);
@@ -276,15 +276,15 @@ function tick9(){
   save();
 }
 /* venda de ídolo irrita a torcida; formador ganha bônus */
-const _sp9=sellPlayer;sellPlayer=function(oid){
+hookAround('sellPlayer','sp9',function(next,__a){let [oid]=__a;
   ex();const of_=G.offers.find(x=>x.id===oid),id=of_?of_.pid:-1;const p=P(id),c=userClub();const fv=p?favOf(p):0,fb=p&&p.fromBase;const val=p?valueOf(p):0;
-  const r=_sp9(oid);
+  const r=next(oid);
   if(!r&&p&&c.id===G.user){
     if(fv>=72){G.mk.soc.n=G.mk.soc.n.map(n=>Math.round(n*.95));addNews('Torcida lamenta a saída de '+nameOf(p)+': sócios cancelam planos.')}
     if(fb){const b=+(val*.2).toFixed(2);G.fin.caixa=+(G.fin.caixa+b).toFixed(2);addNews('Bônus de formação: '+mi(b)+' pela venda de cria da base.')}
   }
   return r;
-};
+});
 
 /* capacidade é em pessoas (corrige a escala antiga) */
 stadSectors=function(c){const t=c.cap;return {Geral:Math.round(t*.15),Arquibancada:Math.round(t*.6),Cadeira:Math.round(t*.22),Camarote:Math.round(t*.03)}};

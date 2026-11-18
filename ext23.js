@@ -141,7 +141,7 @@ function ntWC(pd,goers){
   return res;
 }
 /* disponibilidade dos jogadores na seleção */
-const _ss23=slotScore;slotScore=function(p,slot,phil){let s=_ss23.apply(this,arguments);if(p.ntw>0)s-=80;return s};
+hookAround('slotScore','ss23',function(next,__a){let [p,slot,phil]=__a;let s=next();if(p.ntw>0)s-=80;return s});
 function ntFix(){
   const c=userClub();if(!c)return;
   for(let i=0;i<11;i++){const id=c.squad[i];if(!(P(id).ntw>0))continue;
@@ -169,7 +169,7 @@ hookAround('finishRound','ext23_fr23',function(next,A){
 hookAfter('newSeason','ext23_ns23',function(r,A){try{const b=ntBox();b.pend=null;b.last=-1;b.asks=0;b.rel=clamp(b.rel+8,0,100);
   for(const p of Object.values(G.players))delete p.ntw;
   if(cyOf()===0&&(!b.q||b.q.done)){ntQInit();b.wcQ=undefined}}catch(e){console.error('ns23 '+e.message)}});
-const _sc23=startCareer;startCareer=function(){G.nt=null;_sc23.apply(this,arguments);try{ntBox();ntQInit()}catch(e){console.error(e.message)}save()};
-const _tj23=takeJob;takeJob=function(){const r=_tj23.apply(this,arguments);try{ntBox().pend=null;for(const p of Object.values(G.players))delete p.ntw}catch(e){}return r};
-const _ls23=loadSave;loadSave=function(){const ok=_ls23();if(ok&&G){try{ntBox();if(!G.nt.q)ntQInit()}catch(e){}}return ok};
+hookAround('startCareer','sc23',function(next,__a){G.nt=null;next();try{ntBox();ntQInit()}catch(e){console.error(e.message)}save()});
+hookAround('takeJob','tj23',function(next,__a){const r=next();try{ntBox().pend=null;for(const p of Object.values(G.players))delete p.ntw}catch(e){}return r});
+hookAround('loadSave','ls23',function(next,__a){const ok=next();if(ok&&G){try{ntBox();if(!G.nt.q)ntQInit()}catch(e){}}return ok});
 Object.assign(A,{ntask(d){ntAsk(+d.id);render()}});

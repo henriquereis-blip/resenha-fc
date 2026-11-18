@@ -59,21 +59,21 @@ function applyObj(id){
   const poor=G.fin.caixa<baseInc(c)*0.04;
   paperLine(poor?c.name+': '+G.coach+' assume com cofre vazio':G.coach+' assume o '+c.name+' com '+(o.id==='rec'?'missão de arrumar a casa':'novo projeto'),`${o.t}. Dívida de ${bi(fr(c)[0])} segue como herança. ${o.mt}.`);
 }
-const _sc7=startCareer;startCareer=function(id,coach,phil,asst){_sc7(id,coach,phil,asst);applyObj(S.obj);save()};
-const _tj7=takeJob;takeJob=function(id){const r=_tj7(id);ex7();applyObj('equ');return r};
+hookAround('startCareer','sc7',function(next,__a){let [id,coach,phil,asst]=__a;next(id,coach,phil,asst);applyObj(S.obj);save()});
+hookAround('takeJob','tj7',function(next,__a){let [id]=__a;const r=next(id);ex7();applyObj('equ');return r});
 
 /* bloqueio de registro (estilo CBF/Fair Play) */
-const _mb7=makeBid;makeBid=function(pid,fee){if(G&&G.fx&&G.fx.ban)return {ok:false,msg:'Registro bloqueado pela CBF até regularizar a dívida.'};return _mb7(pid,fee)};
-const _sf7=signFree;signFree=function(pid){if(G&&G.fx&&G.fx.ban)return 'Registro bloqueado pela CBF até regularizar a dívida.';return _sf7(pid)};
+hookAround('makeBid','mb7',function(next,__a){let [pid,fee]=__a;if(G&&G.fx&&G.fx.ban)return {ok:false,msg:'Registro bloqueado pela CBF até regularizar a dívida.'};return next(pid,fee)});
+hookAround('signFree','sf7',function(next,__a){let [pid]=__a;if(G&&G.fx&&G.fx.ban)return 'Registro bloqueado pela CBF até regularizar a dívida.';return next(pid)});
 
 /* parte das vendas vai pra dívida */
-const _sl7=sellPlayer;sellPlayer=function(id){
+hookAround('sellPlayer','sl7',function(next,__a){let [id]=__a;
   ex7();const o=G.offers.find(x=>x.id===id);const c=userClub();const d0=c.debt;
-  const r=_sl7(id);
+  const r=next(id);
   if(!r&&o){const share=Math.min(c.debt,+(o.fee*G.fx.sd).toFixed(2));if(share>0){G.fin.caixa=+(G.fin.caixa-share).toFixed(2);c.debt=+(c.debt-share).toFixed(2);
     if(share>=2)paperLine('Venda de '+nameOf(P(o.pid)).replace('*','')+' alivia as contas do '+c.name,'Parte dos '+mi(o.fee)+' vai direto pra dívida: '+mi(share)+'.')}}
   return r;
-};
+});
 
 /* dinâmica por rodada */
 hookAround('finishRound','ext7_fr7',function(next,A){
@@ -111,14 +111,14 @@ hookAround('finishRound','ext7_fr7',function(next,A){
   if(G.fx.warned&&(c.debt<G.fx.warnDebt*0.97||rn<=2)){const was=G.fx.ban;G.fx.ban=false;G.fx.warned=false;paperLine(was?c.name+' regulariza e volta ao mercado':c.name+' cumpre acordo com o Fair Play Financeiro',was?'Bloqueio de registro é suspenso.':'Dívida em queda tira o clube da lista de risco.')}
   return out;
 });
-const _es7=endSeason;endSeason=function(){
-  ex7();const c=userClub();const c0=G.fin.caixa;const r=_es7();
+hookAround('endSeason','es7',function(next,__a){
+  ex7();const c=userClub();const c0=G.fin.caixa;const r=next();
   const gain=G.fin.caixa-c0;const share=Math.min(c.debt,Math.max(0,gain*G.fx.sd*0.5));
   if(share>0){G.fin.caixa=+(G.fin.caixa-share).toFixed(1);c.debt=+(c.debt-share).toFixed(1)}
   if(G.summary)G.summary.txt+=` Dívida: ${mi(c.debt)} (${Math.round((1-c.debt/(G.fx.debt0||1))*100)}% a menos que no início da sua gestão).`;
   G.fx.cut=G.fx.cut&&G.fx.cut.season>G.season?G.fx.cut:null;
   return r;
-};
+});
 hookAfter('newSeason','ext7_ns7',function(r,A){ex7();G.fx.loanN=0;});
 
 /* telas */
@@ -151,7 +151,7 @@ function finCard(){
   <div class="row2"><button class="btn ghost" data-a="loan">Empréstimo ${mi(loanAmt)}</button><button class="btn ghost" data-a="adv" ${fx.cut&&fx.cut.season>=G.season?'disabled':''}>Antecipar TV ${mi(advAmt)}</button></div>
   <div class="k">Empréstimo: entra caixa agora e a dívida sobe 18% do valor (máx. 2 por temporada). Antecipação: recebe 35% da TV agora e perde essa grana na temporada seguinte.</div></div>`;
 }
-const _vc7=vClube;vClube=function(){ex7();return _vc7().replace('<div class="wrap">','<div class="wrap">'+finCard())};
+hookAround('vClube','vc7',function(next,__a){ex7();return next().replace('<div class="wrap">','<div class="wrap">'+finCard())});
 Object.assign(A,{
  pickobj(d){S.obj=d.o;render()},
  loan(){ex7();const c=userClub();if(G.fx.loanS!==G.season){G.fx.loanS=G.season;G.fx.loanN=0}
@@ -168,10 +168,10 @@ document.addEventListener('input',e=>{const t=e.target;if(!t||!G||!G.fx)return;
   if(t.id==='sdsl'){G.fx.sd=+t.value/100;const el=document.getElementById('sdlbl');if(el)el.textContent=t.value+'%'}});
 document.addEventListener('change',e=>{const t=e.target;if(t&&(t.id==='paysl'||t.id==='sdsl'))save()});
 
-const _sm7=setMeta;setMeta=function(){_sm7();
+hookAround('setMeta','sm7',function(next,__a){next();
   if(!G||!G.fx||!G.fx.obj||G.user===null||G.user===undefined)return;
   const c=userClub(),o=objOptions(c).find(x=>x.id===G.fx.obj);if(!o)return;
   const ss=Math.max(0,G.season-(G.fx.startS||G.season)),M=metaFor(c);
   const mp=typeof o.off==='string'?clampN(+o.off.slice(1)-2*ss,M,17):clampN(M+o.off,1,17);
   G.board.meta=mp;G.board.metaTxt=metaText(mp);
-};
+});

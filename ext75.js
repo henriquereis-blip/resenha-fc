@@ -8,21 +8,21 @@ function calib75(){
   }catch(e){console.error('calib75 '+e.message)}
 }
 /* receitas globais (marca, excursões, direitos internacionais): cobre o rombo estrutural dos clubes grandes (folha alta), sobra de 3% */
-const _fr=financeRound;financeRound=function(m){
+hookAround('financeRound','fr',function(next,__a){let [m]=__a;
   const f=G.fin,c0=f.caixa;
-  _fr.apply(this,arguments);
+  next();
   try{const c=userClub(),pay=payroll(c);if(pay<25)return;
     const d=f.caixa-c0,tgt=pay*0.03/38;
     if(d<tgt){const g=+(tgt-d).toFixed(2);f.caixa=+(f.caixa+g).toFixed(2);if(f.last){f.last.sp=+(f.last.sp+g).toFixed(2);f.last.net=+(f.last.net+g).toFixed(2)}}
   }catch(e){console.error('gap75 '+e.message)}
-};
+});
 globalThis.calib75=calib75;
-const _em=emigrate;emigrate=function(){const r=_em.apply(this,arguments);if(r)calib75();return r};
-const _tj=takeJob;takeJob=function(){const r=_tj.apply(this,arguments);calib75();return r};
+hookAround('emigrate','em',function(next,__a){const r=next();if(r)calib75();return r});
+hookAround('takeJob','tj',function(next,__a){const r=next();calib75();return r});
 hookAfter('newSeason','ext75_ns',function(r,A){calib75();G._warned91=false;});
 /* caixa negativo: a diretoria cobra, mas não derruba a confiança a cada rodada. Favorito não é punido por não golear (expectativa limitada) */
-const _br=boardRound;boardRound=function(m){
-  const neg=G.fin.caixa<0;_br.apply(this,arguments);
+hookAround('boardRound','br',function(next,__a){let [m]=__a;
+  const neg=G.fin.caixa<0;next();
   try{
     const c=userClub(),home=m.h.club.id===c.id,opp=home?m.a.club:m.h.club;
     const gf=home?m.hg:m.ag,ga=home?m.ag:m.hg,pts=gf>ga?3:gf===ga?1:0;
@@ -32,17 +32,17 @@ const _br=boardRound;boardRound=function(m){
     if(neg)adj+=1.2;
     if(adj)G.board.conf=clamp(+(G.board.conf+adj).toFixed(1),0,100);
   }catch(e){}
-};
+});
 /* primeiro aperto da diretoria = aviso (carta); só na segunda checagem ruim vem a demissão. Time dentro da meta tem tolerância */
-const _sf=shouldFire;shouldFire=function(){
+hookAround('shouldFire','sf',function(next,__a){
   if(![9,19,29,37].includes(G.round))return false;
   const c=userClub(),conf=G.board.conf;
   if(conf>=40)return false;
   if(!G._warned91){G._warned91=true;
     try{addNews('A diretoria deu um ultimato: "Professor, ou o time reage ou a gente troca o comando."');if(typeof toast==='function')toast('Ultimato da diretoria: reaja nos próximos jogos ou será demitido.')}catch(e){}
     return false}
-  let p=_sf.apply(this,arguments);
+  let p=next();
   if(p&&c&&posOf(c)<=G.board.meta+2&&Math.random()<0.8)p=false;
   return p;
-};
+});
 })();

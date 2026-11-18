@@ -13,7 +13,7 @@ async function mpPush(force){
   }catch(e){}
 }
 hookAfter('finishRound','ext58_fr58',()=>{mpPush(false)});
-const _es58=endSeason;endSeason=function(){const r=_es58.apply(this,arguments);try{mpPush(true)}catch(e){}return r};
+hookAround('endSeason','es58',function(next,__a){const r=next();try{mpPush(true)}catch(e){}return r});
 const _mpp58=mpPoll;mpPoll=async function(){
   await _mpp58.apply(this,arguments);
   try{if(MP.code&&MP.room&&MP.room.status==='playing'){
@@ -27,8 +27,8 @@ function mpBoard(){
   const waiting=MP.members.filter(m=>!MP.scores.some(s=>s.user_id===m.user_id)).map(m=>esc(m.nick));
   return rows+(waiting.length?`<p class="hint">Ainda não jogaram: ${waiting.join(', ')}.</p>`:'');
 }
-const _vmo58=vMpOnline;vMpOnline=function(){
-  const h=_vmo58.apply(this,arguments);
+hookAround('vMpOnline','vmo58',function(next,__a){
+  const h=next();
   try{if(!(MP.room&&MP.room.status==='playing'&&MP.code))return h;
     const me=MP.members.find(m=>m.user_id===SB.ses.uid)||{};
     const linked=G.mpRoom===MP.code;
@@ -39,7 +39,7 @@ const _vmo58=vMpOnline;vMpOnline=function(){
       ${has?'<p class="hint">Já tem um jogo salvo? Pra continuar uma carreira da liga, use Continuar na tela inicial; ela continua mandando pontos.</p>':''}</div>`;
     return h.replace(/<div class="card"><div class="k">🏁 Liga iniciada<\/div>.*?<\/p><\/div>/s,card);
   }catch(e){console.error('mp58 '+e.message);return h}
-};
+});
 Object.assign(A,{
   mpgo(){
     const me=MP.members.find(m=>m.user_id===SB.ses.uid);

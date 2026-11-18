@@ -110,7 +110,7 @@ function estDue(){
   }
   return null;
 }
-const _es21=extraSync;extraSync=function(){
+hookAround('extraSync','es21',function(next,__a){
   if(!G||G.phase!=='play'||G.user==null||G.round>=NR()||G._lg)return;
   const e=G.est;
   if(e&&e.phase!=='done'){
@@ -126,8 +126,8 @@ const _es21=extraSync;extraSync=function(){
       }
     }
   }
-  return _es21();
-};
+  return next();
+});
 function finishEst(){
   const x=G._x,um=R.ms[R.ui],us=userSide(um),c=userClub(),e=G.est;
   const gf=us==='h'?um.hg:um.ag,ga=us==='h'?um.ag:um.hg;const ko=x.ko;
@@ -180,6 +180,6 @@ function estEnd(){
   }catch(er){console.error('estEnd '+er.message)}
 }
 hookAround('newSeason','ext21_ns21',function(next,A){try{estEnd()}catch(e){}const r=next();try{estInit()}catch(e){console.error('estInit '+e.message)}return r});
-const _sc21=startCareer;startCareer=function(){G.estLv=null;_sc21.apply(this,arguments);try{G.estHist=[];G.estLv=null;estInit()}catch(e){console.error('estInit0 '+e.message)}save()};
-const _tj21=takeJob;takeJob=function(){const r=_tj21.apply(this,arguments);try{G._lg=null;G._x=null;G.estLv=null;estInit()}catch(e){console.error('estInit1 '+e.message)}return r};
-const _ls21=loadSave;loadSave=function(){const ok=_ls21();if(ok&&G&&(!G.est||!G.est.slots)){try{G.estLv=null;estInit()}catch(e){}}return ok};
+hookAround('startCareer','sc21',function(next,__a){G.estLv=null;next();try{G.estHist=[];G.estLv=null;estInit()}catch(e){console.error('estInit0 '+e.message)}save()});
+hookAround('takeJob','tj21',function(next,__a){const r=next();try{G._lg=null;G._x=null;G.estLv=null;estInit()}catch(e){console.error('estInit1 '+e.message)}return r});
+hookAround('loadSave','ls21',function(next,__a){const ok=next();if(ok&&G&&(!G.est||!G.est.slots)){try{G.estLv=null;estInit()}catch(e){}}return ok});

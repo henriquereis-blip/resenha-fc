@@ -72,15 +72,15 @@ function banner60(name,sub){
   return `<div class="cmp60" style="--a:${t.a};--b:${t.b};--c:${t.c}">${emblem60(t.m,t.c)}<div class="tx"><b>${esc(name)}</b>${sub?`<small>${esc(sub)}</small>`:''}</div></div>`;
 }
 /* ---------- Tabela: faixa da liga ---------- */
-const _lh60=ligaHead;ligaHead=function(){
-  const h=_lh60.apply(this,arguments);
+hookAround('ligaHead','lh60',function(next,__a){
+  const h=next();
   try{const m=h.match(/<div class="k">(.*?)<\/div>/);if(!m)return h;
     const raw=m[1].replace(/&amp;/g,'&').replace(/<[^>]+>/g,'');
     const parts=raw.split('·').map(x=>x.trim());const flagCtry=parts[0]||'',lg=parts[1]||parts[0]||'';
     const sub=(flagCtry+' · temporada '+(2026+G.season-(G.season>0?0:0))).replace(/^ · /,'');
     return banner60(lg,sub)+h.replace(/<div class="k">.*?<\/div>/,'');
   }catch(e){return h}
-};
+});
 /* ---------- Copas: faixa da competição aberta ---------- */
 const _vc60=vComp;vComp=function(){
   let h=_vc60.apply(this,arguments);

@@ -143,12 +143,12 @@ function genPressV2b(um){
     return {t:fillTxt(pickNovel(STANCE[tn],'st:'+tn),x),tone:tn,fx:{conf:+(b.conf*f).toFixed(1),humor:Math.round(b.humor*f),mor:0,pm:Math.round(b.pm*(tn==='culpa_time'||tn==='elogia_imprensa'?1:Math.abs(f)))},rep:Math.round(rep)}});
   G.press={who:r.n+' ('+r.o+')',q:text,id:G.round,ri:ri_,ctx:main,opts,skip:{conf:-.5,humor:-1,mor:0}};
 }
-const _gp16=genPress;genPress=function(um){_gp16(um);if(G.press&&G.press.who==='Eleição no clube')return;G.press=null;genPressV2(um)};
+hookAround('genPress','gp16',function(next,__a){let [um]=__a;next(um);if(G.press&&G.press.who==='Eleição no clube')return;G.press=null;genPressV2(um)});
 
 /* ---------- depois da resposta ---------- */
-const _ap16=answerPress;answerPress=function(i){
+hookAround('answerPress','ap16',function(next,__a){let [i]=__a;
   const q=G.press;const J=jrBox();
-  _ap16(i);
+  next(i);
   if(!q)return;
   try{
     const c=userClub(),r=q.ri!==undefined?J.reps[q.ri]:null;
@@ -169,7 +169,7 @@ const _ap16=answerPress;answerPress=function(i){
       }
     }
   }catch(e){console.error('press16 '+e.message)}
-};
+});
 
 /* ---------- tom das matérias e repórteres de verdade ---------- */
 const TONE_POS=['Texto elogioso destaca o trabalho do comando técnico.','Bastidores apontam clima positivo no clube.','A coluna enxerga evolução e deseja continuidade.','Análise reconhece o mérito do treinador.','Imprensa vê time confiante e bem treinado.','Fontes ouvidas confirmam ambiente saudável.','Repórter cita equilíbrio e leitura de jogo do professor.'];
@@ -205,8 +205,8 @@ hookAround('finishRound','ext16_fr16',function(next,A){
   }catch(e){console.error('jr '+e.message)}
   return out;
 });
-const _sc16=startCareer;startCareer=function(id,coach,phil,asst){_sc16(id,coach,phil,asst);G.jr=null;jrBox();save()};
-const _tj16=takeJob;takeJob=function(){const r=_tj16.apply(this,arguments);try{jrBox().reps.forEach(x=>{x.mood*=.4});jrBox().silence=0}catch(e){}return r};
+hookAround('startCareer','sc16',function(next,__a){let [id,coach,phil,asst]=__a;next(id,coach,phil,asst);G.jr=null;jrBox();save()});
+hookAround('takeJob','tj16',function(next,__a){const r=next();try{jrBox().reps.forEach(x=>{x.mood*=.4});jrBox().silence=0}catch(e){}return r});
 Object.assign(A,{
  repopen(d){S.rep=S.rep===+d.i?-1:+d.i;render()}
 });

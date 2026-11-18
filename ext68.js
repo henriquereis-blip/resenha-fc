@@ -17,15 +17,15 @@ for(const k in CFG.real3){const c=CFG.real3[k],T=PYR[k];if(!T||T.length!==3)cont
 globalThis.pyrMig68=function(){const P=G&&G.pyr;if(!P)return;const all=pdivs(P.k);if(all.length<=P.dv.length)return;
   for(const x of all.slice(P.dv.length)){P.dv.push(x);const i=Math.min(x.t-1,4);DIVN[x.d]=x.name;RBAND[x.d]=TBAND[i].slice();DW36[x.d]=TDW[i];
     const src=PD[P.k]&&PD[P.k][x.t-1],str=Array.isArray(src)?src[x.j]:src;if(str)for(const e of pList(str).slice(0,x.c))P.L.push(stubOf(e,x.d))}};
-const _pf68=pyrFinish;pyrFinish=function(){try{pyrMig68()}catch(e){console.error('mig68 '+e.message)}return _pf68.apply(this,arguments)};
+hookAround('pyrFinish','pf68',function(next,__a){try{pyrMig68()}catch(e){console.error('mig68 '+e.message)}return next()});
 /* tabelas: esconde a divisão-reserva, a não ser que o técnico esteja nela */
-const _vl68=vLiga;vLiga=function(){
-  const P=G&&G.abroad&&G.pyr;if(!P||userDiv()<4)return _vl68();
+hookAround('vLiga','vl68',function(next,__a){
+  const P=G&&G.abroad&&G.pyr;if(!P||userDiv()<4)return next();
   try{pyrMig68()}catch(e){}
   const T=PYR[P.k]||[],ut=tierOf(userDiv()),hide=P.dv.filter(x=>T[x.t-1]&&T[x.t-1].res&&ut<x.t);
   if(S.abd&&hide.some(x=>x.d===S.abd))S.abd=userDiv();
-  let h=_vl68();
+  let h=next();
   for(const x of hide)h=h.replace(new RegExp('<button[^>]*data-a="abd" data-v="'+x.d+'"[^>]*>[^<]*</button>'),'');
   return h;
-};
+});
 })();

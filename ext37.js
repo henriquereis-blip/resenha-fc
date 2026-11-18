@@ -177,7 +177,7 @@ hookAround('finishRound','ext37_fr37',function(next,A){
   try{if(rd<40&&G.round>rd)wRound(rd)}catch(e){console.error('wRound '+e.message)}
   return out;
 });
-const _es37=endSeason;endSeason=function(){const r=_es37.apply(this,arguments);try{wEnd()}catch(e){console.error('wEnd '+e.message)}return r};
+hookAround('endSeason','es37',function(next,__a){const r=next();try{wEnd()}catch(e){console.error('wEnd '+e.message)}return r});
 hookAround('newSeason','ext37_ns37',function(next,A){try{wEnd()}catch(e){}try{xMarket37(8,'start')}catch(e){console.error('xm37 '+e.message)}const r=next();try{wNew();G.wd.s=G.season}catch(e){}return r});
 hookAfter('finishRound','ext37_fr37b',()=>{if(G.round===19)xMarket37(6,'mid')});
 
@@ -339,6 +339,6 @@ const _vc37=vComp;vComp=function(){
   return h+'</div>';
 };
 Object.assign(A,{wc(d){S.wc=d.k||null;S.ctab='mundo';render();window.scrollTo(0,0)}});
-const _ls37=loadSave;loadSave=function(){const ok=_ls37.apply(this,arguments);return ok};
+hookAround('loadSave','ls37',function(next,__a){const ok=next();return ok});
 
 try{const st=document.createElement('style');st.textContent='.cp19 .tr .tc{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}';document.head.appendChild(st)}catch(e){}

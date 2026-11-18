@@ -113,7 +113,7 @@ function nav32(){
   [first,ini,go,tat,clu].forEach(b=>nav.appendChild(b));
   if(!home)document.querySelectorAll('.backbar,.main .back,.wrap>.back').forEach(x=>x.remove());
 }
-const _rd32=render;render=function(){_rd32.apply(this,arguments);try{nav32()}catch(e){console.error('nav32 '+e.message)}};
+hookAround('render','rd32',function(next,__a){next();try{nav32()}catch(e){console.error('nav32 '+e.message)}});
 (function(){const st=document.createElement('style');st.textContent=`.nav2 .bk32{color:#ffd24a;opacity:1}.nav2 .bk32 small{color:#ffd24a}`;document.head.appendChild(st)})();
 
 /* Dança das cadeiras: histórico de demissões/contratações (as manchetes do Jornal saem rápido) */
@@ -121,5 +121,5 @@ function cadeiras32(n=8){
   const L=(G.cfx||[]).filter(x=>x.div<=1).slice(0,n);if(!L.length)return '';
   return `<div class="card"><div class="k">🔄 Dança das cadeiras · Séries A e B</div>${L.map(x=>`<div class="res"><span><b>${esc(x.club)}</b> · T${x.s} R${x.r}<br><small class="k">${esc(x.old)} saiu · ${esc(x.nw)} chegou</small></span></div>`).join('')}</div>`;
 }
-const _vj32=vJornal;vJornal=function(){const h=_vj32.apply(this,arguments);try{const c=cadeiras32();return c?h.replace(/<\/div>\s*$/,c+'</div>'):h}catch(e){return h}};
-const _vt32=vTecnicos;vTecnicos=function(){const h=_vt32.apply(this,arguments);try{const c=cadeiras32(10);return c?h.replace(/<\/div>\s*$/,c+'</div>'):h}catch(e){return h}};
+hookAround('vJornal','vj32',function(next,__a){const h=next();try{const c=cadeiras32();return c?h.replace(/<\/div>\s*$/,c+'</div>'):h}catch(e){return h}});
+hookAround('vTecnicos','vt32',function(next,__a){const h=next();try{const c=cadeiras32(10);return c?h.replace(/<\/div>\s*$/,c+'</div>'):h}catch(e){return h}});

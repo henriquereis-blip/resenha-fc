@@ -17,11 +17,11 @@ const FPOS={
 };
 FORMLIST.length=0;
 FORMLIST.push('4-4-2','4-3-3','4-2-3-1','4-1-4-1','4-3-2-1','4-2-2-2','4-4-1-1','4-1-2-1-2','3-5-2','3-4-3','3-4-2-1','3-4-1-2','5-3-2','5-4-1','5-2-3');
-const _lay13=layout;layout=function(slots,form){
-  const base=_lay13(slots,form);const f=FPOS[(form||'').replace(/ (def|Ofen\.|Alas)$/,'')];if(!f)return base;
+hookAround('layout','lay13',function(next,__a){let [slots,form]=__a;
+  const base=next(slots,form);const f=FPOS[(form||'').replace(/ (def|Ofen\.|Alas)$/,'')];if(!f)return base;
   let mi=0,ai=0;slots.forEach((s,i)=>{if(s==='MID'&&f.m&&f.m[mi])base[i]={x:f.m[mi][0],y:f.m[mi++][1]};else if(s==='ATA'&&f.a&&f.a[ai])base[i]={x:f.a[ai][0],y:f.a[ai++][1]}});
   return base;
-};
+});
 
 /* ============ ENTROSAMENTO (estilo e formação são treinados) ============ */
 const FAMBASE=75,STYLEFAM_START=72;
@@ -247,19 +247,19 @@ Object.assign(A,{
    save();render()}
 });
 /* novo clube/temporada */
-const _sc13=startCareer;startCareer=function(id,coach,phil,asst){_sc13(id,coach,phil,asst);G.trn={foc:'estilo',int:1};G.vest=null;G.tips=[];G.tipst={ok:0,bad:0,seq:1};G.psi=0;vestBox();save()};
-const _tj13=takeJob;takeJob=function(){const r=_tj13.apply(this,arguments);try{G.vest=null;G.tips=[];G.psi=0;vestBox();G.trn={foc:'estilo',int:1}}catch(e){}return r};
+hookAround('startCareer','sc13',function(next,__a){let [id,coach,phil,asst]=__a;next(id,coach,phil,asst);G.trn={foc:'estilo',int:1};G.vest=null;G.tips=[];G.tipst={ok:0,bad:0,seq:1};G.psi=0;vestBox();save()});
+hookAround('takeJob','tj13',function(next,__a){const r=next();try{G.vest=null;G.tips=[];G.psi=0;vestBox();G.trn={foc:'estilo',int:1}}catch(e){}return r});
 
 /* ============ IA: estilo coerente com filosofia + adaptação ao adversário ============ */
 const STY_BY_PHIL={Passe:'Posse','Contra-ataque':'Contra-ataque',Retranca:'Defensivo','Pressão':'Ofensivo',Pontas:'Ofensivo',Direto:'Equilibrado'};
 const AIFORMS=['4-4-2','4-4-2','4-3-3','4-3-3','4-2-3-1','4-2-3-1','4-1-4-1','3-5-2','4-3-2-1','5-3-2','3-4-2-1','4-2-2-2'];
-const _nw13=newWorld;newWorld=function(){
-  _nw13.apply(this,arguments);
+hookAround('newWorld','nw13',function(next,__a){
+  next();
   for(const c of G.clubs){c.style=Math.random()<.75?(STY_BY_PHIL[c.phil]||'Equilibrado'):pick(STYLES);c.formation=pick(AIFORMS)}
-};
-const _pr13=prepareRound;prepareRound=function(){
+});
+hookAround('prepareRound','pr13',function(next,__a){
   const prev={};for(const c of G.clubs)prev[c.id]=c.style;
-  _pr13.apply(this,arguments);
+  next();
   for(const c of G.clubs){if(c.id===G.user)continue;c.style=prev[c.id];if(G.fixtures[G.round]===undefined)continue}
   for(const [h,a] of (G.fixtures[G.round]||[])){
     for(const [me,op] of [[C(h),C(a)],[C(a),C(h)]]){if(me.id===G.user)continue;
@@ -267,4 +267,4 @@ const _pr13=prepareRound;prepareRound=function(){
       if(d>6&&Math.random()<.5)me.style=pick(['Defensivo','Contra-ataque']);
       else if(d<-6&&Math.random()<.4)me.style=pick(['Ofensivo','Posse']);
       else if(Math.random()<.06)me.style=pick(STYLES)}}
-};
+});

@@ -192,8 +192,8 @@ function pyrPlan(){
   }
   P.log=log;return plan;
 }
-const _pr44=promoRel;promoRel=function(){
-  _pr44();
+hookAround('promoRel','pr44',function(next,__a){
+  next();
   try{
     const P=G.pyr;if(!G.abroad||!P)return;
     pyrFinish();
@@ -215,7 +215,7 @@ const _pr44=promoRel;promoRel=function(){
     P.plan=null;pyrSync();
     for(const s of P.L){s.P=s.J=s.V=s.E=s.D=s.GP=s.GC=0}
   }catch(e){console.error('pr44 '+e.message)}
-};
+});
 /* o técnico sobe/cai conforme o plano (inclui média de pontos e playoffs) */
 function relPromo(d,pos){
   if(G.abroad&&d>=4&&G.pyr){const x=pdiv(d);if(x){
@@ -226,19 +226,19 @@ function relPromo(d,pos){
   return {rel:d<3&&pos>=17,promo:d>0&&pos<=4};
 }
 /* nada de copas/continentais de fora criando clubes id>=100 enquanto o técnico está no exterior */
-const _ci44=contInit;contInit=function(){if(G&&G.abroad)return;return _ci44.apply(this,arguments)};
+hookAround('contInit','ci44',function(next,__a){if(G&&G.abroad)return;return next()});
 hookAround('finishRound','ext44_fr44',function(next,A){const rd=G.round;const r=next();try{liteRounds(rd)}catch(e){console.error('lr44 '+e.message)}return r});
-const _es44=endSeason;endSeason=function(){try{pyrFinish()}catch(e){console.error('pf44 '+e.message)}const r=_es44.apply(this,arguments);try{const c=userClub(),ls=(G.pyr&&G.pyr.log||[]).filter(l=>l.includes(c.name));if(ls.length&&G.summary)G.summary.txt+=' Playoffs: '+ls.join(' | ')+'.'}catch(e){}return r};
+hookAround('endSeason','es44',function(next,__a){try{pyrFinish()}catch(e){console.error('pf44 '+e.message)}const r=next();try{const c=userClub(),ls=(G.pyr&&G.pyr.log||[]).filter(l=>l.includes(c.name));if(ls.length&&G.summary)G.summary.txt+=' Playoffs: '+ls.join(' | ')+'.'}catch(e){}return r});
 
 /* Tabelas: seletor de divisões do país + zonas de acesso e rebaixamento */
 let _vd44=null;
-const _tr44=tableRows;tableRows=function(div){return _tr44(div===undefined&&_vd44!=null?_vd44:div)};
-const _vl44=vLiga;vLiga=function(){
+hookAround('tableRows','tr44',function(next,__a){let [div]=__a;return next(div===undefined&&_vd44!=null?_vd44:div)});
+hookAround('vLiga','vl44',function(next,__a){
   const ab=G.abroad&&G.pyr&&userDiv()>=4;
-  if(!ab)return _vl44();
+  if(!ab)return next();
   const P=G.pyr,k=P.k,vd=S.abd&&pdiv(S.abd)?S.abd:userDiv(),x=pdiv(vd);
   const lite=!G.clubs.some(c=>c.div===vd&&!c.stub);
-  _vd44=vd;let h;try{h=_vl44()}finally{_vd44=null}
+  _vd44=vd;let h;try{h=next()}finally{_vd44=null}
   if(lite){/* divisão leve: monta a tabela a partir dos dados leves */
     const rows=allRows(vd);
     const tb=S.lig==='tabela'?`<div class="tbl"><div class="tr hd"><span>#</span><span class="tc">Clube</span><span>J</span><span>V</span><span>SG</span><span>P</span></div>${rows.map((c,i)=>`<div class="tr"><span>${i+1}</span><span class="tc">${crest(c,20)}${esc(c.n)}</span><span>${c.J}</span><span>${c.V}</span><span>${c.GP-c.GC}</span><b>${c.P}</b></div>`).join('')}</div><p class="foot"></p>`:'<p class="news">Divisão leve: só a classificação é detalhada. Os jogos dela são simulados em segundo plano.</p>';
@@ -254,7 +254,7 @@ const _vl44=vLiga;vLiga=function(){
   }
   const tabs=P.dv.length>1?`<div class="seg sm scroll">${P.dv.map(v=>`<button class="${vd===v.d?'on':''}" data-a="abd" data-v="${v.d}">${esc(v.t>1||v.g>1?v.name:'1ª divisão')}</button>`).join('')}</div>`:'';
   return h.replace(/(<div class="seg sm scroll">)/,tabs+'$1');
-};
+});
 Object.assign(A,{abd(d){S.abd=+d.v;render()}});
 /* economia de save: histórico de carreira só com temporadas jogadas e limitado às 6 últimas */
 hookAfter('newSeason','ext44_ns45',()=>{for(const p of Object.values(G.players)){if(p.car&&p.car.length)p.car=p.car.filter(x=>x.J>0||p.club===G.user).slice(-6)}});

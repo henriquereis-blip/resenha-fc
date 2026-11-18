@@ -48,4 +48,4 @@ function menu46(){
 }
 Object.assign(A,{m46(){const p=document.getElementById('p46');if(!p)return;
   if(p.hidden){const hd=document.querySelector('.top2');p.style.top=Math.round((hd?hd.getBoundingClientRect().bottom:60))+'px';p.hidden=false}else p.hidden=true}});
-const _rd46=render;render=function(){_rd46.apply(this,arguments);if(G&&G.phase!=='start'&&!S.match)menu46()};
+hookAround('render','rd46',function(next,__a){next();if(G&&G.phase!=='start'&&!S.match)menu46()});

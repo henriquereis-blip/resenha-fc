@@ -9,8 +9,8 @@ function real73(name){
 }
 globalThis.real73=real73;
 /* 1) clube estrangeiro completo (carreira lá): troca o elenco gerado pelo real */
-const _mk73=mkNat42;mkNat42=function(){
-  const c=_mk73.apply(this,arguments);
+hookAround('mkNat42','mk73',function(next,__a){
+  const c=next();
   try{const R=real73(c.name);if(R){
     const gen=c.squad.map(id=>G.players[id]).filter(Boolean),used=new Set();
     for(const r of R){
@@ -21,13 +21,13 @@ const _mk73=mkNat42;mkNat42=function(){
       try{NATF[r.n]=r.nat}catch(e){}NMS.add(r.n)}
     autoPick(c)}
   }catch(e){console.error('real73 '+e.message)}
-  return c};
+  return c});
 /* 2) Times > Internacionais: elenco real quando existir */
 const _ws73=globalThis.wSquad69;
 if(typeof _ws73==='function'){}
 /* 3) mercado mundial: jogadores reais dos clubes com dados */
-const _wm73=wmRefresh;wmRefresh=function(){
-  _wm73.apply(this,arguments);
+hookAround('wmRefresh','wm73',function(next,__a){
+  next();
   try{const W=wd(),used=new Set();
     W.mk.l=W.mk.l.map(it=>{const R=real73(it.club);if(!R)return it;
       const cand=R.filter(r=>r.role!=='GOL'||it.role==='GOL').filter(r=>!used.has(r.n)).sort((a,b)=>Math.abs(a.ovr-it.ovr)-Math.abs(b.ovr-it.ovr));
@@ -35,5 +35,5 @@ const _wm73=wmRefresh;wmRefresh=function(){
       const fee=+(valueOf({ovr:r.ovr,age:r.age})*rnd(1.0,1.3)).toFixed(1);
       try{NATF[r.n]=r.nat}catch(e){}
       return Object.assign({},it,{n:r.n,role:r.role,ovr:r.ovr,age:r.age,nat:r.nat,fee})}).sort((a,b)=>b.ovr-a.ovr)}catch(e){console.error('wm73 '+e.message)}
-};
+});
 })();

@@ -87,14 +87,14 @@ function sbCard(ingame){
   if(!sbOk())return `<div class="card">${t}<p class="news">Saves na nuvem funcionam na versão do site: <b>henriquereis-blip.github.io/resenha-fc</b>. Abre por lá.</p></div>`;
   if(!SB.ses)return `<div class="card">${t}${sbLogin()}</div>`;
   return `<div class="card">${t}<p class="news">${esc(SB.msg)||'Seus jogos guardados online.'}</p>${sbSlots(ingame)}<button class="btn sm ghost" data-a="sbout">Sair da conta</button></div>`}
-const _vo45=vOpcoes;vOpcoes=function(){
-  return _vo45.apply(this,arguments).replace('<div class="card"><div class="k">Salvar jogo</div>',sbCard(true)+'<div class="card"><div class="k">Salvar jogo</div>')};
-const _vsv45=vSaves;vSaves=function(){return _vsv45.apply(this,arguments).replace('<p class="foot keep">',sbCard(false)+'<p class="foot keep">').replace(/(<p class="foot">Dentro do jogo)/,sbCard(false)+'$1')};
-const _vt45=vTitle;vTitle=function(){
-  let h=_vt45.apply(this,arguments);
+hookAround('vOpcoes','vo45',function(next,__a){
+  return next().replace('<div class="card"><div class="k">Salvar jogo</div>',sbCard(true)+'<div class="card"><div class="k">Salvar jogo</div>')});
+hookAround('vSaves','vsv45',function(next,__a){return next().replace('<p class="foot keep">',sbCard(false)+'<p class="foot keep">').replace(/(<p class="foot">Dentro do jogo)/,sbCard(false)+'$1')});
+hookAround('vTitle','vt45',function(next,__a){
+  let h=next();
   const n=(SB.list||[]).length,sub=!sbOk()?'Disponível na versão do site':SB.ses?(SB.listOk?(n?n+' save'+(n>1?'s':'')+' na nuvem · '+esc(SB.ses.email||''):'Nenhum save na nuvem ainda'):'Buscando…'):'Entre pra guardar seus saves online';
   if(SB.ses&&!SB.listOk&&!SB.tried){SB.tried=1;sbList()}
-  return h.replace('<p class="foot">','<button class="mb20" data-a="step" data-v="saves"><span class="ic">☁️</span><span><b>Saves na nuvem</b><small>'+sub+'</small></span></button><p class="foot">')};
+  return h.replace('<p class="foot">','<button class="mb20" data-a="step" data-v="saves"><span class="ic">☁️</span><span><b>Saves na nuvem</b><small>'+sub+'</small></span></button><p class="foot">')});
 /* autosave na nuvem: a cada 3 rodadas e ao sair do app (só logado) */
 hookAfter('finishRound','ext45_fr45',()=>{if(SB.ses&&!sbOk()&&G.round>0&&G.round%3===0&&Date.now()-SB.last>20000)sbPush(0,true)});
 document.addEventListener('visibilitychange',()=>{try{if(document.hidden&&SB.ses&&G&&G.phase!=='start'&&!S.match&&Date.now()-SB.last>20000)sbPush(0,true)}catch(e){}});

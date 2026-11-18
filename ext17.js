@@ -20,9 +20,9 @@ function winInfo(){
   const nx=WINS.find(([a])=>a>G.round);return {open:false,left:nx?nx[0]-G.round:NR()-G.round,txt:'Janela fechada · '+(nx?'abre em '+(nx[0]-G.round)+' rodada(s)':'abre ao fim da temporada')};
 }
 const CLOSED='Janela fechada. Só dá para contratar jogador livre agora.';
-const _go17=genOffer;genOffer=function(){if(!winOpen())return;return _go17()};
-const _so17w=sellPlayer;sellPlayer=function(id){if(!winOpen())return CLOSED;const o=G.offers.find(q=>q.id===id);const r=_so17w(id);if(!r&&o){const p=P(o.pid),ag=+(o.fee*agentPct(p)*.8).toFixed(2);G.fin.caixa=+(G.fin.caixa-ag).toFixed(2);addNews('O empresário de '+lastName(p.name)+' levou '+mi(ag)+' da venda.')}return r};
-if(typeof loanIn==='function'){const _li=loanIn;loanIn=function(pid){if(!winOpen())return CLOSED;return _li(pid)};const _lo=loanOut;loanOut=function(pid,i){if(!winOpen())return CLOSED;return _lo(pid,i)}}
+hookAround('genOffer','go17',function(next,__a){if(!winOpen())return;return next()});
+hookAround('sellPlayer','so17w',function(next,__a){let [id]=__a;if(!winOpen())return CLOSED;const o=G.offers.find(q=>q.id===id);const r=next(id);if(!r&&o){const p=P(o.pid),ag=+(o.fee*agentPct(p)*.8).toFixed(2);G.fin.caixa=+(G.fin.caixa-ag).toFixed(2);addNews('O empresário de '+lastName(p.name)+' levou '+mi(ag)+' da venda.')}return r});
+if(typeof loanIn==='function'){hookAround('loanIn','li',function(next,__a){let [pid]=__a;if(!winOpen())return CLOSED;return next(pid)});hookAround('loanOut','lo',function(next,__a){let [pid,i]=__a;if(!winOpen())return CLOSED;return next(pid,i)});}
 
 /* ---------- valor de mercado: potencial pesa nos jovens ---------- */
 const _vo17=valueOf;valueOf=function(p){
@@ -72,7 +72,7 @@ function negWage(){
   if(r.ok){p.wage=n.wage;G.fin.caixa=+(G.fin.caixa-lu-ag).toFixed(2);S.modal=null;S.neg=null;S.prof=null;toast(lastName(p.name)+' assinou: '+mi(n.wage)+'/ano, luvas '+mi(lu)+' e empresário levou '+mi(ag)+'.')}
   else{S.modal=null;S.neg=null;toast(r.msg)}
 }
-const _mb17=makeBid;makeBid=function(pid,fee){if(G._force)return _mb17(pid,fee);if(!winOpen())return {ok:false,msg:CLOSED};return _mb17(pid,fee)};
+hookAround('makeBid','mb17',function(next,__a){let [pid,fee]=__a;if(G._force)return next(pid,fee);if(!winOpen())return {ok:false,msg:CLOSED};return next(pid,fee)});
 
 /* aumento pedido por jogador que evoluiu */
 function wageTick(){
@@ -143,8 +143,8 @@ hookAfter('newSeason','ext17_ns17',function(r,A){
     stPool();
   }catch(e){}
   });
-const _sc17=startCareer;startCareer=function(){_sc17.apply(this,arguments);G.wb=undefined;G.st17=null;G.raises=[];G.nlock={};G._wo=undefined;save()};
-const _tj17=takeJob;takeJob=function(){const r=_tj17.apply(this,arguments);G.wb=undefined;G.st17=null;G.raises=[];G.nlock={};return r};
+hookAround('startCareer','sc17',function(next,__a){next();G.wb=undefined;G.st17=null;G.raises=[];G.nlock={};G._wo=undefined;save()});
+hookAround('takeJob','tj17',function(next,__a){const r=next();G.wb=undefined;G.st17=null;G.raises=[];G.nlock={};return r});
 Object.assign(A,{
   negclose(){S.modal=null;S.neg=null;render()},
  negfee(){negFee();render()},

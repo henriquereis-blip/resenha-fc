@@ -56,7 +56,7 @@ const _bg62=A.begin;A.begin=function(){
   return r};
 hookAfter('finishRound','ext62_fr62',()=>{if(G.mplId!=null)mplStash()});
 /* botão flutuante pra trocar de primo */
-const _rd62=render;render=function(){_rd62.apply(this,arguments);
+hookAround('render','rd62',function(next,__a){next();
   try{let b=document.getElementById('mplsw62');
     const on=G&&G.mplId!=null&&G.phase!=='start'&&!S.match;
     if(!on){if(b)b.remove();return}
@@ -64,4 +64,4 @@ const _rd62=render;render=function(){_rd62.apply(this,arguments);
       b.style.cssText='position:fixed;left:8px;bottom:calc(8px + env(safe-area-inset-bottom,0px));z-index:50;padding:6px 10px;border-radius:16px;border:1px solid var(--bd,#8884);background:var(--card,#222);color:var(--fg,#fff);font-size:12px;opacity:.92';
       document.body.appendChild(b)}
     b.textContent='👥 '+(G.mplNick||'primo')+' · trocar'}catch(e){}
-};
+});

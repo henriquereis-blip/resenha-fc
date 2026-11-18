@@ -124,7 +124,7 @@ function qual52(I){
   return (E.slice(0,9).includes(u)||W.slice(0,9).includes(u))?rows:null;
 }
 /* partida do técnico no lugar da rodada */
-const _ex52=extraSync;extraSync=function(){
+hookAround('extraSync','ex52',function(next,__a){
   try{
     const po=G&&G.po51;
     if(po&&po.pend&&G.phase==='play'&&G.user!=null&&!G._lg&&G.round<NR()){
@@ -138,8 +138,8 @@ const _ex52=extraSync;extraSync=function(){
       }
     }
   }catch(e){console.error('extraSync52 '+e.message)}
-  return _ex52.apply(this,arguments);
-};
+  return next();
+});
 /* fim da partida do playoff */
 function finishPo51(){
   const po=G.po51,x=G._x,um=R.ms[R.ui],us=userSide(um),c=userClub();
@@ -231,22 +231,22 @@ function chal52(){
     let ch=x.pl[0];
     if(x.pl.length>1){const f=P.forced&&P.forced.ids.length===x.pl.length&&x.pl.every(r=>P.forced.ids.includes(r.id))?P.forced:null;
       if(f)ch=x.pl.find(r=>r.id===f.w);
-      else{const lg=[];ch=_br52(x.pl,lg);P.forced={w:ch.id,ids:x.pl.map(r=>r.id),txt:lg.join(' · ')}}}
+      else{const lg=[];ch=bracket(x.pl,lg);P.forced={w:ch.id,ids:x.pl.map(r=>r.id),txt:lg.join(' · ')}}}
     if(x.def!==c&&ch!==c){P.repS=G.season;return null}
     return po51Init(I,'ac',x.up.n+' x '+x.lo.n+' · repescagem',false,[x.def,ch],false,true);
   }
   return null;
 }
-const _tie52=tie;tie=function(A,B,seed){
+hookAround('tie','tie52',function(next,__a){let [A,B,seed]=__a;
   const f=G.pyr&&G.pyr.forced2;
   if(f&&A&&B&&A.id===f.def&&B.id===f.ch&&A.name&&B.name){const w=f.w===A.id?A:B,l=w===A?B:A;G.pyr.forced2=null;return [w,l,f.gW,f.gL]}
-  return _tie52.apply(this,arguments);
-};
-const _br52=bracket;bracket=function(list,log){
+  return next();
+});
+hookAround('bracket','br52',function(next,__a){let [list,log]=__a;
   const f=G.pyr&&G.pyr.forced;
   if(f&&f.ids.length===list.length&&list.every(r=>r.name&&f.ids.includes(r.id))){const w=list.find(r=>r.id===f.w);log.push(f.txt);G.pyr.forced=null;return w}
-  return _br52(list,log);
-};
+  return next(list,log);
+});
 hookAfter('finishRound','ext52_fr52b',function(out,A){
   try{
     if(out==='seasonEnd'&&!G.po51&&G.pyr&&G.pyr.planS!==G.season&&(G.pyr.accS!==G.season||G.pyr.repS!==G.season)){

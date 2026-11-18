@@ -1,34 +1,55 @@
-# converte wrappers empilhados (const _x=fn;fn=function(params){...}) em hookAround/hookAfter/hookBefore. Preserva ordem.
-import re,glob,sys
+# converte wrappers empilhados (const _x=fn;fn=function(params){...}) em hookAround. Preserva ordem; confere sintaxe e tenta wrapper a wrapper.
+import re,glob,subprocess,tempfile,os
 SKIP=set('stepMinute power salOf ex valueOf P C clamp mi'.split())
-files=[f for f in sorted(glob.glob('ext*.js'))]
 decl=set()
 for f in glob.glob('*.js'):
     if re.match(r'(data|logic|ext\d*|ui\d*)\.js$',f):
         decl|=set(re.findall(r'(?:^|\n)function (\w+)\(',open(f,encoding='utf-8').read()))
-tot=0;skipped=[]
 pat=re.compile(r'const (_\w+)=(\w+);\2=function\(([^)]*)\)\{')
-for f in files:
-    s=open(f,encoding='utf-8').read();out=[];pos=0;ch=False
+def syntax_ok(txt):
+    fd,p=tempfile.mkstemp(suffix='.js');os.write(fd,txt.encode());os.close(fd)
+    r=subprocess.run(['node','--check',p],capture_output=True);os.unlink(p);return r.returncode==0
+def match_end(s,i):
+    d=1;prev=''
+    while d and i<len(s):
+        c=s[i]
+        if c=='/' and s[i+1:i+2]=='/':
+            i=s.find('\n',i);i=len(s) if i<0 else i;continue
+        if c=='/' and s[i+1:i+2]=='*':
+            i=s.find('*/',i+2)+2;continue
+        if c=='/' and prev in '(,=:[!&|?{};\n' :
+            i+=1
+            while i<len(s) and s[i]!='/' :
+                if s[i]=='\\':i+=1
+                elif s[i]=='[':
+                    while s[i]!=']':
+                        if s[i]=='\\':i+=1
+                        i+=1
+                i+=1
+            i+=1;prev='x';continue
+        if c in '\'"`':
+            q=c;i+=1
+            while i<len(s) and s[i]!=q:
+                if s[i]=='\\':i+=1
+                i+=1
+            i+=1;prev='x';continue
+        if c=='{':d+=1
+        elif c=='}':d-=1
+        if not c.isspace():prev=c
+        i+=1
+    return i
+def convert(s,allowed):
+    out=[];pos=0;idx=-1;conv=[];skipped=[]
     while True:
         m=pat.search(s,pos)
         if not m:out.append(s[pos:]);break
+        idx+=1
         var,fn,pr=m.group(1),m.group(2),m.group(3).strip()
-        i=m.end();d=1
-        while d and i<len(s):
-            c=s[i]
-            if c=='{':d+=1
-            elif c=='}':d-=1
-            elif c in '\'"`':
-                q=c;i+=1
-                while i<len(s) and s[i]!=q:
-                    if s[i]=='\\':i+=1
-                    i+=1
-            i+=1
-        body=s[m.end():i-1];end=i
+        i=match_end(s,m.end());body=s[m.end():i-1];end=i
         if s[end:end+1]==';':end+=1
-        calls=re.findall(re.escape(var)+r'(?:\.apply\([^()]*\)|\.call\([^()]*\)|\([^()]*\))?',body)
-        ok=fn in decl and fn not in SKIP and body.count(var)==len(re.findall(re.escape(var)+r'(?:\.apply\((?:this|null),[^()]*\)|\([^()]*\))',body)) and len(calls)>=1 and '...' not in pr and 'const a=arguments' not in body and not re.search(r'\b_?%s\b(?!\s*\()'%re.escape(var),re.sub(re.escape(var)+r'(?:\.apply\([^()]*\)|\([^()]*\))','',body))
+        callre=re.escape(var)+r'(?:\.apply\((?:this|null),[^()]*\)|\([^()]*\))'
+        n_all=len(re.findall(re.escape(var)+r'\b',body))
+        ok=(allowed is None or idx in allowed) and fn in decl and fn not in SKIP and n_all>=1 and n_all==len(re.findall(callre,body)) and '...' not in pr and 'const a=arguments' not in body
         if ok:
             def rep(mm):
                 t=mm.group(0)
@@ -37,15 +58,29 @@ for f in files:
                     x=am.group(1).strip()
                     return 'next()' if x=='arguments' else 'next(...%s)'%x
                 return 'next(%s)'%t[len(var)+1:-1]
-            inner=re.sub(re.escape(var)+r'(?:\.apply\((?:this|null),[^()]*\)|\([^()]*\))',rep,body)
-            inner=re.sub(r'\barguments\b','A',inner)
-            pre=('let [%s]=A;'%pr) if pr else ''
-            lab=f[:-3]+'_'+var.lstrip('_')
-            out.append(s[pos:m.start()]+"hookAround('%s','%s',function(next,A){%s%s});"%(fn,lab,pre,inner))
-            tot+=1;ch=True
+            inner=re.sub(callre,rep,body)
+            inner=re.sub(r'\barguments\b','__a',inner)
+            pre=('let [%s]=__a;'%pr) if pr else ''
+            lab=var.lstrip('_')
+            out.append(s[pos:m.start()]+"hookAround('%s','%s',function(next,__a){%s%s});"%(fn,lab,pre,inner))
+            conv.append(idx)
         else:
-            skipped.append((f,var,fn));out.append(s[pos:end])
+            skipped.append((idx,var,fn));out.append(s[pos:end])
         pos=end
-    if ch:open(f,'w',encoding='utf-8').write(''.join(out))
-print('convertidos',tot,'pulados',len(skipped))
-for x in skipped:print(' ',x)
+    return ''.join(out),conv,skipped
+tot=0;allskip=[]
+for f in sorted(glob.glob('ext*.js')):
+    s=open(f,encoding='utf-8').read()
+    new,conv,sk=convert(s,None)
+    if not conv:allskip+= [(f,)+x for x in sk];continue
+    if not syntax_ok(new):
+        acc=set()
+        for k in conv:
+            t,c2,_=convert(s,acc|{k})
+            if syntax_ok(t):acc.add(k)
+        new,conv,sk=convert(s,acc)
+    if conv:
+        open(f,'w',encoding='utf-8').write(new);tot+=len(conv)
+    allskip+=[(f,)+x for x in sk]
+print('convertidos',tot,'pulados',len(allskip))
+for x in allskip:print(' ',x[0],x[2],x[3])

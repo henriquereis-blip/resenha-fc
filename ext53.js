@@ -30,7 +30,7 @@ function ncAdvance(nc,userRes){
   return res;
 }
 function ncRest(nc){for(let g=0;g<8&&!nc.champ;g++)ncAdvance(nc,null)}
-const _ex53=extraSync;extraSync=function(){
+hookAround('extraSync','ex53',function(next,__a){
   try{
     if(G&&G.abroad&&G.user!=null&&G.phase==='play'&&!G._lg&&G.round<NR()&&!(G.po51&&G.po51.pend)){
       for(const [key,tab] of [['nc',NCUP],['nc2',NCUP2]]){
@@ -44,8 +44,8 @@ const _ex53=extraSync;extraSync=function(){
       }
     }
   }catch(e){console.error('extraSync53 '+e.message)}
-  return _ex53.apply(this,arguments);
-};
+  return next();
+});
 function finishNc(){
   const x=G._x,nc=G[x.key||'nc'],um=R.ms[R.ui],us=userSide(um),c=userClub();
   const gf=us==='h'?um.hg:um.ag,ga=us==='h'?um.ag:um.hg;

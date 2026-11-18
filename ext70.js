@@ -40,31 +40,31 @@ const cardHtml=(l,max)=>l.slice(0,max).map(a=>`<div class="tip"><p>${a.ic} ${esc
 Object.assign(A,{auxform(d){const c=userClub();if(!FORMS[d.f])return;c.formation=d.f;autoPick(c);save();toast('Formação trocada pra '+d.f);render()}});
 
 /* Início: até 3 avisos do auxiliar */
-const _vi70=vInicio;vInicio=function(){
-  let h=_vi70.apply(this,arguments);
+hookAround('vInicio','vi70',function(next,__a){
+  let h=next();
   try{const l=staffAlerts();if(l.length){const nm=G.asst?G.asst.name:'Auxiliar';
     const card=`<div class="card x9"><div class="k">🧢 ${esc(nm)} avisa</div>${cardHtml(l,3)}${l.length>3?`<button class="btn sm ghost" data-a="nav" data-v="assist">Ver todos os avisos (${l.length})</button>`:''}</div>`;
     h=h.replace('<div class="hl">',m=>m+card)}}catch(e){}
   return h;
-};
+});
 
 /* tela do Auxiliar: sem dado; avisos fixos no topo + dicas do dia a dia */
 const clean=h=>String(h).replace(/🎲 ?\d+[+\-−]?\d* vs \d+:? ?/g,'').replace(/<small class="k" style="align-self:center">[^<]*<\/small>/g,'').replace(/🎲 ?/g,'').replace(/>Tentar</g,'>Aplicar<')
   .replace(/<p class="news">Seguir a dica é rolar[^<]*<\/p>/,'<p class="news">O auxiliar aponta o que ele viu. Quem decide é você: aplicar a dica ou ignorar.</p>');
-const _va70=vAssist;vAssist=function(){
-  let h=clean(_va70.apply(this,arguments));
+hookAround('vAssist','va70',function(next,__a){
+  let h=clean(next());
   try{const l=staffAlerts();if(l.length)h=h.replace(/(<h2>[^<]*<\/h2>)/,'$1<div class="card x9"><div class="k">Pendências da comissão</div>'+cardHtml(l,8)+'</div>')}catch(e){}
   return h;
-};
-if(typeof vVest==='function'){const _vv70=vVest;vVest=function(){return clean(_vv70.apply(this,arguments))}}
+});
+if(typeof vVest==='function'){hookAround('vVest','vv70',function(next,__a){return clean(next())});}
 /* mensagens de resultado sem o rastro do dado */
 const _t70=toast;toast=function(t){return _t70(String(t).replace(/🎲 ?\d+[+\-−]?\d* vs \d+:? ?/,''))};
 const _tg70=A.tipgo;A.tipgo=function(d){const r=_tg70.apply(this,arguments);try{for(const t of G.tips)if(t.res)t.res=t.res.replace(/🎲 ?\d+[+\-−]?\d* vs \d+:? ?/,'')}catch(e){}return r};
 
 /* selo no ícone do Auxiliar: dicas novas + avisos */
-const _r70=render;render=function(){
-  _r70.apply(this,arguments);
+hookAround('render','r70',function(next,__a){
+  next();
   try{const n=staffAlerts().length;const b=document.querySelector('.ic [data-v="assist"]');
     if(b&&n){let s=b.querySelector('.badge13');if(!s){s=document.createElement('span');s.className='badge13';b.appendChild(s)}s.textContent=String((G.tips||[]).filter(t=>t.state==='new').length+n)}}catch(e){}
-};
+});
 })();

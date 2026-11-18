@@ -12,13 +12,13 @@ function macroPen(p,slot){
   return ((T[p.pos]||{})[slot])||.65;
 }
 /* automações: só improvisa fora de posição se não houver ninguém da função */
-const _ss29=slotScore;slotScore=function(p,slot,phil,w){
-  let s=_ss29.apply(this,arguments);
+hookAround('slotScore','ss29',function(next,__a){let [p,slot,phil,w]=__a;
+  let s=next();
   if(slot&&p.pos!==slot&&G&&G._hard)s-=400;
   return s;
-};
-const _ap29=autoPick;autoPick=function(c){G._hard=true;try{return _ap29.apply(this,arguments)}finally{G._hard=false}};
-const _fl29=fixLineup;fixLineup=function(c){G._hard=true;try{return _fl29.apply(this,arguments)}finally{G._hard=false}};
+});
+hookAround('autoPick','ap29',function(next,__a){let [c]=__a;G._hard=true;try{return next()}finally{G._hard=false}});
+hookAround('fixLineup','fl29',function(next,__a){let [c]=__a;G._hard=true;try{return next()}finally{G._hard=false}});
 
 /* ---- clicar no meu jogo na rodada ao vivo = pausa + tática ---- */
 const _mf29=A.mfocus;A.mfocus=function(d){
@@ -28,7 +28,7 @@ const _mf29=A.mfocus;A.mfocus=function(d){
 
 /* ---- save na nuvem (db privado por usuário) ---- */
 const CL={db:null,id:null,ok:false,tm:null,last:0,at:0,busy:false,err:'',n:0};
-const _save29=save;save=function(){try{if(G&&G.v===2)G._t=Date.now()}catch(e){}_save29();cloudSched()};
+hookAround('save','save29',function(next,__a){try{if(G&&G.v===2)G._t=Date.now()}catch(e){}next();cloudSched()});
 async function gz29(str){
   if(typeof CompressionStream==='undefined')return {z:0,s:str};
   const cs=new CompressionStream('gzip');const w=cs.writable.getWriter();w.write(new TextEncoder().encode(str));w.close();
@@ -77,17 +77,17 @@ setTimeout(cloudInit,600);
 hookAfter('finishRound','ext29_fr29',function(r,A){
   try{if(G.round>0&&G.round%3===0){save();const raw=SKV.getItem(SAVE_KEY);if(raw)SKV.setItem(slotKey(4),raw);cloudSave(true)}else save()}catch(e){}
   });
-const _sm29=startMatch;startMatch=function(){try{save()}catch(e){}return _sm29.apply(this,arguments)};
+hookAround('startMatch','sm29',function(next,__a){try{save()}catch(e){}return next()});
 document.addEventListener('visibilitychange',()=>{try{if(document.hidden&&G&&G.phase!=='start'&&!S.match){save();cloudSave(true)}}catch(e){}});
 window.addEventListener('pagehide',()=>{try{if(G&&G.phase!=='start'&&!S.match)save()}catch(e){}});
-const _sr29=slotRow;slotRow=function(i){let h=_sr29.apply(this,arguments);return i===4?h.replace('Slot 4','Auto · a cada 3 partidas'):h};
-const _vs29=vSaves;vSaves=function(){return _vs29.apply(this,arguments).replace('<p class="foot keep">',slotRow(4)+'<p class="foot keep">')};
-const _vo29=vOpcoes;vOpcoes=function(){
-  let h=_vo29.apply(this,arguments);
+hookAround('slotRow','sr29',function(next,__a){let [i]=__a;let h=next();return i===4?h.replace('Slot 4','Auto · a cada 3 partidas'):h});
+hookAround('vSaves','vs29',function(next,__a){return next().replace('<p class="foot keep">',slotRow(4)+'<p class="foot keep">')});
+hookAround('vOpcoes','vo29',function(next,__a){
+  let h=next();
   const st=CL.ok?(CL.at?'último backup há '+Math.max(1,Math.round((Date.now()-CL.at)/60000))+' min':'ativo — salva sozinho a cada rodada'):'indisponível neste app (usando só o armazenamento do aparelho)';
   const card=`<div class="card"><div class="k">☁️ Backup na nuvem</div><p class="news">Se o app do celular apagar o jogo, ele volta da nuvem. Autosave a cada 3 partidas. Status: ${st}.${CL.err?' ('+esc(CL.err)+')':''}</p><button class="btn sm" data-a="cloudnow">Salvar agora</button> <button class="btn sm ghost" data-a="cloudload">Restaurar da nuvem</button></div>`;
   return h.replace('<div class="card"><div class="k">Salvar jogo</div>',card+'<div class="card"><div class="k">Salvar jogo</div>');
-};
+});
 
 /* ---- Diretor de futebol (NPC fixo) ---- */
 const DIRN=['Seu Waldemar','Ademir Lopes','Jorge Pimentel','Nelson Calixto','Valdir Moura','Osmar Teixeira','Cláudio Ferrão','Gilberto Sá'];

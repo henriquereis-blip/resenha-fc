@@ -69,14 +69,14 @@ function derbyCheck(){
   if(my>th)paperLine('Clássico é do '+c.name+'! '+my+' x '+th+' no '+o.name,'Torcida em festa depois do clássico.');else if(my<th)paperLine('Clássico dói: '+o.name+' vence o '+c.name+' por '+th+' x '+my,'Pressão cresce sobre o técnico.');
   mail('derby','🔥 '+t+' ('+res+')','Clássico é clássico: '+res+' mexe com a torcida ('+(hum>0?'+':'')+hum+' de humor) e com a diretoria.\nRetrospecto na sua passagem contra o '+o.name+': '+r.w+'V '+r.e+'E '+r.l+'D, gols '+r.gf+':'+r.ga+'.',[],'');
 }
-const _vh30=vHistoria;vHistoria=function(){
-  let h=_vh30.apply(this,arguments);
+hookAround('vHistoria','vh30',function(next,__a){
+  let h=next();
   try{const c=userClub(),rs=(typeof RIVAL!=='undefined'&&RIVAL[c.sig]||[]).map(s=>G.clubs.find(x=>x.sig===s)).filter(Boolean);
     const b=rivBox();
     const card=`<section class="sec card"><h3>🔥 Clássicos<small>rivais do ${esc(c.name)}</small></h3>${rs.length?rs.map(x=>{const r=b[x.sig];return `<div class="res"><span>${esc(x.name)}</span><b>${r?r.w+'V '+r.e+'E '+r.l+'D · '+r.gf+':'+r.ga:'sem jogos'}</b></div>`}).join(''):'<p class="news">Sem rival histórico definido.</p>'}<p class="foot keep">Vencer o rival anima a torcida e a diretoria; perder dói em dobro. Contratar do rival é mais difícil e técnico que vem do rival é mal visto.</p></section>`;
     h=h.replace(/<\/div>\s*$/,card+'</div>')}catch(e){console.error('vh30 '+e.message)}
   return h;
-};
+});
 
 /* --- presidentes com história e promessas --- */
 function presBox(){ex();ensureEl();if(!G.pH)G.pH=[];return G.pH}
@@ -108,25 +108,25 @@ function presCheck(){
     if((sty==='austero'||sty==='base')&&my<0)G.board.conf=clamp(G.board.conf+1,0,100);
     if(sty==='investidor'&&my===0)G.board.conf=clamp(G.board.conf-1,0,100)}
 }
-const _vd30=vDir;vDir=function(){
-  let h=_vd30.apply(this,arguments);
+hookAround('vDir','vd30',function(next,__a){
+  let h=next();
   try{const H=presBox();
     const card=`<section class="sec card"><h3>🏛️ Presidentes<small>história no clube</small></h3>${H.length?H.slice(0,8).map(x=>`<div class="res"><span>${esc(x.name)} <small class="k">${esc(x.pf)} · ${esc(x.club)} · T${x.s}${x.e?'–T'+x.e:''}</small></span><b>${x.pr?(x.pr.done?'✅':'⏳')+' '+({verba:'verba',estadio:'estádio',base:'base'})[x.pr.t]:''}</b></div>`).join(''):'<p class="news">Sem histórico ainda.</p>'}<p class="foot keep">Cada presidente chega com perfil e uma promessa. Se a confiança na diretoria estiver abaixo de 40 quando a promessa vencer, ela quebra.</p></section>`;
     h=h.replace('<div class="row2"><button class="btn ghost big" data-a="paper">',card+'<div class="row2"><button class="btn ghost big" data-a="paper">')}catch(e){console.error('vd30 '+e.message)}
   return h;
-};
+});
 
 /* --- ganchos --- */
 hookAfter('finishRound','ext30_fr30',function(r,A){
   try{ex();derbyCheck();presCheck();if(G.jobq&&(G.round>=G.jobq.at||G.round>=NR()))jobResolve()}catch(e){console.error('fr30 '+e.message)}
   });
-const _sc30=startCareer;startCareer=function(){const r=_sc30.apply(this,arguments);try{presCheck()}catch(e){}return r};
-const _tj30=takeJob;takeJob=function(){const r=_tj30.apply(this,arguments);try{G.jobq=null;presCheck()}catch(e){}return r};
-const _vm30=vModal;vModal=function(){
+hookAround('startCareer','sc30',function(next,__a){const r=next();try{presCheck()}catch(e){}return r});
+hookAround('takeJob','tj30',function(next,__a){const r=next();try{G.jobq=null;presCheck()}catch(e){}return r});
+hookAround('vModal','vm30',function(next,__a){
   const md=S.modal;
   if(md&&md.t==='posrules'){const T=posTable30();
     return `<div class="wrap"><button class="btn ghost sm" data-a="mxclose">← Voltar</button><h2>📐 Regras de posição</h2><p class="news">Quanto o jogador rende fora da função (100% = posição natural). Pé errado em lateral/ponta/zagueiro tira mais. Goleiro↔linha é a pior troca do jogo (25%). As automações (mais forte, descansados, jovens) só improvisam quando não há ninguém da função.</p><div style="overflow-x:auto"><table class="tbl" style="font-size:12px;width:100%"><tr><th>de ↓ / pra →</th>${T.to.map(x=>`<th>${x}</th>`).join('')}</tr>${T.rows.map(r=>`<tr>${r.map((v,i)=>i?`<td style="text-align:center;color:${v>=95?'var(--ok)':v>=80?'var(--fg)':v>=65?'var(--warn)':'var(--bad)'}">${v}</td>`:`<th>${v}</th>`).join('')}</tr>`).join('')}</table></div><p class="foot keep">Referência com perna natural. Ala/meia aberto (ALE/ALD/MAE/MAD): lateral e ponta rendem 92–98%.</p></div>`}
-  return _vm30.apply(this,arguments);
-};
-const _vo30=vOpcoes;vOpcoes=function(){return _vo30.apply(this,arguments).replace('<div class="card"><div class="k">Salvar jogo</div>','<div class="card"><button class="btn ghost" data-a="posrules">📐 Regras de jogador fora de posição</button></div><div class="card"><div class="k">Salvar jogo</div>')};
-const _rd30=render;render=function(){_rd30();try{document.querySelectorAll('[data-a="leave"]').forEach(b=>{b.textContent='📨 Ouvir propostas'})}catch(e){}};
+  return next();
+});
+hookAround('vOpcoes','vo30',function(next,__a){return next().replace('<div class="card"><div class="k">Salvar jogo</div>','<div class="card"><button class="btn ghost" data-a="posrules">📐 Regras de jogador fora de posição</button></div><div class="card"><div class="k">Salvar jogo</div>')});
+hookAround('render','rd30',function(next,__a){next();try{document.querySelectorAll('[data-a="leave"]').forEach(b=>{b.textContent='📨 Ouvir propostas'})}catch(e){}});

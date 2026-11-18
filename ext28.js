@@ -86,7 +86,7 @@ function mailHtml(){
   return `<div class="wrap"><button class="btn ghost sm" data-a="mxclose">← Voltar</button><h2>✉️ Caixa de entrada</h2>${L.length?L.map(m=>`<button class="mrow28 ${m.read?'':'un'}" data-a="mopen" data-id="${m.id}"><b>${esc(m.title)}</b><small>T${m.s} · rodada ${m.r+1}${m.acts&&m.acts.length?' · ⚡ precisa de resposta':''}</small></button>`).join('')+`<button class="btn ghost sm" data-a="mclear">Limpar lidos</button>`:'<p class="news">Nenhum e-mail ainda. Propostas, avisos do mercado e novidades chegam aqui.</p>'}</div>`;
 }
 /* barra no topo: janela + e-mails */
-const _rd28=render;render=function(){_rd28();try{mailBar()}catch(e){console.error('mailBar '+e.message)}};
+hookAround('render','rd28',function(next,__a){next();try{mailBar()}catch(e){console.error('mailBar '+e.message)}});
 function mailBar(){
   if(!G||G.phase==='start'||S.match)return;
   const hd=document.querySelector('.top2');if(!hd)return;
@@ -138,7 +138,7 @@ function mtick(){
   }
 }
 /* propostas aleatórias para quem NÃO está à venda ficam raras */
-const _go28=genOffer;genOffer=function(){if(Math.random()<.3)return _go28.apply(this,arguments)};
+hookAround('genOffer','go28',function(next,__a){if(Math.random()<.3)return next()});
 /* avisos de janela + tick por rodada */
 hookAfter('finishRound','ext28_fr28',function(r,A){
   try{ex();mailBox();
@@ -150,14 +150,14 @@ hookAfter('finishRound','ext28_fr28',function(r,A){
   }catch(e){console.error('fr28 '+e.message)}
   });
 /* painel de preço no perfil do jogador à venda */
-const _vp28=vPerfil;vPerfil=function(){
-  let h=_vp28.apply(this,arguments);
+hookAround('vPerfil','vp28',function(next,__a){
+  let h=next();
   try{const p=P(S.prof);if(p&&p.club===G.user&&p.listed){
     if(!p.ask)p.ask=+(valueOf(p)*1.15).toFixed(2);const v=valueOf(p),w=winInfo();
     const panel=`<div class="ask28"><div class="res"><span>Preço pedido</span><b>${mi(p.ask)}</b></div><div class="res"><span>Valor de mercado</span><b>${mi(v)} (${Math.round(p.ask/v*100)}%)</b></div><div class="res"><span>Interesse dos clubes</span><b>${demandTxt(p)}</b></div>${w.open?'':'<p class="news">🔴 Janela fechada: só chegam propostas quando abrir.</p>'}<button class="btn sm" data-a="askdn" data-id="${p.id}">−10%</button><button class="btn sm ghost" data-a="askup" data-id="${p.id}">+10%</button><button class="btn sm ghost" data-a="askauto">${G.mkt&&G.mkt.auto?'✔ Corte automático (−5%/rod.)':'Cortar 5% por rodada'}</button></div>`;
     h=h.replace(/(<button[^>]*data-a="plist"[^>]*>[^<]*<\/button>)/,'$1'+panel)}}catch(e){console.error('vp28 '+e.message)}
   return h;
-};
+});
 
 /* ======== base dos outros clubes: negociação dura ======== */
 buyYouth=function(cid,i){
@@ -178,12 +178,12 @@ buyYouth=function(cid,i){
   return null;
 };
 /* rivais travam negociação do usuário e entre si */
-const _ns_neg28=negStart;negStart=function(pid){
+hookAround('negStart','ns_neg28',function(next,__a){let [pid]=__a;
   const p=P(pid),c=userClub();
   if(p&&p.club>=0&&p.club!==G.user&&winOpen()&&isRival(c,C(p.club))&&!(G.nlock&&G.nlock[pid]>G.round)){
     if(Math.random()<.5){G.nlock=G.nlock||{};G.nlock[pid]=G.round+4;return C(p.club).name+' não negocia com o rival. Tente de novo daqui a 4 rodadas.'}}
-  return _ns_neg28.apply(this,arguments);
-};
+  return next();
+});
 
 /* ======== contratos de patrocínio travados ======== */
 const _sm28=signMaster;signMaster=function(o,mode){
@@ -196,26 +196,26 @@ const _sm28=signMaster;signMaster=function(o,mode){
 function spLeft(x){const u=x.until===undefined?G.season:x.until;return Math.max(1,u-G.season+1)}
 function spFee(val,left){return +Math.max(.3,val*.35*left).toFixed(1)}
 function yrsToggle(){const y=S.spYrs===3?3:1;return `<div class="seg" style="margin:8px 0"><button class="${y===1?'on':''}" data-a="spyrs" data-v="1">1 temporada</button><button class="${y===3?'on':''}" data-a="spyrs" data-v="3">3 temporadas <small>+5%</small></button></div><p class="foot keep">Depois de assinado o contrato é travado: pra sair antes tem que pagar multa de ~35% do valor por temporada restante.</p>`}
-const _vm28=vModal;vModal=function(){
+hookAround('vModal','vm28',function(next,__a){
   const md=S.modal;
   if(md&&md.t==='inbox')return mailHtml();
   if(md&&md.t==='sponsor'&&G.sponsor&&!md.free){
     const s=G.sponsor,left=spLeft(s),fee=spFee(s.fixed,left);
     return `<div class="wrap lock28"><button class="btn ghost sm" data-a="mxclose">← Voltar</button><h2>🔒 Patrocínio master travado</h2><div class="card"><div class="res"><span>${esc(s.name)}</span><b>${mi(s.fixed)}/ano</b></div><div class="res"><span>Vigência</span><b>até a T${s.until!==undefined?s.until:G.season} (${left} temporada${left>1?'s':''})</b></div><div class="res"><span>Multa pra rescindir</span><b>${mi(fee)}</b></div><p class="news">Contrato assinado não muda no meio do caminho. Rescindir paga a multa agora e abre as ofertas de novo.</p><button class="btn big" data-a="sprescind">Rescindir pagando ${mi(fee)}</button><button class="btn big ghost" data-a="mxclose">Manter contrato</button></div></div>`}
   if(md&&md.t==='slotlock'){
-    const s=G.mk.slots[md.slot];if(!s){S.modal=null;return _vm28.apply(this,arguments)}
+    const s=G.mk.slots[md.slot];if(!s){S.modal=null;return next()}
     const left=spLeft(s),fee=spFee(s.val,left);
     return `<div class="wrap lock28"><button class="btn ghost sm" data-a="mxclose">← Voltar</button><h2>🔒 ${SLOTD[md.slot][0]} · contrato travado</h2><div class="card"><div class="res"><span>${esc(s.name)}</span><b>${mi(s.val)}/ano</b></div><div class="res"><span>Vigência</span><b>até a T${s.until!==undefined?s.until:G.season} (${left} temporada${left>1?'s':''})</b></div><div class="res"><span>Multa pra rescindir</span><b>${mi(fee)}</b></div><button class="btn big" data-a="slotresc" data-s="${md.slot}">Rescindir pagando ${mi(fee)}</button><button class="btn big ghost" data-a="mxclose">Manter contrato</button></div></div>`}
   if(md&&md.t==='naminglock'&&G.naming){
     const n=G.naming,fee=+Math.max(.5,n.val*.5*n.yrs).toFixed(1);
     return `<div class="wrap lock28"><button class="btn ghost sm" data-a="mxclose">← Voltar</button><h2>🔒 Naming rights</h2><div class="card"><div class="res"><span>${esc(n.name)}</span><b>${mi(n.val)}/ano</b></div><div class="res"><span>Falta</span><b>${n.yrs} temporada(s)</b></div><div class="res"><span>Multa pra rescindir</span><b>${mi(fee)}</b></div><button class="btn big" data-a="namresc">Rescindir pagando ${mi(fee)}</button><button class="btn big ghost" data-a="mxclose">Manter contrato</button></div></div>`}
-  let h=_vm28.apply(this,arguments);
+  let h=next();
   try{
     if(md&&md.t==='sponsor'&&md.i!==undefined&&md.i!==null)h=h.replace(/(<p class="news">Como você quer receber[^<]*<\/p>)/,'$1'+yrsToggle());
     if(md&&md.t==='round'&&mailBox().length){const n=unreadN();if(n)h=h.replace(/<\/div>\s*$/,'<button class="btn big ghost" data-a="inbox" style="margin:8px 0">✉️ '+n+' e-mail(s) novo(s) na caixa de entrada</button></div>')}
   }catch(e){console.error('vm28 '+e.message)}
   return h;
-};
+});
 Object.assign(A,{
   spyrs(d){S.spYrs=+d.v===3?3:1;render()},
   sprescind(){ex();const s=G.sponsor;if(!s)return;const fee=spFee(s.fixed,spLeft(s));if(G.fin.caixa<fee)return toast('Sem caixa pra pagar a multa de '+mi(fee)+'.');
@@ -260,11 +260,11 @@ function prefillSpons(){
   G.mk.slots={};G.mk.open=null;
   for(const sl in SLOTD){if(rg()<.85){const x=slotOffers(sl)[Math.floor(rg()*3)];const yy=1+Math.floor(rg()*3);x.mode='parc';x.yrs=yy;x.until=base+yy-1;G.mk.slots[sl]=x}}
 }
-const _tj28=takeJob;takeJob=function(id){_tj28.apply(this,arguments);try{ex();prefillSpons();addNews('Você herdou os contratos de patrocínio do '+C(id).name+'.');save()}catch(e){console.error('prefill '+e.message)}};
+hookAround('takeJob','tj28',function(next,__a){let [id]=__a;next();try{ex();prefillSpons();addNews('Você herdou os contratos de patrocínio do '+C(id).name+'.');save()}catch(e){console.error('prefill '+e.message)}});
 
 /* ======== marketing: contratos + naming rights bem à vista ======== */
-const _vk28=vMarketing;vMarketing=function(){
-  let h=_vk28.apply(this,arguments);
+hookAround('vMarketing','vk28',function(next,__a){
+  let h=next();
   try{ex();const sp=G.sponsor,rows=[];
     if(sp)rows.push(`<div class="res"><span>⭐ Master · ${esc(sp.name)}</span><b>${mi(sp.fixed)} · até T${sp.until!==undefined?sp.until:G.season}</b></div>`);
     for(const k in SLOTD){const s=G.mk.slots[k];if(s)rows.push(`<div class="res"><span>${SLOTD[k][0]} · ${esc(s.name)}</span><b>${mi(s.val)} · até T${s.until!==undefined?s.until:G.season}</b></div>`)}
@@ -278,19 +278,19 @@ const _vk28=vMarketing;vMarketing=function(){
     h=h.replace(/(como receber [^<]*<\/div>)/,'$1'+yrsToggle());
   }catch(e){console.error('vk28 '+e.message)}
   return h;
-};
+});
 
 /* ======== Copinha passiva: resultado chega depois ======== */
-const _an28=addNews;addNews=function(t){if(G&&G._cpHold){(G._cpq=G._cpq||[]).push({n:t});return}return _an28.apply(this,arguments)};
-const _pln28=paperLine;paperLine=function(h,sub){if(G&&G._cpHold){(G._cpq=G._cpq||[]).push({p:[h,sub]});return}return _pln28.apply(this,arguments)};
-const _cr28=copinhaRun;copinhaRun=function(){G._cpHold=true;try{_cr28.apply(this,arguments)}finally{G._cpHold=false}const b=cpBox();if(b.cur&&b.cur.shown===undefined)b.cur.shown=false};
+hookAround('addNews','an28',function(next,__a){let [t]=__a;if(G&&G._cpHold){(G._cpq=G._cpq||[]).push({n:t});return}return next()});
+hookAround('paperLine','pln28',function(next,__a){let [h,sub]=__a;if(G&&G._cpHold){(G._cpq=G._cpq||[]).push({p:[h,sub]});return}return next()});
+hookAround('copinhaRun','cr28',function(next,__a){G._cpHold=true;try{next()}finally{G._cpHold=false}const b=cpBox();if(b.cur&&b.cur.shown===undefined)b.cur.shown=false});
 function copinhaReveal(){
   const b=cpBox(),r=b.cur;if(!r||r.shown)return;
-  r.shown=true;(G._cpq||[]).forEach(x=>{if(x.n)_an28(x.n);else if(x.p)_pln28(x.p[0],x.p[1])});G._cpq=[];
+  r.shown=true;(G._cpq||[]).forEach(x=>{if(x.n)addNews(x.n);else if(x.p)paperLine(x.p[0],x.p[1])});G._cpq=[];
   const ms=r.matches.map(m=>`• ${m.l}: ${m.a} ${m.ga} x ${m.gb} ${m.b}${m.pen?' (pên.)':''}`).join('\n');
   mail('cp','🏆 Copinha '+r.yr+': '+(r.out==='Campeão'?'SUA BASE É CAMPEÃ!':'sua base parou em '+r.out.toLowerCase()),'O técnico da base cuidou de tudo, você só recebe o resultado.\nCampeão: '+r.cname+'.\n'+ms+(r.top?'\nArtilheiro: '+r.top:'')+(r.rev?'\nRevelação: '+r.rev:'')+'\nPremiação: '+mi(r.prize),[{l:'Ver na Base',k:'goto',p:{v:'base'},g:1}],'cp');
 }
-const _cc28=copinhaCard;copinhaCard=function(){
+hookAround('copinhaCard','cc28',function(next,__a){
   const b=cpBox();if(b.cur&&!b.cur.shown)return `<section class="sec card cp27"><h3>Copinha ${b.cur.yr}<small>Copa São Paulo Sub-20</small></h3><p class="news">Seus garotos estão na Copinha com o treinador da base. Você não joga nem assiste: o resultado chega por e-mail depois da próxima rodada.</p></section>`;
-  return _cc28.apply(this,arguments);
-};
+  return next();
+});

@@ -113,13 +113,13 @@ function mlsRun51(I){
 }
 /* ---------- ganchos ---------- */
 hookAfter('finishRound','ext51_fr51',()=>{acHalf51()});
-const _es51=endSeason;endSeason=function(){
+hookAround('endSeason','es51',function(next,__a){
   let res=null,I=null;
   try{I=lg51();if(G.lg51&&G.lg51.pres&&G.lg51.pres.s===G.season){res=G.lg51.pres}
     else if(I&&(!G.lg51||G.lg51.end!==G.season)){G.lg51=G.lg51||{};G.lg51.end=G.season;res=I.kind==='mls'?mlsRun51(I):I.kind==='hex'?hexRun51(I,'Hexagonal final ('+wlOf(I.k).lg+')'):acRun51(I,'Clausura ('+wlOf(I.k).lg+')')}}catch(e){console.error('end51 '+e.message)}
-  const r=_es51.apply(this,arguments);
+  const r=next();
   try{if(res&&G.summary){const nm=rn51(res.champ);
       G.summary.champ=nm;if(G.hist.length)G.hist[G.hist.length-1].champ=nm;
       G.summary.txt+=' '+res.label+': campeão '+nm+'.';G.summary.liguilla=res.log.map(x=>x.stage+': '+x.t);
       const ap=(G.lg51.hist||[]).filter(h=>h.s===G.season&&/Apertura/.test(h.n)).slice(-1)[0];if(ap)G.summary.txt+=' Apertura: '+ap.champ+'.'}}catch(e){console.error('sum51 '+e.message)}
-  return r};
+  return r});

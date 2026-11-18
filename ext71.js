@@ -32,7 +32,7 @@ if(!document.getElementById('tutcss71')){const st=document.createElement('style'
 /* save novo pela tela de criação: pergunta se quer o tutorial */
 const _bg71=A.begin;A.begin=function(){const mp=!!(S.mpSame||G&&G.mps);const r=_bg71.apply(this,arguments);
   try{if(!mp&&!S.mpSame&&!(G&&G.mps)&&G&&G.user!=null&&!G.tutDone&&!G._tutAsked){G._tutAsked=true;S.tut={ask:true};render()}}catch(e){}return r};
-const _r71=render;render=function(){_r71.apply(this,arguments);try{overlay()}catch(e){}};
-const _vo71=vOpcoes;vOpcoes=function(){let h=_vo71.apply(this,arguments);
-  return h.replace(/<\/div>\s*$/,`<div class="card"><div class="k">Tutorial</div><p class="news">Rever o passo a passo básico do jogo.</p><button class="btn big ghost" data-a="tutopen">📘 Fazer o tutorial</button></div></div>`)};
+hookAround('render','r71',function(next,__a){next();try{overlay()}catch(e){}});
+hookAround('vOpcoes','vo71',function(next,__a){let h=next();
+  return h.replace(/<\/div>\s*$/,`<div class="card"><div class="k">Tutorial</div><p class="news">Rever o passo a passo básico do jogo.</p><button class="btn big ghost" data-a="tutopen">📘 Fazer o tutorial</button></div></div>`)});
 })();

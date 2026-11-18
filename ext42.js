@@ -63,15 +63,15 @@ function natSync(){
   const L=W.lg[W.nat.k];if(!L)return;
   for(const c of G.clubs){if(c.div!==4||c.lid==null)continue;const l=L.cl.find(x=>x.id===c.lid);if(l){l.P=c.P;l.J=c.J;l.V=c.V;l.E=c.E;l.D=c.D;l.GP=c.GP;l.GC=c.GC}}
 }
-const _wr42=wRound;wRound=function(rd){
+hookAround('wRound','wr42',function(next,__a){let [rd]=__a;
   const W=G.wd;
   if(W&&W.nat&&G.abroad&&G.season>=W.nat.s&&W.lg[W.nat.k]){
     const k=W.nat.k,hold=W.lg[k];delete W.lg[k];
-    try{_wr42(rd)}finally{W.lg[k]=hold}
-  }else _wr42(rd);
-};
+    try{next(rd)}finally{W.lg[k]=hold}
+  }else next(rd);
+});
 hookAfter('finishRound','ext42_fr42',()=>{natSync()});
-const _we42=wEnd;wEnd=function(){try{natSync()}catch(e){}return _we42.apply(this,arguments)};
+hookAround('wEnd','we42',function(next,__a){try{natSync()}catch(e){}return next()});
 
 /* ---------- aceitar emprego fora ---------- */
 function emigrate(lid){
@@ -82,11 +82,11 @@ function emigrate(lid){
   const c=userClub();addNews('Você se mudou para '+wlOf(f.k).n+' para comandar o '+c.name+'.');
   save();return true;
 }
-const _tj42=takeJob;takeJob=function(id){
-  const r=_tj42.apply(this,arguments);
+hookAround('takeJob','tj42',function(next,__a){let [id]=__a;
+  const r=next();
   try{if(G.abroad&&G.user<brn()){denat();genAllFx();if(G.round<NR())prepareRound();save()}else if(G.abroad&&G.pyr){pyrSync();genAllFx();if(G.round<NR())prepareRound();save()}if(G.abroad){G.est=null;G._lg=null;G._x=null;G.cont=null}}catch(e){console.error('tj42 '+e.message)}
   return r;
-};
+});
 /* propostas de clubes de fora (só chega do que a reputação do técnico segura) */
 function fjobOffers(good){
   const out=[];try{
@@ -104,8 +104,8 @@ function fjobHtml(ids){
   return `<div class="card"><h3>🌍 Propostas do exterior</h3><p class="news">Aceitar muda você de país: elenco, caixa, metas e liga começam do zero. O Brasil segue rodando sem você.</p>${ids.map(id=>{const f=liteById(id);if(!f)return '';const w=wlOf(f.k);
     return `<button class="offer" data-a="fjobgo" data-id="${id}"><b>${w.f} ${esc(f.x.n)}</b><span>reputação ${Math.round(f.x.r)}</span><small>${esc(w.lg)} · ${esc(w.n)}</small></button>`}).join('')}</div>`;
 }
-const _vm42=vModal;vModal=function(){
-  let h=_vm42();const md=S.modal;
+hookAround('vModal','vm42',function(next,__a){
+  let h=next();const md=S.modal;
   try{
     if(md&&md.t==='fired'){
       md.foffs=md.foffs||fjobOffers(!md.resign&&false);const card=fjobHtml(md.foffs);
@@ -117,21 +117,21 @@ const _vm42=vModal;vModal=function(){
     }
   }catch(e){console.error('vm42 '+e.message)}
   return h;
-};
+});
 Object.assign(A,{fjobgo(d){
   if(emigrate(+d.id)){if(G.summary&&G.summary.fired)G.summary.fired=false;S.modal=G.phase==='seasonEnd'?{t:'season'}:{t:'sponsor'};G.view='inicio';render();window.scrollTo(0,0)}
   else toast('Proposta não está mais disponível.');
 }});
 /* e-mail "Propostas de emprego": acrescenta clubes de fora */
-const _jr42=jobResolve;jobResolve=function(){
-  _jr42.apply(this,arguments);
+hookAround('jobResolve','jr42',function(next,__a){
+  next();
   try{const m=(G.inbox||[]).find(x=>x.tag==='jobs');
     if(m&&!m.f42){m.f42=1;const ids=fjobOffers(G.board.conf>=70);
       if(ids.length){const lines=ids.map(id=>{const f=liteById(id),w=wlOf(f.k);return '• 🌍 '+w.f+' '+f.x.n+' ('+w.lg+', reputação '+Math.round(f.x.r)+') — muda de país'});
         m.body=m.body.replace('\nAceitar encerra',  '\n'+lines.join('\n')+'\nAceitar encerra');
         const wi=m.acts.findIndex(a=>a.k==='wait');const acts=ids.map(id=>({l:'Aceitar: 🌍 '+liteById(id).x.n,k:'fjob',p:{lid:id}}));
         m.acts.splice(wi<0?m.acts.length:wi,0,...acts)}}}catch(e){console.error('jr42 '+e.message)}
-};
+});
 Object.assign(MACT,{fjob(p){
   const ok=emigrate(p.lid);S.modal=G.phase==='seasonEnd'?{t:'season'}:null;S.prof=null;G.view='inicio';
   return ok?{ok:true,t:'Você assumiu o '+userClub().name+' ('+(wlOf(G.abroad.k).n)+').'}:{ok:false,t:'Proposta expirou.'};
@@ -139,24 +139,24 @@ Object.assign(MACT,{fjob(p){
 
 /* ---------- textos: "Brasileirão" vira o nome da liga do país ---------- */
 function ligaNome42(){const c=userClub();return c&&c.ctry?wlOf(c.ctry).lg:null}
-const _r42=render;render=function(){
-  const r=_r42.apply(this,arguments);
+hookAround('render','r42',function(next,__a){
+  const r=next();
   try{const nm=G&&G.phase!=='start'&&G.user!=null?ligaNome42():null;
     if(nm){const root=document.getElementById('app');if(root){const tw=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let n;const list=[];while((n=tw.nextNode()))if(/Brasileirão|Série A/.test(n.nodeValue))list.push(n);
       list.forEach(t=>{t.nodeValue=t.nodeValue.replace(/Brasileirão\s*-\s*Série A/g,nm).replace(/Brasileirão/g,nm).replace(/Série A/g,nm)})}}}catch(e){}
   return r;
-};
-const _sm42=setMeta;setMeta=function(){_sm42.apply(this,arguments);try{if(G.abroad&&G.board.metaTxt)G.board.metaTxt=G.board.metaTxt.replace('Libertadores','competições continentais')}catch(e){}};
+});
+hookAround('setMeta','sm42',function(next,__a){next();try{if(G.abroad&&G.board.metaTxt)G.board.metaTxt=G.board.metaTxt.replace('Libertadores','competições continentais')}catch(e){}});
 
 /* no exterior as copas e estaduais do Brasil rodam sem você (Copa do Brasil segue no automático) */
-const _es42=extraSync;extraSync=function(){
+hookAround('extraSync','es42',function(next,__a){
   if(G&&G.abroad){
     try{for(let g=0;g<8;g++){const c=G.cup;if(c&&c.st<5&&G.round>=CSL[c.st])cupAuto();else break}}catch(e){console.error('es42 '+e.message)}
     return;
   }
-  return _es42.apply(this,arguments);
-};
-const _ei42=estInit;estInit=function(){if(G&&G.abroad){G.est=null;return}return _ei42.apply(this,arguments)};
+  return next();
+});
+hookAround('estInit','ei42',function(next,__a){if(G&&G.abroad){G.est=null;return}return next()});
 
 function ligaHead(){const c=userClub();const w=c&&c.ctry?wlOf(c.ctry):null;
   const t=w?`${w.f} ${esc(w.n)} · ${esc((_vd44&&_vd44>4&&pdiv(_vd44)&&pdiv(_vd44).t>1?pdiv(_vd44).name:w.lg))}`:`🇧🇷 Brasil · Brasileirão ${DIVN[userDiv()]}`;

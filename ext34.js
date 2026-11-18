@@ -29,11 +29,11 @@ function aiMarket34(n){
 hookBefore('newSeason','ext34_ns34',function(){try{aiMarket34(28)}catch(e){console.error('aiMarket34 '+e.message)}});
 hookAfter('finishRound','ext34_fr34',()=>{if(G.round===19)aiMarket34(10)});
 /* técnico da IA: efeito pequeno no jogo, por maestria tática por jogo coached */
-const _mm34=mgrMatch;mgrMatch=function(m,k){
-  let f=_mm34.apply(this,arguments);
+hookAround('mgrMatch','mm34',function(next,__a){let [m,k]=__a;
+  let f=next();
   try{const c=m[k]&&m[k].club;if(c&&c.id!==G.user&&c.coach){const co=c.coach,g=Math.max(30,(co.V||0)+(co.E||0)+(co.D||0)),rate=(co.tat||0)/g;f*=1+clamp((rate-1.6)*0.006,-0.012,0.012)}}catch(e){}
   return f;
-};
+});
 /* vaga: clubes que trocaram de técnico há pouco entram nas propostas */
 /* v31: reputação do técnico limita quais clubes podem chamar */
 function coachCap34(good){
@@ -42,11 +42,11 @@ function coachCap34(good){
   const ti=(u.titles&&u.titles.length!==undefined)?u.titles.length:(+u.titles||0);
   return Math.min(100,c.rep+(good?5:2)+Math.min(10,ti*2.5)+Math.min(4,(peak-c.rep)*0.3));
 }
-const _jo34=jobOffers;jobOffers=function(good){
+hookAround('jobOffers','jo34',function(next,__a){let [good]=__a;
   const c=userClub(),cap=coachCap34(good);
   try{G.uc.peak=Math.max(G.uc.peak||0,c.rep)}catch(e){}
   const ok=id=>{const x=G.clubs.find(y=>y.id===id);return x&&x.rep<=cap};
-  let base=_jo34.apply(this,arguments).filter(ok);
+  let base=next().filter(ok);
   try{
     const ref=c.rep+(good?3:0);
     const rec=(G.cfx||[]).filter(x=>(G.season-x.s)*40+(G.round-x.r)<=45).map(x=>G.clubs.find(y=>y.sig===x.club)).filter(x=>x&&x.id!==c.id&&Math.abs(x.rep-ref)<=8&&x.rep<=cap);
@@ -56,11 +56,11 @@ const _jo34=jobOffers;jobOffers=function(good){
     if(out.length<3){G.clubs.filter(x=>x.id!==c.id&&x.rep<=cap&&!out.includes(x.id)).sort((a,b)=>Math.abs(a.rep-ref)-Math.abs(b.rep-ref)).slice(0,3-out.length).forEach(x=>out.push(x.id))}
     return out.slice(0,3);
   }catch(e){return base}
-};
-const _jr34=jobResolve;jobResolve=function(){
-  _jr34.apply(this,arguments);
+});
+hookAround('jobResolve','jr34',function(next,__a){
+  next();
   try{const m=(G.inbox||[]).find(x=>x.tag==='jobs');if(m)(G.vacq||[]).forEach(n=>{m.body=m.body.replace('• '+n,'• 🔔 trocou de técnico há pouco: '+n)})}catch(e){}
-};
+});
 /* backup em arquivo */
 async function expStr34(){const g=await gz29(JSON.stringify(G));return JSON.stringify({rfc:1,z:g.z,s:g.s,club:userClub().name,season:G.season,round:G.round})}
 async function impStr34(txt){
@@ -83,11 +83,11 @@ document.addEventListener('change',e=>{
   const t=e.target;if(!t||t.id!=='impf'||!t.files||!t.files[0])return;
   const r=new FileReader();r.onload=()=>impStr34(r.result).then(()=>toast('💾 Backup importado.')).catch(er=>toast('Falha: '+er.message));r.readAsText(t.files[0]);
 });
-const _vo34=vOpcoes;vOpcoes=function(){
-  let h=_vo34.apply(this,arguments);
+hookAround('vOpcoes','vo34',function(next,__a){
+  let h=next();
   const card=`<div class="card"><div class="k">💾 Backup em arquivo</div><p class="news">Leva seu jogo pra outro aparelho: exporta num arquivo (ou copia o código) e importa de volta.</p><button class="btn sm" data-a="expfile">Exportar</button> <label class="btn sm ghost" style="display:inline-block;cursor:pointer">Importar arquivo<input type="file" id="impf" accept=".json,.txt" style="display:none"></label><textarea id="impt" placeholder="Ou cole o código aqui" style="width:100%;margin-top:8px;height:54px;background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:6px"></textarea><button class="btn sm ghost" data-a="imptxt">Importar código colado</button>${S.expt?`<textarea readonly style="width:100%;margin-top:8px;height:70px">${esc(S.expt)}</textarea>`:''}</div>`;
   return h.replace('<div class="card"><div class="k">Salvar jogo</div>',card+'<div class="card"><div class="k">Salvar jogo</div>');
-};
+});
 (function(){const st=document.createElement('style');st.textContent=`
 @media (max-width:759px){.top2 .ic button{padding-top:1px!important;padding-bottom:1px!important;min-height:38px!important;height:auto!important}.top2 .ic{padding-top:1px!important;padding-bottom:1px!important}.top2 .ic small{font-size:9px!important}.top2 .ic button span{font-size:17px!important}.top2 .mbar{padding-top:1px!important;padding-bottom:3px!important}}
 `;document.head.appendChild(st)})();

@@ -32,4 +32,4 @@ function tidy33(){
     }
   }catch(e){console.error('tidy33 '+e.message)}
 }
-const _rd33=render;render=function(){_rd33.apply(this,arguments);tidy33()};
+hookAround('render','rd33',function(next,__a){next();tidy33()});

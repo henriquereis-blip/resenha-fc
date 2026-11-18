@@ -26,12 +26,12 @@ hookAround('finishRound','ext5_fr6',function(next,A){
   if(ga===0)s.cs++;else s.cs=0;if(s.cs>=3)award('muralha');if(s.u>=8)award('invicto');
   return out;
 });
-const _es6=endSeason;endSeason=function(){ex();ex5();const r=_es6();const p=G.summary.pos;if(p===1)award('titulo');if(p<=4)award('g4');return r};
-const _pr=promoteYouth;promoteYouth=function(c,i){const r=_pr(c,i);if(!r&&c===userClub())award('cria');return r};
-const _mb=makeBid;makeBid=function(pid,fee){const r=_mb(pid,fee);if(r.ok&&fee>=10)award('peso');return r};
-const _hs=hireScout;hireScout=function(i){const r=_hs(i);if(!r)award('olho');return r};
-const _sl=sellPlayer;sellPlayer=function(id){const o=G.offers.find(x=>x.id===id);const v=o?valueOf(P(o.pid)):0;const r=_sl(id);if(!r&&o&&o.fee>=v*1.2)award('negocio');return r};
-const _tj=takeJob;takeJob=function(id){const r=_tj(id);award('job');return r};
+hookAround('endSeason','es6',function(next,__a){ex();ex5();const r=next();const p=G.summary.pos;if(p===1)award('titulo');if(p<=4)award('g4');return r});
+hookAround('promoteYouth','pr',function(next,__a){let [c,i]=__a;const r=next(c,i);if(!r&&c===userClub())award('cria');return r});
+hookAround('makeBid','mb',function(next,__a){let [pid,fee]=__a;const r=next(pid,fee);if(r.ok&&fee>=10)award('peso');return r});
+hookAround('hireScout','hs',function(next,__a){let [i]=__a;const r=next(i);if(!r)award('olho');return r});
+hookAround('sellPlayer','sl',function(next,__a){let [id]=__a;const o=G.offers.find(x=>x.id===id);const v=o?valueOf(P(o.pid)):0;const r=next(id);if(!r&&o&&o.fee>=v*1.2)award('negocio');return r});
+hookAround('takeJob','tj',function(next,__a){let [id]=__a;const r=next(id);award('job');return r});
 /* lances de torcida e clima */
 const FLV=["A torcida canta alto no estádio.","Árbitro conversa com os capitães.","Bandeirinha marca impedimento duvidoso.","Maqueiros entram rapidamente em campo.","Jogador pede atendimento e o jogo para por instantes.","Clima quente na arquibancada.","Torcida faz festa nas arquibancadas.","O técnico reclama muito à beira do campo.","Chuva fina começa a cair.","Bola na arquibancada, o jogo fica parado."];
 const _sm5=stepMinute;stepMinute=function(m){

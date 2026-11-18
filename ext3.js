@@ -7,8 +7,8 @@ function formOf(id,n=5){
   const L=G.h2h.filter(x=>x[2]===id||x[3]===id).slice(-n);
   return L.map(([s,r,h,a,hg,ag])=>{const f=h===id?hg:ag,c=h===id?ag:hg;return f>c?'V':f<c?'D':'E'});
 }
-const _mk3=mkSide;mkSide=function(c){const s=_mk3(c);s.mark=c.mark||'Leve';s.focus=c.focus||'Pelo meio';return s};
-const _nm3=newMatch;newMatch=function(hc,ac){const m=_nm3(hc,ac);m.grass=grassFor(G.season,G.round,hc.id);return m};
+hookAround('mkSide','mk3',function(next,__a){let [c]=__a;const s=next(c);s.mark=c.mark||'Leve';s.focus=c.focus||'Pelo meio';return s});
+hookAround('newMatch','nm3',function(next,__a){let [hc,ac]=__a;const m=next(hc,ac);m.grass=grassFor(G.season,G.round,hc.id);return m});
 const _pw=power;power=function(m,s){
   const r=_pw(m,s);const mi=MARKS.indexOf(s.mark||'Leve');
   r.def*=1+0.025*mi;r.mid*=1+0.01*mi;

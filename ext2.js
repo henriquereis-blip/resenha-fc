@@ -19,18 +19,18 @@ hookAround('finishRound','ext2_fr3',function(next,A){
   for(const r of G.lastRound.results)G.h2h.push([season,n,r.h,r.a,r.hg,r.ag]);
   return out;
 });
-const _es3=endSeason;endSeason=function(){
+hookAround('endSeason','es3',function(next,__a){
   ex();ex2();const rows=tableRows();
   const ld=leaders('goals',1)[0];
   const champ=rows[0];const co=champ.id===G.user?G.uc:champ.coach;
   const cands=Object.values(G.players).filter(p=>p.club>=0&&p.rn>=Math.min(15,Math.floor(G.round*0.4))).map(p=>({p,score:p.rsum/p.rn}));
-  const r=_es3();
+  const r=next();
   if(!G.champs.find(x=>x.s===G.season)){
     G.champs.push({s:G.season,champ:champ.name,cid:champ.id,vice:rows[1].name,vid:rows[1].id,scorer:ld?nameOf(ld[0])+' ('+ld[1]+')':'–',coach:co.name});
     G.toty.push({s:G.season,xi:pickXI(cands)});
   }
   return r;
-};
+});
 function bolaOuro(){
   const min=Math.max(1,Math.floor(G.round*0.5));
   return Object.values(G.players).filter(p=>p.club>=0&&p.rn>=min).map(p=>({p,v:p.rsum/p.rn})).sort((a,b)=>b.v-a.v);

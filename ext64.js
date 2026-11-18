@@ -30,12 +30,12 @@ function ledSum64(s){
 
 /* contexto de transferências (para dar nome às movimentações) */
 let LCTX64=null;
-if(typeof logX==='function'){const _lx64=logX;logX=function(p,from,to,fee){
+if(typeof logX==='function'){hookAround('logX','lx64',function(next,__a){let [p,from,to,fee]=__a;
   try{if(LCTX64){if(to===G.user)LCTX64.push({k:'buy',t:'Compra de '+nameOf(p)+(from>=0?' ('+C(from).sig+')':' (livre)')});else if(from===G.user)LCTX64.push({k:'sale',t:'Venda de '+nameOf(p)+(to>=0?' ('+C(to).sig+')':'')})}}catch(e){}
-  return _lx64.apply(this,arguments)}}
+  return next()});}
 
 /* rodada: quebra o que entrou/saiu por categoria; o resto vira "outras" (o livro sempre fecha com o caixa) */
-const _fnr64=financeRound;financeRound=function(){G._fr64=1;return _fnr64.apply(this,arguments)};
+hookAround('financeRound','fnr64',function(next,__a){G._fr64=1;return next()});
 const _fr64=finishRound;finishRound=function(){
   const G0=G;if(!G0||!G0.fin||!userClub())return _fr64.apply(this,arguments);
   const b0=G0.fin.caixa,rd=G0.round+1;G0._fr64=0;
@@ -109,9 +109,9 @@ function vLed64(){
   <div class="card"><div class="k">Movimentações (mais recentes)</div>${ents.length?ents.map(entRow64).join(''):'<p class="news">Sem movimentações.</p>'}</div>
   ${cap.length?`<div class="card"><div class="k">Financiamento (não conta como receita nem despesa)</div>${cap.map(entRow64).join('')}</div>`:''}</div>`;
 }
-const _vcl64=vClube;vClube=function(){
+hookAround('vClube','vcl64',function(next,__a){
   if(S.ledv)return vLed64();
-  let h=_vcl64.apply(this,arguments);
+  let h=next();
   try{
     const {t}=ledSum64(G.season),inc=t.in,exp=-t.out,res=inc-exp,c=userClub();
     const folha=c.squad.reduce((s,id)=>s+salOf(P(id)),0);
@@ -133,21 +133,21 @@ const _vcl64=vClube;vClube=function(){
     }
   }catch(e){console.error('vcl64 '+e.message)}
   return h;
-};
+});
 Object.assign(A,{
   ledopen(d){S.ledv=d.v;render();window.scrollTo(0,0)},
   ledclose(){S.ledv=null;render();window.scrollTo(0,0)}
 });
 /* mostra o dinheiro da rodada no fim de cada rodada */
-const _vm64=vModal;vModal=function(){
-  let h=_vm64.apply(this,arguments);
+hookAround('vModal','vm64',function(next,__a){
+  let h=next();
   try{const md=S.modal;if(md&&md.t==='round'&&S.rfin){
     const r=S.rfin,k='<button class="btn big" data-a="roundok">';
     const card=`<div class="card"><div class="k">💰 Balanço financeiro da rodada</div><div class="res"><span>Entrou</span><b class="ok">+${mi(r.in)}</b></div><div class="res"><span>Saiu</span><b class="bad">${mi(r.out)}</b></div><div class="res"><span>Saldo</span><b class="${r.net>=0?'ok':'bad'}">${r.net>=0?'+':''}${mi(r.net)}</b></div></div>`;
     if(h.includes(k))h=h.replace(k,card+k);
   }}catch(e){}
   return h;
-};
+});
 
 /* ---------- Agenda: adversário com as últimas 5 rodadas em bolinhas ---------- */
 function dots64(id){
@@ -163,11 +163,11 @@ vAgenda=function(){
 };
 
 /* ---------- Tabelas: a tabela vem primeiro, resultados da rodada vão pra baixo ---------- */
-const _vl64=vLiga;vLiga=function(){
-  let h=_vl64.apply(this,arguments);
+hookAround('vLiga','vl64',function(next,__a){
+  let h=next();
   try{const a=h.indexOf('<div class="card res40">');if(a>=0){const e=h.indexOf('<div class="tbl',a);if(e>a){const card=h.slice(a,e);h=h.slice(0,a)+h.slice(e)+card}}}catch(x){}
   return h;
-};
+});
 
 /* ---------- Opções mais limpas ---------- */
 function cut64(h,startMark,nextMark){
@@ -175,8 +175,8 @@ function cut64(h,startMark,nextMark){
   const e=h.indexOf(nextMark,a+startMark.length);
   return e>a?h.slice(0,a)+h.slice(e):h;
 }
-const _vo64=vOpcoes;vOpcoes=function(){
-  let h=_vo64.apply(this,arguments);
+hookAround('vOpcoes','vo64',function(next,__a){
+  let h=next();
   try{
     h=h.replace('<div class="card"><button class="btn ghost" data-a="posrules">📐 Regras de jogador fora de posição</button></div>','');
     h=cut64(h,'<div class="card"><div class="k">💾 Backup em arquivo</div>','<div class="card">');
@@ -186,19 +186,19 @@ const _vo64=vOpcoes;vOpcoes=function(){
     h=h.replace('<div class="card"><div class="k">Salvar jogo</div>','<div class="card"><button class="btn big" data-a="tomenu">🏠 Voltar ao início</button><p class="news">Seu jogo é salvo antes de sair. Pra carregar outro save, é pela tela inicial.</p></div><div class="card"><div class="k">Salvar jogo</div>');
   }catch(e){console.error('vo64 '+e.message)}
   return h;
-};
+});
 
 /* "Brasileirão - Série A" fixo na home: troca pelo nome certo da competição */
-const _rd64=render;render=function(){
-  const r=_rd64.apply(this,arguments);
+hookAround('render','rd64',function(next,__a){
+  const r=next();
   try{if(G&&G.phase!=='start'&&!S.match){const nm=compName64().replace(/^Brasileirão\s+/,'Brasileirão - ');
     document.querySelectorAll('.sm,.sm2').forEach(el=>{if(el.textContent.indexOf('Brasileirão - Série A')>=0&&!/Série A/.test(nm))el.textContent=el.textContent.replace('Brasileirão - Série A',nm)})}}catch(e){}
   return r;
-};
+});
 
 /* ---------- Escolher país já na criação da carreira ---------- */
-const _vcs64=vClubStep;vClubStep=function(){
-  let h=_vcs64.apply(this,arguments);
+hookAround('vClubStep','vcs64',function(next,__a){
+  let h=next();
   try{
     const chips=`<div class="cw64"><button class="${S.cwk==null?'on':''}" data-a="cwk" data-v="">🇧🇷 Brasil</button>${WLD.map(w=>`<button class="${S.cwk===w.k?'on':''}" data-a="cwk" data-v="${w.k}">${w.f} ${esc(w.n)}</button>`).join('')}</div>`;
     h=h.replace('<div class="seg sm">',chips+'<div class="seg sm">');
@@ -212,7 +212,7 @@ const _vcs64=vClubStep;vClubStep=function(){
     }
   }catch(e){console.error('vcs64 '+e.message)}
   return h;
-};
+});
 Object.assign(A,{
   cwk(d){S.cwk=d.v||null;S.cwi=null;S.sc=null;render()},
   cwpick(d){
@@ -223,12 +223,12 @@ Object.assign(A,{
     S.sc=base.id;S.cpv='res';S.sp=null;S.sa=null;S.obj=null;S.step='setup';render();window.scrollTo(0,0)
   }
 });
-const _vsu64=vSetup;vSetup=function(){
-  let h=_vsu64.apply(this,arguments);
+hookAround('vSetup','vsu64',function(next,__a){
+  let h=next();
   try{if(S.cwk!=null&&S.cwi!=null){const w=WLD.find(x=>x.k===S.cwk),nm=w.cl[S.cwi][0].replace(/-(URU|PAR|ECU)$/,' ($1)');
     h=h.replace(/‹ [^<]*<\/button>/,'‹ Clubes</button>').replace('<h2>Filosofia do clube</h2>',`<h2>${esc(nm)}</h2><p class="hint">${w.f} ${esc(w.lg)}</p><h2>Filosofia do clube</h2>`).replace('data-v="preview"','data-v="club"')}}catch(e){}
   return h;
-};
+});
 const _bg64=A.begin;A.begin=function(){
   if(S.cwk==null||S.cwi==null)return _bg64.apply(this,arguments);
   const k=S.cwk,i=S.cwi;
@@ -269,11 +269,11 @@ const _bg64=A.begin;A.begin=function(){
 const _th64=A.theme;A.theme=function(d){try{SKV.setItem('rfc_theme',d.v||'dark')}catch(e){}return _th64.apply(this,arguments)};
 
 /* ---------- proposta recebida: botão pra ver o perfil do jogador ---------- */
-const _mh64=mailHtml;mailHtml=function(){
-  let h=_mh64.apply(this,arguments);
+hookAround('mailHtml','mh64',function(next,__a){
+  let h=next();
   try{const md=S.modal;if(md&&md.id){const m=mailBox().find(x=>x.id===md.id);
     if(m&&m.acts){let pid=null;for(const a of m.acts){if(a.p&&a.p.oid!=null){const o=(G.offers||[]).find(x=>x.id===a.p.oid);if(o){pid=o.pid;break}}if(a.p&&a.p.pid!=null){pid=a.p.pid;break}}
       if(pid!=null&&P(pid)){const btn=`<button class="btn ghost" data-a="mprof" data-id="${pid}">👤 Ver perfil de ${esc(nameOf(P(pid)))}</button> `;h=h.replace('<div><button class="btn','<div>'+btn+'<button class="btn')}}}}catch(e){}
   return h;
-};
+});
 Object.assign(A,{mprof(d){S.modal=null;G.view='elenco';S.prof=+d.id;render();window.scrollTo(0,0)}});

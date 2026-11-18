@@ -20,7 +20,7 @@ function subOf(p){
 }
 const footOf=p=>{subOf(p);return p.foot};
 const SUBL={GOL:'GOL',ZAG:'ZAG',LE:'LE',LD:'LD',VOL:'VOL',MEI:'MEI',MAT:'MAT',PE:'PE',PD:'PD',CA:'ATA'};
-const _rl25=roleLabel;roleLabel=function(p){return SUBL[subOf(p)]||_rl25(p)};
+hookAround('roleLabel','rl25',function(next,__a){let [p]=__a;return SUBL[subOf(p)]||next(p)});
 Object.assign(FPOS,{'4-4-2':{a:[[38,15],[62,15]]},'3-5-2':{a:[[38,15],[62,15]]},'4-3-3':{m:[[30,44],[50,54],[70,44]]},'5-3-2':{m:[[30,44],[50,52],[70,44]],a:[[38,15],[62,15]]},'4-1-4-1':FPOS['4-1-4-1']});
 /* o que cada vaga do campinho pede */
 const WCACHE={};

@@ -13,8 +13,8 @@ function clubBg40(c){
   const base='#070b09';
   return 'linear-gradient(180deg,color-mix(in srgb,'+a+' 46%,'+base+') 0%,color-mix(in srgb,'+a+' 22%,'+base+') 38%,color-mix(in srgb,'+b+' 16%,'+base+') 100%)';
 }
-const _vi40=vInicio;vInicio=function(){
-  let h=_vi40();
+hookAround('vInicio','vi40',function(next,__a){
+  let h=next();
   try{
     /* tira o bloco "Última rodada" da home */
     const i=h.indexOf('<div class="card"><div class="k">Última rodada (');
@@ -27,21 +27,21 @@ const _vi40=vInicio;vInicio=function(){
     h=h.replace(/<tr class="([^"]*)" data-a="hrow" data-id="(\d+)"/g,(m,cl,id)=>{const p=P(+id);return '<tr class="'+cl+' '+pbCls40(p?p.role:'MEI')+'" data-a="hrow" data-id="'+id+'"'});
   }catch(e){}
   return h;
-};
+});
 /* última rodada continua acessível em Tabelas */
-const _vl40=vLiga;vLiga=function(){
-  let h=_vl40();
+hookAround('vLiga','vl40',function(next,__a){
+  let h=next();
   try{const c=userClub();if(G.lastRound&&G.lastRound.results){
     const card=`<div class="card res40"><div class="k">Resultados da última rodada (${G.lastRound.n}) · sua forma ${formOf(c.id).map(r=>`<i class="fm ${r}">${r}</i>`).join('')}</div>${G.lastRound.results.map(r=>`<div class="res ${r.u?'me':''}"><span>${C(r.h).sig}</span><b>${r.hg} – ${r.ag}</b><span class="rt">${C(r.a).sig}</span></div>`).join('')}</div>`;
     const k='<div class="tbl';const i=h.indexOf(k);h=i>=0?h.slice(0,i)+card+h.slice(i):h+card}}catch(e){}
   return h;
-};
+});
 /* fundo da tela inicial nas cores do clube */
-const _r40=render;render=function(){
-  const r=_r40.apply(this,arguments);
+hookAround('render','r40',function(next,__a){
+  const r=next();
   try{const home=G&&G.phase!=='start'&&!S.match&&!S.modal&&S.prof===null&&!S.paper&&(G.view==='inicio'||G.view==='elenco');
     const b=document.body;
     if(home){const c=userClub();b.style.background=clubBg40(c)+' fixed,var(--bg)';b.style.backgroundAttachment='fixed'}
     else{b.style.background='';b.style.backgroundAttachment=''}}catch(e){}
   return r;
-};
+});

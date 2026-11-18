@@ -28,7 +28,7 @@ function tidy31(){
     });
   }catch(e){console.error('tidy31 '+e.message)}
 }
-const _rd31=render;render=function(){_rd31();tidy31()};
+hookAround('render','rd31',function(next,__a){next();tidy31()});
 (function(){const st=document.createElement('style');st.textContent=`
 @media (max-width:759px){.top2{position:relative!important}:root{--hh:0px!important}}
 .seg button{white-space:nowrap}.seg{overflow-x:auto;scrollbar-width:none}

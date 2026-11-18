@@ -9,7 +9,7 @@ async function sbSetNick(n){
   if(!r.ok){const j=await r.json().catch(()=>({}));throw new Error(/check|violates/i.test(JSON.stringify(j))?'O apelido precisa ter de 2 a 24 letras.':sbErr(j))}
   SB.prof={nick:n}
 }
-const _sbs47=sbStore;sbStore=function(s){_sbs47(s);if(!s){SB.prof=null;SB.profTried=0}};
+hookAround('sbStore','sbs47',function(next,__a){let [s]=__a;next(s);if(!s){SB.prof=null;SB.profTried=0}});
 vTitle=function(){
   const f=slotInfo(0),n=(SB.list||[]).length;
   if(SB.ses&&sbOk()&&!SB.listOk&&!SB.tried){SB.tried=1;sbList()}
@@ -38,11 +38,11 @@ function vMpOnline(){
   <div class="card"><div class="k">Salas</div><button class="btn sm" disabled>Criar sala · em breve</button> <button class="btn sm ghost" disabled>Entrar com código · em breve</button></div>
   <div class="card"><button class="btn sm ghost" data-a="sbout">Sair da conta</button></div></div>`;
 }
-const _vs47=vStart;vStart=function(){const st=S.step||'home';if(st==='mpl')return vMpLocal();if(st==='mpo')return vMpOnline();return _vs47.apply(this,arguments)};
+hookAround('vStart','vs47',function(next,__a){const st=S.step||'home';if(st==='mpl')return vMpLocal();if(st==='mpo')return vMpOnline();return next()});
 Object.assign(A,{
   mpo(){S.step='mpo';render();window.scrollTo(0,0)},
   nick47(){const v=((document.getElementById('sb_nick')||{}).value||'').trim();if(v.length<2){SB.msg='Escreve um apelido (2 a 24 letras).';render();return}
     SB.msg='Salvando…';render();sbSetNick(v).then(()=>{SB.msg='';render()}).catch(e=>{SB.msg=e.message;render()})}
 });
 /* depois de logar/sair pela tela do online, re-render certinho */
-const _sdo47=sbDo;sbDo=function(k){_sdo47(k);if(S.step==='mpo')setTimeout(()=>{SB.profTried=0;render()},1200)};
+hookAround('sbDo','sdo47',function(next,__a){let [k]=__a;next(k);if(S.step==='mpo')setTimeout(()=>{SB.profTried=0;render()},1200)});

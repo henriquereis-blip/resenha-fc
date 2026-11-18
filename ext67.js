@@ -17,14 +17,14 @@ function balYouth67(c){
   }
 }
 function balAll67(){try{for(const c of G.clubs)balYouth67(c)}catch(e){console.error('bal67 '+e.message)}}
-const _fy67=fillYouth;fillYouth=function(c,max){const r=_fy67.apply(this,arguments);balYouth67(c);return r};
-const _gy67=genYouth9;genYouth9=function(c,n){const r=_gy67.apply(this,arguments);balYouth67(c);return r};
+hookAround('fillYouth','fy67',function(next,__a){let [c,max]=__a;const r=next();balYouth67(c);return r});
+hookAround('genYouth9','gy67',function(next,__a){let [c,n]=__a;const r=next();balYouth67(c);return r});
 
 /* overall ao subir: depende do nível da base (um 5★ de base pobre != 5★ de base rica) */
-const _py67=promoteYouth;promoteYouth=function(c,i){
+hookAround('promoteYouth','py67',function(next,__a){let [c,i]=__a;
   const y=c.youth[i];if(y)balYouth67(c);
   const yy=c.youth[i];
-  const before=c.squad.length;const r=_py67(c,i);
+  const before=c.squad.length;const r=next(c,i);
   if(r||!yy||c.squad.length!==before+1)return r;
   try{
     const ix=ix67(c),oldId=c.squad[c.squad.length-1],old=P(oldId);
@@ -39,7 +39,7 @@ const _py67=promoteYouth;promoteYouth=function(c,i){
     if(G.yLog.rows.length>1500)G.yLog.rows.shift();
   }catch(e){console.error('py67 '+e.message)}
   return r;
-};
+});
 
 /* clubes da IA passam a usar a base: sobem 1–2 garotos por temporada */
 function aiPromote67(){
@@ -70,13 +70,13 @@ window.youthReport=function(){
 };
 
 /* ============ Versão do jogo + verificar atualização ============ */
-const _vo67=vOpcoes;vOpcoes=function(){
-  let h=_vo67.apply(this,arguments);
+hookAround('vOpcoes','vo67',function(next,__a){
+  let h=next();
   const card=`<div class="card"><div class="k">Versão do jogo</div><div class="res"><span>Você está na</span><b>${APP_VER} · ${APP_DATE}</b></div>
    ${S.upd?`<p class="news">Tem versão nova: <b>${esc(S.upd)}</b>.</p><button class="btn big" data-a="doupd">Atualizar agora</button>`:`<button class="btn big ghost" data-a="chkup">Verificar atualização</button>`}
    <p class="news">Seu save não se perde ao atualizar.</p></div>`;
   return h.replace(/<\/div>\s*$/,card+'</div>');
-};
+});
 Object.assign(A,{
   async chkup(){
     toast('Verificando…');
@@ -97,8 +97,8 @@ Object.assign(A,{
 });
 
 /* ============ Fim de rodada: Continuar em cima do jornal ============ */
-const _vm67=vModal;vModal=function(){
-  let h=_vm67.apply(this,arguments);
+hookAround('vModal','vm67',function(next,__a){
+  let h=next();
   try{
     const md=S.modal;
     if(md&&md.t==='round'){
@@ -114,7 +114,7 @@ const _vm67=vModal;vModal=function(){
     }
   }catch(e){}
   return h;
-};
+});
 
 /* ============ Camisas: criador com prévia ao vivo ============ */
 const COL67=['#111111','#f8fafc','#dc2626','#7f1d1d','#1d4ed8','#0f1f4d','#38bdf8','#16a34a','#14532d','#facc15','#f97316','#7e22ce','#ec4899','#6b7280','#b8860b','#e7d9b5','#0d9488','#a3e635'];
@@ -140,12 +140,12 @@ shirtSvg=function(c,kind,kk){
   const k=kk||kitOf(c,kind||'home');
   return kitSvg67({a:k.a,b:k.b,pat:k.pat});
 };
-const _kc67=kitCss;kitCss=function(k){
+hookAround('kitCss','kc67',function(next,__a){let [k]=__a;
   if(k.pat==='vw')return `repeating-linear-gradient(90deg,${k.a} 0 5px,${k.b} 5px 10px)`;
   if(k.pat==='band')return `linear-gradient(0deg,${k.a} 0 35%,${k.b} 35% 65%,${k.a} 65%)`;
   if(k.pat==='diag')return `linear-gradient(135deg,${k.a} 0 38%,${k.b} 38% 62%,${k.a} 62%)`;
-  return _kc67(k);
-};
+  return next(k);
+});
 function k3x67(){S.k3x=S.k3x||{pat:'v',a:'#111111',b:'#f8fafc',con:'mini'};return S.k3x}
 function swatch67(act,sel){return COL67.map(x=>`<button class="sw67 ${sel===x?'on':''}" data-a="${act}" data-c="${x}" title="${COLN67[x]}" aria-label="${COLN67[x]}" style="background:${x}"></button>`).join('')}
 function keep67(f){const y=window.scrollY;f();render();setTimeout(()=>window.scrollTo(0,y),0)}
@@ -161,9 +161,9 @@ Object.assign(A,{
   }
 });
 /* vendas por camisa: casa / fora / 3ª */
-const _t9_67=tick9;tick9=function(){
+hookAround('tick9','t9_67',function(next,__a){
   const mk=G.mk,u0=mk&&mk.shirt?mk.shirt.units:0;
-  const r=_t9_67.apply(this,arguments);
+  const r=next();
   try{
     const d=mk.shirt.units-u0;
     if(d>0){
@@ -173,9 +173,9 @@ const _t9_67=tick9;tick9=function(){
     }
   }catch(e){}
   return r;
-};
-const _vmk67=vMarketing;vMarketing=function(){
-  let r=_vmk67();
+});
+hookAround('vMarketing','vmk67',function(next,__a){
+  let r=next();
   try{
     const re=/<div class="x9"><section class="sec card"><h3>Camisas<small>[\s\S]*?<\/section><\/div>/;
     r=r.replace(re,'');
@@ -218,7 +218,7 @@ const _vmk67=vMarketing;vMarketing=function(){
     if(r.includes(marker))r=r.replace(marker,socProj67(pr,orig)+marker);
   }catch(e){console.error('vmk67 '+e.message)}
   return r;
-};
+});
 function socCalc67(prices){
   const c=userClub(),mk=G.mk,T=socTarget(c);
   const n=SOCREF.map((ref,i)=>T*SOCSH[i]*clamp(Math.pow(ref/prices[i],.9),.25,1.7));

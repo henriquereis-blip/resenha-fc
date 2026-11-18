@@ -6,8 +6,8 @@ const userDiv=()=>(G.user!=null&&G.clubs[G.user])?G.clubs[G.user].div:0;
 function tradRank(c){return LG(c.div).sort((a,b)=>b.trad-a.trad).findIndex(x=>x.id===c.id)+1}
 function expRank(c){return .6*rankByStrength(c)+.4*tradRank(c)}
 metaFor=function(c){return Math.min(16,Math.max(c.div===0?3:2,Math.round(expRank(c)*0.85)+1))};
-const _mt12=metaText;metaText=function(mp){const d=userDiv();return d>0&&mp<=1?'Ser campeão da '+DIVN[d]:d>0&&d!==4&&mp<=4?'Brigar pelo acesso (top '+mp+')':_mt12(mp)};
-const _nw12=newWorld;newWorld=function(){_nw12();for(const c of G.clubs)if(c.div>0&&!FINREAL[c.sig]){const inc=c.tv+c.spBase,rev=Math.round(inc*8);FINREAL[c.sig]=[+(rev*rnd(.15,1.3)).toFixed(1),rev,'ok']}};
+hookAround('metaText','mt12',function(next,__a){let [mp]=__a;const d=userDiv();return d>0&&mp<=1?'Ser campeão da '+DIVN[d]:d>0&&d!==4&&mp<=4?'Brigar pelo acesso (top '+mp+')':next(mp)});
+hookAround('newWorld','nw12',function(next,__a){next();for(const c of G.clubs)if(c.div>0&&!FINREAL[c.sig]){const inc=c.tv+c.spBase,rev=Math.round(inc*8);FINREAL[c.sig]=[+(rev*rnd(.15,1.3)).toFixed(1),rev,'ok']}});
 /* salários: potencial, idade, desempenho e peso no clube */
 salOf=function(p){
   const v=valueOf(p)*0.11*1.6;
@@ -73,8 +73,8 @@ hookAround('finishRound','ext12_fr12',function(next,A){
   try{aiFinance()}catch(e){console.error('aifin',e)}
   return out;
 });
-const _es12=endSeason;endSeason=function(){
-  _es12();
+hookAround('endSeason','es12',function(next,__a){
+  next();
   try{const c=userClub(),s=G.summary,d=c.div;if(!s)return;
     s.div=d;s.divName=DIVN[d];{const rp=relPromo(d,s.pos);s.rel=rp.rel;s.promo=rp.promo}
     if(s.rel){G.board.conf=clamp(G.board.conf-(10+c.trad*.45),0,100);if(G.pat){G.pat.bd=clamp(G.pat.bd-12,0,100);G.pat.fan=clamp(G.pat.fan-8,0,100)}
@@ -83,11 +83,11 @@ const _es12=endSeason;endSeason=function(){
     if(s.promo){G.board.conf=clamp(G.board.conf+10,0,100);s.txt+=' ACESSO conquistado: sobe para a '+upperName(d)+'!'}
     s.conf=G.board.conf;
   }catch(e){console.error('es12',e)}
-};
+});
 fireOffers=function(){
   const c=userClub();
   return shuffle(G.clubs.filter(x=>x.id!==c.id&&x.div>=c.div&&x.div-c.div<=1)).sort((a,b)=>Math.abs(a.rep-(c.rep+rnd(-3,3)))-Math.abs(b.rep-(c.rep+rnd(-3,3)))).slice(0,3).map(x=>x.id);
 };
-const _sc12=startCareer;startCareer=function(id,coach,phil,asst){_sc12(id,coach,phil,asst);genAllFx();save()};
-const _tj12=takeJob;takeJob=function(id){const r=_tj12(id);genAllFx();G.round<NR()&&prepareRound();save();return r};
+hookAround('startCareer','sc12',function(next,__a){let [id,coach,phil,asst]=__a;next(id,coach,phil,asst);genAllFx();save()});
+hookAround('takeJob','tj12',function(next,__a){let [id]=__a;const r=next(id);genAllFx();G.round<NR()&&prepareRound();save();return r});
 Object.assign(A,{cdiv(d){S.cdiv=+d.v;S.sc=null;render()},firedgo(){S.modal={t:'fired'};render()}});
