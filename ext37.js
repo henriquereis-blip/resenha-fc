@@ -80,7 +80,7 @@ const WRULES={
  USA:{fmt:'liga',rd:34,rel:0,conc:4,po:16,txt:['Liga fechada, sem rebaixamento; 34 rodadas.','Playoffs da MLS Cup entre os 16 melhores, jogo único com mando do melhor colocado.','Teto salarial com jogadores franquia (Designated Players).','8 vagas de estrangeiros por clube, negociáveis entre clubes.']},
  KSA:{fmt:'liga',rd:34,rel:3,aco:3,txt:['18 clubes, 34 rodadas, 3 rebaixados.','Máximo de 10 estrangeiros por clube (8 por jogo).','Desempate: confronto direto.','Vagas na Champions Asiática para os melhores colocados.']},
  PAR:{fmt:'ac',rd:22,rel:2,po:1,lib:4,sul:4,txt:['12 clubes, 22 rodadas; Dois torneios (Apertura e Clausura); o líder de cada um é campeão, 2 campeões por temporada.','Libertadores: 4 vagas; Sul-Americana: 4.','Descenso por média de pontos de três temporadas (2 caem).']},
- ECU:{fmt:'liga',rd:30,rel:2,lib:4,sul:4,txt:['16 clubes, 30 rodadas; título pela tabela (simplificado: o real tem hexagonal final).','Libertadores: 4 vagas; Sul-Americana: 4.','2 rebaixados.']},
+ ECU:{fmt:'hex',rd:30,rel:2,lib:4,sul:4,txt:['16 clubes, 30 rodadas; os 6 primeiros jogam o hexagonal final (ida e volta, pontos zerados) e o campeão sai dele; rebaixamento pela tabela dos 30 jogos.','Libertadores: 4 vagas; Sul-Americana: 4.','2 rebaixados.']},
  PER:{fmt:'ac',rd:34,rel:2,po:1,lib:4,sul:4,txt:['18 clubes, 34 rodadas; Dois torneios (Apertura e Clausura); o líder de cada um é campeão (simplificado: a final entre os dois não existe).','Libertadores: 4 vagas; Sul-Americana: 4.','2 rebaixados pela tabela acumulada.']},
  BOL:{fmt:'liga',rd:30,rel:0,lib:4,sul:3,txt:['16 clubes, 30 rodadas; título pela tabela (simplificado).','Libertadores: 4 vagas; Sul-Americana: 3.','Sem descenso por enquanto: a segunda divisão boliviana (Copa Simón Bolívar) ainda não está no jogo.']},
  VEN:{fmt:'ac',rd:26,rel:0,po:8,lib:3,sul:3,txt:['14 clubes, Apertura e Clausura de 13 rodadas, cada um com mata-mata dos 8 melhores; 2 campeões por temporada.','Libertadores: 3 vagas; Sul-Americana: 3.','Sem descenso por enquanto: a segunda divisão venezuelana ainda não está no jogo.']},
@@ -146,6 +146,7 @@ function wEnd(){
   for(const k in W.lg){const R=WRULES[k]||{};let T=wTable(k);
     let champ=T[0];
     if(R.fmt==='ac'){const c2=wKO(T.slice(0,R.po||8));const a=(W.lg[k].hf||[]).filter(x=>x.s===G.season).slice(-1)[0];champ=c2;rec.ch[k]=(a?a.n+' / ':'')+c2.n;rec.vi[k]=''}
+    else if(R.fmt==='hex'){const h=hexSim51(T.slice(0,6),x=>x.r);champ=h.tb[0];rec.ch[k]=champ.n;rec.vi[k]=h.tb[1].n}
     else if(R.po){champ=wKO(T.slice(0,R.po));rec.ch[k]=champ.n;rec.vi[k]=T[0].n}
     else{rec.ch[k]=T[0].n;rec.vi[k]=T[1]?T[1].n:''}
     rec.cp=rec.cp||{};rec.cp[k]=champ.n;

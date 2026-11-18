@@ -12,12 +12,25 @@ function top51(I,rows){
     if(sel.size===16)return rows.filter(r=>sel.has(r))}}catch(e){}
   return rows.slice(0,po51n(I));
 }
+/* Equador: hexagonal final (6 melhores, ida e volta, pontos zerados); campeão = mais pontos */
+function hexSim51(teams,ra){
+  const pts=new Map(teams.map(t=>[t,{p:0,g:0}])),n=teams.length;
+  for(const a of teams)for(const b of teams){if(a===b)continue;const g=wMatch({r:ra(a),f:1},{r:ra(b),f:1}),x=pts.get(a),y=pts.get(b);
+    x.g+=g[0]-g[1];y.g+=g[1]-g[0];if(g[0]>g[1])x.p+=3;else if(g[0]<g[1])y.p+=3;else{x.p++;y.p++}}
+  const tb=teams.slice().sort((a,b)=>pts.get(b).p-pts.get(a).p||pts.get(b).g-pts.get(a).g||teams.indexOf(a)-teams.indexOf(b));
+  return {tb,pts}}
+function hexRun51(I,label){
+  const rows=allRows(I.div),top=rows.slice(0,6);if(top.length<6)return null;
+  const h=hexSim51(top,rRat);const ch=h.tb[0];
+  const log=[{stage:'Final',t:'Hexagonal: '+h.tb.map(t=>rn51(t)+' '+h.pts.get(t).p).join(' · '),w:ch,l:null}];
+  award51(label,ch,log);return {champ:ch,log,label,qual:top.includes(userClub())}}
 function lg51(){
   try{
     if(!G||!G.abroad||!G.pyr||G.user==null)return null;const u=G.clubs[G.user];if(!u||u.div<4||tierOf(u.div)!==1)return null;
     const k=G.pyr.k,R=WRULES[k]||{};
     if(k==='USA')return {k,R,div:u.div,kind:'mls'};
     if(R.fmt==='ac')return {k,R,div:u.div,kind:'ac'};
+    if(R.fmt==='hex')return {k,R,div:u.div,kind:'hex'};
   }catch(e){}
   return null;
 }
@@ -103,7 +116,7 @@ const _fr51=finishRound;finishRound=function(){const r=_fr51.apply(this,argument
 const _es51=endSeason;endSeason=function(){
   let res=null,I=null;
   try{I=lg51();if(G.lg51&&G.lg51.pres&&G.lg51.pres.s===G.season){res=G.lg51.pres}
-    else if(I&&(!G.lg51||G.lg51.end!==G.season)){G.lg51=G.lg51||{};G.lg51.end=G.season;res=I.kind==='mls'?mlsRun51(I):acRun51(I,'Clausura ('+wlOf(I.k).lg+')')}}catch(e){console.error('end51 '+e.message)}
+    else if(I&&(!G.lg51||G.lg51.end!==G.season)){G.lg51=G.lg51||{};G.lg51.end=G.season;res=I.kind==='mls'?mlsRun51(I):I.kind==='hex'?hexRun51(I,'Hexagonal final ('+wlOf(I.k).lg+')'):acRun51(I,'Clausura ('+wlOf(I.k).lg+')')}}catch(e){console.error('end51 '+e.message)}
   const r=_es51.apply(this,arguments);
   try{if(res&&G.summary){const nm=rn51(res.champ);
       G.summary.champ=nm;if(G.hist.length)G.hist[G.hist.length-1].champ=nm;

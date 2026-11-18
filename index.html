@@ -6862,7 +6862,7 @@ const WRULES={
  USA:{fmt:'liga',rd:34,rel:0,conc:4,po:16,txt:['Liga fechada, sem rebaixamento; 34 rodadas.','Playoffs da MLS Cup entre os 16 melhores, jogo único com mando do melhor colocado.','Teto salarial com jogadores franquia (Designated Players).','8 vagas de estrangeiros por clube, negociáveis entre clubes.']},
  KSA:{fmt:'liga',rd:34,rel:3,aco:3,txt:['18 clubes, 34 rodadas, 3 rebaixados.','Máximo de 10 estrangeiros por clube (8 por jogo).','Desempate: confronto direto.','Vagas na Champions Asiática para os melhores colocados.']},
  PAR:{fmt:'ac',rd:22,rel:2,po:1,lib:4,sul:4,txt:['12 clubes, 22 rodadas; Dois torneios (Apertura e Clausura); o líder de cada um é campeão, 2 campeões por temporada.','Libertadores: 4 vagas; Sul-Americana: 4.','Descenso por média de pontos de três temporadas (2 caem).']},
- ECU:{fmt:'liga',rd:30,rel:2,lib:4,sul:4,txt:['16 clubes, 30 rodadas; título pela tabela (simplificado: o real tem hexagonal final).','Libertadores: 4 vagas; Sul-Americana: 4.','2 rebaixados.']},
+ ECU:{fmt:'hex',rd:30,rel:2,lib:4,sul:4,txt:['16 clubes, 30 rodadas; os 6 primeiros jogam o hexagonal final (ida e volta, pontos zerados) e o campeão sai dele; rebaixamento pela tabela dos 30 jogos.','Libertadores: 4 vagas; Sul-Americana: 4.','2 rebaixados.']},
  PER:{fmt:'ac',rd:34,rel:2,po:1,lib:4,sul:4,txt:['18 clubes, 34 rodadas; Dois torneios (Apertura e Clausura); o líder de cada um é campeão (simplificado: a final entre os dois não existe).','Libertadores: 4 vagas; Sul-Americana: 4.','2 rebaixados pela tabela acumulada.']},
  BOL:{fmt:'liga',rd:30,rel:0,lib:4,sul:3,txt:['16 clubes, 30 rodadas; título pela tabela (simplificado).','Libertadores: 4 vagas; Sul-Americana: 3.','Sem descenso por enquanto: a segunda divisão boliviana (Copa Simón Bolívar) ainda não está no jogo.']},
  VEN:{fmt:'ac',rd:26,rel:0,po:8,lib:3,sul:3,txt:['14 clubes, Apertura e Clausura de 13 rodadas, cada um com mata-mata dos 8 melhores; 2 campeões por temporada.','Libertadores: 3 vagas; Sul-Americana: 3.','Sem descenso por enquanto: a segunda divisão venezuelana ainda não está no jogo.']},
@@ -6928,6 +6928,7 @@ function wEnd(){
   for(const k in W.lg){const R=WRULES[k]||{};let T=wTable(k);
     let champ=T[0];
     if(R.fmt==='ac'){const c2=wKO(T.slice(0,R.po||8));const a=(W.lg[k].hf||[]).filter(x=>x.s===G.season).slice(-1)[0];champ=c2;rec.ch[k]=(a?a.n+' / ':'')+c2.n;rec.vi[k]=''}
+    else if(R.fmt==='hex'){const h=hexSim51(T.slice(0,6),x=>x.r);champ=h.tb[0];rec.ch[k]=champ.n;rec.vi[k]=h.tb[1].n}
     else if(R.po){champ=wKO(T.slice(0,R.po));rec.ch[k]=champ.n;rec.vi[k]=T[0].n}
     else{rec.ch[k]=T[0].n;rec.vi[k]=T[1]?T[1].n:''}
     rec.cp=rec.cp||{};rec.cp[k]=champ.n;
@@ -8475,12 +8476,25 @@ function top51(I,rows){
     if(sel.size===16)return rows.filter(r=>sel.has(r))}}catch(e){}
   return rows.slice(0,po51n(I));
 }
+/* Equador: hexagonal final (6 melhores, ida e volta, pontos zerados); campeão = mais pontos */
+function hexSim51(teams,ra){
+  const pts=new Map(teams.map(t=>[t,{p:0,g:0}])),n=teams.length;
+  for(const a of teams)for(const b of teams){if(a===b)continue;const g=wMatch({r:ra(a),f:1},{r:ra(b),f:1}),x=pts.get(a),y=pts.get(b);
+    x.g+=g[0]-g[1];y.g+=g[1]-g[0];if(g[0]>g[1])x.p+=3;else if(g[0]<g[1])y.p+=3;else{x.p++;y.p++}}
+  const tb=teams.slice().sort((a,b)=>pts.get(b).p-pts.get(a).p||pts.get(b).g-pts.get(a).g||teams.indexOf(a)-teams.indexOf(b));
+  return {tb,pts}}
+function hexRun51(I,label){
+  const rows=allRows(I.div),top=rows.slice(0,6);if(top.length<6)return null;
+  const h=hexSim51(top,rRat);const ch=h.tb[0];
+  const log=[{stage:'Final',t:'Hexagonal: '+h.tb.map(t=>rn51(t)+' '+h.pts.get(t).p).join(' · '),w:ch,l:null}];
+  award51(label,ch,log);return {champ:ch,log,label,qual:top.includes(userClub())}}
 function lg51(){
   try{
     if(!G||!G.abroad||!G.pyr||G.user==null)return null;const u=G.clubs[G.user];if(!u||u.div<4||tierOf(u.div)!==1)return null;
     const k=G.pyr.k,R=WRULES[k]||{};
     if(k==='USA')return {k,R,div:u.div,kind:'mls'};
     if(R.fmt==='ac')return {k,R,div:u.div,kind:'ac'};
+    if(R.fmt==='hex')return {k,R,div:u.div,kind:'hex'};
   }catch(e){}
   return null;
 }
@@ -8566,7 +8580,7 @@ const _fr51=finishRound;finishRound=function(){const r=_fr51.apply(this,argument
 const _es51=endSeason;endSeason=function(){
   let res=null,I=null;
   try{I=lg51();if(G.lg51&&G.lg51.pres&&G.lg51.pres.s===G.season){res=G.lg51.pres}
-    else if(I&&(!G.lg51||G.lg51.end!==G.season)){G.lg51=G.lg51||{};G.lg51.end=G.season;res=I.kind==='mls'?mlsRun51(I):acRun51(I,'Clausura ('+wlOf(I.k).lg+')')}}catch(e){console.error('end51 '+e.message)}
+    else if(I&&(!G.lg51||G.lg51.end!==G.season)){G.lg51=G.lg51||{};G.lg51.end=G.season;res=I.kind==='mls'?mlsRun51(I):I.kind==='hex'?hexRun51(I,'Hexagonal final ('+wlOf(I.k).lg+')'):acRun51(I,'Clausura ('+wlOf(I.k).lg+')')}}catch(e){console.error('end51 '+e.message)}
   const r=_es51.apply(this,arguments);
   try{if(res&&G.summary){const nm=rn51(res.champ);
       G.summary.champ=nm;if(G.hist.length)G.hist[G.hist.length-1].champ=nm;
