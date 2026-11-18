@@ -10680,7 +10680,7 @@ globalThis.staffAlerts=function(){
   }catch(e){}
   return out.sort((a,b)=>b.sev-a.sev);
 };
-const cardHtml=(l,max)=>l.slice(0,max).map(a=>`<div class="tip"><p>${a.ic} ${esc(a.txt)}</p><div class="row"><button class="btn sm" data-a="${a.a}"${a.v?` data-v="${a.v}"`:''}${a.f?` data-f="${esc(a.f)}"`:''}>${esc(a.btn)}</button></div></div>`).join('');
+const cardHtml=(l,max)=>l.slice(0,max).map(a=>`<div class="tip"><p>${a.ic} ${esc(a.txt)}</p><div class="row"><button class="btn sm" data-a="${a.a}"${a.v?` data-v="${a.v}"`:''}${a.f?` data-f="${esc(a.f)}"`:''}${a.id!==undefined?` data-id="${a.id}"`:''}>${esc(a.btn)}</button></div></div>`).join('');
 Object.assign(A,{auxform(d){const c=userClub();if(!FORMS[d.f])return;c.formation=d.f;autoPick(c);save();toast('Formação trocada pra '+d.f);render()}});
 
 /* Início: até 3 avisos do auxiliar */
@@ -10853,6 +10853,132 @@ hookAround('shouldFire','sf',function(next,__a){
   let p=next();
   if(p&&c&&posOf(c)<=G.board.meta+2&&Math.random()<0.8)p=false;
   return p;
+});
+})();
+/* ext76 (v92): contratos — duração, vencimento, renovação (1–5 anos) com salário individual e luvas, aviso do auxiliar. Usa só hooks. */
+(function(){
+const YF={1:1.10,2:1.03,3:1.0,4:0.97,5:0.95};   /* contrato mais longo = salário menor por ano */
+const SPREAD=[0,1,1,2,2,3,3];
+function ctOf(p){
+  if(!p)return 0;
+  if(p.ct===undefined){
+    if(p.club===G.user&&p.wage!==undefined)p.ct=G.season+2;
+    else p.ct=G.season+SPREAD[(p.id*13)%7]-(p.age>=33?1:0)+(p.age<=21?1:0);
+    if(p.ct<G.season)p.ct=G.season;
+  }
+  return p.ct;
+}
+globalThis.ctOf=ctOf;
+const yrsLeft=p=>ctOf(p)-G.season+1;
+function terms(p,y){
+  const cur=salOf(p),fair=(typeof wageFair==='function'?wageFair(p):cur)*(G.salMult||1);
+  const q=pers(p),mood=q&&q.pm!==undefined?q.pm:60;
+  const wage=+Math.max(fair*1.04*YF[y],cur*0.92).toFixed(2);
+  const luvas=+(wage*0.12*y*(mood<45?1.3:1)).toFixed(2);
+  return {wage,luvas,mood};
+}
+function canRenew(p,y){
+  const c=userClub(),t=terms(p,y);
+  if(t.mood<30)return 'Não quer renovar: está insatisfeito. Melhore o clima (jogos, moral) e tente depois.';
+  if(p.age>=33&&y>2)return 'Com '+p.age+' anos ele só aceita até 2 anos.';
+  if(p.age>=36&&y>1)return 'Com '+p.age+' anos ele só aceita 1 ano.';
+  const bud=wageBudget(),pay=payroll(c)-salOf(p)+t.wage;
+  if(pay>bud*(1+(G.board.conf-50)/250))return 'A diretoria barrou: a folha passaria do teto de '+mi(bud)+'.';
+  if(G.fin.caixa<t.luvas)return 'Caixa insuficiente para as luvas ('+mi(t.luvas)+').';
+  return null;
+}
+Object.assign(A,{
+  rnw(d){const p=P(+d.id),y=+d.y;if(!p||p.club!==G.user||!YF[y])return;
+    const e=canRenew(p,y);if(e){toast(e);return}
+    const t=terms(p,y);G.fin.caixa=+(G.fin.caixa-t.luvas).toFixed(2);
+    p.wage=t.wage;p.ct=Math.min(G.season+5,Math.max(ctOf(p),G.season)+y);
+    const q=pers(p);if(q&&q.pm!==undefined)q.pm=clamp(q.pm+4,0,100);
+    G.raises=(G.raises||[]).filter(r=>r.pid!==p.id);
+    save();toast(lastName(p.name)+' renovou por '+y+' ano(s): '+mi(t.wage)+'/ano, luvas '+mi(t.luvas)+'.');render()}
+});
+/* card de contrato no perfil de jogador do SEU time */
+hookAround('vPerfil','ct76',function(next,__a){
+  let h=next();
+  try{const p=P(S.prof);if(p&&p.club===G.user){
+    const left=yrsLeft(p),tag=left<=1?'<b style="color:#e8a33d">vence esta temporada</b>':left+' temporadas';
+    const btns=[1,2,3,4,5].map(y=>{const t=terms(p,y);return `<button class="btn sm ghost" data-a="rnw" data-id="${p.id}" data-y="${y}">${y} ano${y>1?'s':''} · ${mi(t.wage)}/ano · luvas ${mi(t.luvas)}</button>`}).join('');
+    const card=`<div class="card"><div class="k">Contrato</div><div class="res"><span>Vai até</span><b>${ctOf(p)} (${tag})</b></div><div class="res"><span>Salário atual</span><b>${mi(salOf(p))}/ano</b></div><p class="news">Renovar: contrato maior = salário por ano menor, mas luvas maiores.</p><div class="row" style="flex-wrap:wrap;gap:6px">${btns}</div></div>`;
+    h=h.replace('<div class="card"><div class="k">Estado e contrato</div>',card+'<div class="card"><div class="k">Estado e contrato</div>');
+  }}catch(e){console.error('ct76 '+e.message)}
+  return h;
+});
+/* vencimento: no começo da temporada, quem não renovou vai embora (livre). Sempre fica ao menos 20 jogadores */
+hookAfter('newSeason','ct76',function(){
+  const c=userClub();if(!c)return;
+  const gone=c.squad.map(id=>P(id)).filter(p=>ctOf(p)<G.season).sort((a,b)=>b.ovr-a.ovr);
+  if(!gone.length)return;
+  const out=[];
+  for(const p of gone){
+    if(c.squad.length-out.length<=20){p.ct=G.season;p.wage=+(salOf(p)*1.0).toFixed(2);addNews('Sem opção no elenco, '+lastName(p.name)+' ganhou renovação automática de 1 ano.');continue}
+    out.push(p);
+  }
+  for(const p of out){
+    c.squad=c.squad.filter(id=>id!==p.id);p.club=-1;p.listed=false;delete p.wage;delete p.ct;
+    G.free=G.free||[];G.free.push(p.id);
+  }
+  if(out.length){addNews('Fim de contrato: '+out.slice(0,4).map(p=>lastName(p.name)).join(', ')+(out.length>4?' e mais '+(out.length-4):'')+' deixaram o clube.');try{autoPick(c)}catch(e){}}
+});
+/* contratos de início de carreira ficam espalhados */
+hookAfter('startCareer','ct76',function(){try{for(const id of userClub().squad)ctOf(P(id))}catch(e){}});
+/* aviso do auxiliar */
+hookAfter('staffAlerts','ct76',function(out){
+  try{const c=userClub();if(!c||G.round<12)return;
+    const l=c.squad.map(id=>P(id)).filter(p=>ctOf(p)<=G.season&&p.ovr>=c.squad.map(i=>P(i).ovr).sort((a,b)=>b-a)[13]).sort((a,b)=>b.ovr-a.ovr);
+    if(l.length){const p=l[0];out.push({k:'ct',sev:G.round>=26?3:2,ic:'📝',txt:`${l.length} titular(es)/reserva importante(s) com contrato acabando (${l.slice(0,3).map(x=>lastName(x.name)).join(', ')}). Quem não renovar vai embora de graça no fim do ano.`,btn:'Ver '+lastName(p.name),a:'prof',id:p.id});out.sort((a,b)=>b.sev-a.sev)}
+  }catch(e){}
+});
+})();
+/* ext77 (v92): diretoria firme — orçamento de salários cresce com superávit e encolhe com déficit, reserva mínima de caixa (veto de compra), avisos */
+(function(){
+const reserve=()=>{const c=userClub();return +(payroll(c)*0.06).toFixed(1)};
+globalThis.cashReserve=reserve;
+/* 1) fecho de temporada: orçamento reage ao resultado financeiro do ano */
+hookBefore('newSeason','dir77',function(){try{G._cx1=G.fin.caixa}catch(e){}});
+hookAfter('newSeason','dir77',function(){
+  try{
+    const c=userClub();if(!c||G._cx0===undefined){G._cx0=G.fin.caixa;return}
+    const prof=G._cx1-G._cx0;G._cx0=G.fin.caixa;
+    const pay=Math.max(1,payroll(c)),r=prof/pay;
+    const g=clamp(1+r*0.5,0.92,1.16);
+    const old=wageBudget();G.wb=+(old*g).toFixed(2);
+    if(Math.abs(g-1)>=0.01){
+      const up=g>1;
+      addNews(up?`Diretoria aprova orçamento maior: teto de salários sobe para ${mi(G.wb)} (superávit de ${mi(prof)} na temporada).`
+               :`Diretoria corta o orçamento: teto de salários cai para ${mi(G.wb)} (déficit de ${mi(-prof)} na temporada).`);
+    }
+    G.dirMsg={s:G.season,prof:+prof.toFixed(1),wb:G.wb,g:+g.toFixed(3)};
+  }catch(e){console.error('dir77 '+e.message)}
+});
+hookAfter('startCareer','dir77',function(){G._cx0=G.fin.caixa;G._cx1=G.fin.caixa});
+hookAfter('takeJob','dir77',function(){G._cx0=G.fin.caixa;G._cx1=G.fin.caixa});
+/* 2) veto: compra que deixa o caixa abaixo da reserva mínima */
+hookAround('makeBid','dir77',function(next,__a){
+  let [pid,fee]=__a;
+  try{const c=userClub();if(c&&fee>0&&G.fin.caixa-fee<reserve()){
+    const r=reserve();
+    return {ok:false,msg:'A diretoria vetou: a compra deixaria o caixa em '+mi(Math.max(0,G.fin.caixa-fee))+' (reserva mínima do clube: '+mi(r)+').'}}}catch(e){}
+  return next(pid,fee);
+});
+hookAround('negStart','dir77',function(next,__a){
+  let [pid]=__a;
+  try{const p=P(pid),c=userClub();if(p&&c&&p.club>=0&&p.club!==G.user&&askPrice(p)*0.85>G.fin.caixa-reserve())return 'A diretoria já avisou: com o caixa em '+mi(G.fin.caixa)+' (reserva mínima '+mi(reserve())+') não dá pra bancar '+nameOf(p)+' (pedem ~'+mi(askPrice(p))+').'}catch(e){}
+  return next(pid);
+});
+/* 3) avisos do diretor */
+hookAfter('staffAlerts','dir77',function(out){
+  try{const c=userClub();if(!c)return;
+    const r=reserve();
+    if(G.fin.caixa>=0&&G.fin.caixa<r*1.5)out.push({k:'dircx',sev:2,ic:'🏦',txt:`Diretor financeiro: o caixa (${mi(G.fin.caixa)}) tá perto da reserva mínima de ${mi(r)}. Acima disso a diretoria veta compras.`,btn:'Ver Clube',a:'nav',v:'clube'});
+    const pay=payroll(c),bud=wageBudget();
+    if(pay>bud*0.97&&pay<=bud*1.02)out.push({k:'dirfolha',sev:1,ic:'🏦',txt:`Diretor financeiro: a folha (${mi(pay)}) bateu no teto de ${mi(bud)}. Pra contratar mais, vende ou deixa alguém sair.`,btn:'Ver Comissão',a:'nav',v:'staff'});
+    if(G.dirMsg&&G.dirMsg.s===G.season&&G.round<=3&&Math.abs(G.dirMsg.g-1)>=0.01)out.push({k:'dirbud',sev:1,ic:'🏦',txt:G.dirMsg.g>1?`Diretoria: o ano passado fechou com superávit de ${mi(G.dirMsg.prof)}, então o teto de salários subiu pra ${mi(G.dirMsg.wb)}.`:`Diretoria: o ano passado fechou no vermelho (${mi(G.dirMsg.prof)}), então o teto de salários caiu pra ${mi(G.dirMsg.wb)}.`,btn:'Ver Clube',a:'nav',v:'clube'});
+    out.sort((a,b)=>b.sev-a.sev);
+  }catch(e){}
 });
 })();
 newWorld();G.phase='start';render();

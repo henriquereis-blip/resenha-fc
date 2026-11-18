@@ -36,7 +36,7 @@ globalThis.staffAlerts=function(){
   }catch(e){}
   return out.sort((a,b)=>b.sev-a.sev);
 };
-const cardHtml=(l,max)=>l.slice(0,max).map(a=>`<div class="tip"><p>${a.ic} ${esc(a.txt)}</p><div class="row"><button class="btn sm" data-a="${a.a}"${a.v?` data-v="${a.v}"`:''}${a.f?` data-f="${esc(a.f)}"`:''}>${esc(a.btn)}</button></div></div>`).join('');
+const cardHtml=(l,max)=>l.slice(0,max).map(a=>`<div class="tip"><p>${a.ic} ${esc(a.txt)}</p><div class="row"><button class="btn sm" data-a="${a.a}"${a.v?` data-v="${a.v}"`:''}${a.f?` data-f="${esc(a.f)}"`:''}${a.id!==undefined?` data-id="${a.id}"`:''}>${esc(a.btn)}</button></div></div>`).join('');
 Object.assign(A,{auxform(d){const c=userClub();if(!FORMS[d.f])return;c.formation=d.f;autoPick(c);save();toast('Formação trocada pra '+d.f);render()}});
 
 /* Início: até 3 avisos do auxiliar */
