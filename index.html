@@ -117,7 +117,7 @@ input[type=range]{width:100%;accent-color:var(--accent)}
 body{padding-bottom:84px}
 .home>*{min-width:0}.hr{display:flex;flex-direction:column;gap:10px}.flash{background:linear-gradient(transparent,rgba(0,0,0,.72) 25%,rgba(0,0,0,.72) 75%,transparent);padding:22px 0}
 html,body{overflow-x:hidden}
-</style>
+.bn.outp{touch-action:manipulation}.bn.outp.undo{filter:brightness(.55);outline:1px dashed var(--accent2)}.bn.outp.undo small{color:var(--accent2);font-weight:700}.bn.outp.done{opacity:.55}.bn.outp.done .shirt{filter:grayscale(1)}</style>
 <style>
 body:has(.mt){background:#050b07}
 @media(min-width:760px){.mt{max-width:560px;margin:0 auto;border-radius:16px;border:1px solid #1f3327}}
@@ -2680,7 +2680,7 @@ const _vm10=vMercado;vMercado=function(){
   return '<div class="wrap x9">'+tabs+`<div class="hint">Empréstimo dura até o fim da temporada. Você paga uma taxa e o salário, e pode exercer a opção de compra. Emprestar garoto seu rende taxa e ele volta mais experiente.</div>
   ${outs.length?`<section class="sec card"><h3>Emprestados por mim<small>${outs.length}</small></h3>${outs.map(p=>`<div class="rank"><span class="pos">${p.ovr}</span><div class="pn col"><span>${esc(nameOf(p))}</span><small class="k">${p.age}a · no ${C(p.club).name} · volta no fim do ano</small></div></div>`).join('')}</section>`:''}
   ${ins.length?`<section class="sec card"><h3>Aqui por empréstimo<small>${ins.length}</small></h3>${ins.map(p=>`<div class="mrow"><span class="pos">${roleLabel(p)}</span><span class="nm">${esc(nameOf(p))}<small>de ${C(p.loan.from).name} · opção ${mi(loanInOffer(p.id).buy)}</small></span><button class="btn sm" data-a="loanbuy" data-id="${p.id}">Comprar</button></div>`).join('')}</section>`:''}
-  <section class="sec card"><h3>Disponíveis<small>${av.length}</small></h3>${av.length?av.map(p=>`<div class="mrow"><span class="pos">${roleLabel(p)}</span><span class="nm">${esc(nameOf(p))}<small>${C(p.club).sig} · ${p.age}a · OVR ${p.ovr} · taxa ${mi(loanInOffer(p.id).fee)}</small></span><span class="col"><button class="btn sm" data-a="loanin" data-id="${p.id}">Pedir</button><button class="btn sm ghost" data-a="prof" data-id="${p.id}">Ver</button></span></div>`).join(''):'<p class="news">Ninguém liberado agora. Os clubes abrem vagas ao longo do ano.</p>'}</section></div>`;
+  <section class="sec card"><h3>Disponíveis<small>${av.length}</small></h3>${av.length?av.map(p=>`<div class="mrow"><span class="pos">${roleLabel(p)}</span><span class="nm">${esc(nameOf(p))}<small>${C(p.club).sig} · ${p.age}a · OVR ${p.ovr} · taxa ${mi(loanInOffer(p.id).fee)}</small></span><span class="col"><button class="btn sm" data-a="loanin" data-id="${p.id}">Emprestar</button><button class="btn sm ghost" data-a="prof" data-id="${p.id}">Ver</button></span></div>`).join(''):'<p class="news">Ninguém liberado agora. Os clubes abrem vagas ao longo do ano.</p>'}</section></div>`;
 };
 const _vp10=vPerfil;vPerfil=function(){
   let r=_vp10();const p=P(S.prof);if(!p)return r;
@@ -2689,7 +2689,7 @@ const _vp10=vPerfil;vPerfil=function(){
     if(p.loan&&p.loan.to===G.user)ex_=`<div class="x9"><div class="card"><div class="k">Emprestado por ${C(p.loan.from).name}</div><button class="btn big" data-a="loanbuy" data-id="${p.id}">Exercer opção de compra · ${mi(loanInOffer(p.id).buy)}</button></div></div>`;
     else ex_=`<div class="x9"><button class="btn big ghost" data-a="loanopen" data-id="${p.id}">Emprestar jogador</button>${S.loanFor===p.id?loanOutOffers(p.id).map((o,i)=>`<button class="off" data-a="loanpick" data-id="${p.id}" data-i="${i}"><span><b>${esc(C(o.club).name)}</b><small>${o.games} · cobre ${o.cover}% do salário</small></span><b>+${mi(o.fee)}</b></button>`).join(''):''}</div>`;
   }else if(p.loan&&p.loan.from===G.user){ex_=`<div class="card"><div class="k">Emprestado ao ${C(p.club).name} até o fim da temporada</div></div>`}
-  else if(p.loanable&&p.club>=0){ex_=`<div class="x9"><button class="btn big ghost" data-a="loanin" data-id="${p.id}">Pedir por empréstimo · taxa ${mi(loanInOffer(p.id).fee)}</button></div>`}
+  else if(p.loanable&&p.club>=0){ex_=`<div class="x9"><button class="btn big ghost" data-a="loanin" data-id="${p.id}">Pegar emprestado · taxa ${mi(loanInOffer(p.id).fee)}</button></div>`}
   return r.replace(/<\/div>$/,ex_+'</div>');
 };
 
@@ -3627,11 +3627,11 @@ function pitchHTML(cfg){
     const rt=cfg.rt&&cfg.rt[id]!==undefined?cfg.rt[id]:null;
     return `<button class="tok ${sel&&sel.k==='l'&&sel.i===i?'sel':''} ${p.inj>0?'hurt':''} ${sent?'sent':''}" data-drag data-drop data-k="l" data-i="${i}" style="left:${pos[i].x}%;top:${pos[i].y}%">
       <span class="fs">${shirtSvg(c,cfg.kind)}<b class="rt">${rt!==null?rt.toFixed(1):p.ovr}</b></span>
-      <span class="tn"><i>${esc(lastName(p.name))}</i><small class="${off?'off':''}">${roleLabel(p)}·${footOf(p)}${rt!==null?' · F'+p.ovr:''}</small></span><u class="wt">${WLBL[wv]}</u><s class="eb"><i style="width:${clamp(en,0,100)}%;background:${enCol(en)}"></i></s></button>`}).join('');
+      <span class="tn"><i>${esc(lastName(p.name))}</i><small class="${off?'off':''}">${p.inj>0?'🩹 lesão · '+p.inj+' rod.':roleLabel(p)+'·'+footOf(p)+(rt!==null?' · F'+p.ovr:'')}</small></span><u class="wt">${WLBL[wv]}</u><s class="eb"><i style="width:${clamp(en,0,100)}%;background:${enCol(en)}"></i></s></button>`}).join('');
   const bn=(ids,k)=>ids.map((id,i)=>{const p=P(id),en=cfg.en&&cfg.en[id]!==undefined?cfg.en[id]:p.en;
     const rt=cfg.rt&&cfg.rt[id]!==undefined&&cfg.mode==='match'?`<em class="nt">${cfg.rt[id].toFixed(1)}</em>`:'';
     return `<button class="bn ${sel&&sel.k===k&&sel.i===i?'sel':''} ${p.inj>0?'hurt':''}" data-drag data-drop data-k="${k}" data-i="${i}">
-     <span class="shirt sm" style="background:none;border:0;box-shadow:none;width:26px;height:26px">${shirtSvg(c,'res')}</span><span class="bt"><i>${esc(lastName(p.name))}</i><small>${roleLabel(p)} · ${p.ovr} · ${en<45?'cansado':'E'+Math.round(en)}</small></span>${rt}</button>`}).join('');
+     <span class="shirt sm" style="background:none;border:0;box-shadow:none;width:26px;height:26px">${shirtSvg(c,'res')}</span><span class="bt"><i>${esc(lastName(p.name))}</i><small>${p.inj>0?'🩹 lesionado · '+p.inj+' rod.':roleLabel(p)+' · '+p.ovr+' · '+(en<45?'cansado':'E'+Math.round(en))}</small></span>${rt}</button>`}).join('');
   const lines=`<svg class="lines" viewBox="0 0 300 400" preserveAspectRatio="none" aria-hidden="true"><g fill="none" stroke-width="1.4"><rect x="6" y="6" width="288" height="388"/><line x1="6" y1="200" x2="294" y2="200"/><circle cx="150" cy="200" r="38"/><rect x="85" y="6" width="130" height="58"/><rect x="120" y="6" width="60" height="22"/><rect x="85" y="336" width="130" height="58"/><rect x="120" y="372" width="60" height="22"/></g></svg>`;
   const rsv=(cfg.reserves&&cfg.reserves.length)?`<div class="sec">Reservas</div><div class="reserves">${cfg.reserves.map((id,i)=>{const p=P(id);return `<button class="bn rs ${sel&&sel.k==='r'&&sel.i===i?'sel':''} ${p.inj>0?'hurt':''}" data-drag data-drop data-k="r" data-i="${i}"><span class="bt"><i>${esc(lastName(p.name))}</i><small>${roleLabel(p)} · ${p.ovr} · E${Math.round(p.en)}${p.inj>0?' · lesão':''}</small></span></button>`}).join('')}</div>`:'';
   let ab='';
@@ -9879,6 +9879,82 @@ const _mh64=mailHtml;mailHtml=function(){
   return h;
 };
 Object.assign(A,{mprof(d){S.modal=null;G.view='elenco';S.prof=+d.id;render();window.scrollTo(0,0)}});
+/* ext65 — v84: toque no celular durante a partida + desfazer substituição */
+/* 1) Durante o jogo a tela re-renderiza a cada tick e destrói o botão antes do "click".
+      Sintetizamos o toque no pointerup se o elemento sumiu do DOM. */
+(function(){
+  let rec=null;
+  document.addEventListener('pointerdown',e=>{
+    if(!S.match){rec=null;return}
+    const t=e.target.closest&&e.target.closest('[data-a]');
+    if(!t){rec=null;return}
+    rec={a:t.dataset.a,ds:Object.assign({},t.dataset),x:e.clientX,y:e.clientY,t:Date.now(),el:t};
+  },true);
+  document.addEventListener('pointerup',e=>{
+    const r=rec;rec=null;
+    if(!r||!S.match)return;
+    if(r.el.isConnected)return; // click nativo vai funcionar
+    if(Math.hypot(e.clientX-r.x,e.clientY-r.y)>12||Date.now()-r.t>700)return;
+    if(typeof A[r.a]!=='function')return;
+    S._synth=Date.now();
+    A[r.a](r.ds);
+  },true);
+  document.addEventListener('click',e=>{
+    if(Date.now()-(S._synth||0)<800){e.stopPropagation();e.preventDefault()}
+  },true);
+})();
+
+/* 2) Desfazer substituição (só na mesma pausa) */
+const _sub65=subPlayer;
+subPlayer=function(m,k,outId,inId){
+  const s=m[k],j=s.bench.indexOf(inId),i=s.lineup.indexOf(outId);
+  const ev0=m.ev.length;
+  const r=_sub65(m,k,outId,inId);
+  if(r&&R&&m===R.ms[R.ui]&&k===userSide(m)&&S.paused){
+    (s.pend=s.pend||[]).push({out:outId,in:inId,j,i,ev:ev0,min:m.min});
+  }
+  return r;
+};
+const _mgo65=A.mgo;
+A.mgo=function(){
+  try{if(R&&R.ms)for(const m of R.ms)for(const k of['h','a'])if(m[k])m[k].pend=[]}catch(e){}
+  return _mgo65.apply(this,arguments);
+};
+A.subundo=function(d){
+  const m=R.ms[R.ui],k=userSide(m),s=m[k],oid=+d.id;
+  const e=(s.pend||[]).find(x=>x.out===oid);
+  if(!e||!S.paused){toast('Só dá pra desfazer na mesma parada.');return}
+  const i=s.lineup.indexOf(e.in);if(i<0)return;
+  s.lineup[i]=e.out;
+  s.bench.splice(Math.min(e.j,s.bench.length),0,e.in);
+  const ui=s.used.lastIndexOf(e.in);if(ui>=0)s.used.splice(ui,1);
+  const oi=s.outs.lastIndexOf(e.out);if(oi>=0)s.outs.splice(oi,1);
+  s.subs=Math.max(0,s.subs-1);
+  for(let q=m.ev.length-1;q>=0;q--){const ev=m.ev[q];if(ev.type==='sub'&&ev.pid===e.in){m.ev.splice(q,1);break}}
+  if(m.tac&&m.tac.length&&m.tac[m.tac.length-1].min===m.min)m.tac.pop();
+  s.pend=s.pend.filter(x=>x!==e);S.psel=null;
+  toast('Substituição desfeita ↩');render();
+};
+A.subnope=function(){toast('Esse já tá de agasalho — não volta mais.')};
+
+/* bancada mostra quem saiu: escuro+↩ se dá pra desfazer, agasalho se não */
+const _pitch65=pitchHTML;
+pitchHTML=function(cfg){
+  let h=_pitch65(cfg);
+  try{
+    if(!(S.match&&R&&R.ms&&cfg.mode==='match'))return h;
+    const m=R.ms[R.ui],k=userSide(m),s=m[k];
+    if(!s||!s.outs||!s.outs.length)return h;
+    const pend=(s.pend||[]).map(x=>x.out);
+    const tiles=s.outs.map(id=>{
+      const p=P(id),can=S.paused&&pend.includes(id),sent=s.sent.includes(id);
+      if(sent)return '';
+      return `<button class="bn outp ${can?'undo':'done'}" data-a="${can?'subundo':'subnope'}" data-id="${id}"><span class="shirt sm" style="background:none;border:0;box-shadow:none;width:26px;height:26px">${shirtSvg(cfg.club,'res')}</span><span class="bt"><i>${esc(lastName(p.name))}</i><small>${can?'↩ desfazer':'🧥 saiu'}</small></span></button>`}).join('');
+    if(!tiles)return h;
+    h=h.replace(/(<div class="bench">[\s\S]*?)(<\/div>)/,(a,b,c)=>b+tiles+c);
+  }catch(e){}
+  return h;
+};
 newWorld();G.phase='start';render();
 </script>
 <script>if("serviceWorker"in navigator&&/^https?:/.test(location.protocol))addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}))</script></body></html>

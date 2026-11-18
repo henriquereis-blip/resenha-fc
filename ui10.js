@@ -54,7 +54,7 @@ const _vm10=vMercado;vMercado=function(){
   return '<div class="wrap x9">'+tabs+`<div class="hint">Empréstimo dura até o fim da temporada. Você paga uma taxa e o salário, e pode exercer a opção de compra. Emprestar garoto seu rende taxa e ele volta mais experiente.</div>
   ${outs.length?`<section class="sec card"><h3>Emprestados por mim<small>${outs.length}</small></h3>${outs.map(p=>`<div class="rank"><span class="pos">${p.ovr}</span><div class="pn col"><span>${esc(nameOf(p))}</span><small class="k">${p.age}a · no ${C(p.club).name} · volta no fim do ano</small></div></div>`).join('')}</section>`:''}
   ${ins.length?`<section class="sec card"><h3>Aqui por empréstimo<small>${ins.length}</small></h3>${ins.map(p=>`<div class="mrow"><span class="pos">${roleLabel(p)}</span><span class="nm">${esc(nameOf(p))}<small>de ${C(p.loan.from).name} · opção ${mi(loanInOffer(p.id).buy)}</small></span><button class="btn sm" data-a="loanbuy" data-id="${p.id}">Comprar</button></div>`).join('')}</section>`:''}
-  <section class="sec card"><h3>Disponíveis<small>${av.length}</small></h3>${av.length?av.map(p=>`<div class="mrow"><span class="pos">${roleLabel(p)}</span><span class="nm">${esc(nameOf(p))}<small>${C(p.club).sig} · ${p.age}a · OVR ${p.ovr} · taxa ${mi(loanInOffer(p.id).fee)}</small></span><span class="col"><button class="btn sm" data-a="loanin" data-id="${p.id}">Pedir</button><button class="btn sm ghost" data-a="prof" data-id="${p.id}">Ver</button></span></div>`).join(''):'<p class="news">Ninguém liberado agora. Os clubes abrem vagas ao longo do ano.</p>'}</section></div>`;
+  <section class="sec card"><h3>Disponíveis<small>${av.length}</small></h3>${av.length?av.map(p=>`<div class="mrow"><span class="pos">${roleLabel(p)}</span><span class="nm">${esc(nameOf(p))}<small>${C(p.club).sig} · ${p.age}a · OVR ${p.ovr} · taxa ${mi(loanInOffer(p.id).fee)}</small></span><span class="col"><button class="btn sm" data-a="loanin" data-id="${p.id}">Emprestar</button><button class="btn sm ghost" data-a="prof" data-id="${p.id}">Ver</button></span></div>`).join(''):'<p class="news">Ninguém liberado agora. Os clubes abrem vagas ao longo do ano.</p>'}</section></div>`;
 };
 const _vp10=vPerfil;vPerfil=function(){
   let r=_vp10();const p=P(S.prof);if(!p)return r;
@@ -63,7 +63,7 @@ const _vp10=vPerfil;vPerfil=function(){
     if(p.loan&&p.loan.to===G.user)ex_=`<div class="x9"><div class="card"><div class="k">Emprestado por ${C(p.loan.from).name}</div><button class="btn big" data-a="loanbuy" data-id="${p.id}">Exercer opção de compra · ${mi(loanInOffer(p.id).buy)}</button></div></div>`;
     else ex_=`<div class="x9"><button class="btn big ghost" data-a="loanopen" data-id="${p.id}">Emprestar jogador</button>${S.loanFor===p.id?loanOutOffers(p.id).map((o,i)=>`<button class="off" data-a="loanpick" data-id="${p.id}" data-i="${i}"><span><b>${esc(C(o.club).name)}</b><small>${o.games} · cobre ${o.cover}% do salário</small></span><b>+${mi(o.fee)}</b></button>`).join(''):''}</div>`;
   }else if(p.loan&&p.loan.from===G.user){ex_=`<div class="card"><div class="k">Emprestado ao ${C(p.club).name} até o fim da temporada</div></div>`}
-  else if(p.loanable&&p.club>=0){ex_=`<div class="x9"><button class="btn big ghost" data-a="loanin" data-id="${p.id}">Pedir por empréstimo · taxa ${mi(loanInOffer(p.id).fee)}</button></div>`}
+  else if(p.loanable&&p.club>=0){ex_=`<div class="x9"><button class="btn big ghost" data-a="loanin" data-id="${p.id}">Pegar emprestado · taxa ${mi(loanInOffer(p.id).fee)}</button></div>`}
   return r.replace(/<\/div>$/,ex_+'</div>');
 };
 
