@@ -112,7 +112,7 @@ function materialize(s,tm,LF){
 }
 const cmpRow=(a,b)=>b.P-a.P||b.V-a.V||(b.GP-b.GC)-(a.GP-a.GC)||b.GP-a.GP||(a.id||a.k)-(b.id||b.k);
 const allRows=d=>[...G.clubs.filter(c=>c.div===d&&!c.stub),...(G.pyr?G.pyr.L.filter(s=>s.div===d):[])].sort(cmpRow);
-const avgKey=r=>{const h=r.pav||[];return (h.reduce((s,v)=>s+v,0)+(r.J?r.P/r.J:0))/(h.length+1)};
+const avgKey=r=>{const h=r.pav||[];return (h.reduce((s,v)=>s+v,0)+(r.J?(r.pp?(r.pp+r.P)/(2*r.J):r.P/r.J):0))/(h.length+1)};
 /* fixtures das divisões completas */
 function pyrFx(){const P=G.pyr;if(!P)return;for(const x of P.dv){const ids=G.clubs.filter(c=>c.div===x.d&&!c.stub).map(c=>c.id);if(ids.length>=4)G.dfx[x.d]=genFixtures(ids).slice(0,x.rd)}}
 /* rodada das divisões leves */
@@ -149,7 +149,7 @@ function bracket(list,log){
 }
 function pyrPlan(){
   const P=G.pyr,k=P.k,T=PYR[k],plan=new Map(),log=[];
-  const relRank=(t,d)=>{const rows=allRows(d);return (t===1&&PROM[k])?rows.slice().sort((a,b)=>avgKey(b)-avgKey(a)):rows};
+  const relRank=(t,d)=>{const rows=allRows(d);return (t===1&&(PROM[k]||(WRULES[k]||{}).fmt==='ac'))?rows.slice().sort((a,b)=>avgKey(b)-avgKey(a)):rows};
   const put=(r,d)=>plan.set(rKey(r),[r,d]);
   for(let t=1;t<T.length;t++){
     const up=T[t-1],lo=T[t],n=up.dn||0;if(!n)continue;

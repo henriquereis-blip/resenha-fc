@@ -6861,11 +6861,11 @@ const WRULES={
  MEX:{fmt:'ac',rd:34,rel:0,conc:4,po:8,txt:['Dois torneios curtos (Apertura e Clausura), cada um com liguilla dos 8 melhores; 2 campeões por temporada.','Sem descenso (liga fechada).','Vagas na Copa dos Campeões da CONCACAF para campeões e melhores campanhas.','Limite de estrangeiros por jogo e formação mínima de mexicanos.']},
  USA:{fmt:'liga',rd:34,rel:0,conc:4,po:16,txt:['Liga fechada, sem rebaixamento; 34 rodadas.','Playoffs da MLS Cup entre os 16 melhores, jogo único com mando do melhor colocado.','Teto salarial com jogadores franquia (Designated Players).','8 vagas de estrangeiros por clube, negociáveis entre clubes.']},
  KSA:{fmt:'liga',rd:34,rel:3,aco:3,txt:['18 clubes, 34 rodadas, 3 rebaixados.','Máximo de 10 estrangeiros por clube (8 por jogo).','Desempate: confronto direto.','Vagas na Champions Asiática para os melhores colocados.']},
- PAR:{fmt:'liga',rd:22,rel:2,lib:4,sul:4,txt:['12 clubes, 22 rodadas; título pela tabela (simplificado: o real tem Apertura e Clausura).','Libertadores: 4 vagas; Sul-Americana: 4.','Descenso por média de pontos de três temporadas (2 caem).']},
+ PAR:{fmt:'ac',rd:22,rel:2,po:1,lib:4,sul:4,txt:['12 clubes, 22 rodadas; Dois torneios (Apertura e Clausura); o líder de cada um é campeão, 2 campeões por temporada.','Libertadores: 4 vagas; Sul-Americana: 4.','Descenso por média de pontos de três temporadas (2 caem).']},
  ECU:{fmt:'liga',rd:30,rel:2,lib:4,sul:4,txt:['16 clubes, 30 rodadas; título pela tabela (simplificado: o real tem hexagonal final).','Libertadores: 4 vagas; Sul-Americana: 4.','2 rebaixados.']},
- PER:{fmt:'liga',rd:34,rel:2,lib:4,sul:4,txt:['18 clubes, 34 rodadas; título pela tabela (simplificado: o real tem Apertura, Clausura e final).','Libertadores: 4 vagas; Sul-Americana: 4.','2 rebaixados pela tabela acumulada.']},
+ PER:{fmt:'ac',rd:34,rel:2,po:1,lib:4,sul:4,txt:['18 clubes, 34 rodadas; Dois torneios (Apertura e Clausura); o líder de cada um é campeão (simplificado: a final entre os dois não existe).','Libertadores: 4 vagas; Sul-Americana: 4.','2 rebaixados pela tabela acumulada.']},
  BOL:{fmt:'liga',rd:30,rel:0,lib:4,sul:3,txt:['16 clubes, 30 rodadas; título pela tabela (simplificado).','Libertadores: 4 vagas; Sul-Americana: 3.','Sem descenso por enquanto: a segunda divisão boliviana (Copa Simón Bolívar) ainda não está no jogo.']},
- VEN:{fmt:'liga',rd:26,rel:0,lib:3,sul:3,txt:['14 clubes, 26 rodadas; título pela tabela (simplificado).','Libertadores: 3 vagas; Sul-Americana: 3.','Sem descenso por enquanto: a segunda divisão venezuelana ainda não está no jogo.']},
+ VEN:{fmt:'ac',rd:26,rel:0,po:8,lib:3,sul:3,txt:['14 clubes, Apertura e Clausura de 13 rodadas, cada um com mata-mata dos 8 melhores; 2 campeões por temporada.','Libertadores: 3 vagas; Sul-Americana: 3.','Sem descenso por enquanto: a segunda divisão venezuelana ainda não está no jogo.']},
  NED:{fmt:'liga',rd:34,rel:2,ucl:2,uel:2,txt:['18 clubes, 34 rodadas, 2 rebaixados (o 16º joga repescagem na vida real; aqui simplificado).','Champions: 2 vagas; Europa/Conference: 2.']},
  BEL:{fmt:'liga',rd:34,rel:2,ucl:1,uel:2,txt:['18 clubes, 34 rodadas, sem playoffs a partir de 2026-27; 2 rebaixados.','Champions: 1 vaga; Europa/Conference: 2.']},
  TUR:{fmt:'liga',rd:34,rel:3,ucl:2,uel:2,txt:['18 clubes, 34 rodadas, 3 rebaixados.','Champions: 2 vagas; Europa/Conference: 2.','Limite de estrangeiros no elenco.']},
@@ -7831,7 +7831,7 @@ function materialize(s,tm,LF){
 }
 const cmpRow=(a,b)=>b.P-a.P||b.V-a.V||(b.GP-b.GC)-(a.GP-a.GC)||b.GP-a.GP||(a.id||a.k)-(b.id||b.k);
 const allRows=d=>[...G.clubs.filter(c=>c.div===d&&!c.stub),...(G.pyr?G.pyr.L.filter(s=>s.div===d):[])].sort(cmpRow);
-const avgKey=r=>{const h=r.pav||[];return (h.reduce((s,v)=>s+v,0)+(r.J?r.P/r.J:0))/(h.length+1)};
+const avgKey=r=>{const h=r.pav||[];return (h.reduce((s,v)=>s+v,0)+(r.J?(r.pp?(r.pp+r.P)/(2*r.J):r.P/r.J):0))/(h.length+1)};
 /* fixtures das divisões completas */
 function pyrFx(){const P=G.pyr;if(!P)return;for(const x of P.dv){const ids=G.clubs.filter(c=>c.div===x.d&&!c.stub).map(c=>c.id);if(ids.length>=4)G.dfx[x.d]=genFixtures(ids).slice(0,x.rd)}}
 /* rodada das divisões leves */
@@ -7868,7 +7868,7 @@ function bracket(list,log){
 }
 function pyrPlan(){
   const P=G.pyr,k=P.k,T=PYR[k],plan=new Map(),log=[];
-  const relRank=(t,d)=>{const rows=allRows(d);return (t===1&&PROM[k])?rows.slice().sort((a,b)=>avgKey(b)-avgKey(a)):rows};
+  const relRank=(t,d)=>{const rows=allRows(d);return (t===1&&(PROM[k]||(WRULES[k]||{}).fmt==='ac'))?rows.slice().sort((a,b)=>avgKey(b)-avgKey(a)):rows};
   const put=(r,d)=>plan.set(rKey(r),[r,d]);
   for(let t=1;t<T.length;t++){
     const up=T[t-1],lo=T[t],n=up.dn||0;if(!n)continue;
@@ -8528,7 +8528,9 @@ function award51(name,champ,log,vice){
 }
 /* ---------- Apertura / Clausura ---------- */
 function acRun51(I,label){
-  const rows=allRows(I.div),top=top51(I,rows);if(top.length<4)return null;
+  const rows=allRows(I.div),top=top51(I,rows);
+  if(po51n(I)===1&&top.length){const ch=top[0],log=[{stage:'Final',t:rn51(ch)+' (1º da tabela do '+label.split(' ')[0]+')',w:ch,l:null}];award51(label,ch,log);return {champ:ch,log,label,qual:ch===userClub()}}
+  if(top.length<4)return null;
   const r=liguilla51(top,I.k==='ARG');award51(label,r.champ,r.log);return {champ:r.champ,log:r.log,label,qual:top.includes(userClub())}
 }
 function acHalf51(){

@@ -65,7 +65,9 @@ function award51(name,champ,log,vice){
 }
 /* ---------- Apertura / Clausura ---------- */
 function acRun51(I,label){
-  const rows=allRows(I.div),top=top51(I,rows);if(top.length<4)return null;
+  const rows=allRows(I.div),top=top51(I,rows);
+  if(po51n(I)===1&&top.length){const ch=top[0],log=[{stage:'Final',t:rn51(ch)+' (1º da tabela do '+label.split(' ')[0]+')',w:ch,l:null}];award51(label,ch,log);return {champ:ch,log,label,qual:ch===userClub()}}
+  if(top.length<4)return null;
   const r=liguilla51(top,I.k==='ARG');award51(label,r.champ,r.log);return {champ:r.champ,log:r.log,label,qual:top.includes(userClub())}
 }
 function acHalf51(){
