@@ -2,7 +2,7 @@
    Mata-mata de jogo único com clubes COMPLETOS do país (as divisões que o jogo já carrega: a sua, a de cima e a de baixo).
    Mesmo truque das copas/playoffs: o jogo entra no lugar de uma rodada do campeonato (G._lg/G._x) sem consumir rodada.
    Estado salvo em G.nc (só ids). Outros jogos são simulados na hora, ao fim de cada fase. */
-const NCUP={ENG:[64,'FA Cup'],ESP:[32,'Copa del Rey'],ITA:[32,'Coppa Italia'],GER:[32,'DFB-Pokal'],FRA:[32,'Coupe de France'],POR:[32,'Taça de Portugal'],ARG:[32,'Copa Argentina']};
+const NCUP={ENG:[64,'FA Cup'],ESP:[32,'Copa del Rey'],ITA:[32,'Coppa Italia'],GER:[32,'DFB-Pokal'],FRA:[32,'Coupe de France'],POR:[32,'Taça de Portugal'],ARG:[32,'Copa Argentina'],NED:[32,'KNVB Beker'],BEL:[32,'Croky Cup'],TUR:[32,'Copa da Turquia'],SCO:[16,'Scottish Cup'],JPN:[32,'Copa do Imperador'],KOR:[16,'Copa da Coreia'],CHN:[32,'Copa da China'],AUS:[8,'Australia Cup'],EGY:[16,'Copa do Egito'],MAR:[16,'Copa do Trono'],RSA:[16,'Nedbank Cup'],PAR:[8,'Copa Paraguay'],ECU:[16,'Copa Ecuador'],BOL:[16,'Copa Bolivia'],VEN:[8,'Copa Venezuela'],PER:[16,'Copa Bicentenario']};
 const NCN={64:'32 avos',32:'16 avos',16:'Oitavas',8:'Quartas',4:'Semifinal',2:'Final'};
 const ncStage=nc=>NCN[nc.pairs.length*2]||'Fase';
 function ncInit(){
