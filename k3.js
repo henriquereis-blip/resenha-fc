@@ -1,4 +1,4 @@
-const {chromium}=require('playwright');(async()=>{const b=await chromium.launch();const p=await (await b.newContext()).newPage();await p.goto('file://'+__dirname+'/resenha-fc-v2.html');await p.waitForTimeout(300);
-console.log(await p.evaluate(()=>{startCareer(25,'T','Direto',null);ex();G.phase='play';for(let i=0;i<3;i++){startRound();while(!roundDone())stepAll();finishRound();ex()}
- const c=G.clubs[30],u=userClub();const o={};for(const k of Object.keys(u)){const v=u[k];o[k]=(Array.isArray(v)?'[]'+v.length:typeof v==='object'&&v?'{'+Object.keys(v).slice(0,6).join(',')+'}':String(v).slice(0,18))}
- const ak=new Set(Object.keys(c));return 'USER-only keys: '+Object.keys(u).filter(k=>!ak.has(k)).join(',')+'\nAI keys: '+Object.keys(c).join(',')+'\nUSER vals: '+JSON.stringify(o)}));await b.close()})();
+const {chromium}=require('playwright');(async()=>{const b=await chromium.launch();const p=await (await b.newContext()).newPage();
+await p.goto('file://'+__dirname+'/resenha-fc-v2.html');await p.waitForTimeout(800);
+console.log(await p.evaluate(()=>{const SA=['ARG','URU','COL','CHI','PAR','ECU','PER','BOL','VEN'];const nm=new Map();for(const L of WLD)for(const c of L.cl)nm.set(c[0].replace(/-(URU|PAR|ECU)$/,' ($1)'),L.k);
+const out={};for(const d of FCPOOL){const k=nm.get(d[0])||'(base)';out[k]=(out[k]||0)+1}return JSON.stringify(out)+' total='+FCPOOL.length+' base='+FCPOOL.filter(d=>!nm.has(d[0])).map(d=>d[0]).join(',')}));await b.close()})();

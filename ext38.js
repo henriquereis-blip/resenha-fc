@@ -197,22 +197,22 @@ function wCwc(){
   const oc=xMk(XOFC[0]);
   const all=[].concat(uefa,sa,asia,caf,conc,[oc,host]);
   const pool=shuffle(all.slice(0,32));
+  const mine=pool.find(c=>c.bra&&c.id===G.user);const path=[];const sc=(a,b,x,y)=>a.n+' '+x+'–'+y+' '+b.n;
   const groups=Array.from({length:8},(_,i)=>pool.filter((_,j)=>j%8===i));
   const adv=[];
-  for(const g of groups){const t=g.map(c=>({c,P:0,GD:0}));for(let i=0;i<4;i++)for(let j=i+1;j<4;j++){const [a,b]=wMatch(g[i],g[j]);if(a>b)t[i].P+=3;else if(b>a)t[j].P+=3;else{t[i].P++;t[j].P++}t[i].GD+=a-b;t[j].GD+=b-a}
+  for(const g of groups){const t=g.map(c=>({c,P:0,GD:0}));for(let i=0;i<4;i++)for(let j=i+1;j<4;j++){const [a,b]=wMatch(g[i],g[j]);if(mine&&(g[i]===mine||g[j]===mine))path.push('Grupo: '+sc(g[i],g[j],a,b));if(a>b)t[i].P+=3;else if(b>a)t[j].P+=3;else{t[i].P++;t[j].P++}t[i].GD+=a-b;t[j].GD+=b-a}
     t.sort((x,y)=>y.P-x.P||y.GD-x.GD);adv.push(t[0].c,t[1].c)}
   let cur=shuffle(adv),stage='Oitavas',rank=1;const reach={};const u=G.user;let fin=null,vice=null;
   adv.forEach(c=>{reach[c.n]=1});
   while(cur.length>1){const nx=[];const lv=cur.length===16?2:cur.length===8?3:cur.length===4?4:5;
-    for(let i=0;i<cur.length;i+=2){const a=cur[i],b=cur[i+1];const [ga,gb]=wMatch(a,b);const w=ga>gb?a:gb>ga?b:(Math.random()<.5+(a.r-b.r)/70?a:b);nx.push(w);reach[w.n]=lv;if(cur.length===2)vice=w===a?b:a}
+    for(let i=0;i<cur.length;i+=2){const a=cur[i],b=cur[i+1];const [ga,gb]=wMatch(a,b);const w=ga>gb?a:gb>ga?b:(Math.random()<.5+(a.r-b.r)/70?a:b);if(mine&&(a===mine||b===mine))path.push(['','Oitavas','Quartas','Semifinal','Final'][lv-1]+': '+sc(a,b,ga,gb)+(ga===gb?' (pên. '+w.n+')':''));nx.push(w);reach[w.n]=lv;if(cur.length===2)vice=w===a?b:a}
     cur=nx}
   fin=cur[0];reach[fin.n]=6;
   const rec=W.hist[W.hist.length-1];rec.cwc=fin.n;rec.cwcv=vice?vice.n:'';
   paperLine(fin.n+' é campeão do Mundial de Clubes','Final contra '+(vice?vice.n:'—')+'. Torneio com 32 times em '+yearOf()+'.');
-  const mine=pool.find(c=>c.bra&&c.id===G.user);
   if(mine){const lv=reach[mine.n]||0;const prize=[20,40,70,110,160,230][lv]||20;G.fin.caixa=+(G.fin.caixa+prize).toFixed(1);
     const lab=['fase de grupos','oitavas','quartas','semifinal','final','campeão'][lv]||'fase de grupos';
-    mail('win','🌍 Mundial de Clubes: '+(lv>=5?'CAMPEÃO!':'você foi até '+lab),'Seu clube disputou o Mundial de Clubes de 32 times e chegou em: '+lab+'.\nPremiação: '+mi(prize)+'.',[],'cwc'+G.season);
+    mail('win','🌍 Mundial de Clubes: '+(lv>=5?'CAMPEÃO!':'você foi até '+lab),'Seu clube disputou o Mundial de Clubes de 32 times e chegou em: '+lab+'.\n\nSeus jogos:\n'+path.join('\n')+'\n\nPremiação: '+mi(prize)+'.',[],'cwc'+G.season);
     userClub().humor=clamp(userClub().humor+(lv>=5?15:4),5,100)}
 }
 const _we38=wEnd;wEnd=function(){const was=G.wd&&G.wd.es===G.season;_we38.apply(this,arguments);try{if(!was)wCont()}catch(e){console.error('wCont '+e.message)}};
