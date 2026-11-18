@@ -10,5 +10,5 @@ await p.click('[data-a=tutgo]');await p.waitForTimeout(200);
 let seq=[];for(let i=0;i<7;i++){seq.push(await p.evaluate(()=>document.querySelector('#tut71 h3').textContent+'|'+G.view));await p.click('#tut71 [data-a=tutnext]');await p.waitForTimeout(150)}
 console.log(seq.join('\n'));
 console.log('fim',await p.evaluate(()=>[!!document.getElementById('tut71'),G.tutDone]));
-await p.evaluate(()=>{G.view='opcoes';render()});console.log('opcoes',await p.evaluate(()=>document.body.innerText.includes('Fazer o tutorial')));
+await p.evaluate(()=>{G.view='opcoes';render()});console.log('opcoes',await p.evaluate(()=>document.body.innerText.toLowerCase().includes('fazer o tutorial')));
 await p.screenshot({path:'o_tut.png'});console.log(errs);await b.close()})();
