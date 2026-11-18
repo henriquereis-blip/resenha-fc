@@ -68,7 +68,7 @@ const _ns12=newSeason;newSeason=function(){
 };
 const _fr12=finishRound;finishRound=function(){
   const rd=G.round,ud=userDiv();
-  try{for(let d=0;d<=12;d++){if(d===ud||!G.dfx[d])continue;for(const [h,a] of (G.dfx[d][rd]||[]))simFast(C(h),C(a))}}catch(e){console.error('divs',e)}
+  try{for(let d=0;d<=12;d++){if(d===ud||!G.dfx[d]||(R&&R.mpg&&R.divs&&R.divs.has(d)))continue;for(const [h,a] of (G.dfx[d][rd]||[]))simFast(C(h),C(a))}}catch(e){console.error('divs',e)}
   const out=_fr12();
   try{aiFinance()}catch(e){console.error('aifin',e)}
   return out;
