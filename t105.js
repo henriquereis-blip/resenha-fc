@@ -26,5 +26,5 @@ console.log('continuar pos',await p.evaluate(()=>{const b=document.querySelector
 await p.screenshot({path:'o_cont67.png'});
 // versao
 await p.evaluate(()=>{S.modal=null;G.view='opcoes';render()});
-console.log('versao',await p.evaluate(()=>/versão do jogo/i.test(document.body.innerText)&&/v87/.test(document.body.innerText)));
+console.log('versao',await p.evaluate(()=>/versão do jogo/i.test(document.body.innerText)&&/v88/.test(document.body.innerText)));
 console.log('errs',errs.slice(0,5));await b.close()})();
