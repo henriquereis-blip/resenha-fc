@@ -12,7 +12,12 @@ const WLD=[
 {k:'CHI',n:'Chile',f:'🇨🇱',lg:'Primera División',cl:[['Colo-Colo',70],['Universidad Católica',68],['Universidad de Chile',68],['Huachipato',62],['Palestino',62],['O\'Higgins',62],['Unión Española',61],['Coquimbo Unido',61],['Cobreloa',60],['Cobresal',60],['Everton de Viña',60],['Audax Italiano',59],['Ñublense',59],['Deportes Iquique',56],['Curicó Unido',56],['Deportes La Serena',56]]},
 {k:'MEX',n:'México',f:'🇲🇽',lg:'Liga MX',cl:[['Club América',76],['Tigres UANL',76],['Monterrey',76],['Cruz Azul',75],['Guadalajara',74],['Toluca',74],['Pachuca',72],['Pumas UNAM',70],['León',70],['Santos Laguna',68],['Atlas',66],['Necaxa',65],['Tijuana',64],['Querétaro',62],['Atlético San Luis',62],['FC Juárez',61],['Mazatlán',60],['Puebla',60]]},
 {k:'USA',n:'Estados Unidos',f:'🇺🇸',lg:'MLS',cl:[['Inter Miami',74],['LAFC',72],['LA Galaxy',70],['Seattle Sounders',70],['Columbus Crew',69],['Philadelphia Union',69],['FC Cincinnati',69],['New York City FC',68],['Atlanta United',67],['New York Red Bulls',66],['Orlando City',66],['Portland Timbers',66],['Nashville SC',66],['Real Salt Lake',65],['Vancouver Whitecaps',65],['San Diego FC',65],['Austin FC',64],['Minnesota United',64],['New England Revolution',64],['Sporting Kansas City',63],['Houston Dynamo',63],['FC Dallas',63],['Colorado Rapids',63],['St. Louis City',63],['Toronto FC',62],['Charlotte FC',62],['Chicago Fire',62],['CF Montréal',61],['D.C. United',61],['San Jose Earthquakes',60]]},
-{k:'KSA',n:'Arábia Saudita',f:'🇸🇦',lg:'Saudi Pro League',cl:[['Al-Hilal',79],['Al-Nassr',77],['Al-Ittihad',77],['Al-Ahli',76],['Al-Qadsiah',70],['Al-Shabab',68],['Al-Ettifaq',68],['Al-Taawoun',65],['Al-Fateh',63],['Al-Fayha',63],['Al-Khaleej',62],['Damac',62],['Al-Riyadh',60],['Al-Okhdood',60],['Al-Kholood',59],['NEOM SC',59],['Al-Najma',58],['Al-Hazem',57]]}
+{k:'KSA',n:'Arábia Saudita',f:'🇸🇦',lg:'Saudi Pro League',cl:[['Al-Hilal',79],['Al-Nassr',77],['Al-Ittihad',77],['Al-Ahli',76],['Al-Qadsiah',70],['Al-Shabab',68],['Al-Ettifaq',68],['Al-Taawoun',65],['Al-Fateh',63],['Al-Fayha',63],['Al-Khaleej',62],['Damac',62],['Al-Riyadh',60],['Al-Okhdood',60],['Al-Kholood',59],['NEOM SC',59],['Al-Najma',58],['Al-Hazem',57]]},
+{k:'PAR',n:'Paraguai',f:'🇵🇾',lg:'Primera División',cl:[['Cerro Porteño',69],['Olimpia',69],['Libertad',68],['Guaraní',64],['Nacional-PAR',63],['Sportivo Trinidense',58],['2 de Mayo',56],['Recoleta',56],['Sportivo Ameliano',56],['Sportivo Luqueño',56],['Rubio Ñu',54],['San Lorenzo-PAR',53]]},
+{k:'ECU',n:'Equador',f:'🇪🇨',lg:'Liga Pro',cl:[['LDU Quito',67],['Independiente del Valle',66],['Barcelona SC',65],['Emelec',62],['Macará',59],['Universidad Católica-ECU',59],['Libertad FC',57],['Técnico Universitario',57],['Delfín',57],['Deportivo Cuenca',56],['Orense',56],['Aucas',55],['Mushuc Runa',54],['Manta',54],['Guayaquil City',53],['Leones FC',52]]},
+{k:'PER',n:'Peru',f:'🇵🇪',lg:'Liga 1',cl:[['Alianza Lima',66],['Universitario',66],['Sporting Cristal',64],['Melgar',62],['Cusco FC',58],['Cienciano',58],['Deportivo Garcilaso',58],['Alianza Atlético',55],['Sport Boys',54],['Atlético Grau',54],['Los Chankas',54],['Sport Huancayo',53],['Juan Pablo II College',52],['UTC',52],['Comerciantes Unidos',51],['ADT',51],['Cajamarca',50],['Deportivo Moquegua',50]]},
+{k:'BOL',n:'Bolívia',f:'🇧🇴',lg:'División Profesional',cl:[['Bolívar',62],['The Strongest',62],['Always Ready',60],['Oriente Petrolero',55],['Real Potosí',54],['Aurora',54],['Blooming',54],['Guabirá',53],['Nacional Potosí',52],['Independiente Petrolero',52],['San Antonio Bulo Bulo',50],['Totora Real Oruro',49],['ABB',48],['Universitario de Vinto',48],['Real Tomayapo',47],['Gualberto Villarroel',47]]},
+{k:'VEN',n:'Venezuela',f:'🇻🇪',lg:'Liga FUTVE',cl:[['Deportivo Táchira',60],['Carabobo',60],['Caracas',60],['Metropolitanos',58],['Deportivo La Guaira',57],['Academia Puerto Cabello',56],['Portuguesa',55],['Monagas SC',55],['Zamora FC',55],['Universidad Central',54],['Estudiantes de Mérida',54],['Rayo Zuliano',52],['Trujillanos',52],['Anzoátegui',51]]},
 ];
 /* cores e padrões (escudos inventados, mas com as cores certas dos grandes) */
 const WCOL={'Manchester City':['#6cabdd','#ffffff','#6cabdd','solid'],'Arsenal':['#e30613','#ffffff','#e30613','solid'],'Liverpool':['#c8102e','#ffffff','#c8102e','solid'],'Chelsea':['#034694','#ffffff','#034694','solid'],'Manchester United':['#da291c','#111111','#da291c','solid'],'Tottenham':['#ffffff','#132257','#ffffff','solid'],'Newcastle':['#111111','#ffffff','#111111','v'],'Aston Villa':['#670e36','#95bfe5','#670e36','half'],
@@ -43,9 +48,9 @@ const WSIG=wSigGen();
 /* clubes sul-americanos novos entram no pool da Libertadores/Sul-Americana */
 (function(){
   const have=new Set(FCPOOL.map(x=>x[0]));
-  for(const L of WLD){if(!['ARG','URU','COL','CHI'].includes(L.k))continue;
+  for(const L of WLD){if(!['ARG','URU','COL','CHI','PAR','ECU','PER','BOL','VEN'].includes(L.k))continue;
     for(const c of L.cl){if(have.has(c[0]))continue;const col=WCOL[c[0]]||[...WPAL[wHash(c[0])%WPAL.length],''];
-      const a=WCOL[c[0]]?col:[col[0],col[1],col[0],col[2]];FCPOOL.push([c[0].replace('-URU',' (URU)'),WSIG[c[0]],c[1],a[0],a[1],a[2],a[3]])}}
+      const a=WCOL[c[0]]?col:[col[0],col[1],col[0],col[2]];FCPOOL.push([c[0].replace(/-(URU|PAR|ECU)$/,' ($1)'),WSIG[c[0]],c[1],a[0],a[1],a[2],a[3]])}}
 })();
 
 /* regras específicas de cada liga (simplificadas do real) */
@@ -62,7 +67,12 @@ const WRULES={
  CHI:{fmt:'liga',rd:30,rel:2,lib:4,sul:3,txt:['16 clubes, 30 rodadas; campeão por pontos corridos.','Libertadores: 4 vagas; Sul-Americana: 3.','2 rebaixados.']},
  MEX:{fmt:'ac',rd:34,rel:0,conc:4,po:8,txt:['Dois torneios curtos (Apertura e Clausura), cada um com liguilla dos 8 melhores; 2 campeões por temporada.','Sem descenso (liga fechada).','Vagas na Copa dos Campeões da CONCACAF para campeões e melhores campanhas.','Limite de estrangeiros por jogo e formação mínima de mexicanos.']},
  USA:{fmt:'liga',rd:34,rel:0,conc:4,po:16,txt:['Liga fechada, sem rebaixamento; 34 rodadas.','Playoffs da MLS Cup entre os 16 melhores, jogo único com mando do melhor colocado.','Teto salarial com jogadores franquia (Designated Players).','8 vagas de estrangeiros por clube, negociáveis entre clubes.']},
- KSA:{fmt:'liga',rd:34,rel:3,aco:3,txt:['18 clubes, 34 rodadas, 3 rebaixados.','Máximo de 10 estrangeiros por clube (8 por jogo).','Desempate: confronto direto.','Vagas na Champions Asiática para os melhores colocados.']}
+ KSA:{fmt:'liga',rd:34,rel:3,aco:3,txt:['18 clubes, 34 rodadas, 3 rebaixados.','Máximo de 10 estrangeiros por clube (8 por jogo).','Desempate: confronto direto.','Vagas na Champions Asiática para os melhores colocados.']},
+ PAR:{fmt:'liga',rd:22,rel:2,lib:4,sul:4,txt:['12 clubes, 22 rodadas; título pela tabela (simplificado: o real tem Apertura e Clausura).','Libertadores: 4 vagas; Sul-Americana: 4.','Descenso por média de pontos de três temporadas (2 caem).']},
+ ECU:{fmt:'liga',rd:30,rel:2,lib:4,sul:4,txt:['16 clubes, 30 rodadas; título pela tabela (simplificado: o real tem hexagonal final).','Libertadores: 4 vagas; Sul-Americana: 4.','2 rebaixados.']},
+ PER:{fmt:'liga',rd:34,rel:2,lib:4,sul:4,txt:['18 clubes, 34 rodadas; título pela tabela (simplificado: o real tem Apertura, Clausura e final).','Libertadores: 4 vagas; Sul-Americana: 4.','2 rebaixados pela tabela acumulada.']},
+ BOL:{fmt:'liga',rd:30,rel:0,lib:4,sul:3,txt:['16 clubes, 30 rodadas; título pela tabela (simplificado).','Libertadores: 4 vagas; Sul-Americana: 3.','Sem descenso por enquanto: a segunda divisão boliviana (Copa Simón Bolívar) ainda não está no jogo.']},
+ VEN:{fmt:'liga',rd:26,rel:0,lib:3,sul:3,txt:['14 clubes, 26 rodadas; título pela tabela (simplificado).','Libertadores: 3 vagas; Sul-Americana: 3.','Sem descenso por enquanto: a segunda divisão venezuelana ainda não está no jogo.']}
 };
 
 function wRnd(){return Math.random()}
@@ -73,13 +83,13 @@ function worldInit(){
   let id=5000;const lg={};
   for(const L of WLD){
     lg[L.k]={cl:L.cl.map(c=>{const col=WCOL[c[0]]||(()=>{const p=WPAL[wHash(c[0])%WPAL.length];return [p[0],p[1],p[0],p[2]]})();
-      return {id:id++,n:c[0].replace('-URU',' (URU)').replace('Nacional (URU)','Nacional (URU)'),sg:WSIG[c[0]],sig:WSIG[c[0]],b:c[1],r:c[1],c1:col[0],c2:col[1],c3:col[2],pat:col[3],f:1,P:0,J:0,V:0,E:0,D:0,GP:0,GC:0}}),ti:[]};
+      return {id:id++,n:c[0].replace(/-(URU|PAR|ECU)$/,' ($1)'),sg:WSIG[c[0]],sig:WSIG[c[0]],b:c[1],r:c[1],c1:col[0],c2:col[1],c3:col[2],pat:col[3],f:1,P:0,J:0,V:0,E:0,D:0,GP:0,GC:0}}),ti:[]};
   }
   G.wd={s:G.season,es:0,lg,hist:[],xp:[]};
   wFormReset();
 }
 function wd(){if(!G)return null;if(!G.wd)worldInit();wMissing();if(G.wd.s!==G.season)wNew();return G.wd}
-function wMissing(){const W=G.wd;let id=5000+Object.values(W.lg).reduce((s,l)=>s+l.cl.length,0)+20;for(const L of WLD){if(W.lg[L.k])continue;W.lg[L.k]={cl:L.cl.map(c=>{const col=WCOL[c[0]]||(()=>{const p=WPAL[wHash(c[0])%WPAL.length];return [p[0],p[1],p[0],p[2]]})();return {id:id++,n:c[0].replace('-URU',' (URU)'),sg:WSIG[c[0]],sig:WSIG[c[0]],b:c[1],r:c[1],c1:col[0],c2:col[1],c3:col[2],pat:col[3],f:1,P:0,J:0,V:0,E:0,D:0,GP:0,GC:0,pp:0}}),ti:[]}}}
+function wMissing(){const W=G.wd;let id=5000+Object.values(W.lg).reduce((s,l)=>s+l.cl.length,0)+20;for(const L of WLD){if(W.lg[L.k])continue;W.lg[L.k]={cl:L.cl.map(c=>{const col=WCOL[c[0]]||(()=>{const p=WPAL[wHash(c[0])%WPAL.length];return [p[0],p[1],p[0],p[2]]})();return {id:id++,n:c[0].replace(/-(URU|PAR|ECU)$/,' ($1)'),sg:WSIG[c[0]],sig:WSIG[c[0]],b:c[1],r:c[1],c1:col[0],c2:col[1],c3:col[2],pat:col[3],f:1,P:0,J:0,V:0,E:0,D:0,GP:0,GC:0,pp:0}}),ti:[]}}}
 function wFormReset(){for(const k in G.wd.lg)for(const c of G.wd.lg[k].cl)c.f=clamp(1+gauss()*0.05,.92,1.08)}
 function wNew(){const W=G.wd;W.s=G.season;for(const k in W.lg)for(const c of W.lg[k].cl){c.P=c.J=c.V=c.E=c.D=c.GP=c.GC=0;c.pp=0}wFormReset()}
 function wTable(k){return G.wd.lg[k].cl.slice().sort((a,b)=>b.P-a.P||(b.GP-b.GC)-(a.GP-a.GC)||b.GP-a.GP||b.r-a.r)}
@@ -139,8 +149,13 @@ const _ns37=newSeason;newSeason=function(){try{wEnd()}catch(e){}try{xMarket37(8,
 const _fr37b=finishRound;finishRound=function(){const r=_fr37b.apply(this,arguments);try{if(G.round===19)xMarket37(6,'mid')}catch(e){console.error('xm37b '+e.message)}return r};
 
 /* ---------- mercado internacional ---------- */
-const NAT37={ARG:[28,'ARG'],URU:[14,'URU'],COL:[14,'COL'],CHI:[11,'CHI'],POR:[12,'POR'],ESP:[9,'ESP'],ITA:[5,'ITA'],FRA:[4,'FRA'],ENG:[2,'ENG'],GER:[1,'GER'],MEX:[6,'MEX'],USA:[4,'USA'],KSA:[2,'KSA']};
+const NAT37={ARG:[28,'ARG'],URU:[14,'URU'],COL:[14,'COL'],CHI:[11,'CHI'],POR:[12,'POR'],ESP:[9,'ESP'],ITA:[5,'ITA'],FRA:[4,'FRA'],ENG:[2,'ENG'],GER:[1,'GER'],MEX:[6,'MEX'],USA:[4,'USA'],KSA:[2,'KSA'],PAR:[10,'PAR'],ECU:[9,'ECU'],PER:[6,'PER'],BOL:[3,'BOL'],VEN:[4,'VEN']};
 const NMP={
+ PAR:[['Derlis','Óscar','Gustavo','Fabián','Ángel','Júnior','Richard','Alan'],['Benítez','Giménez','Villalba','Cáceres','Ayala','Duarte','Bobadilla','Samudio']],
+ ECU:[['Kevin','Jhon','Byron','Joao','Gonzalo','Pervis','Moisés','Ángelo'],['Caicedo','Estupiñán','Preciado','Mina','Plata','Cifuentes','Sornoza','Arboleda']],
+ PER:[['Edison','Yoshimar','Christian','Renato','Luis','Alex','Wilder','Paolo'],['Flores','Yotún','Cueva','Tapia','Advíncula','Carrillo','Quispe','Sánchez']],
+ BOL:[['Marcelo','Carlos','Ramiro','Henry','Jaime','Roberto','Erwin','Diego'],['Quispe','Mamani','Vaca','Justiniano','Arce','Saucedo','Chura','Condori']],
+ VEN:[['Yeferson','Darwin','Josef','Salomón','Jhon','Néstor','Jefferson','Wuilker'],['Rondón','Soteldo','Martínez','Machís','Savarino','Cásseres','Rincón','Bello']],
  ARG:[['Matías','Nicolás','Franco','Facundo','Lautaro','Santiago','Agustín','Gonzalo','Ezequiel','Julián','Maximiliano','Leandro'],['Fernández','Gómez','Romero','Acosta','Benítez','Herrera','Giménez','Sosa','Medina','Ledesma','Paredes','Villalba']],
  URU:[['Maximiliano','Federico','Nicolás','Darwin','Brian','Mathías','Facundo','Rodrigo'],['Rodríguez','Silva','Techera','Olivera','Viña','Cabrera','Píriz','Bentancur']],
  COL:[['Juan','Jhon','Duván','Yerry','Wilmar','Cristian','Brayan','Luis'],['Martínez','Ramírez','Cuesta','Mosquera','Cuadrado','Borja','Córdoba','Murillo']],

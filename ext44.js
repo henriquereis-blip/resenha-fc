@@ -11,11 +11,16 @@ const PYR={
  URU:[{n:'Primera División',c:16,dn:2},{n:'Segunda División',c:16,up:2}],
  COL:[{n:'Liga BetPlay',c:20,dn:2},{n:'Primera B',c:20,up:2}],
  CHI:[{n:'Primera División',c:16,dn:2},{n:'Primera B',c:16,up:2}],
+ PAR:[{n:'Primera División',c:12,dn:2},{n:'División Intermedia',c:16,up:2}],
+ ECU:[{n:'Liga Pro',c:16,dn:2},{n:'Serie B',c:12,up:2}],
+ PER:[{n:'Liga 1',c:18,dn:2},{n:'Liga 2',c:18,up:2}],
+ BOL:[{n:'División Profesional',c:16}],
+ VEN:[{n:'Liga FUTVE',c:14}],
  KSA:[{n:'Saudi Pro League',c:18,dn:3},{n:'Divisão 1 saudita',c:18,up:3}],
  MEX:[{n:'Liga MX',c:18}],
  USA:[{n:'MLS',c:30,rd:34}]
 };
-const PROM={ARG:1,URU:1,COL:1}; /* descenso por média de pontos (3 temporadas) */
+const PROM={ARG:1,URU:1,COL:1,PAR:1}; /* descenso por média de pontos (3 temporadas) */
 const PD1X={ARG:'Gimnasia La Plata 66,Instituto 64,Atlético Tucumán 64,Unión de Santa Fe 64,Independiente Rivadavia 64,Sarmiento 63,Barracas Central 63,Deportivo Riestra 60,Aldosivi 60,San Martín de San Juan 58'};
 const PD={
 ENG:[0,'Leicester City 66,Southampton 65,West Bromwich Albion 64,Middlesbrough 64,Norwich City 63,Sheffield United 63,Watford 62,Coventry City 62,Stoke City 61,Swansea City 60,Blackburn Rovers 60,Bristol City 59,Hull City 59,Millwall 59,Preston North End 58,Cardiff City 58,Queens Park Rangers 57,Derby County 57,Portsmouth 57,Plymouth Argyle 55,Oxford United 57,Luton Town 57,Charlton Athletic 56,Sheffield Wednesday 56',
@@ -41,6 +46,9 @@ ARG:[0,['Colón 62,Quilmes 58,Ferro Carril Oeste 57,Chacarita 56,Atlanta 55,Almi
 URU:[0,'Torque 53,Rampla Juniors 53,Miramar Misiones 52,Villa Española 52,Deportivo Maldonado 52,Rentistas 52,Bella Vista 51,Atenas 51,Central Español 50,Sud América 50,Uruguay Montevideo 50,Tacuarembó 50,Villa Teresa 49,Canadian 49,Artigas 48,Salto 48'],
 COL:[0,'Deportivo Pereira 58,Patriotas 55,Unión Magdalena 55,Atlético Huila 54,Cortuluá 54,Real Cartagena 53,Barranquilla FC 53,Atlético FC 53,Real Santander 53,Tigres FC 52,Internacional de Palmira 52,Orsomarso 52,Quindío 52,Bogotá FC 52,Valledupar 51,Boca Juniors de Cali 51,Universitario Popayán 51,Leones 50,Real Soacha 50,Deportivo Rionegro 50'],
 CHI:[0,'Santiago Wanderers 56,Magallanes 55,Universidad de Concepción 55,Deportes Temuco 54,Deportes Copiapó 54,Deportes Antofagasta 54,San Luis de Quillota 53,Rangers de Talca 53,Santiago Morning 53,Deportes Limache 53,Deportes Recoleta 52,Deportes Puerto Montt 52,Deportes Concepción 52,Unión San Felipe 52,Barnechea 50,San Marcos de Arica 50'],
+PAR:[0,'Sol de América 52,Tacuary 51,12 de Junio 51,Resistencia 49,3 de Noviembre 50,General Caballero JLM 50,Guaireña 50,Deportivo Capiatá 50,Deportivo Santaní 49,Independiente CG 49,Sportivo Carapeguá 48,Encarnación 48,Fernando de la Mora 48,Paraguarí 47,Tembetary 47,Benjamín Aceval 47'],
+ECU:[0,'El Nacional 53,Independiente Juniors 52,9 de Octubre 50,Gualaceo 50,Cumbayá 49,San Antonio 48,Atlético Vinotinto 48,Cuenca Juniors 48,Liga de Portoviejo 48,Vargas Torres 47,22 de Julio 47,Mineros de Bolívar 47'],
+PER:[0,'Universidad César Vallejo 53,Carlos Mannucci 52,Universidad San Martín 51,Deportivo Binacional 51,Academia Cantolao 50,Unión Comercio 50,Ayacucho FC 50,ADA de Jaén 49,Pirata FC 49,Alianza Universidad 49,Bentín Tacna Heroica 48,Comerciantes FC 48,Deportivo Llacuabamba 48,FC San Marcos 47,Santos FC Nazca 47,Unión Minas 46,Estudiantil CNI 46,Sport Huancayo II 46'],
 KSA:[0,'Al-Wehda 58,Al-Raed 58,Abha 57,Al-Faisaly 57,Al-Orobah 56,Al-Tai 55,Jeddah Club 55,Al-Batin 54,Al-Adalah 54,Al-Akhdoud 54,Al-Arabi 54,Al-Zulfi 53,Al-Diriyah 53,Al-Jabalain 52,Al-Qaisumah 52,Al-Bukayriyah 52,Al-Anwar 52,Al-Jandal 51']
 };
 const TBAND=[[56,93],[48,70],[40,60],[34,54],[30,50]],TDW=[.9,.4,.25,.15,.1],TPRZ=[1,.3,.12,.06,.03];

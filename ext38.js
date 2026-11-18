@@ -152,7 +152,7 @@ function wUel(){
 }
 function wSA(){
   const bra=tableRows(0).slice(0,6).map(c=>({n:c.name,sg:c.sig,r:c.rep,f:1,c1:c.c1,c2:c.c2,c3:c.c3,pat:c.pat,id:c.id,bra:1}));
-  const t=[].concat(bra,wTeamsTop('ARG',0,4),wTeamsTop('URU',0,2),wTeamsTop('COL',0,2),wTeamsTop('CHI',0,2));
+  const t=[].concat(bra,wTeamsTop('ARG',0,4),wTeamsTop('URU',0,2),wTeamsTop('COL',0,2),wTeamsTop('CHI',0,2),wTeamsTop('PAR',0,2),wTeamsTop('ECU',0,2),wTeamsTop('PER',0,1),wTeamsTop('BOL',0,1),wTeamsTop('VEN',0,1));
   return t.sort((a,b)=>b.r*(b.f||1)-a.r*(a.f||1));
 }
 const XASIA=[{n:'Urawa Reds',r:64},{n:'Ulsan HD',r:63},{n:'Al Sadd',r:62},{n:'Shanghai Port',r:60}];

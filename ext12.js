@@ -64,7 +64,7 @@ function promoRel(){
 const _ns12=newSeason;newSeason=function(){
   aiSeasonEnd();promoRel();
   _ns12();
-  G.clubs.forEach(x=>{if(x.id===G.user)return;const t=50+x.trad*.28,tvT=[null,0,0,0],rb=RBAND[x.div];x.rep=+clamp(x.rep*.93+t*.07,rb[0],rb[1]).toFixed(1)});
+  G.clubs.forEach(x=>{if(x.id===G.user)return;const t=50+x.trad*.28,tvT=[null,0,0,0],rb=RBAND[x.div];if(!rb)return;x.rep=+clamp(x.rep*.93+t*.07,rb[0],rb[1]).toFixed(1)});
 };
 const _fr12=finishRound;finishRound=function(){
   const rd=G.round,ud=userDiv();
