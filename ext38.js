@@ -169,8 +169,8 @@ function wCont(){
     rec.lib=lib.n}catch(e){console.error('lib '+e.message)}
   let conc=null,asi=null,afr=null;
   try{conc=wBracket([].concat(wTeamsTop('MEX',0,4),wTeamsTop('USA',0,4)).sort((a,b)=>b.r-a.r));rec.conc=conc.n}catch(e){}
-  try{asi=wBracket([].concat(wTeamsTop('KSA',0,4),XASIA.map(xMk)).sort((a,b)=>b.r-a.r));rec.asia=asi.n}catch(e){}
-  try{afr=wBracket(XAFR.map(xMk));rec.afr=afr.n}catch(e){}
+  try{asi=wBracket([].concat(wTeamsTop('KSA',0,3),wTeamsTop('JPN',0,2),wTeamsTop('KOR',0,1),wTeamsTop('CHN',0,1),XASIA.filter(x=>x.n==='Al Sadd').map(xMk)).sort((a,b)=>b.r-a.r));rec.asia=asi.n}catch(e){}
+  try{afr=wBracket([].concat(wTeamsTop('EGY',0,2),wTeamsTop('MAR',0,2),wTeamsTop('RSA',0,2),XAFR.filter(x=>['Espérance de Tunis','TP Mazembe'].includes(x.n)).map(xMk)).sort((a,b)=>b.r-a.r));rec.afr=afr.n}catch(e){}
   // Copa Intercontinental (anual)
   try{const ucl=W.hist[W.hist.length-1].ucl;const uc=Object.values(W.lg).flatMap(l=>l.cl).find(c=>c.n===ucl);
     let ch=wBracket([conc,asi,afr,xMk(XOFC[0])].filter(Boolean));const sa=wTie(lib,ch);const fin=wTie(uc,sa);
@@ -191,8 +191,8 @@ function wCwc(){
   for(const c of [].concat(lg('ENG'),lg('ESP'),lg('GER'),lg('ITA'),lg('FRA'),lg('POR')).sort((a,b)=>b.r-a.r))add(uefa,c,12);
   for(const c of wSA())add(sa,c,6);
   for(const c of [].concat(lg('MEX'),lg('USA')).sort((a,b)=>b.r-a.r))add(conc,c,4);
-  for(const c of [].concat(lg('KSA'),XASIA.map(xMk)))add(asia,c,4);
-  for(const c of XAFR.map(xMk))add(caf,c,4);
+  for(const c of [].concat(lg('KSA'),lg('JPN'),lg('KOR'),lg('CHN')).sort((a,b)=>b.r-a.r))add(asia,c,4);
+  for(const c of [].concat(lg('EGY'),lg('MAR'),lg('RSA')).sort((a,b)=>b.r-a.r))add(caf,c,4);
   const host=lg('USA')[0];names.add(host.n);
   const oc=xMk(XOFC[0]);
   const all=[].concat(uefa,sa,asia,caf,conc,[oc,host]);
