@@ -33,6 +33,13 @@ const PREF=['Atlético','EC','Sport Club','União','Associação','Grêmio','Ope
 const LOCCOL=[['#1d6fb8','#ffffff'],['#c0392b','#ffffff'],['#1e8449','#ffffff'],['#f1c40f','#1a1a1a'],['#6c3483','#ffffff'],['#111111','#ffffff'],['#e67e22','#ffffff'],['#17202a','#f1c40f']];
 const natTier=x=>x.div<=2?0:1;
 function estSpec(st,t){const F=ESTF[st]||[[(ESTN[st]||'Estadual')+' Série A',10,'liga',9,4,2],[(ESTN[st]||'Estadual')+' Série B',10,'liga',8,4,0]];return {F,sp:F[clamp(t,0,F.length-1)],t:clamp(t,0,F.length-1)}}
+function sigLoc(nm,st,ids){
+  const ws=nm.replace(/^(Atlético|EC|Sport Club|União|Associação|Grêmio|Operário|Ferroviário|Esporte|Comercial)\s+/,'');
+  const base=(ws.normalize('NFD').replace(/[^A-Za-z]/g,'').toUpperCase()+'XXX').slice(0,3);
+  const taken=new Set(G.clubs.map(x=>x.sig).concat(ids.map(i=>C(i).sig)));
+  let sg=base,k=1;while(taken.has(sg)){sg=base.slice(0,2)+String.fromCharCode(64+k);k++;if(k>26)break}
+  return sg;
+}
 function locMake(name,sig,rep,ci){
   const cc=LOCCOL[ci%LOCCOL.length];
   FCPOOL.push([name,sig,rep,cc[0],cc[1],cc[1],'h']);
@@ -55,7 +62,7 @@ function estInit(){
   const cities=(CITY[st]||[]).concat(shuffle(GENR.map(x=>x+' '+st)));const used=new Set(ids.map(i=>C(i).name));
   let n=0,k=0;const base=t===0?50:t===1?42:t===2?37:33;
   while(ids.length<N){let nm;do{nm=PREF[(k*3+n)%PREF.length]+' '+(cities[(k++)%cities.length])}while(used.has(nm)&&k<80);used.add(nm);
-    ids.push(locMake(nm,'L'+st+n,clamp(Math.round(base+rnd(-4,6)),28,62),n+st.charCodeAt(0)).id);n++}
+    ids.push(locMake(nm,sigLoc(nm,st,ids),clamp(Math.round(base+rnd(-4,6)),28,62),n+st.charCodeAt(0)).id);n++}
   let groups=null,sched;
   if(type==='grupos'){const o=ids.slice().sort((a,b)=>C(b).rep-C(a).rep);groups=[[],[]];o.forEach((id,i)=>{const r=Math.floor(i/2);groups[(i+r)%2].push(id)});
     const gr=groups.map(g=>circle(g,99));sched=gr[0].map((_,i)=>gr.flatMap(g=>g[i]))}
