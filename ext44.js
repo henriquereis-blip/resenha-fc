@@ -28,6 +28,7 @@ const PYR={
  BOL:[{n:'División Profesional',c:16}],
  VEN:[{n:'Liga FUTVE',c:14}],
  KSA:[{n:'Saudi Pro League',c:18,dn:3},{n:'Divisão 1 saudita',c:18,up:3}],
+ SEL:[{n:'Eliminatórias Sul-Americanas',c:10}],
  MEX:[{n:'Liga MX',c:18,dn:0},{n:'Liga de Expansión MX',c:16,up:0}],
  USA:[{n:'MLS',c:30,rd:34,dn:0},{n:'USL Championship',c:24,rd:30,up:0}]
 };

@@ -6811,6 +6811,7 @@ const WLD=[
 {k:'EGY',n:'Egito',f:'🇪🇬',lg:'Egyptian Premier League',cl:[['Al Ahly',70],['Pyramids FC',68],['Zamalek SC',66],['Ceramica Cleopatra',60],['Al Masry',60],['National Bank of Egypt',58],['Al Ittihad Alexandria',58],['Tala\'ea El Gaish',57],['Modern Sport FC',57],['Petrojet',56],['El Gouna',56],['ZED FC',56],['Smouha',55],['Wadi Degla',55],['El Mokawloon El Arab',54],['Eastern Enppi',53],['Abu Qir Fertilizers',52],['Asyut Petroleum',52],['El Qanah',52],['Ghazl El Mahalla',51]]},
 {k:'MAR',n:'Marrocos',f:'🇲🇦',lg:'Botola Pro',cl:[['Raja Casablanca',62],['Wydad Casablanca',62],['RS Berkane',62],['AS FAR',60],['Maghreb Fez',58],['DH El Jadida',55],['Ittihad Tanger',55],['FUS Rabat',55],['MA Tétouan',54],['Kawkab Marrakech',53],['COD Meknes',52],['RCA Zemamra',52],['Hassania Agadir',52],['UTS Rabat',51],['Wydad Témara',50],['Amal Tiznit',49]]},
 {k:'RSA',n:'África do Sul',f:'🇿🇦',lg:'Betway Premiership',cl:[['Mamelodi Sundowns',66],['Orlando Pirates',65],['Kaizer Chiefs',61],['Stellenbosch',58],['AmaZulu',57],['Sekhukhune United',57],['Golden Arrows',55],['Polokwane City',54],['Durban City',54],['Siwelele',53],['Richards Bay',53],['TS Galaxy',53],['Chippa United',52],['Marumo Gallants',50],['Kruger United',50],['Milford',49]]},
+{k:'SEL',n:'Seleções',f:'🌎',lg:'Eliminatórias Sul-Americanas',cl:[['Argentina',84],['Brasil',83],['Uruguai',78],['Colômbia',78],['Equador',73],['Paraguai',69],['Chile',66],['Peru',64],['Venezuela',63],['Bolívia',61]]},
 ];
 /* cores e padrões (escudos inventados, mas com as cores certas dos grandes) */
 const WCOL={'Manchester City':['#6cabdd','#ffffff','#6cabdd','solid'],'Arsenal':['#e30613','#ffffff','#e30613','solid'],'Liverpool':['#c8102e','#ffffff','#c8102e','solid'],'Chelsea':['#034694','#ffffff','#034694','solid'],'Manchester United':['#da291c','#111111','#da291c','solid'],'Tottenham':['#ffffff','#132257','#ffffff','solid'],'Newcastle':['#111111','#ffffff','#111111','v'],'Aston Villa':['#670e36','#95bfe5','#670e36','half'],
@@ -6862,6 +6863,7 @@ const WRULES={
  USA:{fmt:'liga',rd:34,rel:0,conc:4,po:16,txt:['Liga fechada, sem rebaixamento; 34 rodadas.','Playoffs da MLS Cup entre os 16 melhores, jogo único com mando do melhor colocado.','Teto salarial com jogadores franquia (Designated Players).','8 vagas de estrangeiros por clube, negociáveis entre clubes.']},
  KSA:{fmt:'liga',rd:34,rel:3,aco:3,txt:['18 clubes, 34 rodadas, 3 rebaixados.','Máximo de 10 estrangeiros por clube (8 por jogo).','Desempate: confronto direto.','Vagas na Champions Asiática para os melhores colocados.']},
  PAR:{fmt:'ac',rd:22,rel:2,po:1,lib:4,sul:4,txt:['12 clubes, 22 rodadas; Dois torneios (Apertura e Clausura); o líder de cada um é campeão, 2 campeões por temporada.','Libertadores: 4 vagas; Sul-Americana: 4.','Descenso por média de pontos de três temporadas (2 caem).']},
+ SEL:{fmt:'liga',rd:18,rel:0,lib:0,sul:0,txt:['Você treina uma seleção sul-americana: 10 seleções, 18 rodadas (ida e volta) nas Eliminatórias.','As 8 melhores jogam a fase final em mata-mata (Copa América simplificada), jogo único.','Sem descenso. Elenco gerado com jogadores da nacionalidade da seleção (não há convocação de clubes reais ainda).']},
  ECU:{fmt:'hex',rd:30,rel:2,lib:4,sul:4,txt:['16 clubes, 30 rodadas; os 6 primeiros jogam o hexagonal final (ida e volta, pontos zerados) e o campeão sai dele; rebaixamento pela tabela dos 30 jogos.','Libertadores: 4 vagas; Sul-Americana: 4.','2 rebaixados.']},
  PER:{fmt:'ac',rd:34,rel:2,po:1,lib:4,sul:4,txt:['18 clubes, 34 rodadas; Dois torneios (Apertura e Clausura); o líder de cada um é campeão (simplificado: a final entre os dois não existe).','Libertadores: 4 vagas; Sul-Americana: 4.','2 rebaixados pela tabela acumulada.']},
  BOL:{fmt:'liga',rd:30,rel:0,lib:4,sul:3,txt:['16 clubes, 30 rodadas; título pela tabela (simplificado).','Libertadores: 4 vagas; Sul-Americana: 3.','Sem descenso por enquanto: a segunda divisão boliviana (Copa Simón Bolívar) ainda não está no jogo.']},
@@ -6893,7 +6895,7 @@ function worldInit(){
   wFormReset();
 }
 function wd(){if(!G)return null;if(!G.wd)worldInit();wMissing();if(G.wd.s!==G.season)wNew();return G.wd}
-function wMissing(){const W=G.wd;let id=5000+Object.values(W.lg).reduce((s,l)=>s+l.cl.length,0)+20;for(const L of WLD){if(W.lg[L.k])continue;W.lg[L.k]={cl:L.cl.map(c=>{const col=WCOL[c[0]]||(()=>{const p=WPAL[wHash(c[0])%WPAL.length];return [p[0],p[1],p[0],p[2]]})();return {id:id++,n:c[0].replace(/-(URU|PAR|ECU)$/,' ($1)'),sg:WSIG[c[0]],sig:WSIG[c[0]],b:c[1],r:c[1],c1:col[0],c2:col[1],c3:col[2],pat:col[3],f:1,P:0,J:0,V:0,E:0,D:0,GP:0,GC:0,pp:0}}),ti:[]}}}
+function wMissing(){const W=G.wd;let id=Math.max(5000+Object.values(W.lg).reduce((s,l)=>s+l.cl.length,0)+20,1+Math.max(0,...Object.values(W.lg).flatMap(l=>l.cl.map(c=>c.id||0))));for(const L of WLD){if(W.lg[L.k])continue;W.lg[L.k]={cl:L.cl.map(c=>{const col=WCOL[c[0]]||(()=>{const p=WPAL[wHash(c[0])%WPAL.length];return [p[0],p[1],p[0],p[2]]})();return {id:id++,n:c[0].replace(/-(URU|PAR|ECU)$/,' ($1)'),sg:WSIG[c[0]],sig:WSIG[c[0]],b:c[1],r:c[1],c1:col[0],c2:col[1],c3:col[2],pat:col[3],f:1,P:0,J:0,V:0,E:0,D:0,GP:0,GC:0,pp:0}}),ti:[]}}}
 function wFormReset(){for(const k in G.wd.lg)for(const c of G.wd.lg[k].cl)c.f=clamp(1+gauss()*0.05,.92,1.08)}
 function wNew(){const W=G.wd;W.s=G.season;for(const k in W.lg)for(const c of W.lg[k].cl){c.P=c.J=c.V=c.E=c.D=c.GP=c.GC=0;c.pp=0}wFormReset()}
 function wTable(k){return G.wd.lg[k].cl.slice().sort((a,b)=>b.P-a.P||(b.GP-b.GC)-(a.GP-a.GC)||b.GP-a.GP||b.r-a.r)}
@@ -7518,7 +7520,7 @@ const _r40=render;render=function(){
    Clube estrangeiro vira clube completo (div 4, ids 80..99) com a liga inteira do país jogando 38 rodadas.
    O Brasil segue sendo simulado pelo servidor. A liga lite do país é sincronizada com a tabela real. */
 const BRN=80;
-const LFAC={ENG:1.3,ESP:1.25,GER:1.2,ITA:1.2,FRA:1,POR:.8,ARG:.7,URU:.55,COL:.6,CHI:.6,JPN:.8,KOR:.7,CHN:.65,AUS:.6,EGY:.6,MAR:.55,RSA:.55,NED:.85,BEL:.8,TUR:.85,SCO:.7,PAR:.55,ECU:.55,PER:.5,BOL:.45,VEN:.45,MEX:.9,USA:.9,KSA:1};
+const LFAC={ENG:1.3,ESP:1.25,GER:1.2,ITA:1.2,FRA:1,POR:.8,ARG:.7,URU:.55,COL:.6,CHI:.6,JPN:.8,KOR:.7,CHN:.65,AUS:.6,EGY:.6,MAR:.55,RSA:.55,NED:.85,BEL:.8,TUR:.85,SCO:.7,PAR:.55,ECU:.55,PER:.5,BOL:.45,VEN:.45,MEX:.9,USA:.9,KSA:1,SEL:.9};
 function wlOf(k){return WLD.find(x=>x.k===k)}
 function liteById(id){const W=G.wd;if(!W)return null;for(const k in W.lg){const x=W.lg[k].cl.find(c=>c.id===id);if(x)return {x,k}}return null}
 function uniqSig42(sg){let s=String(sg||'XXX').slice(0,3).toUpperCase(),i=0;const base=s;while(G.clubs.some(c=>c.sig===s)){s=base.slice(0,2)+String.fromCharCode(65+(i%26));i++}return s}
@@ -7748,6 +7750,7 @@ const PYR={
  BOL:[{n:'División Profesional',c:16}],
  VEN:[{n:'Liga FUTVE',c:14}],
  KSA:[{n:'Saudi Pro League',c:18,dn:3},{n:'Divisão 1 saudita',c:18,up:3}],
+ SEL:[{n:'Eliminatórias Sul-Americanas',c:10}],
  MEX:[{n:'Liga MX',c:18,dn:0},{n:'Liga de Expansión MX',c:16,up:0}],
  USA:[{n:'MLS',c:30,rd:34,dn:0},{n:'USL Championship',c:24,rd:30,up:0}]
 };
@@ -9203,6 +9206,17 @@ const _bg58=A.begin;A.begin=function(){
   const r=_bg58.apply(this,arguments);
   try{if(code&&G.user!=null&&G.phase==='play'){G.mpRoom=code;save();mpPush(true)}}catch(e){}
   return r};
+/* ext59: seleções jogáveis (versão 1). Você pode assumir uma seleção sul-americana: o "campeonato" são as Eliminatórias (10 seleções, ida e volta),
+   e no fim a fase final em mata-mata (Copa América simplificada) usa o motor das copas nacionais. Elenco gerado com nomes da nacionalidade. */
+Object.assign(WCOL,{'Argentina':['#75aadb','#ffffff','#75aadb','v'],'Brasil':['#ffdf00','#009c3b','#ffdf00','solid'],'Uruguai':['#6cb4e8','#111111','#6cb4e8','solid'],'Colômbia':['#fcd116','#003893','#ce1126','solid'],'Equador':['#fcd116','#034ea2','#ed1c24','solid'],'Paraguai':['#d52b1e','#ffffff','#0038a8','v'],'Chile':['#d52b1e','#ffffff','#0039a6','solid'],'Peru':['#ffffff','#d91023','#ffffff','diag'],'Bolívia':['#007934','#ffe000','#d52b1e','solid'],'Venezuela':['#7b1e3a','#ffffff','#ffd100','solid']});
+const SELNAT={'Argentina':'ARG','Brasil':'BRA','Uruguai':'URU','Colômbia':'COL','Equador':'ECU','Paraguai':'PAR','Chile':'CHI','Peru':'PER','Bolívia':'BOL','Venezuela':'VEN'};
+NMP.SEL=NMP.ARG;NCUP.SEL=[8,'Copa América'];
+const _mk59=mkNat42;mkNat42=function(lc,id,k){
+  const c=_mk59.apply(this,arguments);
+  try{if(k==='SEL'){const nat=SELNAT[lc.n]||'ARG';
+    for(const pid of c.squad){const p=G.players[pid];if(!p)continue;p.nat=nat;p.name=NMP[nat]?wName(nat):uniqName();p.real=false;try{NATF[p.name]=nat}catch(e){}}
+    c.coach=Object.assign(c.coach||{},{name:'Técnico (seleção)'})}}catch(e){console.error('sel59 '+e.message)}
+  return c};
 newWorld();G.phase='start';render();
 </script>
 <script>if("serviceWorker"in navigator&&/^https?:/.test(location.protocol))addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}))</script></body></html>
