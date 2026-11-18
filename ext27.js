@@ -65,7 +65,7 @@ function copinhaRun(){
   addNews('Copinha '+yr+': '+(out==='Campeão'?'a base do '+me.name+' é campeã!':'o '+me.name+' parou em '+out.toLowerCase()+'. Campeão: '+cname+'.')+(rev?' Revelação: '+rev+'.':''));
 }
 const _sc27=startCareer;startCareer=function(){const r=_sc27.apply(this,arguments);try{copinhaRun()}catch(e){console.error('copinha '+e.message)}return r};
-const _ns27=newSeason;newSeason=function(){const r=_ns27.apply(this,arguments);try{copinhaRun()}catch(e){console.error('copinha '+e.message)}return r};
+hookAfter('newSeason','ext27_ns27',()=>{copinhaRun()});
 const _ls27=loadSave;loadSave=function(){const ok=_ls27();if(ok&&G&&!G.cp)G.cp={hist:[],cur:null};return ok};
 /* UI na Base */
 function copinhaCard(){

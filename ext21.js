@@ -162,13 +162,13 @@ function finishEst(){
   for(const p of Object.values(G.players))if(p.club>=0&&p.en<100)p.en=clamp(p.en+6,0,100);
   G.fixtures[G.round]=G._lg;G._lg=null;G._x=null;R=null;fcClean();save();return 'next';
 }
-const _fr21=finishRound;finishRound=function(){
+hookAround('finishRound','ext21_fr21',function(next,A){
   if(G._lg&&G._x&&G._x.kind==='est'&&R&&R.xtra){
     let played=new Set(),gf=0,ga=0;try{const um=R.ms[R.ui],us=userSide(um),sd=um[us];played=new Set([...sd.lineup,...sd.used]);gf=us==='h'?um.hg:um.ag;ga=us==='h'?um.ag:um.hg}catch(e){}
     const r=finishEst();try{sqcTick(played,gf,ga)}catch(e){}return r;
   }
-  return _fr21.apply(this,arguments);
-};
+  return next();
+});
 /* fim do estadual: acesso e rebaixamento dentro das séries do estado */
 function estEnd(){
   const e=G.est;if(!e||e.rel===undefined)return;
@@ -179,7 +179,7 @@ function estEnd(){
     else if(e.rel>0&&rank>e.N-e.rel&&e.tier<e.tiers-1){G.estLv=e.tier+1;addNews('Estadual: você terminou em '+rank+'º na '+e.name+' e foi REBAIXADO no estadual.')}
   }catch(er){console.error('estEnd '+er.message)}
 }
-const _ns21=newSeason;newSeason=function(){try{estEnd()}catch(e){}const r=_ns21();try{estInit()}catch(e){console.error('estInit '+e.message)}return r};
+hookAround('newSeason','ext21_ns21',function(next,A){try{estEnd()}catch(e){}const r=next();try{estInit()}catch(e){console.error('estInit '+e.message)}return r});
 const _sc21=startCareer;startCareer=function(){G.estLv=null;_sc21.apply(this,arguments);try{G.estHist=[];G.estLv=null;estInit()}catch(e){console.error('estInit0 '+e.message)}save()};
 const _tj21=takeJob;takeJob=function(){const r=_tj21.apply(this,arguments);try{G._lg=null;G._x=null;G.estLv=null;estInit()}catch(e){console.error('estInit1 '+e.message)}return r};
 const _ls21=loadSave;loadSave=function(){const ok=_ls21();if(ok&&G&&(!G.est||!G.est.slots)){try{G.estLv=null;estInit()}catch(e){}}return ok};

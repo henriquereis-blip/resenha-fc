@@ -180,9 +180,9 @@ function finishPo51(){
   const out=endSeasonNow?'seasonEnd':'next';
   save();return out;
 }
-const _fr52=finishRound;finishRound=function(){
+hookAround('finishRound','ext52_fr52',function(next,A){
   if(G._lg&&G._x&&G._x.kind==='po51'&&R&&R.xtra)return finishPo51();
-  const out=_fr52.apply(this,arguments);
+  const out=next();
   try{
     if(out==='seasonEnd'&&!G.po51){
       const I=lg51();
@@ -197,7 +197,7 @@ const _fr52=finishRound;finishRound=function(){
     }
   }catch(e){console.error('end52 '+e.message)}
   return out;
-};
+});
 /* playoff de acesso (pirâmide): você está na faixa de playoff da sua divisão? */
 function qualAcc52(){
   const P=G.pyr;if(!P||!G.abroad)return null;const c=userClub(),d=c.div,t=tierOf(d);if(t<2)return null;
@@ -247,8 +247,7 @@ const _br52=bracket;bracket=function(list,log){
   if(f&&f.ids.length===list.length&&list.every(r=>r.name&&f.ids.includes(r.id))){const w=list.find(r=>r.id===f.w);log.push(f.txt);G.pyr.forced=null;return w}
   return _br52(list,log);
 };
-const _fr52b=finishRound;finishRound=function(){
-  const out=_fr52b.apply(this,arguments);
+hookAfter('finishRound','ext52_fr52b',function(out,A){
   try{
     if(out==='seasonEnd'&&!G.po51&&G.pyr&&G.pyr.planS!==G.season&&(G.pyr.accS!==G.season||G.pyr.repS!==G.season)){
       const q=G.pyr.accS!==G.season?qualAcc52():null;
@@ -256,6 +255,5 @@ const _fr52b=finishRound;finishRound=function(){
       else if(G.pyr.repS!==G.season){const r=chal52();if(r&&r.pending){save();return 'next'}}
     }
   }catch(e){console.error('acc52 '+e.message)}
-  return out;
-};
-const _ns52=newSeason;newSeason=function(){if(G.po51&&G.po51.ph){try{ph52(false)}catch(e){}}G.po51=null;return _ns52.apply(this,arguments)};
+  });
+hookBefore('newSeason','ext52_ns52',function(){if(G.po51&&G.po51.ph){try{ph52(false)}catch(e){}}G.po51=null;});

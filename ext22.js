@@ -19,4 +19,4 @@ function cycTick(){
     if(g>1.5)c.caixa=+(c.caixa+g*scaleOf(c)*.015).toFixed(1);
   }
 }
-const _ns22=newSeason;newSeason=function(){const r=_ns22();try{cycTick()}catch(e){console.error('cyc '+e.message)}return r};
+hookAfter('newSeason','ext22_ns22',function(r,A){try{cycTick()}catch(e){console.error('cyc '+e.message)}});

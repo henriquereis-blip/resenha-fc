@@ -35,9 +35,9 @@ function aiListing(){
       const cand=c.squad.filter(id=>!P(id).listed&&(c.squad.indexOf(id)>=11||P(id).age>=31));
       if(cand.length){const id=pick(cand);P(id).listed=true;P(id).lst=G.round+ri(4,10)}}}
 }
-const _fr5=finishRound;finishRound=function(){
-  ex();ex4();const out=_fr5();
+hookAround('finishRound','ext4_fr5',function(next,A){
+  ex();ex4();const out=next();
   if(G.scouts.length){const tot=G.scouts.reduce((s,x)=>s+x.sal,0);G.fin.caixa=+(G.fin.caixa-tot/38).toFixed(2);if(G.round%3===0)refreshRecs()}
   aiListing();return out;
-};
-const _ns5=newSeason;newSeason=function(){const r=_ns5();ex4();if(G.scouts.length)refreshRecs();return r};
+});
+hookAfter('newSeason','ext4_ns5',function(r,A){ex4();if(G.scouts.length)refreshRecs();});

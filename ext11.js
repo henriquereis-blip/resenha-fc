@@ -90,13 +90,13 @@ const _sm11=stepMinute;stepMinute=function(m){
 };
 
 /* ---- fim da rodada: recuperação, treino, recaída, custos ---- */
-const _fr11=finishRound;finishRound=function(){
+hookAround('finishRound','ext11_fr11',function(next,A){
   ex();ex11a();
   const um=R&&R.ms[R.ui],us=um?userSide(um):null;const sd=um?um[us]:null;
   const playedHurt=sd?[...new Set([...sd.lineup,...sd.used])].filter(id=>P(id).inj>0&&!sd.outs.includes(id)):[];
   const prev={};for(const p of Object.values(G.players))if(p.club>=0&&p.inj>0)prev[p.id]=p.inj;
   const h0=userClub().humor;
-  const out=_fr11();
+  const out=next();
   try{
     const c=userClub(),m=G.med;
     for(const id of playedHurt){const p=P(id);if(p.club!==G.user)continue;
@@ -122,15 +122,15 @@ const _fr11=finishRound;finishRound=function(){
     trackGoals();
   }catch(e){console.error('ext11 tick',e)}
   return out;
-};
+});
 
-const _ns11=newSeason;newSeason=function(){
+hookAround('newSeason','ext11_ns11',function(next,A){
   ex11a();const snap={};for(const p of Object.values(G.players))if(p.inj>0)snap[p.id]=[p.inj,p.injN,p.injT];
   const m=G.med;if(m){m.seasons.push({s:G.season,n:m.season.n,days:m.season.days,surg:m.season.surg});m.season={n:0,days:0,surg:0}}
-  _ns11();
+  next();
   for(const id in snap){const p=P(+id);if(!p)continue;const r=snap[id][0]-8;if(r>0){p.inj=r;p.injN=snap[id][1];p.injT=snap[id][2]}}
   try{newSeasonGoals()}catch(e){console.error('goals',e)}
-};
+});
 
 /* ---- ações médicas ---- */
 Object.assign(A,{
@@ -290,8 +290,8 @@ function holdElection(s){
     paperLine(w.name+' vence eleição e será o novo presidente do '+c.name,presOf(w.pf).n+' assume em '+(G.season+1)+'. Derrota do grupo de '+e.pres.name+'.')}
   e.last=res;e.hist.push(res);e.asked=false;s.elec=res;
 }
-const _ns11b=newSeason;newSeason=function(){
-  _ns11b();
+hookAround('newSeason','ext11_ns11b',function(next,A){
+  next();
   try{
     ensureEl();const e=G.el;const c=userClub();
     if(e.pending){const pf=presOf(e.pending.pf);
@@ -305,7 +305,7 @@ const _ns11b=newSeason;newSeason=function(){
     }else{G.board.conf=Math.max(G.board.conf,50+G.pat.bd*.25);if(e.stance&&G.season>e.termEnd-3)e.stance=null}
     if(G.pat.bd>60)G.fin.caixa=+(G.fin.caixa+scaleOf(c)*.01*(G.pat.bd-60)/40).toFixed(2);
   }catch(er){console.error('ns elec',er)}
-};
+});
 const _gp11=genPress;genPress=function(um){
   _gp11(um);
   try{ensureEl();const e=G.el;

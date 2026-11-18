@@ -69,7 +69,7 @@ const _tm48=A.tomenu;A.tomenu=function(){
   const go=cloud48()&&SB.ses&&G&&G.phase!=='start';
   const r=_tm48.apply(this,arguments);if(go)setTimeout(()=>sync48(1),50);return r};
 /* autosave na nuvem a cada rodada (e ao sair do app) */
-const _fr48=finishRound;finishRound=function(){const r=_fr48.apply(this,arguments);try{if(cloud48()&&SB.ses){sync48(0,1)}}catch(e){}return r};
+hookAfter('finishRound','ext48_fr48',()=>{if(cloud48()&&SB.ses){sync48(0,1)}});
 
 /* ===== OFFLINE-FIRST: o aparelho é o save principal; a nuvem recebe cópia sempre que tiver internet ===== */
 function syncRec48(){try{return JSON.parse(localStorage.getItem('rfc_sync_'+(SB.ses&&SB.ses.uid))||'{}')}catch(e){return {}}}

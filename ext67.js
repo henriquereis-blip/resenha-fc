@@ -56,16 +56,12 @@ function aiPromote67(){
     }
   }
 }
-const _ns67=newSeason;newSeason=function(){
-  const r=_ns67.apply(this,arguments);
+hookAfter('newSeason','ext67_ns67',function(r,A){
   try{balAll67();aiPromote67()}catch(e){console.error('ai67 '+e.message)}
-  return r;
-};
-const _fr67=finishRound;finishRound=function(){
-  const o=_fr67.apply(this,arguments);
+  });
+hookAfter('finishRound','ext67_fr67',function(o,A){
   try{balAll67();if(G.mk&&G.mk.soc)G.mk.soc.orig=null}catch(e){}
-  return o;
-};
+  });
 window.youthReport=function(){
   const rows=(G.yLog&&G.yLog.rows)||[],bands={'<25':[],'25-44':[],'45-64':[]," >=65":[]};
   rows.forEach(r=>{(r.ix<25?bands['<25']:r.ix<45?bands['25-44']:r.ix<65?bands['45-64']:bands[' >=65']).push(r)});

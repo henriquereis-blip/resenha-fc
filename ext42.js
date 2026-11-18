@@ -70,7 +70,7 @@ const _wr42=wRound;wRound=function(rd){
     try{_wr42(rd)}finally{W.lg[k]=hold}
   }else _wr42(rd);
 };
-const _fr42=finishRound;finishRound=function(){const r=_fr42.apply(this,arguments);try{natSync()}catch(e){console.error('sync42 '+e.message)}return r};
+hookAfter('finishRound','ext42_fr42',()=>{natSync()});
 const _we42=wEnd;wEnd=function(){try{natSync()}catch(e){}return _we42.apply(this,arguments)};
 
 /* ---------- aceitar emprego fora ---------- */

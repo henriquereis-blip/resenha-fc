@@ -62,9 +62,9 @@ function coachTick32(){
     }
   }
 }
-const _fr32=finishRound;finishRound=function(){const r=_fr32.apply(this,arguments);try{coachTick32()}catch(e){console.error('coachTick32 '+e.message)}return r};
+hookAfter('finishRound','ext32_fr32',()=>{coachTick32()});
 /* virada de temporada: fim de ciclo, rebaixamento e convites por títulos */
-const _ns32=newSeason;newSeason=function(){
+hookAround('newSeason','ext32_ns32',function(next,A){
   try{
     for(let d=0;d<4;d++){
       const tb=tableRows(d);const N=tb.length;const sr=G.clubs.filter(c=>c.div===d).sort((a,b)=>strength(b)-strength(a));
@@ -82,8 +82,8 @@ const _ns32=newSeason;newSeason=function(){
     }
     G.cpool=(G.cpool||[]).filter(x=>G.season-x.since<=2);
   }catch(e){console.error('newSeason32 '+e.message)}
-  return _ns32.apply(this,arguments);
-};
+  return next();
+});
 /* ranking de técnicos: teto para imprensa/crise/tática, para o técnico do jogador não passar sozinho */
 (function(){
   const _cr=coachRank;

@@ -74,11 +74,9 @@ Object.assign(A,{
 });
 setTimeout(cloudInit,600);
 /* a cada 3 partidas: cópia extra (slot automático 4) + nuvem na hora; ao sair do app também guarda */
-const _fr29=finishRound;finishRound=function(){
-  const r=_fr29.apply(this,arguments);
+hookAfter('finishRound','ext29_fr29',function(r,A){
   try{if(G.round>0&&G.round%3===0){save();const raw=SKV.getItem(SAVE_KEY);if(raw)SKV.setItem(slotKey(4),raw);cloudSave(true)}else save()}catch(e){}
-  return r;
-};
+  });
 const _sm29=startMatch;startMatch=function(){try{save()}catch(e){}return _sm29.apply(this,arguments)};
 document.addEventListener('visibilitychange',()=>{try{if(document.hidden&&G&&G.phase!=='start'&&!S.match){save();cloudSave(true)}}catch(e){}});
 window.addEventListener('pagehide',()=>{try{if(G&&G.phase!=='start'&&!S.match)save()}catch(e){}});
@@ -142,11 +140,9 @@ Object.assign(MACT,{
   sign(p){const r=signFree(p.pid);return r?{ok:false,t:r}:{ok:true,t:'Contratado!'}},
   neg(p){const r=negStart(p.pid);if(r){return {ok:false,t:r}}S.prof=null;return {ok:true,t:'',keep:true}}
 });
-const _fr29b=finishRound;finishRound=function(){
-  const r=_fr29b.apply(this,arguments);
+hookAfter('finishRound','ext29_fr29b',function(r,A){
   try{const d=dirBox();
     if(G.board.conf<30){d.low++}else d.low=Math.max(0,d.low-1);
     if(d.low>=3){const old=d.name;d.name=pick(DIRN.filter(x=>x!==old));d.low=0;d.since=G.season;mail('dir','🔄 Presidente trocou o diretor de futebol',old+' foi demitido pela pressão. Novo diretor: '+d.name+'.',[],'dirx')}
     if(G.round>=1&&Math.random()<.5)dirTip()}catch(e){console.error('dir29 '+e.message)}
-  return r;
-};
+  });

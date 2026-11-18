@@ -2,10 +2,10 @@
    Disputada na virada da temporada, em jogo único (pênaltis se empatar). Se o campeão da liga também levou a copa, o vice entra no lugar.
    Simulada na hora: sai no jornal e no histórico. Se o seu clube joga, o prêmio e a moral entram. */
 const SUPER56={ENG:'Community Shield',ESP:'Supercopa de España',ITA:'Supercoppa Italiana',GER:'DFL-Supercup',FRA:'Trophée des Champions',POR:'Supertaça Cândido de Oliveira',ARG:'Supercopa Argentina',NED:'Johan Cruyff Schaal',BEL:'Supercopa da Bélgica',TUR:'Süper Kupa',EGY:'Supercopa do Egito',KSA:'Supercopa Saudita'};
-const _ns56=newSeason;newSeason=function(){
+hookAround('newSeason','ext56_ns56',function(next,A){
   let prev=null;
   try{if(G&&G.abroad&&SUPER56[G.abroad.k]&&G.hist&&G.hist.length){prev={s:G.season,champ:G.hist[G.hist.length-1].champ,k:G.abroad.k}}}catch(e){}
-  const r=_ns56.apply(this,arguments);
+  const r=next();
   try{if(prev&&G.abroad&&G.abroad.k===prev.k){
     const cup=(G.ncHist||[]).filter(x=>x.s===prev.s&&!/EFL|Liga/.test(x.n||'')).slice(-1)[0];
     const find=n=>G.clubs.find(c=>!c.stub&&c.div>=4&&c.name===n);
@@ -23,15 +23,15 @@ const _ns56=newSeason;newSeason=function(){
         else addNews('Você perdeu a '+nm+': '+txt+'.')}
       else addNews(nm+': '+w.name+' levou ('+txt+').')}
   }}catch(e){console.error('super56 '+e.message)}
-  return r};
+  return r});
 
 /* Campeón de Campeones (MEX: campeão do Apertura x campeão do Clausura) e final nacional do Peru (mesmos dois campeões). Jogo único na virada da temporada. */
 const DUEL56={MEX:'Campeón de Campeones',PER:'Final do Campeonato Peruano'};
-const _ns56b=newSeason;newSeason=function(){
+hookAround('newSeason','ext56_ns56b',function(next,A){
   let prev=null;
   try{if(G&&G.abroad&&DUEL56[G.abroad.k]){const h=(G.lg51&&G.lg51.hist||[]).filter(x=>x.s===G.season);
     const ap=h.find(x=>/Apertura/.test(x.n)),cl=h.find(x=>/Clausura/.test(x.n));if(ap&&cl)prev={s:G.season,k:G.abroad.k,a:ap.champ,c:cl.champ}}}catch(e){}
-  const r=_ns56b.apply(this,arguments);
+  const r=next();
   try{if(prev&&G.abroad&&G.abroad.k===prev.k){
     const find=n=>G.clubs.find(c=>!c.stub&&c.div>=4&&c.name===n),A=find(prev.a),B=find(prev.c),nm=DUEL56[prev.k],me=G.clubs[G.user];
     if(prev.a===prev.c){if(A){paperLine(A.name+' é bicampeão do ano','Venceu Apertura e Clausura: '+nm+' decidido na tabela.');G.superHist=(G.superHist||[]).concat({s:prev.s,n:nm,champ:A.name,t:'Apertura e Clausura'}).slice(-12)}}
@@ -45,4 +45,4 @@ const _ns56b=newSeason;newSeason=function(){
         else addNews('Você perdeu a '+nm+': '+txt+'.')}
       else addNews(nm+': '+w.name+' levou ('+txt+').')}
   }}catch(e){console.error('duel56 '+e.message)}
-  return r};
+  return r});

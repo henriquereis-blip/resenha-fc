@@ -61,18 +61,18 @@ function promoRel(){
     }else if(c.trad>=55)paperLine(c.name+' conquista o acesso à '+DIVN[nd],'Volta por cima e retorno à divisão superior.');
   }
 }
-const _ns12=newSeason;newSeason=function(){
+hookAround('newSeason','ext12_ns12',function(next,A){
   aiSeasonEnd();promoRel();
-  _ns12();
+  next();
   G.clubs.forEach(x=>{if(x.id===G.user)return;const t=50+x.trad*.28,tvT=[null,0,0,0],rb=RBAND[x.div];if(!rb)return;x.rep=+clamp(x.rep*.93+t*.07,rb[0],rb[1]).toFixed(1)});
-};
-const _fr12=finishRound;finishRound=function(){
+});
+hookAround('finishRound','ext12_fr12',function(next,A){
   const rd=G.round,ud=userDiv();
   try{for(let d=0;d<=12;d++){if(d===ud||!G.dfx[d]||(R&&R.mpg&&R.divs&&R.divs.has(d)))continue;for(const [h,a] of (G.dfx[d][rd]||[]))simFast(C(h),C(a))}}catch(e){console.error('divs',e)}
-  const out=_fr12();
+  const out=next();
   try{aiFinance()}catch(e){console.error('aifin',e)}
   return out;
-};
+});
 const _es12=endSeason;endSeason=function(){
   _es12();
   try{const c=userClub(),s=G.summary,d=c.div;if(!s)return;

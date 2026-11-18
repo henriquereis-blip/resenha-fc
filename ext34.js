@@ -26,8 +26,8 @@ function aiMarket34(n){
     }
   }
 }
-const _ns34=newSeason;newSeason=function(){try{aiMarket34(28)}catch(e){console.error('aiMarket34 '+e.message)}return _ns34.apply(this,arguments)};
-const _fr34=finishRound;finishRound=function(){const r=_fr34.apply(this,arguments);try{if(G.round===19)aiMarket34(10)}catch(e){console.error('aiMarket34b '+e.message)}return r};
+hookBefore('newSeason','ext34_ns34',function(){try{aiMarket34(28)}catch(e){console.error('aiMarket34 '+e.message)}});
+hookAfter('finishRound','ext34_fr34',()=>{if(G.round===19)aiMarket34(10)});
 /* técnico da IA: efeito pequeno no jogo, por maestria tática por jogo coached */
 const _mm34=mgrMatch;mgrMatch=function(m,k){
   let f=_mm34.apply(this,arguments);

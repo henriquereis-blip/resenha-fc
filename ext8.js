@@ -5,9 +5,8 @@ function purgePlayers(){
   if(G.sres)G.sres.forEach(id=>keep.add(id));if(S&&S.prof!==null&&S.prof!==undefined)keep.add(S.prof);
   for(const id of Object.keys(G.players)){if(!keep.has(+id))delete G.players[id]}
 }
-const _fr8=finishRound;finishRound=function(){const r=_fr8();if(G.round%6===0)purgePlayers();return r};
-const _ns8=newSeason;newSeason=function(){
-  const r=_ns8();
+hookAfter('finishRound','ext8_fr8',function(r,A){if(G.round%6===0)purgePlayers();});
+hookAfter('newSeason','ext8_ns8',function(r,A){
   G.salMult=+((G.salMult||1)*1.09).toFixed(4);
   for(const p of Object.values(G.players)){if(p.age>=23&&p.age<=27&&p.ovr<p.pot&&Math.random()<0.55)p.ovr=Math.min(p.pot,p.ovr+1)}
   for(const c of G.clubs){c.tv=+(c.tv*1.03).toFixed(1);c.spBase=+(c.spBase*1.03).toFixed(1)}
@@ -18,6 +17,5 @@ const _ns8=newSeason;newSeason=function(){
     while(c.squad.length>32){const worst=c.squad.slice().sort((a,b)=>P(a).ovr-P(b).ovr)[0];c.squad=c.squad.filter(x=>x!==worst);delete G.players[worst]}
     autoPick(c)}
   purgePlayers();
-  return r;
-};
+  });
 const _so8=salOf;salOf=function(p){return +(_so8(p)*(G.salMult||1)).toFixed(2)};

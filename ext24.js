@@ -88,12 +88,10 @@ const _es24=endSeason;endSeason=function(){
     if(b>0){b=+b.toFixed(1);G.fin.caixa=+(G.fin.caixa+b).toFixed(1);G.mk.acc.spx+=b;if(G.summary)G.summary.sp=+((G.summary.sp||0)+b).toFixed(1)}}catch(e){console.error('es24 '+e.message)}
   return r;
 };
-const _ns24=newSeason;newSeason=function(){
-  const r=_ns24.apply(this,arguments);
+hookAfter('newSeason','ext24_ns24',function(r,A){
   try{ex();let t=0;for(const k in G.mk.slots){const s=G.mk.slots[k];if(s&&s.mode==='vista')t+=s.val*SPN_VISTA}
     if(t>0){t=+t.toFixed(1);G.fin.caixa=+(G.fin.caixa+t).toFixed(1);G.mk.acc.spx+=t;addNews('Patrocínios extras renovados à vista: entrou '+mi(t)+'.')}}catch(e){}
-  return r;
-};
+  });
 
 /* ---------- modal do master ---------- */
 function spnOfferHtml(o,i){

@@ -19,7 +19,7 @@ const _fr=financeRound;financeRound=function(m){
 globalThis.calib75=calib75;
 const _em=emigrate;emigrate=function(){const r=_em.apply(this,arguments);if(r)calib75();return r};
 const _tj=takeJob;takeJob=function(){const r=_tj.apply(this,arguments);calib75();return r};
-const _ns=newSeason;newSeason=function(){const r=_ns.apply(this,arguments);calib75();G._warned91=false;return r};
+hookAfter('newSeason','ext75_ns',function(r,A){calib75();G._warned91=false;});
 /* caixa negativo: a diretoria cobra, mas não derruba a confiança a cada rodada. Favorito não é punido por não golear (expectativa limitada) */
 const _br=boardRound;boardRound=function(m){
   const neg=G.fin.caixa<0;_br.apply(this,arguments);

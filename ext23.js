@@ -149,10 +149,10 @@ function ntFix(){
     for(const x of c.squad.slice(11)){const px=P(x);if(px.inj>0||px.ntw>0)continue;const sc=slotScore(px,slot,c.phil,wnt);if(sc>bs){bs=sc;best=x}}
     if(best){const j=c.squad.indexOf(best);[c.squad[i],c.squad[j]]=[c.squad[j],c.squad[i]]}}
 }
-const _sr23=startRound;startRound=function(){try{ntFix()}catch(e){}return _sr23.apply(this,arguments)};
-const _fr23=finishRound;finishRound=function(){
+hookBefore('startRound','ext23_sr23',function(){try{ntFix()}catch(e){}});
+hookAround('finishRound','ext23_fr23',function(next,A){
   const wasLeague=!(G._lg&&G._x&&R&&R.xtra);const rBefore=G.round;
-  const out=_fr23.apply(this,arguments);
+  const out=next();
   try{
     if(wasLeague&&G.round!==rBefore&&G.phase==='play'){
       const b=ntBox();
@@ -165,10 +165,10 @@ const _fr23=finishRound;finishRound=function(){
     }
   }catch(e){console.error('ext23 '+e.message)}
   return out;
-};
-const _ns23=newSeason;newSeason=function(){const r=_ns23();try{const b=ntBox();b.pend=null;b.last=-1;b.asks=0;b.rel=clamp(b.rel+8,0,100);
+});
+hookAfter('newSeason','ext23_ns23',function(r,A){try{const b=ntBox();b.pend=null;b.last=-1;b.asks=0;b.rel=clamp(b.rel+8,0,100);
   for(const p of Object.values(G.players))delete p.ntw;
-  if(cyOf()===0&&(!b.q||b.q.done)){ntQInit();b.wcQ=undefined}}catch(e){console.error('ns23 '+e.message)}return r};
+  if(cyOf()===0&&(!b.q||b.q.done)){ntQInit();b.wcQ=undefined}}catch(e){console.error('ns23 '+e.message)}});
 const _sc23=startCareer;startCareer=function(){G.nt=null;_sc23.apply(this,arguments);try{ntBox();ntQInit()}catch(e){console.error(e.message)}save()};
 const _tj23=takeJob;takeJob=function(){const r=_tj23.apply(this,arguments);try{ntBox().pend=null;for(const p of Object.values(G.players))delete p.ntw}catch(e){}return r};
 const _ls23=loadSave;loadSave=function(){const ok=_ls23();if(ok&&G){try{ntBox();if(!G.nt.q)ntQInit()}catch(e){}}return ok};

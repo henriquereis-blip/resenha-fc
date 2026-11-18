@@ -146,18 +146,18 @@ function vestTick(played,won,lost){
     if(x.sev>=2){a.mor=clamp(a.mor-1.5,30,100);if(x.b)P(x.b).mor=clamp(P(x.b).mor-1,30,100)}}
   v.clima=+(v.clima*.7+climaOf()*.3).toFixed(1);
 }
-const _fr13=finishRound;finishRound=function(){
+hookAround('finishRound','ext13_fr13',function(next,A){
   const um=R&&R.ms[R.ui],us=um?userSide(um):null,sd=um?um[us]:null;
   const played=new Set(sd?[...sd.lineup,...sd.used]:[]);
   const gf=um?(us==='h'?um.hg:um.ag):0,ga=um?(us==='h'?um.ag:um.hg):0;
-  const out=_fr13();
+  const out=next();
   try{
     vestBox();trnBox();
     if(G.psi>0){const cost=+(scaleOf(userClub())*.00007*G.psi).toFixed(3);G.fin.caixa=+(G.fin.caixa-cost).toFixed(3)}
     trainTick();vestTick(played,gf>ga,gf<ga);tipTick();
   }catch(e){console.error('ext13 '+e.message)}
   return out;
-};
+});
 Object.assign(A,{
  psiup(){vestBox();if(G.psi>=3)return;const cost=psiCost(G.psi);if(G.fin.caixa<cost)return toast('Caixa insuficiente ('+mi(cost)+').');G.fin.caixa=+(G.fin.caixa-cost).toFixed(2);G.psi++;save();toast('Psicólogo nível '+G.psi+' contratado.')},
  confix(d){const v=vestBox(),x=v.conf.find(y=>y.id===+d.id);if(!x)return;

@@ -76,10 +76,10 @@ const _sl7=sellPlayer;sellPlayer=function(id){
 };
 
 /* dinâmica por rodada */
-const _fr7=finishRound;finishRound=function(){
+hookAround('finishRound','ext7_fr7',function(next,A){
   ex7();const c=userClub();const f=G.fin;const c0=f.caixa;
   const cf0=G.board.conf;
-  const out=_fr7();
+  const out=next();
   if(!c||c.id!==G.user)return out;
   {const dl=G.board.conf-cf0,pt={rec:.5,equ:.3}[G.fx.obj]||0;if(dl<0&&pt)G.board.conf=clampN(+(G.board.conf-dl*pt).toFixed(1),0,100)}
   const l=f.last||{net:0};
@@ -110,7 +110,7 @@ const _fr7=finishRound;finishRound=function(){
   if(G.fx.warned&&!G.fx.ban&&G.round>=16&&c.debt>=G.fx.warnDebt*0.99&&rn>2){G.fx.ban=true;paperLine('Registro de jogadores bloqueado no '+c.name,'Sem acordo com o Fair Play Financeiro, o clube não pode contratar até pagar parte da dívida.')}
   if(G.fx.warned&&(c.debt<G.fx.warnDebt*0.97||rn<=2)){const was=G.fx.ban;G.fx.ban=false;G.fx.warned=false;paperLine(was?c.name+' regulariza e volta ao mercado':c.name+' cumpre acordo com o Fair Play Financeiro',was?'Bloqueio de registro é suspenso.':'Dívida em queda tira o clube da lista de risco.')}
   return out;
-};
+});
 const _es7=endSeason;endSeason=function(){
   ex7();const c=userClub();const c0=G.fin.caixa;const r=_es7();
   const gain=G.fin.caixa-c0;const share=Math.min(c.debt,Math.max(0,gain*G.fx.sd*0.5));
@@ -119,7 +119,7 @@ const _es7=endSeason;endSeason=function(){
   G.fx.cut=G.fx.cut&&G.fx.cut.season>G.season?G.fx.cut:null;
   return r;
 };
-const _ns7=newSeason;newSeason=function(){const r=_ns7();ex7();G.fx.loanN=0;return r};
+hookAfter('newSeason','ext7_ns7',function(r,A){ex7();G.fx.loanN=0;});
 
 /* telas */
 function finTag(c){ex7();const f=fr(c),r=ratio0(c);return `dívida ${bi(f[0])} · ${r.toFixed(1)}× a receita · orçamento ~${mi(budgetFor(c,null))}`}

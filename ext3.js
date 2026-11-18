@@ -28,10 +28,9 @@ const _sm3=stepMinute;stepMinute=function(m){
     for(const id of s.lineup)m.en[id]=Math.max(10,m.en[id]-0.06*mi);
     if(Math.random()<TUNE.ymk*mi){const c=s.lineup.filter((id,i)=>s.slots[i]!=='GK'&&!s.sent.includes(id));if(c.length){const id=pick(c);addEv(m,k,'yellow',id,'Cartão amarelo para '+P(id).name);m.rt[id]-=0.4}}}
 };
-const _fr4=finishRound;finishRound=function(){
+hookBefore('finishRound','ext3_fr4',function(){
   const um=R.ms[R.ui],s=um[userSide(um)],uc=userClub();uc.mark=s.mark;uc.focus=s.focus;
-  return _fr4();
-};
+  });
 function saveTactic(i){const c=userClub();c.tsaved=c.tsaved||[null,null,null];c.tsaved[i]={formation:c.formation,style:c.style,mark:c.mark||'Leve',focus:c.focus||'Pelo meio',lineup:c.squad.slice(0,11)}}
 function loadTactic(i){
   const c=userClub(),t=(c.tsaved||[])[i];if(!t)return 'Tática vazia.';

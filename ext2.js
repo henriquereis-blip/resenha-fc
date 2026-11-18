@@ -8,17 +8,17 @@ function pickXI(cands){ // cands: [{p,score}]
   const arr=[...g,lat[0],zag[0],zag[1],lat[1],...mid,...ata].filter(Boolean);
   return arr.map(x=>({n:nameOf(x.p),c:x.p.club,r:+x.score.toFixed(2),role:x.p.role,pos:x.p.pos}));
 }
-const _fr3=finishRound;finishRound=function(){
+hookAround('finishRound','ext2_fr3',function(next,A){
   ex();ex2();
   const cands=[];
   for(const m of R.ms){for(const k of ['h','a']){const s=m[k];for(const id of new Set([...s.lineup,...s.used,...s.outs])){if(m.rt[id]!==undefined&&P(id))cands.push({p:P(id),score:m.rt[id]})}}}
   const n=G.round+1,season=G.season;
-  const out=_fr3();
+  const out=next();
   G.tdrs.push({s:season,r:n,xi:pickXI(cands)});if(G.tdrs.length>80)G.tdrs.shift();
   if(G.asst&&G.asst.sal)G.fin.caixa=+(G.fin.caixa-G.asst.sal/38).toFixed(2);
   for(const r of G.lastRound.results)G.h2h.push([season,n,r.h,r.a,r.hg,r.ag]);
   return out;
-};
+});
 const _es3=endSeason;endSeason=function(){
   ex();ex2();const rows=tableRows();
   const ld=leaders('goals',1)[0];

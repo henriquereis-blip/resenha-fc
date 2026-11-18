@@ -36,8 +36,8 @@ function logX(p,from,to,fee){G.xfers.unshift({s:G.season,r:G.round+1,name:nameOf
 const _mk=makeBid;makeBid=function(pid,fee){ex();const p=P(pid),from=p.club;const r=_mk(pid,fee);if(r.ok)logX(p,from,G.user,fee);return r};
 const _sp=sellPlayer;sellPlayer=function(id){ex();const o=G.offers.find(x=>x.id===id);const r=_sp(id);if(!r&&o)logX(P(o.pid),G.user,o.buyer,o.fee);return r};
 const _sf=signFree;signFree=function(pid){ex();const lu=valueOf(P(pid))*0.1;const r=_sf(pid);if(!r)logX(P(pid),-1,G.user,lu);return r};
-const _fr=finishRound;finishRound=function(){
-  ex();const out=_fr();
+hookAround('finishRound','ext_fr',function(next,A){
+  ex();const out=next();
   const res=G.lastRound.results;
   const lf=G.lastRound.n;
   for(const r of res){
@@ -50,7 +50,7 @@ const _fr=finishRound;finishRound=function(){
   if(G.naming&&G.round<=NR()){G.fin.caixa=+(G.fin.caixa+G.naming.val/38).toFixed(2)}
   for(const c of G.clubs){c.youth.forEach(y=>{y.dev=Math.min(100,y.dev+ri(0,2))})}
   return out;
-};
+});
 const _es=endSeason;endSeason=function(){
   ex();const rows=tableRows();
   rows.forEach((c,i)=>{c.retro.push({s:G.season,pos:i+1,J:c.J,V:c.V,E:c.E,D:c.D,GP:c.GP,GC:c.GC});
@@ -59,13 +59,13 @@ const _es=endSeason;endSeason=function(){
   });
   return _es();
 };
-const _ns=newSeason;newSeason=function(){
+hookAround('newSeason','ext_ns',function(next,A){
   ex();
   for(const p of Object.values(G.players)){if(p.club>=0&&C(p.club)){p.car=p.car||[];p.car.push({s:G.season,club:C(p.club).sig,J:p.games,G:p.goals,A:p.ast,nm:p.rn?+(p.rsum/p.rn).toFixed(2):null})}}
-  const r=_ns();
+  const r=next();
   for(const c of G.clubs){c.youth.forEach(y=>{y.age++;y.dev=Math.min(100,y.dev+ri(8,16))});c.youth=c.youth.filter(y=>y.age<20);fillYouth(c)}
   return r;
-};
+});
 /* estádio */
 function stadSectors(c){const t=c.cap*1000;return {Geral:Math.round(t*0.15),Arquibancada:Math.round(t*0.6),Cadeira:Math.round(t*0.22),Camarote:Math.round(t*0.03)}}
 let expandCost=c=>+(1.5+c.cap*0.12).toFixed(1);
@@ -103,9 +103,9 @@ const _smin=stepMinute;stepMinute=function(m){_smin(m);if(!m.done&&m.min>3&&m.mi
 /* ===== técnicos: critérios múltiplos ===== */
 const _sub=subPlayer;subPlayer=function(m,k,o,i){const r=_sub(m,k,o,i);if(r&&R&&m===R.ms[R.ui]&&k===userSide(m)){m.tac=m.tac||[];m.tac.push({min:m.min,diff:k==='h'?m.hg-m.ag:m.ag-m.hg})}return r};
 const _ap=answerPress;answerPress=function(i){ex();const b=G.board.conf,h=userClub().humor;_ap(i);G.uc.imp=(G.uc.imp||0)+(G.board.conf-b)+(userClub().humor-h)*0.5+(i<0?-1:0.5)};
-const _fr2=finishRound;finishRound=function(){
+hookAround('finishRound','ext_fr2',function(next,A){
   ex();const um=R.ms[R.ui],k=userSide(um);const tac=(um.tac||[]).slice();const fin=k==='h'?um.hg-um.ag:um.ag-um.hg;const cb=G.board.conf;
-  const out=_fr2();const u=G.uc;
+  const out=next();const u=G.uc;
   for(const x of tac){const d=fin-x.diff;u.tat=(u.tat||0)+(d>0?3:d<0?-1:0.5)}
   const st=fin>0?'w':fin<0?'l':'d';u.ls=st==='l'?(u.ls||0)+1:0;
   const dc=G.board.conf-cb;
@@ -117,7 +117,7 @@ const _fr2=finishRound;finishRound=function(){
   if(out==='fired')u.cri=(u.cri||0)-30;
   /* v32: ganhos dos técnicos da IA agora por desempenho (ext32.coachTick) */
   return out;
-};
+});
 const COACHK={geral:'Geral',res:'Resultados',imp:'Imprensa',cri:'Gestão de crises',tat:'Maestria tática'};
 function coachRank(kind='geral'){
   ex();const L=G.clubs.map(c=>{const co=c.id===G.user?G.uc:c.coach;

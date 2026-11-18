@@ -189,9 +189,9 @@ const _pl16=paperLine;paperLine=function(h,sub){
   const e=G.paper[0];if(e){e.paper=r.o;e.by=r.n;e.tone=tone}
 };
 // repórteres hostis soltam matéria ácida depois de rodadas ruins; amigos protegem
-const _fr16=finishRound;finishRound=function(){
+hookAround('finishRound','ext16_fr16',function(next,A){
   const um=R&&R.ms[R.ui],us=um?userSide(um):null;const gf=um?(us==='h'?um.hg:um.ag):0,ga=um?(us==='h'?um.ag:um.hg):0;
-  const out=_fr16.apply(this,arguments);
+  const out=next();
   try{
     const J=jrBox(),c=userClub();J.n++;
     for(const r of J.reps){r.mood=+(r.mood+(gf>ga?(r.s==='amigo'?1.2:.4):gf<ga?(r.s==='crit'?-1.2:-.5):0)).toFixed(1);r.mood=+(r.mood*0.985).toFixed(1)}
@@ -204,7 +204,7 @@ const _fr16=finishRound;finishRound=function(){
     if(gf>ga&&friends.length&&Math.random()<.25){const r=pick(friends);_pl16(pick(['Coluna: o trabalho do professor tem lógica','Bastidores: grupo fechado com o técnico']),'Texto de '+r.n+' ('+r.o+') aponta evolução.');G.paper[0].by=r.n;G.paper[0].paper=r.o;G.paper[0].tone='pos';c.humor=clamp(c.humor+.8,5,100)}
   }catch(e){console.error('jr '+e.message)}
   return out;
-};
+});
 const _sc16=startCareer;startCareer=function(id,coach,phil,asst){_sc16(id,coach,phil,asst);G.jr=null;jrBox();save()};
 const _tj16=takeJob;takeJob=function(){const r=_tj16.apply(this,arguments);try{jrBox().reps.forEach(x=>{x.mood*=.4});jrBox().silence=0}catch(e){}return r};
 Object.assign(A,{

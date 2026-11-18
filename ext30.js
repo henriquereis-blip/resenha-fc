@@ -117,11 +117,9 @@ const _vd30=vDir;vDir=function(){
 };
 
 /* --- ganchos --- */
-const _fr30=finishRound;finishRound=function(){
-  const r=_fr30.apply(this,arguments);
+hookAfter('finishRound','ext30_fr30',function(r,A){
   try{ex();derbyCheck();presCheck();if(G.jobq&&(G.round>=G.jobq.at||G.round>=NR()))jobResolve()}catch(e){console.error('fr30 '+e.message)}
-  return r;
-};
+  });
 const _sc30=startCareer;startCareer=function(){const r=_sc30.apply(this,arguments);try{presCheck()}catch(e){}return r};
 const _tj30=takeJob;takeJob=function(){const r=_tj30.apply(this,arguments);try{G.jobq=null;presCheck()}catch(e){}return r};
 const _vm30=vModal;vModal=function(){

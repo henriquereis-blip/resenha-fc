@@ -12,7 +12,7 @@ async function mpPush(force){
     await mpRpc('push_score',{p_code:G.mpRoom,p_club:s.club,p_season:s.season,p_round:s.round,p_pts:s.pts,p_titles:s.titles,p_v:s.v,p_e:s.e,p_d:s.d});
   }catch(e){}
 }
-const _fr58=finishRound;finishRound=function(){const r=_fr58.apply(this,arguments);try{mpPush(false)}catch(e){}return r};
+hookAfter('finishRound','ext58_fr58',()=>{mpPush(false)});
 const _es58=endSeason;endSeason=function(){const r=_es58.apply(this,arguments);try{mpPush(true)}catch(e){}return r};
 const _mpp58=mpPoll;mpPoll=async function(){
   await _mpp58.apply(this,arguments);

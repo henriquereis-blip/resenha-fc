@@ -170,7 +170,7 @@ function genYouth9(c,n){
     c.youth.push(y);
   }
 }
-const _ny9=newSeason;newSeason=function(){
+hookAround('newSeason','ext9_ny9',function(next,A){
   ex();const c=userClub(),mk=G.mk;
   /* fechamento financeiro da temporada */
   const prevPos=posOf(c);
@@ -178,7 +178,7 @@ const _ny9=newSeason;newSeason=function(){
   const bases=G.clubs.filter(x=>x.div===userClub().div).map(x=>[x.id,(x.s20?x.s20.P:0)]).sort((a,b)=>b[1]-a[1]);
   mk.base.champs.push({s:G.season,id:bases[0][0],mine:bases.findIndex(x=>x[0]===G.user)+1});
   const champs9=G.clubs.filter(x=>x.div===0).sort((a,b)=>b.P-a.P||(b.GP-b.GC)-(a.GP-a.GC)).slice(0,2).map(x=>x.id);
-  const r=_ny9();
+  const r=next();
   /* renova patrocínios, vence naming */
   for(const k in mk.slots)if(mk.slots[k])mk.slots[k].val=+(mk.slots[k].val*1.03).toFixed(1);
   if(G.naming){G.naming.yrs--;if(G.naming.yrs<=0){addNews('Contrato de naming rights do '+G.naming.name+' terminou.');G.naming=null}}
@@ -211,14 +211,12 @@ const _ny9=newSeason;newSeason=function(){
     if(Math.random()<x.bq/160){const role=pick(['GOL','ZAG','LAT','VOL','MEI','PNT','ATA']);const p=mkPlayer(role,x.rep-12+(x.bq-50)/10,ri(17,19),x.id);p.pot=clamp(p.ovr+ri(14,30),p.ovr,94);x.squad.push(p.id);autoPick(x)}
   }
   save();return r;
-};
+});
 
 /* ---------- fim de rodada ---------- */
-const _fr9=finishRound;finishRound=function(){
-  const out=_fr9();
+hookAfter('finishRound','ext9_fr9',function(out,A){
   try{tick9()}catch(e){console.error('tick9',e)}
-  return out;
-};
+  });
 function simSub20(){
   const fx=G.fixtures[G.round-1];if(!fx)return;const mk=G.mk;
   for(const f of fx){

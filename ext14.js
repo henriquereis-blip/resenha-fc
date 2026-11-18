@@ -23,10 +23,9 @@ const _ai14=aiFinance;aiFinance=function(){
   _ai14();
   for(const c of G.clubs){if(c.id===G.user)continue;c.caixa=+(c.caixa+((tvIncome(c)-c.tv)*1.3-structCost(c))/38).toFixed(2)}
 };
-const _ns14=newSeason;newSeason=function(){
+hookBefore('newSeason','ext14_ns14',function(){
   for(const d of [0,1,2,3]){tableRows(d).forEach((c,i)=>{c.lastPos=i+1})}
-  return _ns14.apply(this,arguments);
-};
+  });
 
 /* ============ CAMISAS ============ */
 function lumOf(h){const m=/^#?([0-9a-f]{6})$/i.exec(h||'');if(!m)return .5;const n=parseInt(m[1],16);return (0.299*(n>>16)+0.587*((n>>8)&255)+0.114*(n&255))/255}
@@ -70,7 +69,7 @@ function kit3Tick(){
   paperLine(B.ok?'Terceira camisa do '+c.name+' vira febre':'Terceira camisa do '+c.name+' não emplaca',B.ok?'Lojas vendem acima do esperado e rendem '+mi(gain)+'.':'Torcida reclama do desenho e a venda fica abaixo do esperado ('+mi(gain)+').');
   addNews(B.ok?'3ª camisa: sucesso de vendas ('+mi(gain)+').':'3ª camisa: fracasso de vendas ('+mi(gain)+').');
 }
-const _fr14=finishRound;finishRound=function(){const o=_fr14.apply(this,arguments);try{kit3Tick()}catch(e){console.error('kit3 '+e.message)}return o};
+hookAfter('finishRound','ext14_fr14',()=>{kit3Tick()});
 Object.assign(A,{
  k3col(d){S.k3=S.k3||{};S.k3.col=+d.i;render()},k3pat(d){S.k3=S.k3||{};S.k3.pat=d.p;render()},k3con(d){S.k3=S.k3||{};S.k3.con=d.c;render()},
  k3go(){const k=Object.assign({col:0,pat:'plain',con:'mini'},S.k3||{});const c=K3_COLS[k.col];kit3Make({a:c[0],b:c[1],pat:k.pat,con:k.con,name:'3ª '+c[2]+' '+G.season})},
@@ -88,7 +87,7 @@ const _sc14=startCareer;startCareer=function(id,coach,phil,asst){_sc14(id,coach,
 const _tj14=takeJob;takeJob=function(){const r=_tj14.apply(this,arguments);try{G.kit3={season:-1,cur:null,hist:[],done:true}}catch(e){}return r};
 
 /* caixa alto vira inflação salarial: elenco, agentes e diretoria cobram mais quando o clube está rico */
-const _ns14b=newSeason;newSeason=function(){
+hookBefore('newSeason','ext14_ns14b',function(){
   try{const c=userClub(),sc=scaleOf(c);
     const ex=G.fin.caixa-sc*.3;
     if(ex>0){const pay=Math.min(c.debt||0,ex*.6);const obras=+(ex*(pay>0?.3:.55)).toFixed(1);
@@ -98,5 +97,4 @@ const _ns14b=newSeason;newSeason=function(){
   try{const c=userClub(),sc=scaleOf(c),r=G.fin.caixa/sc;
     if(r>.18){G.salMult=+((G.salMult||1)*(1+Math.min(.3,(r-.18)*.3))).toFixed(3);addNews('Elenco e empresários pedem reajuste: a folha sobe com o caixa cheio.')}
     else if(r<.15&&(G.salMult||1)>1)G.salMult=+Math.max(1,(G.salMult||1)*.96).toFixed(3)}catch(e){}
-  return _ns14b.apply(this,arguments);
-};
+  });

@@ -1,12 +1,12 @@
 /* v32: ranking de técnicos pesa a divisão + campanhas surpreendentes */
 const DW36=[1,.6,.4,.25,.9,.4];
 function coachOf36(c){return c.id===G.user?G.uc:c.coach}
-const _fr36=finishRound;finishRound=function(){
+hookAround('finishRound','ext36_fr36',function(next,A){
   const before=G.clubs.map(c=>{const co=coachOf36(c);return co?co.pts:0});
-  const r=_fr36.apply(this,arguments);
+  const r=next();
   try{G.clubs.forEach((c,i)=>{const co=coachOf36(c);if(!co)return;const d=co.pts-before[i];if(d>0){const w=DW36[c.div||0]||.25;co.pts=+(before[i]+d*w).toFixed(1)}})}catch(e){console.error('fr36 '+e.message)}
   return r;
-};
+});
 const _es36=endSeason;endSeason=function(){
   const ud=G.clubs[G.user]?G.clubs[G.user].div:0;
   const urows=tableRows(ud);

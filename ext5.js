@@ -15,17 +15,17 @@ function award(id){ex5();if(G.ach[id])return;G.ach[id]={s:G.season,r:G.round+1};
 function ex5(){if(!G)return;G.ach=G.ach||{};G.newAch=G.newAch||[];G.stk=G.stk||{w:0,u:0,cs:0,l:0}}
 const ymd=(r)=>{const d=new Date(Date.UTC(2026+G.season,3,4+7*r));return String(d.getUTCDate()).padStart(2,'0')+'/'+String(d.getUTCMonth()+1).padStart(2,'0')+'/'+d.getUTCFullYear()};
 const gdate=()=>ymd(Math.min(G.round,38));
-const _fr6=finishRound;finishRound=function(){
+hookAround('finishRound','ext5_fr6',function(next,A){
   ex();ex5();
   const um=R.ms[R.ui],k=userSide(um),opp=k==='h'?um.a.club.id:um.h.club.id;
   let d=0,trail=false;for(const sc of um.scorers){d+=(sc.side===k?1:-1);if(d<0)trail=true}
   const gf=k==='h'?um.hg:um.ag,ga=k==='h'?um.ag:um.hg,cl=isClassico(G.user,opp);
-  const out=_fr6();const s=G.stk;
+  const out=next();const s=G.stk;
   if(gf>ga){if(s.l>=3)award('crise');s.w++;s.u++;s.l=0;award('win1');if(s.w>=3)award('st3');if(s.w>=5)award('st5');if(gf-ga>=4)award('big');if(trail)award('virada');if(cl)award('clasico')}
   else if(gf===ga){s.w=0;s.u++;s.l=0}else{s.w=0;s.u=0;s.l++}
   if(ga===0)s.cs++;else s.cs=0;if(s.cs>=3)award('muralha');if(s.u>=8)award('invicto');
   return out;
-};
+});
 const _es6=endSeason;endSeason=function(){ex();ex5();const r=_es6();const p=G.summary.pos;if(p===1)award('titulo');if(p<=4)award('g4');return r};
 const _pr=promoteYouth;promoteYouth=function(c,i){const r=_pr(c,i);if(!r&&c===userClub())award('cria');return r};
 const _mb=makeBid;makeBid=function(pid,fee){const r=_mb(pid,fee);if(r.ok&&fee>=10)award('peso');return r};

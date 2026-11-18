@@ -60,8 +60,7 @@ const _tr10=train;train=function(){
   const d=mgd('tre');
   for(const id of c.squad){const p=P(id);if(p.inj>0)continue;p.fit[c.phil]=clamp(+(p.fit[c.phil]+d*.15*(p.age<26?1.2:.8)).toFixed(1),5,100)}
 };
-const _fr10=finishRound;finishRound=function(){
-  const out=_fr10();
+hookAfter('finishRound','ext10_fr10',function(out,A){
   try{
     ex();const c=userClub();if(!G.mgr||!c)return out;
     const l=G.fin.last;
@@ -79,8 +78,7 @@ const _fr10=finishRound;finishRound=function(){
     if(G.mk&&l){const a_=G.mk.acc;a_.sal=(a_.sal||0)+l.sal;a_.mant=(a_.mant||0)+l.mant;G.mk.cash=G.mk.cash||[];G.mk.cash.push(+G.fin.caixa.toFixed(2));if(G.mk.cash.length>80)G.mk.cash.shift()}
     if(G.mk&&dmi)for(const k in G.mk.social.fol)G.mk.social.fol[k]=+(G.mk.social.fol[k]*(1+.0015*dmi)).toFixed(3);
   }catch(e){console.error('mgr tick',e)}
-  return out;
-};
+  });
 const _ge10=genOffer;genOffer=function(){
   const n=G.offers.length;_ge10();
   if(G.offers.length>n&&G.mgr){const o=G.offers[G.offers.length-1];o.fee=+(o.fee*(1+.03*mgd('fin')+.015*mgd('mer'))).toFixed(1)}
@@ -102,9 +100,9 @@ const _pr10=prest;prest=function(c){const v=_pr10(c);return c.id===G.user&&G.mgr
 const _so10=salOf;salOf=function(p){const v=_so10(p);return G&&G.mgr&&p.club===G.user?+(v*(1-.02*mgd('fin'))).toFixed(2):v};
 const _bf10=budgetFor;budgetFor=function(c,o){const v=_bf10(c,o);return c.id===G.user&&G.mgr?+(v*(1+.04*mgd('fin'))).toFixed(1):v};
 /* ---- fim de temporada: evolução do elenco, xp ---- */
-const _ns10=newSeason;newSeason=function(){
+hookAround('newSeason','ext10_ns10',function(next,A){
   ex();const c=userClub();const pos=posOf(c);
-  const r=_ns10();
+  const r=next();
   if(G.mgr){
     const c2=userClub();const dt=mgd('tre'),db=mgd('bas');
     for(const id of c2.squad){const p=P(id);
@@ -115,7 +113,7 @@ const _ns10=newSeason;newSeason=function(){
     mgXp(40+(pos<=4?50:pos<=8?20:0)+(pos===1?120:0));
   }
   return r;
-};
+});
 /* ---- empréstimos ---- */
 /* p.loan={from,to,s} : jogador emprestado, volta ao fim da temporada */
 function loanOuts(){return Object.values(G.players).filter(p=>p.loan&&p.loan.from===G.user)}
@@ -170,7 +168,7 @@ function loanReturn(){
     autoPick(holder);autoPick(owner);
   }
 }
-const _nl10=newSeason;newSeason=function(){loanReturn();return _nl10()};
+hookBefore('newSeason','ext10_nl10',function(){loanReturn();});
 /* IA coloca jogadores à venda e para empréstimo em volume */
 aiListing=function(){
   for(const c of G.clubs){if(c.id===G.user)continue;
@@ -189,11 +187,9 @@ aiListing=function(){
   }
 };
 /* na virada de temporada, janela: cada clube abre várias vagas */
-const _nw10=newSeason;newSeason=function(){
-  const r=_nw10();
+hookAfter('newSeason','ext10_nw10',function(r,A){
   for(const c of G.clubs){if(c.id===G.user)continue;
     const cand=c.squad.filter(id=>!P(id).loan).sort(()=>Math.random()-.5).slice(0,5);
     cand.forEach((id,i)=>{const p=P(id);if(i<3){p.listed=true;p.lst=ri(4,14)}else{p.loanable=true;p.lnx=ri(8,20)}});
   }
-  return r;
-};
+  });

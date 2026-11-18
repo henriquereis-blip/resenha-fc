@@ -227,7 +227,7 @@ function relPromo(d,pos){
 }
 /* nada de copas/continentais de fora criando clubes id>=100 enquanto o técnico está no exterior */
 const _ci44=contInit;contInit=function(){if(G&&G.abroad)return;return _ci44.apply(this,arguments)};
-const _fr44=finishRound;finishRound=function(){const rd=G.round;const r=_fr44.apply(this,arguments);try{liteRounds(rd)}catch(e){console.error('lr44 '+e.message)}return r};
+hookAround('finishRound','ext44_fr44',function(next,A){const rd=G.round;const r=next();try{liteRounds(rd)}catch(e){console.error('lr44 '+e.message)}return r});
 const _es44=endSeason;endSeason=function(){try{pyrFinish()}catch(e){console.error('pf44 '+e.message)}const r=_es44.apply(this,arguments);try{const c=userClub(),ls=(G.pyr&&G.pyr.log||[]).filter(l=>l.includes(c.name));if(ls.length&&G.summary)G.summary.txt+=' Playoffs: '+ls.join(' | ')+'.'}catch(e){}return r};
 
 /* Tabelas: seletor de divisões do país + zonas de acesso e rebaixamento */
@@ -257,4 +257,4 @@ const _vl44=vLiga;vLiga=function(){
 };
 Object.assign(A,{abd(d){S.abd=+d.v;render()}});
 /* economia de save: histórico de carreira só com temporadas jogadas e limitado às 6 últimas */
-const _ns45=newSeason;newSeason=function(){const r=_ns45.apply(this,arguments);try{for(const p of Object.values(G.players)){if(p.car&&p.car.length)p.car=p.car.filter(x=>x.J>0||p.club===G.user).slice(-6)}}catch(e){console.error('car45 '+e.message)}return r};
+hookAfter('newSeason','ext44_ns45',()=>{for(const p of Object.values(G.players)){if(p.car&&p.car.length)p.car=p.car.filter(x=>x.J>0||p.club===G.user).slice(-6)}});

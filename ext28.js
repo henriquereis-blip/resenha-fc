@@ -140,8 +140,7 @@ function mtick(){
 /* propostas aleatórias para quem NÃO está à venda ficam raras */
 const _go28=genOffer;genOffer=function(){if(Math.random()<.3)return _go28.apply(this,arguments)};
 /* avisos de janela + tick por rodada */
-const _fr28=finishRound;finishRound=function(){
-  const r=_fr28.apply(this,arguments);
+hookAfter('finishRound','ext28_fr28',function(r,A){
   try{ex();mailBox();
     const wo=winOpen(),was=G._wm;
     if(was!==undefined&&was!==wo){const w=winInfo();mail('win',wo?'🟢 Janela de transferências ABERTA':'🔴 Janela de transferências FECHADA',wo?'O mercado abriu. Já dá para comprar, vender e receber propostas pelos jogadores à venda.\n'+w.txt:'O mercado fechou. Só jogador livre agora. '+w.txt,[{l:'Ir ao mercado',k:'goto',p:{v:'mercado'}}],'win')}
@@ -149,8 +148,7 @@ const _fr28=finishRound;finishRound=function(){
     mtick();copinhaReveal();
     const n=unreadN();if(n)S._newMail=n;
   }catch(e){console.error('fr28 '+e.message)}
-  return r;
-};
+  });
 /* painel de preço no perfil do jogador à venda */
 const _vp28=vPerfil;vPerfil=function(){
   let h=_vp28.apply(this,arguments);
@@ -239,8 +237,8 @@ const _mko28=A.mkopen;A.mkopen=function(d){
   return _mko28.apply(this,arguments);
 };
 /* continuidade entre temporadas */
-const _ns28=newSeason;newSeason=function(){
-  const sp=G.sponsor;const r=_ns28.apply(this,arguments);
+hookAround('newSeason','ext28_ns28',function(next,A){
+  const sp=G.sponsor;const r=next();
   try{ex();
     if(sp&&sp.until!==undefined&&sp.until>=G.season){G.sponsor=sp;
       if(sp.mode==='vista'){const v=+(sp.fixed*SPN_VISTA).toFixed(1);G.fin.caixa=+(G.fin.caixa+v).toFixed(1);G.mk.acc.sp+=v}
@@ -251,7 +249,7 @@ const _ns28=newSeason;newSeason=function(){
         G.mk.slots[k]=null;addNews('Contrato de '+s.name+' ('+SLOTD[k][0]+') terminou.')}}
   }catch(e){console.error('ns28 '+e.message)}
   return r;
-};
+});
 const _nsA28=A.newseason;A.newseason=function(){_nsA28.apply(this,arguments);if(G.sponsor&&S.modal&&S.modal.t==='sponsor'){S.modal=null;render()}};
 const _tjA28=A.takejob;A.takejob=function(){_tjA28.apply(this,arguments);if(G.sponsor&&S.modal&&S.modal.t==='sponsor'){S.modal=null;render()}};
 /* ao assumir outro clube, os contratos já estão assinados */

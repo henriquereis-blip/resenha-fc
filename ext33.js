@@ -1,7 +1,7 @@
 /* ext33: Treino enxuto (top 3 formações), caixa de e-mail que se limpa, estados vazios amigáveis */
 /* v31: e-mails importantes ficam até o jogador apagar; sem faxina automática */
 function inboxClean33(){}
-const _fr33=finishRound;finishRound=function(){const r=_fr33.apply(this,arguments);inboxClean33();return r};
+hookAfter('finishRound','ext33_fr33',()=>{inboxClean33()});
 function tidy33(){
   if(!G||G.phase==='start'||S.modal)return;
   try{

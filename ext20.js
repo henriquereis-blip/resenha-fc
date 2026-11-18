@@ -51,17 +51,17 @@ function sqcFriction(){
   addConf(c,r<.75?'desmot':'panela',a,null);
 }
 function sqcStart(v){G.sqc=v;G.sqcSeq=[]}
-const _fr20=finishRound;finishRound=function(){
+hookAround('finishRound','ext20_fr20',function(next,A){
   let played=new Set(),gf=0,ga=0,ok=false;
   try{const um=R&&R.ms[R.ui];if(um){const us=userSide(um),sd=um[us];played=new Set([...sd.lineup,...sd.used]);gf=us==='h'?um.hg:um.ag;ga=us==='h'?um.ag:um.hg;ok=true}}catch(e){}
-  const out=_fr20.apply(this,arguments);
+  const out=next();
   try{if(ok){
     sqcTick(played,gf,ga);sqcFriction();
     const c=userClub();
     for(const id of c.squad){const p=P(id);if(played.has(id)){p.cons=(p.cons||0)+1;if(p.cons>=6&&p.pos!=='GK'&&p.role!=='GOL')p.en=clamp(p.en-Math.min(4,p.cons-5),15,100)}else p.cons=0}
   }}catch(e){console.error('ext20 '+e.message)}
   return out;
-};
+});
 const _sc20=startCareer;startCareer=function(){_sc20.apply(this,arguments);sqcStart(62);G.autoMode={mode:'nota',val:{desc:75,jov:23},on:false};save()};
 const _tj20=takeJob;takeJob=function(){const r=_tj20.apply(this,arguments);sqcStart(55);return r};
 const _ls20=loadSave;loadSave=function(){const ok=_ls20();if(ok&&G){if(G.sqc===undefined)sqcStart(62);if(!G.autoMode)G.autoMode={mode:'nota',val:{desc:75,jov:23},on:false}}return ok};
@@ -102,4 +102,4 @@ function aiStars(){
     if(f>=8||s.div===userClub().div)addNews('Mercado: '+nameOf(p)+' deixa o '+s.name+' e vai para o '+b.name+' por '+mi(f)+'.');
   }
 }
-const _fr20b=finishRound;finishRound=function(){const r=_fr20b.apply(this,arguments);try{aiStars()}catch(e){console.error('aiStars '+e.message)}return r};
+hookAfter('finishRound','ext20_fr20b',()=>{aiStars()});

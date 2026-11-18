@@ -96,5 +96,5 @@ const _vt45=vTitle;vTitle=function(){
   if(SB.ses&&!SB.listOk&&!SB.tried){SB.tried=1;sbList()}
   return h.replace('<p class="foot">','<button class="mb20" data-a="step" data-v="saves"><span class="ic">☁️</span><span><b>Saves na nuvem</b><small>'+sub+'</small></span></button><p class="foot">')};
 /* autosave na nuvem: a cada 3 rodadas e ao sair do app (só logado) */
-const _fr45=finishRound;finishRound=function(){const r=_fr45.apply(this,arguments);try{if(SB.ses&&!sbOk()&&G.round>0&&G.round%3===0&&Date.now()-SB.last>20000)sbPush(0,true)}catch(e){}return r};
+hookAfter('finishRound','ext45_fr45',()=>{if(SB.ses&&!sbOk()&&G.round>0&&G.round%3===0&&Date.now()-SB.last>20000)sbPush(0,true)});
 document.addEventListener('visibilitychange',()=>{try{if(document.hidden&&SB.ses&&G&&G.phase!=='start'&&!S.match&&Date.now()-SB.last>20000)sbPush(0,true)}catch(e){}});

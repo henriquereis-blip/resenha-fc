@@ -217,7 +217,7 @@ function wCwc(){
 }
 const _we38=wEnd;wEnd=function(){const was=G.wd&&G.wd.es===G.season;_we38.apply(this,arguments);try{if(!was)wCont()}catch(e){console.error('wCont '+e.message)}};
 /* início de temporada: Copa da Ásia (jan) no começo do ciclo; Gold Cup 2029 já vem pelo ciclo */
-const _fr38=finishRound;finishRound=function(){const rd=G.round;const r=_fr38.apply(this,arguments);try{if(rd===4&&cyOf()===0)nRunEvent(FCAL[0])}catch(e){console.error('asia38 '+e.message)}return r};
+hookAround('finishRound','ext38_fr38',function(next,A){const rd=G.round;const r=next();try{if(rd===4&&cyOf()===0)nRunEvent(FCAL[0])}catch(e){console.error('asia38 '+e.message)}return r});
 
 /* ---------- mercado mundial (aba Mundo em Procura) ---------- */
 function wmRefresh(){

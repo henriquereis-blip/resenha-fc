@@ -76,7 +76,7 @@ function finishNc(){
   try{const sd=um[us];sqcTick(new Set([...sd.lineup,...sd.used]),gf,ga)}catch(e){}
   R=null;save();return 'next';
 }
-const _fr53=finishRound;finishRound=function(){
+hookAround('finishRound','ext53_fr53',function(next,A){
   if(G._lg&&G._x&&G._x.kind==='nc'&&R&&R.xtra)return finishNc();
-  return _fr53.apply(this,arguments);
-};
+  return next();
+});

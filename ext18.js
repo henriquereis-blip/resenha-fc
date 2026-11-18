@@ -102,7 +102,7 @@ function extraSync(){
     G._lg=G.fixtures[G.round];G.fixtures[G.round]=pairs;G._x=info;return;
   }
 }
-const _sr18=startRound;startRound=function(){extraSync();const r=_sr18();if(G._lg)r.xtra=true;return r};
+hookAround('startRound','ext18_sr18',function(next,A){extraSync();const r=next();if(G._lg)r.xtra=true;return r});
 const _rd18=render;render=function(){try{extraSync()}catch(e){console.error('extraSync '+e.message)}_rd18();
   try{if(G&&G._lg&&G._x){const e=document.querySelector('.nxh');if(e)e.textContent=G._x.label}}catch(e){}};
 
@@ -158,16 +158,16 @@ function finishExtra(){
   fcClean();
   save();return 'next';
 }
-const _fr18=finishRound;finishRound=function(){if(G._lg&&G._x&&R&&R.xtra)return finishExtra();return _fr18.apply(this,arguments)};
+hookAround('finishRound','ext18_fr18',function(next,A){if(G._lg&&G._x&&R&&R.xtra)return finishExtra();return next()});
 
 /* ---------- ciclo da temporada ---------- */
-const _ns18=newSeason;newSeason=function(){
+hookAround('newSeason','ext18_ns18',function(next,A){
   let q=null;try{q=contQualify()}catch(e){console.error('qual '+e.message)}
   G._lg=null;G._x=null;
-  const r=_ns18();
+  const r=next();
   try{G.fc=[];G.fp={};cupInit();G.cont=null;if(q)contInit(q)}catch(e){console.error('ns18 '+e.message)}
   return r;
-};
+});
 function qualInit(){ // início de carreira: tradição define a vaga continental
   const c=userClub();G.cupHist=[];G.cont=null;G.fc=[];G.fp={};G._lg=null;G._x=null;cupInit();
   if(c.div===0){const rk=G.clubs.filter(x=>x.div===0).sort((a,b)=>b.rep-a.rep).map(x=>x.id);const i=rk.indexOf(c.id);

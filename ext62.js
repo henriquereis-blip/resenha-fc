@@ -54,7 +54,7 @@ const _bg62=A.begin;A.begin=function(){
   try{if(n&&G.user!=null&&G.phase==='play'){G.mplId=n.id;G.mplNick=n.nick;
     const a=mplGet();a.push(Object.assign({id:n.id,nick:n.nick},mpScoreOf()));mplSet(a);mplStash();render()}}catch(e){console.error('mpl begin '+e.message)}
   return r};
-const _fr62=finishRound;finishRound=function(){const r=_fr62.apply(this,arguments);try{if(G.mplId!=null)mplStash()}catch(e){}return r};
+hookAfter('finishRound','ext62_fr62',()=>{if(G.mplId!=null)mplStash()});
 /* botão flutuante pra trocar de primo */
 const _rd62=render;render=function(){_rd62.apply(this,arguments);
   try{let b=document.getElementById('mplsw62');

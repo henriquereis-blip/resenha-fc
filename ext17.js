@@ -126,8 +126,7 @@ function aiWindow(){
     if(fee>=8||p.ovr>=76||s.div===userClub().div||b.div===userClub().div)addNews('Mercado: '+nameOf(p)+' deixa o '+s.name+' e vai para o '+b.name+' por '+mi(fee)+'.');
   }
 }
-const _fr17=finishRound;finishRound=function(){
-  const out=_fr17.apply(this,arguments);
+hookAfter('finishRound','ext17_fr17',function(out,A){
   try{
     const c=userClub();
     G.fin.caixa=+(G.fin.caixa-stCost()/38).toFixed(2);
@@ -136,17 +135,14 @@ const _fr17=finishRound;finishRound=function(){
     wageTick();aiWindow();
     const wi=winInfo();const was=G._wo;if(was!==wi.open&&wi.open&&G.round<NR())addNews('A janela de transferências abriu.');if(was!==wi.open&&!wi.open)addNews('A janela de transferências fechou.');G._wo=wi.open;
   }catch(e){console.error('ext17 '+e.message)}
-  return out;
-};
-const _ns17=newSeason;newSeason=function(){
-  const r=_ns17();
+  });
+hookAfter('newSeason','ext17_ns17',function(r,A){
   try{const c=userClub();
     const k=1.02+(G.board.conf-50)/1000+(posOf(c)<=3?.05:0);G.wb=+(wageBudget()*k).toFixed(2);
     const gk=stQ('gk');for(const id of c.squad){const p=P(id);if(p.role==='GOL'&&gk&&Math.random()<gk*.1&&p.ovr<p.pot+3)p.ovr=Math.min(92,p.ovr+1)}
     stPool();
   }catch(e){}
-  return r;
-};
+  });
 const _sc17=startCareer;startCareer=function(){_sc17.apply(this,arguments);G.wb=undefined;G.st17=null;G.raises=[];G.nlock={};G._wo=undefined;save()};
 const _tj17=takeJob;takeJob=function(){const r=_tj17.apply(this,arguments);G.wb=undefined;G.st17=null;G.raises=[];G.nlock={};return r};
 Object.assign(A,{

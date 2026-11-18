@@ -112,7 +112,7 @@ function mlsRun51(I){
   award51('MLS Cup',cup.w,log);return {champ:cup.w,log,label:'MLS Cup'};
 }
 /* ---------- ganchos ---------- */
-const _fr51=finishRound;finishRound=function(){const r=_fr51.apply(this,arguments);try{acHalf51()}catch(e){console.error('acHalf51 '+e.message)}return r};
+hookAfter('finishRound','ext51_fr51',()=>{acHalf51()});
 const _es51=endSeason;endSeason=function(){
   let res=null,I=null;
   try{I=lg51();if(G.lg51&&G.lg51.pres&&G.lg51.pres.s===G.season){res=G.lg51.pres}

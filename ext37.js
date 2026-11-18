@@ -170,16 +170,16 @@ function wEnd(){
   W.hist.push(rec);W.hist=W.hist.slice(-40);
 }
 /* gancho nas rodadas e na virada */
-const _fr37=finishRound;finishRound=function(){
+hookAround('finishRound','ext37_fr37',function(next,A){
   const rd=G.round;
-  const out=_fr37.apply(this,arguments);
+  const out=next();
   /* só avança o mundo quando foi rodada de liga (estadual/copas não mexem em G.round) */
   try{if(rd<40&&G.round>rd)wRound(rd)}catch(e){console.error('wRound '+e.message)}
   return out;
-};
+});
 const _es37=endSeason;endSeason=function(){const r=_es37.apply(this,arguments);try{wEnd()}catch(e){console.error('wEnd '+e.message)}return r};
-const _ns37=newSeason;newSeason=function(){try{wEnd()}catch(e){}try{xMarket37(8,'start')}catch(e){console.error('xm37 '+e.message)}const r=_ns37.apply(this,arguments);try{wNew();G.wd.s=G.season}catch(e){}return r};
-const _fr37b=finishRound;finishRound=function(){const r=_fr37b.apply(this,arguments);try{if(G.round===19)xMarket37(6,'mid')}catch(e){console.error('xm37b '+e.message)}return r};
+hookAround('newSeason','ext37_ns37',function(next,A){try{wEnd()}catch(e){}try{xMarket37(8,'start')}catch(e){console.error('xm37 '+e.message)}const r=next();try{wNew();G.wd.s=G.season}catch(e){}return r});
+hookAfter('finishRound','ext37_fr37b',()=>{if(G.round===19)xMarket37(6,'mid')});
 
 /* ---------- mercado internacional ---------- */
 const NAT37={ARG:[28,'ARG'],URU:[14,'URU'],COL:[14,'COL'],CHI:[11,'CHI'],POR:[12,'POR'],ESP:[9,'ESP'],ITA:[5,'ITA'],FRA:[4,'FRA'],ENG:[2,'ENG'],GER:[1,'GER'],MEX:[6,'MEX'],USA:[4,'USA'],KSA:[2,'KSA'],PAR:[10,'PAR'],ECU:[9,'ECU'],PER:[6,'PER'],BOL:[3,'BOL'],VEN:[4,'VEN'],NED:[6,'NED'],BEL:[4,'BEL'],TUR:[5,'TUR'],SCO:[3,'SCO'],JPN:[4,'JPN'],KOR:[3,'KOR'],CHN:[3,'CHN'],AUS:[2,'AUS'],EGY:[3,'EGY'],MAR:[3,'MAR'],RSA:[2,'RSA'],AUT:[2,'AUT'],SUI:[2,'SUI'],GRE:[2,'GRE'],DEN:[2,'DEN']};

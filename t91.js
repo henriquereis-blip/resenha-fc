@@ -6,7 +6,7 @@ const T=async(f,a)=>{try{return await p.evaluate(f,a)}catch(e){console.log(k,'FA
 await T(([k,idx])=>{localStorage.clear();S.mg=mgNew('equil');S.obj='equ';startCareer(3,'T','Direto',null);ex();G.phase='play';S.modal=null;
  window.ro=()=>{G.board.conf=95;startRound();while(!roundDone())stepAll();return finishRound()}
  for(let i=0;i<2;i++)ro();emigrate(wd().lg[k].cl[idx].id)},[k,idx]);
-console.log(k,await T(()=>userClub().name+' tier'+tierOf(userClub().div)+' NR='+NR()+' clubs='+G.clubs.slice(BRN).length+' pyrL='+(G.pyr?G.pyr.L.length:0)+' divs='+G.pyr.dv.map(d=>d.c).join('|')));
+console.log(k,await T(()=>userClub().name+' tier'+tierOf(userClub().div)+' NR='+NR()+' clubs='+G.clubs.slice(brn()).length+' pyrL='+(G.pyr?G.pyr.L.length:0)+' divs='+G.pyr.dv.map(d=>d.c).join('|')));
 for(let s=0;s<4;s++){
  const r=await T(()=>{let g=0,out;while(g++<140){out=ro();if(out==='seasonEnd')break}
   const u=userClub();const res='T'+G.season+' '+u.name+' div'+u.div+' pos?'+(typeof posOf==='function'?posOf(u.id):'')+' J='+u.J+' P='+u.P;
