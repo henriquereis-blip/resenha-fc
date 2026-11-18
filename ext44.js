@@ -28,12 +28,14 @@ const PYR={
  BOL:[{n:'División Profesional',c:16}],
  VEN:[{n:'Liga FUTVE',c:14}],
  KSA:[{n:'Saudi Pro League',c:18,dn:3},{n:'Divisão 1 saudita',c:18,up:3}],
- MEX:[{n:'Liga MX',c:18}],
- USA:[{n:'MLS',c:30,rd:34}]
+ MEX:[{n:'Liga MX',c:18,dn:0},{n:'Liga de Expansión MX',c:16,up:0}],
+ USA:[{n:'MLS',c:30,rd:34,dn:0},{n:'USL Championship',c:24,rd:30,up:0}]
 };
 const PROM={ARG:1,URU:1,COL:1,PAR:1}; /* descenso por média de pontos (3 temporadas) */
 const PD1X={ARG:'Gimnasia La Plata 66,Instituto 64,Atlético Tucumán 64,Unión de Santa Fe 64,Independiente Rivadavia 64,Sarmiento 63,Barracas Central 63,Deportivo Riestra 60,Aldosivi 60,San Martín de San Juan 58'};
 const PD={
+MEX:[0,'Tepatitlán 52,Alacranes de Durango 49,Mineros de Zacatecas 53,Correcaminos UAT 51,Tlaxcala 50,Leones Negros 51,Venados 50,Alebrijes de Oaxaca 51,Atlético Morelia 55,Atlético La Paz 49,Jaiba Brava 49,Piratas de Veracruz 48,Tapatío 51,Cruz Azul Hidalgo 54,Dorados 52,Cancún 50'],
+USA:[0,'Birmingham Legion 52,Charleston Battery 55,Colorado Springs Switchbacks 52,Detroit City 54,El Paso Locomotive 52,Hartford Athletic 49,Indy Eleven 53,Sporting Jacksonville 50,Las Vegas Lights 48,Lexington SC 50,Loudoun United 49,Louisville City 56,Miami FC 51,Monterey Bay 50,New Mexico United 53,Oakland Roots 50,Orange County SC 52,Phoenix Rising 55,Pittsburgh Riverhounds 53,Rhode Island FC 52,Sacramento Republic 54,San Antonio FC 54,Tampa Bay Rowdies 55,FC Tulsa 50'],
 ENG:[0,'Leicester City 66,Southampton 65,West Bromwich Albion 64,Middlesbrough 64,Norwich City 63,Sheffield United 63,Watford 62,Coventry City 62,Stoke City 61,Swansea City 60,Blackburn Rovers 60,Bristol City 59,Hull City 59,Millwall 59,Preston North End 58,Cardiff City 58,Queens Park Rangers 57,Derby County 57,Portsmouth 57,Plymouth Argyle 55,Oxford United 57,Luton Town 57,Charlton Athletic 56,Sheffield Wednesday 56',
  'Birmingham City 61,Wrexham 60,Huddersfield Town 56,Stockport County 56,Bolton Wanderers 56,Reading 56,Wycombe Wanderers 55,Barnsley 55,Blackpool 54,Lincoln City 55,Peterborough United 55,Rotherham United 54,Mansfield Town 54,Burton Albion 53,Exeter City 54,Leyton Orient 55,Northampton Town 53,Wigan Athletic 55,Bristol Rovers 52,Stevenage 53,Crawley Town 51,Cambridge United 51,Shrewsbury Town 50,Port Vale 52',
  'Doncaster Rovers 53,Bradford City 53,Notts County 52,Walsall 52,Grimsby Town 51,Salford City 50,Chesterfield 52,Gillingham 50,Crewe Alexandra 50,Swindon Town 50,AFC Wimbledon 50,Milton Keynes Dons 50,Colchester United 49,Fleetwood Town 49,Barrow 48,Harrogate Town 48,Tranmere Rovers 49,Bromley 49,Newport County 48,Carlisle United 48,Accrington Stanley 47,Cheltenham Town 47,Oldham Athletic 46,Morecambe 46',
