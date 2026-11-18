@@ -219,7 +219,7 @@ function tick(){
     if(!R||S.paused||S.pen)return;const m=R.ms[R.ui];if(roundDone())return;
     stepAll();
     const fe=R.ms[R.focus].ev;const pe=fe[fe.length-1];
-    if(pe&&pe.pen&&!pe.seen){pe.seen=1;S.pen={ev:pe,i:0};const adv=()=>{if(!S.pen)return;if(S.pen.i<4){S.pen.i++;render();setTimeout(adv,1500)}else{setTimeout(()=>{S.pen=null;render()},1800)}};setTimeout(adv,1500)}
+    {const pq=R.ms[R.focus].penq;if(pq&&!pq.shown)penStart(pq);else if(pe&&pe.pen&&!pe.seen){pe.seen=1}}
     S.seen=S.seen||{};
     R.ms.forEach((mm,mi2)=>{const n0=S.seen[mi2]||0;const evs=mm.ev;for(let q=n0;q<evs.length;q++){const e=evs[q];if(e.type==='goal'&&(mi2===R.ui||mi2===R.focus)){const mine=mi2===R.ui&&e.side===userSide(mm);if(mi2===R.ui){S.flash={t:mine?'GOOOL!':'Gol sofrido',s:e.text.replace(/^GOL!( de pênalti!)? ?/,''),cls:mine?'win':'lose',until:Date.now()+1900};setTimeout(render,1950);mine?(SFX.goal(),vib([80,40,80])):(SFX.sad(),vib(200))}else SFX.goal()}if(e.type==='red'&&mi2===R.ui)SFX.pen()}S.seen[mi2]=evs.length});
     if(m.min===1||m.min===46||m.min===90)SFX.whistle();

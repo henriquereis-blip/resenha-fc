@@ -100,7 +100,7 @@ const pTmpl=()=>G.clubs.find(c=>c.div===0&&c.id!==G.user)||G.clubs[1];
 function pyrSync(){
   const P=G.pyr;if(!P)return;const k=P.k,u=G.clubs[G.user];const tU=u&&u.div>=4?tierOf(u.div):1,LF=LFAC[k]||.8,tm=pTmpl();
   const want=t=>t===tU||t===tU-1||(tU===1&&t===2);
-  for(const c of G.clubs.slice(BRN)){if(c.stub||c.id===G.user||c.div<4)continue;if(!want(tierOf(c.div)))liteify(c)}
+  for(const c of G.clubs.slice(brn())){if(c.stub||c.id===G.user||c.div<4)continue;if(!want(tierOf(c.div)))liteify(c)}
   for(let i=P.L.length-1;i>=0;i--){const s=P.L[i];if(want(tierOf(s.div))){P.L.splice(i,1);materialize(s,tm,LF)}}
   G.free=(G.free||[]).filter(id=>G.players[id]);G.offers=(G.offers||[]).filter(o=>!o.pid||G.players[o.pid]);
 }

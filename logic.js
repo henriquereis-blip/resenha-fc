@@ -68,7 +68,7 @@ const SKV=(function(){
   return api;
 })();
 
-const P=id=>id>=1e6?G.fp[id]:G.players[id],C=id=>(id>=100&&id<1e6&&!(G&&G.abroad))?G.fc[id-100]:G.clubs[id],userClub=()=>G.clubs[G.user];
+const P=id=>id>=1e6?G.fp[id]:G.players[id],FCB=()=>(G&&G.rg)?1000:100,C=id=>(id>=FCB()&&id<1e6&&!(G&&G.abroad))?G.fc[id-FCB()]:G.clubs[id],userClub=()=>G.clubs[G.user];
 
 /* ---------- jogadores ---------- */
 function valueOf(p){const ageF=p.age<=21?1.35:p.age<=25?1.15:p.age<=29?1:p.age<=32?0.65:0.35;return +(0.7*Math.pow(1.17,p.ovr-50)*ageF).toFixed(2)}
@@ -144,6 +144,7 @@ function newWorld(){NMS.clear();
     club.caixa=+((club.tv+club.spBase+(D===0?25:D===1?8:D===2?3:1))*0.2*rnd(0.6,1.4)).toFixed(1);
     autoPick(club);
   });
+  if(typeof regBuild==='function')regBuild();
   G.free=genFree(16);
   genAllFx();
 }

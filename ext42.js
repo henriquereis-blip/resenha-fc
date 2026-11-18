@@ -1,7 +1,7 @@
 /* ===== v39 / Fase 7D: carreira no exterior =====
    Clube estrangeiro vira clube completo (div 4, ids 80..99) com a liga inteira do país jogando 38 rodadas.
    O Brasil segue sendo simulado pelo servidor. A liga lite do país é sincronizada com a tabela real. */
-const BRN=80;
+const brn=()=>(G&&G.rg)?80+REGN:80;
 const LFAC={ENG:1.3,ESP:1.25,GER:1.2,ITA:1.2,FRA:1,POR:.8,ARG:.7,URU:.55,COL:.6,CHI:.6,JPN:.8,KOR:.7,CHN:.65,AUS:.6,EGY:.6,MAR:.55,RSA:.55,NED:.85,BEL:.8,TUR:.85,SCO:.7,PAR:.55,ECU:.55,PER:.5,BOL:.45,VEN:.45,MEX:.9,USA:.9,KSA:1,SEL:.9};
 function wlOf(k){return WLD.find(x=>x.k===k)}
 function liteById(id){const W=G.wd;if(!W)return null;for(const k in W.lg){const x=W.lg[k].cl.find(c=>c.id===id);if(x)return {x,k}}return null}
@@ -33,7 +33,7 @@ function mkNat42(lc,id,k,div,tmpl,LF,live){
 /* cria os clubes completos do país k; devolve o id do clube escolhido (tid = id lite) */
 function natify(k,tid){
   const W=wd();if(G.abroad)denat();
-  G.clubs.length=BRN;
+  G.clubs.length=brn();
   const L=W.lg[k],tgt=L.cl.find(x=>x.id===tid);
   let sel=L.cl.slice().sort((a,b)=>b.r-a.r).slice(0,(PYR[k]&&PYR[k][0].c-(PD1X[k]?pList(PD1X[k]).length:0))||20);
   if(tgt&&!sel.includes(tgt))sel[sel.length-1]=tgt;
@@ -41,7 +41,7 @@ function natify(k,tid){
   const tmpl=G.clubs.find(c=>c.div===0&&c.id!==G.user)||G.clubs[1];
   const LF=LFAC[k]||.8;let nid=null;
   const live=W.s===G.season&&G.round<38;           // meio de temporada: herda a tabela atual
-  sel.forEach((lc,i)=>{const c=mkNat42(lc,BRN+i,k,4,tmpl,LF,live);if(lc===tgt)nid=c.id});
+  sel.forEach((lc,i)=>{const c=mkNat42(lc,brn()+i,k,4,tmpl,LF,live);if(lc===tgt)nid=c.id});
   G.abroad={k,from:G.season,n:sel.length};pyrInit(k,tmpl,LF);
   W.nat={k,s:(G.round>=38?G.season+1:G.season)};
   return nid;
@@ -51,10 +51,10 @@ function NR(){try{if(G&&G.abroad&&G.clubs[G.user]&&G.clubs[G.user].div>=4&&G.dfx
 /* desfaz o país nativo: clubes e jogadores somem, a liga lite assume de novo */
 function denat(){
   if(!G.abroad)return;
-  for(let i=BRN;i<G.clubs.length;i++){for(const id of G.clubs[i].squad)delete G.players[id]}
-  for(const p of Object.values(G.players)){if(p.club>=BRN){p.club=-1}if(p.loan&&p.loan.from>=BRN)delete p.loan}
-  G.clubs.length=BRN;G.free=(G.free||[]).filter(id=>G.players[id]);
-  G.h2h=(G.h2h||[]).filter(x=>x[2]<BRN&&x[3]<BRN);
+  for(let i=brn();i<G.clubs.length;i++){for(const id of G.clubs[i].squad)delete G.players[id]}
+  for(const p of Object.values(G.players)){if(p.club>=brn()){p.club=-1}if(p.loan&&p.loan.from>=brn())delete p.loan}
+  G.clubs.length=brn();G.free=(G.free||[]).filter(id=>G.players[id]);
+  G.h2h=(G.h2h||[]).filter(x=>x[2]<brn()&&x[3]<brn());
   G.offers=(G.offers||[]).filter(o=>!o.pid||G.players[o.pid]);
   if(G.wd)G.wd.nat=null;G.abroad=null;G.pyr=null;
 }
@@ -84,7 +84,7 @@ function emigrate(lid){
 }
 const _tj42=takeJob;takeJob=function(id){
   const r=_tj42.apply(this,arguments);
-  try{if(G.abroad&&G.user<BRN){denat();genAllFx();if(G.round<NR())prepareRound();save()}else if(G.abroad&&G.pyr){pyrSync();genAllFx();if(G.round<NR())prepareRound();save()}if(G.abroad){G.est=null;G._lg=null;G._x=null;G.cont=null}}catch(e){console.error('tj42 '+e.message)}
+  try{if(G.abroad&&G.user<brn()){denat();genAllFx();if(G.round<NR())prepareRound();save()}else if(G.abroad&&G.pyr){pyrSync();genAllFx();if(G.round<NR())prepareRound();save()}if(G.abroad){G.est=null;G._lg=null;G._x=null;G.cont=null}}catch(e){console.error('tj42 '+e.message)}
   return r;
 };
 /* propostas de clubes de fora (só chega do que a reputação do técnico segura) */

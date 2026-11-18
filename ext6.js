@@ -25,7 +25,7 @@ function vMatch(){
   const evs=foc.ev.slice().reverse().slice(0,40);
   const ic={goal:'⚽',miss:'💨',save:'🧤',yellow:'🟨',red:'🟥',sub:'🔁',inj:'🚑'};
   const tl=foc.ev.filter(e=>e.side!=='n'&&(e.type==='goal'||e.type==='red'||e.type==='yellow')).map(e=>`<i class="tm ${e.side}" style="left:${Math.min(98,e.min/90*100)}%">${ic[e.type]}</i>`).join('');
-  const pn=S.pen?`<div class="pen card ov"><div class="k">🥅 Pênalti · ${S.pen.ev.min}'</div>${S.pen.ev.pen.lines.slice(0,S.pen.i+1).map((l,i)=>`<p class="pl ${i===3?(S.pen.ev.pen.goal?'ok':'bad'):''}">${esc(l)}</p>`).join('')}</div>`:'';
+  const pn=S.pen?penCard():'';
   const st=foc.stats,tot=(x,y)=>x+y||1;
   const bar=(lab,x,y)=>`<div class="sbar"><b>${x}</b><div class="bb"><i style="width:${x/tot(x,y)*100}%;background:${kitAcc(h)}"></i><s style="width:${y/tot(x,y)*100}%;background:${kitAcc(a)}"></s></div><b>${y}</b><small>${lab}</small></div>`;
   const dom=(st.sh*1+st.shT*1.5),dom2=(st.sa*1+st.saT*1.5);
@@ -35,9 +35,9 @@ function vMatch(){
    <div class="ball" style="left:${bx}%"></div>${dotsOf(foc,'h')}${dotsOf(foc,'a')}${S.flash&&mine&&Date.now()<S.flash.until?'':''}</div>
   <div class="pres"><span>${h.sig}</span><div class="pb"><i style="left:${50+mo*50}%"></i></div><span>${a.sig}</span></div>
   <div class="tline"><div class="tk"><i style="width:${foc.min/90*100}%"></i></div>${tl}</div>
-  <div class="ticker">${pn}${evs.length?evs.map(e=>e.side==='n'?`<div class="ev info"><span class="m">${e.min}' · ${esc(e.text)}</span></div>`:`<div class="tr2 ${e.side} ${e.type}"><span class="mn">${e.min}'</span><span class="ico">${ic[e.type]||'•'}</span><span class="tx">${esc(e.text)}</span></div>`).join(''):'<p class="news center">Bola rolando…</p>'}</div>
+  <div class="ticker">${evs.length?evs.map(e=>e.side==='n'?`<div class="ev info"><span class="m">${e.min}' · ${esc(e.text)}</span></div>`:`<div class="tr2 ${e.side} ${e.type}"><span class="mn">${e.min}'</span><span class="ico">${ic[e.type]||'•'}</span><span class="tx">${esc(e.text)}</span></div>`).join(''):'<p class="news center">Bola rolando…</p>'}</div>
   <div class="sbars">${bar('Finalizações',st.sh,st.sa)}${bar('No gol',st.shT,st.saT)}</div>
   <div class="ctrl2">${m.done||roundDone()?`<button class="btn big" data-a="mend">Continuar ›</button>`:`<button class="btn" data-a="mtoggle">${S.paused?'Seguir':'Pausa'}</button><button class="btn ghost ${S.speed===1?'on':''}" data-a="spd" data-v="1">1×</button><button class="btn ghost ${S.speed===3?'on':''}" data-a="spd" data-v="3">3×</button><button class="btn ghost" data-a="mskip">Fim ⏩</button><button class="btn ghost" data-a="mtac">Tática</button>`}</div>
-  <div class="gchips">${R.ms.map((x,i)=>`<button class="gc ${i===R.focus?'sel':''} ${i===R.ui?'me':''}" data-a="mfocus" data-i="${i}">${x.h.club.sig} <b>${x.hg}–${x.ag}</b> ${x.a.club.sig}</button>`).join('')}</div></div>`;
+  <div class="gchips">${R.ms.map((x,i)=>`<button class="gc ${i===R.focus?'sel':''} ${i===R.ui?'me':''}" data-a="mfocus" data-i="${i}">${x.h.club.sig} <b>${x.hg}–${x.ag}</b> ${x.a.club.sig}</button>`).join('')}</div></div>${pn}`;
 }
 function kitAcc(c){return c.c1==='#ffffff'||c.c1==='#fff'?c.c2:c.c1}

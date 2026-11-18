@@ -37,7 +37,7 @@ function vTimes(){
     if(S.open.br){
       h+=f('serieA','Brasileirão Série A','sub');
       if(S.open.serieA)h+=G.clubs.filter(c=>c.div===0).sort((a,b)=>b.rep-a.rep).map(c=>`<button class="folder sub2" data-a="openteam" data-id="${c.id}">${crest(c,16)} ${c.name}</button>`).join('');
-      [1,2,3].forEach(d=>{h+=f('div'+d,DIVN[d],'sub');if(S.open['div'+d])h+=G.clubs.filter(c=>c.div===d).sort((a,b)=>b.rep-a.rep).map(c=>`<button class="folder sub2" data-a="openteam" data-id="${c.id}">${crest(c,16)} ${c.name}</button>`).join('')});
+      [1,2,3,100,101,102,103].filter(d=>d<4||G.rg).forEach(d=>{h+=f('div'+d,DIVN[d],'sub');if(S.open['div'+d])h+=G.clubs.filter(c=>c.div===d).sort((a,b)=>b.rep-a.rep).map(c=>`<button class="folder sub2" data-a="openteam" data-id="${c.id}">${crest(c,16)} ${c.name}</button>`).join('')});
     }
     h+=`<div class="folder" style="opacity:.45">📁 Internacionais (em breve)</div></div></div>`;return h;
   }

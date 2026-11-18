@@ -6,7 +6,7 @@ const COMPN={LIB:'Libertadores',SUL:'Sul-Americana'};
 
 /* ---------- clubes e jogadores estrangeiros (efêmeros) ---------- */
 function fcMake(sig,rep){
-  G.fc=G.fc||[];const d=FCPOOL.find(x=>x[1]===sig),id=100+G.fc.length;
+  G.fc=G.fc||[];const d=FCPOOL.find(x=>x[1]===sig),id=FCB()+G.fc.length;
   const c={id,name:d[0],sig:d[1],rep:rep||d[2],cap:35000,c1:d[3],c2:d[4],c3:d[5],pat:d[6],squad:[],formation:pick(['4-4-2','4-3-3','4-2-3-1','3-5-2']),style:pick(STYLES),phil:pick(PHN),humor:60,caixa:0,P:0,J:0,V:0,E:0,D:0,GP:0,GC:0,CH:0,div:9,fx:true,youth:[]};
   c.color=c.c1==='#ffffff'?c.c2:c.c1;G.fc.push(c);return c;
 }
