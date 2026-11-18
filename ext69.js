@@ -20,8 +20,10 @@ function wSquad69(k,lc){
   const cached=W.sq[lc.id];if(cached&&cached.s===G.season&&cached.r===Math.round(lc.r))return cached.l;
   /* clube que o usuário já "naturalizou" (carreira no exterior): usa o elenco de verdade */
   const real=G.clubs.find(c=>c.name===lc.n&&c.squad&&c.squad.length>=18&&c.id>=brn());
+  const RR=(typeof real73==='function')?real73(lc.n):null;
   let l;
-  if(real){l=real.squad.map(id=>{const p=P(id);return {n:p.name,role:p.role,age:p.age,ovr:p.ovr,nat:p.nat||k,real:p.real}})}
+  if(RR&&!real){l=RR.map(r=>({n:r.n,role:r.role,age:r.age,ovr:r.ovr,nat:r.nat,real:true}))}
+  else if(real){l=real.squad.map(id=>{const p=P(id);return {n:p.name,role:p.role,age:p.age,ovr:p.ovr,nat:p.nat||k,real:p.real}})}
   else{
     const R=rng(wHash(lc.n)*7+G.season*131),g=()=>{let u=0,v=0;while(!u)u=R();v=R();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v)};
     const rp=lc.r,bo=rp>=66?66+(rp-66)*0.5:rp;
@@ -58,11 +60,11 @@ function findWT(){
 function wtView(){
   const f=findWT();if(!f){S.wt=null;return null}
   const {k,lc}=f,meta=WLD.find(x=>x.k===k)||{};
-  const sq=wSquad69(k,lc);
+  const sq=wSquad69(k,lc);const isR=typeof real73==='function'&&!!real73(lc.n);
   const val=sq.reduce((s,p)=>s+valueOf(p),0);
   const pos=f.L.cl.slice().sort((a,b)=>(b.P||0)-(a.P||0)||(b.GP-b.GC)-(a.GP-a.GC)).findIndex(c=>c.id===lc.id)+1;
-  const rows=sq.map(p=>`<div class="prow"><span class="pos">${ROLEABB[p.role]}</span><span class="nm">${esc(p.n)}${p.real?'*':''}<small>${mi(valueOf(p))} · ${esc(p.nat||k)}</small></span><span class="age">${p.age}</span><span class="ovr">${p.ovr}</span><span></span></div>`).join('');
-  return `<div class="wrap"><button class="back" data-a="wtclose">‹ Times</button><div class="card pf">${crest(lc,48)}<div class="pfi"><h3>${esc(lc.n)}</h3><div class="k">${meta.f||''} ${esc(meta.n||k)} · ${pos}º · força ${lc.r.toFixed(0)} · elenco ${mi(val)}</div></div></div><div class="plist">${rows}</div><p class="foot">Elenco estimado pela força do clube (craques reais marcados com *). Muda a cada temporada.</p></div>`;
+  const rows=sq.map(p=>`<div class="prow"><span class="pos">${ROLEABB[p.role]}</span><span class="nm">${esc(p.n)}${p.real&&!isR?'*':''}<small>${mi(valueOf(p))} · ${esc(p.nat||k)}</small></span><span class="age">${p.age}</span><span class="ovr">${p.ovr}</span><span></span></div>`).join('');
+  return `<div class="wrap"><button class="back" data-a="wtclose">‹ Times</button><div class="card pf">${crest(lc,48)}<div class="pfi"><h3>${esc(lc.n)}</h3><div class="k">${meta.f||''} ${esc(meta.n||k)} · ${pos}º · força ${lc.r.toFixed(0)} · elenco ${mi(val)}</div></div></div><div class="plist">${rows}</div><p class="foot">${isR?'Elenco real da base de dados (posição da janela de jul/2026). Overalls próprios do jogo.':'Elenco estimado pela força do clube (craques reais marcados com *). Muda a cada temporada.'}</p></div>`;
 }
 const _vt69=vTimes;
 vTimes=function(){
