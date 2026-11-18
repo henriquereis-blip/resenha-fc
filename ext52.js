@@ -119,7 +119,7 @@ function po51Init(I,kind,label,mid,top,acc,rep){
 /* o seu clube está entre os classificados no fim da temporada? */
 function qual52(I){
   const rows=allRows(I.div),u=userClub();
-  if(I.kind==='ac'){const top=rows.slice(0,po51n(I));return top.length>=4&&top.includes(u)?top:null}
+  if(I.kind==='ac'){const top=top51(I,rows);return top.length>=4&&top.includes(u)?top:null}
   const [E,W]=mlsConf51(rows);if(E.length<9||W.length<9)return null;
   return (E.slice(0,9).includes(u)||W.slice(0,9).includes(u))?rows:null;
 }

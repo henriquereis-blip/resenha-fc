@@ -5,6 +5,13 @@
 const MLS_EAST=new Set(['Inter Miami','Columbus Crew','Philadelphia Union','FC Cincinnati','New York City FC','Atlanta United','New York Red Bulls','Orlando City','Nashville SC','New England Revolution','Toronto FC','Charlotte FC','Chicago Fire','CF Montréal','D.C. United']);
 /* nº de classificados ao mata-mata: Argentina = 16 (8 por zona, aqui os 16 melhores da tabela), jogo único */
 function po51n(I){return I.k==='ARG'?16:(I.R.po||8)}
+/* classificados ao mata-mata: Argentina = 8 melhores de cada zona (G.argZ, ext55); demais = top N da tabela */
+function top51(I,rows){
+  try{if(I.k==='ARG'&&G.argZ&&G.argZ.d===I.div){const A=new Set(G.argZ.A),B=new Set(G.argZ.B);
+    const sel=new Set(rows.filter(r=>A.has(r.id)).slice(0,8).concat(rows.filter(r=>B.has(r.id)).slice(0,8)));
+    if(sel.size===16)return rows.filter(r=>sel.has(r))}}catch(e){}
+  return rows.slice(0,po51n(I));
+}
 function lg51(){
   try{
     if(!G||!G.abroad||!G.pyr||G.user==null)return null;const u=G.clubs[G.user];if(!u||u.div<4||tierOf(u.div)!==1)return null;
@@ -58,7 +65,7 @@ function award51(name,champ,log,vice){
 }
 /* ---------- Apertura / Clausura ---------- */
 function acRun51(I,label){
-  const rows=allRows(I.div),top=rows.slice(0,po51n(I));if(top.length<4)return null;
+  const rows=allRows(I.div),top=top51(I,rows);if(top.length<4)return null;
   const r=liguilla51(top,I.k==='ARG');award51(label,r.champ,r.log);return {champ:r.champ,log:r.log,label,qual:top.includes(userClub())}
 }
 function acHalf51(){
@@ -66,7 +73,7 @@ function acHalf51(){
   G.lg51=G.lg51||{};if(G.lg51.half===G.season)return;
   const half=Math.floor(NR()/2);if(G.round!==half)return;
   G.lg51.half=G.season;
-  const lab='Apertura';const top0=allRows(I.div).slice(0,po51n(I));
+  const lab='Apertura';const top0=top51(I,allRows(I.div));
   const res=(typeof po51Init==='function'&&top0.length>=4&&top0.includes(userClub()))?po51Init(I,'ac',lab+' ('+wlOf(I.k).lg+')',true,top0):acRun51(I,lab+' ('+wlOf(I.k).lg+')');
   const first=allRows(I.div);G.lg51.first=first.slice(0,8).map(r=>r.name);
   for(const c of G.clubs.filter(c=>c.div===I.div&&!c.stub)){c.pp=(c.pp||0)+c.P;c.P=c.J=c.V=c.E=c.D=c.GP=c.GC=0}

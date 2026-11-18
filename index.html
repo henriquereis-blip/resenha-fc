@@ -7692,7 +7692,7 @@ const PYR={
  GER:[{n:'Bundesliga',c:18,dn:2,rpo:1},{n:'2. Bundesliga',c:18,up:2,chal:[3,3],dn:2,rpo:1},{n:'3. Liga',c:20,up:2,chal:[3,3]}],
  FRA:[{n:'Ligue 1',c:18,dn:2,rpo:1},{n:'Ligue 2',c:18,up:2,chal:[3,5],dn:3},{n:'National',c:18,up:3}],
  POR:[{n:'Primeira Liga',c:18,dn:2,rpo:1},{n:'Liga Portugal 2',c:18,up:2,chal:[3,3],dn:2},{n:'Liga 3',c:20,up:2}],
- ARG:[{n:'Liga Profesional',c:30,rd:29,dn:2},{n:'Primera Nacional',g:2,c:18,up:2,dn:2},{n:'Primera B',c:20,up:2}],
+ ARG:[{n:'Liga Profesional',c:30,rd:30,dn:2},{n:'Primera Nacional',g:2,c:18,up:2,dn:2},{n:'Primera B',c:20,up:2}],
  URU:[{n:'Primera División',c:16,dn:2},{n:'Segunda División',c:16,up:2}],
  COL:[{n:'Liga BetPlay',c:20,dn:2},{n:'Primera B',c:20,up:2}],
  CHI:[{n:'Primera División',c:16,dn:2},{n:'Primera B',c:16,up:2}],
@@ -8415,6 +8415,13 @@ setInterval(()=>{try{if(S.step==='mpo'&&MP.code&&!document.hidden&&navigator.onL
 const MLS_EAST=new Set(['Inter Miami','Columbus Crew','Philadelphia Union','FC Cincinnati','New York City FC','Atlanta United','New York Red Bulls','Orlando City','Nashville SC','New England Revolution','Toronto FC','Charlotte FC','Chicago Fire','CF Montréal','D.C. United']);
 /* nº de classificados ao mata-mata: Argentina = 16 (8 por zona, aqui os 16 melhores da tabela), jogo único */
 function po51n(I){return I.k==='ARG'?16:(I.R.po||8)}
+/* classificados ao mata-mata: Argentina = 8 melhores de cada zona (G.argZ, ext55); demais = top N da tabela */
+function top51(I,rows){
+  try{if(I.k==='ARG'&&G.argZ&&G.argZ.d===I.div){const A=new Set(G.argZ.A),B=new Set(G.argZ.B);
+    const sel=new Set(rows.filter(r=>A.has(r.id)).slice(0,8).concat(rows.filter(r=>B.has(r.id)).slice(0,8)));
+    if(sel.size===16)return rows.filter(r=>sel.has(r))}}catch(e){}
+  return rows.slice(0,po51n(I));
+}
 function lg51(){
   try{
     if(!G||!G.abroad||!G.pyr||G.user==null)return null;const u=G.clubs[G.user];if(!u||u.div<4||tierOf(u.div)!==1)return null;
@@ -8468,7 +8475,7 @@ function award51(name,champ,log,vice){
 }
 /* ---------- Apertura / Clausura ---------- */
 function acRun51(I,label){
-  const rows=allRows(I.div),top=rows.slice(0,po51n(I));if(top.length<4)return null;
+  const rows=allRows(I.div),top=top51(I,rows);if(top.length<4)return null;
   const r=liguilla51(top,I.k==='ARG');award51(label,r.champ,r.log);return {champ:r.champ,log:r.log,label,qual:top.includes(userClub())}
 }
 function acHalf51(){
@@ -8476,7 +8483,7 @@ function acHalf51(){
   G.lg51=G.lg51||{};if(G.lg51.half===G.season)return;
   const half=Math.floor(NR()/2);if(G.round!==half)return;
   G.lg51.half=G.season;
-  const lab='Apertura';const top0=allRows(I.div).slice(0,po51n(I));
+  const lab='Apertura';const top0=top51(I,allRows(I.div));
   const res=(typeof po51Init==='function'&&top0.length>=4&&top0.includes(userClub()))?po51Init(I,'ac',lab+' ('+wlOf(I.k).lg+')',true,top0):acRun51(I,lab+' ('+wlOf(I.k).lg+')');
   const first=allRows(I.div);G.lg51.first=first.slice(0,8).map(r=>r.name);
   for(const c of G.clubs.filter(c=>c.div===I.div&&!c.stub)){c.pp=(c.pp||0)+c.P;c.P=c.J=c.V=c.E=c.D=c.GP=c.GC=0}
@@ -8632,7 +8639,7 @@ function po51Init(I,kind,label,mid,top,acc,rep){
 /* o seu clube está entre os classificados no fim da temporada? */
 function qual52(I){
   const rows=allRows(I.div),u=userClub();
-  if(I.kind==='ac'){const top=rows.slice(0,po51n(I));return top.length>=4&&top.includes(u)?top:null}
+  if(I.kind==='ac'){const top=top51(I,rows);return top.length>=4&&top.includes(u)?top:null}
   const [E,W]=mlsConf51(rows);if(E.length<9||W.length<9)return null;
   return (E.slice(0,9).includes(u)||W.slice(0,9).includes(u))?rows:null;
 }
@@ -8901,6 +8908,61 @@ const _vc54=vComp;vComp=function(){
     return head+card+hh+'</div>';
   }catch(e){console.error('br54 '+e.message);return h}
 };
+/* ext55: Argentina com ZONA A e ZONA B (carreira no exterior).
+   30 clubes em 2 zonas de 15 (distribuídos em serpentina pela reputação, com sorteio no par). Cada torneio (Apertura/Clausura) tem 15 rodadas:
+   14 jogos dentro da zona + 1 jogo interzonal (no lugar da folga, que num grupo de 15 sobra uma por rodada). Total 30 rodadas por temporada.
+   Os 8 melhores de cada zona vão ao mata-mata de 16 (top51 em ext51). A aba Tabelas ganha o seletor Geral / Zona A / Zona B.
+   Estado: G.argZ={s,d,A:[ids],B:[ids]}. */
+function rr55(ids){
+  let arr=shuffle(ids.slice());if(arr.length%2)arr.push(null);const n=arr.length,rounds=[];
+  for(let r=0;r<n-1;r++){const rd=[];for(let i=0;i<n/2;i++){const a=arr[i],b=arr[n-1-i];rd.push(r%2?[b,a]:[a,b])}rounds.push(rd);arr=[arr[0],arr[n-1],...arr.slice(1,n-1)]}
+  return rounds;
+}
+function zoneFx55(A,B){
+  const ra=rr55(A),rb=rr55(B),out=[];
+  for(let r=0;r<ra.length;r++){
+    const pa=ra[r].filter(p=>p[0]!=null&&p[1]!=null),pb=rb[r].filter(p=>p[0]!=null&&p[1]!=null);
+    const ia=(ra[r].find(p=>p[0]==null||p[1]==null)||[]).find(x=>x!=null),ib=(rb[r].find(p=>p[0]==null||p[1]==null)||[]).find(x=>x!=null);
+    const m=pa.concat(pb);if(ia!=null&&ib!=null)m.push(r%2?[ib,ia]:[ia,ib]);
+    out.push(m);
+  }
+  return out.concat(out.map(rd=>rd.map(([h,a])=>[a,h])));
+}
+function zoneAssign55(ids){
+  const rows=ids.map(id=>({id,rep:C(id).rep})).sort((a,b)=>b.rep-a.rep),A=[],B=[];
+  for(let i=0;i<rows.length;i+=2){const p=Math.random()<.5?[rows[i],rows[i+1]]:[rows[i+1],rows[i]];if(p[0])A.push(p[0].id);if(p[1])B.push(p[1].id)}
+  return [A,B];
+}
+const _pf55=pyrFx;pyrFx=function(){
+  _pf55.apply(this,arguments);
+  try{
+    if(!G.pyr||G.pyr.k!=='ARG'||!G.abroad)return;
+    const x=G.pyr.dv.find(v=>v.t===1);if(!x)return;
+    const ids=G.clubs.filter(c=>c.div===x.d&&!c.stub).map(c=>c.id);
+    if(ids.length!==30){G.argZ=null;return}
+    const z=zoneAssign55(ids);G.argZ={s:G.season,d:x.d,A:z[0],B:z[1]};
+    G.dfx[x.d]=zoneFx55(z[0],z[1]);
+  }catch(e){console.error('zfx55 '+e.message)}
+};
+const zoneOf55=id=>G&&G.argZ?(G.argZ.A.includes(id)?'A':G.argZ.B.includes(id)?'B':null):null;
+/* Tabelas: filtro por zona na 1ª divisão */
+let _zf55=null;
+const _tr55=tableRows;tableRows=function(){
+  const r=_tr55.apply(this,arguments);
+  try{if(_zf55&&G.argZ&&Array.isArray(r)&&r.length&&r.every(c=>c&&c.div===G.argZ.d)){const set=new Set(_zf55==='A'?G.argZ.A:G.argZ.B);return r.filter(c=>set.has(c.id))}}catch(e){}
+  return r;
+};
+const _vl55=vLiga;vLiga=function(){
+  const on=G.abroad&&G.pyr&&G.pyr.k==='ARG'&&G.argZ&&userDiv()>=4&&(S.abd?S.abd:userDiv())===G.argZ.d&&G.clubs.some(c=>c.div===G.argZ.d&&!c.stub);
+  if(!on)return _vl55();
+  const z=S.zt==='A'||S.zt==='B'?S.zt:null;
+  _zf55=z;let h;try{h=_vl55()}finally{_zf55=null}
+  const mine=zoneOf55(G.user);
+  const seg=`<div class="seg sm"><button class="${!z?'on':''}" data-a="zt" data-v="">Geral</button><button class="${z==='A'?'on':''}" data-a="zt" data-v="A">Zona A${mine==='A'?' ★':''}</button><button class="${z==='B'?'on':''}" data-a="zt" data-v="B">Zona B${mine==='B'?' ★':''}</button></div>`;
+  const note=`<p class="foot">15 clubes por zona: 14 jogos na zona + 1 interzonal por torneio. Os 8 melhores de cada zona vão ao mata-mata de 16 (jogo único).</p>`;
+  return h.replace(/(<div class="seg sm scroll">)/,seg+'$1').replace(/(<p class="foot">[\s\S]*?<\/p>)/,'$1'+note);
+};
+Object.assign(A,{zt(d){S.zt=d.v||null;render()}});
 newWorld();G.phase='start';render();
 </script>
 <script>if("serviceWorker"in navigator&&/^https?:/.test(location.protocol))addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}))</script></body></html>

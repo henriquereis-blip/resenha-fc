@@ -7,7 +7,7 @@ const PYR={
  GER:[{n:'Bundesliga',c:18,dn:2,rpo:1},{n:'2. Bundesliga',c:18,up:2,chal:[3,3],dn:2,rpo:1},{n:'3. Liga',c:20,up:2,chal:[3,3]}],
  FRA:[{n:'Ligue 1',c:18,dn:2,rpo:1},{n:'Ligue 2',c:18,up:2,chal:[3,5],dn:3},{n:'National',c:18,up:3}],
  POR:[{n:'Primeira Liga',c:18,dn:2,rpo:1},{n:'Liga Portugal 2',c:18,up:2,chal:[3,3],dn:2},{n:'Liga 3',c:20,up:2}],
- ARG:[{n:'Liga Profesional',c:30,rd:29,dn:2},{n:'Primera Nacional',g:2,c:18,up:2,dn:2},{n:'Primera B',c:20,up:2}],
+ ARG:[{n:'Liga Profesional',c:30,rd:30,dn:2},{n:'Primera Nacional',g:2,c:18,up:2,dn:2},{n:'Primera B',c:20,up:2}],
  URU:[{n:'Primera División',c:16,dn:2},{n:'Segunda División',c:16,up:2}],
  COL:[{n:'Liga BetPlay',c:20,dn:2},{n:'Primera B',c:20,up:2}],
  CHI:[{n:'Primera División',c:16,dn:2},{n:'Primera B',c:16,up:2}],
