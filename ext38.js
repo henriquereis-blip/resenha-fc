@@ -136,7 +136,7 @@ function wPair(list){const out=[];const n=list.length;for(let i=0;i<n/2;i++)out.
 function wTie(a,b){const [g1,g2]=wMatch(a,b);const [h2,h1]=wMatch(b,a);const A=g1+h1,B=g2+h2;return A>B?a:B>A?b:(Math.random()<.5+(a.r-b.r)/70?a:b)}
 function wBracket(list){let cur=list.slice();while(cur.length>1){cur=wPair(cur).map(([a,b])=>wTie(a,b))}return cur[0]}
 wUcl=function(){
-  let teams=[].concat(wTeamsTop('ENG',0,4),wTeamsTop('ESP',0,4),wTeamsTop('ITA',0,4),wTeamsTop('GER',0,4),wTeamsTop('FRA',0,3),wTeamsTop('POR',0,2),wTeamsTop('ENG',4,5),wTeamsTop('ESP',4,5),wTeamsTop('ITA',4,5),wTeamsTop('NED',0,2),wTeamsTop('BEL',0,1),wTeamsTop('TUR',0,2),wTeamsTop('SCO',0,1));
+  let teams=[].concat(wTeamsTop('ENG',0,4),wTeamsTop('ESP',0,4),wTeamsTop('ITA',0,4),wTeamsTop('GER',0,4),wTeamsTop('FRA',0,3),wTeamsTop('POR',0,2),wTeamsTop('ENG',4,5),wTeamsTop('ESP',4,5),wTeamsTop('ITA',4,5),wTeamsTop('NED',0,2),wTeamsTop('BEL',0,1),wTeamsTop('TUR',0,2),wTeamsTop('SCO',0,1),wTeamsTop('AUT',0,1),wTeamsTop('SUI',0,1),wTeamsTop('GRE',0,1),wTeamsTop('DEN',0,1));
   teams=teams.sort((a,b)=>b.r*b.f-a.r*a.f).slice(0,24);
   const pts=new Map(teams.map(t=>[t,0]));
   for(let r=0;r<8;r++){const sh=shuffle(teams.slice());for(let i=0;i<sh.length-1;i+=2){const [a,b]=[sh[i],sh[i+1]];const [ga,gb]=wMatch(a,b);if(ga>gb)pts.set(a,pts.get(a)+3);else if(gb>ga)pts.set(b,pts.get(b)+3);else{pts.set(a,pts.get(a)+1);pts.set(b,pts.get(b)+1)}}}
@@ -148,7 +148,7 @@ wUcl=function(){
   return {ch:cur[0],vice:last?last[1]:null};
 };
 function wUel(){
-  const teams=[].concat(wTeamsTop('ENG',5,7),wTeamsTop('ESP',5,7),wTeamsTop('ITA',5,7),wTeamsTop('GER',5,7),wTeamsTop('FRA',3,5),wTeamsTop('POR',2,4),wTeamsTop('ENG',7,8),wTeamsTop('ESP',7,8),wTeamsTop('NED',2,4),wTeamsTop('BEL',1,3),wTeamsTop('TUR',2,3),wTeamsTop('SCO',1,2));
+  const teams=[].concat(wTeamsTop('ENG',5,7),wTeamsTop('ESP',5,7),wTeamsTop('ITA',5,7),wTeamsTop('GER',5,7),wTeamsTop('FRA',3,5),wTeamsTop('POR',2,4),wTeamsTop('ENG',7,8),wTeamsTop('ESP',7,8),wTeamsTop('NED',2,4),wTeamsTop('BEL',1,3),wTeamsTop('TUR',2,3),wTeamsTop('SCO',1,2),wTeamsTop('AUT',1,3),wTeamsTop('SUI',1,3),wTeamsTop('GRE',1,3),wTeamsTop('DEN',1,3));
   return wBracket(teams.sort((a,b)=>b.r-a.r).slice(0,16));
 }
 function wSA(){
