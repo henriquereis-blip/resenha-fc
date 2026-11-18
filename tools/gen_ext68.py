@@ -35,6 +35,47 @@ GEN2 = {
 # 3ª divisão real vira pool escondido: k -> (c, up, extra)
 REAL3 = {'ESP':(16,4,{}),'ITA':(16,4,{}),'GER':(16,2,{'chal':[3,3]}),'FRA':(18,3,{}),'POR':(16,2,{}),'ARG':(16,2,{}),'JPN':(16,3,{}),'SCO':(10,1,{})}
 
+
+# v89: nomes REAIS (decisão do Henrique: nada de clube com nome inventado). Divisões inferiores de cada país.
+REALN = {
+ 'URU':['Albion','Atenas de San Carlos','Colón','Oriental de Montevideo','Rampla Juniors','Uruguay Montevideo','Villa Teresa','Central Español','Salus','Frontera Rivera','Huracán (URU)','Deportivo Colonia'],
+ 'COL':['Llaneros','Boca Juniors de Cali','Real Cartagena','Cortuluá','Atlético FC','Barranquilla FC','Real Santander','Orsomarso','Bogotá FC','Fortaleza CEIF','Tigres FC','Unión Magdalena'],
+ 'CHI':['Santiago Morning','Deportes Temuco','Santiago Wanderers','Deportes Recoleta','Rangers de Talca','Deportes Santa Cruz','Deportes Copiapó','Deportes Puerto Montt','Deportes Iberia','San Marcos de Arica','Magallanes','Deportes Limache'],
+ 'PAR':['Guaireña','General Caballero JLM','Sportivo Carapeguá','Fernando de la Mora','Atlético Colegiales','12 de Octubre','Martín Ledesma','Sportivo Iteño','Deportivo Capiatá','Resistencia SC','Tembetary','River Plate (PAR)'],
+ 'ECU':['Imbabura','9 de Octubre','Atlético Santo Domingo','Deportivo Quito','Fuerza Amarilla','Libertad FC','Manta FC','Clan Juvenil','Santa Rita','Cumbayá FC','Gualaceo SC','Guayaquil City'],
+ 'PER':['Juan Pablo II College','Deportivo Coopsol','Santos de Nasca','Alianza Universidad','Comerciantes Unidos','ADT','Pirata FC','Sport Chavelines','Los Chankas','Deportivo Llacuabamba','Atlético Grau','Unión Comercio'],
+ 'KSA':['Al-Kawkab','Al-Sahel','Al-Jubail','Al-Mujazzal','Al-Nahda','Al-Shoulla','Al-Thoqbah','Al-Taraji','Hajer','Al-Sharq','Al-Qous','Al-Najma','Al-Tai','Al-Zulfi','Al-Jandal','Al-Washm','Al-Diriyah','Al-Arabi (KSA)','Al-Bukayriyah','Al-Anwar','Al-Jabalain','Al-Ain (KSA)','Al-Safa','Al-Qaisumah'],
+ 'NED':['Katwijk','Spakenburg','Rijnsburgse Boys','Hoogeveen','GVVV','Barendrecht','Kozakken Boys','Hoek','Lisse','Quick Boys','IJsselmeervogels','Scheveningen'],
+ 'BEL':['Dessel Sport','Heist','Knokke','RFC Liège','Lierse','Patro Eisden','Tienen','Olympic Charleroi','Francs Borains','Seraing','Rupel Boom','Hamme'],
+ 'TUR':['Altınordu','Amed SK','Bandırmaspor','Menemenspor','Sarıyer','Sakaryaspor','Kırklarelispor','Karacabey Belediyespor','Fethiyespor','Ankaraspor','Somaspor','Beyoğlu Yeni Çarşı'],
+ 'KOR':['Gyeongju KHNP','Daejeon Korail','Gimhae FC','Mokpo City','Pocheon Citizen','Yangju Citizen','Siheung Citizen','Gangneung City','Chuncheon FC','Pyeongtaek Citizen','Yeoju FC','Namyangju Citizen'],
+ 'CHN':['Hubei Istar','Shaanxi Union','Sichuan Jiuniu','Jiangxi Lushan','Guangxi Pingguo','Shijiazhuang Gongfu','Yunnan Yukun','Foshan Nanshi','Taizhou Yuanda','Wuxi Wugou','Nantong Zhiyun','Beijing Rongchang'],
+ 'RSA':['Cape Town Spurs','Milford FC','Hungry Lions','Upington City','Kruger United','Pretoria Callies','Black Leopards','Tshakhuma Tsha Madzivhandila','JDR Stars','Orbit College','Venda FC','Moroka Swallows'],
+ 'AUT':['Dornbirn','Kapfenberger SV','SV Horn','SV Lafnitz','Vorwärts Steyr','Stripfing','Admira Wacker','Wacker Innsbruck','Kufstein','Oberwart','Gleisdorf','Leoben'],
+ 'SUI':['Bellinzona','Chiasso','Wohlen','Kriens','Schaffhausen','Biel-Bienne','Étoile Carouge','Stade Nyonnais','Cham','Breitenrain','Baden','Köniz'],
+ 'GRE':['Ionikos','Panachaiki','Apollon Smyrnis','Egaleo','Anagennisi Karditsa','Kallithea','Niki Volos','Panserraikos','Chania','Ergotelis','Doxa Drama','Panegialios'],
+ 'DEN':['Skive IK','Thisted FC','Holbæk B&I','Næstved BK','Roskilde','HB Køge','Fremad Amager','B93','Kolding IF','Nykøbing FC','Hobro IK','Esbjerg fB'],
+ 'BOL':['Ciclón','Guabirá','Atlético Bermejo','Fancesa','Deportivo Kenty','Universitario de Pando','Mamoré','Stormers','Nacional Potosí','Ayacucho FC','Vaca Díez','Gran Mamoré'],
+ 'VEN':['Hermanos Colombo','Titanes FC','Yaracuyanos','UCV FC','Atlético El Vigía','Estudiantes de Caracas','Rayo Zuliano','Ureña SC','Llaneros de Guanare','Real Frontera'],
+ 'EGY':['Tanta','Haras El Hodoud','Telecom Egypt','Aswan SC','Mansoura','Petrojet','El Entag El Harby','Kahrabaa Ismailia','Nasr Cairo','Dayrout','Qena SC','Minya SC'],
+ 'MAR':['Olympic Safi','Chabab Atlas Khénifra','Union Touarga','Rachad Bernoussi','Kawkab Marrakech','Raja Beni Mellal','Mouloudia Oujda','Racing Casablanca','Union Sidi Kacem','Chabab Mohammédia','Ittihad Khemisset','Widad Témara'],
+}
+import re as _re
+_TXT=open('ext37.js',encoding='utf-8').read()+open('ext44.js',encoding='utf-8').read()
+def _exists(n):
+    return bool(_re.search(r"(?<![\w])"+_re.escape(n)+r"(?: \d+)?[,'\"\]]",_TXT))
+def real_list(k,n):
+    """só nomes reais que ainda não existem no jogo; nº par; se sobrar pouco, sem pool (a 2ª divisão fica sem descenso)"""
+    l=[x for x in REALN[k] if not _exists(x)][:n]
+    if len(l)%2:l=l[:-1]
+    return l
+def real_names(k,l,top,step):
+    return ','.join('%s %d'%(x,round(top-i*step)) for i,x in enumerate(l))
+RESL={k:real_list(k,12) for k in RES2}
+RES2={k:v for k,v in RES2.items() if len(RESL[k])>=6}
+GENL={k:real_list(k,c) for k,(n,c,p,t) in GEN2.items()}
+GEN2={k:(n,len(GENL[k]),p,t) for k,(n,c,p,t) in GEN2.items()}
+print('pools reais:',{k:len(v) for k,v in RESL.items()},'| sem pool:',[k for k in RESL if k not in RES2])
 def names(pats, towns, n, top, step):
     out=[]
     for i,t in enumerate(towns[:n]):
@@ -42,9 +83,9 @@ def names(pats, towns, n, top, step):
         out.append('%s %d'%(nm, round(top-i*step)))
     return ','.join(out)
 
-pool={k:names(p,t,12,47,.4) for k,(n,p,t) in RES2.items()}
-gen2={k:names(p,t,c,52,.5) for k,(n,c,p,t) in GEN2.items()}
-cfg={'res2':{k:v[0] for k,v in RES2.items()},
+pool={k:real_names(k,RESL[k],47,.4) for k in RES2}
+gen2={k:real_names(k,GENL[k],52,.5) for k in GEN2}
+cfg={'res2':{k:v[0] for k,v in RES2.items()},'resc':{k:len(RESL[k]) for k in RES2},
      'gen2':{k:[v[0],v[1]] for k,v in GEN2.items()},
      'real3':{k:{'c':v[0],'up':v[1],**v[2]} for k,v in REAL3.items()}}
 js="""/* ext68 (GERADO por tools/gen_ext68.py, não editar à mão): simplificação das divisões.
@@ -54,11 +95,11 @@ js="""/* ext68 (GERADO por tools/gen_ext68.py, não editar à mão): simplifica�
 const CFG=%s;
 const POOL=%s;
 const GEN2=%s;
-const WR_TXT={BOL:'Rebaixamento: os 2 últimos caem para a Segunda divisão (clubes gerados).',VEN:'Rebaixamento: os 2 últimos caem para a Segunda divisão (clubes gerados).',EGY:'Rebaixamento: os 3 últimos caem para a Segunda divisão (clubes gerados).',MAR:'Rebaixamento: os 3 últimos caem para a Segunda divisão (clubes gerados).'};
+const WR_TXT={BOL:'Rebaixamento: os 2 últimos caem para a Segunda divisão.',VEN:'Rebaixamento: os 2 últimos caem para a Segunda divisão.',EGY:'Rebaixamento: os 3 últimos caem para a Segunda divisão.',MAR:'Rebaixamento: os 3 últimos caem para a Segunda divisão.'};
 for(const k in CFG.res2){const n=CFG.res2[k],T=PYR[k];if(!T||T.length!==2)continue;
-  T[1].dn=n;T.push({n:'Divisão inferior (reserva)',c:12,up:n,res:1});PD[k]=PD[k]||[0];PD[k][2]=POOL[k]}
+  T[1].dn=n;T.push({n:'Divisão inferior',c:CFG.resc[k],up:n,res:1});PD[k]=PD[k]||[0];PD[k][2]=POOL[k]}
 for(const k in CFG.gen2){const [n,c]=CFG.gen2[k],T=PYR[k];if(!T||T.length!==1)continue;
-  T[0].dn=n;T.push({n:'Segunda divisão (clubes gerados)',c,up:n});PD[k]=[0,GEN2[k]];
+  T[0].dn=n;T.push({n:'Segunda divisão',c,up:n});PD[k]=[0,GEN2[k]];
   if(WRULES[k]){WRULES[k].rel=n;WRULES[k].txt=(WRULES[k].txt||[]).filter(x=>!/rebaix|2ª divis|descenso/i.test(x)).concat([WR_TXT[k]])}}
 for(const k in CFG.real3){const c=CFG.real3[k],T=PYR[k];if(!T||T.length!==3)continue;const t=T[2];
   t.g=1;t.c=c.c;t.up=c.up;delete t.po;delete t.pool;if(c.chal)t.chal=c.chal;else delete t.chal;t.res=1;T[1].dn=c.up}

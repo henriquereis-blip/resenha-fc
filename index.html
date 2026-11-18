@@ -1663,7 +1663,7 @@ function render(){
   if(S.match&&R){app.innerHTML=(S.panel?vPanel():vMatch())+flashH()+toastH();bind();return}
   ex();const c=userClub();
   const views={inicio:vInicio,elenco:vInicio,tatica:vTatica,liga:vLiga,mercado:vMercado,clube:vClube,times:vTimes,agenda:vAgenda,estadio:vEstadio,juniores:vJuniores,base:vBase,meutec:vMeuTec,medico:vMedico,dir:vDir,treino:vTreino,vest:vVest,assist:vAssist,staff:vStaff,comp:vComp,marketing:vMarketing,torcida:vTorcida,tecnicos:vTecnicos,historia:vHistoria,opcoes:vOpcoes,conquistas:vConquistas};
-  const icons=[['agenda','📅','Agenda'],['liga','🏆','Tabelas'],['meutec','🧠','Técnico'],['dir','🏛️','Diretoria'],['medico','🩺','Médico'],['treino','🏋️','Treino'],['vest','🗣️','Vestiário'],['assist','🎲','Auxiliar'],['staff','🧑‍💼','Comissão'],['comp','🌎','Copas'],['marketing','📣','Marketing'],['torcida','🔥','Torcida'],['estadio','🏟️','Estádio'],['base','🌱','Base'],['times','👕','Times'],['mercado','🔍','Procura'],['tecnicos','🧢','Técnicos'],['historia','📜','História'],['opcoes','⚙️','Opções']];
+  const icons=[['agenda','📅','Agenda'],['liga','🏆','Tabelas'],['meutec','🧠','Técnico'],['dir','🏛️','Diretoria'],['medico','🩺','Médico'],['treino','🏋️','Treino'],['vest','🗣️','Vestiário'],['assist','🧢','Auxiliar'],['staff','🧑‍💼','Comissão'],['comp','🌎','Copas'],['marketing','📣','Marketing'],['torcida','🔥','Torcida'],['estadio','🏟️','Estádio'],['base','🌱','Base'],['times','👕','Times'],['mercado','🔍','Procura'],['tecnicos','🧢','Técnicos'],['historia','📜','História'],['opcoes','⚙️','Opções']];
   let body;
   if(S.modal)body=vModal();else if(S.prof!==null)body=vPerfil();else if(S.paper)body=vJornal();else body=(views[G.view]||vInicio)();
   const ab=G.newAch&&G.newAch.length?`<button class="achb" data-a="achok">${G.newAch.map(id=>ACH[id][0]+' Conquista: '+ACH[id][1]).join(' · ')}</button>`:'';
@@ -8108,7 +8108,7 @@ const CAT46=[
   ['mundo','🌎','Mundo','mercado',['mercado','times','tecnicos'],'#c58bff'],
   ['mais','⋯','Mais','opcoes',['historia','opcoes'],'#aab4c0']
 ];
-const IC46={dir:'🏛️',estadio:'🏟️',base:'🌱',torcida:'🔥',marketing:'📣',meutec:'🧠',assist:'🎲',staff:'🧑‍💼',medico:'🩺',treino:'🏋️',vest:'🗣️',agenda:'📅',liga:'🏆',comp:'🌎',mercado:'🔍',times:'👕',tecnicos:'🧢',historia:'📜',opcoes:'⚙️'};
+const IC46={dir:'🏛️',estadio:'🏟️',base:'🌱',torcida:'🔥',marketing:'📣',meutec:'🧠',assist:'🧢',staff:'🧑‍💼',medico:'🩺',treino:'🏋️',vest:'🗣️',agenda:'📅',liga:'🏆',comp:'🌎',mercado:'🔍',times:'👕',tecnicos:'🧢',historia:'📜',opcoes:'⚙️'};
 const NM46={dir:'Diretoria',estadio:'Estádio',base:'Base',torcida:'Torcida',marketing:'Marketing',meutec:'Técnico',assist:'Auxiliar',staff:'Comissão',medico:'Médico',treino:'Treino',vest:'Vestiário',agenda:'Agenda',liga:'Tabelas',comp:'Copas',mercado:'Procura',times:'Times',tecnicos:'Técnicos',historia:'História',opcoes:'Opções'};
 IC46.clube='💵';NM46.clube='Finanças';
 (function(){const st=document.createElement('style');st.textContent=`
@@ -9766,7 +9766,7 @@ const _vm64=vModal;vModal=function(){
   let h=_vm64.apply(this,arguments);
   try{const md=S.modal;if(md&&md.t==='round'&&S.rfin){
     const r=S.rfin,k='<button class="btn big" data-a="roundok">';
-    const card=`<div class="card"><div class="k">💰 Dinheiro da rodada</div><div class="res"><span>Entrou</span><b class="ok">+${mi(r.in)}</b></div><div class="res"><span>Saiu</span><b class="bad">${mi(r.out)}</b></div><div class="res"><span>Saldo</span><b class="${r.net>=0?'ok':'bad'}">${r.net>=0?'+':''}${mi(r.net)}</b></div></div>`;
+    const card=`<div class="card"><div class="k">💰 Balanço financeiro da rodada</div><div class="res"><span>Entrou</span><b class="ok">+${mi(r.in)}</b></div><div class="res"><span>Saiu</span><b class="bad">${mi(r.out)}</b></div><div class="res"><span>Saldo</span><b class="${r.net>=0?'ok':'bad'}">${r.net>=0?'+':''}${mi(r.net)}</b></div></div>`;
     if(h.includes(k))h=h.replace(k,card+k);
   }}catch(e){}
   return h;
@@ -10255,7 +10255,7 @@ vClubStep=function(){
   return h.replace(/<div class="seg sm">[\s\S]*?<\/div>/,seg);
 };
 /* ext67 (v86): base balanceada por nível do clube, IA usando a base, Continuar no topo, camisa com prévia, vendas por camisa, sócio com projeção/desfazer, versão do jogo */
-const APP_VER='v88';
+const APP_VER='v89';
 const APP_DATE='18/11/2026';
 
 /* ============ BASE: estrelas e overall dependem do nível da base do clube ============ */
@@ -10525,14 +10525,14 @@ document.addEventListener('input',e=>{
    Só Brasil e Inglaterra têm mais de 2 divisões. Nos demais países a 2ª divisão tem descenso e um pool escondido
    (clubes "reserva" com jogadores gerados, ou a 3ª divisão real enxuta) repõe quem cai. A divisão-reserva só aparece nas tabelas se o técnico cair nela. */
 (function(){
-const CFG={"res2": {"URU": 2, "COL": 2, "CHI": 2, "PAR": 2, "ECU": 2, "PER": 2, "KSA": 2, "NED": 2, "BEL": 1, "TUR": 3, "KOR": 1, "CHN": 1, "RSA": 2, "AUT": 1, "SUI": 1, "GRE": 2, "DEN": 2}, "gen2": {"BOL": [2, 12], "VEN": [2, 10], "EGY": [3, 12], "MAR": [3, 12]}, "real3": {"ESP": {"c": 16, "up": 4}, "ITA": {"c": 16, "up": 4}, "GER": {"c": 16, "up": 2, "chal": [3, 3]}, "FRA": {"c": 18, "up": 3}, "POR": {"c": 16, "up": 2}, "ARG": {"c": 16, "up": 2}, "JPN": {"c": 16, "up": 3}, "SCO": {"c": 10, "up": 1}}};
-const POOL={"URU": "Atlético Paysandú 47,Deportivo Salto 47,Club Rivera 46,Juventud Artigas 46,Atlético Melo 45,Deportivo Durazno 45,Club Florida 45,Juventud Mercedes 44,Atlético Colonia 44,Deportivo Minas 43,Club Rocha 43,Juventud Treinta y Tres 43", "COL": "Atlético Girardot 47,Deportivo Neiva 47,Real Montería 46,Club Sincelejo 46,Atlético Tunja 45,Deportivo Yopal 45,Real Florencia 45,Club Pasto 44,Atlético Armenia 44,Deportivo Villavicencio 43,Real Buenaventura 43,Club Ibagué 43", "CHI": "Deportes Ovalle 47,Club Linares 47,Unión Curicó 46,Atlético Calama 46,Deportes Coquimbo 45,Club Vallenar 45,Unión Ancud 45,Atlético Punta Arenas 44,Deportes Osorno 44,Club Valdivia 43,Unión Quilpué 43,Atlético Melipilla 43", "PAR": "Club Pilar 47,Atlético Villarrica 47,Deportivo Caacupé 46,Sportivo Concepción 46,Club Coronel Oviedo 45,Atlético Luque 45,Deportivo Itauguá 45,Sportivo Areguá 44,Club Caaguazú 44,Atlético Hernandarias 43,Deportivo Salto del Guairá 43,Sportivo Pedro Juan Caballero 43", "ECU": "Deportivo Ibarra 47,Club Riobamba 47,Atlético Loja 46,Sport Ambato 46,Deportivo Esmeraldas 45,Club Machala 45,Atlético Babahoyo 45,Sport Latacunga 44,Deportivo Tulcán 44,Club Macas 43,Atlético Quevedo 43,Sport Manta 43", "PER": "Deportivo Chiclayo 47,Club Piura 47,Sport Tarapoto 46,Atlético Huaraz 46,Deportivo Puno 45,Club Pucallpa 45,Sport Tumbes 45,Atlético Ica 44,Deportivo Chimbote 44,Club Arequipa 43,Sport Trujillo 43,Atlético Iquitos 43", "KSA": "Al-Tuwaiq 47,Al-Nahda 47,Al-Safa 46,Al-Kawkab 46,Al-Sahel 45,Al-Jubail 45,Al-Sakaka 45,Al-Mujazzal 44,Al-Yanbu 44,Al-Bisha 43,Al-Shoulla 43,Al-Sharq 43", "NED": "VV Katwijk 47,SV Spakenburg 47,FC Rijnsburg 46,ASV Hoogeveen 46,VV Genemuiden 45,SV Barendrecht 45,FC Scheveningen 45,ASV Harkemase 44,VV Hoek 44,SV Lisse 43,FC Terneuzen 43,ASV Kampen 43", "BEL": "KFC Hamme 47,RFC Tienen 47,K Visé 46,Royal Knokke 46,KFC Berchem 45,RFC Heist 45,K Wetteren 45,Royal Geel 44,KFC Turnhout 44,RFC Ninove 43,K Waremme 43,Royal Namur 43", "TUR": "Karacabeyspor 47,Kırklarelispor 47,Niğdespor 46,Kırşehirspor 46,Nevşehirspor 45,Çankayaspor 45,Darıcaspor 45,Sultanbeylispor 44,Düzcespor 44,Ergenespor 43,Altayspor 43,Bergamaspor 43", "KOR": "Pyeongtaek FC 47,Pocheon Citizen 47,Yangju FC 46,Icheon Citizen 46,Gyeongju FC 45,Mokpo Citizen 45,Jinju FC 45,Namyangju Citizen 44,Siheung FC 44,Yeoju Citizen 43,Gangneung FC 43,Gumi Citizen 43", "CHN": "Guizhou FC 47,Hohhot City 47,Liuzhou FC 46,Nantong City 46,Suzhou FC 45,Xinjiang City 45,Jiangxi FC 45,Baoding City 44,Heilongjiang FC 44,Zibo City 43,Wuxi FC 43,Lanzhou City 43", "RSA": "Mthatha United 47,Nelspruit Rovers 47,Rustenburg Stars 46,Kimberley United 46,Welkom Rovers 45,George Stars 45,Witbank United 45,Vryheid Rovers 44,Pietermaritzburg Stars 44,Mahikeng United 43,Tzaneen Rovers 43,Bethlehem Stars 43", "AUT": "SV Dornbirn 47,FC Lochau 47,SC Kufstein 46,ASK Wörgl 46,SV Leoben 45,FC Gmunden 45,SC Steyr 45,ASK Horn 44,SV Oberwart 44,FC Ebreichsdorf 43,SC Neusiedl 43,ASK Parndorf 43", "SUI": "FC Bellinzona 47,SC Chiasso 47,FC Locarno 46,SC Köniz 46,FC Baden 45,SC Schaffhausen 45,FC Biel 45,SC Kreuzlingen 44,FC Wohlen 44,SC Delémont 43,FC Fribourg 43,SC Monthey 43", "GRE": "Ioannina FC 47,Chania FC 47,Rethymno FC 46,Kavala FC 46,Veria FC 45,Lamia FC 45,Trikala FC 45,Chalkida FC 44,Komotini FC 44,Rhodes FC 43,Edessa FC 43,Larissa Nea FC 43", "DEN": "Skive IF 47,Thisted BK 47,Holbæk FC 46,Næstved IF 46,Roskilde BK 45,Helsingør FC 45,Hjørring IF 45,Nykøbing BK 44,Slagelse FC 44,Svendborg IF 43,Brabrand BK 43,Kalundborg FC 43"};
-const GEN2={"BOL": "Club Sucre 52,Deportivo Tarija 52,Real Trinidad 51,Atlético Cobija 50,Club Montero 50,Deportivo Warnes 50,Real Camiri 49,Atlético Villazón 48,Club Uyuni 48,Deportivo Llallagua 48,Real Riberalta 47,Atlético Yacuiba 46", "VEN": "Club Maturín 52,Deportivo Barinas 52,Atlético Cumaná 51,Unión Barquisimeto 50,Club Valencia 50,Deportivo Maracay 50,Atlético Mérida 49,Unión Punto Fijo 48,Club Guanare 48,Deportivo Coro 48", "EGY": "Tanta SC 52,Mansoura Club 52,Damietta SC 51,Fayoum Club 50,Beni Suef SC 50,Minya Club 50,Sohag SC 49,Qena Club 48,Luxor SC 48,Aswan Club 48,Ismailia SC 47,Suez Club 46", "MAR": "Oujda FC 52,Olympique Safi 52,Union Nador 51,Laayoune FC 50,Olympique Khouribga 50,Union Kenitra 50,Settat FC 49,Olympique Beni Mellal 48,Union Larache 48,Taza FC 48,Olympique Errachidia 47,Union Ouarzazate 46"};
-const WR_TXT={BOL:'Rebaixamento: os 2 últimos caem para a Segunda divisão (clubes gerados).',VEN:'Rebaixamento: os 2 últimos caem para a Segunda divisão (clubes gerados).',EGY:'Rebaixamento: os 3 últimos caem para a Segunda divisão (clubes gerados).',MAR:'Rebaixamento: os 3 últimos caem para a Segunda divisão (clubes gerados).'};
+const CFG={"res2": {"URU": 2, "PAR": 2, "ECU": 2, "KSA": 2, "NED": 2, "BEL": 1, "TUR": 3, "KOR": 1, "CHN": 1, "RSA": 2, "AUT": 1, "SUI": 1, "GRE": 2, "DEN": 2}, "resc": {"URU": 6, "PAR": 6, "ECU": 8, "KSA": 12, "NED": 12, "BEL": 8, "TUR": 10, "KOR": 12, "CHN": 6, "RSA": 6, "AUT": 8, "SUI": 8, "GRE": 8, "DEN": 8}, "gen2": {"BOL": [2, 8], "VEN": [2, 8], "EGY": [3, 10], "MAR": [3, 10]}, "real3": {"ESP": {"c": 16, "up": 4}, "ITA": {"c": 16, "up": 4}, "GER": {"c": 16, "up": 2, "chal": [3, 3]}, "FRA": {"c": 18, "up": 3}, "POR": {"c": 16, "up": 2}, "ARG": {"c": 16, "up": 2}, "JPN": {"c": 16, "up": 3}, "SCO": {"c": 10, "up": 1}}};
+const POOL={"URU": "Atenas de San Carlos 47,Oriental de Montevideo 47,Salus 46,Frontera Rivera 46,Huracán (URU) 45,Deportivo Colonia 45", "PAR": "Atlético Colegiales 47,12 de Octubre 47,Martín Ledesma 46,Sportivo Iteño 46,Resistencia SC 45,River Plate (PAR) 45", "ECU": "Imbabura 47,Atlético Santo Domingo 47,Deportivo Quito 46,Fuerza Amarilla 46,Manta FC 45,Clan Juvenil 45,Santa Rita 45,Cumbayá FC 44", "KSA": "Al-Kawkab 47,Al-Sahel 47,Al-Jubail 46,Al-Mujazzal 46,Al-Nahda 45,Al-Shoulla 45,Al-Thoqbah 45,Al-Taraji 44,Hajer 44,Al-Sharq 43,Al-Qous 43,Al-Washm 43", "NED": "Katwijk 47,Spakenburg 47,Rijnsburgse Boys 46,Hoogeveen 46,GVVV 45,Barendrecht 45,Kozakken Boys 45,Hoek 44,Lisse 44,Quick Boys 43,IJsselmeervogels 43,Scheveningen 43", "BEL": "Dessel Sport 47,Heist 47,Knokke 46,Lierse 46,Tienen 45,Olympic Charleroi 45,Rupel Boom 45,Hamme 44", "TUR": "Altınordu 47,Amed SK 47,Menemenspor 46,Sakaryaspor 46,Kırklarelispor 45,Karacabey Belediyespor 45,Fethiyespor 45,Ankaraspor 44,Somaspor 44,Beyoğlu Yeni Çarşı 43", "KOR": "Gyeongju KHNP 47,Daejeon Korail 47,Gimhae FC 46,Mokpo City 46,Pocheon Citizen 45,Yangju Citizen 45,Siheung Citizen 45,Gangneung City 44,Chuncheon FC 44,Pyeongtaek Citizen 43,Yeoju FC 43,Namyangju Citizen 43", "CHN": "Hubei Istar 47,Sichuan Jiuniu 47,Jiangxi Lushan 46,Guangxi Pingguo 46,Taizhou Yuanda 45,Wuxi Wugou 45", "RSA": "Cape Town Spurs 47,Milford FC 47,Pretoria Callies 46,Tshakhuma Tsha Madzivhandila 46,JDR Stars 45,Venda FC 45", "AUT": "Dornbirn 47,SV Horn 47,SV Lafnitz 46,Vorwärts Steyr 46,Stripfing 45,Kufstein 45,Oberwart 45,Gleisdorf 44", "SUI": "Bellinzona 47,Chiasso 47,Wohlen 46,Schaffhausen 46,Biel-Bienne 45,Cham 45,Breitenrain 45,Baden 44", "GRE": "Ionikos 47,Panachaiki 47,Apollon Smyrnis 46,Egaleo 46,Chania 45,Ergotelis 45,Doxa Drama 45,Panegialios 44", "DEN": "Skive IK 47,Thisted FC 47,Holbæk B&I 46,Næstved BK 46,Roskilde 45,Fremad Amager 45,B93 45,Nykøbing FC 44"};
+const GEN2={"BOL": "Ciclón 52,Atlético Bermejo 52,Fancesa 51,Deportivo Kenty 50,Universitario de Pando 50,Mamoré 50,Stormers 49,Vaca Díez 48", "VEN": "Hermanos Colombo 52,Titanes FC 52,Yaracuyanos 51,UCV FC 50,Atlético El Vigía 50,Estudiantes de Caracas 50,Ureña SC 49,Llaneros de Guanare 48", "EGY": "Tanta 52,Haras El Hodoud 52,Telecom Egypt 51,Aswan SC 50,Mansoura 50,El Entag El Harby 50,Kahrabaa Ismailia 49,Nasr Cairo 48,Dayrout 48,Qena SC 48", "MAR": "Olympic Safi 52,Chabab Atlas Khénifra 52,Union Touarga 51,Rachad Bernoussi 50,Raja Beni Mellal 50,Mouloudia Oujda 50,Racing Casablanca 49,Union Sidi Kacem 48,Chabab Mohammédia 48,Ittihad Khemisset 48"};
+const WR_TXT={BOL:'Rebaixamento: os 2 últimos caem para a Segunda divisão.',VEN:'Rebaixamento: os 2 últimos caem para a Segunda divisão.',EGY:'Rebaixamento: os 3 últimos caem para a Segunda divisão.',MAR:'Rebaixamento: os 3 últimos caem para a Segunda divisão.'};
 for(const k in CFG.res2){const n=CFG.res2[k],T=PYR[k];if(!T||T.length!==2)continue;
-  T[1].dn=n;T.push({n:'Divisão inferior (reserva)',c:12,up:n,res:1});PD[k]=PD[k]||[0];PD[k][2]=POOL[k]}
+  T[1].dn=n;T.push({n:'Divisão inferior',c:CFG.resc[k],up:n,res:1});PD[k]=PD[k]||[0];PD[k][2]=POOL[k]}
 for(const k in CFG.gen2){const [n,c]=CFG.gen2[k],T=PYR[k];if(!T||T.length!==1)continue;
-  T[0].dn=n;T.push({n:'Segunda divisão (clubes gerados)',c,up:n});PD[k]=[0,GEN2[k]];
+  T[0].dn=n;T.push({n:'Segunda divisão',c,up:n});PD[k]=[0,GEN2[k]];
   if(WRULES[k]){WRULES[k].rel=n;WRULES[k].txt=(WRULES[k].txt||[]).filter(x=>!/rebaix|2ª divis|descenso/i.test(x)).concat([WR_TXT[k]])}}
 for(const k in CFG.real3){const c=CFG.real3[k],T=PYR[k];if(!T||T.length!==3)continue;const t=T[2];
   t.g=1;t.c=c.c;t.up=c.up;delete t.po;delete t.pool;if(c.chal)t.chal=c.chal;else delete t.chal;t.res=1;T[1].dn=c.up}
@@ -10551,6 +10551,207 @@ const _vl68=vLiga;vLiga=function(){
   for(const x of hide)h=h.replace(new RegExp('<button[^>]*data-a="abd" data-v="'+x.d+'"[^>]*>[^<]*</button>'),'');
   return h;
 };
+})();
+/* ext69 (v89): sigla do escudo sempre com 3 letras; Times > Internacionais (elenco de clubes de fora, estimado pela força) */
+(function(){
+/* ---------- 1) escudo: sempre 3 letras a partir do nome ---------- */
+function sig3(nm){
+  const raw=String(nm||'').normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/\([A-Z]{3}\)/g,'');
+  const w=raw.replace(/^(Al[- ]|FC |CF |SC |AC |AS |CD |CA |Real |Club |Atletico |Deportivo |Deportes |Sporting |Racing |Santiago |Universidad de |Union |AFC |St\. )/i,'').replace(/[^A-Za-z]/g,'').toUpperCase();
+  return (w+'XXX').slice(0,3);
+}
+globalThis.sig3=sig3;
+const _cr69=crest;
+crest=function(c,s){
+  try{if(c&&!/^[A-Z]{3}$/.test(c.sig||'')){c=Object.assign({},c,{sig:sig3(c.name||c.n)})}}catch(e){}
+  return _cr69.call(this,c,s);
+};
+
+/* ---------- 2) elenco estimado de clube de fora ---------- */
+function rng(seed){let a=seed>>>0;return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function wSquad69(k,lc){
+  const W=G.wd;W.sq=W.sq||{};
+  const cached=W.sq[lc.id];if(cached&&cached.s===G.season&&cached.r===Math.round(lc.r))return cached.l;
+  /* clube que o usuário já "naturalizou" (carreira no exterior): usa o elenco de verdade */
+  const real=G.clubs.find(c=>c.name===lc.n&&c.squad&&c.squad.length>=18&&c.id>=brn());
+  let l;
+  if(real){l=real.squad.map(id=>{const p=P(id);return {n:p.name,role:p.role,age:p.age,ovr:p.ovr,nat:p.nat||k,real:p.real}})}
+  else{
+    const R=rng(wHash(lc.n)*7+G.season*131),g=()=>{let u=0,v=0;while(!u)u=R();v=R();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v)};
+    const rp=lc.r,bo=rp>=66?66+(rp-66)*0.5:rp;
+    const nmk=NMP[k]||NMP.BRA||Object.values(NMP)[0];
+    const ri2=(a,b)=>a+Math.floor(R()*(b-a+1));
+    l=[];const used=new Set();
+    for(const role in PLAN){
+      const nst={GOL:1,ZAG:2,LAT:2,VOL:2,MEI:2,PNT:2,ATA:2}[role];
+      for(let i=0;i<PLAN[role];i++){
+        let nat=k;if(R()>.74){const ks=Object.keys(NMP);nat=ks[ri2(0,ks.length-1)]}
+        const nm=NMP[nat]||nmk;let name='';
+        for(let t=0;t<20;t++){name=nm[0][ri2(0,nm[0].length-1)]+' '+nm[1][ri2(0,nm[1].length-1)];if(!used.has(name))break}
+        used.add(name);
+        l.push({n:name,role,age:Math.max(18,Math.min(37,Math.round(26+g()*5))),ovr:Math.max(42,Math.min(92,Math.round(bo+(i<nst?2.5:-6)+g()*3.6))),nat,real:false});
+      }
+    }
+    /* craques reais que jogam nesse clube entram no lugar do melhor gerado da posição */
+    try{for(const s of STARS57){
+      if(s[2]!==lc.n)continue;
+      const cand=l.filter(x=>x.role===s[1]&&!x.real).sort((a,b)=>b.ovr-a.ovr)[0];
+      const it={n:s[0],role:s[1],age:s[4],ovr:s[3],nat:s[5],real:true};
+      if(cand)l[l.indexOf(cand)]=it;else l.push(it)}}catch(e){}
+  }
+  const ord={GOL:0,ZAG:1,LAT:2,VOL:3,MEI:4,PNT:5,ATA:6};
+  l.sort((a,b)=>ord[a.role]-ord[b.role]||b.ovr-a.ovr);
+  W.sq[lc.id]={s:G.season,r:Math.round(lc.r),l};
+  return l;
+}
+function findWT(){
+  const s=S.wt;if(!s)return null;
+  const L=G.wd&&G.wd.lg[s.k];if(!L)return null;
+  const lc=L.cl.find(c=>c.id===s.id);return lc?{k:s.k,L,lc}:null;
+}
+function wtView(){
+  const f=findWT();if(!f){S.wt=null;return null}
+  const {k,lc}=f,meta=WLD.find(x=>x.k===k)||{};
+  const sq=wSquad69(k,lc);
+  const val=sq.reduce((s,p)=>s+valueOf(p),0);
+  const pos=f.L.cl.slice().sort((a,b)=>(b.P||0)-(a.P||0)||(b.GP-b.GC)-(a.GP-a.GC)).findIndex(c=>c.id===lc.id)+1;
+  const rows=sq.map(p=>`<div class="prow"><span class="pos">${ROLEABB[p.role]}</span><span class="nm">${esc(p.n)}${p.real?'*':''}<small>${mi(valueOf(p))} · ${esc(p.nat||k)}</small></span><span class="age">${p.age}</span><span class="ovr">${p.ovr}</span><span></span></div>`).join('');
+  return `<div class="wrap"><button class="back" data-a="wtclose">‹ Times</button><div class="card pf">${crest(lc,48)}<div class="pfi"><h3>${esc(lc.n)}</h3><div class="k">${meta.f||''} ${esc(meta.n||k)} · ${pos}º · força ${lc.r.toFixed(0)} · elenco ${mi(val)}</div></div></div><div class="plist">${rows}</div><p class="foot">Elenco estimado pela força do clube (craques reais marcados com *). Muda a cada temporada.</p></div>`;
+}
+const _vt69=vTimes;
+vTimes=function(){
+  if(S.wt){const v=wtView();if(v)return v}
+  let h=_vt69.apply(this,arguments);
+  try{
+    if(S.team===null&&G.wd&&G.wd.lg){
+      const mk=`<div class="folder" style="opacity:.45">📁 Internacionais (em breve)</div>`;
+      let w=`<button class="folder" data-a="tree" data-k="world">${S.open.world?'📂':'📁'} 🌍 Internacionais</button>`;
+      if(S.open.world){
+        for(const L of WLD){
+          if(L.k==='SEL'||!G.wd.lg[L.k])continue;
+          w+=`<button class="folder sub" data-a="tree" data-k="w_${L.k}">${S.open['w_'+L.k]?'📂':'📁'} ${L.f||''} ${esc(L.n)}</button>`;
+          if(S.open['w_'+L.k])w+=G.wd.lg[L.k].cl.slice().sort((a,b)=>b.r-a.r).map(c=>`<button class="folder sub2" data-a="wtopen" data-k="${L.k}" data-id="${c.id}">${crest(c,16)} ${esc(c.n)}</button>`).join('');
+        }
+      }
+      h=h.replace(mk,w);
+    }
+  }catch(e){}
+  return h;
+};
+Object.assign(A,{
+  wtopen(d){S.wt={k:d.k,id:+d.id};render();window.scrollTo(0,0)},
+  wtclose(){S.wt=null;render()}
+});
+const _tr69=A.tree;
+A.tree=function(d){if(d&&d.k==='close')S.wt=null;return _tr69.apply(this,arguments)};
+})();
+/* ext70 (v89): o auxiliar e a comissão avisam e sugerem (sem dado na tela). O dado continua só por dentro do motor.
+   Pilares: 1) jogo de técnico (tática, elenco)  2) financeiro  3) comissão/auxiliares que avisam o que falta. O jogador decide; o auxiliar só alerta. */
+(function(){
+const hurtN=c=>c.squad.filter(id=>P(id).inj>0).length;
+function xiScore(c,f){
+  const slots=slotsOf(f),wn=wantsOf(f),used=new Set();let t=0;
+  slots.forEach((sl,i)=>{const id=bestForSlot(c.squad,sl,used,c.phil,wn[i]);if(id!=null){used.add(id);t+=slotScore(P(id),sl,c.phil,wn[i])}});
+  return t;
+}
+globalThis.staffAlerts=function(){
+  const out=[];
+  try{
+    const c=userClub();if(!c||!G.med)return out;
+    const m=G.med,hurt=hurtN(c),n=m.season.n;
+    const miss=[];if(!m.doc)miss.push('médico');if(!m.fisio)miss.push('fisioterapeuta');if(!m.prep)miss.push('preparador físico');
+    if(miss.length&&(hurt>=1||n>=2)){
+      out.push({k:'med',sev:hurt>=3?3:2,ic:'🩺',txt:`Professor, a gente tá sem ${miss.join(' e ')} e já são ${n} lesões na temporada${hurt?` (${hurt} no DM agora)`:''}. Sem essa estrutura o pessoal demora mais pra voltar e se machuca mais.`,btn:'Ver Médico',a:'nav',v:'medico'});
+    }else if((m.fisio<=1||m.doc<=1)&&hurt>=4){
+      out.push({k:'med',sev:2,ic:'🩺',txt:`${hurt} jogadores no departamento médico. Vale reforçar a comissão médica.`,btn:'Ver Médico',a:'nav',v:'medico'});
+    }
+    const st=(typeof stBox==='function')?stBox():null;
+    const xi=c.squad.slice(0,11).map(id=>P(id));const en=xi.reduce((s,p)=>s+p.en,0)/Math.max(1,xi.length);
+    if(st&&!st.pf&&en<72)out.push({k:'pf',sev:2,ic:'🏃',txt:`Sem preparador físico e o time titular tá com energia média de ${Math.round(en)}%. Contrate um na Comissão.`,btn:'Ver Comissão',a:'nav',v:'staff'});
+    const tired=xi.filter(p=>p.en<55&&p.inj===0);
+    if(tired.length>=2)out.push({k:'cans',sev:2,ic:'😮‍💨',txt:`${tired.slice(0,3).map(p=>lastName(p.name)).join(', ')} ${tired.length>1?'estão':'está'} no limite físico. Considere poupar no próximo jogo.`,btn:'Ver Tática',a:'nav',v:'tatica'});
+    for(const role of ['GOL','ZAG','LAT','VOL','MEI','PNT','ATA']){
+      const ok=c.squad.filter(id=>P(id).role===role&&P(id).inj===0).length,need={GOL:2,ZAG:3,LAT:2,VOL:2,MEI:2,PNT:2,ATA:2}[role];
+      if(ok<need){out.push({k:'pos'+role,sev:2,ic:'🔍',txt:`Elenco curto de ${ROLEABB[role]}: só ${ok} saudável(is). Procure reforço no mercado.`,btn:'Ver Procura',a:'nav',v:'mercado'});break}
+    }
+    /* formação melhor para o elenco */
+    const cur=xiScore(c,c.formation);let best=c.formation,bs=cur;
+    for(const f of Object.keys(FORMS)){const s=xiScore(c,f);if(s>bs+0.01){bs=s;best=f}}
+    if(best!==c.formation&&bs-cur>=6)out.push({k:'form',sev:1,ic:'📋',txt:`Olhando o seu elenco, o ${best} encaixa melhor que o ${c.formation} (time titular uns ${Math.round(bs-cur)} pontos mais forte).`,btn:'Usar '+best,a:'auxform',f:best});
+    try{const pay=payroll(c),bud=wageBudget();if(pay>bud*1.02)out.push({k:'folha',sev:2,ic:'💸',txt:`A folha (${mi(pay)}) tá acima do teto da diretoria (${mi(bud)}). Cuidado com novas contratações.`,btn:'Ver Comissão',a:'nav',v:'staff'})}catch(e){}
+    if(G.fin&&G.fin.caixa<0)out.push({k:'caixa',sev:3,ic:'🚨',txt:`Caixa negativo (${mi(G.fin.caixa)}). A diretoria vai cobrar. Segura as contratações.`,btn:'Ver Clube',a:'nav',v:'clube'});
+  }catch(e){}
+  return out.sort((a,b)=>b.sev-a.sev);
+};
+const cardHtml=(l,max)=>l.slice(0,max).map(a=>`<div class="tip"><p>${a.ic} ${esc(a.txt)}</p><div class="row"><button class="btn sm" data-a="${a.a}"${a.v?` data-v="${a.v}"`:''}${a.f?` data-f="${esc(a.f)}"`:''}>${esc(a.btn)}</button></div></div>`).join('');
+Object.assign(A,{auxform(d){const c=userClub();if(!FORMS[d.f])return;c.formation=d.f;autoPick(c);save();toast('Formação trocada pra '+d.f);render()}});
+
+/* Início: até 3 avisos do auxiliar */
+const _vi70=vInicio;vInicio=function(){
+  let h=_vi70.apply(this,arguments);
+  try{const l=staffAlerts();if(l.length){const nm=G.asst?G.asst.name:'Auxiliar';
+    const card=`<div class="card x9"><div class="k">🧢 ${esc(nm)} avisa</div>${cardHtml(l,3)}${l.length>3?`<button class="btn sm ghost" data-a="nav" data-v="assist">Ver todos os avisos (${l.length})</button>`:''}</div>`;
+    h=h.replace('<div class="hl">',m=>m+card)}}catch(e){}
+  return h;
+};
+
+/* tela do Auxiliar: sem dado; avisos fixos no topo + dicas do dia a dia */
+const clean=h=>String(h).replace(/🎲 ?\d+[+\-−]?\d* vs \d+:? ?/g,'').replace(/<small class="k" style="align-self:center">[^<]*<\/small>/g,'').replace(/🎲 ?/g,'').replace(/>Tentar</g,'>Aplicar<')
+  .replace(/<p class="news">Seguir a dica é rolar[^<]*<\/p>/,'<p class="news">O auxiliar aponta o que ele viu. Quem decide é você: aplicar a dica ou ignorar.</p>');
+const _va70=vAssist;vAssist=function(){
+  let h=clean(_va70.apply(this,arguments));
+  try{const l=staffAlerts();if(l.length)h=h.replace(/(<h2>[^<]*<\/h2>)/,'$1<div class="card x9"><div class="k">Pendências da comissão</div>'+cardHtml(l,8)+'</div>')}catch(e){}
+  return h;
+};
+if(typeof vVest==='function'){const _vv70=vVest;vVest=function(){return clean(_vv70.apply(this,arguments))}}
+/* mensagens de resultado sem o rastro do dado */
+const _t70=toast;toast=function(t){return _t70(String(t).replace(/🎲 ?\d+[+\-−]?\d* vs \d+:? ?/,''))};
+const _tg70=A.tipgo;A.tipgo=function(d){const r=_tg70.apply(this,arguments);try{for(const t of G.tips)if(t.res)t.res=t.res.replace(/🎲 ?\d+[+\-−]?\d* vs \d+:? ?/,'')}catch(e){}return r};
+
+/* selo no ícone do Auxiliar: dicas novas + avisos */
+const _r70=render;render=function(){
+  _r70.apply(this,arguments);
+  try{const n=staffAlerts().length;const b=document.querySelector('.ic [data-v="assist"]');
+    if(b&&n){let s=b.querySelector('.badge13');if(!s){s=document.createElement('span');s.className='badge13';b.appendChild(s)}s.textContent=String((G.tips||[]).filter(t=>t.state==='new').length+n)}}catch(e){}
+};
+})();
+/* ext71 (v89): tutorial rápido. Todo save novo oferece "Fazer tutorial" ou "Pular"; dá pra refazer em Opções. */
+(function(){
+const STEPS=[
+ {v:'inicio',t:'1/7 · Seu clube',b:'Aqui é a base: elenco, caixa, próximo jogo e os avisos do auxiliar. Toda decisão do jogo parte daqui.'},
+ {v:'tatica',t:'2/7 · Tática',b:'Escolha a formação, o estilo e quem joga. Troque jogadores tocando neles. O jogo mostra quem encaixa melhor em cada posição.'},
+ {v:'mercado',t:'3/7 · Contratar e vender',b:'Em Procura você acha reforços e negocia. Cada clube pede um preço: ofereça, e se aceitar, o jogador é seu. Dá pra vender quem sobra também.'},
+ {v:'clube',t:'4/7 · Dinheiro',b:'O clube tem caixa, folha salarial e dívida. A diretoria cobra resultado e limita gastos. Às vezes a meta é só ficar no meio da tabela e fechar no azul.'},
+ {v:'staff',t:'5/7 · Comissão técnica',b:'Contrate preparador físico, analista, scouting. Sem médico e fisioterapeuta o time se lesiona mais. O auxiliar avisa quando falta alguém.'},
+ {v:'assist',t:'6/7 · Auxiliar',b:'Ele dá dicas e alerta sobre elenco, lesões e formação. Quem decide é você: aplica a dica ou ignora.'},
+ {v:'inicio',t:'7/7 · Bora jogar',b:'Toque em JOGAR (botão verde embaixo) para ir pra partida. Depois de cada rodada você vê o balanço financeiro e o jornal. Seu save é automático.'}
+];
+const css='.tut71{position:fixed;left:0;right:0;bottom:72px;z-index:99999;display:flex;justify-content:center;padding:0 12px;pointer-events:none}.tut71 .bx{pointer-events:auto;max-width:460px;width:100%;background:var(--card,#fff);color:var(--fg,#14201a);border:2px solid var(--accent,#0a9a4a);border-radius:16px;padding:14px 14px 12px;box-shadow:0 10px 40px rgba(0,0,0,.45)}.tut71 h3{margin:0 0 6px;font-size:16px}.tut71 p{margin:0 0 10px;font-size:14px;line-height:1.4}.tut71 .row{display:flex;gap:8px;flex-wrap:wrap}.tut71.ask{bottom:0;top:0;align-items:center;background:rgba(0,0,0,.55);pointer-events:auto}';
+function overlay(){
+  let el=document.getElementById('tut71');if(el)el.remove();
+  const t=S.tut;if(!t)return;
+  el=document.createElement('div');el.id='tut71';
+  if(t.ask){el.className='tut71 ask';el.innerHTML=`<div class="bx"><h3>⚽ Quer um tutorial rápido?</h3><p>Leva 1 minutinho e explica o básico: tática, mercado, dinheiro e comissão. Dá pra refazer depois em Opções.</p><div class="row"><button class="btn" data-a="tutgo">Fazer tutorial</button><button class="btn ghost" data-a="tutskip">Pular</button></div></div>`}
+  else{const s=STEPS[t.i];if(!s){S.tut=null;return}
+    el.className='tut71';el.innerHTML=`<div class="bx"><h3>${esc(s.t)}</h3><p>${esc(s.b)}</p><div class="row">${t.i>0?'<button class="btn sm ghost" data-a="tutprev">‹ Voltar</button>':''}<button class="btn sm" data-a="tutnext">${t.i===STEPS.length-1?'Terminar':'Próximo ›'}</button><button class="btn sm ghost" data-a="tutskip">Sair</button></div></div>`}
+  document.body.appendChild(el);
+  el.querySelectorAll('[data-a]').forEach(b=>b.onclick=ev=>{ev.stopPropagation();const f=A[b.dataset.a];if(f)f({...b.dataset})});
+}
+function go(i){const s=STEPS[i];S.tut={i};G.view=s.v;S.modal=null;S.prof=null;S.paper=false;render();window.scrollTo(0,0)}
+Object.assign(A,{
+  tutgo(){go(0)},
+  tutnext(){const i=(S.tut&&S.tut.i||0)+1;if(i>=STEPS.length){A.tutskip();toast('Tutorial concluído. Boa sorte, professor!');return}go(i)},
+  tutprev(){go(Math.max(0,(S.tut&&S.tut.i||0)-1))},
+  tutskip(){S.tut=null;try{G.tutDone=true;save()}catch(e){}render()},
+  tutopen(){S.modal=null;go(0)}
+});
+if(!document.getElementById('tutcss71')){const st=document.createElement('style');st.id='tutcss71';st.textContent=css;document.head.appendChild(st)}
+/* save novo pela tela de criação: pergunta se quer o tutorial */
+const _bg71=A.begin;A.begin=function(){const mp=!!(S.mpSame||G&&G.mps);const r=_bg71.apply(this,arguments);
+  try{if(!mp&&!S.mpSame&&!(G&&G.mps)&&G&&G.user!=null&&!G.tutDone&&!G._tutAsked){G._tutAsked=true;S.tut={ask:true};render()}}catch(e){}return r};
+const _r71=render;render=function(){_r71.apply(this,arguments);try{overlay()}catch(e){}};
+const _vo71=vOpcoes;vOpcoes=function(){let h=_vo71.apply(this,arguments);
+  return h.replace(/<\/div>\s*$/,`<div class="card"><div class="k">Tutorial</div><p class="news">Rever o passo a passo básico do jogo.</p><button class="btn big ghost" data-a="tutopen">📘 Fazer o tutorial</button></div></div>`)};
 })();
 newWorld();G.phase='start';render();
 </script>

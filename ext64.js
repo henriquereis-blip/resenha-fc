@@ -143,7 +143,7 @@ const _vm64=vModal;vModal=function(){
   let h=_vm64.apply(this,arguments);
   try{const md=S.modal;if(md&&md.t==='round'&&S.rfin){
     const r=S.rfin,k='<button class="btn big" data-a="roundok">';
-    const card=`<div class="card"><div class="k">💰 Dinheiro da rodada</div><div class="res"><span>Entrou</span><b class="ok">+${mi(r.in)}</b></div><div class="res"><span>Saiu</span><b class="bad">${mi(r.out)}</b></div><div class="res"><span>Saldo</span><b class="${r.net>=0?'ok':'bad'}">${r.net>=0?'+':''}${mi(r.net)}</b></div></div>`;
+    const card=`<div class="card"><div class="k">💰 Balanço financeiro da rodada</div><div class="res"><span>Entrou</span><b class="ok">+${mi(r.in)}</b></div><div class="res"><span>Saiu</span><b class="bad">${mi(r.out)}</b></div><div class="res"><span>Saldo</span><b class="${r.net>=0?'ok':'bad'}">${r.net>=0?'+':''}${mi(r.net)}</b></div></div>`;
     if(h.includes(k))h=h.replace(k,card+k);
   }}catch(e){}
   return h;
