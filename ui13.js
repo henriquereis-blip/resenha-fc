@@ -45,7 +45,7 @@
 
 const ROLEKEY=f=>(f||'').replace(/ (def|Ofen\.|Alas)$/,'');
 let svgN=0;
-const shirtSvg=(c,kind)=>{const k=kitOf(c,kind||'home'),id='sg'+(svgN++),a=k.a,b=k.b;
+let shirtSvg=(c,kind)=>{const k=kitOf(c,kind||'home'),id='sg'+(svgN++),a=k.a,b=k.b;
   let fill=a,defs='';
   if(k.pat==='v'){defs=`<pattern id="${id}" width="8" height="8" patternUnits="userSpaceOnUse"><rect width="8" height="8" fill="${a}"/><rect width="4" height="8" fill="${b}"/></pattern>`;fill=`url(#${id})`}
   else if(k.pat==='h'){defs=`<pattern id="${id}" width="8" height="8" patternUnits="userSpaceOnUse"><rect width="8" height="8" fill="${a}"/><rect width="8" height="4" fill="${b}"/></pattern>`;fill=`url(#${id})`}

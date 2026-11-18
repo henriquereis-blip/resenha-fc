@@ -269,7 +269,7 @@ function pickScorer(side){
 const TUNE={rate:0.128,ex:1.0,mx:0.3,hf:1.4,af:0.86,conv:0.095,cx:1.0,yc:0.02,rc:0.0002,yr:0.02,ymk:0.0005,pen:0.0012};
 function stepMinute(m){
   m.min++;
-  for(const s of [m.h,m.a])for(const id of s.lineup)m.en[id]=Math.max(10,m.en[id]-0.2*mgrDrain(s));
+  for(const s of [m.h,m.a])s.lineup.forEach((id,i)=>{m.en[id]=Math.max(10,m.en[id]-(s.slots[i]==='GK'?0.04:0.12)*mgrDrain(s))});
   const pw={h:power(m,m.h),a:power(m,m.a)};
   const md={h:styleMod(m.h.style,m.a.style),a:styleMod(m.a.style,m.h.style)};
   for(const k of ['h','a']){
@@ -327,7 +327,7 @@ function applyMatch(m){
     const won=k==='h'?m.hg>m.ag:m.ag>m.hg,lost=k==='h'?m.hg<m.ag:m.ag<m.hg;
     for(const id of new Set([...s.lineup,...s.used,...s.outs])){
       const p=P(id);p.games++;p.rsum+=m.rt[id];p.rn++;
-      p.en=clamp(Math.round(m.en[id]-4),20,100);
+      p.en=clamp(Math.round(m.en[id]-2),20,100);
       p.mor=clamp(p.mor+(won?3:lost?-3:0),30,100);
       if(Math.random()<(p.en<45?0.07:0.03))p.inj=ri(1,6);
     }
@@ -527,7 +527,7 @@ function finishRound(){
   const uc=userClub();const us=userSide(um);const s=um[us];
   userClub().formation=s.formation;userClub().style=s.style;
   financeRound(um);boardRound(um);train();
-  for(const p of Object.values(G.players)){if(p.inj>0)p.inj--;if(p.club>=0)p.en=clamp(p.en+10,0,100)}
+  for(const p of Object.values(G.players)){if(p.inj>0)p.inj--;if(p.club>=0)p.en=clamp(p.en+(p.pos==='GK'||p.role==='GOL'?18:15),0,100)}
   const rest=uc.squad.filter(id=>!s.lineup.includes(id)&&!s.bench.includes(id));
   uc.squad=[...s.lineup,...s.bench,...rest];
   G.offers=G.offers.filter(o=>o.exp>G.round);

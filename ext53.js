@@ -51,7 +51,7 @@ function finishNc(){
   const gf=us==='h'?um.hg:um.ag,ga=us==='h'?um.ag:um.hg;
   for(const m of R.ms)for(const [k,s] of [['h',m.h],['a',m.a]]){
     const won=k==='h'?m.hg>m.ag:m.ag>m.hg,lost=k==='h'?m.hg<m.ag:m.ag<m.hg;
-    for(const id of new Set([...s.lineup,...s.used,...s.outs])){const p=P(id);p.en=clamp(Math.round(m.en[id]-4),20,100);p.mor=clamp(p.mor+(won?3:lost?-3:0),30,100);if(Math.random()<(p.en<45?.06:.025))p.inj=ri(1,5)}}
+    for(const id of new Set([...s.lineup,...s.used,...s.outs])){const p=P(id);p.en=clamp(Math.round(m.en[id]-2),20,100);p.mor=clamp(p.mor+(won?3:lost?-3:0),30,100);if(Math.random()<(p.en<45?.06:.025))p.inj=ri(1,5)}}
   let pen=null,w=um.hg>um.ag?um.h.club.id:um.hg<um.ag?um.a.club.id:null;
   if(w===null){pen=shootout(um.h.club.rep,um.a.club.rep);w=pen[0]>pen[1]?um.h.club.id:um.a.club.id}
   G.fixtures[G.round]=G._lg;G._lg=null;G._x=null;

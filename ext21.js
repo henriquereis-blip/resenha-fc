@@ -133,7 +133,7 @@ function finishEst(){
   const gf=us==='h'?um.hg:um.ag,ga=us==='h'?um.ag:um.hg;const ko=x.ko;
   for(const [k,s] of [['h',um.h],['a',um.a]]){const club=s.club;if(club.fx)continue;
     const won=k==='h'?um.hg>um.ag:um.ag>um.hg,lost=k==='h'?um.hg<um.ag:um.ag<um.hg;
-    for(const id of new Set([...s.lineup,...s.used,...s.outs])){const p=P(id);p.en=clamp(Math.round(um.en[id]-4),20,100);p.mor=clamp(p.mor+(won?3:lost?-3:0),30,100);if(Math.random()<(p.en<45?.06:.025))p.inj=ri(1,5)}}
+    for(const id of new Set([...s.lineup,...s.used,...s.outs])){const p=P(id);p.en=clamp(Math.round(um.en[id]-2),20,100);p.mor=clamp(p.mor+(won?3:lost?-3:0),30,100);if(Math.random()<(p.en<45?.06:.025))p.inj=ri(1,5)}}
   let pen=null,w=um.hg>um.ag?um.h.club.id:um.hg<um.ag?um.a.club.id:null;
   if(w===null&&ko){pen=shootout(um.h.club.rep,um.a.club.rep);w=pen[0]>pen[1]?um.h.club.id:um.a.club.id}
   const ur={h:um.h.club.id,a:um.a.club.id,hg:um.hg,ag:um.ag,pen,w,u:true};

@@ -58,7 +58,7 @@ const _fr20=finishRound;finishRound=function(){
   try{if(ok){
     sqcTick(played,gf,ga);sqcFriction();
     const c=userClub();
-    for(const id of c.squad){const p=P(id);if(played.has(id)){p.cons=(p.cons||0)+1;if(p.cons>=4)p.en=clamp(p.en-Math.min(8,2*(p.cons-3)),15,100)}else p.cons=0}
+    for(const id of c.squad){const p=P(id);if(played.has(id)){p.cons=(p.cons||0)+1;if(p.cons>=6&&p.pos!=='GK'&&p.role!=='GOL')p.en=clamp(p.en-Math.min(4,p.cons-5),15,100)}else p.cons=0}
   }}catch(e){console.error('ext20 '+e.message)}
   return out;
 };

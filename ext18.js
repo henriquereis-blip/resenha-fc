@@ -114,7 +114,7 @@ function finishExtra(){
   const results=R.ms.map((m,i)=>{
     for(const [k,s] of [['h',m.h],['a',m.a]]){const club=s.club;if(club.fx)continue;
       const won=k==='h'?m.hg>m.ag:m.ag>m.hg,lost=k==='h'?m.hg<m.ag:m.ag<m.hg;
-      for(const id of new Set([...s.lineup,...s.used,...s.outs])){const p=P(id);p.en=clamp(Math.round(m.en[id]-4),20,100);p.mor=clamp(p.mor+(won?3:lost?-3:0),30,100);if(Math.random()<(p.en<45?.06:.025))p.inj=ri(1,5)}}
+      for(const id of new Set([...s.lineup,...s.used,...s.outs])){const p=P(id);p.en=clamp(Math.round(m.en[id]-2),20,100);p.mor=clamp(p.mor+(won?3:lost?-3:0),30,100);if(Math.random()<(p.en<45?.06:.025))p.inj=ri(1,5)}}
     let pen=null,w=m.hg>m.ag?m.h.club.id:m.hg<m.ag?m.a.club.id:null;
     if(w===null&&ko){pen=shootout(m.h.club.rep,m.a.club.rep);w=pen[0]>pen[1]?m.h.club.id:m.a.club.id}
     return {h:m.h.club.id,a:m.a.club.id,hg:m.hg,ag:m.ag,pen,w,u:i===R.ui};

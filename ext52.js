@@ -146,7 +146,7 @@ function finishPo51(){
   const gf=us==='h'?um.hg:um.ag,ga=us==='h'?um.ag:um.hg;
   for(const m of R.ms)for(const [k,s] of [['h',m.h],['a',m.a]]){const club=s.club;if(club.fx)continue;
     const won=k==='h'?m.hg>m.ag:m.ag>m.hg,lost=k==='h'?m.hg<m.ag:m.ag<m.hg;
-    for(const id of new Set([...s.lineup,...s.used,...s.outs])){const p=P(id);p.en=clamp(Math.round(m.en[id]-4),20,100);p.mor=clamp(p.mor+(won?3:lost?-3:0),30,100);if(Math.random()<(p.en<45?.06:.025))p.inj=ri(1,5)}}
+    for(const id of new Set([...s.lineup,...s.used,...s.outs])){const p=P(id);p.en=clamp(Math.round(m.en[id]-2),20,100);p.mor=clamp(p.mor+(won?3:lost?-3:0),30,100);if(Math.random()<(p.en<45?.06:.025))p.inj=ri(1,5)}}
   const t=po.ties.find(t=>t.u&&t.w==null);
   const aHome=um.h.club.id===t.a;
   let pen=null,hpen=null;

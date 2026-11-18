@@ -273,7 +273,7 @@ function tick9(){
   /* viral */
   if(win&&Math.random()<.12){const f=Math.round(folTotal(mk)*.01*100)/100;for(const k in mk.social.fol)mk.social.fol[k]=+(mk.social.fol[k]*1.012).toFixed(3);addNews('Viralizou! Post do '+c.name+' bomba nas redes (+'+f+' mi seguidores).')}
   /* revelação na base */
-  if(Math.random()<.025+baseIdx(c)/2500){const y=mkYouth();genYouth9(c,0);c.youth.push(y);y.stars=Math.max(y.stars,4);if(c.youth.length>24)c.youth.shift();addNews('Revelação na base do '+c.name+': '+y.name+' ('+y.stars+'★) chama a atenção.')}
+  if(Math.random()<.025+baseIdx(c)/2500){const y=mkYouth();genYouth9(c,0);c.youth.push(y);{const ix_=baseIdx(c);y.stars=ix_>=65?Math.max(y.stars,4):ix_>=45?Math.max(y.stars,3):(Math.random()<.05?4:Math.max(y.stars,2));y._b=1}if(c.youth.length>24)c.youth.shift();addNews('Revelação na base do '+c.name+': '+y.name+' ('+y.stars+'★) chama a atenção.')}
   simSub20();
   save();
 }
