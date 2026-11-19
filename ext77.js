@@ -24,14 +24,14 @@ hookAfter('takeJob','dir77',function(){G._cx0=G.fin.caixa;G._cx1=G.fin.caixa});
 /* 2) veto: compra que deixa o caixa abaixo da reserva mínima */
 hookAround('makeBid','dir77',function(next,__a){
   let [pid,fee]=__a;
-  try{const c=userClub();if(c&&fee>0&&G.fin.caixa-fee<reserve()){
+  try{const c=userClub();if(c&&!G.quick&&fee>0&&G.fin.caixa-fee<reserve()){
     const r=reserve();
     return {ok:false,msg:'A diretoria vetou: a compra deixaria o caixa em '+mi(Math.max(0,G.fin.caixa-fee))+' (reserva mínima do clube: '+mi(r)+').'}}}catch(e){}
   return next(pid,fee);
 });
 hookAround('negStart','dir77',function(next,__a){
   let [pid]=__a;
-  try{const p=P(pid),c=userClub();if(p&&c&&p.club>=0&&p.club!==G.user&&askPrice(p)*0.85>G.fin.caixa-reserve())return 'A diretoria já avisou: com o caixa em '+mi(G.fin.caixa)+' (reserva mínima '+mi(reserve())+') não dá pra bancar '+nameOf(p)+' (pedem ~'+mi(askPrice(p))+').'}catch(e){}
+  try{const p=P(pid),c=userClub();if(!G.quick&&p&&c&&p.club>=0&&p.club!==G.user&&askPrice(p)*0.85>G.fin.caixa-reserve())return 'A diretoria já avisou: com o caixa em '+mi(G.fin.caixa)+' (reserva mínima '+mi(reserve())+') não dá pra bancar '+nameOf(p)+' (pedem ~'+mi(askPrice(p))+').'}catch(e){}
   return next(pid);
 });
 /* crescimento de clube pequeno: bônus de desempenho (quem supera a meta ganha caixa) + caixa mínimo ao assumir */

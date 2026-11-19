@@ -10254,7 +10254,7 @@ vClubStep=function(){
   return h.replace(/<div class="seg sm">[\s\S]*?<\/div>/,seg);
 };
 /* ext67 (v86): base balanceada por nível do clube, IA usando a base, Continuar no topo, camisa com prévia, vendas por camisa, sócio com projeção/desfazer, versão do jogo */
-const APP_VER='v92';
+const APP_VER='v93';
 const APP_DATE='18/11/2026';
 
 /* ============ BASE: estrelas e overall dependem do nível da base do clube ============ */
@@ -10959,14 +10959,14 @@ hookAfter('takeJob','dir77',function(){G._cx0=G.fin.caixa;G._cx1=G.fin.caixa});
 /* 2) veto: compra que deixa o caixa abaixo da reserva mínima */
 hookAround('makeBid','dir77',function(next,__a){
   let [pid,fee]=__a;
-  try{const c=userClub();if(c&&fee>0&&G.fin.caixa-fee<reserve()){
+  try{const c=userClub();if(c&&!G.quick&&fee>0&&G.fin.caixa-fee<reserve()){
     const r=reserve();
     return {ok:false,msg:'A diretoria vetou: a compra deixaria o caixa em '+mi(Math.max(0,G.fin.caixa-fee))+' (reserva mínima do clube: '+mi(r)+').'}}}catch(e){}
   return next(pid,fee);
 });
 hookAround('negStart','dir77',function(next,__a){
   let [pid]=__a;
-  try{const p=P(pid),c=userClub();if(p&&c&&p.club>=0&&p.club!==G.user&&askPrice(p)*0.85>G.fin.caixa-reserve())return 'A diretoria já avisou: com o caixa em '+mi(G.fin.caixa)+' (reserva mínima '+mi(reserve())+') não dá pra bancar '+nameOf(p)+' (pedem ~'+mi(askPrice(p))+').'}catch(e){}
+  try{const p=P(pid),c=userClub();if(!G.quick&&p&&c&&p.club>=0&&p.club!==G.user&&askPrice(p)*0.85>G.fin.caixa-reserve())return 'A diretoria já avisou: com o caixa em '+mi(G.fin.caixa)+' (reserva mínima '+mi(reserve())+') não dá pra bancar '+nameOf(p)+' (pedem ~'+mi(askPrice(p))+').'}catch(e){}
   return next(pid);
 });
 /* crescimento de clube pequeno: bônus de desempenho (quem supera a meta ganha caixa) + caixa mínimo ao assumir */
@@ -10992,6 +10992,41 @@ hookAfter('staffAlerts','dir77',function(out){
     if(G.dirMsg&&G.dirMsg.s===G.season&&G.round<=3&&Math.abs(G.dirMsg.g-1)>=0.01)out.push({k:'dirbud',sev:1,ic:'🏦',txt:G.dirMsg.g>1?`Diretoria: o ano passado fechou com superávit de ${mi(G.dirMsg.prof)}, então o teto de salários subiu pra ${mi(G.dirMsg.wb)}.`:`Diretoria: o ano passado fechou no vermelho (${mi(G.dirMsg.prof)}), então o teto de salários caiu pra ${mi(G.dirMsg.wb)}.`,btn:'Ver Clube',a:'nav',v:'clube'});
     out.sort((a,b)=>b.sev-a.sev);
   }catch(e){}
+});
+})();
+/* ext78 (v92): modo de jogo. "Começar jogo novo" abre a escolha: COMPLETO (tudo: auxiliar, diretoria, tutorial, contratos)
+   ou RÁPIDO (sem comissão/avisos, sem demissão, sem tutorial, sem veto, elenco renovado sozinho). Multiplayer continua separado. */
+(function(){
+const MODES=[
+  {k:'full',ic:'🧩',t:'Completo',d:'Tudo: auxiliar e comissão avisam, diretoria cobra e pode demitir, contratos, tutorial.'},
+  {k:'quick',ic:'⚡',t:'Rápido',d:'Só o jogo: sem avisos de comissão, sem demissão, sem veto da diretoria, sem tutorial. Elenco renova sozinho.'}
+];
+Object.assign(A,{
+  newgame(){S.step=(S.mpSame||S.mplNew)?'coach':'modo';S.sc=null;S.sp=null;S.sa=null;S.obj=null;render();window.scrollTo(0,0)},
+  qmode(d){S.qm=d.v==='quick'?'quick':'full';S.step='coach';render();window.scrollTo(0,0)}
+});
+function vModo(){
+  const cards=MODES.map(m=>`<button class="mb20 pri" data-a="qmode" data-v="${m.k}"><span class="ic">${m.ic}</span><span><b>${m.t}</b><small>${m.d}</small></span></button>`).join('');
+  return `<div class="wrap ti20"><button class="back" data-a="step" data-v="home">‹ Início</button>
+  <h2>Modo de jogo</h2><p class="lead">Você pode mudar isso depois só começando outro jogo.</p>
+  ${cards}
+  <p class="foot">Quer jogar com os primos? Use Multiplayer local ou online na tela inicial.</p></div>`;
+}
+hookAround('vStart','vs78',function(next,__a){if((S.step||'home')==='modo')return vModo();return next()});
+/* começo de carreira: marca o modo; rápido pula o tutorial */
+hookAfter('startCareer','mode78',function(){
+  G.quick=!!(S.qm==='quick');
+  if(G.quick){G.tutDone=true;G._tutAsked=true}
+  S.qm=null;
+});
+/* comissão some no modo rápido */
+hookAround('staffAlerts','mode78',function(next,__a){if(G&&G.quick)return [];return next()});
+/* demissão some no modo rápido */
+hookAround('shouldFire','mode78',function(next,__a){if(G&&G.quick)return false;return next()});
+/* no modo rápido o elenco renova sozinho antes da virada da temporada */
+hookBefore('newSeason','mode78',function(){
+  try{if(!G.quick)return;const c=userClub();if(!c)return;
+    for(const id of c.squad){const p=P(id);if(p)p.ct=G.season+2}}catch(e){}
 });
 })();
 newWorld();G.phase='start';render();

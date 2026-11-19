@@ -1,5 +1,5 @@
 /* ext67 (v86): base balanceada por nível do clube, IA usando a base, Continuar no topo, camisa com prévia, vendas por camisa, sócio com projeção/desfazer, versão do jogo */
-const APP_VER='v92';
+const APP_VER='v93';
 const APP_DATE='18/11/2026';
 
 /* ============ BASE: estrelas e overall dependem do nível da base do clube ============ */
