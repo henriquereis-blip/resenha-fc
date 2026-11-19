@@ -56,13 +56,13 @@ Sempre que medir, guarde a saída em `tools/sim/out/` com o número da versão n
 
 ## Estado atual
 
-- Branch `v95-potencia-sem-vies-formacao`: `power()` sem bônus por contagem de jogadores (corrige viés de 3 zagueiros) v96 (formação da IA por encaixe, `ext81.js`) e v97 (nota do goleiro), v98 (zagueiro, Posse, explicação na tela), v99 (Bola de Ouro com títulos, convocações e jogos decisivos).
+- Branch `v95-potencia-sem-vies-formacao`: `power()` sem bônus por contagem de jogadores (corrige viés de 3 zagueiros) v96 (formação da IA por encaixe, `ext81.js`) e v97 (nota do goleiro), v98 (zagueiro, Posse, explicação na tela), v99 (Bola de Ouro com títulos, convocações e jogos decisivos), v100 (aviso de formação com custo de zagueiro).
 - Próximos itens da revisão, em ordem:
   1. ~~IA escolhe formação~~ feito na v96 (`ext81.js`): encaixe (`xiScore`) + filosofia + ruído; reavalia na nova temporada; troca na má fase (≥5 abaixo, rodadas %6==0). Medição: `tools/sim/exp_aiform.js`.
   2. ~~Goleiro com nota própria~~ feito na v97 (`logic.js` `stepMinute`): sem bônus de gol do time, defesa +0.15, gol sofrido −0.35. Medição: `tools/sim/exp_notas.js` e `exp_premios.js`. 
   3. ~~Posse com retorno real~~ feito na v98 (`styleMod` em `logic.js`, `styleWhy` em `ui13.js`): mid 1.12, def 1.04, rate 1.06; penalidade Filosofia×Estilo explicada na tela. Medição: `tools/sim/exp_estilo.js`. Pendente: Posse ainda não é o estilo mais forte (Ofensivo lidera).
   3b. Bola de Ouro (v99, `ext82.js`): nota média + títulos (+0.25 liga, +0.2 copa) + convocações (+0.03 por data, teto 0.15) + semifinal/final de copa. Pendente: Champions e finais estaduais ainda não contam jogo decisivo.
-  4. Auxiliar com custo defensivo ou aviso (`ext70.js`).
+  4. ~~Auxiliar com custo defensivo~~ feito na v100 (`auxPick` em `ext70.js`): cada zagueiro que a sugestão tira da linha desconta 4 pontos; o aviso diz quantos saem. Medição: `tools/sim/exp_aux.js` (efeito na simulação não comprovado, dentro do ruído).
   5. Calibragem de demissão (`ext75.js` e `shouldFire`): tolerância de meta+3 e proteção na primeira temporada até a rodada 19, a menos que a confiança seja menor que 15.
   6. Revisar notas de EUA e Austrália (valores de `r` e `b` no mundo).
   7. Testar a hipótese de formação fixa vs aleatória para IA, com experimento.

@@ -8,6 +8,17 @@ function xiScore(c,f){
   return t;
 }
 globalThis.xiScore=xiScore; /* v96: usado pela IA (ext81) para escolher formação */
+/* v100: a sugestão de formação do auxiliar desconta cada zagueiro que a troca tira da linha (AUX_DEF_COST pontos por zagueiro).
+   dc=0 reproduz a regra antiga (só encaixe). Devolve a melhor formação, o ganho líquido e quantos zagueiros saem. */
+const AUX_DEF_COST=4;
+function auxPick(c,dc){
+  dc=dc===undefined?AUX_DEF_COST:dc;
+  const nd=f=>FORMS[f][0];
+  const cur=xiScore(c,c.formation);let best=c.formation,bs=cur,bl=0;
+  for(const f of Object.keys(FORMS)){const lost=nd(c.formation)-nd(f);const s=xiScore(c,f)-(lost>0?lost*dc:0);if(s>bs+0.01){bs=s;best=f;bl=lost}}
+  return {best,gain:bs-cur,lost:best===c.formation?0:bl};
+}
+globalThis.auxPick=auxPick;
 globalThis.staffAlerts=function(){
   const out=[];
   try{
@@ -29,9 +40,9 @@ globalThis.staffAlerts=function(){
       if(ok<need){out.push({k:'pos'+role,sev:2,ic:'🔍',txt:`Elenco curto de ${ROLEABB[role]}: só ${ok} saudável(is). Procure reforço no mercado.`,btn:'Ver Procura',a:'nav',v:'mercado'});break}
     }
     /* formação melhor para o elenco */
-    const cur=xiScore(c,c.formation);let best=c.formation,bs=cur;
-    for(const f of Object.keys(FORMS)){const s=xiScore(c,f);if(s>bs+0.01){bs=s;best=f}}
-    if(best!==c.formation&&bs-cur>=6)out.push({k:'form',sev:1,ic:'📋',txt:`Olhando o seu elenco, o ${best} encaixa melhor que o ${c.formation} (time titular uns ${Math.round(bs-cur)} pontos mais forte).`,btn:'Usar '+best,a:'auxform',f:best});
+    const ap=auxPick(c);
+    if(ap.best!==c.formation&&ap.gain>=6){const tira=ap.lost>0?` Mas ela tira ${ap.lost} zagueiro${ap.lost>1?'s':''} da linha: o time sofre mais gol.`:'';
+      out.push({k:'form',sev:1,ic:'📋',txt:`Olhando o seu elenco, o ${ap.best} encaixa melhor que o ${c.formation} (time titular uns ${Math.round(ap.gain)} pontos mais forte).${tira}`,btn:'Usar '+ap.best,a:'auxform',f:ap.best})}
     try{const pay=payroll(c),bud=wageBudget();if(pay>bud*1.02)out.push({k:'folha',sev:2,ic:'💸',txt:`A folha (${mi(pay)}) tá acima do teto da diretoria (${mi(bud)}). Cuidado com novas contratações.`,btn:'Ver Comissão',a:'nav',v:'staff'})}catch(e){}
     if(G.fin&&G.fin.caixa<0)out.push({k:'caixa',sev:3,ic:'🚨',txt:`Caixa negativo (${mi(G.fin.caixa)}). A diretoria vai cobrar. Segura as contratações.`,btn:'Ver Clube',a:'nav',v:'clube'});
   }catch(e){}
