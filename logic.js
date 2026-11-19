@@ -293,11 +293,11 @@ function stepMinute(m){
         addEv(m,k,'goal',sc,'GOL! '+nameOf(sp)+(ast?' (assist. '+lastName(P(ast).name)+')':''));
         m.scorers.push({pid:sc,ast,min:m.min,side:k});
         m.rt[sc]+=1.0;if(ast)m.rt[ast]+=0.5;
-        S.lineup.forEach(id=>m.rt[id]+=0.12);
-        O.lineup.forEach((id,i)=>{m.rt[id]-=(O.slots[i]==='GK'?0.3:O.slots[i]==='DEF'?0.2:0.08)});
+        S.lineup.forEach((id,i)=>{if(S.slots[i]!=='GK')m.rt[id]+=0.12}); /* v97: goleiro não ganha com gol do time */
+        O.lineup.forEach((id,i)=>{m.rt[id]-=(O.slots[i]==='GK'?0.35:O.slots[i]==='DEF'?0.2:0.08)});
       }else{
         const r=Math.random();const gkid=O.lineup[0];
-        if(r<0.4){m.stats[k==='h'?'shT':'saT']++;if(Math.random()<0.7)addEv(m,k,'save',gkid,'Defesa de '+P(gkid).name+' em chute de '+lastName(sp.name));m.rt[gkid]+=0.35}
+        if(r<0.4){m.stats[k==='h'?'shT':'saT']++;if(Math.random()<0.7)addEv(m,k,'save',gkid,'Defesa de '+P(gkid).name+' em chute de '+lastName(sp.name));m.rt[gkid]+=0.15}
         else{if(Math.random()<0.4)addEv(m,k,'miss',sc,lastName(sp.name)+' chuta para fora');m.rt[sc]-=0.1}
       }
     }
