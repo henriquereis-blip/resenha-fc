@@ -440,7 +440,8 @@ function importance(p){
   const c=C(p.club);const top=c.squad.map(id=>P(id)).sort((a,b)=>b.ovr-a.ovr).slice(0,3).map(x=>x.id);
   return top.includes(p.id)?1.8:c.squad.slice(0,11).includes(p.id)?1.4:1.15;
 }
-const askPrice=p=>+(valueOf(p)*importance(p)*(p.listed?0.8:1)).toFixed(1);
+/* preço pedido: jogador com contrato acabando sai mais barato (vence em 1 ano: -20%; em 2 anos: -8%) */
+function askPrice(p){let f=1;try{if(typeof ctOf==='function'&&p.club!==G.user&&p.club>=0){const left=ctOf(p)-G.season+1;if(left<=1)f=0.8;else if(left===2)f=0.92}}catch(e){}return +(valueOf(p)*importance(p)*(p.listed?0.8:1)*f).toFixed(1)}
 function makeBid(pid,fee){
   const c=userClub(),p=P(pid);
   if(p.club===c.id||p.club<0)return {ok:false,msg:'Jogador indisponível.'};

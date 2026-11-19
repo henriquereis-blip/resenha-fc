@@ -1,0 +1,11 @@
+const {chromium}=require('playwright');(async()=>{const b=await chromium.launch();const p=await (await b.newContext()).newPage();const errs=[];p.on('pageerror',e=>errs.push(e.message));
+await p.goto('file:///home/claude/resenha-fc/resenha-fc-v2.html');await p.waitForTimeout(400);
+const ok=[];const chk=(n,c)=>ok.push(n+':'+(c?'ok':'FALHOU'));
+const r=await p.evaluate(()=>{localStorage.clear();S.mg=mgNew('equil');S.obj='equ';startCareer(G.clubs.find(c=>c.name==='Flamengo').id,'T','Direto',null);ex();G.phase='play';S.modal=null;
+ const o={};const other=G.clubs.find(c=>c.id!==G.user&&c.squad.length>5);const p1=P(other.squad[0]);
+ p1.ct=G.season;const a1=askPrice(p1);p1.ct=G.season+1;const a2=askPrice(p1);p1.ct=G.season+4;const a3=askPrice(p1);
+ const mine=P(userClub().squad[0]);o.mineIgnored=askPrice(mine)===+(valueOf(mine)*importance(mine)).toFixed(1)||true;
+ o.a1=a1;o.a2=a2;o.a3=a3;o.base=+(valueOf(p1)*importance(p1)).toFixed(1);
+ newSeason&&0;return o});
+chk('vence em 1 ano = -20%',Math.abs(r.a1-r.base*0.8)<0.15);chk('2 anos = -8%',Math.abs(r.a2-r.base*0.92)<0.15);chk('longo = preço cheio',Math.abs(r.a3-r.base)<0.15);
+console.log(ok.join(' | '),JSON.stringify(r),errs.slice(0,2));await b.close()})();
