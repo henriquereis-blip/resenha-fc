@@ -239,8 +239,9 @@ function power(m,side){
   const avg=s=>cnt[s]?sum[s]/cnt[s]:50;
   const def=avg('DEF'),mid=avg('MID'),atk=avg('ATA');
   const na=(cnt.ATA+0.45*cnt.MID)||1,nd=(cnt.DEF+0.3*cnt.MID)||1;
-  const A=(atk*cnt.ATA+mid*0.45*cnt.MID)/na*Math.pow(na/3.9,0.35);
-  const D=(def*cnt.DEF+mid*0.3*cnt.MID)/nd*Math.pow(nd/5.1,0.35);
+  // v95: sem bônus por contagem (antes (na/3.9)^0.35 e (nd/5.1)^0.35 davam +3 a +7% a 3-zagueiros e tiravam de 4-5-1)
+  const A=(atk*cnt.ATA+mid*0.45*cnt.MID)/na;
+  const D=(def*cnt.DEF+mid*0.3*cnt.MID)/nd;
   const rp=1-0.07*side.reds;
   return {gk:gk*rp,atk:A*rp,def:D*rp,mid:mid*rp};
 }
