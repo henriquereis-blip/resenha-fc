@@ -250,7 +250,8 @@ function styleMod(my,opp){
   if(my==='Ofensivo'){m.atk=1.04;m.def=0.96;m.rate=1.08;if(opp==='Contra-ataque')m.def*=0.97}
   else if(my==='Defensivo'){m.atk=0.96;m.def=1.05;m.rate=0.9}
   else if(my==='Contra-ataque'){m.atk=(opp==='Ofensivo'||opp==='Posse')?1.06:0.98;m.def=1.01;m.rate=0.96}
-  else if(my==='Posse'){m.mid=1.05;m.rate=1;if(opp==='Contra-ataque')m.def=0.96;if(opp==='Defensivo')m.atk=0.97}
+  /* v98: Posse com retorno real: mais controle de meio (1.12) e menos chute sofrido (def 1.04 reduz a taxa do adversário); contra Contra-ataque o ganho some (espaço nas costas) */
+  else if(my==='Posse'){m.mid=1.12;m.def=1.04;m.rate=1.06;if(opp==='Contra-ataque')m.def=1.0;if(opp==='Defensivo')m.atk=0.97}
   return m;
 }
 function mkSide(c){return {club:c,formation:c.formation,slots:slotsOf(c.formation),style:c.style,lineup:c.squad.slice(0,11),bench:c.squad.slice(11,18),subs:0,reds:0,sent:[],used:[],outs:[]}}
@@ -294,7 +295,7 @@ function stepMinute(m){
         m.scorers.push({pid:sc,ast,min:m.min,side:k});
         m.rt[sc]+=1.0;if(ast)m.rt[ast]+=0.5;
         S.lineup.forEach((id,i)=>{if(S.slots[i]!=='GK')m.rt[id]+=0.12}); /* v97: goleiro não ganha com gol do time */
-        O.lineup.forEach((id,i)=>{m.rt[id]-=(O.slots[i]==='GK'?0.35:O.slots[i]==='DEF'?0.2:0.08)});
+        O.lineup.forEach((id,i)=>{m.rt[id]-=(O.slots[i]==='GK'?0.35:O.slots[i]==='DEF'?0.12:0.08)}); /* v98: zagueiro −0.12 (era −0.2) */
       }else{
         const r=Math.random();const gkid=O.lineup[0];
         if(r<0.4){m.stats[k==='h'?'shT':'saT']++;if(Math.random()<0.7)addEv(m,k,'save',gkid,'Defesa de '+P(gkid).name+' em chute de '+lastName(sp.name));m.rt[gkid]+=0.15}
@@ -309,7 +310,8 @@ function stepMinute(m){
     }
     for(const id of S.lineup)m.rt[id]+=(P(id).ovr-70)/70*0.004+(Math.random()-0.5)*0.01;
   }
-  if(m.min>=90){m.done=true;for(const id in m.rt)m.rt[id]=clamp(+m.rt[id].toFixed(1),3,10)}
+  if(m.min>=90){m.done=true;
+    for(const k of ['h','a']){const S=m[k],O=m[k==='h'?'a':'h'];if(O.club&&(k==='h'?m.ag:m.hg)===0)S.lineup.forEach((id,i)=>{if(S.slots[i]==='DEF')m.rt[id]+=0.3}); /* v98: zagueiro de time que não sofre gol: +0.3 (clean sheet) */}for(const id in m.rt)m.rt[id]=clamp(+m.rt[id].toFixed(1),3,10)}
 }
 function subPlayer(m,k,outId,inId){
   const s=m[k];if(s.subs>=5||s.sent.includes(outId))return false;

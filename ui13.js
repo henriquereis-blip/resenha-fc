@@ -89,7 +89,14 @@ function schips(cur,act,c){
 function fxLine(s){
   const f=styleFactors(s);const pc=v=>{const x=(v-1)*100;return (x>=0?'+':'')+x.toFixed(1).replace('.',',')+'%'};
   const it=[['Entrosamento',f.fs*f.ff],['Elenco × estilo',f.fit],['Filosofia',f.coh],['Vestiário',f.vest],['Auxiliar',f.asst]];
-  return `<div class="fxl">${it.map(([n,v])=>`<span class="fxp ${v>1.0004?'up':v<.9996?'dn':''}">${n} ${pc(v)}</span>`).join('')}</div>`;
+  const why=styleWhy(s.club,s.style);
+  return `<div class="fxl">${it.map(([n,v])=>`<span class="fxp ${v>1.0004?'up':v<.9996?'dn':''}">${n} ${pc(v)}</span>`).join('')}</div>${why?`<p class="news">${why}</p>`:''}`;
+}
+/* v98: explica a penalidade de filosofia na tela (ex.: Posse com filosofia Direto) */
+function styleWhy(c,style){
+  if(!c||styleCoh(c,style)>=1)return '';
+  const DESC={Passe:'troca de passes',Direto:'bola longa e jogo físico',Pressão:'marcação alta',Pontas:'jogo pelos lados',Retranca:'bloco baixo','Contra-ataque':'contra-ataque'};
+  return `Filosofia ${c.phil} (${DESC[c.phil]||c.phil.toLowerCase()}) não combina com ${style}: −2% em tudo que o time faz. Escolha um estilo que combine.`;
 }
 
 function vTatica(){
