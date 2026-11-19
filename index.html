@@ -10969,6 +10969,19 @@ hookAround('negStart','dir77',function(next,__a){
   try{const p=P(pid),c=userClub();if(p&&c&&p.club>=0&&p.club!==G.user&&askPrice(p)*0.85>G.fin.caixa-reserve())return 'A diretoria já avisou: com o caixa em '+mi(G.fin.caixa)+' (reserva mínima '+mi(reserve())+') não dá pra bancar '+nameOf(p)+' (pedem ~'+mi(askPrice(p))+').'}catch(e){}
   return next(pid);
 });
+/* crescimento de clube pequeno: bônus de desempenho (quem supera a meta ganha caixa) + caixa mínimo ao assumir */
+hookAfter('endSeason','grow77',function(){
+  try{const sm=G.summary,c=userClub();if(!sm||!c||sm.bonus!==undefined)return;
+    const pay=payroll(c);let b=0;
+    if(sm.pos<sm.meta)b+=(sm.meta-sm.pos)*0.035*pay;
+    if(sm.pos===1)b+=0.12*pay;
+    b=+Math.min(b,0.3*pay).toFixed(1);sm.bonus=b;
+    if(b>0){G.fin.caixa=+(G.fin.caixa+b).toFixed(1);sm.txt+=' Bônus de desempenho da temporada: +'+mi(b)+'.';addNews('Bônus de desempenho: +'+mi(b)+' no caixa por superar a meta.')}
+  }catch(e){console.error('grow77 '+e.message)}
+});
+const floor77=()=>{try{const c=userClub(),m=payroll(c)*0.2;if(G.fin.caixa<m)G.fin.caixa=+m.toFixed(1)}catch(e){}};
+hookAfter('startCareer','floor77',floor77);
+hookAfter('takeJob','floor77',floor77);
 /* 3) avisos do diretor */
 hookAfter('staffAlerts','dir77',function(out){
   try{const c=userClub();if(!c)return;
