@@ -46,13 +46,13 @@ Todos os arquivos `.js` são concatenados pelo `build.sh` na ordem: `head.html`,
 
 ## Simulação para medir balanceamento
 
-Ferramentas em `/home/claude/sim/` (Playwright headless sobre o HTML gerado):
+Ferramentas em `tools/sim/` (Playwright headless sobre o HTML gerado; rodar a partir da raiz do repo, precisa de `npm i playwright` e do chromium):
 - `exp_form.js N` (medir formações; N partidas por par).
 - `exp_career.js`, `exp_multi.sh` (carreiras de teste).
 - `world_sim.js K` (K temporadas, mede campeões e anomalias).
 - `play_career.js`.
 
-Sempre que medir, guarde a saída em `/home/claude/sim/` com o número da versão no nome e cite os números no commit.
+Sempre que medir, guarde a saída em `tools/sim/out/` com o número da versão no nome e cite os números no commit.
 
 ## Estado atual
 
