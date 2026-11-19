@@ -1,4 +1,4 @@
-const h=require('/home/claude/resenha-fc/h.js');
+const h=require(__dirname+'/h.js');
 (async()=>{const {b,p,errs}=await h.open('Portuguesa',{rounds:3});
 const r=await p.evaluate(()=>{
  const o={};G.view='times';S.team=null;S.wt=null;S.open={};render();

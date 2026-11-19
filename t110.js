@@ -1,4 +1,4 @@
-const h=require('/home/claude/resenha-fc/h.js');
+const h=require(__dirname+'/h.js');
 (async()=>{const {b,p,errs,shot}=await h.open('Portuguesa',{rounds:4});
 const r=await p.evaluate(()=>{const o={};const c=userClub();G.med.doc=0;G.med.fisio=0;G.med.prep=0;G.med.season.n=4;
  c.squad.slice(11,14).forEach(id=>{P(id).inj=4;P(id).injN=4});

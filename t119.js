@@ -1,5 +1,5 @@
 const {chromium}=require('playwright');(async()=>{const b=await chromium.launch();const p=await (await b.newContext({viewport:{width:390,height:800}})).newPage();const errs=[];p.on('pageerror',e=>errs.push(e.message));
-await p.goto('file:///home/claude/resenha-fc/index.html');await p.waitForTimeout(500);
+await p.goto('file://'+__dirname+'/index.html');await p.waitForTimeout(500);
 const ok=[];const chk=(n,c)=>ok.push(n+':'+(c?'ok':'FALHOU'));
 await p.evaluate(()=>{localStorage.clear();S.mg=mgNew('equil');S.obj='equ';startCareer(G.clubs.find(c=>c.name==='Flamengo').id,'T','Direto',null);ex();G.phase='play';S.modal=null;G.view='inicio';render()});
 const m=await p.evaluate(()=>{const cats=document.querySelectorAll('header.top2 .c46 > button').length;const sub=document.querySelectorAll('header.top2 .s46 button').length;

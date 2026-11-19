@@ -1,7 +1,7 @@
 const {chromium}=require('playwright');
 (async()=>{const b=await chromium.launch();const errs=[];const p=await (await b.newContext({viewport:{width:390,height:800},isMobile:true,hasTouch:true})).newPage();
 p.on('pageerror',e=>errs.push(e.message));
-await p.goto('file:///home/claude/resenha-fc/index.html');await p.waitForTimeout(1200);
+await p.goto('file://'+__dirname+'/index.html');await p.waitForTimeout(1200);
 const o=await p.evaluate(()=>{localStorage.clear();
  S.coachName='Teste';S.sc=G.clubs.find(c=>c.name==='Portuguesa').id;S.sp='Passe';S.obj='equ';S.mg=mgNew('equil');S.asst=asstCandidates('Passe');S.sa=0;
  A.begin();return {ask:!!document.getElementById('tut71'),txt:document.getElementById('tut71')&&document.getElementById('tut71').innerText.slice(0,40)}});

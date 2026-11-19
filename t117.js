@@ -1,5 +1,5 @@
 const {chromium}=require('playwright');(async()=>{const b=await chromium.launch();const p=await (await b.newContext()).newPage();const errs=[];p.on('pageerror',e=>errs.push(e.message));
-await p.goto('file:///home/claude/resenha-fc/resenha-fc-v2.html');await p.waitForTimeout(400);
+await p.goto('file://'+__dirname+'/resenha-fc-v2.html');await p.waitForTimeout(400);
 const ok=[];const chk=(n,c)=>ok.push(n+':'+(c?'ok':'FALHOU'));
 const r=await p.evaluate(()=>{const o={};
  o.pool=wcPool48().length;o.uniq=new Set(wcPool48()).size;

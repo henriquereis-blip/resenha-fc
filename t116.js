@@ -1,5 +1,5 @@
 const {chromium}=require('playwright');(async()=>{const b=await chromium.launch();const p=await (await b.newContext({viewport:{width:390,height:800}})).newPage();const errs=[];p.on('pageerror',e=>errs.push(e.message));
-await p.goto('file:///home/claude/resenha-fc/index.html');await p.waitForTimeout(600);
+await p.goto('file://'+__dirname+'/index.html');await p.waitForTimeout(600);
 const ok=[];const chk=(n,c)=>ok.push(n+':'+(c?'ok':'FALHOU'));
 // 1) tela de modo aparece depois de "Começar jogo novo"
 await p.evaluate(()=>{localStorage.clear();S.step='home';render()});
