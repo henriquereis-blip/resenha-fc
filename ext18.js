@@ -32,6 +32,7 @@ function cupInit(){
 function userInPairs(p){return p.some(([h,a])=>h===G.user||a===G.user)}
 function quickMatch(h,a,ko){
   const m=newMatch(C(h),C(a));while(!m.done)stepMinute(m);
+  if(ko&&G.cup&&G.cup.st>=3)clutchRec(m); /* v99: semifinal e final contam para a Bola de Ouro */
   let w=m.hg>m.ag?h:m.hg<m.ag?a:null,pen=null;
   if(w===null&&ko){pen=shootout(C(h).rep,C(a).rep);w=pen[0]>pen[1]?h:a}
   return {h,a,hg:m.hg,ag:m.ag,pen,w};

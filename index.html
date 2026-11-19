@@ -1052,7 +1052,7 @@ hookAround('endSeason','es3',function(next,__a){
 });
 function bolaOuro(){
   const min=Math.max(1,Math.floor(G.round*0.5));
-  return Object.values(G.players).filter(p=>p.club>=0&&p.rn>=min).map(p=>({p,v:p.rsum/p.rn})).sort((a,b)=>b.v-a.v);
+  return Object.values(G.players).filter(p=>p.club>=0&&p.rn>=min).map(p=>({p,v:awardOf(p)})).sort((a,b)=>b.v-a.v);
 }
 function h2hOf(a,b){
   const L=G.h2h.filter(x=>(x[2]===a&&x[3]===b)||(x[2]===b&&x[3]===a));
@@ -1612,7 +1612,7 @@ function vHistoria(){
     b=`<div class="tbl"><div class="tr hd t2"><span>#</span><span class="tc">Clube</span><span>Br</span><span>Lib</span><span>Mun</span><span>CB</span></div>${L.map((c,i)=>`<div class="tr t2 ${c.id===G.user?'me':''}"><span>${i+1}</span><span class="tc">${crest(c,18)}${c.sig}</span>${c.tro.map(x=>`<span>${x}</span>`).join('')}</div>`).join('')}</div><p class="foot">Títulos do passado aproximados, de memória. Os da sua carreira se somam.</p>`;
   }else if(S.hs==='bola'){
     const L=bolaOuro();const roles=[['GOL','Goleiro'],['LAT','Lateral'],['ZAG','Zagueiro'],['VOL','Volante'],['MEI','Meia'],['PNT','Ponta'],['ATA','Atacante']];
-    b=L.length?`<div class="card" style="border-color:var(--accent2)"><div class="k">🏅 Bola de Ouro · nota média da temporada</div>${L.slice(0,10).map((x,i)=>`<button class="res lk" data-a="prof" data-id="${x.p.id}"><span>${i+1}. ${esc(nameOf(x.p))} <small>${C(x.p.club).sig} · ${roleLabel(x.p)}</small></span><b>${x.v.toFixed(2)}</b></button>`).join('')}</div>`+roles.map(([r,l])=>`<div class="card"><div class="k">${l}</div>${L.filter(x=>x.p.role===r).slice(0,5).map((x,i)=>`<button class="res lk" data-a="prof" data-id="${x.p.id}"><span>${i+1}. ${esc(nameOf(x.p))} <small>${C(x.p.club).sig}</small></span><b>${x.v.toFixed(2)}</b></button>`).join('')||'<p class="news">–</p>'}</div>`).join(''):'<p class="news">Jogue algumas rodadas para a Bola de Ouro aparecer.</p>';
+    b=L.length?`<div class="card" style="border-color:var(--accent2)"><div class="k">🏅 Bola de Ouro · nota média + títulos, convocações e jogos decisivos</div>${L.slice(0,10).map((x,i)=>`<button class="res lk" data-a="prof" data-id="${x.p.id}"><span>${i+1}. ${esc(nameOf(x.p))} <small>${C(x.p.club).sig} · ${roleLabel(x.p)}</small></span><b>${x.v.toFixed(2)}</b></button>`).join('')}</div>`+roles.map(([r,l])=>`<div class="card"><div class="k">${l}</div>${L.filter(x=>x.p.role===r).slice(0,5).map((x,i)=>`<button class="res lk" data-a="prof" data-id="${x.p.id}"><span>${i+1}. ${esc(nameOf(x.p))} <small>${C(x.p.club).sig}</small></span><b>${x.v.toFixed(2)}</b></button>`).join('')||'<p class="news">–</p>'}</div>`).join(''):'<p class="news">Jogue algumas rodadas para a Bola de Ouro aparecer.</p>';
   }else if(S.hs==='tdr'){
     const t=G.tdrs.filter(x=>x.s===G.season);const sel=S.tdrI!==undefined&&t[S.tdrI]?S.tdrI:t.length-1;const x=t[sel];
     b=x?`<div class="tools"><label>Rodada<select id="tdrsel">${t.map((y,i)=>`<option value="${i}" ${i===sel?'selected':''}>${y.r}ª rodada</option>`).join('')}</select></label></div>${xiPitch(x.xi)}<p class="foot">Os números nas camisas são as notas da rodada.</p>`:'<p class="news">Jogue uma rodada primeiro.</p>';
@@ -4640,6 +4640,7 @@ function cupInit(){
 function userInPairs(p){return p.some(([h,a])=>h===G.user||a===G.user)}
 function quickMatch(h,a,ko){
   const m=newMatch(C(h),C(a));while(!m.done)stepMinute(m);
+  if(ko&&G.cup&&G.cup.st>=3)clutchRec(m); /* v99: semifinal e final contam para a Bola de Ouro */
   let w=m.hg>m.ag?h:m.hg<m.ag?a:null,pen=null;
   if(w===null&&ko){pen=shootout(C(h).rep,C(a).rep);w=pen[0]>pen[1]?h:a}
   return {h,a,hg:m.hg,ag:m.ag,pen,w};
@@ -11166,6 +11167,43 @@ hookBefore('prepareRound','pr81',function(){
   if(news)addNews(`Pressionado pela má fase, o ${news.c.name} abandona o ${news.old} e passa a jogar no ${news.c.formation}.`);
 });
 })();
+/* ext82 (v99): Bola de Ouro além da nota. Soma à nota média da temporada:
+   - títulos do clube na temporada (campeão da liga e da copa);
+   - convocações para a seleção (cada data FIFA em que o jogador foi chamado; teto);
+   - desempenho em jogo decisivo (semifinal e final da copa): média das notas nesses jogos, pesada pelo nº de jogos.
+   Tudo guardado por temporada (p.aw), então zera sozinho quando a temporada vira. */
+const AW={titleLg:0.25,titleCup:0.2,call:0.03,callMax:0.15,clutchMax:0.4,clutchMin:-0.2};
+function awOf(p){if(!p.aw)p.aw={};return p.aw}
+/* chamado pela quickMatch (ext18) só nas semifinais e finais de copa */
+function clutchRec(m){
+  for(const k of ['h','a'])for(const id of m[k].lineup){
+    const p=P(id),b=awOf(p);
+    if(!b.cl||b.cl.s!==G.season)b.cl={s:G.season,sum:0,n:0};
+    b.cl.sum+=m.rt[id];b.cl.n++;
+  }
+}
+function clutchBonus(p){
+  const c=awOf(p).cl;if(!c||c.s!==G.season||!c.n)return 0;
+  const media=c.sum/c.n;
+  return clamp((media-6)*0.5*Math.min(c.n,3)/3,AW.clutchMin,AW.clutchMax);
+}
+function titlesBonus(p){
+  let t=0;const s=G.season;
+  for(const x of (G.champs||[]))if(x.s===s&&x.cid===p.club)t+=AW.titleLg;
+  for(const x of (G.cupHist||[]))if(x.s===s&&x.champ===p.club)t+=AW.titleCup;
+  return t;
+}
+function callsBonus(p){const c=awOf(p).calls;return c&&c.s===G.season?Math.min(AW.callMax,c.n*AW.call):0}
+/* a Bola de Ouro é nota média + bônus */
+function awardOf(p){return p.rsum/p.rn+titlesBonus(p)+callsBonus(p)+clutchBonus(p)}
+/* convocações: toda data FIFA anunciada chama a seleção (braSquad, de todos os clubes), não só o time do usuário */
+hookAround('ntAnnounce','aw82',function(next,__a){
+  const r=next();
+  for(const id of braSquad()){const p=P(id),a=awOf(p);
+    if(!a.calls||a.calls.s!==G.season)a.calls={s:G.season,n:0};
+    a.calls.n++}
+  return r;
+});
 newWorld();G.phase='start';render();
 </script>
 <script>if("serviceWorker"in navigator&&/^https?:/.test(location.protocol))addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}))</script></body></html>

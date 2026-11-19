@@ -33,7 +33,7 @@ hookAround('endSeason','es3',function(next,__a){
 });
 function bolaOuro(){
   const min=Math.max(1,Math.floor(G.round*0.5));
-  return Object.values(G.players).filter(p=>p.club>=0&&p.rn>=min).map(p=>({p,v:p.rsum/p.rn})).sort((a,b)=>b.v-a.v);
+  return Object.values(G.players).filter(p=>p.club>=0&&p.rn>=min).map(p=>({p,v:awardOf(p)})).sort((a,b)=>b.v-a.v);
 }
 function h2hOf(a,b){
   const L=G.h2h.filter(x=>(x[2]===a&&x[3]===b)||(x[2]===b&&x[3]===a));
