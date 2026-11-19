@@ -7,6 +7,7 @@ function xiScore(c,f){
   slots.forEach((sl,i)=>{const id=bestForSlot(c.squad,sl,used,c.phil,wn[i]);if(id!=null){used.add(id);t+=slotScore(P(id),sl,c.phil,wn[i])}});
   return t;
 }
+globalThis.xiScore=xiScore; /* v96: usado pela IA (ext81) para escolher formação */
 globalThis.staffAlerts=function(){
   const out=[];
   try{

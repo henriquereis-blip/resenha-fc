@@ -56,9 +56,9 @@ Sempre que medir, guarde a saída em `tools/sim/out/` com o número da versão n
 
 ## Estado atual
 
-- Branch `v95-potencia-sem-vies-formacao`: `power()` sem bônus por contagem de jogadores (corrige viés de 3 zagueiros).
+- Branch `v95-potencia-sem-vies-formacao`: `power()` sem bônus por contagem de jogadores (corrige viés de 3 zagueiros) e v96 (formação da IA por encaixe, `ext81.js`).
 - Próximos itens da revisão, em ordem:
-  1. IA escolhe formação pelo encaixe com elenco e estilo do técnico, com variação, e troca de formação quando o clube vai mal (≥5 posições abaixo do esperado, checado nas rodadas %6==0). Hoje a formação da IA é sorteada uma vez em `AIFORMS` (`ext13.js`, hook `newWorld`) e nunca muda.
+  1. ~~IA escolhe formação~~ feito na v96 (`ext81.js`): encaixe (`xiScore`) + filosofia + ruído; reavalia na nova temporada; troca na má fase (≥5 abaixo, rodadas %6==0). Medição: `tools/sim/exp_aiform.js`.
   2. Goleiro com nota própria (`logic.js` ~296–300: sem bônus de gol da equipe, defesa ~+0.15, gol sofrido −0.35).
   3. Posse com retorno real e penalidade Posse×Direto explicada na tela (`logic.js` linha ~253 em `styleMod`).
   4. Auxiliar com custo defensivo ou aviso (`ext70.js`).

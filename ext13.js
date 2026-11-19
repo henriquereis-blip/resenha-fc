@@ -252,10 +252,10 @@ hookAround('takeJob','tj13',function(next,__a){const r=next();try{G.vest=null;G.
 
 /* ============ IA: estilo coerente com filosofia + adaptação ao adversário ============ */
 const STY_BY_PHIL={Passe:'Posse','Contra-ataque':'Contra-ataque',Retranca:'Defensivo','Pressão':'Ofensivo',Pontas:'Ofensivo',Direto:'Equilibrado'};
-const AIFORMS=['4-4-2','4-4-2','4-3-3','4-3-3','4-2-3-1','4-2-3-1','4-1-4-1','3-5-2','4-3-2-1','5-3-2','3-4-2-1','4-2-2-2'];
+/* v96: a formação da IA saiu daqui (era sorteio fixo em AIFORMS); agora ext81 escolhe pelo encaixe do elenco + filosofia */
 hookAround('newWorld','nw13',function(next,__a){
   next();
-  for(const c of G.clubs){c.style=Math.random()<.75?(STY_BY_PHIL[c.phil]||'Equilibrado'):pick(STYLES);c.formation=pick(AIFORMS)}
+  for(const c of G.clubs){c.style=Math.random()<.75?(STY_BY_PHIL[c.phil]||'Equilibrado'):pick(STYLES)}
 });
 hookAround('prepareRound','pr13',function(next,__a){
   const prev={};for(const c of G.clubs)prev[c.id]=c.style;
