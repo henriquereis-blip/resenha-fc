@@ -52,4 +52,4 @@ Object.assign(A,{
  plk(d){S.prof=+d.id;S.paper=false;S.psel=null;render();window.scrollTo(0,0)},
  clk(d){G.view='times';S.team=+d.id;S.tt='elenco';S.prof=null;S.paper=false;render();window.scrollTo(0,0)}
 });
-const _r15=render;render=function(){_r15();if(!S.match){try{linkify()}catch(e){console.error('linkify '+e.message)}}};
+hookAround('render','r15',function(next,__a){next();if(!S.match){try{linkify()}catch(e){console.error('linkify '+e.message)}}});

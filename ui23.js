@@ -6,9 +6,9 @@
 .nt23{border:1px solid #ffd24a55;background:linear-gradient(135deg,#ffd24a14,#35f0a010)}.nt23 b{color:var(--accent2)}
 `;document.head.appendChild(st)})();
 const tabs4=t=>`<div class="seg"><button class="${t==='cup'?'on':''}" data-a="ctab" data-t="cup">Copa do Brasil</button><button class="${t==='cont'?'on':''}" data-a="ctab" data-t="cont">Continental</button><button class="${t==='est'?'on':''}" data-a="ctab" data-t="est">Estadual</button><button class="${t==='sel'?'on':''}" data-a="ctab" data-t="sel">Seleções</button></div>`;
-const _vc23=vComp;vComp=function(){
+hookAround('vComp','vc23',function(next,__a){
   const tab=S.ctab||'cup';
-  if(tab!=='sel')return _vc23().replace(/<div class="seg">[\s\S]*?<\/div>/,tabs4(tab));
+  if(tab!=='sel')return next().replace(/<div class="seg">[\s\S]*?<\/div>/,tabs4(tab));
   const b=ntBox(),pd=b.pend,y=cyOf(),yr=2026+G.season;
   const cyTxt=['Início do ciclo da Copa: amistosos e primeiras eliminatórias','Ano de Copa América + eliminatórias','Reta final das eliminatórias','Ano de Copa do Mundo'][y];
   let h=`<div class="wrap cp19 tsel sel23"><h2>Copas</h2>${tabs4('sel')}`;
@@ -23,9 +23,9 @@ const _vc23=vComp;vComp=function(){
   if(b.log.length)h+=`<div class="card"><div class="stg">Últimos jogos</div>${b.log.map(l=>`<div class="res"><span style="font-size:13px">${esc(l.t)}</span></div>`).join('')}</div>`;
   if(b.hist.length)h+=`<div class="card"><div class="stg">Torneios</div>${b.hist.map(x=>`<div class="res"><span>${x.s} · ${x.t}</span><b style="font:600 12px var(--fb);text-align:right;max-width:60%">${esc(x.r)}</b></div>`).join('')}</div>`;
   return h+'</div>';
-};
-const _vi23=vInicio;vInicio=function(){
-  let h=_vi23();const b=G&&G.nt;
+});
+hookAround('vInicio','vi23',function(next,__a){
+  let h=next();const b=G&&G.nt;
   try{
     if(b&&b.pend){const pd=b.pend;const nm=pd.ids.map(id=>lastName(P(id).name)).join(', ');
       const card=`<button class="card nt23" data-a="ntgo"><div class="k">🌎 Data FIFA · rodada ${pd.r+1}</div><div><b>${WTYPE[pd.type]}</b>: ${esc(nm)} convocado(s). ${pd.type==='ca'||pd.type==='wc'||pd.type==='dec'?'Sem negociação.':'Dá pra negociar a dispensa.'}</div></button>`;
@@ -35,5 +35,5 @@ const _vi23=vInicio;vInicio=function(){
     for(const id of aw){h=h.replace(new RegExp('(data-id="'+id+'"[^>]*><td class="p">[^<]*</td><td class="nmc">[^<]*)'),'$1 🎖️')}
   }catch(e){}
   return h;
-};
+});
 Object.assign(A,{ntgo(){S.ctab='sel';G.view='comp';S.modal=null;render();window.scrollTo(0,0)}});

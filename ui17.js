@@ -28,7 +28,7 @@ var vStaff=function(){
 };
 Object.assign(A,{hire17(d){S.hire17=S.hire17===d.r?null:d.r;render()},
  bidopen(d){const r=negStart(+d.id);if(r){toast(r);return}render();window.scrollTo(0,0)}});
-const _vm17=vModal;vModal=function(){
+hookAround('vModal','vm17',function(next,__a){
   const md=S.modal;
   if(md&&md.t==='neg'&&S.neg){
     const n=S.neg,p=P(n.pid),c=userClub(),seller=C(p.club);
@@ -53,19 +53,19 @@ const _vm17=vModal;vModal=function(){
      <div class="row"><button class="btn ghost" data-a="negup">Oferecer +15% de salário</button></div>
      <button class="btn big" data-a="negwage">Fechar contrato</button></div></div>`;
   }
-  return _vm17();
-};
-const _vme17=vMercado;vMercado=function(){const h=_vme17();return h.replace(/(<div class="wrap[^"]*">)/,'$1'+winBanner())};
-const _vb17=vBase;vBase=function(){
-  const h=_vb17();const c=userClub();
+  return next();
+});
+hookAround('vMercado','vme17',function(next,__a){const h=next();return h.replace(/(<div class="wrap[^"]*">)/,'$1'+winBanner())});
+hookAround('vBase','vb17',function(next,__a){
+  const h=next();const c=userClub();
   const list=G.clubs.filter(x=>x.div===0).map(x=>[x,baseLv(x)]).sort((a,b)=>b[1]-a[1]).slice(0,12);
   const card=`<div class="card bl17"><div class="k">Nível da base · <span class="lv17">${baseLv(c)}/10</span></div><p class="news">Os níveis iniciais seguem o ranking CIES 2025 de formadores, os títulos da Copinha e a tradição de cada clube. Investir muda o seu nível ao longo das temporadas.</p>
    ${list.map(([x,l])=>`<div class="rr"><span><b>${esc(x.name)}</b><small>${esc(BASEWHY[x.sig]||'')}</small></span><span class="lv17">${l}/10</span></div>`).join('')}</div>`;
   const ix=h.lastIndexOf('</div>');return h.slice(0,ix)+card+h.slice(ix);
-};
+});
 /* cliques extras: cabeçalhos de card levam à tela do assunto; linhas de tabela abrem o clube */
 const KW17=[[/Diretoria/i,'dir'],[/Patroc|Camisas|Marketing/i,'marketing'],[/Torcida|sócio/i,'torcida'],[/Estádio|ingresso/i,'estadio'],[/Base|Sub-20/i,'base'],[/Médic|lesion|DM/i,'medico'],[/Treino/i,'treino'],[/Vesti[aá]rio|clima/i,'vest'],[/Comiss|Folha salarial|Salário|aumento/i,'staff'],[/Olheiro|Mercado|Transfer/i,'mercado'],[/Tática|Formação/i,'tatica'],[/Agenda|Calend/i,'agenda'],[/Hist[oó]ria|Conquista/i,'historia']];
-const _r17=render;render=function(){_r17();if(S.match)return;
+hookAround('render','r17',function(next,__a){next();if(S.match)return;
   try{const root=document.querySelector('#app');if(!root)return;
     root.querySelectorAll('.card > .k:first-child, .card > h3:first-child, .sec9 h3, .sec9 > .k').forEach(e=>{if(e.dataset.a||e.closest('[data-a]'))return;const t=e.textContent;const cur=G.view;
       for(const [re,v] of KW17){if(re.test(t)&&v!==cur){e.dataset.a='nav';e.dataset.v=v;e.classList.add('go15');e.style.cursor='pointer';e.insertAdjacentHTML('beforeend',' <span style="opacity:.5">›</span>');break}}});
@@ -73,4 +73,4 @@ const _r17=render;render=function(){_r17();if(S.match)return;
     root.querySelectorAll('.res').forEach(r=>{if(r.dataset.a||r.querySelector('[data-a]'))return;const t=r.firstElementChild&&r.firstElementChild.textContent||'';
       if(/Folha|Sal[aá]rios/.test(t)){r.dataset.a='nav';r.dataset.v='staff';r.classList.add('go15')}else if(/Patroc|Camisa/.test(t)){r.dataset.a='nav';r.dataset.v='marketing';r.classList.add('go15')}else if(/Ingresso|Bilheteria|Estádio/.test(t)){r.dataset.a='nav';r.dataset.v='estadio';r.classList.add('go15')}});
   }catch(e){console.error('click17 '+e.message)}
-};
+});

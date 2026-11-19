@@ -201,9 +201,9 @@ Object.assign(A,{
  basect(){const k=ctCost();if(G.fin.caixa<k)return toast('Caixa insuficiente ('+mi(k)+').');G.fin.caixa=+(G.fin.caixa-k).toFixed(2);G.mk.acc.cost+=k;G.mk.base.ct++;save();toast('Centro de treinamento evoluiu para o nível '+G.mk.base.ct+'.')},
  ysell(d){const r=sellYouth(+d.i);save();toast(r||'Garoto vendido.')}
 });
-const _bind9=bind;bind=function(){
-  _bind9();
+hookAround('bind','bind9',function(next,__a){
+  next();
   const sp=$('#shp');if(sp){sp.oninput=()=>{const e=$('#shpl');if(e)e.textContent=sp.value};sp.onchange=()=>{G.mk.shirt.price=+sp.value;save();render()}}
   for(let i=0;i<3;i++){const e=$('#socp'+i);if(e){e.oninput=()=>{const l=$('#spl'+i);if(l)l.textContent=e.value};e.onchange=()=>{G.mk.soc.prices[i]=+e.value;save();render()}}}
-};
+});
 /* ya existe ypromote em ui2.js; garante render após promover */

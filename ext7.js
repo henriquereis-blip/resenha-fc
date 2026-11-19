@@ -21,7 +21,7 @@ function ex7(){
     if(c.debt===undefined)c.debt=+(ratio0(c)*baseInc(c)).toFixed(1);
   }
 }
-const _ex7=ex;ex=function(){_ex7();ex7()};
+hookAround('ex','ex7',function(next,__a){next();ex7()});
 ACH.saneador=['🧾','Saneador','Reduza a dívida do clube em 25%'];
 ACH.zerou=['🏦','Dívida zero','Quite toda a dívida do clube'];
 ACH.idolo=['🌟','Ídolo da torcida','Torcida acima de 88% com a dívida em queda'];

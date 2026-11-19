@@ -7,10 +7,10 @@
 .cp19 .stg,.cp19 .gt.hd{color:var(--lt)}.cp19 .gt.q{border-left:3px solid var(--lt)}
 .cp19 .seg button.on{background:color-mix(in srgb,var(--lt) 22%,transparent);color:var(--lt)}
 `;document.head.appendChild(st)})();
-const _vc21=vComp;vComp=function(){
+hookAround('vComp','vc21',function(next,__a){
   const tab=S.ctab||'cup',tabs3=t=>`<div class="seg"><button class="${t==='cup'?'on':''}" data-a="ctab" data-t="cup">Copa do Brasil</button><button class="${t==='cont'?'on':''}" data-a="ctab" data-t="cont">Continental</button><button class="${t==='est'?'on':''}" data-a="ctab" data-t="est">Estadual</button></div>`;
   if(tab!=='est'){
-    let h=_vc21().replace(/<div class="seg">[\s\S]*?<\/div>/,tabs3(tab));
+    let h=next().replace(/<div class="seg">[\s\S]*?<\/div>/,tabs3(tab));
     const cls=tab==='cup'?'tcup':(G.cont&&G.cont.comp==='SUL'?'tsul':'tlib');
     return h.replace('<div class="wrap cp19">','<div class="wrap cp19 '+cls+'">');
   }
@@ -33,4 +33,4 @@ const _vc21=vComp;vComp=function(){
   const hist=(G.estHist||[]).slice().reverse();
   if(hist.length)h+=`<div class="card"><div class="k">Campeões anteriores</div>${hist.map(x=>`<div class="res"><span>${x.s} · ${esc(x.name||'Estadual')}</span><b>${esc(C(x.champ)?C(x.champ).name:'—')}</b></div>`).join('')}</div>`;
   return h+`<p class="news">Títulos estaduais: ${G.trophyEst||0}</p></div>`;
-};
+});

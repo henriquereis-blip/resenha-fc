@@ -59,10 +59,10 @@ function reconcile63(){
   for(const p of Object.values(G.players)){if(p.club>=0&&G.clubs[p.club]&&!has[p.club].has(p.id)){G.clubs[p.club].squad.push(p.id);has[p.club].add(p.id)}}
   G.free=G.free.filter(id=>G.players[id]&&G.players[id].club<0);
 }
-const _fr63=finishRound;finishRound=function(){const a=arguments;if(!MPB&&mpsOn()&&R&&R.mpg)return passAll63(()=>_fr63.apply(null,a),true);return _fr63.apply(this,a)};
-const _es63=endSeason;endSeason=function(){const a=arguments;if(!MPB&&mpsOn())return passAll63(()=>{const r=_es63.apply(null,a);if(G.summary){G.summary.fired=false;G.summary.jobs=[]}return r},false);return _es63.apply(this,a)};
+hookAround('finishRound','fr63',function(next,__a){if(!MPB&&mpsOn()&&R&&R.mpg)return passAll63(()=>next(),true);return next()});
+hookAround('endSeason','es63',function(next,__a){if(!MPB&&mpsOn())return passAll63(()=>{const r=next();if(G.summary){G.summary.fired=false;G.summary.jobs=[]}return r},false);return next()});
 function syncFx63(){const m=G.mps;m.hs.forEach((h,k)=>{const f=cl63(G.dfx[G.clubs[h.club].div]||[]);if(m.cur===k)G.fixtures=f;else if(h.ctx)h.ctx.fixtures=f})}
-const _ns63=newSeason;newSeason=function(){const a=arguments;if(!MPB&&mpsOn()){const r=passAll63(()=>_ns63.apply(null,a),false);syncFx63();return r}return _ns63.apply(this,a)};
+hookAround('newSeason','ns63',function(next,__a){if(!MPB&&mpsOn()){const r=passAll63(()=>next(),false);syncFx63();return r}return next()});
 hookAround('shouldFire','sf63',function(next,__a){if(mpsOn())return false;return next()});
 /* escalação dos outros humanos não pode ser sobrescrita pela IA ao preparar a rodada */
 hookAround('autoPick','ap63',function(next,__a){let [c]=__a;if(MPP&&G.mps&&G.mps.hs.some(h=>h.club===c.id&&h.club!==G.user))return;return next()});

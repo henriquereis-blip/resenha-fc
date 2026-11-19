@@ -310,9 +310,9 @@ Object.assign(MACT,{
 });
 
 /* ---------- tela Mundo (dentro de Copas) ---------- */
-const _vc37=vComp;vComp=function(){
+hookAround('vComp','vc37',function(next,__a){
   if(S.ctab!=='mundo'){
-    let h=_vc37();
+    let h=next();
     return h.replace(/(data-t="cont">Continental<\/button>)/,'$1<button data-a="ctab" data-t="mundo">Mundo</button>');
   }
   const W=wd();
@@ -337,7 +337,7 @@ const _vc37=vComp;vComp=function(){
   if(hs.length)h+=`<div class="card"><div class="k">🏆 Champions League · campeões</div>${hs.map(x=>`<div class="res"><span>T${x.s}</span><b>${esc(x.ucl)}</b></div>`).join('')}</div>`;
   if(W.xp.length)h+=`<div class="card"><div class="k">💸 Transferências internacionais</div>${W.xp.slice(0,10).map(x=>`<div class="res"><span>${esc(x.t)}<br><small>T${x.s} · rodada ${x.r}</small></span><b>${mi(x.fee)}</b></div>`).join('')}</div>`;
   return h+'</div>';
-};
+});
 Object.assign(A,{wc(d){S.wc=d.k||null;S.ctab='mundo';render();window.scrollTo(0,0)}});
 hookAround('loadSave','ls37',function(next,__a){const ok=next();return ok});
 

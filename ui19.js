@@ -47,9 +47,9 @@ var vComp=function(){
   return h+'</div>';
 };
 Object.assign(A,{ctab(d){S.ctab=d.t;render()}});
-const _vm19=vModal;vModal=function(){
-  let h=_vm19();const md=S.modal;
+hookAround('vModal','vm19',function(next,__a){
+  let h=next();const md=S.modal;
   try{if(md&&md.t==='round'&&G.lastRound&&G.lastRound.cup){const x=G.lastRound.cup;
     h=h.replace(/<h3>[^<]*Fim da rodada \d+<\/h3>/,`<h3>${esc(x.label)}</h3><div class="cupnote ${x.adv===false?'bad':'ok'}">${esc(x.note||'')}${x.pen?' · Pênaltis '+x.pen[0]+'–'+x.pen[1]:''}${x.prize?' · Receita '+mi(x.prize):''}</div>`)}}catch(e){}
   return h;
-};
+});

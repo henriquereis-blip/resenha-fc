@@ -71,26 +71,26 @@ function vDir(){
 }
 
 /* injury info in player profile */
-const _vp11=vPerfil;vPerfil=function(){
-  let r=_vp11();const p=P(S.prof);if(!p)return r;
+hookAround('vPerfil','vp11',function(next,__a){
+  let r=next();const p=P(S.prof);if(!p)return r;
   if(p.club<0)return r;
   let ex_='';
   if(p.inj>0)ex_=`<div class="x9"><div class="card alert9"><div class="k">🚑 Lesionado</div><b>${esc(p.injT||'Lesão')}</b> · ${sevOf(p.injN||p.inj)} · volta em ${p.inj} rodada${p.inj>1?'s':''}${p.surg?' · operado':''}</div></div>`;
   else if(p.rtp>0)ex_=`<div class="x9"><div class="card"><div class="k">Em retorno de lesão (${p.rtp} rod.): sem ritmo e risco de recaída.</div></div></div>`;
   if(p.injHist&&p.club===G.user)ex_+=`<div class="x9"><div class="k" style="margin:6px 0">Histórico: ${p.injHist} lesão${p.injHist>1?'ões':''} na carreira · propenso: ${proneOf(p)>1.25?'sim':proneOf(p)<.85?'não':'normal'}</div></div>`;
   return r.replace(/<\/div>$/,ex_+'</div>');
-};
+});
 
 /* balanço de metas no fim da temporada */
-const _vm11=vModal;vModal=function(){
-  const h=_vm11();const md=S.modal;
+hookAround('vModal','vm11',function(next,__a){
+  const h=next();const md=S.modal;
   if(!md||md.t!=='season'||!G.summary||!G.summary.goals)return h;
   const s=G.summary;
   const ex_=`<div class="x9"><div class="card"><h3>Balanço das metas</h3>${s.goals.map(x=>`<div class="goal"><div class="gh"><b>${x.ok?'✅':'❌'} ${esc(x.t)}</b></div><small>${esc(x.txt)}</small></div>`).join('')}
    <p class="news">Paciência: diretoria ${s.pat.bd} · torcida ${s.pat.fan}.</p>
    ${s.elec?`<div class="elec"><b>🗳️ Eleição no clube</b><div class="vote"><i style="width:${s.elec.shares[0]}%;background:var(--ok)">${s.elec.shares[0]}%</i>${s.elec.shares.slice(1).map((x,i)=>`<i style="width:${x}%;background:${i?'#6b7a90':'var(--bad)'}">${x}%</i>`).join('')}</div><p class="news">${s.elec.win?esc(s.elec.winner)+' foi reeleito.':esc(s.elec.winner)+' ('+presOf(s.elec.newpf).n+') venceu e assume na próxima temporada.'}</p></div>`:''}</div></div>`;
   return h.replace('<button class="btn big" data-a="newseason">',ex_+'<button class="btn big" data-a="newseason">');
-};
+});
 
 Object.assign(A,{medprof(d){S.prof=+d.id;render();window.scrollTo(0,0)}});
 
@@ -99,8 +99,8 @@ function jobOffers(good){
   const c=userClub();const base=c.rep+(good?3:0);
   return G.clubs.filter(x=>x.id!==c.id).map(x=>({x,d:Math.abs(x.rep-(base+rnd(-2.5,2.5)))})).sort((a,b)=>a.d-b.d).slice(0,3).map(o=>o.x.id);
 }
-const _vm11b=vModal;vModal=function(){
-  const md=S.modal;let h=_vm11b();
+hookAround('vModal','vm11b',function(next,__a){
+  const md=S.modal;let h=next();
   if(md&&md.t==='fired'&&md.resign){
     h=h.replace('Você foi demitido','Procurar novo clube').replace(/<p class="news">A diretoria[^<]*<\/p>/,'<p class="news">Você pediu para sair do '+esc(userClub().name)+'. Estes clubes querem conversar. Seu histórico de técnico vai com você; elenco, caixa, paciência e metas começam do zero no novo clube.</p>')
      .replace(/<\/div>$/,'<button class="btn ghost big" data-a="stay">Ficar no '+esc(userClub().name)+'</button></div>');
@@ -110,5 +110,5 @@ const _vm11b=vModal;vModal=function(){
     h=h.replace('<button class="btn big" data-a="newseason">',ex_+'<button class="btn big" data-a="newseason">');
   }
   return h;
-};
+});
 Object.assign(A,{leave(){ex();S.modal={t:'fired',offs:jobOffers(false),resign:true};render();window.scrollTo(0,0)},stay(){S.modal=null;render()}});

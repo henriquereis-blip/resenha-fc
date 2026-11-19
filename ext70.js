@@ -58,7 +58,7 @@ hookAround('vAssist','va70',function(next,__a){
 });
 if(typeof vVest==='function'){hookAround('vVest','vv70',function(next,__a){return clean(next())});}
 /* mensagens de resultado sem o rastro do dado */
-const _t70=toast;toast=function(t){return _t70(String(t).replace(/🎲 ?\d+[+\-−]?\d* vs \d+:? ?/,''))};
+hookAround('toast','t70',function(next,A){return next(String(A[0]).replace(/🎲 ?\d+[+\-−]?\d* vs \d+:? ?/,''))});
 const _tg70=A.tipgo;A.tipgo=function(d){const r=_tg70.apply(this,arguments);try{for(const t of G.tips)if(t.res)t.res=t.res.replace(/🎲 ?\d+[+\-−]?\d* vs \d+:? ?/,'')}catch(e){}return r};
 
 /* selo no ícone do Auxiliar: dicas novas + avisos */

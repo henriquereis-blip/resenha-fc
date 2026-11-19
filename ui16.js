@@ -9,8 +9,8 @@
 .xs{display:flex;gap:4px;margin:6px 0}.xs i{flex:1;height:5px;border-radius:3px;background:#ffffff1c}.xs i.on{background:#e0a23a}.xs i.hot{background:#e0524a}
 `;document.head.appendChild(st)})();
 const TONE_LBL={humilde:'🙏 Humilde',confiante:'💪 Confiante',culpa_time:'👉 Culpa elenco',culpa_arbitro:'🟨 Culpa juiz',elogia_imprensa:'📰 Elogia imprensa',elogia_torcida:'📣 Elogia torcida',tecnico:'📋 Técnico',polemico:'🔥 Polêmico',evasivo:'🤐 Evasivo'};
-const _vj16=vJornal;vJornal=function(){
-  let h=_vj16();
+hookAround('vJornal','vj16',function(next,__a){
+  let h=next();
   try{
     const J=jrBox();
     // rótulo do tom nas opções
@@ -26,4 +26,4 @@ const _vj16=vJornal;vJornal=function(){
     let k=0;h=h.replace(/<article>/g,()=>{const n=G.paper[1+k++];return `<article class="${n&&n.tone==='pos'?'tn-pos':n&&n.tone==='neg'?'tn-neg':''}">`});
   }catch(e){console.error('vJornal16 '+e.message)}
   return h;
-};
+});

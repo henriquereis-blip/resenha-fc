@@ -186,13 +186,14 @@ hookAround('negStart','ns_neg28',function(next,__a){let [pid]=__a;
 });
 
 /* ======== contratos de patrocínio travados ======== */
-const _sm28=signMaster;signMaster=function(o,mode){
+hookAround('signMaster','sm28',function(next,A){
+  const [o,mode]=A;
   const y=S.spYrs===3?3:1;let o2=o;
   if(y===3)o2=Object.assign({},o,{fixed:+(o.fixed*1.05).toFixed(2),perWin:+((o.perWin||0)*1.05).toFixed(3),topBonus:+((o.topBonus||0)*1.05).toFixed(2),titleBonus:+((o.titleBonus||0)*1.05).toFixed(2)});
-  _sm28.call(this,o2,mode);
+  next(o2,mode);
   if(G.sponsor){G.sponsor.yrs=y;G.sponsor.since=G.season;G.sponsor.until=G.season+y-1}
   S.spYrs=1;
-};
+});
 function spLeft(x){const u=x.until===undefined?G.season:x.until;return Math.max(1,u-G.season+1)}
 function spFee(val,left){return +Math.max(.3,val*.35*left).toFixed(1)}
 function yrsToggle(){const y=S.spYrs===3?3:1;return `<div class="seg" style="margin:8px 0"><button class="${y===1?'on':''}" data-a="spyrs" data-v="1">1 temporada</button><button class="${y===3?'on':''}" data-a="spyrs" data-v="3">3 temporadas <small>+5%</small></button></div><p class="foot keep">Depois de assinado o contrato é travado: pra sair antes tem que pagar multa de ~35% do valor por temporada restante.</p>`}

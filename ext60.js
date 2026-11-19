@@ -82,12 +82,12 @@ hookAround('ligaHead','lh60',function(next,__a){
   }catch(e){return h}
 });
 /* ---------- Copas: faixa da competição aberta ---------- */
-const _vc60=vComp;vComp=function(){
-  let h=_vc60.apply(this,arguments);
+hookAround('vComp','vc60',function(next,__a){
+  let h=next();
   try{const tab=S.ctab||'cup';let name=null,sub='Temporada '+(2026+G.season);
     if(tab==='cup'){name=G.abroad&&G.nc&&G.nc.s===G.season?G.nc.name:'Copa do Brasil'}
     else if(tab==='cont'){name=G.cont&&G.cont.comp?COMPN[G.cont.comp]:'Competições continentais';if(!G.cont)sub='Seu clube não disputa neste ano'}
     else if(tab==='mundo'){name=S.wc&&WLD.find(x=>x.k===S.wc)?WLD.find(x=>x.k===S.wc).lg:'Mundo: ligas e copas internacionais';sub=S.wc?'Todas as ligas do jogo':'Ligas, continentais e Mundial'}
     if(name)h=h.replace(/<h2>Copas<\/h2>/,banner60(name,sub));
   }catch(e){console.error('th60 '+e.message)}
-  return h};
+  return h});

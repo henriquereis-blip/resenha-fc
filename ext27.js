@@ -81,4 +81,4 @@ function copinhaCard(){
    ${h.length?`<p class="news">Anteriores: ${h.map(x=>x.yr+' '+(x.out==='Campeão'?'🏆':x.out)).join(' · ')}</p>`:''}
    <p class="foot">Quanto melhor a base e mais jovens de potencial, mais longe você vai. Participar acelera a evolução dos garotos.</p></section>`;
 }
-const _vb27=vBase;vBase=function(){let h=_vb27();try{const k=copinhaCard();if(k){const i=h.indexOf('<p class="foot">Dados reais da base');h=i>0?h.slice(0,i)+k+h.slice(i):h.replace(/<\/div>\s*$/,k+'</div>')}}catch(e){console.error('cp ui '+e.message)}return h};
+hookAround('vBase','vb27',function(next,__a){let h=next();try{const k=copinhaCard();if(k){const i=h.indexOf('<p class="foot">Dados reais da base');h=i>0?h.slice(0,i)+k+h.slice(i):h.replace(/<\/div>\s*$/,k+'</div>')}}catch(e){console.error('cp ui '+e.message)}return h});

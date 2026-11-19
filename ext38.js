@@ -264,8 +264,8 @@ Object.assign(A,{wbuy(d){
 }});
 
 /* ---------- tela Mundo: calendário, regras, campeões ---------- */
-const _vc38=vComp;vComp=function(){
-  let h=_vc38();
+hookAround('vComp','vc38',function(next,__a){
+  let h=next();
   if(S.ctab!=='mundo')return h;
   const k=S.wc;
   if(k&&WRULES[k]){
@@ -281,4 +281,4 @@ const _vc38=vComp;vComp=function(){
   const cont=hs.length?`<div class="card"><div class="k">🏆 Campeões continentais e mundiais</div>${hs.map(x=>`<div class="res"><span>T${x.s}<br><small>Champions: ${esc(x.ucl||'—')} · Europa: ${esc(x.uel||'—')} · Liberta: ${esc(x.lib||'—')}<br>CONCACAF: ${esc(x.conc||'—')} · Ásia: ${esc(x.asia||'—')} · África: ${esc(x.afr||'—')}</small></span><b>${esc(x.inter||'—')}${x.cwc?'<br><small>Mundial: '+esc(x.cwc)+'</small>':''}</b></div>`).join('')}<p class="news">À direita: campeão da Copa Intercontinental (e do Mundial de Clubes nos anos de Mundial).</p></div>`:'';
   const card=`<div class="card"><div class="k">📅 Calendário FIFA do ciclo (4 anos)</div>${cal}<p class="news">Datas baseadas no calendário FIFA divulgado. Seus jogadores são convocados pelas seleções deles, com pré-lista e convocação final nos anos de Copa e Eurocopa.</p></div>${hist?`<div class="card"><div class="k">🌍 Campeões de seleções</div>${hist}</div>`:''}${cont}`;
   return h.replace(/<div class="card"><div class="k">🌎 Campeonatos<\/div>/,card+'<div class="card"><div class="k">🌎 Campeonatos</div>');
-};
+});

@@ -20,8 +20,8 @@ function dotsOf(m,k){
     return `<i class="dt ${k}" style="left:${px}%;top:${py}%;background:${kitCss(kit)};border-color:${en<45?'#ff5a52':lumOf(kit.a)>.8?'#6b7280':'#fff'}"></i>`}).join('');
 }
 /* marketing: camisas */
-const _vmk14=vMarketing;vMarketing=function(){
-  let r=_vmk14();const c=userClub(),B=G.kit3||{season:-1,hist:[],cur:null},k=Object.assign({col:0,pat:'plain',con:'mini'},S.k3||{});
+hookAround('vMarketing','vmk14',function(next,__a){
+  let r=next();const c=userClub(),B=G.kit3||{season:-1,hist:[],cur:null},k=Object.assign({col:0,pat:'plain',con:'mini'},S.k3||{});
   const used=B.season===G.season;
   const sh=(kind,lab)=>`<div style="text-align:center"><div style="width:54px;margin:0 auto">${shirtSvg(c,kind)}</div><small class="k">${lab}</small></div>`;
   const cols=K3_COLS.map((x,i)=>`<button class="sch ${k.col===i?'on':''}" data-a="k3col" data-i="${i}" style="background:${x[0]};color:${x[1]};border-color:${x[1]}">${x[2]}</button>`).join('');
@@ -41,4 +41,4 @@ const _vmk14=vMarketing;vMarketing=function(){
    ${B.hist.length?`<div class="k" style="margin-top:6px">${B.hist.map(h=>`${h.s}: ${esc(h.name)} ${h.ok?'sucesso':'fracasso'} (${mi(h.gain)})`).join('<br>')}</div>`:''}
   </section></div>`;
   return r.replace(/<\/div>$/,card+'</div>');
-};
+});

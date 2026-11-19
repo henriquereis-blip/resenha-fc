@@ -158,4 +158,4 @@ Object.assign(A,{
    p.wage=r.ask;G.raises=G.raises.filter(x=>x!==r);pers(p).pm=clamp(pers(p).pm+10,0,100);save();toast(lastName(p.name)+' renovou com aumento.')},
  raiseno(d){const r=(G.raises||[]).find(x=>x.pid===+d.id);if(!r)return;const p=P(r.pid);pers(p).pm=clamp(pers(p).pm-5,0,100);G.raises=G.raises.filter(x=>x!==r);save();toast(lastName(p.name)+' não gostou da resposta.')}
 });
-const _pl17=paperLine;paperLine=function(h,sub){return _pl17(typeof h==='string'?h.replace(/Técnico Técnico/g,'Técnico'):h,sub)};
+hookAround('paperLine','pl17',function(next,A){const h=A[0];return next(typeof h==='string'?h.replace(/Técnico Técnico/g,'Técnico'):h,A[1])});

@@ -1,10 +1,11 @@
 # converte wrappers empilhados (const _x=fn;fn=function(params){...}) em hookAround. Preserva ordem; confere sintaxe e tenta wrapper a wrapper.
 import re,glob,subprocess,tempfile,os
-SKIP=set('stepMinute power salOf ex valueOf P C clamp mi'.split())
+SKIP=set('stepMinute power salOf valueOf P C clamp mi'.split())
 decl=set()
 for f in glob.glob('*.js'):
     if re.match(r'(data|logic|ext\d*|ui\d*)\.js$',f):
-        decl|=set(re.findall(r'(?:^|\n)function (\w+)\(',open(f,encoding='utf-8').read()))
+        t=open(f,encoding='utf-8').read()
+        decl|=set(re.findall(r'(?:^|\n)function (\w+)\(',t))|set(re.findall(r'(?:^|\n)var (\w+)\s*=',t))|set(re.findall(r'(?:^|\n)(\w+)=function\(',t))
 pat=re.compile(r'const (_\w+)=(\w+);\2=function\(([^)]*)\)\{')
 def syntax_ok(txt):
     fd,p=tempfile.mkstemp(suffix='.js');os.write(fd,txt.encode());os.close(fd)
@@ -46,6 +47,7 @@ def convert(s,allowed):
         idx+=1
         var,fn,pr=m.group(1),m.group(2),m.group(3).strip()
         i=match_end(s,m.end());body=s[m.end():i-1];end=i
+        body=re.sub(r'const a=arguments;','',body)
         if s[end:end+1]==';':end+=1
         callre=re.escape(var)+r'(?:\.apply\((?:this|null),[^()]*\)|\([^()]*\))'
         n_all=len(re.findall(re.escape(var)+r'\b',body))
@@ -56,7 +58,7 @@ def convert(s,allowed):
                 am=re.match(re.escape(var)+r'\.apply\((?:this|null),\s*(.*)\)$',t,re.S)
                 if am:
                     x=am.group(1).strip()
-                    return 'next()' if x=='arguments' else 'next(...%s)'%x
+                    return 'next()' if x in ('arguments','a') else 'next(...%s)'%x
                 return 'next(%s)'%t[len(var)+1:-1]
             inner=re.sub(callre,rep,body)
             inner=re.sub(r'\barguments\b','__a',inner)
@@ -69,7 +71,7 @@ def convert(s,allowed):
         pos=end
     return ''.join(out),conv,skipped
 tot=0;allskip=[]
-for f in sorted(glob.glob('ext*.js')):
+for f in sorted(glob.glob('ext*.js'))+sorted(glob.glob('ui*.js')):
     s=open(f,encoding='utf-8').read()
     new,conv,sk=convert(s,None)
     if not conv:allskip+= [(f,)+x for x in sk];continue

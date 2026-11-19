@@ -8,5 +8,5 @@ function onlySA61(fn,self,args){
   FCPOOL.length=0;sa.forEach(d=>FCPOOL.push(d));
   try{return fn.apply(self,args)}finally{FCPOOL.length=0;keep.forEach(d=>FCPOOL.push(d))}
 }
-const _ci61=contInit;contInit=function(){return onlySA61(_ci61,this,arguments)};
-const _ck61=contKoOpp;contKoOpp=function(){return onlySA61(_ck61,this,arguments)};
+hookAround('contInit','ci61',function(next,A){return onlySA61(next,this,A)});
+hookAround('contKoOpp','ck61',function(next,A){return onlySA61(next,this,A)});

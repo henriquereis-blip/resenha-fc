@@ -83,13 +83,14 @@ hookAround('genOffer','ge10',function(next,__a){
   const n=G.offers.length;next();
   if(G.offers.length>n&&G.mgr){const o=G.offers[G.offers.length-1];o.fee=+(o.fee*(1+.03*mgd('fin')+.015*mgd('mer'))).toFixed(1)}
 });
-const _mb10=makeBid;makeBid=function(pid,fee){
-  if(!G.mgr)return _mb10(pid,fee);
+hookAround('makeBid','mb10',function(next,A){
+  const [pid,fee]=A;
+  if(!G.mgr)return next(pid,fee);
   const boost=1+.02*mgd('mer')+.01*mgd('fin');
-  const r=_mb10(pid,+(fee*boost).toFixed(2));
+  const r=next(pid,+(fee*boost).toFixed(2));
   if(r.ok){G.fin.caixa=+(G.fin.caixa+(fee*boost-fee)).toFixed(2)}
   return r;
-};
+});
 hookAround('signFree','sf10',function(next,__a){let [pid]=__a;
   const p=P(pid),lu=p?valueOf(p)*.1:0;const r=next(pid);
   if(!r&&G.mgr)G.fin.caixa=+(G.fin.caixa+lu*.05*Math.max(0,mgd('mer'))).toFixed(2);

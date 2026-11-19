@@ -49,7 +49,7 @@ function ex9(){
   G.clubs.forEach(x=>{x.bq=baseStart(x);x.s20={P:0,GP:0,GC:0,J:0}});
   G.mk.base.sub20={};
 }
-const _ex9=ex;ex=function(){_ex9();ex9()};
+hookAround('ex','ex9',function(next,__a){next();ex9()});
 
 /* ---------- torcida: queridinhos e vaiados ---------- */
 function favOf(p){

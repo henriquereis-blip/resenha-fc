@@ -44,8 +44,8 @@ function poBracket54(po){
     return `<div class="m ${you?'me':''}"><div class="${t.a===G.user?'u':''}"><span>${esc(nm(t.a))}</span><b></b></div><div class="${t.b===G.user?'u':''}"><span>${esc(nm(t.b))}</span><b></b></div></div>`}).join('')}</div>`;
   return `<div class="br54">${cols.map(done).join('')}${cur}</div>`;
 }
-const _vc54=vComp;vComp=function(){
-  let h=_vc54.apply(this,arguments),poCard='';
+hookAround('vComp','vc54',function(next,__a){
+  let h=next(),poCard='';
   try{
     const tab=S.ctab||'cup';const nc=G&&G.abroad&&G.nc&&G.nc.s===G.season?G.nc:null;
     if(tab==='cup'&&G.po51&&G.po51.s===G.season&&(G.po51.log.length||G.po51.ties.length)){
@@ -82,4 +82,4 @@ const _vc54=vComp;vComp=function(){
       card2=`<div class="card"><div class="k">${esc(n2.name)} · temporada ${2026+G.season} · ${n2.size} clubes</div><div class="big">${sn2}</div><p class="news" style="margin:4px 0 8px">${b2}${sl2}</p>${ncBracket54(n2)}</div>`}
     return head+poCard+card+card2+hh+'</div>';
   }catch(e){console.error('br54 '+e.message);return h}
-};
+});

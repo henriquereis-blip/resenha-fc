@@ -138,12 +138,12 @@ function liveRoundHTML(){
     .map(e=>`<div class="gfeed"><span>${e.min}'</span> ${e.x.h.club.sig} ${e.x.hg}–${e.x.ag} ${e.x.a.club.sig} · ${esc(e.text.replace('GOL! ',''))}</div>`).join('');
   return `<div class="card lvc"><div class="lvh"><span>Rodada ao vivo</span><b>${lt.now}º ${d>0?'▲':d<0?'▼':'='} <small style="color:var(--mut)">(era ${lt.was}º)</small></b></div>${rows}${feed?`<div class="lvh" style="margin-top:6px"><span>Últimos gols</span></div>${feed}`:''}</div>`;
 }
-const _vm13=vMatch;vMatch=function(){
-  let h=_vm13();
+hookAround('vMatch','vm13',function(next,__a){
+  let h=next();
   h=h.replace(/<div class="gchips">[\s\S]*<\/div><\/div>$/,'</div>');
   h=h.replace('<div class="ticker">',liveRoundHTML()+'<div class="ticker">');
   return h;
-};
+});
 
 /* ---- Treino ---- */
 function famRow(lab,v,cur,btn){const col=v>=75?'var(--ok)':v>=55?'var(--warn)':'var(--bad)';const d=(famMul(v)-1)*100;
@@ -188,18 +188,18 @@ function vAssist(){
 }
 
 /* ---- navegação e selo de dicas ---- */
-const _render13=render;render=function(){
-  _render13();
+hookAround('render','render13',function(next,__a){
+  next();
   try{document.querySelectorAll('.fc.on,.sch.on').forEach(e=>{const p=e.parentElement;p.scrollLeft=e.offsetLeft-p.clientWidth/2+e.clientWidth/2})}catch(e){}
   try{if(G&&G.tips){const n=G.tips.filter(t=>t.state==='new').length;const b=document.querySelector('.ic [data-v="assist"]');
     if(b&&n&&!b.querySelector('.badge13')){const s=document.createElement('span');s.className='badge13';s.textContent=n;b.appendChild(s)}}
     if(G&&G.vest){const n=G.vest.conf.length;const b=document.querySelector('.ic [data-v="vest"]');if(b&&n&&!b.querySelector('.badge13')){const s=document.createElement('span');s.className='badge13';s.textContent=n;b.appendChild(s)}}}catch(e){}
-};
+});
 
 /* personalidade no perfil do jogador */
-const _vp13=vPerfil;vPerfil=function(){
-  let r=_vp13();const p=P(S.prof);if(!p||p.club!==G.user)return r;pers(p);
+hookAround('vPerfil','vp13',function(next,__a){
+  let r=next();const p=P(S.prof);if(!p||p.club!==G.user)return r;pers(p);
   const mc=p.pm<45?'var(--bad)':p.pm<65?'var(--warn)':'var(--ok)';
   const ex_=`<div class="x9"><div class="card"><div class="k">Personalidade</div><p class="news"><b>${PGN[p.pg]}</b> · motivação <b style="color:${mc}">${Math.round(p.pm)}</b>/100 · contrato: <b>${PCN[p.pc||promiseFor(userClub(),p)]}</b></p><div class="row"><button class="btn sm ghost" data-a="promise" data-id="${p.id}">Mudar tempo de jogo combinado</button></div></div></div>`;
   return r.replace(/<\/div>$/,ex_+'</div>');
-};
+});

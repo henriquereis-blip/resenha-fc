@@ -24,10 +24,10 @@ function mgCreator(){
   <div class="card"><div class="res"><span><b>${mgTitle(s.a)}</b></span><span class="pill ${pool===0?'ok':''}">${pool} ponto(s) livre(s)</span></div>
   ${MGA.map(([k,n,e])=>`<div class="mgrow"><div class="ic">${e}</div><div><b class="t">${n}</b><div class="mb"><i style="width:${s.a[k]*10}%"></i></div><small>${MGFX[k](s.a[k])}</small></div><div class="stp"><button data-a="mgadj" data-k="${k}" data-d="-1" ${s.a[k]<=2?'disabled':''}>−</button><b>${s.a[k]}</b><button data-a="mgadj" data-k="${k}" data-d="1" ${s.a[k]>=MGMAX0||pool<=0?'disabled':''}>+</button></div></div>`).join('')}</div></div>`;
 }
-const _vs10=vStart;vStart=function(){
+hookAround('vStart','vs10',function(next,__a){
   if(!S.mg)S.mg=mgNew('equil');
-  return _vs10().replace('<h2>1 · Escolha o clube</h2>',mgCreator()+'<h2>1 · Escolha o clube</h2>');
-};
+  return next().replace('<h2>1 · Escolha o clube</h2>',mgCreator()+'<h2>1 · Escolha o clube</h2>');
+});
 
 /* ---------- Meu técnico ---------- */
 function vMeuTec(){
@@ -43,8 +43,8 @@ function vMeuTec(){
 }
 
 /* ---------- Mercado: empréstimos ---------- */
-const _vm10=vMercado;vMercado=function(){
-  let r=_vm10();
+hookAround('vMercado','vm10',function(next,__a){
+  let r=next();
   const m=r.match(/^<div class="wrap">(<div class="seg[\s\S]*?<\/div>)/);if(!m)return r;
   const tabs=m[1].replace(/<\/div>$/,`<button class="${S.tab==='emp'?'on':''}" data-a="tab" data-t="emp">Empréstimos (${Object.values(G.players).filter(p=>p.loanable).length})</button></div>`);
   if(S.tab!=='emp')return '<div class="wrap">'+tabs+r.slice(m[0].length);
@@ -55,9 +55,9 @@ const _vm10=vMercado;vMercado=function(){
   ${outs.length?`<section class="sec card"><h3>Emprestados por mim<small>${outs.length}</small></h3>${outs.map(p=>`<div class="rank"><span class="pos">${p.ovr}</span><div class="pn col"><span>${esc(nameOf(p))}</span><small class="k">${p.age}a · no ${C(p.club).name} · volta no fim do ano</small></div></div>`).join('')}</section>`:''}
   ${ins.length?`<section class="sec card"><h3>Aqui por empréstimo<small>${ins.length}</small></h3>${ins.map(p=>`<div class="mrow"><span class="pos">${roleLabel(p)}</span><span class="nm">${esc(nameOf(p))}<small>de ${C(p.loan.from).name} · opção ${mi(loanInOffer(p.id).buy)}</small></span><button class="btn sm" data-a="loanbuy" data-id="${p.id}">Comprar</button></div>`).join('')}</section>`:''}
   <section class="sec card"><h3>Disponíveis<small>${av.length}</small></h3>${av.length?av.map(p=>`<div class="mrow"><span class="pos">${roleLabel(p)}</span><span class="nm">${esc(nameOf(p))}<small>${C(p.club).sig} · ${p.age}a · OVR ${p.ovr} · taxa ${mi(loanInOffer(p.id).fee)}</small></span><span class="col"><button class="btn sm" data-a="loanin" data-id="${p.id}">Emprestar</button><button class="btn sm ghost" data-a="prof" data-id="${p.id}">Ver</button></span></div>`).join(''):'<p class="news">Ninguém liberado agora. Os clubes abrem vagas ao longo do ano.</p>'}</section></div>`;
-};
-const _vp10=vPerfil;vPerfil=function(){
-  let r=_vp10();const p=P(S.prof);if(!p)return r;
+});
+hookAround('vPerfil','vp10',function(next,__a){
+  let r=next();const p=P(S.prof);if(!p)return r;
   let ex_='';
   if(p.club===G.user){
     if(p.loan&&p.loan.to===G.user)ex_=`<div class="x9"><div class="card"><div class="k">Emprestado por ${C(p.loan.from).name}</div><button class="btn big" data-a="loanbuy" data-id="${p.id}">Exercer opção de compra · ${mi(loanInOffer(p.id).buy)}</button></div></div>`;
@@ -65,7 +65,7 @@ const _vp10=vPerfil;vPerfil=function(){
   }else if(p.loan&&p.loan.from===G.user){ex_=`<div class="card"><div class="k">Emprestado ao ${C(p.club).name} até o fim da temporada</div></div>`}
   else if(p.loanable&&p.club>=0){ex_=`<div class="x9"><button class="btn big ghost" data-a="loanin" data-id="${p.id}">Pegar emprestado · taxa ${mi(loanInOffer(p.id).fee)}</button></div>`}
   return r.replace(/<\/div>$/,ex_+'</div>');
-};
+});
 
 /* ---------- Dashboard financeiro ---------- */
 function areaH(arr){

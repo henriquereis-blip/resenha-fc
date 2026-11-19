@@ -110,8 +110,8 @@ Object.assign(A,{
 const _sf20=A.setform;A.setform=function(d){_sf20.call(this,d);try{const m=G.autoMode;if(m&&m.on&&m.mode!=='nota'){autoPickMode(userClub(),m.mode,m.val[m.mode]);save();render()}}catch(e){}};
 
 /* ---------- tática: painel de seleção automática ---------- */
-const _vt20=vTatica;vTatica=function(){
-  let h=_vt20();const m=G.autoMode||{mode:'nota',val:{desc:75,jov:23},on:false};
+hookAround('vTatica','vt20',function(next,__a){
+  let h=next();const m=G.autoMode||{mode:'nota',val:{desc:75,jov:23},on:false};
   const sel=(id,vals,cur,suf)=>`<select id="${id}">${vals.map(v=>`<option value="${v}" ${v===cur?'selected':''}>${v}${suf}</option>`).join('')}</select>`;
   const p=`<div class="card ap20"><div class="k">Seleção automática</div><div class="opts">
    <div class="opt20 ${m.mode==='nota'?'sel':''}"><span><b>Melhores por nota</b><small>Os 11 de maior nota para cada posição.</small></span><button class="btn sm" data-a="apgo" data-m="nota">Montar</button></div>
@@ -120,27 +120,27 @@ const _vt20=vTatica;vTatica=function(){
    <label class="chk" style="margin-top:8px"><input type="checkbox" ${m.on?'checked':''} data-a="apon"> Aplicar o último critério (${modeLbl(m.mode,m.val[m.mode])}) sempre que eu trocar a formação</label></div>`;
   const k='<div class="acts"><button class="btn ghost" data-a="tsv">';
   return h.includes(k)?h.replace(k,p+k):h+p;
-};
+});
 
 /* ---------- confiança do elenco na interface ---------- */
-const _vi20=vInicio;vInicio=function(){
-  let h=_vi20();const v=sqcOf();
+hookAround('vInicio','vi20',function(next,__a){
+  let h=next();const v=sqcOf();
   const bar=`<div><small>Confiança elenco</small><div class="bar2"><i style="width:${v}%"></i><b>${Math.round(v)}%</b></div></div>`;
   const k='<div><small>Confiança torcida</small>';
   return h.includes(k)?h.replace(k,bar+k):h;
-};
-const _vv20=vVest;vVest=function(){
-  let h=_vv20();const v=sqcOf();
+});
+hookAround('vVest','vv20',function(next,__a){
+  let h=next();const v=sqcOf();
   const card=`<div class="card sqc20"><div class="k">Confiança do elenco</div><div class="v" style="font:800 30px var(--fh)" ><span class="${sqcCls(v)}">${Math.round(v)}</span> <small class="k">${sqcTxt(v)}</small></div><div class="meter"><i class="${sqcCls(v)}" style="width:${v}%"></i></div>
    <p class="news">Sobe com vitórias e sequência boa, desce com derrotas e com craques no banco. Abaixo de 50 o time rende menos (até −5%) e surgem mais atritos no vestiário. Acima de 75 rende um pouco mais (até +1,5%). Treinador motivador ajuda.</p></div>`;
   const k='<div class="card"><div class="k">Clima do grupo</div>';
   return h.includes(k)?h.replace(k,card+k):h.replace('</h2>','</h2>'+card);
-};
+});
 
 /* ---------- tom da tabela por campeonato ---------- */
-const _vl20=vLiga;vLiga=function(){let h=_vl20();return h.replace('<div class="tbl">','<div class="tbl lt'+userDiv()+'">')};
-const _vo20=vOpcoes;vOpcoes=function(){
-  let h=_vo20();
+hookAround('vLiga','vl20',function(next,__a){let h=next();return h.replace('<div class="tbl">','<div class="tbl lt'+userDiv()+'">')});
+hookAround('vOpcoes','vo20',function(next,__a){
+  let h=next();
   const slots=`<div class="card"><div class="k">Salvar jogo</div>${[1,2,3].map(i=>{const f=slotInfo(i);return `<div class="res"><span>Slot ${i} <small class="k">${f?esc(f.club)+' · T'+f.season+' R'+Math.min(f.round+1,38):'vazio'}</small></span><button class="btn sm" data-a="slsave" data-i="${i}">Salvar</button></div>`}).join('')}<div class="res"><span>Voltar ao menu principal</span><button class="btn sm ghost" data-a="tomenu">Menu</button></div></div>`;
   return h.replace('<div class="card"><button class="btn ghost" data-a="reset">',slots+'<div class="card"><button class="btn ghost" data-a="reset">');
-};
+});
