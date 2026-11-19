@@ -2,7 +2,7 @@
 # Regressão rápida do Resenha FC. Uso: bash test-all.sh [--base]  (--base grava a linha de base)
 cd "$(dirname "$0")"
 bash build.sh && bash pages.sh >/dev/null 2>&1
-T="t75 t68 t73 t80 t90 t91 t92 t93 t94 t104 t105 t106 t108 t109 t110 t111 t112 t113 t114 t115 t116 t117 t118"
+T="t75 t68 t73 t80 t90 t91 t92 t93 t94 t104 t105 t106 t108 t109 t110 t111 t112 t113 t114 t115 t116 t117 t118 t119"
 OUT=.testout; mkdir -p $OUT; : > $OUT/summary.txt
 run(){ timeout 600 node $1.js > $OUT/$1.txt 2>&1; echo "exit=$?" >> $OUT/$1.txt; }
 i=0; for t in $T; do run $t & i=$((i+1)); if [ $((i%4)) -eq 0 ]; then wait; fi; done; wait
