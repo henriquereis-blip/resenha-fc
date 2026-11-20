@@ -56,7 +56,7 @@ Sempre que medir, guarde a saída em `tools/sim/out/` com o número da versão n
 
 ## Estado atual
 
-- Branch `v95-potencia-sem-vies-formacao`: `power()` sem bônus por contagem de jogadores (corrige viés de 3 zagueiros) v96 (formação da IA por encaixe, `ext81.js`) e v97 (nota do goleiro), v98 (zagueiro, Posse, explicação na tela), v99 (Bola de Ouro com títulos, convocações e jogos decisivos), v100 (aviso de formação com custo de zagueiro), v101 (Bola de Ouro com estadual e seleção), v102 (Posse mais forte).
+- Branch `v95-potencia-sem-vies-formacao`: `power()` sem bônus por contagem de jogadores (corrige viés de 3 zagueiros) v96 (formação da IA por encaixe, `ext81.js`) e v97 (nota do goleiro), v98 (zagueiro, Posse, explicação na tela), v99 (Bola de Ouro com títulos, convocações e jogos decisivos), v100 (aviso de formação com custo de zagueiro), v101 (Bola de Ouro com estadual e seleção), v102 (Posse mais forte), v103 (notas de Austrália e EUA).
 - Próximos itens da revisão, em ordem:
   1. ~~IA escolhe formação~~ feito na v96 (`ext81.js`): encaixe (`xiScore`) + filosofia + ruído; reavalia na nova temporada; troca na má fase (≥5 abaixo, rodadas %6==0). Medição: `tools/sim/exp_aiform.js`.
   2. ~~Goleiro com nota própria~~ feito na v97 (`logic.js` `stepMinute`): sem bônus de gol do time, defesa +0.15, gol sofrido −0.35. Medição: `tools/sim/exp_notas.js` e `exp_premios.js`. 
@@ -64,7 +64,7 @@ Sempre que medir, guarde a saída em `tools/sim/out/` com o número da versão n
   3b. Bola de Ouro (v99 e v101, `ext82.js`): nota média + títulos (+0.25 liga, +0.2 copa, +0.15 estadual) + convocações (+0.03 por data, teto 0.15) + semifinal/final de copa + fase do Brasil na Copa do Mundo e na Copa América (campeão +0.2). Não entram: Champions (simulada de forma abstrata e não tem clubes brasileiros), desempenho por jogo na seleção.
   4. ~~Auxiliar com custo defensivo~~ feito na v100 (`auxPick` em `ext70.js`): cada zagueiro que a sugestão tira da linha desconta 4 pontos; o aviso diz quantos saem. Medição: `tools/sim/exp_aux.js` (efeito na simulação não comprovado, dentro do ruído).
   5. Calibragem de demissão (`ext75.js` e `shouldFire`): tolerância de meta+3 e proteção na primeira temporada até a rodada 19, a menos que a confiança seja menor que 15.
-  6. Revisar notas de EUA e Austrália (valores de `r` e `b` no mundo).
+  6. ~~Revisar notas de EUA e Austrália~~ feito na v103: seleção AUS 66→68 (`NR0` em `ext23.js`, único valor usado nas partidas); clubes da A-League +3 (`ext37.js`, top 4 58,8→61,8); EUA mantido em 72 (o 73 de `ext38.js` era valor morto, virou 72).
   7. Testar a hipótese de formação fixa vs aleatória para IA, com experimento.
 
 Documentos de referência do projeto (no Claude/Projeto): `claude/revisao-grande-v94.md`.
