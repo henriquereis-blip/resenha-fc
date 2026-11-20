@@ -40,7 +40,7 @@ function vInicio(){
   return `<div class="home"><div class="hl">${pc}</div><div class="hr">${extra}${tb}</div></div>`;
 }
 function vOpcoes(){
-  return `<div class="wrap"><h2>Opções</h2><div class="card"><div class="res"><span>Som e vibração</span><button class="btn sm ${SND.on?'':'ghost'}" data-a="snd">${SND.on?'Ligado':'Desligado'}</button></div><div class="res"><span>Tema</span><span><button class="btn sm ghost" data-a="theme" data-v="light">Claro</button> <button class="btn sm ghost" data-a="theme" data-v="dark">Escuro</button> <button class="btn sm ghost" data-a="theme" data-v="">Auto</button></span></div><div class="res"><span>Conquistas</span><button class="btn sm" data-a="nav" data-v="conquistas">Ver (${Object.keys(G.ach).length}/${Object.keys(ACH).length})</button></div></div>
+  return `<div class="wrap"><h2>Opções</h2><div class="card"><div class="res"><span>Som e vibração</span><button class="btn sm ${SND.on?'':'ghost'}" data-a="snd">${SND.on?'Ligado':'Desligado'}</button></div><div class="res"><span>Tema</span><span><button class="btn sm ghost" data-a="theme" data-v="light">Claro</button> <button class="btn sm ghost" data-a="theme" data-v="dark">Escuro</button> <button class="btn sm ghost" data-a="theme" data-v="">Auto</button></span></div></div>
   <div class="card"><button class="btn ghost" data-a="reset">Reiniciar jogo</button></div><p class="foot">Resenha FC · demo v2 · Brasileirão Série A</p></div>`;
 }
 function vConquistas(){
@@ -52,7 +52,7 @@ function render(){
   if(!G||G.phase==='start'){app.innerHTML=vStart()+toastH();bind();return}
   if(S.match&&R){app.innerHTML=(S.panel?vPanel():vMatch())+flashH()+toastH();bind();return}
   ex();const c=userClub();
-  const views={inicio:vInicio,elenco:vInicio,tatica:vTatica,liga:vLiga,mercado:vMercado,clube:vClube,times:vTimes,agenda:vAgenda,estadio:vEstadio,juniores:vJuniores,base:vBase,meutec:vMeuTec,medico:vMedico,dir:vDir,treino:vTreino,vest:vVest,assist:vAssist,staff:vStaff,comp:vComp,marketing:vMarketing,torcida:vTorcida,tecnicos:vTecnicos,historia:vHistoria,opcoes:vOpcoes,conquistas:vConquistas};
+  const views={inicio:vInicio,elenco:vInicio,tatica:vTatica,liga:vLiga,mercado:vMercado,clube:vClube,times:vTimes,agenda:vAgenda,estadio:vEstadio,juniores:vJuniores,base:vBase,meutec:vMeuTec,medico:vMedico,dir:vDir,treino:vTreino,vest:vVest,assist:vAssist,staff:vStaff,comp:vComp,marketing:vMarketing,torcida:vTorcida,tecnicos:vTecnicos,historia:vHistoria,opcoes:vOpcoes};
   const icons=[['agenda','📅','Agenda'],['liga','🏆','Tabelas'],['meutec','🧠','Técnico'],['dir','🏛️','Diretoria'],['medico','🩺','Médico'],['treino','🏋️','Treino'],['vest','🗣️','Vestiário'],['assist','🧢','Auxiliar'],['staff','🧑‍💼','Comissão'],['comp','🌎','Copas'],['marketing','📣','Marketing'],['torcida','🔥','Torcida'],['estadio','🏟️','Estádio'],['base','🌱','Base'],['times','👕','Times'],['mercado','🔍','Procura'],['tecnicos','🧢','Técnicos'],['historia','📜','História'],['opcoes','⚙️','Opções']];
   let body;
   if(S.modal)body=vModal();else if(S.prof!==null)body=vPerfil();else if(S.paper)body=vJornal();else body=(views[G.view]||vInicio)();

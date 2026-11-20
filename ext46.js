@@ -4,7 +4,7 @@ const CAT46=[
   ['equipe','👔','Equipe','meutec',['meutec','assist','staff','medico','treino','vest'],'#35f0a0'],
   ['comp','🏆','Torneios','agenda',['agenda','liga','comp'],'#5ab0ff'],
   ['mundo','🌎','Mundo','mercado',['mercado','times','tecnicos'],'#c58bff'],
-  ['mais','⋯','Mais','opcoes',['historia','conquistas','opcoes'],'#aab4c0']
+  ['mais','⋯','Mais','opcoes',['historia','opcoes'],'#aab4c0']
 ];
 const IC46={dir:'🏛️',estadio:'🏟️',base:'🌱',torcida:'🔥',marketing:'📣',meutec:'🧠',assist:'🧢',staff:'🧑‍💼',medico:'🩺',treino:'🏋️',vest:'🗣️',agenda:'📅',liga:'🏆',comp:'🌎',mercado:'🔍',times:'👕',tecnicos:'🧢',historia:'📜',opcoes:'⚙️'};
 const NM46={dir:'Diretoria',estadio:'Estádio',base:'Base',torcida:'Torcida',marketing:'Marketing',meutec:'Técnico',assist:'Auxiliar',staff:'Comissão',medico:'Médico',treino:'Treino',vest:'Vestiário',agenda:'Agenda',liga:'Tabelas',comp:'Copas',mercado:'Procura',times:'Times',tecnicos:'Técnicos',historia:'História',opcoes:'Opções'};

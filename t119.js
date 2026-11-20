@@ -8,7 +8,7 @@ const m=await p.evaluate(()=>{const cats=document.querySelectorAll('header.top2 
  return {cats,sub,reach:[...new Set([...grid,...bottom])]}});
 chk('barra de cima: 5 categorias + Tudo',m.cats===6);
 chk('sub-abas no máximo 5',m.sub<=5);
-const need=['agenda','liga','dir','meutec','tatica','treino','vest','medico','assist','staff','marketing','torcida','estadio','base','times','mercado','comp','tecnicos','historia','conquistas','opcoes'];
+const need=['agenda','liga','dir','meutec','tatica','treino','vest','medico','assist','staff','marketing','torcida','estadio','base','times','mercado','comp','tecnicos','historia','opcoes'];
 const miss=need.filter(v=>!m.reach.includes(v));chk('toda tela tem caminho no menu',miss.length===0);
 const bad=[];for(const v of need.concat(['juniores'])){const e=await p.evaluate(v=>{try{G.view=v;S.prof=null;S.modal=null;render();return ''}catch(e){return e.message}},v);if(e)bad.push(v)}
 chk('todas as telas renderizam',bad.length===0);
