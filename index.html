@@ -4754,7 +4754,7 @@ function finishExtra(){
     }else{
       k.log.unshift({label:KNAMES[k.st],res:results.map(r=>({h:r.h,a:r.a,hg:r.hg,ag:r.ag,pen:r.pen}))});
       if(adv){prize+=[4,6,10,15][k.st]*scl;note=k.st===3?'CAMPEÃO DA '+COMPN[k.comp].toUpperCase()+'!':'Você avançou para '+KNAMES[k.st+1]+'.';
-        if(k.st===3){prize+=(k.comp==='LIB'?35:14);k.champ=true;k.alive=false;k.phase='done';c.humor=clamp(c.humor+14,5,100);G.board.conf=clamp(G.board.conf+10,0,100);paperLine(c.name+' é campeão da '+COMPN[k.comp]+'!','Taça continental e festa da torcida.');G.trophyCont=(G.trophyCont||0)+1}
+        if(k.st===3){prize+=(k.comp==='LIB'?35:14);k.champ=true;k.alive=false;k.phase='done';if(k.comp==='LIB')(G.libHist=G.libHist||[]).push({s:G.season,cid:c.id});c.humor=clamp(c.humor+14,5,100);G.board.conf=clamp(G.board.conf+10,0,100);paperLine(c.name+' é campeão da '+COMPN[k.comp]+'!','Taça continental e festa da torcida.');G.trophyCont=(G.trophyCont||0)+1}
         else k.st++}
       else{note='Eliminado na fase "'+KNAMES[k.st]+'" da '+COMPN[k.comp]+'.';k.phase='done';k.alive=false;addNews(COMPN[k.comp]+': eliminação nas '+KNAMES[k.st].toLowerCase()+'.')}}
   }
@@ -5351,7 +5351,11 @@ function ntBox(){
   return G.nt;
 }
 const cyOf=()=>(G.season-1)%4;
-function ntRating(code){const b=ntBox();if(code==='BRA')return b.braR!==undefined?b.braR:braRating();return (b.rt[code]!==undefined?b.rt[code]:NR0[code])}
+/* v107: tradição da seleção: títulos de Copa do Mundo (peso 1) e de Copa América (peso 1/3), buff de até +2 na força.
+   É um ajuste leve: a força principal continua sendo o nível dos jogadores. Uma seleção nova ainda pode ganhar. */
+const NT_TITLES={BRA:{wc:5,ca:9},ARG:{wc:3,ca:16},URU:{wc:2,ca:15},ITA:{wc:4,ca:0},GER:{wc:4,ca:0},FRA:{wc:2,ca:0},ESP:{wc:1,ca:0},ENG:{wc:0,ca:0},NED:{wc:0,ca:0},POR:{wc:0,ca:0},CHI:{wc:0,ca:2},PAR:{wc:0,ca:2},COL:{wc:0,ca:1},PER:{wc:0,ca:2},MEX:{wc:0,ca:1}};
+function ntTradBuff(code){const t=NT_TITLES[code];if(!t)return 0;return Math.min(2,0.25*(t.wc+t.ca/3))}
+function ntRating(code){const b=ntBox();const base=code==='BRA'?(b.braR!==undefined?b.braR:braRating()):(b.rt[code]!==undefined?b.rt[code]:NR0[code]);return base+ntTradBuff(code)}
 function braSquad(){
   const all=Object.values(G.players).filter(p=>p.club>=0&&natOf(p)==='BRA'&&!p.retired);
   const q={GK:3,DEF:8,MID:8,ATA:7},out=[];
@@ -11209,7 +11213,8 @@ hookBefore('prepareRound','pr81',function(){
    - convocações para a seleção (cada data FIFA em que o jogador foi chamado; teto);
    - desempenho em jogo decisivo (semifinal e final da copa): média das notas nesses jogos, pesada pelo nº de jogos.
    Tudo guardado por temporada (p.aw), então zera sozinho quando a temporada vira. */
-const AW={titleLg:0.25,titleCup:0.2,titleEst:0.15,call:0.03,callMax:0.15,clutchMax:0.4,clutchMin:-0.2,selMax:0.2};
+/* ordem de peso: Libertadores > Brasileirão > Copa do Brasil > estaduais (v107) */
+const AW={titleLib:0.35,titleLg:0.25,titleCup:0.2,titleEst:0.05,call:0.03,callMax:0.15,clutchMax:0.4,clutchMin:-0.2,selMax:0.2};
 function awOf(p){if(!p.aw)p.aw={};return p.aw}
 /* chamado pela quickMatch (ext18) só nas semifinais e finais de copa */
 function clutchRec(m){
@@ -11232,6 +11237,7 @@ function titlesBonus(p){
 }
 function callsBonus(p){const c=awOf(p).calls;return c&&c.s===G.season?Math.min(AW.callMax,c.n*AW.call):0}
 function estTitlesBonus(p){return (G.estHist||[]).filter(x=>x.s===G.season&&x.champ===p.club).length*AW.titleEst}
+function libTitlesBonus(p){return (G.libHist||[]).filter(x=>x.s===G.season&&x.cid===p.club).length*AW.titleLib}
 /* seleção: quanto mais longe o Brasil foi na Copa do Mundo ou na Copa América, mais pontos pros convocados.
    (a seleção é simulada de forma abstrata, então o prêmio segue a fase do Brasil, não a nota do jogo) */
 const SEL_STAGE={'Campeão':AW.selMax,'Final':0.12,'Semifinal':0.08,'Quartas':0.04,'Oitavas':0.02};
@@ -11245,7 +11251,7 @@ function selBonus(p){
   const b=ntBox();return Math.max(selStage(b.wc),selStage(b.ca));
 }
 /* a Bola de Ouro é nota média + bônus */
-function awardOf(p){return p.rsum/p.rn+titlesBonus(p)+estTitlesBonus(p)+callsBonus(p)+clutchBonus(p)+selBonus(p)}
+function awardOf(p){return p.rsum/p.rn+titlesBonus(p)+libTitlesBonus(p)+estTitlesBonus(p)+callsBonus(p)+clutchBonus(p)+selBonus(p)}
 /* guarda a temporada em que a Copa do Mundo e a Copa América foram disputadas */
 hookAfter('ntWC','aw82wc',function(){const b=ntBox();if(b.wc)b.wc.s=G.season});
 hookAfter('ntCA','aw82ca',function(){const b=ntBox();if(b.ca)b.ca.s=G.season});
@@ -11256,6 +11262,44 @@ hookAround('ntAnnounce','aw82',function(next,__a){
     if(!a.calls||a.calls.s!==G.season)a.calls={s:G.season,n:0};
     a.calls.n++}
   return r;
+});
+/* ext83 (v108): eras táticas. Cada era dura 3 a 5 temporadas e dá um pequeno impulso a um jeito de jogar (até +4% de força).
+   Não é regra fixa: o efeito cai em clube tradicional (que mantém a própria ideia), e o time pode jogar fora da moda sem punição
+   além do efeito pequeno. A força continua sendo, de longe, o nível dos jogadores. */
+const ERA_AMP=0.04;
+const ERAS=[
+  {k:'tresZag',n:'Era dos três zagueiros',d:'Três atrás e alas abertos estão em alta.'},
+  {k:'pressao',n:'Era da pressão',d:'Marcação alta e intensidade o jogo todo estão em moda.'},
+  {k:'posse',n:'Era da posse',d:'Quem troca passes e controla o jogo leva vantagem.'},
+  {k:'contra',n:'Era do contra-ataque',d:'Transição rápida decide os jogos.'},
+  {k:'bloco',n:'Era do bloco baixo',d:'Solidez defensiva e bola parada valem mais.'}
+];
+function eraRoll(){
+  const prev=G.era&&G.era.cur;
+  const cand=ERAS.filter(e=>!prev||e.k!==prev.k);
+  const cur=pick(cand);
+  G.era={cur,from:G.season,to:G.season+3+Math.floor(Math.random()*3)};
+  addNews('Nova tendência tática: '+cur.n+'. '+cur.d);
+}
+/* o clube "encaixa" na era pelo estilo, pela filosofia ou pelo esquema */
+function eraFit(c,k){
+  const sty=c.style,ph=c.phil,f=FORMS[c.formation],d=f?f[0]:4;
+  if(k==='tresZag')return d===3?1:0;
+  if(k==='pressao')return (sty==='Ofensivo'||ph==='Pressão'||ph==='Pontas')?1:0;
+  if(k==='posse')return (sty==='Posse'||ph==='Passe')?1:0;
+  if(k==='contra')return (sty==='Contra-ataque'||ph==='Contra-ataque')?1:0;
+  if(k==='bloco')return (sty==='Defensivo'||ph==='Retranca')?1:0;
+  return 0;
+}
+/* clube tradicional segue a moda menos (tradição 92 → 40% do efeito; tradição ~20 → quase tudo) */
+function eraFlex(c){return clamp(1.2-(c.trad||40)/100,0.4,1)}
+hookAfter('newWorld','era83a',function(){eraRoll()});
+hookAfter('newSeason','era83b',function(){if(G.era&&G.season>G.era.to)eraRoll()});
+hookAfter('power','era83p',function(r,__a){
+  const s=__a[1];if(!s||!s.club||!G)return;
+  if(!G.era)eraRoll(); /* save antigo ou carreira já em andamento: sorteia a era na hora */
+  const m=1+(globalThis.ERA_ON===false?0:ERA_AMP)*eraFit(s.club,G.era.cur.k)*eraFlex(s.club);
+  r.atk*=m;r.mid*=m;r.def*=m;
 });
 newWorld();G.phase='start';render();
 </script>
