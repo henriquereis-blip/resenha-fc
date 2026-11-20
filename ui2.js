@@ -10,7 +10,7 @@ function vEstadio(){
   const c=userClub(),sec=stadSectors(c),l=G.fin.last;
   return `<div class="wrap"><h2>${c.name} · ${(c.cap*1000).toLocaleString('pt-BR')} lugares</h2>
   <div class="card"><div class="k">Capacidade por setor</div>${Object.entries(sec).map(([k,v])=>`<div class="res"><span>${k}</span><b>${v.toLocaleString('pt-BR')}</b></div>`).join('')}</div>
-  <div class="card"><div class="k">Preço do ingresso (médio): R$ ${G.fin.price}</div><input type="range" id="price" min="20" max="200" step="5" value="${G.fin.price}"><p class="news">Torcida ${c.humor}/100. ${l&&l.home?'Último público: '+l.att.toLocaleString('pt-BR')+' ('+Math.round(l.att/(c.cap*1000)*100)+'% de ocupação).':''}</p></div>
+  ${tierCard86(userClub())}
   <div class="card"><div class="k">Ampliar estádio</div><p class="news">+2.000 lugares por ${mi(expandCost(c))}. Mais obras = mais bilheteria, mas também mais manutenção.</p><button class="btn big" data-a="expand">Expandir estádio</button></div>
   <div class="card"><div class="k">Naming rights</div>${G.naming?`<div class="res"><span>${esc(G.naming.name)}</span><b>${mi(G.naming.val)}/ano</b></div>`:`<p class="news">Vende o nome do estádio e recebe por ano, mas a torcida odeia.</p><button class="btn big ghost" data-a="naming">Vender naming rights</button>`}</div>
   <p class="foot">Em breve: shows e eventos (com mando de campo prejudicado), reforma de setores, estacionamento.</p></div>`;

@@ -195,7 +195,7 @@ function vClube(){
   <div class="card"><div class="k">Filosofia e comissão</div><div class="res"><span>Filosofia do clube</span><b>${c.phil}</b></div><div class="res"><span>Auxiliar técnico</span><b>${a?esc(a.name):'–'}</b></div>
   <p class="news">${a?(amatch?`Ele domina ${a.phil}, a mesma filosofia do clube. O treino melhora o encaixe do elenco.`:`Ele domina ${a.phil}, mas o clube joga ${c.phil}. O treino rende pouco.`):''}</p>
   <div class="k">Encaixe médio do elenco</div>${PHN.map(n=>{const v=Math.round(c.squad.reduce((s,id)=>s+P(id).fit[n],0)/c.squad.length);return `<div class="at ${n===c.phil?'me':''}"><span>${n}</span>${bar(v)}<b>${v}%</b></div>`}).join('')}</div>
-  <div class="card"><div class="k">Preço do ingresso: R$ ${f.price}</div><input type="range" id="price" min="20" max="200" step="5" value="${f.price}"><div class="k">Barato enche o estádio, caro rende mais por torcedor mas esvazia. Torcida ${c.humor>=70?'empolgada':c.humor>=45?'normal':'irritada'} (${c.humor}/100).</div></div>
+  ${tierCard86(c)}
   <div class="card"><div class="k">Patrocínio master</div>${sp?`<div class="res"><span>${esc(sp.name)}</span><b>${mi(sp.fixed)}/ano</b></div><p class="news">${spnSummary(sp)}</p>`:`<button class="btn" data-a="sponsor">Escolher patrocinador</button>`}</div>
   <div class="card"><div class="k">Diretoria</div><div class="meter"><i class="${G.board.conf<35?'bad':G.board.conf<55?'warn':'ok'}" style="width:${G.board.conf}%"></i></div><p class="news">${esc(G.board.metaTxt)}.</p></div>
   <div class="card"><button class="btn ghost" data-a="reset">Reiniciar jogo</button></div></div>`;
@@ -262,7 +262,7 @@ function bind(){
   const mk=$('#mark');if(mk)mk.onchange=()=>{userClub().mark=mk.value;save();render()};
   const fc=$('#focus');if(fc)fc.onchange=()=>{userClub().focus=fc.value;save();render()};
   const st=$('#style');if(st)st.onchange=()=>{userClub().style=st.value;save();render()};
-  const pr=$('#price');if(pr){pr.oninput=()=>{G.fin.price=+pr.value;pr.previousElementSibling.textContent='Preço do ingresso: R$ '+pr.value};pr.onchange=()=>{save();render()}}
+  
   const mf=$('#mform');if(mf)mf.onchange=()=>{const m=R.ms[R.ui];const s=m[userSide(m)];s.formation=mf.value;reassign(s);S.psel=null;render()};
   const mm=$('#mmark');if(mm)mm.onchange=()=>{const m=R.ms[R.ui];m[userSide(m)].mark=mm.value;render()};
   const mf2=$('#mfocus');if(mf2)mf2.onchange=()=>{const m=R.ms[R.ui];m[userSide(m)].focus=mf2.value;render()};

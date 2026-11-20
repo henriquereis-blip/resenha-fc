@@ -373,8 +373,11 @@ function financeRound(m){
   const home=m.h.club.id===c.id;
   if(home){
     const opp=m.a.club;
-    let occ=0.35+(c.humor/100)*0.55-(f.price-60)/260+0.04*(opp.rep-68)/6;
-    occ=clamp(occ,0.12,1);att=Math.round(c.cap*occ);gate=att*f.price/1e6;inc+=gate;
+    /* v112: ingresso padrão automático por competição e fase (ext86); o público depende da torcida, do adversário,
+       da importância do jogo e do nível de preço escolhido (tier A1/A2/B3…), sem input por partida */
+    const tk=ticketInfo86(c,m);
+    let occ=(0.35+(c.humor/100)*0.55+0.04*(opp.rep-68)/6)*tk.demand*tk.fill;
+    occ=clamp(occ,0.12,1);att=Math.round(c.cap*occ);gate=att*tk.price/1e6;inc+=gate;
   }
   let bonus=0;const won=(home&&m.hg>m.ag)||(!home&&m.ag>m.hg);
   if(G.sponsor&&G.sponsor.perWin&&won)bonus+=G.sponsor.perWin;
