@@ -146,7 +146,7 @@ function finishExtra(){
     }else{
       k.log.unshift({label:KNAMES[k.st],res:results.map(r=>({h:r.h,a:r.a,hg:r.hg,ag:r.ag,pen:r.pen}))});
       if(adv){prize+=[4,6,10,15][k.st]*scl;note=k.st===3?'CAMPEÃO DA '+COMPN[k.comp].toUpperCase()+'!':'Você avançou para '+KNAMES[k.st+1]+'.';
-        if(k.st===3){prize+=(k.comp==='LIB'?35:14);k.champ=true;k.alive=false;k.phase='done';c.humor=clamp(c.humor+14,5,100);G.board.conf=clamp(G.board.conf+10,0,100);paperLine(c.name+' é campeão da '+COMPN[k.comp]+'!','Taça continental e festa da torcida.');G.trophyCont=(G.trophyCont||0)+1}
+        if(k.st===3){prize+=(k.comp==='LIB'?35:14);k.champ=true;k.alive=false;k.phase='done';if(k.comp==='LIB')(G.libHist=G.libHist||[]).push({s:G.season,cid:c.id});c.humor=clamp(c.humor+14,5,100);G.board.conf=clamp(G.board.conf+10,0,100);paperLine(c.name+' é campeão da '+COMPN[k.comp]+'!','Taça continental e festa da torcida.');G.trophyCont=(G.trophyCont||0)+1}
         else k.st++}
       else{note='Eliminado na fase "'+KNAMES[k.st]+'" da '+COMPN[k.comp]+'.';k.phase='done';k.alive=false;addNews(COMPN[k.comp]+': eliminação nas '+KNAMES[k.st].toLowerCase()+'.')}}
   }

@@ -3,7 +3,8 @@
    - convocações para a seleção (cada data FIFA em que o jogador foi chamado; teto);
    - desempenho em jogo decisivo (semifinal e final da copa): média das notas nesses jogos, pesada pelo nº de jogos.
    Tudo guardado por temporada (p.aw), então zera sozinho quando a temporada vira. */
-const AW={titleLg:0.25,titleCup:0.2,titleEst:0.15,call:0.03,callMax:0.15,clutchMax:0.4,clutchMin:-0.2,selMax:0.2};
+/* ordem de peso: Libertadores > Brasileirão > Copa do Brasil > estaduais (v107) */
+const AW={titleLib:0.35,titleLg:0.25,titleCup:0.2,titleEst:0.05,call:0.03,callMax:0.15,clutchMax:0.4,clutchMin:-0.2,selMax:0.2};
 function awOf(p){if(!p.aw)p.aw={};return p.aw}
 /* chamado pela quickMatch (ext18) só nas semifinais e finais de copa */
 function clutchRec(m){
@@ -26,6 +27,7 @@ function titlesBonus(p){
 }
 function callsBonus(p){const c=awOf(p).calls;return c&&c.s===G.season?Math.min(AW.callMax,c.n*AW.call):0}
 function estTitlesBonus(p){return (G.estHist||[]).filter(x=>x.s===G.season&&x.champ===p.club).length*AW.titleEst}
+function libTitlesBonus(p){return (G.libHist||[]).filter(x=>x.s===G.season&&x.cid===p.club).length*AW.titleLib}
 /* seleção: quanto mais longe o Brasil foi na Copa do Mundo ou na Copa América, mais pontos pros convocados.
    (a seleção é simulada de forma abstrata, então o prêmio segue a fase do Brasil, não a nota do jogo) */
 const SEL_STAGE={'Campeão':AW.selMax,'Final':0.12,'Semifinal':0.08,'Quartas':0.04,'Oitavas':0.02};
@@ -39,7 +41,7 @@ function selBonus(p){
   const b=ntBox();return Math.max(selStage(b.wc),selStage(b.ca));
 }
 /* a Bola de Ouro é nota média + bônus */
-function awardOf(p){return p.rsum/p.rn+titlesBonus(p)+estTitlesBonus(p)+callsBonus(p)+clutchBonus(p)+selBonus(p)}
+function awardOf(p){return p.rsum/p.rn+titlesBonus(p)+libTitlesBonus(p)+estTitlesBonus(p)+callsBonus(p)+clutchBonus(p)+selBonus(p)}
 /* guarda a temporada em que a Copa do Mundo e a Copa América foram disputadas */
 hookAfter('ntWC','aw82wc',function(){const b=ntBox();if(b.wc)b.wc.s=G.season});
 hookAfter('ntCA','aw82ca',function(){const b=ntBox();if(b.ca)b.ca.s=G.season});
