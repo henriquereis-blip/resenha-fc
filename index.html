@@ -10877,7 +10877,11 @@ hookAround('shouldFire','sf',function(next,__a){
     try{addNews('A diretoria deu um ultimato: "Professor, ou o time reage ou a gente troca o comando."');if(typeof toast==='function')toast('Ultimato da diretoria: reaja nos próximos jogos ou será demitido.')}catch(e){}
     return false}
   let p=next();
-  if(p&&c&&posOf(c)<=G.board.meta+2&&Math.random()<0.8)p=false;
+  if(!p)return p;
+  /* v105: proteção na primeira temporada até a rodada 19 (só cai com confiança abaixo de 15) */
+  if(G.season===1&&G.round<=19&&conf>=15)return false;
+  /* v105: tolerância de meta+3 (era meta+2) */
+  if(c&&posOf(c)<=G.board.meta+3&&Math.random()<0.8)p=false;
   return p;
 });
 })();
