@@ -36,10 +36,14 @@ function tierTable86(c){
   const rows=[['Estadual (grupo)',PRICE86.estadual[0]],['Brasileirão (Série A)',PRICE86.liga[0]],['Copa (1ª fase)',PRICE86.copa[0]],['Copa (final)',PRICE86.copa[4]],['Libertadores (grupo)',PRICE86.cont[0]],['Libertadores (final)',PRICE86.cont[4]]];
   return rows.map(([n,p])=>`<div class="res"><span>${n}</span><b>R$ ${Math.round(p*TIERS86[tier])}</b></div>`).join('');
 }
+/* nome do estádio (oficial ou popular). Brasil: Série A; demais ligas entram depois */
+const STAD86={'Palmeiras':'Allianz Parque','Flamengo':'Maracanã','Botafogo':'Estádio Nilton Santos','Atlético-MG':'Arena MRV','Fluminense':'Maracanã','São Paulo':'Morumbi','Internacional':'Beira-Rio','Grêmio':'Arena do Grêmio','Corinthians':'Neo Química Arena','Cruzeiro':'Mineirão','Bahia':'Arena Fonte Nova','Vasco':'São Januário','Athletico-PR':'Ligga Arena','Santos':'Vila Belmiro','Bragantino':'Nabi Abi Chedid','Vitória':'Barradão','Coritiba':'Couto Pereira','Mirassol':'Estádio José Maria de Campos Maia','Chapecoense':'Arena Condá','Remo':'Estádio Evandro Almeida'};
+const stadName86=c=>STAD86[c.name]||'Estádio do clube';
+globalThis.stadName86=stadName86;
 function tierCard86(c){
   const tier=(G.fin&&G.fin.tier)||'A1';
   const l=G.fin&&G.fin.last;
-  return `<div class="card"><div class="k">Preço do ingresso · ${tier} (${TIER_NAME86[tier]})</div><p class="news">O preço de cada jogo sai automático pela competição e pela fase. Você escolhe só o nível: torcida boa aguenta preço mais alto; preço baixo enche o estádio. Torcida ${c.humor}/100.${l&&l.home?' Último público: '+l.att.toLocaleString('pt-BR')+' ('+Math.round(l.att/c.cap*100)+'% de ocupação).':''}</p><div class="seg sm">${Object.keys(TIERS86).map(t=>`<button class="${t===tier?'on':''}" data-a="tier" data-t="${t}">${t}</button>`).join('')}</div>${tierTable86(c)}</div>`;
+  return `<div class="card"><div class="k">${stadName86(c)} · ${c.cap.toLocaleString('pt-BR')} lugares</div><div class="k">Preço do ingresso · ${tier} (${TIER_NAME86[tier]})</div><p class="news">O preço de cada jogo sai automático pela competição e pela fase. Você escolhe só o nível: torcida boa aguenta preço mais alto; preço baixo enche o estádio. Torcida ${c.humor}/100.${l&&l.home?' Último público: '+l.att.toLocaleString('pt-BR')+' ('+Math.round(l.att/c.cap*100)+'% de ocupação).':''}</p><div class="seg sm">${Object.keys(TIERS86).map(t=>`<button class="${t===tier?'on':''}" data-a="tier" data-t="${t}">${t}</button>`).join('')}</div>${tierTable86(c)}</div>`;
 }
 globalThis.tierCard86=tierCard86;
 Object.assign(A,{tier(d){G.fin.tier=d.t;save();render()}});

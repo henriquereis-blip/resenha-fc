@@ -3,6 +3,7 @@
    O Brasil segue sendo simulado pelo servidor. A liga lite do país é sincronizada com a tabela real. */
 const brn=()=>(G&&G.rg)?80+REGN:80;
 const LFAC={ENG:1.3,ESP:1.25,GER:1.2,ITA:1.2,FRA:1,POR:.8,ARG:.7,URU:.55,COL:.6,CHI:.6,JPN:.8,KOR:.7,CHN:.65,AUS:.6,EGY:.6,MAR:.55,RSA:.55,NED:.85,BEL:.8,TUR:.85,SCO:.7,AUT:.75,SUI:.8,GRE:.7,DEN:.8,PAR:.55,ECU:.55,PER:.5,BOL:.45,VEN:.45,MEX:.9,USA:.9,KSA:1,SEL:.9};
+for(const k in LFAC)LFAC[k]=+(1+(LFAC[k]-1)*0.6).toFixed(3); /* v114: gap financeiro Europa x América do Sul comprimido em 40% (1,30→1,18 ENG; 0,45→0,67 BOL) */
 function wlOf(k){return WLD.find(x=>x.k===k)}
 function liteById(id){const W=G.wd;if(!W)return null;for(const k in W.lg){const x=W.lg[k].cl.find(c=>c.id===id);if(x)return {x,k}}return null}
 function uniqSig42(sg){let s=String(sg||'XXX').slice(0,3).toUpperCase(),i=0;const base=s;while(G.clubs.some(c=>c.sig===s)){s=base.slice(0,2)+String.fromCharCode(65+(i%26));i++}return s}

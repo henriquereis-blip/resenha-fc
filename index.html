@@ -7573,6 +7573,7 @@ hookAround('render','r40',function(next,__a){
    O Brasil segue sendo simulado pelo servidor. A liga lite do país é sincronizada com a tabela real. */
 const brn=()=>(G&&G.rg)?80+REGN:80;
 const LFAC={ENG:1.3,ESP:1.25,GER:1.2,ITA:1.2,FRA:1,POR:.8,ARG:.7,URU:.55,COL:.6,CHI:.6,JPN:.8,KOR:.7,CHN:.65,AUS:.6,EGY:.6,MAR:.55,RSA:.55,NED:.85,BEL:.8,TUR:.85,SCO:.7,AUT:.75,SUI:.8,GRE:.7,DEN:.8,PAR:.55,ECU:.55,PER:.5,BOL:.45,VEN:.45,MEX:.9,USA:.9,KSA:1,SEL:.9};
+for(const k in LFAC)LFAC[k]=+(1+(LFAC[k]-1)*0.6).toFixed(3); /* v114: gap financeiro Europa x América do Sul comprimido em 40% (1,30→1,18 ENG; 0,45→0,67 BOL) */
 function wlOf(k){return WLD.find(x=>x.k===k)}
 function liteById(id){const W=G.wd;if(!W)return null;for(const k in W.lg){const x=W.lg[k].cl.find(c=>c.id===id);if(x)return {x,k}}return null}
 function uniqSig42(sg){let s=String(sg||'XXX').slice(0,3).toUpperCase(),i=0;const base=s;while(G.clubs.some(c=>c.sig===s)){s=base.slice(0,2)+String.fromCharCode(65+(i%26));i++}return s}
@@ -11429,10 +11430,14 @@ function tierTable86(c){
   const rows=[['Estadual (grupo)',PRICE86.estadual[0]],['Brasileirão (Série A)',PRICE86.liga[0]],['Copa (1ª fase)',PRICE86.copa[0]],['Copa (final)',PRICE86.copa[4]],['Libertadores (grupo)',PRICE86.cont[0]],['Libertadores (final)',PRICE86.cont[4]]];
   return rows.map(([n,p])=>`<div class="res"><span>${n}</span><b>R$ ${Math.round(p*TIERS86[tier])}</b></div>`).join('');
 }
+/* nome do estádio (oficial ou popular). Brasil: Série A; demais ligas entram depois */
+const STAD86={'Palmeiras':'Allianz Parque','Flamengo':'Maracanã','Botafogo':'Estádio Nilton Santos','Atlético-MG':'Arena MRV','Fluminense':'Maracanã','São Paulo':'Morumbi','Internacional':'Beira-Rio','Grêmio':'Arena do Grêmio','Corinthians':'Neo Química Arena','Cruzeiro':'Mineirão','Bahia':'Arena Fonte Nova','Vasco':'São Januário','Athletico-PR':'Ligga Arena','Santos':'Vila Belmiro','Bragantino':'Nabi Abi Chedid','Vitória':'Barradão','Coritiba':'Couto Pereira','Mirassol':'Estádio José Maria de Campos Maia','Chapecoense':'Arena Condá','Remo':'Estádio Evandro Almeida'};
+const stadName86=c=>STAD86[c.name]||'Estádio do clube';
+globalThis.stadName86=stadName86;
 function tierCard86(c){
   const tier=(G.fin&&G.fin.tier)||'A1';
   const l=G.fin&&G.fin.last;
-  return `<div class="card"><div class="k">Preço do ingresso · ${tier} (${TIER_NAME86[tier]})</div><p class="news">O preço de cada jogo sai automático pela competição e pela fase. Você escolhe só o nível: torcida boa aguenta preço mais alto; preço baixo enche o estádio. Torcida ${c.humor}/100.${l&&l.home?' Último público: '+l.att.toLocaleString('pt-BR')+' ('+Math.round(l.att/c.cap*100)+'% de ocupação).':''}</p><div class="seg sm">${Object.keys(TIERS86).map(t=>`<button class="${t===tier?'on':''}" data-a="tier" data-t="${t}">${t}</button>`).join('')}</div>${tierTable86(c)}</div>`;
+  return `<div class="card"><div class="k">${stadName86(c)} · ${c.cap.toLocaleString('pt-BR')} lugares</div><div class="k">Preço do ingresso · ${tier} (${TIER_NAME86[tier]})</div><p class="news">O preço de cada jogo sai automático pela competição e pela fase. Você escolhe só o nível: torcida boa aguenta preço mais alto; preço baixo enche o estádio. Torcida ${c.humor}/100.${l&&l.home?' Último público: '+l.att.toLocaleString('pt-BR')+' ('+Math.round(l.att/c.cap*100)+'% de ocupação).':''}</p><div class="seg sm">${Object.keys(TIERS86).map(t=>`<button class="${t===tier?'on':''}" data-a="tier" data-t="${t}">${t}</button>`).join('')}</div>${tierTable86(c)}</div>`;
 }
 globalThis.tierCard86=tierCard86;
 Object.assign(A,{tier(d){G.fin.tier=d.t;save();render()}});
@@ -11457,6 +11462,52 @@ function slotLvl87(p,slot,w){
 }
 globalThis.slotLvl87=slotLvl87;
 try{const st=document.createElement('style');st.textContent='.tok small.offpos{color:#ffb020;font-weight:800}';document.head.appendChild(st)}catch(e){}
+/* ext88 (v114, fase D): estilo do jogador. Cada jogador tem um estilo preferido (o de maior encaixe).
+   Quando joga em clube de outra filosofia, o encaixe com a filosofia do clube fica baixo (penalidade já existente no motor).
+   Ao fim de cada temporada ele se adapta: jovem rápido, veterano devagar. O estilo preferido muda quando o encaixe com o clube passa o antigo. */
+function estOf88(p){
+  if(!p.est){let b=null,v=-1;for(const ph of PHN){if(p.fit[ph]>v){v=p.fit[ph];b=ph}}p.est=b}
+  return p.est;
+}
+globalThis.estOf88=estOf88;
+const ADP88=age=>age<=23?6:age<=28?4:2;
+hookAfter('newSeason','ext88_ns',function(){
+  try{
+    for(const c of G.clubs){
+      for(const id of c.squad){const p=P(id);if(!p||!p.fit)continue;
+        const before=estOf88(p);
+        p.fit[c.phil]=clamp(p.fit[c.phil]+ADP88(p.age),5,98);
+        for(const ph of PHN)if(ph!==c.phil)p.fit[ph]=clamp(p.fit[ph]-1,5,98);
+        const after=p.fit[c.phil]>p.fit[before]?c.phil:before;
+        if(after!==before){p.est=after;if(c.id===G.user)addNews(lastName(p.name)+' já joga no estilo '+after+' do clube.')}
+      }
+    }
+  }catch(e){console.error('ext88 '+e.message)}
+});
+/* ext89 (v115, fase D): SAF. Em cada temporada, 0 a 2 clubes da Série A viram SAF (aporte para pagar dívida).
+   Se for o seu clube, a proposta vai pra comissão e só vira SAF se você aprovar. SAF pode voltar ao modelo associativo, raramente. */
+const SAF89={pRound:0.45,pTwo:0.15,pRevert:0.04,aporte:0.4};
+function safAplica89(c,motivo){
+  const debt=c.debt||0,val=Math.round(debt*SAF89.aporte*10)/10;
+  c.debt=+(debt-val).toFixed(1);c.modelo='saf';
+  addNews('🏦 '+c.name+' vira SAF'+(motivo?' '+motivo:'')+': aporte de R$ '+val.toFixed(1)+' mi para pagar dívidas.');
+  return val;
+}
+hookAfter('newSeason','ext89_ns',function(){
+  try{
+    const A=G.clubs.filter(c=>c.div===0&&c.id!==G.user&&c.modelo!=='saf');
+    const n=Math.random()<SAF89.pTwo?2:Math.random()<SAF89.pRound?1:0;
+    for(let i=0;i<n&&A.length;i++){const k=Math.floor(Math.random()*A.length);const c=A.splice(k,1)[0];safAplica89(c)}
+    const u=userClub();
+    if(u&&u.modelo!=='saf'&&Math.random()<SAF89.pRound*0.25){G.safOffer={s:G.season,amt:+(Math.max(0,u.debt||0)*SAF89.aporte).toFixed(1)}}else G.safOffer=null;
+    for(const c of G.clubs)if(c.modelo==='saf'&&c.id!==G.user&&Math.random()<SAF89.pRevert){c.modelo='associativo';addNews(c.name+' volta ao modelo associativo.')}
+  }catch(e){console.error('ext89 '+e.message)}
+});
+hookAfter('staffAlerts','ext89_sa',function(out){
+  try{const o=G.safOffer;if(o&&o.s===G.season)out.push({k:'saf',sev:1,ic:'🏦',txt:`Proposta: investidores querem transformar o clube em SAF com aporte de R$ ${o.amt.toFixed(1)} mi para pagar dívidas. Aprovar tira o clube do modelo associativo.`,btn:'Aprovar SAF',a:'safyes'})}catch(e){}
+  return out;
+});
+Object.assign(A,{safyes(){const u=userClub();const o=G.safOffer;if(!u||!o||o.s!==G.season)return;G.safOffer=null;safAplica89(u,'(aprovado pelo técnico)');save();render();toast('SAF aprovada.')}});
 newWorld();G.phase='start';render();
 </script>
 <script>if("serviceWorker"in navigator&&/^https?:/.test(location.protocol))addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}))</script></body></html>
