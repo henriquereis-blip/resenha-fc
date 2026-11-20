@@ -251,7 +251,7 @@ function styleMod(my,opp){
   else if(my==='Defensivo'){m.atk=0.96;m.def=1.05;m.rate=0.9}
   else if(my==='Contra-ataque'){m.atk=(opp==='Ofensivo'||opp==='Posse')?1.06:0.98;m.def=1.01;m.rate=0.96}
   /* v98: Posse com retorno real: mais controle de meio (1.12) e menos chute sofrido (def 1.04 reduz a taxa do adversário); contra Contra-ataque o ganho some (espaço nas costas) */
-  else if(my==='Posse'){m.mid=1.12;m.def=1.04;m.rate=1.06;if(opp==='Contra-ataque')m.def=1.0;if(opp==='Defensivo')m.atk=0.97}
+  else if(my==='Posse'){m.mid=1.18;m.def=1.06;m.rate=1.10;if(opp==='Contra-ataque')m.def=1.0;if(opp==='Defensivo')m.atk=0.97}
   return m;
 }
 function mkSide(c){return {club:c,formation:c.formation,slots:slotsOf(c.formation),style:c.style,lineup:c.squad.slice(0,11),bench:c.squad.slice(11,18),subs:0,reds:0,sent:[],used:[],outs:[]}}
