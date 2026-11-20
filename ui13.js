@@ -62,7 +62,7 @@ function pitchHTML(cfg){
     const rt=cfg.rt&&cfg.rt[id]!==undefined?cfg.rt[id]:null;
     return `<button class="tok ${sel&&sel.k==='l'&&sel.i===i?'sel':''} ${p.inj>0?'hurt':''} ${sent?'sent':''}" data-drag data-drop data-k="l" data-i="${i}" style="left:${pos[i].x}%;top:${pos[i].y}%">
       <span class="fs">${shirtSvg(c,cfg.kind)}<b class="rt">${rt!==null?rt.toFixed(1):p.ovr}</b></span>
-      <span class="tn"><i>${esc(lastName(p.name))}</i><small class="${off?'off':''}">${p.inj>0?'🩹 lesão · '+p.inj+' rod.':roleLabel(p)+'·'+footOf(p)+(rt!==null?' · F'+p.ovr:'')}</small></span><u class="wt">${WLBL[wv]}</u><s class="eb"><i style="width:${clamp(en,0,100)}%;background:${enCol(en)}"></i></s></button>`}).join('');
+      <span class="tn"><i>${esc(lastName(p.name))}</i><small class="${off?'offpos':''}">${p.inj>0?'🩹 lesão · '+p.inj+' rod.':roleLabel(p)+'·'+footOf(p)+(rt!==null?' · F'+p.ovr:'')+(off&&p.inj<=0?' · vaga '+slotLvl87(p,sl,wv):'')}</small></span><u class="wt">${WLBL[wv]}</u><s class="eb"><i style="width:${clamp(en,0,100)}%;background:${enCol(en)}"></i></s></button>`}).join('');
   const bn=(ids,k)=>ids.map((id,i)=>{const p=P(id),en=cfg.en&&cfg.en[id]!==undefined?cfg.en[id]:p.en;
     const rt=cfg.rt&&cfg.rt[id]!==undefined&&cfg.mode==='match'?`<em class="nt">${cfg.rt[id].toFixed(1)}</em>`:'';
     return `<button class="bn ${sel&&sel.k===k&&sel.i===i?'sel':''} ${p.inj>0?'hurt':''}" data-drag data-drop data-k="${k}" data-i="${i}">
@@ -103,10 +103,11 @@ function vTatica(){
   const c=userClub();const ts=c.tsaved||[null,null,null];const side=mkSide(c);
   return `<div class="wrap fit tc">
   ${oppStrip(c)}
-  ${fcards(c.formation,'setform',c)}
-  ${schips(c.style,'setstyle',c)}
+  ${pick87(`Formação · ${ROLEKEY(c.formation)} <small>${famGet(c,'f',ROLEKEY(c.formation))|0}% entrosado</small>`,fcards(c.formation,'setform',c))}
+  ${pick87(`Estilo de jogo · ${c.style}`,schips(c.style,'setstyle',c))}
+  ${quickRow87(c)}
   ${fxLine(side)}
-  <div class="ctl4">${selH('mark','Marcação',MARKS,c.mark||'Leve')}${selH('focus','Ataques',FOCUS,c.focus||'Pelo meio')}</div>
+  <div class="ctl4">${selH('mark','Intensidade de marcação',MARKS,c.mark||'Leve')}${selH('focus','Caminho do ataque',FOCUS,c.focus||'Pelo meio')}</div>
   ${pitchHTML(clubCfg())}
   ${S.tsv?`<div class="sheet card">${[0,1,2].map(i=>`<div class="res"><span>Tática ${i+1}${ts[i]?' · '+ts[i].formation+' · '+ts[i].style:' · vazia'}</span><span><button class="btn sm" data-a="tsave" data-i="${i}">Salvar</button> <button class="btn sm ghost" data-a="tload" data-i="${i}" ${ts[i]?'':'disabled'}>Carregar</button></span></div>`).join('')}</div>`:''}
   <div class="acts"><button class="btn ghost" data-a="tsv">Táticas</button><button class="btn ghost" data-a="auto">Auto</button><button class="btn ghost" data-a="ready">${G.ready===G.round+'-'+G.season?'✔ Pronto':'Confirmar'}</button>${G.round<NR()?`<button class="btn" data-a="play">Jogar ›</button>`:''}</div></div>`;

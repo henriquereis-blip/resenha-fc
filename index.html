@@ -3653,7 +3653,7 @@ function pitchHTML(cfg){
     const rt=cfg.rt&&cfg.rt[id]!==undefined?cfg.rt[id]:null;
     return `<button class="tok ${sel&&sel.k==='l'&&sel.i===i?'sel':''} ${p.inj>0?'hurt':''} ${sent?'sent':''}" data-drag data-drop data-k="l" data-i="${i}" style="left:${pos[i].x}%;top:${pos[i].y}%">
       <span class="fs">${shirtSvg(c,cfg.kind)}<b class="rt">${rt!==null?rt.toFixed(1):p.ovr}</b></span>
-      <span class="tn"><i>${esc(lastName(p.name))}</i><small class="${off?'off':''}">${p.inj>0?'🩹 lesão · '+p.inj+' rod.':roleLabel(p)+'·'+footOf(p)+(rt!==null?' · F'+p.ovr:'')}</small></span><u class="wt">${WLBL[wv]}</u><s class="eb"><i style="width:${clamp(en,0,100)}%;background:${enCol(en)}"></i></s></button>`}).join('');
+      <span class="tn"><i>${esc(lastName(p.name))}</i><small class="${off?'offpos':''}">${p.inj>0?'🩹 lesão · '+p.inj+' rod.':roleLabel(p)+'·'+footOf(p)+(rt!==null?' · F'+p.ovr:'')+(off&&p.inj<=0?' · vaga '+slotLvl87(p,sl,wv):'')}</small></span><u class="wt">${WLBL[wv]}</u><s class="eb"><i style="width:${clamp(en,0,100)}%;background:${enCol(en)}"></i></s></button>`}).join('');
   const bn=(ids,k)=>ids.map((id,i)=>{const p=P(id),en=cfg.en&&cfg.en[id]!==undefined?cfg.en[id]:p.en;
     const rt=cfg.rt&&cfg.rt[id]!==undefined&&cfg.mode==='match'?`<em class="nt">${cfg.rt[id].toFixed(1)}</em>`:'';
     return `<button class="bn ${sel&&sel.k===k&&sel.i===i?'sel':''} ${p.inj>0?'hurt':''}" data-drag data-drop data-k="${k}" data-i="${i}">
@@ -3694,10 +3694,11 @@ function vTatica(){
   const c=userClub();const ts=c.tsaved||[null,null,null];const side=mkSide(c);
   return `<div class="wrap fit tc">
   ${oppStrip(c)}
-  ${fcards(c.formation,'setform',c)}
-  ${schips(c.style,'setstyle',c)}
+  ${pick87(`Formação · ${ROLEKEY(c.formation)} <small>${famGet(c,'f',ROLEKEY(c.formation))|0}% entrosado</small>`,fcards(c.formation,'setform',c))}
+  ${pick87(`Estilo de jogo · ${c.style}`,schips(c.style,'setstyle',c))}
+  ${quickRow87(c)}
   ${fxLine(side)}
-  <div class="ctl4">${selH('mark','Marcação',MARKS,c.mark||'Leve')}${selH('focus','Ataques',FOCUS,c.focus||'Pelo meio')}</div>
+  <div class="ctl4">${selH('mark','Intensidade de marcação',MARKS,c.mark||'Leve')}${selH('focus','Caminho do ataque',FOCUS,c.focus||'Pelo meio')}</div>
   ${pitchHTML(clubCfg())}
   ${S.tsv?`<div class="sheet card">${[0,1,2].map(i=>`<div class="res"><span>Tática ${i+1}${ts[i]?' · '+ts[i].formation+' · '+ts[i].style:' · vazia'}</span><span><button class="btn sm" data-a="tsave" data-i="${i}">Salvar</button> <button class="btn sm ghost" data-a="tload" data-i="${i}" ${ts[i]?'':'disabled'}>Carregar</button></span></div>`).join('')}</div>`:''}
   <div class="acts"><button class="btn ghost" data-a="tsv">Táticas</button><button class="btn ghost" data-a="auto">Auto</button><button class="btn ghost" data-a="ready">${G.ready===G.round+'-'+G.season?'✔ Pronto':'Confirmar'}</button>${G.round<NR()?`<button class="btn" data-a="play">Jogar ›</button>`:''}</div></div>`;
@@ -10765,14 +10766,16 @@ const STEPS=[
  {v:'assist',t:'6/7 · Auxiliar',b:'Ele dá dicas e alerta sobre elenco, lesões e formação. Quem decide é você: aplica a dica ou ignora.'},
  {v:'inicio',t:'7/7 · Bora jogar',b:'Toque em JOGAR (botão verde embaixo) para ir pra partida. Depois de cada rodada você vê o balanço financeiro e o jornal. Seu save é automático.'}
 ];
-const css='.tut71{position:fixed;left:0;right:0;bottom:72px;z-index:99999;display:flex;justify-content:center;padding:0 12px;pointer-events:none}.tut71 .bx{pointer-events:auto;max-width:460px;width:100%;background:var(--card,#fff);color:var(--fg,#14201a);border:2px solid var(--accent,#0a9a4a);border-radius:16px;padding:14px 14px 12px;box-shadow:0 10px 40px rgba(0,0,0,.45)}.tut71 h3{margin:0 0 6px;font-size:16px}.tut71 p{margin:0 0 10px;font-size:14px;line-height:1.4}.tut71 .row{display:flex;gap:8px;flex-wrap:wrap}.tut71.ask{bottom:0;top:0;align-items:center;background:rgba(0,0,0,.55);pointer-events:auto}';
+const css='.tut71{position:fixed;left:0;right:0;bottom:72px;z-index:99999;display:flex;justify-content:center;padding:0 12px;pointer-events:none}.tut71 .bx{pointer-events:auto;max-width:460px;width:100%;background:var(--card,#fff);color:var(--fg,#14201a);border:2px solid var(--accent,#0a9a4a);border-radius:16px;padding:14px 14px 12px;box-shadow:0 10px 40px rgba(0,0,0,.45)}.tut71 h3{margin:0 0 6px;font-size:16px}.tut71 p{margin:0 0 10px;font-size:14px;line-height:1.4}.tut71 .row{display:flex;gap:8px;flex-wrap:wrap}.tut71.ask{bottom:0;top:0;align-items:center;background:rgba(0,0,0,.55);pointer-events:auto}.tut71.min .bx{padding:8px 12px}.tut71.min p{display:none}.tut71.min .row .btn:not([data-a=tutmin]){display:none}.tut71.min h3{margin:0;font-size:14px}body.tut71on #app{padding-bottom:190px}';
 function overlay(){
   let el=document.getElementById('tut71');if(el)el.remove();
   const t=S.tut;if(!t)return;
   el=document.createElement('div');el.id='tut71';
   if(t.ask){el.className='tut71 ask';el.innerHTML=`<div class="bx"><h3>⚽ Quer um tutorial rápido?</h3><p>Leva 1 minutinho e explica o básico: tática, mercado, dinheiro e comissão. Dá pra refazer depois em Opções.</p><div class="row"><button class="btn" data-a="tutgo">Fazer tutorial</button><button class="btn ghost" data-a="tutskip">Pular</button></div></div>`}
   else{const s=STEPS[t.i];if(!s){S.tut=null;return}
-    el.className='tut71';el.innerHTML=`<div class="bx"><h3>${esc(s.t)}</h3><p>${esc(s.b)}</p><div class="row">${t.i>0?'<button class="btn sm ghost" data-a="tutprev">‹ Voltar</button>':''}<button class="btn sm" data-a="tutnext">${t.i===STEPS.length-1?'Terminar':'Próximo ›'}</button><button class="btn sm ghost" data-a="tutskip">Sair</button></div></div>`}
+    el.className='tut71';el.innerHTML=`<div class="bx"><h3>${esc(s.t)}</h3><p>${esc(s.b)}</p><div class="row">${t.i>0?'<button class="btn sm ghost" data-a="tutprev">‹ Voltar</button>':''}<button class="btn sm ghost" data-a="tutmin">${S.tutMin?'Mostrar':'Minimizar'}</button><button class="btn sm" data-a="tutnext">${t.i===STEPS.length-1?'Terminar':'Próximo ›'}</button><button class="btn sm ghost" data-a="tutskip">Sair</button></div></div>`}
+  if(!t.ask&&S.tutMin)el.classList.add('min');
+  document.body.classList.toggle('tut71on',!t.ask&&!S.tutMin);
   document.body.appendChild(el);
   el.querySelectorAll('[data-a]').forEach(b=>b.onclick=ev=>{ev.stopPropagation();const f=A[b.dataset.a];if(f)f({...b.dataset})});
 }
@@ -10781,6 +10784,7 @@ Object.assign(A,{
   tutgo(){go(0)},
   tutnext(){const i=(S.tut&&S.tut.i||0)+1;if(i>=STEPS.length){A.tutskip();toast('Tutorial concluído. Boa sorte, professor!');return}go(i)},
   tutprev(){go(Math.max(0,(S.tut&&S.tut.i||0)-1))},
+  tutmin(){S.tutMin=!S.tutMin;overlay()},
   tutskip(){S.tut=null;try{G.tutDone=true;save()}catch(e){}render()},
   tutopen(){S.modal=null;go(0)}
 });
@@ -11432,6 +11436,27 @@ function tierCard86(c){
 }
 globalThis.tierCard86=tierCard86;
 Object.assign(A,{tier(d){G.fin.tier=d.t;save();render()}});
+/* ext87 (v113, fase C): tela de tática mais limpa. Formação e estilo viram um botão recolhível mostrando a escolha atual;
+   linha de atalhos para montar o time (melhores, descansados, jovens). Marcação e ataques ganham nomes mais claros. */
+const pick87=(label,html)=>`<details class="pick87"><summary>${label}</summary>${html}</details>`;
+globalThis.pick87=pick87;
+function quickRow87(c){
+  const mode=G.autoMode&&G.autoMode.mode||'nota';
+  const chip=(m,t)=>`<button class="btn sm ${mode===m?'':'ghost'}" data-a="quickxi" data-m="${m}">${t}</button>`;
+  return `<div class="quick87"><span class="k">Montar o time:</span>${chip('nota','Melhores')}${chip('desc','Descansados')}${chip('jov','Jovens')}</div>`;
+}
+globalThis.quickRow87=quickRow87;
+Object.assign(A,{quickxi(d){const c=userClub();if(!c)return;
+  const m=d.m;const v=m==='desc'?80:m==='jov'?23:0;
+  G.autoMode={on:true,mode:m,val:{desc:80,jov:23}};
+  autoPickMode(c,m,v);save();toast('Time montado: '+modeLbl(m,v)+'.');render()}});
+/* nível que o jogador tem na vaga (mesma conta do motor, função eff): fora de posição perde a fração do macroPen */
+function slotLvl87(p,slot,w){
+  let f=1;if(w&&macroOK(p,slot,w))f=fitFine(p,w);else if(p.pos!==slot)f=macroPen(p,slot);
+  return Math.round(p.ovr*f);
+}
+globalThis.slotLvl87=slotLvl87;
+try{const st=document.createElement('style');st.textContent='.tok small.offpos{color:#ffb020;font-weight:800}';document.head.appendChild(st)}catch(e){}
 newWorld();G.phase='start';render();
 </script>
 <script>if("serviceWorker"in navigator&&/^https?:/.test(location.protocol))addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}))</script></body></html>
