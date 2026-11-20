@@ -16,5 +16,5 @@ console.log(JSON.stringify(r));
 const r2=await p.evaluate(()=>{const c=userClub();const p=c.squad.map(id=>P(id)).find(x=>x.ct>=G.season);const victim=c.squad.map(id=>P(id)).filter(x=>x.ct===G.season&&x!==p)[0]||P(c.squad[3]);victim.ct=G.season;const vid=victim.id;
  let n=0;while(G.phase==='play'&&n++<60){startRound();while(!roundDone())stepAll();const o=finishRound();if(o==='fired'){takeJob(fireOffers()[0]);G._t114fired=1;break}if(o==='seasonEnd')break}
  try{endSeason&&endSeason()}catch(e){}try{newSeason()}catch(e){return 'err '+e.message}
- return {season:G.season,victimClub:P(vid).club,victimLivre:G.free.includes(vid)?1:0,squad:userClub().squad.length,demitidoNoTeste:!!G._t114fired}});
+ return {season:G.season,victimClub:P(vid).club,victimLivre:G.free.includes(vid)?1:0,squad:userClub().squad.length,demitidoNoTeste:G._t114fired?1:0}});
 console.log(JSON.stringify(r2),errs);await b.close()})();
