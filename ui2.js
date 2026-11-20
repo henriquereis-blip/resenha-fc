@@ -17,7 +17,7 @@ function vEstadio(){
 }
 function vJuniores(){
   const c=userClub();
-  return `<div class="wrap"><h2>Juniores · vagas ${c.youth.length}/20</h2>${c.youth.map((y,i)=>`<div class="mrow"><span class="pos">${ROLEABB[y.role]}</span><span class="nm">${esc(y.name)}<small>${y.age}a · ${y.tr.map(t=>TN[t][0]).join('/')} · valor ${mi(y.value)} · ${'★'.repeat(y.stars)}${'☆'.repeat(5-y.stars)}</small>${bar(y.dev)}</span><span class="col"><button class="btn sm" data-a="ypromote" data-i="${i}">Promover</button><button class="btn sm ghost" data-a="ydismiss" data-i="${i}">Dispensar</button></span></div>`).join('')}
+  return `<div class="wrap"><h2>Juniores · vagas ${c.youth.length}/20</h2>${c.youth.map((y,i)=>`<div class="mrow"><span class="pos">${ROLEABB[y.role]}</span><span class="nm">${esc(y.name)}<small>${y.age}a · ${y.tr.map(t=>TN[t][0]).join('/')} · valor ${mi(y.value)} · ${'★'.repeat(y.stars)}${'☆'.repeat(5-y.stars)}</small>${bar(y.dev)}</span><span class="col"><button class="btn sm ghost" data-a="yinfo" data-i="${i}">Prazo</button><button class="btn sm" data-a="ypromote" data-i="${i}">Promover</button><button class="btn sm ghost" data-a="ydismiss" data-i="${i}">Dispensar</button></span></div>`).join('')}
   <button class="btn ghost" data-a="yscout">Buscar jovem (olheiro · R$ 0,05 mi)</button><p class="foot">Estrelas indicam o potencial. Desenvolvimento sobe com o tempo; promover cedo gera um jogador mais fraco.</p></div>`;
 }
 S.rk='geral';S.rs='pais';
