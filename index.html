@@ -1549,7 +1549,7 @@ function vEstadio(){
 }
 function vJuniores(){
   const c=userClub();
-  return `<div class="wrap"><h2>Juniores · vagas ${c.youth.length}/20</h2>${c.youth.map((y,i)=>`<div class="mrow"><span class="pos">${ROLEABB[y.role]}</span><span class="nm">${esc(y.name)}<small>${y.age}a · ${y.tr.map(t=>TN[t][0]).join('/')} · valor ${mi(y.value)} · ${'★'.repeat(y.stars)}${'☆'.repeat(5-y.stars)}</small>${bar(y.dev)}</span><span class="col"><button class="btn sm" data-a="ypromote" data-i="${i}">Promover</button><button class="btn sm ghost" data-a="ydismiss" data-i="${i}">Dispensar</button></span></div>`).join('')}
+  return `<div class="wrap"><h2>Juniores · vagas ${c.youth.length}/20</h2>${c.youth.map((y,i)=>`<div class="mrow"><span class="pos">${ROLEABB[y.role]}</span><span class="nm">${esc(y.name)}<small>${y.age}a · ${y.tr.map(t=>TN[t][0]).join('/')} · valor ${mi(y.value)} · ${'★'.repeat(y.stars)}${'☆'.repeat(5-y.stars)}</small>${bar(y.dev)}</span><span class="col"><button class="btn sm ghost" data-a="yinfo" data-i="${i}">Prazo</button><button class="btn sm" data-a="ypromote" data-i="${i}">Promover</button><button class="btn sm ghost" data-a="ydismiss" data-i="${i}">Dispensar</button></span></div>`).join('')}
   <button class="btn ghost" data-a="yscout">Buscar jovem (olheiro · R$ 0,05 mi)</button><p class="foot">Estrelas indicam o potencial. Desenvolvimento sobe com o tempo; promover cedo gera um jogador mais fraco.</p></div>`;
 }
 S.rk='geral';S.rs='pais';
@@ -1682,7 +1682,7 @@ function vInicio(){
   return `<div class="home"><div class="hl">${pc}</div><div class="hr">${extra}${tb}</div></div>`;
 }
 function vOpcoes(){
-  return `<div class="wrap"><h2>Opções</h2><div class="card"><div class="res"><span>Som e vibração</span><button class="btn sm ${SND.on?'':'ghost'}" data-a="snd">${SND.on?'Ligado':'Desligado'}</button></div><div class="res"><span>Tema</span><span><button class="btn sm ghost" data-a="theme" data-v="light">Claro</button> <button class="btn sm ghost" data-a="theme" data-v="dark">Escuro</button> <button class="btn sm ghost" data-a="theme" data-v="">Auto</button></span></div><div class="res"><span>Conquistas</span><button class="btn sm" data-a="nav" data-v="conquistas">Ver (${Object.keys(G.ach).length}/${Object.keys(ACH).length})</button></div></div>
+  return `<div class="wrap"><h2>Opções</h2><div class="card"><div class="res"><span>Som e vibração</span><button class="btn sm ${SND.on?'':'ghost'}" data-a="snd">${SND.on?'Ligado':'Desligado'}</button></div><div class="res"><span>Tema</span><span><button class="btn sm ghost" data-a="theme" data-v="light">Claro</button> <button class="btn sm ghost" data-a="theme" data-v="dark">Escuro</button> <button class="btn sm ghost" data-a="theme" data-v="">Auto</button></span></div></div>
   <div class="card"><button class="btn ghost" data-a="reset">Reiniciar jogo</button></div><p class="foot">Resenha FC · demo v2 · Brasileirão Série A</p></div>`;
 }
 function vConquistas(){
@@ -1694,7 +1694,7 @@ function render(){
   if(!G||G.phase==='start'){app.innerHTML=vStart()+toastH();bind();return}
   if(S.match&&R){app.innerHTML=(S.panel?vPanel():vMatch())+flashH()+toastH();bind();return}
   ex();const c=userClub();
-  const views={inicio:vInicio,elenco:vInicio,tatica:vTatica,liga:vLiga,mercado:vMercado,clube:vClube,times:vTimes,agenda:vAgenda,estadio:vEstadio,juniores:vJuniores,base:vBase,meutec:vMeuTec,medico:vMedico,dir:vDir,treino:vTreino,vest:vVest,assist:vAssist,staff:vStaff,comp:vComp,marketing:vMarketing,torcida:vTorcida,tecnicos:vTecnicos,historia:vHistoria,opcoes:vOpcoes,conquistas:vConquistas};
+  const views={inicio:vInicio,elenco:vInicio,tatica:vTatica,liga:vLiga,mercado:vMercado,clube:vClube,times:vTimes,agenda:vAgenda,estadio:vEstadio,juniores:vJuniores,base:vBase,meutec:vMeuTec,medico:vMedico,dir:vDir,treino:vTreino,vest:vVest,assist:vAssist,staff:vStaff,comp:vComp,marketing:vMarketing,torcida:vTorcida,tecnicos:vTecnicos,historia:vHistoria,opcoes:vOpcoes};
   const icons=[['agenda','📅','Agenda'],['liga','🏆','Tabelas'],['meutec','🧠','Técnico'],['dir','🏛️','Diretoria'],['medico','🩺','Médico'],['treino','🏋️','Treino'],['vest','🗣️','Vestiário'],['assist','🧢','Auxiliar'],['staff','🧑‍💼','Comissão'],['comp','🌎','Copas'],['marketing','📣','Marketing'],['torcida','🔥','Torcida'],['estadio','🏟️','Estádio'],['base','🌱','Base'],['times','👕','Times'],['mercado','🔍','Procura'],['tecnicos','🧢','Técnicos'],['historia','📜','História'],['opcoes','⚙️','Opções']];
   let body;
   if(S.modal)body=vModal();else if(S.prof!==null)body=vPerfil();else if(S.paper)body=vJornal();else body=(views[G.view]||vInicio)();
@@ -2426,7 +2426,7 @@ var vBase=function(){
     ${sub.slice(0,5).map((x,i)=>`<div class="rank ${x.id===c.id?'':''}"><span class="pos">${i+1}º</span><div class="pn">${crest(x,18)}<span style="${x.id===c.id?'font-weight:800':''}">${esc(x.name)}</span></div><div class="n">${x.s20.P}</div></div>`).join('')}
     ${spos>5?`<div class="rank"><span class="pos">${spos}º</span><div class="pn">${crest(c,18)}<span style="font-weight:800">${esc(c.name)}</span></div><div class="n">${c.s20.P}</div></div>`:''}
     ${b.champs.length?`<p class="news">Campeões Sub-20: ${b.champs.slice(-4).map(x=>'T'+x.s+' '+C(x.id).sig).join(' · ')}</p>`:''}`,'Brasileiro Sub-20')}
-  ${sec9('Garotos da base',c.youth.length?c.youth.map((y,i)=>`<div class="mrow"><span class="pos">${ROLEABB[y.role]}</span><span class="nm">${esc(y.name)}<small>${y.age}a · ${y.tr.map(t=>TN[t][0]).join('/')} · ${starsT(y.stars)} · valor ${mi(y.value)}</small>${bar(y.dev)}</span><span class="col"><button class="btn sm" data-a="ypromote" data-i="${i}">Promover</button><button class="btn sm ghost" data-a="ysell" data-i="${i}">Vender</button></span></div>`).join(''):'<p class="news">Base vazia.</p>',`${c.youth.length}`)}
+  ${sec9('Garotos da base',c.youth.length?c.youth.map((y,i)=>`<div class="mrow"><span class="pos">${ROLEABB[y.role]}</span><span class="nm">${esc(y.name)}<small>${y.age}a · ${y.tr.map(t=>TN[t][0]).join('/')} · ${starsT(y.stars)} · valor ${mi(y.value)}</small>${bar(y.dev)}</span><span class="col"><button class="btn sm ghost" data-a="yinfo" data-i="${i}">Prazo</button><button class="btn sm" data-a="ypromote" data-i="${i}">Promover</button><button class="btn sm ghost" data-a="ysell" data-i="${i}">Vender</button></span></div>`).join(''):'<p class="news">Base vazia.</p>',`${c.youth.length}`)}
   <button class="btn ghost big" data-a="yscout">Buscar jovem (olheiro · R$ 0,05 mi)</button>
   ${sec9('Formados em casa',grads.length?grads.map(p=>`<div class="rank"><span class="pos">${p.fromBase}</span><div class="pn"><span>${esc(nameOf(p))}</span><small class="k">${roleLabel(p)} · ${p.age}a</small></div><div class="n">${p.ovr}</div></div>`).join('')+'<p class="news">Vender cria da base rende bônus de formação de 20%.</p>':'<p class="news">Promova os melhores garotos para eles virarem “crias” do clube.</p>')}
   <p class="foot">Dados reais da base: ranking CIES 2025 (SAO 71,3 · COR 68,8 · FLA 67,4 · PAL 65,1 · SAN 57,6…) e a certificação “Clube Formador” da CBF. Onde não há número público, estimamos.</p></div>`;
@@ -8139,7 +8139,7 @@ const CAT46=[
   ['equipe','👔','Equipe','meutec',['meutec','assist','staff','medico','treino','vest'],'#35f0a0'],
   ['comp','🏆','Torneios','agenda',['agenda','liga','comp'],'#5ab0ff'],
   ['mundo','🌎','Mundo','mercado',['mercado','times','tecnicos'],'#c58bff'],
-  ['mais','⋯','Mais','opcoes',['historia','conquistas','opcoes'],'#aab4c0']
+  ['mais','⋯','Mais','opcoes',['historia','opcoes'],'#aab4c0']
 ];
 const IC46={dir:'🏛️',estadio:'🏟️',base:'🌱',torcida:'🔥',marketing:'📣',meutec:'🧠',assist:'🧢',staff:'🧑‍💼',medico:'🩺',treino:'🏋️',vest:'🗣️',agenda:'📅',liga:'🏆',comp:'🌎',mercado:'🔍',times:'👕',tecnicos:'🧢',historia:'📜',opcoes:'⚙️'};
 const NM46={dir:'Diretoria',estadio:'Estádio',base:'Base',torcida:'Torcida',marketing:'Marketing',meutec:'Técnico',assist:'Auxiliar',staff:'Comissão',medico:'Médico',treino:'Treino',vest:'Vestiário',agenda:'Agenda',liga:'Tabelas',comp:'Copas',mercado:'Procura',times:'Times',tecnicos:'Técnicos',historia:'História',opcoes:'Opções'};
@@ -11508,6 +11508,28 @@ hookAfter('staffAlerts','ext89_sa',function(out){
   return out;
 });
 Object.assign(A,{safyes(){const u=userClub();const o=G.safOffer;if(!u||!o||o.s!==G.season)return;G.safOffer=null;safAplica89(u,'(aprovado pelo técnico)');save();render();toast('SAF aprovada.')}});
+/* ext90 (v116): prazo do garoto da base. Mostra quanto falta pra ele ficar pronto para subir, segundo a evolução real do jogo:
+   ovr ao subir = 44 + dev·0,22 + estrelas·2,5 (promoteYouth). Pronto = ovr ≥ 62. Cada rodada dá +0..2 de dev (média 1),
+   cada temporada dá +12 (idade) e o treinador da base dá 1,5 × qualidade + centro de treinamento. Quem sobe antes sobe mais fraco. */
+const READY90=62;
+function youthEta90(c,y){
+  const b=G.mk&&G.mk.base;const tr=b&&b.staff&&b.staff.trei?b.staff.trei:null;
+  const q=tr?tr.q:0,ct=b?b.ct:0;
+  const ovr=Math.round(44+y.dev*0.22+y.stars*2.5);
+  if(ovr>=READY90)return {ready:true,ovr,trainer:tr,rounds:0,seasons:0};
+  const targetDev=(READY90-44-y.stars*2.5)/0.22;
+  const gap=Math.max(0,targetDev-y.dev);
+  const perRound=1+12/38+(1.5*q+ct)/38;
+  const rounds=Math.ceil(gap/perRound);
+  return {ready:false,ovr,trainer:tr,rounds,seasons:Math.ceil(rounds/38)};
+}
+globalThis.youthEta90=youthEta90;
+Object.assign(A,{yinfo(d){const c=userClub();const y=c&&c.youth[+d.i];if(!y)return;
+  const e=youthEta90(c,y);
+  const quem=e.trainer?e.trainer.name+' (qualidade '+e.trainer.q+')':'sem treinador da base (evolução mais lenta)';
+  const msg=e.ready?y.name+': pronto para subir (ovr '+e.ovr+'). Pode promover quando quiser.'
+    :y.name+': falta ~'+e.rounds+' rodada(s)'+(e.seasons>1?' (~'+e.seasons+' temporadas)':'')+' para ficar pronto, segundo '+quem+'. Subir antes é possível, mas ele sobe mais fraco (ovr '+e.ovr+' hoje).';
+  toast(msg)}});
 newWorld();G.phase='start';render();
 </script>
 <script>if("serviceWorker"in navigator&&/^https?:/.test(location.protocol))addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}))</script></body></html>
