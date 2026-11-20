@@ -56,8 +56,17 @@ Sempre que medir, guarde a saída em `tools/sim/out/` com o número da versão n
 
 ## Estado atual
 
-- Branch `v95-potencia-sem-vies-formacao`: `power()` sem bônus por contagem de jogadores (corrige viés de 3 zagueiros) v96 (formação da IA por encaixe, `ext81.js`) e v97 (nota do goleiro), v98 (zagueiro, Posse, explicação na tela), v99 (Bola de Ouro com títulos, convocações e jogos decisivos), v100 (aviso de formação com custo de zagueiro), v101 (Bola de Ouro com estadual e seleção), v102 (Posse mais forte), v103 (notas de Austrália e EUA), v104 (experimento de formação da IA), v105 (calibragem de demissão), v106 (demissão com tempo no cargo e aviso da diretoria), v107 (Bola de Ouro por torneio e tradição da seleção), v108 (eras táticas), v109 (Supercopa do Brasil), v110 (tradição das seleções pela forma recente).
-- Próximos itens da revisão, em ordem:
+- Branch `v95-potencia-sem-vies-formacao`: `power()` sem bônus por contagem de jogadores (corrige viés de 3 zagueiros) v96 (formação da IA por encaixe, `ext81.js`) e v97 (nota do goleiro), v98 (zagueiro, Posse, explicação na tela), v99 (Bola de Ouro com títulos, convocações e jogos decisivos), v100 (aviso de formação com custo de zagueiro), v101 (Bola de Ouro com estadual e seleção), v102 (Posse mais forte), v103 (notas de Austrália e EUA), v104 (experimento de formação da IA), v105 (calibragem de demissão), v106 (demissão com tempo no cargo e aviso da diretoria), v107 (Bola de Ouro por torneio e tradição da seleção), v108 (eras táticas), v109 (Supercopa do Brasil), v110 (tradição das seleções pela forma recente), v111 (fase A: objetivos da diretoria por posição, orçamento ligado ao resultado, demissão pesa zona e clube grande), v112 (fase B: ingresso automático por competição com tiers A1/A2/B3), v113 (fase C: tutorial minimizável, tática mais limpa, aviso de fora de posição), v114 (fase D: estilo do jogador, SAF, gap financeiro comprimido, estádios do Brasil).
+- Pendências depois das fases A–D (v111–v114):
+  - Mundo simulado com partidas reais em todas as ligas (tarefa pedida; o envio da tarefa deu timeout, confirmar se entrou).
+  - Nomes de estádios das demais ligas principais (Inglaterra, Argentina etc.). Não entendi "conoleto".
+  - Painel de dívida (50%/30% do lucro) não existe no código; o que há é automático (`ext14.js`, 60% do excesso de caixa).
+  - Tela de finanças: sem especificação do que está feio.
+  - Opções novas de marcação e ataque (hoje: intensidade Leve/Pesada/Muito pesada; ataque Pelo meio/Pelas laterais).
+  - Tradição das seleções: usa forma recente das últimas 5 Copas e títulos; falta conferir os dados de todas as Copas.
+  - Dívida de SAF: 0,6 eventos/temporada; acumulado sobe com o tempo (ver `ext89.js`).
+  - Jogador não renovado após demissão não vira livre (tarefa separada).
+- Itens anteriores da revisão (já feitos):
   1. ~~IA escolhe formação~~ feito na v96 (`ext81.js`): encaixe (`xiScore`) + filosofia + ruído; reavalia na nova temporada; troca na má fase (≥5 abaixo, rodadas %6==0). Medição: `tools/sim/exp_aiform.js`.
   2. ~~Goleiro com nota própria~~ feito na v97 (`logic.js` `stepMinute`): sem bônus de gol do time, defesa +0.15, gol sofrido −0.35. Medição: `tools/sim/exp_notas.js` e `exp_premios.js`. 
   3. ~~Posse com retorno real~~ feito na v98 e ajustado na v102 (`styleMod` em `logic.js`, `styleWhy` em `ui13.js`): mid 1.18, def 1.06, rate 1.10. Pontos/jogo vs Equilibrado: 1,67 → 1,83. Ofensivo continua em 1,99 (é o estilo forte por desenho). Medição: `tools/sim/exp_estilo.js`.
