@@ -13,7 +13,11 @@ function ntBox(){
   return G.nt;
 }
 const cyOf=()=>(G.season-1)%4;
-function ntRating(code){const b=ntBox();if(code==='BRA')return b.braR!==undefined?b.braR:braRating();return (b.rt[code]!==undefined?b.rt[code]:NR0[code])}
+/* v107: tradição da seleção: títulos de Copa do Mundo (peso 1) e de Copa América (peso 1/3), buff de até +2 na força.
+   É um ajuste leve: a força principal continua sendo o nível dos jogadores. Uma seleção nova ainda pode ganhar. */
+const NT_TITLES={BRA:{wc:5,ca:9},ARG:{wc:3,ca:16},URU:{wc:2,ca:15},ITA:{wc:4,ca:0},GER:{wc:4,ca:0},FRA:{wc:2,ca:0},ESP:{wc:1,ca:0},ENG:{wc:0,ca:0},NED:{wc:0,ca:0},POR:{wc:0,ca:0},CHI:{wc:0,ca:2},PAR:{wc:0,ca:2},COL:{wc:0,ca:1},PER:{wc:0,ca:2},MEX:{wc:0,ca:1}};
+function ntTradBuff(code){const t=NT_TITLES[code];if(!t)return 0;return Math.min(2,0.25*(t.wc+t.ca/3))}
+function ntRating(code){const b=ntBox();const base=code==='BRA'?(b.braR!==undefined?b.braR:braRating()):(b.rt[code]!==undefined?b.rt[code]:NR0[code]);return base+ntTradBuff(code)}
 function braSquad(){
   const all=Object.values(G.players).filter(p=>p.club>=0&&natOf(p)==='BRA'&&!p.retired);
   const q={GK:3,DEF:8,MID:8,ATA:7},out=[];
