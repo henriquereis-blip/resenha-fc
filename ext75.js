@@ -1,3 +1,22 @@
+/* v106: multiplicador da demissão pelo tempo no cargo e pelos títulos conquistados nele (1 = base, menor = mais protegido).
+   1ª temporada: 1,0 · 2ª: 0,55 · 3ª em diante: 0,35. Cada título na passagem: ×0,8, piso 0,4. */
+function tenureMult(c){
+  if(!c||!G.ten||G.ten.club!==c.id)return 1;
+  const n=G.season-G.ten.from;
+  let m=n<=0?1:n===1?0.55:0.35;
+  const f=G.ten.from;
+  const tit=(G.champs||[]).filter(x=>x.s>=f&&x.cid===c.id).length+(G.cupHist||[]).filter(x=>x.s>=f&&x.champ===c.id).length+(G.estHist||[]).filter(x=>x.s>=f&&x.champ===c.id).length;
+  return clamp(m*Math.pow(0.8,tit),0.4*m,1);
+}
+globalThis.tenureMult=tenureMult;
+function tenureStart(){if(G.user!=null)G.ten={club:G.user,from:G.season}}
+hookAfter('startCareer','ten75a',function(){tenureStart()});
+hookAfter('takeJob','ten75b',function(){tenureStart()});
+/* v106: antes da demissão, a imprensa avisa que a diretoria está avaliando o técnico (uma vez por temporada) */
+hookAfter('boardRound','press75',function(){
+  try{const c=userClub();if(!c||G.board.conf>=35||G._press106===G.season)return;
+    G._press106=G.season;paperLine('Diretoria avalia o técnico '+G.coach,'Bastidores falam em reunião da diretoria. Resultado é a única coisa que segura o cargo.')}catch(e){}
+});
 /* ext75 (v91): economia calibrada pela folha (clube grande não quebra), diretoria avisa antes de demitir, caixa negativo não zera a confiança */
 (function(){
 function calib75(){
@@ -43,6 +62,8 @@ hookAround('shouldFire','sf',function(next,__a){
     return false}
   let p=next();
   if(!p)return p;
+  /* v106: tempo no cargo protege. Temporada 1 é a mais arriscada; depois cai; títulos na passagem seguram mais */
+  if(Math.random()>=tenureMult(c))return false;
   /* v105: proteção na primeira temporada até a rodada 19 (só cai com confiança abaixo de 15) */
   if(G.season===1&&G.round<=19&&conf>=15)return false;
   /* v105: tolerância de meta+3 (era meta+2) */

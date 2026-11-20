@@ -56,7 +56,7 @@ Sempre que medir, guarde a saída em `tools/sim/out/` com o número da versão n
 
 ## Estado atual
 
-- Branch `v95-potencia-sem-vies-formacao`: `power()` sem bônus por contagem de jogadores (corrige viés de 3 zagueiros) v96 (formação da IA por encaixe, `ext81.js`) e v97 (nota do goleiro), v98 (zagueiro, Posse, explicação na tela), v99 (Bola de Ouro com títulos, convocações e jogos decisivos), v100 (aviso de formação com custo de zagueiro), v101 (Bola de Ouro com estadual e seleção), v102 (Posse mais forte), v103 (notas de Austrália e EUA), v104 (experimento de formação da IA), v105 (calibragem de demissão).
+- Branch `v95-potencia-sem-vies-formacao`: `power()` sem bônus por contagem de jogadores (corrige viés de 3 zagueiros) v96 (formação da IA por encaixe, `ext81.js`) e v97 (nota do goleiro), v98 (zagueiro, Posse, explicação na tela), v99 (Bola de Ouro com títulos, convocações e jogos decisivos), v100 (aviso de formação com custo de zagueiro), v101 (Bola de Ouro com estadual e seleção), v102 (Posse mais forte), v103 (notas de Austrália e EUA), v104 (experimento de formação da IA), v105 (calibragem de demissão), v106 (demissão com tempo no cargo e aviso da diretoria).
 - Próximos itens da revisão, em ordem:
   1. ~~IA escolhe formação~~ feito na v96 (`ext81.js`): encaixe (`xiScore`) + filosofia + ruído; reavalia na nova temporada; troca na má fase (≥5 abaixo, rodadas %6==0). Medição: `tools/sim/exp_aiform.js`.
   2. ~~Goleiro com nota própria~~ feito na v97 (`logic.js` `stepMinute`): sem bônus de gol do time, defesa +0.15, gol sofrido −0.35. Medição: `tools/sim/exp_notas.js` e `exp_premios.js`. 
