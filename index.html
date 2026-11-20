@@ -5351,10 +5351,19 @@ function ntBox(){
   return G.nt;
 }
 const cyOf=()=>(G.season-1)%4;
-/* v107: tradição da seleção: títulos de Copa do Mundo (peso 1) e de Copa América (peso 1/3), buff de até +2 na força.
-   É um ajuste leve: a força principal continua sendo o nível dos jogadores. Uma seleção nova ainda pode ganhar. */
-const NT_TITLES={BRA:{wc:5,ca:9},ARG:{wc:3,ca:16},URU:{wc:2,ca:15},ITA:{wc:4,ca:0},GER:{wc:4,ca:0},FRA:{wc:2,ca:0},ESP:{wc:1,ca:0},ENG:{wc:0,ca:0},NED:{wc:0,ca:0},POR:{wc:0,ca:0},CHI:{wc:0,ca:2},PAR:{wc:0,ca:2},COL:{wc:0,ca:1},PER:{wc:0,ca:2},MEX:{wc:0,ca:1}};
-function ntTradBuff(code){const t=NT_TITLES[code];if(!t)return 0;return Math.min(2,0.25*(t.wc+t.ca/3))}
+/* v110: tradição da seleção = forma recente + história, buff de até +2 na força (ajuste leve; o principal é o nível dos jogadores).
+   rec = pontos nas últimas 5 Copas do Mundo (2006–2022): campeão 3, vice 2, 3º 1,5, 4º 1, quartas 0,5.
+   wc = títulos de Copa do Mundo · wcv = vices de Copa do Mundo · euro = Eurocopas · ca = Copas América.
+   Fórmula: 0,3·rec + 0,15·wc + 0,05·wcv + 0,05·euro + 0,02·ca, teto 2. Títulos antigos pesam menos que a forma recente. */
+const NT_TRAD={
+  BRA:{rec:3,wc:5,wcv:0,euro:0,ca:9},  ARG:{rec:6,wc:3,wcv:3,euro:0,ca:16}, URU:{rec:1.5,wc:2,wcv:0,euro:0,ca:15},
+  ITA:{rec:3,wc:4,wcv:2,euro:2,ca:0},  GER:{rec:6,wc:4,wcv:4,euro:3,ca:0}, FRA:{rec:7.5,wc:2,wcv:2,euro:2,ca:0},
+  ESP:{rec:3,wc:1,wcv:0,euro:3,ca:0},  ENG:{rec:2,wc:1,wcv:0,euro:0,ca:0}, NED:{rec:4,wc:0,wcv:3,euro:0,ca:0},
+  POR:{rec:1.5,wc:0,wcv:0,euro:1,ca:0}, BEL:{rec:2,wc:0,wcv:0,euro:0,ca:0}, CRO:{rec:3.5,wc:0,wcv:1,euro:0,ca:0},
+  CHI:{rec:0,wc:0,wcv:0,euro:0,ca:2}, PAR:{rec:0,wc:0,wcv:0,euro:0,ca:2}, COL:{rec:0,wc:0,wcv:0,euro:0,ca:1},
+  PER:{rec:0,wc:0,wcv:0,euro:0,ca:2}, MEX:{rec:0,wc:0,wcv:0,euro:0,ca:1}
+};
+function ntTradBuff(code){const t=NT_TRAD[code];if(!t)return 0;return Math.min(2,0.3*t.rec+0.15*t.wc+0.05*t.wcv+0.05*t.euro+0.02*t.ca)}
 function ntRating(code){const b=ntBox();const base=code==='BRA'?(b.braR!==undefined?b.braR:braRating()):(b.rt[code]!==undefined?b.rt[code]:NR0[code]);return base+ntTradBuff(code)}
 function braSquad(){
   const all=Object.values(G.players).filter(p=>p.club>=0&&natOf(p)==='BRA'&&!p.retired);
