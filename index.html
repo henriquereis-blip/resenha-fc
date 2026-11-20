@@ -11153,17 +11153,18 @@ function aiPickForm(c,keep,avoid){
 }
 function aiSetForm(c,f){if(!f||f===c.formation)return false;c.formation=f;autoPick(c);return true}
 globalThis.aiPickForm=aiPickForm;
-globalThis.AIF81={pSwitch:1}; /* só para experimento (tools/sim/exp_aiform.js): chance de a IA trocar na má fase */
+globalThis.AIF81={pSwitch:1,on:true}; /* on=false: formação fixa (sorteada no newWorld, nunca troca). Só para experimento */ /* só para experimento (tools/sim/exp_aiform.js): chance de a IA trocar na má fase */
 
 hookAfter('newWorld','nw81',function(){
   for(const c of G.clubs){try{aiSetForm(c,aiPickForm(c,0,null))}catch(e){console.error('nw81 '+e.message)}}
 });
 hookAfter('newSeason','ns81',function(){
+  if(!AIF81.on)return;
   for(const c of G.clubs){if(c.id===G.user)continue;try{aiSetForm(c,aiPickForm(c,AIF_KEEP,null))}catch(e){console.error('ns81 '+e.message)}}
 });
 /* má fase: checa nas rodadas múltiplas de 6 (antes do autoPick da rodada) */
 hookBefore('prepareRound','pr81',function(){
-  if(!G||!G.round||G.round%AIF_EVERY!==0)return;
+  if(!AIF81.on||!G||!G.round||G.round%AIF_EVERY!==0)return;
   if(G.fsw81===G.season*100+G.round)return; /* prepareRound pode rodar mais de uma vez na mesma rodada */
   G.fsw81=G.season*100+G.round;
   const ud=G.user!=null&&G.clubs[G.user]?G.clubs[G.user].div:-1;let news=null;
