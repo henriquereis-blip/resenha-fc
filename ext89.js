@@ -1,6 +1,6 @@
 /* ext89 (v115, fase D): SAF. Em cada temporada, 0 a 2 clubes da Série A viram SAF (aporte para pagar dívida).
    Se for o seu clube, a proposta vai pra comissão e só vira SAF se você aprovar. SAF pode voltar ao modelo associativo, raramente. */
-const SAF89={pRound:0.45,pTwo:0.15,pRevert:0.04,aporte:0.4};
+const SAF89={pRound:0.45,pTwo:0.15,pRevert:0.12,aporte:0.4}; /* pRevert 0,12: com ~0,6 entradas por temporada, o número de SAFs estabiliza em ~5 (antes acumulava) */
 function safAplica89(c,motivo){
   const debt=c.debt||0,val=Math.round(debt*SAF89.aporte*10)/10;
   c.debt=+(debt-val).toFixed(1);c.modelo='saf';

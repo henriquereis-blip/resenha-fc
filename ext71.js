@@ -3,7 +3,7 @@
 const STEPS=[
  {v:'inicio',t:'1/7 · Seu clube',b:'Aqui é a base: elenco, caixa, próximo jogo e os avisos do auxiliar. Toda decisão do jogo parte daqui.'},
  {v:'tatica',t:'2/7 · Tática',b:'Escolha a formação, o estilo e quem joga. Troque jogadores tocando neles. O jogo mostra quem encaixa melhor em cada posição.'},
- {v:'mercado',t:'3/7 · Contratar e vender',b:'Em Procura você acha reforços e negocia. Cada clube pede um preço: ofereça, e se aceitar, o jogador é seu. Dá pra vender quem sobra também.'},
+ {v:'mercado',t:'3/7 · Contratar e vender',b:'Em Procura, abra a aba Buscar, digite o nome (ou deixe em branco), escolha os filtros e toque em Procurar (botão lá embaixo do campo). Cada clube pede um preço: ofereça, e se aceitar, o jogador é seu. Dá pra vender quem sobra também.'},
  {v:'clube',t:'4/7 · Dinheiro',b:'O clube tem caixa, folha salarial e dívida. A diretoria cobra resultado e limita gastos. Às vezes a meta é só ficar no meio da tabela e fechar no azul.'},
  {v:'staff',t:'5/7 · Comissão técnica',b:'Contrate preparador físico, analista, scouting. Sem médico e fisioterapeuta o time se lesiona mais. O auxiliar avisa quando falta alguém.'},
  {v:'assist',t:'6/7 · Auxiliar',b:'Ele dá dicas e alerta sobre elenco, lesões e formação. Quem decide é você: aplica a dica ou ignora.'},

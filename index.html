@@ -5355,15 +5355,17 @@ function ntBox(){
   return G.nt;
 }
 const cyOf=()=>(G.season-1)%4;
+/* v120: vices de Copa do Mundo corrigidos (Brasil: 1950 e 1998). Hungria 1938/1954, Suécia 1958 entram com o peso de vice. Títulos e vices conferidos com o histórico completo das Copas. */
 /* v110: tradição da seleção = forma recente + história, buff de até +2 na força (ajuste leve; o principal é o nível dos jogadores).
    rec = pontos nas últimas 5 Copas do Mundo (2006–2022): campeão 3, vice 2, 3º 1,5, 4º 1, quartas 0,5.
    wc = títulos de Copa do Mundo · wcv = vices de Copa do Mundo · euro = Eurocopas · ca = Copas América.
    Fórmula: 0,3·rec + 0,15·wc + 0,05·wcv + 0,05·euro + 0,02·ca, teto 2. Títulos antigos pesam menos que a forma recente. */
 const NT_TRAD={
-  BRA:{rec:3,wc:5,wcv:0,euro:0,ca:9},  ARG:{rec:6,wc:3,wcv:3,euro:0,ca:16}, URU:{rec:1.5,wc:2,wcv:0,euro:0,ca:15},
+  BRA:{rec:3,wc:5,wcv:2,euro:0,ca:9},  ARG:{rec:6,wc:3,wcv:3,euro:0,ca:16}, URU:{rec:1.5,wc:2,wcv:0,euro:0,ca:15},
   ITA:{rec:3,wc:4,wcv:2,euro:2,ca:0},  GER:{rec:6,wc:4,wcv:4,euro:3,ca:0}, FRA:{rec:7.5,wc:2,wcv:2,euro:2,ca:0},
   ESP:{rec:3,wc:1,wcv:0,euro:3,ca:0},  ENG:{rec:2,wc:1,wcv:0,euro:0,ca:0}, NED:{rec:4,wc:0,wcv:3,euro:0,ca:0},
   POR:{rec:1.5,wc:0,wcv:0,euro:1,ca:0}, BEL:{rec:2,wc:0,wcv:0,euro:0,ca:0}, CRO:{rec:3.5,wc:0,wcv:1,euro:0,ca:0},
+  HUN:{rec:0,wc:0,wcv:2,euro:0,ca:0}, SWE:{rec:0,wc:0,wcv:1,euro:0,ca:0},
   CHI:{rec:0,wc:0,wcv:0,euro:0,ca:2}, PAR:{rec:0,wc:0,wcv:0,euro:0,ca:2}, COL:{rec:0,wc:0,wcv:0,euro:0,ca:1},
   PER:{rec:0,wc:0,wcv:0,euro:0,ca:2}, MEX:{rec:0,wc:0,wcv:0,euro:0,ca:1}
 };
@@ -10761,7 +10763,7 @@ hookAround('render','r70',function(next,__a){
 const STEPS=[
  {v:'inicio',t:'1/7 · Seu clube',b:'Aqui é a base: elenco, caixa, próximo jogo e os avisos do auxiliar. Toda decisão do jogo parte daqui.'},
  {v:'tatica',t:'2/7 · Tática',b:'Escolha a formação, o estilo e quem joga. Troque jogadores tocando neles. O jogo mostra quem encaixa melhor em cada posição.'},
- {v:'mercado',t:'3/7 · Contratar e vender',b:'Em Procura você acha reforços e negocia. Cada clube pede um preço: ofereça, e se aceitar, o jogador é seu. Dá pra vender quem sobra também.'},
+ {v:'mercado',t:'3/7 · Contratar e vender',b:'Em Procura, abra a aba Buscar, digite o nome (ou deixe em branco), escolha os filtros e toque em Procurar (botão lá embaixo do campo). Cada clube pede um preço: ofereça, e se aceitar, o jogador é seu. Dá pra vender quem sobra também.'},
  {v:'clube',t:'4/7 · Dinheiro',b:'O clube tem caixa, folha salarial e dívida. A diretoria cobra resultado e limita gastos. Às vezes a meta é só ficar no meio da tabela e fechar no azul.'},
  {v:'staff',t:'5/7 · Comissão técnica',b:'Contrate preparador físico, analista, scouting. Sem médico e fisioterapeuta o time se lesiona mais. O auxiliar avisa quando falta alguém.'},
  {v:'assist',t:'6/7 · Auxiliar',b:'Ele dá dicas e alerta sobre elenco, lesões e formação. Quem decide é você: aplica a dica ou ignora.'},
@@ -11486,7 +11488,7 @@ hookAfter('newSeason','ext88_ns',function(){
 });
 /* ext89 (v115, fase D): SAF. Em cada temporada, 0 a 2 clubes da Série A viram SAF (aporte para pagar dívida).
    Se for o seu clube, a proposta vai pra comissão e só vira SAF se você aprovar. SAF pode voltar ao modelo associativo, raramente. */
-const SAF89={pRound:0.45,pTwo:0.15,pRevert:0.04,aporte:0.4};
+const SAF89={pRound:0.45,pTwo:0.15,pRevert:0.12,aporte:0.4}; /* pRevert 0,12: com ~0,6 entradas por temporada, o número de SAFs estabiliza em ~5 (antes acumulava) */
 function safAplica89(c,motivo){
   const debt=c.debt||0,val=Math.round(debt*SAF89.aporte*10)/10;
   c.debt=+(debt-val).toFixed(1);c.modelo='saf';
@@ -11568,6 +11570,23 @@ hookAround('genYouth9','ext91_gy',function(next,__a){
   const c=__a[0];const antes=c.youth.length;const r=next(...__a);
   try{const ix=baseIdx(c);for(const y of c.youth.slice(antes)){y.stars=youthStars91(ix,c);y.rare=Math.random()<0.005;y.value=+(0.02+y.stars*0.012+rnd(0,0.02)).toFixed(3);y.value=+(y.value*(1+ix/80)).toFixed(3)}}catch(e){console.error('ext91 gy '+e.message)}
   return r;
+});
+/* ext92 (v119): contrato vencido no clube que o técnico deixou. Antes só o clube atual do usuário tinha o vencimento
+   processado; depois de uma demissão (takeJob), os jogadores do clube antigo com contrato vencido ficavam no elenco. */
+function releaseExp92(c){
+  if(!c||!c.squad)return;
+  const gone=c.squad.map(id=>P(id)).filter(p=>p&&ctOf(p)<=G.season);
+  for(const p of gone){
+    c.squad=c.squad.filter(id=>id!==p.id);p.club=-1;p.listed=false;delete p.wage;delete p.ct;
+    G.free=G.free||[];G.free.push(p.id);
+  }
+  return gone.length;
+}
+hookBefore('takeJob','ext92_tj',function(){if(G.user!=null)G.exClub92=G.user});
+/* antes da virada: a renovação automática da IA (ext80) roda na virada e renovaria o jogador do clube antigo */
+hookBefore('newSeason','ext92_nsb',function(){
+  try{if(G.exClub92!=null&&G.exClub92!==G.user){const c=C(G.exClub92);if(c)releaseExp92(c)}}catch(e){console.error('ext92 '+e.message)}
+  G.exClub92=null;
 });
 newWorld();G.phase='start';render();
 </script>

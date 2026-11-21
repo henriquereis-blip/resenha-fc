@@ -13,15 +13,17 @@ function ntBox(){
   return G.nt;
 }
 const cyOf=()=>(G.season-1)%4;
+/* v120: vices de Copa do Mundo corrigidos (Brasil: 1950 e 1998). Hungria 1938/1954, Suécia 1958 entram com o peso de vice. Títulos e vices conferidos com o histórico completo das Copas. */
 /* v110: tradição da seleção = forma recente + história, buff de até +2 na força (ajuste leve; o principal é o nível dos jogadores).
    rec = pontos nas últimas 5 Copas do Mundo (2006–2022): campeão 3, vice 2, 3º 1,5, 4º 1, quartas 0,5.
    wc = títulos de Copa do Mundo · wcv = vices de Copa do Mundo · euro = Eurocopas · ca = Copas América.
    Fórmula: 0,3·rec + 0,15·wc + 0,05·wcv + 0,05·euro + 0,02·ca, teto 2. Títulos antigos pesam menos que a forma recente. */
 const NT_TRAD={
-  BRA:{rec:3,wc:5,wcv:0,euro:0,ca:9},  ARG:{rec:6,wc:3,wcv:3,euro:0,ca:16}, URU:{rec:1.5,wc:2,wcv:0,euro:0,ca:15},
+  BRA:{rec:3,wc:5,wcv:2,euro:0,ca:9},  ARG:{rec:6,wc:3,wcv:3,euro:0,ca:16}, URU:{rec:1.5,wc:2,wcv:0,euro:0,ca:15},
   ITA:{rec:3,wc:4,wcv:2,euro:2,ca:0},  GER:{rec:6,wc:4,wcv:4,euro:3,ca:0}, FRA:{rec:7.5,wc:2,wcv:2,euro:2,ca:0},
   ESP:{rec:3,wc:1,wcv:0,euro:3,ca:0},  ENG:{rec:2,wc:1,wcv:0,euro:0,ca:0}, NED:{rec:4,wc:0,wcv:3,euro:0,ca:0},
   POR:{rec:1.5,wc:0,wcv:0,euro:1,ca:0}, BEL:{rec:2,wc:0,wcv:0,euro:0,ca:0}, CRO:{rec:3.5,wc:0,wcv:1,euro:0,ca:0},
+  HUN:{rec:0,wc:0,wcv:2,euro:0,ca:0}, SWE:{rec:0,wc:0,wcv:1,euro:0,ca:0},
   CHI:{rec:0,wc:0,wcv:0,euro:0,ca:2}, PAR:{rec:0,wc:0,wcv:0,euro:0,ca:2}, COL:{rec:0,wc:0,wcv:0,euro:0,ca:1},
   PER:{rec:0,wc:0,wcv:0,euro:0,ca:2}, MEX:{rec:0,wc:0,wcv:0,euro:0,ca:1}
 };
