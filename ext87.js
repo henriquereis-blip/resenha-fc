@@ -18,4 +18,7 @@ function slotLvl87(p,slot,w){
   return Math.round(p.ovr*f);
 }
 globalThis.slotLvl87=slotLvl87;
-try{const st=document.createElement('style');st.textContent='.tok small.offpos{color:#ffb020;font-weight:800}';document.head.appendChild(st)}catch(e){}
+try{const st=document.createElement('style');st.textContent='.tok small.offpos{color:#ffb020;font-weight:800}.x9 .row2 .kp .v{font-size:19px;white-space:nowrap}.x9 .row2 .kp .k{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:11px}';document.head.appendChild(st)}catch(e){}
+/* tendência tática da era atual (ext83): aparece na tela de tática */
+function eraLine87(){const e=G.era&&G.era.cur;if(!e)return '';return `<p class="news">Tendência tática: <b>${esc(e.n)}</b> · ${esc(e.d)} <small>(até a temporada ${G.era.to})</small></p>`}
+globalThis.eraLine87=eraLine87;

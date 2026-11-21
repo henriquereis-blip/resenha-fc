@@ -90,8 +90,8 @@ vClube=function(){
   return `<div class="wrap x9"><h2>Finanças · ${esc(c.name)}</h2>
   <div class="fh"><div class="lab">Caixa</div><div class="cx">${mi(f.caixa)}</div><span class="dl ${delta>=0?'up':'dn'}">${delta>=0?'▲':'▼'} ${mi(Math.abs(delta))} na última rodada</span> <span class="dl">Dívida ${mi(c.debt)} · ${h[1]}</span></div>
   <div class="row2">
-   <div class="kp"><div class="k">Receita da temporada</div><div class="v ok">${mi(rev)}</div></div>
-   <div class="kp"><div class="k">Despesa da temporada</div><div class="v bad">${mi(exp)}</div></div>
+   <div class="kp"><div class="k">Receita</div><div class="v ok">${mi(rev)}</div></div>
+   <div class="kp"><div class="k">Despesa</div><div class="v bad">${mi(exp)}</div></div>
    <div class="kp"><div class="k">Resultado</div><div class="v ${res>=0?'ok':'bad'}">${res>=0?'+':''}${mi(res)}</div></div>
    <div class="kp"><div class="k">Folha anual</div><div class="v">${mi(folha)}</div></div></div>
   ${sec9('Caixa ao longo do tempo',areaH((mk.cash||[]).slice(-40)))}
