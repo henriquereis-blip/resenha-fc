@@ -25,8 +25,8 @@ function fillYouth(c,max=5){while(c.youth.length<max)c.youth.push(mkYouth())}
 function promoteYouth(c,i){
   const y=c.youth[i];if(!y)return 'Jogador não encontrado.';
   if(c.squad.length>=30)return 'Elenco cheio (máximo 30).';
-  const ovr=youthOvr91(y,trainerQ91(c));
-  const p=mkPlayer(y.role,ovr,y.age,c.id,y.name,false);p.tr=y.tr.slice();p.pot=Math.round(youthT91(y.stars));
+  const ovr=youthOvr91(y,trainerQ91(c),c);
+  const p=mkPlayer(y.role,ovr,y.age,c.id,y.name,false);p.tr=y.tr.slice();p.pot=Math.max(ovr,youthT91(y.stars,c,y.rare));
   c.squad.push(p.id);c.youth.splice(i,1);
   if(c===userClub())addNews(p.name+' foi promovido da base.');
   return null;

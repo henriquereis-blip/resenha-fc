@@ -918,8 +918,8 @@ function fillYouth(c,max=5){while(c.youth.length<max)c.youth.push(mkYouth())}
 function promoteYouth(c,i){
   const y=c.youth[i];if(!y)return 'Jogador não encontrado.';
   if(c.squad.length>=30)return 'Elenco cheio (máximo 30).';
-  const ovr=youthOvr91(y,trainerQ91(c));
-  const p=mkPlayer(y.role,ovr,y.age,c.id,y.name,false);p.tr=y.tr.slice();p.pot=Math.round(youthT91(y.stars));
+  const ovr=youthOvr91(y,trainerQ91(c),c);
+  const p=mkPlayer(y.role,ovr,y.age,c.id,y.name,false);p.tr=y.tr.slice();p.pot=Math.max(ovr,youthT91(y.stars,c,y.rare));
   c.squad.push(p.id);c.youth.splice(i,1);
   if(c===userClub())addNews(p.name+' foi promovido da base.');
   return null;
@@ -6086,7 +6086,7 @@ buyYouth=function(cid,i){
   const pAcc=clamp(.46-bi/260-Math.max(0,y.stars-3)*.09-(rv?.25:0)+(fee>y.value*3.2?.06:0),.05,.6);
   if(Math.random()>pAcc){G.ylock[cid]=G.round+3;mail('youth','🚫 '+s.name+' barrou a venda de '+y.name,s.name+' recusou vender a joia da base'+(rv?' (ainda mais sendo rival!)':'')+' e fechou a porta por 3 rodadas. Pediam '+mi(fee)+'.',[],'');return s.name+' recusou vender '+y.name+' e fechou a porta por 3 rodadas.'}
   s.youth.splice(i,1);fillYouth(s);G.fin.caixa=+(G.fin.caixa-fee).toFixed(2);
-  const ovr=youthOvr91(y,trainerQ91(c));const p=mkPlayer(y.role,ovr,y.age,c.id,y.name,false);p.tr=y.tr.slice();
+  const ovr=youthOvr91(y,trainerQ91(c),c);const p=mkPlayer(y.role,ovr,y.age,c.id,y.name,false);p.tr=y.tr.slice();
   c.squad.push(p.id);logX(p,s.id,c.id,fee);
   mail('youth','✅ '+y.name+' contratado da base do '+s.name,'Fechado por '+mi(fee)+' ('+y.stars+'★). Chegou no elenco principal.',[{l:'Ver jogador',k:'prof',p:{pid:p.id},g:1}],'');
   return null;
@@ -10315,9 +10315,9 @@ hookAround('promoteYouth','py67',function(next,__a){let [c,i]=__a;
   if(r||!yy||c.squad.length!==before+1)return r;
   try{
     const ix=ix67(c),oldId=c.squad[c.squad.length-1],old=P(oldId);
-    const ovr=youthOvr91(yy,0);
+    const ovr=youthOvr91(yy,0,c);
     const np=mkPlayer(yy.role,ovr,yy.age,c.id,yy.name,false);
-    np.tr=yy.tr.slice();np.pot=Math.max(np.ovr,Math.round(youthT91(yy.stars)));
+    np.tr=yy.tr.slice();np.pot=Math.max(np.ovr,Math.round(youthT91(yy.stars,c,yy.rare)));
     if(old&&old.fromBase)np.fromBase=old.fromBase;
     c.squad[c.squad.length-1]=np.id;delete G.players[oldId];
     if(c.id===G.user&&G.mk&&G.mk.base&&G.mk.base.grads){const g=G.mk.base.grads.find(x=>x.pid===oldId);if(g)g.pid=np.id}
@@ -11512,7 +11512,7 @@ Object.assign(A,{safyes(){const u=userClub();const o=G.safOffer;if(!u||!o||o.s!=
    Mostra: ovr hoje (ao subir agora), ovr final (T pelas estrelas) e quanto tempo falta, com o treinador da base. */
 function youthEta90(c,y){
   const q=trainerQ91(c);
-  const ovr=youthOvr91(y,q),T=Math.round(youthT91(y.stars));
+  const ovr=youthOvr91(y,q,c),T=Math.round(youthT91(y.stars,c,y.rare));
   const anos=Math.max(0,21-y.age-q*0.2);
   return {ovr,T,anos:Math.ceil(anos),pronto:anos<=0,trainer:(G.mk&&G.mk.base&&G.mk.base.staff&&G.mk.base.staff.trei)||null};
 }
@@ -11526,8 +11526,7 @@ Object.assign(A,{yinfo(d){const c=userClub();const y=c&&c.youth[+d.i];if(!y)retu
   toast(msg)}});
 /* ext91 (v117): garotos da base em meia estrela (0,5 a 5) e desenvolvimento até os 21 anos.
    Teto de estrelas: qualidade da base (baseIdx) + divisão. Base fraca não gera 5★; base forte gera mais.
-   Ovr de um jovem: o ovr final (desenvolvimento máximo, aos 21) segue as estrelas: T(s) = 50 + (s−1)·8,5
-     (1★ = 50 aos 21 e aos 25; 2★ = 58,5; 3★ = 67; 4★ = 75,5; 5★ = 84).
+   Ovr de um jovem: a meta (T) é proporcional ao clube: L (média dos titulares) + (estrelas−3)·4, mais +10 se for superestrela rara (0,5%).
    Antes de chegar lá, ele sobe em curva: começa em T−14 aos 16 anos e chega a T aos 21.
    Treinador da base de qualidade alta adianta a curva (q × 0,2 de ano). */
 function divAdj91(c){return c&&c.div>=0?[0,-0.5,-1,-1.5][Math.min(3,c.div)]:0}
@@ -11540,9 +11539,23 @@ function youthStars91(ix,c){
   return roundHalf91(v);
 }
 function trainerQ91(c){const b=c&&c.id===G.user&&G.mk?G.mk.base:null;return b&&b.staff&&b.staff.trei?b.staff.trei.q:0}
-function youthT91(stars){return 50+(stars-1)*8.5}
-function youthOvr91(y,q){
-  const T=youthT91(y.stars),start=T-14;
+/* referência do clube: média dos 11 titulares (L) e o titular mais fraco (W) */
+function refLevel91(c){
+  const xi=c&&c.squad?c.squad.slice(0,11).map(id=>P(id)).filter(Boolean):[];
+  if(!xi.length)return {L:60,W:55};
+  const ov=xi.map(p=>p.ovr);
+  return {L:ov.reduce((a,b)=>a+b,0)/ov.length,W:Math.min(...ov)};
+}
+globalThis.refLevel91=refLevel91;
+/* meta do garoto = nível dos titulares do clube (L). 3★ chega ao nível de L; abaixo disso, mais fraco; acima, melhor.
+   Cada meia estrela muda 2 de ovr: 0,5★ = L−10 · 1★ = L−8 · 2★ = L−4 · 3★ = L · 4★ = L+4 · 5★ = L+8.
+   Superestrela (rara, sorteada na geração): +10 por cima do alvo. */
+function youthT91(stars,c,rare){
+  const {L}=refLevel91(c);
+  return Math.round(L+(stars-3)*4+(rare?10:0));
+}
+function youthOvr91(y,q,c){
+  const T=youthT91(y.stars,c,y.rare),start=T-14;
   const prog=clamp((y.age-16+(q||0)*0.2)/5,0,1);
   return Math.round(start+(T-start)*prog);
 }
@@ -11553,7 +11566,7 @@ globalThis.starsTxt91=starsTxt91;
 /* novos garotos: estrelas pela base (genYouth9 monta o jovem; aqui só trocamos as estrelas e o valor) */
 hookAround('genYouth9','ext91_gy',function(next,__a){
   const c=__a[0];const antes=c.youth.length;const r=next(...__a);
-  try{const ix=baseIdx(c);for(const y of c.youth.slice(antes)){y.stars=youthStars91(ix,c);y.value=+(0.02+y.stars*0.012+rnd(0,0.02)).toFixed(3);y.value=+(y.value*(1+ix/80)).toFixed(3)}}catch(e){console.error('ext91 gy '+e.message)}
+  try{const ix=baseIdx(c);for(const y of c.youth.slice(antes)){y.stars=youthStars91(ix,c);y.rare=Math.random()<0.005;y.value=+(0.02+y.stars*0.012+rnd(0,0.02)).toFixed(3);y.value=+(y.value*(1+ix/80)).toFixed(3)}}catch(e){console.error('ext91 gy '+e.message)}
   return r;
 });
 newWorld();G.phase='start';render();

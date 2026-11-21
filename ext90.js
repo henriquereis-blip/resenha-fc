@@ -2,7 +2,7 @@
    Mostra: ovr hoje (ao subir agora), ovr final (T pelas estrelas) e quanto tempo falta, com o treinador da base. */
 function youthEta90(c,y){
   const q=trainerQ91(c);
-  const ovr=youthOvr91(y,q),T=Math.round(youthT91(y.stars));
+  const ovr=youthOvr91(y,q,c),T=Math.round(youthT91(y.stars,c,y.rare));
   const anos=Math.max(0,21-y.age-q*0.2);
   return {ovr,T,anos:Math.ceil(anos),pronto:anos<=0,trainer:(G.mk&&G.mk.base&&G.mk.base.staff&&G.mk.base.staff.trei)||null};
 }
