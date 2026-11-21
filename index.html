@@ -457,6 +457,7 @@ function slotScore(p,slot,phil,w){
 }
 function bestForSlot(ids,slot,used,phil,w){let best=null,bs=-1e9;for(const id of ids){if(used.has(id))continue;const s=slotScore(P(id),slot,phil,w);if(s>bs){bs=s;best=id}}return best}
 function autoPick(c){
+  c.squad=c.squad.filter(id=>P(id)); /* v126: id vazio nunca entra na escalação (antes gerava null quando o elenco ficava curto) */
   const slots=slotsOf(c.formation);const used=new Set();const xi=[];
   const wn=wantsOf(c.formation);for(const [i,sl] of slots.entries()){const id=bestForSlot(c.squad,sl,used,c.phil,wn[i]);xi.push(id);used.add(id)}
   const rest=c.squad.filter(id=>!used.has(id));const bench=[];
@@ -839,6 +840,7 @@ function newSeason(){
     else p.ovr=clamp(p.ovr-ri(0,2),40,92);
   }
   for(const c of G.clubs){
+    c.squad=c.squad.filter(id=>P(id)); /* v126: id sem jogador (referência solta) é descartado em vez de quebrar a virada; causa de origem em investigação */
     const keep=[],drop=[];
     for(const id of c.squad){const p=P(id);if(p.age>=35&&Math.random()<(p.age>=39?1:p.age>=37?0.7:0.3))drop.push(id);else keep.push(id)}
     c.squad=keep;drop.forEach(id=>{delete G.players[id]});
@@ -11582,7 +11584,10 @@ hookAround('genYouth9','ext91_gy',function(next,__a){
    processado; depois de uma demissão (takeJob), os jogadores do clube antigo com contrato vencido ficavam no elenco. */
 function releaseExp92(c){
   if(!c||!c.squad)return;
-  const gone=c.squad.map(id=>P(id)).filter(p=>p&&ctOf(p)<=G.season);
+  const venc=c.squad.map(id=>P(id)).filter(p=>p&&ctOf(p)<=G.season);
+  /* mesma regra do clube do usuário (ct76): fica com pelo menos 20 jogadores; quem sobraria é renovado por 1 ano */
+  const gone=[];let n=c.squad.filter(id=>P(id)).length;
+  for(const p of venc){if(n-gone.length<=20){p.ct=G.season+1;continue}gone.push(p)}
   for(const p of gone){
     c.squad=c.squad.filter(id=>id!==p.id);p.club=-1;p.listed=false;delete p.wage;delete p.ct;
     G.free=G.free||[];G.free.push(p.id);
@@ -11594,6 +11599,39 @@ hookBefore('takeJob','ext92_tj',function(){if(G.user!=null)G.exClub92=G.user});
 hookBefore('newSeason','ext92_nsb',function(){
   try{if(G.exClub92!=null&&G.exClub92!==G.user){const c=C(G.exClub92);if(c)releaseExp92(c)}}catch(e){console.error('ext92 '+e.message)}
   G.exClub92=null;
+});
+/* ext93 (v125): estabilidade do técnico. Quem cumpre o objetivo (ou fica perto) ano a ano fica mais protegido;
+   quem erra feio seguido é demitido com mais facilidade. Vale para o técnico do usuário.
+   Por temporada registra: cumpriu (pos ≤ meta+1), ficou perto (meta+2 e meta+3), errou (meta+4 ou mais).
+   Multiplicador sobre a chance de demissão nas datas (rodadas 9, 19, 29, 37):
+     · cada temporada cumprida no mesmo clube: ×0,55 (piso ×0,25)
+     · temporada que errou: ×1,3 (teto ×2,0)
+     · fator geral ×0,8 sobre a chance base nas datas
+     · temporada perto (meta+2 a +3): ×1,0 (neutra)
+   O tempo no cargo (tenureMult, ext75) continua valendo por cima. */
+hookAfter('newSeason','ext93_ns',function(){
+  try{
+    const u=userClub(),sm=G.summary;if(!u||!sm||sm.season!==G.season-1)return;
+    G.stab93=G.stab93||[];
+    const d=sm.pos-sm.meta;
+    const k=d<=1?'ok':d<=3?'perto':'erro';
+    G.stab93.push({s:sm.season,c:u.id,k});
+    if(G.stab93.length>12)G.stab93.shift();
+  }catch(e){console.error('ext93 '+e.message)}
+});
+function stabMult93(c){
+  const h=(G.stab93||[]).filter(x=>x.c===c.id).slice(-5);
+  let m=1,ok=0;
+  for(const x of h){if(x.k==='ok'){ok++;m*=0.55}else if(x.k==='erro'){m*=1.3}}
+  return clamp(m,0.25,2);
+}
+globalThis.stabMult93=stabMult93;
+hookAround('shouldFire','ext93_sf',function(next,__a){
+  const p=next();
+  const c=userClub();if(!c)return p;
+  const m=stabMult93(c);
+  if(p)return Math.random()<clamp(m*0.8,0,1);   /* fator geral 0,8: a chance base nas datas estava alta (v126: 58% das temporadas) */
+  return m>1?Math.random()<0.3*(m-1):false; /* a decisão base não demitiu: erro seguido dá uma segunda chance (ver 0,3 por ponto acima de 1) */
 });
 newWorld();G.phase='start';render();
 </script>
