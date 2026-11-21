@@ -24,6 +24,13 @@ Dono do projeto: Henrique. Ele prefere respostas diretas, em tom informal (gíri
 - Para regravar a linha de base quando o balanceamento mudou de propósito: `bash test-all.sh --base` (justifique no commit).
 - Lint: o limite de wrappers crus é 13. Não crie `const _x = fn; fn = function...`; use os hooks de `core.js`.
 
+## Base de dados (regra)
+
+- As planilhas da pasta "Resenha FC" no Drive (clubes_jogo_v2, competicoes_clubes_v2, overall_corrigido_v2.x, ajustes_manuais_overall) foram montadas em OUTRO chat, por pesquisa. Servem de base, mas não são verdade absoluta: confira antes de usar.
+- O dono do projeto dá a palavra final sobre dados. Se encontrar defeito numa planilha, sinalize e corrija com ele, não copie cegamente.
+- Quando faltar dado (jogador, nome, elenco), pode gerar jogadores com nomes inventados do país, sem dizer que são reais.
+- Não abrir nem usar planilhas de senhas pessoais (existe uma no Drive; não deve ser lida pelo projeto).
+
 ## Mapa do código
 
 Todos os arquivos `.js` são concatenados pelo `build.sh` na ordem: `head.html`, `data.js`, `logic.js`, `core.js`, `ext*.js`, `ui*.js`, `tail.js`.
