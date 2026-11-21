@@ -6941,6 +6941,9 @@ function worldInit(){
     lg[L.k]={cl:L.cl.map(c=>{const col=WCOL[c[0]]||(()=>{const p=WPAL[wHash(c[0])%WPAL.length];return [p[0],p[1],p[0],p[2]]})();
       return {id:id++,n:c[0].replace(/-(URU|PAR|ECU)$/,' ($1)'),sg:WSIG[c[0]],sig:WSIG[c[0]],b:c[1],r:c[1],c1:col[0],c2:col[1],c3:col[2],pat:col[3],f:1,P:0,J:0,V:0,E:0,D:0,GP:0,GC:0}}),ti:[]};
   }
+  /* v121: força base comprimida 20% em torno da média de cada liga: o favorito dominante deixa de ser tão isolado.
+     Medido com world_sim 8 temporadas: campeão mais frequente de uma liga 1,00 → 0,75 (média 0,46 → 0,44). */
+  for(const k in lg){const cl=lg[k].cl;const m=cl.reduce((x,c)=>x+c.b,0)/cl.length;for(const c of cl){c.b=+(m+(c.b-m)*0.8).toFixed(2);c.r=c.b}}
   G.wd={s:G.season,es:0,lg,hist:[],xp:[]};
   wFormReset();
 }
