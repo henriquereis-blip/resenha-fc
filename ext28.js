@@ -172,7 +172,7 @@ buyYouth=function(cid,i){
   const pAcc=clamp(.46-bi/260-Math.max(0,y.stars-3)*.09-(rv?.25:0)+(fee>y.value*3.2?.06:0),.05,.6);
   if(Math.random()>pAcc){G.ylock[cid]=G.round+3;mail('youth','🚫 '+s.name+' barrou a venda de '+y.name,s.name+' recusou vender a joia da base'+(rv?' (ainda mais sendo rival!)':'')+' e fechou a porta por 3 rodadas. Pediam '+mi(fee)+'.',[],'');return s.name+' recusou vender '+y.name+' e fechou a porta por 3 rodadas.'}
   s.youth.splice(i,1);fillYouth(s);G.fin.caixa=+(G.fin.caixa-fee).toFixed(2);
-  const ovr=44+y.dev*0.22+y.stars*2.5;const p=mkPlayer(y.role,ovr,y.age,c.id,y.name,false);p.tr=y.tr.slice();
+  const ovr=youthOvr91(y,trainerQ91(c));const p=mkPlayer(y.role,ovr,y.age,c.id,y.name,false);p.tr=y.tr.slice();
   c.squad.push(p.id);logX(p,s.id,c.id,fee);
   mail('youth','✅ '+y.name+' contratado da base do '+s.name,'Fechado por '+mi(fee)+' ('+y.stars+'★). Chegou no elenco principal.',[{l:'Ver jogador',k:'prof',p:{pid:p.id},g:1}],'');
   return null;

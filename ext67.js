@@ -28,9 +28,9 @@ hookAround('promoteYouth','py67',function(next,__a){let [c,i]=__a;
   if(r||!yy||c.squad.length!==before+1)return r;
   try{
     const ix=ix67(c),oldId=c.squad[c.squad.length-1],old=P(oldId);
-    const ovr=38+ix*0.14+yy.stars*2.4+yy.dev*0.08;
+    const ovr=youthOvr91(yy,0);
     const np=mkPlayer(yy.role,ovr,yy.age,c.id,yy.name,false);
-    np.tr=yy.tr.slice();np.pot=clamp(Math.round(np.ovr+yy.stars*4+ix/10+4),np.ovr,92);
+    np.tr=yy.tr.slice();np.pot=Math.max(np.ovr,Math.round(youthT91(yy.stars)));
     if(old&&old.fromBase)np.fromBase=old.fromBase;
     c.squad[c.squad.length-1]=np.id;delete G.players[oldId];
     if(c.id===G.user&&G.mk&&G.mk.base&&G.mk.base.grads){const g=G.mk.base.grads.find(x=>x.pid===oldId);if(g)g.pid=np.id}

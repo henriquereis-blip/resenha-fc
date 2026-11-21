@@ -25,8 +25,8 @@ function fillYouth(c,max=5){while(c.youth.length<max)c.youth.push(mkYouth())}
 function promoteYouth(c,i){
   const y=c.youth[i];if(!y)return 'Jogador não encontrado.';
   if(c.squad.length>=30)return 'Elenco cheio (máximo 30).';
-  const ovr=44+y.dev*0.22+y.stars*2.5;
-  const p=mkPlayer(y.role,ovr,y.age,c.id,y.name,false);p.tr=y.tr.slice();p.pot=clamp(Math.round(ovr+y.stars*5+4),ovr,94);
+  const ovr=youthOvr91(y,trainerQ91(c));
+  const p=mkPlayer(y.role,ovr,y.age,c.id,y.name,false);p.tr=y.tr.slice();p.pot=Math.round(youthT91(y.stars));
   c.squad.push(p.id);c.youth.splice(i,1);
   if(c===userClub())addNews(p.name+' foi promovido da base.');
   return null;
@@ -63,7 +63,7 @@ hookAround('newSeason','ext_ns',function(next,A){
   ex();
   for(const p of Object.values(G.players)){if(p.club>=0&&C(p.club)){p.car=p.car||[];p.car.push({s:G.season,club:C(p.club).sig,J:p.games,G:p.goals,A:p.ast,nm:p.rn?+(p.rsum/p.rn).toFixed(2):null})}}
   const r=next();
-  for(const c of G.clubs){c.youth.forEach(y=>{y.age++;y.dev=Math.min(100,y.dev+ri(8,16))});c.youth=c.youth.filter(y=>y.age<20);fillYouth(c)}
+  for(const c of G.clubs){c.youth.forEach(y=>{y.age++;y.dev=Math.min(100,y.dev+ri(8,16))});c.youth=c.youth.filter(y=>y.age<22);fillYouth(c)}
   return r;
 });
 /* estádio */

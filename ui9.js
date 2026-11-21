@@ -31,7 +31,7 @@
 
 const fmtN=n=>Math.round(n).toLocaleString('pt-BR');
 const dec=(n,d=1)=>(+n).toFixed(d).replace('.',',');
-const starsT=n=>'★'.repeat(n)+'☆'.repeat(5-n);
+const starsT=n=>starsTxt91(n);
 const heartsH=v=>{const n=Math.round(v/20);return '<span class="heart">'+'♥'.repeat(n)+'<span class="hd">'+'♥'.repeat(5-n)+'</span></span>'};
 const sec9=(h,inner,right='')=>`<section class="sec card"><h3>${h}<small>${right}</small></h3>${inner}</section>`;
 function sparkH(arr,color='var(--accent)'){
