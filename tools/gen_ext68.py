@@ -95,11 +95,14 @@ js="""/* ext68 (GERADO por tools/gen_ext68.py, não editar à mão): simplifica�
 const CFG=%s;
 const POOL=%s;
 const GEN2=%s;
-const WR_TXT={BOL:'Rebaixamento: os 2 últimos caem para a Segunda divisão.',VEN:'Rebaixamento: os 2 últimos caem para a Segunda divisão.',EGY:'Rebaixamento: os 3 últimos caem para a Segunda divisão.',MAR:'Rebaixamento: os 3 últimos caem para a Segunda divisão.'};
+/* v133: nomes reais das divisões (antes 'Divisão inferior' e 'Segunda divisão' genéricos). A Austrália não tem 2ª divisão (liga fechada). */
+const NM3={URU:'Primera División Amateur',PAR:'Primera B',ECU:'Segunda Categoría',KSA:'Segunda Divisão saudita',NED:'Tweede Divisie',BEL:'Nationale 1',TUR:'TFF 2. Lig',KOR:'K3 League',CHN:'China League Two',RSA:'SAFA Second Division',AUT:'Regionalliga',SUI:'Promotion League',GRE:'Gamma Ethniki',DEN:'2ª Divisão dinamarquesa'};
+const NM2={BOL:'Copa Simón Bolívar',VEN:'Liga FUTVE 2',EGY:'Egyptian Second Division',MAR:'Botola Pro 2'};
+const WR_TXT={BOL:'Rebaixamento: os 2 últimos caem para a Copa Simón Bolívar.',VEN:'Rebaixamento: os 2 últimos caem para a Liga FUTVE 2.',EGY:'Rebaixamento: os 3 últimos caem para a Egyptian Second Division.',MAR:'Rebaixamento: os 3 últimos caem para a Botola Pro 2.'};
 for(const k in CFG.res2){const n=CFG.res2[k],T=PYR[k];if(!T||T.length!==2)continue;
-  T[1].dn=n;T.push({n:'Divisão inferior',c:CFG.resc[k],up:n,res:1});PD[k]=PD[k]||[0];PD[k][2]=POOL[k]}
+  T[1].dn=n;T.push({n:NM3[k]||'Divisão inferior',c:CFG.resc[k],up:n,res:1});PD[k]=PD[k]||[0];PD[k][2]=POOL[k]}
 for(const k in CFG.gen2){const [n,c]=CFG.gen2[k],T=PYR[k];if(!T||T.length!==1)continue;
-  T[0].dn=n;T.push({n:'Segunda divisão',c,up:n});PD[k]=[0,GEN2[k]];
+  T[0].dn=n;T.push({n:NM2[k]||'Segunda divisão',c,up:n});PD[k]=[0,GEN2[k]];
   if(WRULES[k]){WRULES[k].rel=n;WRULES[k].txt=(WRULES[k].txt||[]).filter(x=>!/rebaix|2ª divis|descenso/i.test(x)).concat([WR_TXT[k]])}}
 for(const k in CFG.real3){const c=CFG.real3[k],T=PYR[k];if(!T||T.length!==3)continue;const t=T[2];
   t.g=1;t.c=c.c;t.up=c.up;delete t.po;delete t.pool;if(c.chal)t.chal=c.chal;else delete t.chal;t.res=1;T[1].dn=c.up}
@@ -107,17 +110,17 @@ for(const k in CFG.real3){const c=CFG.real3[k],T=PYR[k];if(!T||T.length!==3)cont
 globalThis.pyrMig68=function(){const P=G&&G.pyr;if(!P)return;const all=pdivs(P.k);if(all.length<=P.dv.length)return;
   for(const x of all.slice(P.dv.length)){P.dv.push(x);const i=Math.min(x.t-1,4);DIVN[x.d]=x.name;RBAND[x.d]=TBAND[i].slice();DW36[x.d]=TDW[i];
     const src=PD[P.k]&&PD[P.k][x.t-1],str=Array.isArray(src)?src[x.j]:src;if(str)for(const e of pList(str).slice(0,x.c))P.L.push(stubOf(e,x.d))}};
-const _pf68=pyrFinish;pyrFinish=function(){try{pyrMig68()}catch(e){console.error('mig68 '+e.message)}return _pf68.apply(this,arguments)};
+hookAround('pyrFinish','pf68',function(next,__a){try{pyrMig68()}catch(e){console.error('mig68 '+e.message)}return next()});
 /* tabelas: esconde a divisão-reserva, a não ser que o técnico esteja nela */
-const _vl68=vLiga;vLiga=function(){
-  const P=G&&G.abroad&&G.pyr;if(!P||userDiv()<4)return _vl68();
+hookAround('vLiga','vl68',function(next,__a){
+  const P=G&&G.abroad&&G.pyr;if(!P||userDiv()<4)return next();
   try{pyrMig68()}catch(e){}
   const T=PYR[P.k]||[],ut=tierOf(userDiv()),hide=P.dv.filter(x=>T[x.t-1]&&T[x.t-1].res&&ut<x.t);
   if(S.abd&&hide.some(x=>x.d===S.abd))S.abd=userDiv();
-  let h=_vl68();
+  let h=next();
   for(const x of hide)h=h.replace(new RegExp('<button[^>]*data-a="abd" data-v="'+x.d+'"[^>]*>[^<]*</button>'),'');
   return h;
-};
+});
 })();
 """ % (json.dumps(cfg,ensure_ascii=False), json.dumps(pool,ensure_ascii=False), json.dumps(gen2,ensure_ascii=False))
 open('ext68.js','w',encoding='utf-8').write(js)
