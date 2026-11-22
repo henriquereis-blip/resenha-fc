@@ -108,7 +108,7 @@ function vTatica(){
   ${quickRow87(c)}
   ${fxLine(side)}
   ${eraLine87()}
-  <div class="ctl4">${selH('mark','Intensidade de marcação',MARKS,c.mark||'Leve')}${selH('focus','Caminho do ataque',FOCUS,c.focus||'Pelo meio')}</div>
+  ${tacCtl96(c)}
   ${pitchHTML(clubCfg())}
   ${S.tsv?`<div class="sheet card">${[0,1,2].map(i=>`<div class="res"><span>Tática ${i+1}${ts[i]?' · '+ts[i].formation+' · '+ts[i].style:' · vazia'}</span><span><button class="btn sm" data-a="tsave" data-i="${i}">Salvar</button> <button class="btn sm ghost" data-a="tload" data-i="${i}" ${ts[i]?'':'disabled'}>Carregar</button></span></div>`).join('')}</div>`:''}
   <div class="acts"><button class="btn ghost" data-a="tsv">Táticas</button><button class="btn ghost" data-a="auto">Auto</button><button class="btn ghost" data-a="ready">${G.ready===G.round+'-'+G.season?'✔ Pronto':'Confirmar'}</button>${G.round<NR()?`<button class="btn" data-a="play">Jogar ›</button>`:''}</div></div>`;

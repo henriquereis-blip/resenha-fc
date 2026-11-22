@@ -18,7 +18,7 @@ function slotLvl87(p,slot,w){
   return Math.round(p.ovr*f);
 }
 globalThis.slotLvl87=slotLvl87;
-try{const st=document.createElement('style');st.textContent='.tok small.offpos{color:#ffb020;font-weight:800}.x9 .row2 .kp .v{font-size:19px;white-space:nowrap}.x9 .row2 .kp .k{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:11px}';document.head.appendChild(st)}catch(e){}
+try{const st=document.createElement('style');st.textContent='.tok small.offpos{color:#ffb020;font-weight:800}.x9 .row2 .kp .v{font-size:19px;white-space:nowrap}.x9 .row2 .kp .k{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:11px}.quick87{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:6px;width:100%;max-width:100%;box-sizing:border-box;margin:6px 0}.quick87 .k{flex-basis:100%;text-align:center}.era87,.warn96{width:100%;box-sizing:border-box;padding:6px 12px;white-space:normal;overflow-wrap:anywhere;font-size:13px;line-height:1.35;text-align:center;color:var(--mut,#9aa)}.warn96{color:#ffb020}';document.head.appendChild(st)}catch(e){}
 /* tendência tática da era atual (ext83): aparece na tela de tática */
-function eraLine87(){const e=G.era&&G.era.cur;if(!e)return '';return `<p class="news">Tendência tática: <b>${esc(e.n)}</b> · ${esc(e.d)} <small>(até a temporada ${G.era.to})</small></p>`}
+function eraLine87(){const e=G.era&&G.era.cur;if(!e)return '';return `<div class="era87">Tendência tática: <b>${esc(e.n)}</b> · ${esc(e.d)} <small>(até a temporada ${G.era.to})</small></div>`}
 globalThis.eraLine87=eraLine87;

@@ -3701,7 +3701,7 @@ function vTatica(){
   ${quickRow87(c)}
   ${fxLine(side)}
   ${eraLine87()}
-  <div class="ctl4">${selH('mark','Intensidade de marcação',MARKS,c.mark||'Leve')}${selH('focus','Caminho do ataque',FOCUS,c.focus||'Pelo meio')}</div>
+  ${tacCtl96(c)}
   ${pitchHTML(clubCfg())}
   ${S.tsv?`<div class="sheet card">${[0,1,2].map(i=>`<div class="res"><span>Tática ${i+1}${ts[i]?' · '+ts[i].formation+' · '+ts[i].style:' · vazia'}</span><span><button class="btn sm" data-a="tsave" data-i="${i}">Salvar</button> <button class="btn sm ghost" data-a="tload" data-i="${i}" ${ts[i]?'':'disabled'}>Carregar</button></span></div>`).join('')}</div>`:''}
   <div class="acts"><button class="btn ghost" data-a="tsv">Táticas</button><button class="btn ghost" data-a="auto">Auto</button><button class="btn ghost" data-a="ready">${G.ready===G.round+'-'+G.season?'✔ Pronto':'Confirmar'}</button>${G.round<NR()?`<button class="btn" data-a="play">Jogar ›</button>`:''}</div></div>`;
@@ -6091,7 +6091,7 @@ buyYouth=function(cid,i){
   const pAcc=clamp(.46-bi/260-Math.max(0,y.stars-3)*.09-(rv?.25:0)+(fee>y.value*3.2?.06:0),.05,.6);
   if(Math.random()>pAcc){G.ylock[cid]=G.round+3;mail('youth','🚫 '+s.name+' barrou a venda de '+y.name,s.name+' recusou vender a joia da base'+(rv?' (ainda mais sendo rival!)':'')+' e fechou a porta por 3 rodadas. Pediam '+mi(fee)+'.',[],'');return s.name+' recusou vender '+y.name+' e fechou a porta por 3 rodadas.'}
   s.youth.splice(i,1);fillYouth(s);G.fin.caixa=+(G.fin.caixa-fee).toFixed(2);
-  const ovr=youthOvr91(y,trainerQ91(c),c);const p=mkPlayer(y.role,ovr,y.age,c.id,y.name,false);p.tr=y.tr.slice();
+  const ovr=youthOvr91(y,trainerQ91(c),c);const p=mkPlayer(y.role,ovr,y.age,c.id,y.name,false);p.tr=y.tr.slice();p.form=s.id;
   c.squad.push(p.id);logX(p,s.id,c.id,fee);
   mail('youth','✅ '+y.name+' contratado da base do '+s.name,'Fechado por '+mi(fee)+' ('+y.stars+'★). Chegou no elenco principal.',[{l:'Ver jogador',k:'prof',p:{pid:p.id},g:1}],'');
   return null;
@@ -11469,9 +11469,9 @@ function slotLvl87(p,slot,w){
   return Math.round(p.ovr*f);
 }
 globalThis.slotLvl87=slotLvl87;
-try{const st=document.createElement('style');st.textContent='.tok small.offpos{color:#ffb020;font-weight:800}.x9 .row2 .kp .v{font-size:19px;white-space:nowrap}.x9 .row2 .kp .k{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:11px}';document.head.appendChild(st)}catch(e){}
+try{const st=document.createElement('style');st.textContent='.tok small.offpos{color:#ffb020;font-weight:800}.x9 .row2 .kp .v{font-size:19px;white-space:nowrap}.x9 .row2 .kp .k{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:11px}.quick87{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:6px;width:100%;max-width:100%;box-sizing:border-box;margin:6px 0}.quick87 .k{flex-basis:100%;text-align:center}.era87,.warn96{width:100%;box-sizing:border-box;padding:6px 12px;white-space:normal;overflow-wrap:anywhere;font-size:13px;line-height:1.35;text-align:center;color:var(--mut,#9aa)}.warn96{color:#ffb020}';document.head.appendChild(st)}catch(e){}
 /* tendência tática da era atual (ext83): aparece na tela de tática */
-function eraLine87(){const e=G.era&&G.era.cur;if(!e)return '';return `<p class="news">Tendência tática: <b>${esc(e.n)}</b> · ${esc(e.d)} <small>(até a temporada ${G.era.to})</small></p>`}
+function eraLine87(){const e=G.era&&G.era.cur;if(!e)return '';return `<div class="era87">Tendência tática: <b>${esc(e.n)}</b> · ${esc(e.d)} <small>(até a temporada ${G.era.to})</small></div>`}
 globalThis.eraLine87=eraLine87;
 /* ext88 (v114, fase D): estilo do jogador. Cada jogador tem um estilo preferido (o de maior encaixe).
    Quando joga em clube de outra filosofia, o encaixe com a filosofia do clube fica baixo (penalidade já existente no motor).
@@ -11632,6 +11632,131 @@ hookAround('shouldFire','ext93_sf',function(next,__a){
   const m=stabMult93(c);
   if(p)return Math.random()<clamp(m*0.8,0,1);   /* fator geral 0,8: a chance base nas datas estava alta (v126: 58% das temporadas) */
   return m>1?Math.random()<0.3*(m-1):false; /* a decisão base não demitiu: erro seguido dá uma segunda chance (ver 0,3 por ponto acima de 1) */
+});
+/* ext94 (v128): clube formador recebe 5% de toda transferência futura do jogador (como o mecanismo de solidariedade da FIFA).
+   O formador é o clube de onde o jogador subiu da base (promoção, inclusive da IA) ou o clube que vendeu o garoto da base.
+   O valor sai do que o vendedor recebe. Se o formador for o próprio vendedor, não há repasse. */
+const FORM94=0.05;
+hookAround('promoteYouth','ext94_py',function(next,__a){
+  const c=__a[0];const antes=c&&c.squad?c.squad.length:0;const r=next(...__a);
+  try{if(!r&&c&&c.squad.length>antes){const p=P(c.squad[c.squad.length-1]);if(p&&p.form==null)p.form=c.id}}catch(e){}
+  return r;
+});
+hookAfter('logX','ext94_lx',function(r,__a){
+  try{
+    const [p,from,to,fee]=__a;if(!p||p.form==null||!(fee>0))return;
+    const f=p.form;if(f===from||f===to)return;
+    const amt=+(fee*FORM94).toFixed(2);if(amt<=0)return;
+    if(from===G.user)G.fin.caixa=+(G.fin.caixa-amt).toFixed(2);else if(from>=0&&C(from))C(from).caixa=+((C(from).caixa||0)-amt).toFixed(2);
+    if(f===G.user){G.fin.caixa=+(G.fin.caixa+amt).toFixed(2);addNews('💰 Direito de formação: '+lastName(p.name)+' foi negociado e o clube recebeu R$ '+amt.toFixed(2)+' mi (5%).')}
+    else if(C(f))C(f).caixa=+((C(f).caixa||0)+amt).toFixed(2);
+  }catch(e){console.error('ext94 '+e.message)}
+});
+/* ext95 (v129–v130): finanças em equilíbrio e confiança da diretoria com inércia.
+   Caixa: acima de 50% da receita anual (scaleOf), 25% do excedente sai por temporada (imposto + manutenção).
+     Vale para todos os clubes (IA e usuário), evitando acúmulo infinito no topo.
+   Confiança: as quedas de cada rodada valem 40% (a diretoria demora a perder a paciência); as subidas não mudam. */
+const CX95={teto:0.5,taxa:0.25},CONF95=0.4;
+hookAfter('newSeason','ext95_ns',function(){
+  try{
+    for(const c of G.clubs){
+      const sc=scaleOf(c);if(!(sc>0))continue;
+      if(c.id===G.user){const ex=G.fin.caixa-CX95.teto*sc;if(ex>0){const t=+(ex*CX95.taxa).toFixed(1);G.fin.caixa=+(G.fin.caixa-t).toFixed(1);addNews('Impostos e manutenção sobre o caixa alto: R$ '+t.toFixed(1)+' mi.')}}
+      else{const ex=(c.caixa||0)-CX95.teto*sc;if(ex>0)c.caixa=+(c.caixa-ex*CX95.taxa).toFixed(1)}
+    }
+  }catch(e){console.error('ext95 cx '+e.message)}
+});
+hookAround('boardRound','ext95_br',function(next,__a){
+  const c0=G.board.conf;const r=next(...__a);
+  try{const d=G.board.conf-c0;if(d<0)G.board.conf=clamp(+(c0+d*CONF95).toFixed(1),0,100)}catch(e){}
+  return r;
+});
+/* ext96 (v131): táticas redesenhadas, em camadas que não repetem o estilo de jogo.
+   Estilo de jogo (já existia): o plano COM a bola (Equilibrado, Ofensivo, Defensivo, Contra-ataque, Posse).
+   Marcação (nova): COMO o time defende — Zona (padrão), Individual (gruda no craque deles), Pressão alta (rouba a bola lá na frente).
+   Intensidade (era "marcação" Leve/Pesada/Muito pesada): QUANTO o time corre. Mais intensidade = mais força sem a bola, mais cansaço e cartão.
+   Caminho do ataque: Pelo meio, Pelas laterais e (novo) Pelo alto (cruzamento e bola parada).
+   Ritmo (novo): o que fazer com o placar — Normal, Controlar o jogo (vencendo, segura nos 20 minutos finais) e Abafa no fim (perdendo, vai pra cima nos 15 finais).
+   Coerência: combinar com o estilo dá +1%; contradizer (ex.: Contra-ataque com Pressão alta) dá −2% e a tela explica o porquê. */
+const MARC96=['Zona','Individual','Pressão alta'];
+const RITMO96=['Normal','Controlar o jogo','Abafa no fim'];
+if(!FOCUS.includes('Pelo alto'))FOCUS.push('Pelo alto');
+/* combinações: estilo → o que combina (+1%) e o que contradiz (−2%), com o motivo */
+const COH96={
+  'Ofensivo':{ok:['Pressão alta','Abafa no fim','Pelas laterais'],bad:{'Controlar o jogo':'quem joga pra frente não segura resultado recuando'}},
+  'Defensivo':{ok:['Individual','Controlar o jogo','Pelo alto'],bad:{'Pressão alta':'bloco baixo e pressão alta puxam o time pra lados opostos','Abafa no fim':'o time não foi montado pra atacar em bloco'}},
+  'Contra-ataque':{ok:['Zona','Pelas laterais'],bad:{'Pressão alta':'contra-ataque precisa de espaço nas costas do adversário; pressionar lá na frente tira esse espaço'}},
+  'Posse':{ok:['Pressão alta','Pelo meio','Controlar o jogo'],bad:{'Pelo alto':'bola longa e cruzamento jogam fora a posse'}},
+  'Equilibrado':{ok:['Zona'],bad:{}}
+};
+function tacOf96(s){return {marc:s.marc||'Zona',ritmo:s.ritmo||'Normal',focus:s.focus||'Pelo meio',style:s.style||'Equilibrado'}}
+function cohOf96(s){
+  const t=tacOf96(s),r=COH96[t.style]||{ok:[],bad:{}};
+  const picks=[t.marc,t.focus,t.ritmo];let m=1;const why=[];
+  for(const x of picks){if(r.ok.includes(x))m*=1.01;else if(r.bad[x]){m*=0.98;why.push(x+' com '+t.style+': '+r.bad[x]+'.')}}
+  return {m,why};
+}
+globalThis.cohOf96=cohOf96;
+/* lado de cada partida carrega a marcação e o ritmo do clube */
+hookAround('mkSide','mk96',function(next,__a){const s=next(...__a);const c=__a[0];s.marc=c.marc||'Zona';s.ritmo=c.ritmo||'Normal';return s});
+/* força: aplica marcação, ataque pelo alto, ritmo e coerência */
+const aerial96=pl=>pl.filter(p=>p&&(p.tr||[]).some(t=>t==='Aer'||t==='For')).length;
+hookAfter('power','pw96',function(r,__a){
+  const m=__a[0],s=__a[1];if(!s||!s.club||!m||!m.h||!m.a)return;
+  const o=m.h===s?m.a:m.h;
+  const me=tacOf96(s),op=tacOf96(o);
+  // a marcação DO ADVERSÁRIO mexe no nosso ataque/meio
+  if(op.marc==='Individual'){
+    const pl=s.lineup.map(P).filter(Boolean);const av=pl.reduce((a,p)=>a+p.ovr,0)/Math.max(1,pl.length);
+    const star=Math.max(...pl.filter(p=>['ATA','PNT','MEI'].includes(p.role)).map(p=>p.ovr),0);
+    r.atk*=star-av>=5?0.95:0.99;                 // anula o craque; se não houver craque, quase não muda
+  }
+  if(op.marc==='Pressão alta'){r.mid*=me.style==='Posse'?0.94:0.97}  // aperta a saída de bola
+  // a nossa marcação mexe na nossa defesa/meio
+  if(me.marc==='Individual')r.def*=0.98;          // marcador sai de posição e abre espaço
+  if(me.marc==='Pressão alta'){
+    if(op.style==='Contra-ataque'){r.def*=0.97}else{r.def*=1.03;r.mid*=1.03}  // contra-ataque explora as costas
+  }
+  // ataque pelo alto: atacantes e zagueiros fortes no alto contra a zaga deles
+  if(me.focus==='Pelo alto'){
+    const mine=aerial96(s.lineup.map(P).filter(p=>p&&(p.role==='ATA'||p.role==='ZAG')));
+    const theirs=aerial96(o.lineup.map(P).filter(p=>p&&p.role==='ZAG'));
+    r.atk*=1+clamp((mine-theirs)*0.012,-0.03,0.04);
+  }
+  // ritmo: só vale no fim do jogo, conforme o placar
+  const gf=m.h===s?m.hg:m.ag,ga=m.h===s?m.ag:m.hg;
+  if(me.ritmo==='Controlar o jogo'&&m.min>=70&&gf>ga){r.atk*=0.85;r.def*=1.08}
+  if(me.ritmo==='Abafa no fim'&&m.min>=75&&gf<ga){r.atk*=1.10;r.def*=0.92}
+  // coerência com o estilo
+  const k=cohOf96(s).m;r.atk*=k;r.mid*=k;r.def*=k;
+});
+/* cansaço: individual e pressão alta correm mais; controlar o jogo poupa */
+hookAfter('stepMinute','sm96',function(r,__a){
+  const m=__a[0];if(!m||!m.h)return;
+  for(const k of ['h','a']){const s=m[k],t=tacOf96(s);
+    const gf=k==='h'?m.hg:m.ag,ga=k==='h'?m.ag:m.hg;
+    let d=0;if(t.marc==='Individual')d+=0.02;if(t.marc==='Pressão alta')d+=0.05;
+    if(t.ritmo==='Controlar o jogo'&&m.min>=70&&gf>ga)d-=0.03;
+    if(d)for(const id of s.lineup)m.en[id]=clamp(m.en[id]-d,10,100);
+  }
+});
+/* IA: escolhe marcação e ritmo coerentes com o próprio estilo (com variação) */
+hookAfter('prepareRound','pr96',function(){
+  try{for(const c of G.clubs){if(c.id===G.user)continue;
+    const st=c.style||'Equilibrado',u=Math.random();
+    c.marc=st==='Ofensivo'||st==='Posse'?(u<0.45?'Pressão alta':'Zona'):st==='Defensivo'?(u<0.4?'Individual':'Zona'):'Zona';
+    c.ritmo=st==='Posse'||st==='Defensivo'?(u<0.5?'Controlar o jogo':'Normal'):st==='Ofensivo'?(u<0.4?'Abafa no fim':'Normal'):'Normal';
+  }}catch(e){}
+});
+/* tela: seletores e a explicação de coerência */
+function tacCtl96(c){
+  const t=tacOf96(c),coh=cohOf96(c);
+  return `<div class="ctl4">${selH('marc','Marcação',MARC96,t.marc)}${selH('mark','Intensidade',MARKS,c.mark||'Leve')}${selH('focus','Caminho do ataque',FOCUS,t.focus)}${selH('ritmo','Ritmo do jogo',RITMO96,t.ritmo)}</div>${coh.why.length?`<div class="warn96">⚠️ ${coh.why.map(esc).join(' ')} (−2% em tudo)</div>`:''}`;
+}
+globalThis.tacCtl96=tacCtl96;
+hookAfter('bind','bd96',function(){
+  const mc=$('#marc');if(mc)mc.onchange=()=>{userClub().marc=mc.value;save();render()};
+  const rt=$('#ritmo');if(rt)rt.onchange=()=>{userClub().ritmo=rt.value;save();render()};
 });
 newWorld();G.phase='start';render();
 </script>
