@@ -1,1 +1,287 @@
-{}
+{
+"URU/Peñarol": {
+"title": "Peñarol",
+"sq": [
+{
+"n": "Sebastián Britos",
+"pos": "G",
+"nat": "URU",
+"num": 1,
+"age": 38
+},
+{
+"n": "Germán Pezzella",
+"pos": "D",
+"nat": "ARG",
+"num": 2,
+"age": 35
+},
+{
+"n": "Mauricio Lemos",
+"pos": "D",
+"nat": "URU",
+"num": 3,
+"age": 31
+},
+{
+"n": "Franco Romero",
+"pos": "D",
+"nat": "URU",
+"num": 4,
+"age": 31
+},
+{
+"n": "Eric Remedi",
+"pos": "M",
+"nat": "ARG",
+"num": 5,
+"age": 31
+},
+{
+"n": "Lucas Ferreira",
+"pos": "D",
+"nat": "URU",
+"num": 6,
+"age": null
+},
+{
+"n": "Javier Cabrera",
+"pos": "F",
+"nat": "URU",
+"num": 7,
+"age": 34
+},
+{
+"n": "Nicolás Fernández",
+"pos": "M",
+"nat": "URU",
+"num": 8,
+"age": 28
+},
+{
+"n": "Facundo Batista",
+"pos": "F",
+"nat": "URU",
+"num": 9,
+"age": 27
+},
+{
+"n": "Leonardo Fernández",
+"pos": "M",
+"nat": "URU",
+"num": 10,
+"age": 28
+},
+{
+"n": "Leonel Jaime",
+"pos": "F",
+"nat": "ARG",
+"num": 11,
+"age": 20
+},
+{
+"n": "Leandro Díaz",
+"pos": "G",
+"nat": "URU",
+"num": 12,
+"age": null
+},
+{
+"n": "Eduardo Darias",
+"pos": "M",
+"nat": "URU",
+"num": 13,
+"age": 28
+},
+{
+"n": "Julio Daguer",
+"pos": "M",
+"nat": "URU",
+"num": 14,
+"age": 18
+},
+{
+"n": "Maximiliano Olivera",
+"pos": "D",
+"nat": "URU",
+"num": 15,
+"age": 34
+},
+{
+"n": "Tomás Olase",
+"pos": "M",
+"nat": "URU",
+"num": 16,
+"age": null
+},
+{
+"n": "Germán Barbas",
+"pos": "M",
+"nat": "URU",
+"num": 18,
+"age": 19
+},
+{
+"n": "Matías Arezo",
+"pos": "F",
+"nat": "URU",
+"num": 19,
+"age": 24
+},
+{
+"n": "Kevin Rodríguez",
+"pos": "D",
+"nat": "URU",
+"num": 20,
+"age": null
+},
+{
+"n": "Jesús Trindade",
+"pos": "M",
+"nat": "URU",
+"num": 21,
+"age": 33
+},
+{
+"n": "Facundo Álvez",
+"pos": "D",
+"nat": "URU",
+"num": 22,
+"age": null
+},
+{
+"n": "Gonzalo Gelini",
+"pos": "F",
+"nat": "ARG",
+"num": 23,
+"age": null
+},
+{
+"n": "Matías González",
+"pos": "D",
+"nat": "URU",
+"num": 25,
+"age": null
+},
+{
+"n": "Thiago Espinosa",
+"pos": "D",
+"nat": "URU",
+"num": 26,
+"age": 22
+},
+{
+"n": "Lucas Hernández",
+"pos": "D",
+"nat": "URU",
+"num": 27,
+"age": 34
+},
+{
+"n": "Ignacio Alegre",
+"pos": "D",
+"nat": "URU",
+"num": 28,
+"age": null
+},
+{
+"n": "Washington Aguerre",
+"pos": "G",
+"nat": "URU",
+"num": 29,
+"age": 33
+},
+{
+"n": "Stiven Muhlethaler",
+"pos": "M",
+"nat": "URU",
+"num": 30,
+"age": null
+},
+{
+"n": "Leandro Umpiérrez",
+"pos": "M",
+"nat": "URU",
+"num": 32,
+"age": null
+},
+{
+"n": "Jonathan Rodríguez",
+"pos": "F",
+"nat": "URU",
+"num": 33,
+"age": 33
+},
+{
+"n": "Nahuel Herrera",
+"pos": "D",
+"nat": "URU",
+"num": 34,
+"age": null
+},
+{
+"n": "Brian Barboza",
+"pos": "D",
+"nat": "URU",
+"num": 36,
+"age": null
+},
+{
+"n": "Brandon Álvarez",
+"pos": "F",
+"nat": "URU",
+"num": 40,
+"age": null
+},
+{
+"n": "Luciano González",
+"pos": "F",
+"nat": "URU",
+"num": 42,
+"age": null
+},
+{
+"n": "Lorenzo Couture",
+"pos": "M",
+"nat": "URU",
+"num": 55,
+"age": null
+},
+{
+"n": "Luis Angulo",
+"pos": "F",
+"nat": "COL",
+"num": 77,
+"age": null
+},
+{
+"n": "Franco González",
+"pos": "M",
+"nat": "URU",
+"num": 80,
+"age": null
+},
+{
+"n": "Diego Laxalt",
+"pos": "D",
+"nat": "URU",
+"num": 93,
+"age": null
+},
+{
+"n": "Abel Hernández",
+"pos": "F",
+"nat": "URU",
+"num": 99,
+"age": null
+},
+{
+"n": "Andrés Madruga",
+"pos": "D",
+"nat": "URU",
+"num": 99,
+"age": null
+}
+]
+}
+}

@@ -21,7 +21,7 @@ def mkage(p):
 out={};skip=[]
 for key,v in R.items():
     k,name=key.split('/',1)
-    sq=v['sq']
+    sq=sorted(v['sq'],key=lambda p:p['num'])[:32]   # elenco grande demais (base e reservas) é cortado: camisas baixas primeiro
     if len(sq)<18:skip.append((key,len(sq)));continue
     rs=roles(sq)
     out[name]=';'.join('|'.join(map(str,[p['n'].replace(';',',').replace('|','/'),r,mkage(p),p['nat'],p['num']])) for p,r in zip(sq,rs))
