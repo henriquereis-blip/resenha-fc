@@ -131,5 +131,10 @@ for g,(k,d) in mp.items():
 print('elencos:',len(out),'| curtos:',short)
 MAN72={x['jogador']:int(x['overall']) for x in AJ if x.get('overall','').strip().isdigit()}
 js='/* ext72 (v89+, v132): elencos REAIS (ENG ESP ITA GER FRA POR ARG MEX KSA NED BEL TUR SCO GRE DEN SUI AUT JPN KOR AUS USA). GERADO por tools/gen_ext72.py: não editar à mão.\n   Formato: "Nome|papel|idade|overall|potencial|nacionalidade|valor R$ mi equivalente (EUR mi)";... papel: G Z L V M P A */\nconst RS72='+json.dumps(out,ensure_ascii=False,separators=(',',':'))+';\n/* ajustes manuais do dono (nome -> overall), aplicados também no Brasil por ext97 */\nconst MAN72='+json.dumps(MAN72,ensure_ascii=False,separators=(',',':'))+';\n'
+# v134: estádio real (nome) dos clubes ligados à base, vindo de clubes_jogo_v2.9.csv. Só nome; a capacidade do jogo não muda (mexeria em receita).
+CJ={x['clube']:x for x in rd('clubes_jogo_v2.9.csv')}
+STAD72={g:CJ[d]['estadio'] for g,(k,d) in mp.items() if d in CJ and CJ[d]['estadio'].strip() and CJ[d]['gerado']=='0'}
+js+="\n/* v134: estádios reais (nome) por clube do jogo */\nconst STAD72="+json.dumps(STAD72,ensure_ascii=False)+";\n"
+print('estádios:',len(STAD72))
 open('ext72.js','w',encoding='utf-8').write(js)
 print('ext72.js',len(js),'bytes')
