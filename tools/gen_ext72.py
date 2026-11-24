@@ -8,8 +8,10 @@ D='tools/data/'
 rd=lambda f:list(csv.DictReader(open(D+f,encoding='utf-8-sig')))
 J=rd('jogadores_jogo_v2.csv');O=rd('overall_corrigido_v2.9.2.csv');T=rd('transferencias_aplicadas_v2.9.csv')
 W=json.load(open(D+'wld.json'))
+W['BRA']={'cl':['Palmeiras','Flamengo','Botafogo','Atlético-MG','Fluminense','São Paulo','Internacional','Grêmio','Corinthians','Cruzeiro','Bahia','Vasco','Athletico-PR','Santos','Bragantino','Vitória','Coritiba','Mirassol','Chapecoense','Remo']}  # v135: nomes do jogo (data.js CLUBS)
 LG={'ENG':'GB1','ESP':'ES1','ITA':'IT1','GER':'L1','FRA':'FR1','POR':'PO1','ARG':'ARG1','MEX':'MEX1','KSA':'SA1',
     # v132: mais 12 ligas com elenco real na base. ATENÇÃO: Coreia é RSK1; KR1 na base é a CROÁCIA (supersport-hnl).
+    'BRA':'BRA1',   # v135: Brasileirão Série A (elencos antigos do data.js saem)
     'NED':'NL1','BEL':'BE1','TUR':'TR1','SCO':'SC1','GRE':'GR1','DEN':'DK1','SUI':'C1','AUT':'A1','JPN':'JAP1','KOR':'RSK1','AUS':'AUS1','USA':'MLS1'}
 def norm(s):
     s=unicodedata.normalize('NFD',s).encode('ascii','ignore').decode().lower()
@@ -30,6 +32,8 @@ clubs_liga={}
 for x in J:clubs_liga.setdefault(x['clube'],x['liga_id'])   # clube -> liga (pela base original)
 # ---------- 2) mapa clube(base) -> clube(jogo) ----------
 MAN={ # nome do jogo -> nome da base (casos difíceis)
+ # v135: Brasil
+ 'Palmeiras':'Sociedade Esportiva Palmeiras','Flamengo':'Clube de Regatas do Flamengo','Botafogo':'S. A. F. Botafogo','Atlético-MG':'Clube Atlético Mineiro','Fluminense':'Fluminense Football Club','São Paulo':'São Paulo Futebol Clube','Internacional':'Sport Club Internacional','Grêmio':'Grêmio Foot-Ball Porto Alegrense','Corinthians':'Sport Club Corinthians Paulista','Cruzeiro':'Cruzeiro Esporte Clube','Bahia':'Esporte Clube Bahia','Vasco':'Club de Regatas Vasco da Gama','Athletico-PR':'Clube Atlético Paranaense','Santos':'Santos Futebol Clube','Bragantino':'Red Bull Bragantino','Vitória':'Esporte Clube Vitória','Coritiba':'Coritiba Foot Ball Club','Mirassol':'Mirasol Futebol Clube','Chapecoense':'Associação Chapecoense de Futebol','Remo':'Clube do Remo',
  'Inter de Milão':'Inter Milan','Milan':'AC Milan','Bayern de Munique':'Bayern Munich','Olympique de Marselha':'Olympique Marseille','Lyon':'Olympique Lyon',
  'Paris Saint-Germain':'Paris Saint-Germain','Tottenham':'Tottenham Hotspur','Newcastle':'Newcastle United','West Ham':'West Ham United','Brighton':'Brighton & Hove Albion',
  'Wolverhampton':'Wolverhampton Wanderers','Estudiantes':'Club Estudiantes de La Plata','Central Córdoba':'Club Atlético Central Córdoba','Racing':'Racing Club Asociación Civil de Avellaneda',
@@ -95,6 +99,8 @@ MANUAL={norm(x['nome']) for x in O if x.get('ajuste_manual')=='1'}
 # v132: ajustes manuais do dono (ajustes_manuais_overall_v2.9.2.csv) têm a palavra final sobre o overall
 AJ=rd('ajustes_manuais_overall_v2.9.2.csv')
 MANOV={norm(x['jogador']):int(x['overall']) for x in AJ if x.get('overall','').strip().isdigit()}
+DONO={'Marc-André ter Stegen':79}  # v135: decisão do Henrique no chat (mínimo 75; emprestado ao Ajax)
+MANOV.update({norm(k):v for k,v in DONO.items()})
 MANUAL|=set(MANOV)
 # ---------- 5) monta elencos ----------
 by=collections.defaultdict(list)
@@ -130,6 +136,7 @@ for g,(k,d) in mp.items():
     out[g]=';'.join('|'.join(map(str,[p['n'].replace(';',',').replace('|','/'),p['r'][0] if p['r']!='PNT' else 'P',p['a'],p['o'],p['p'],p['nat'],p['v']])) for p in sel)
 print('elencos:',len(out),'| curtos:',short)
 MAN72={x['jogador']:int(x['overall']) for x in AJ if x.get('overall','').strip().isdigit()}
+MAN72.update(DONO)
 js='/* ext72 (v89+, v132): elencos REAIS (ENG ESP ITA GER FRA POR ARG MEX KSA NED BEL TUR SCO GRE DEN SUI AUT JPN KOR AUS USA). GERADO por tools/gen_ext72.py: não editar à mão.\n   Formato: "Nome|papel|idade|overall|potencial|nacionalidade|valor R$ mi equivalente (EUR mi)";... papel: G Z L V M P A */\nconst RS72='+json.dumps(out,ensure_ascii=False,separators=(',',':'))+';\n/* ajustes manuais do dono (nome -> overall), aplicados também no Brasil por ext97 */\nconst MAN72='+json.dumps(MAN72,ensure_ascii=False,separators=(',',':'))+';\n'
 # v134: estádio real (nome) dos clubes ligados à base, vindo de clubes_jogo_v2.9.csv. Só nome; a capacidade do jogo não muda (mexeria em receita).
 CJ={x['clube']:x for x in rd('clubes_jogo_v2.9.csv')}
