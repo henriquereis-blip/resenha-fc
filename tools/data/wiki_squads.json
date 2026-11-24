@@ -1863,5 +1863,785 @@
 "age": 20
 }
 ]
+},
+"URU/Racing-URU": {
+"title": "Racing Club de Montevideo",
+"sq": [
+{
+"n": "Facundo Machado",
+"pos": "G",
+"nat": "URU",
+"num": 1,
+"age": null
+},
+{
+"n": "Facundo Parada",
+"pos": "D",
+"nat": "URU",
+"num": 2,
+"age": 26
+},
+{
+"n": "Ramiro Brazionis",
+"pos": "D",
+"nat": "URU",
+"num": 3,
+"age": null
+},
+{
+"n": "Guillermo Cotugno",
+"pos": "D",
+"nat": "URU",
+"num": 4,
+"age": 31
+},
+{
+"n": "Juan Bosca",
+"pos": "M",
+"nat": "URU",
+"num": 5,
+"age": null
+},
+{
+"n": "José Varela",
+"pos": "M",
+"nat": "URU",
+"num": 7,
+"age": null
+},
+{
+"n": "Felipe Cairus",
+"pos": "M",
+"nat": "URU",
+"num": 8,
+"age": 26
+},
+{
+"n": "Hugo Silveira",
+"pos": "F",
+"nat": "URU",
+"num": 9,
+"age": 33
+},
+{
+"n": "Franco Suárez",
+"pos": "F",
+"nat": "URU",
+"num": 11,
+"age": null
+},
+{
+"n": "Federico Varese",
+"pos": "G",
+"nat": "URU",
+"num": 12,
+"age": null
+},
+{
+"n": "Felipe Álvarez",
+"pos": "D",
+"nat": "ARG",
+"num": 13,
+"age": null
+},
+{
+"n": "Erik De Los Santos",
+"pos": "M",
+"nat": "URU",
+"num": 14,
+"age": 27
+},
+{
+"n": "Diego Cheuquepal",
+"pos": "D",
+"nat": "ARG",
+"num": 15,
+"age": null
+},
+{
+"n": "Esteban Da Silva",
+"pos": "M",
+"nat": "URU",
+"num": 16,
+"age": null
+},
+{
+"n": "Robinson Ferreira",
+"pos": "D",
+"nat": "URU",
+"num": 17,
+"age": 34
+},
+{
+"n": "Tomás Habib",
+"pos": "F",
+"nat": "ARG",
+"num": 18,
+"age": null
+},
+{
+"n": "Rodrigo Dudok",
+"pos": "F",
+"nat": "URU",
+"num": 19,
+"age": 19
+},
+{
+"n": "Agustín Kahl",
+"pos": "F",
+"nat": "ARG",
+"num": 20,
+"age": null
+},
+{
+"n": "Agustín Álvarez",
+"pos": "M",
+"nat": "URU",
+"num": 21,
+"age": null
+},
+{
+"n": "Thiago Fernández",
+"pos": "F",
+"nat": "URU",
+"num": 22,
+"age": null
+},
+{
+"n": "Nicolás Sosa",
+"pos": "F",
+"nat": "URU",
+"num": 23,
+"age": 30
+},
+{
+"n": "Juan Pérez",
+"pos": "M",
+"nat": "ARG",
+"num": 24,
+"age": null
+},
+{
+"n": "Sebastián da Silva",
+"pos": "F",
+"nat": "URU",
+"num": 26,
+"age": null
+},
+{
+"n": "Lucca Loprete",
+"pos": "M",
+"nat": "URU",
+"num": 27,
+"age": null
+},
+{
+"n": "Facundo González",
+"pos": "D",
+"nat": "URU",
+"num": 29,
+"age": null
+},
+{
+"n": "Yuri Oyarzo",
+"pos": "M",
+"nat": "URU",
+"num": 37,
+"age": null
+},
+{
+"n": "Álex Vázquez",
+"pos": "M",
+"nat": "URU",
+"num": 39,
+"age": null
+},
+{
+"n": "Axel Atum",
+"pos": "M",
+"nat": "ARG",
+"num": 40,
+"age": null
+},
+{
+"n": "Bautista Tomatis",
+"pos": "F",
+"nat": "ARG",
+"num": 77,
+"age": null
+},
+{
+"n": "Iván Manzur",
+"pos": "F",
+"nat": "ARG",
+"num": 81,
+"age": null
+}
+]
+},
+"URU/Plaza Colonia": {
+"title": "Club Plaza Colonia de Deportes",
+"sq": [
+{
+"n": "Máximo Lorenzi",
+"pos": "D",
+"nat": "URU",
+"num": 2,
+"age": null
+},
+{
+"n": "Yvo Calleros",
+"pos": "M",
+"nat": "URU",
+"num": 3,
+"age": 28
+},
+{
+"n": "Haibrany Ruiz Díaz",
+"pos": "D",
+"nat": "URU",
+"num": 4,
+"age": 34
+},
+{
+"n": "Miqueas Redín",
+"pos": "M",
+"nat": "URU",
+"num": 6,
+"age": null
+},
+{
+"n": "Álvaro López",
+"pos": "F",
+"nat": "ARG",
+"num": 7,
+"age": null
+},
+{
+"n": "Diego Villalba",
+"pos": "M",
+"nat": "URU",
+"num": 8,
+"age": null
+},
+{
+"n": "Alex Bruno",
+"pos": "F",
+"nat": "BRA",
+"num": 9,
+"age": null
+},
+{
+"n": "Agustín Ocampo",
+"pos": "F",
+"nat": "URU",
+"num": 10,
+"age": 29
+},
+{
+"n": "Gonzalo Bueno",
+"pos": "F",
+"nat": "URU",
+"num": 11,
+"age": 33
+},
+{
+"n": "Hebert Vergara",
+"pos": "F",
+"nat": "URU",
+"num": 14,
+"age": null
+},
+{
+"n": "Matías Velázquez",
+"pos": "D",
+"nat": "URU",
+"num": 16,
+"age": null
+},
+{
+"n": "Santiago Otegui",
+"pos": "D",
+"nat": "URU",
+"num": 17,
+"age": null
+},
+{
+"n": "Ángel Cayetano",
+"pos": "D",
+"nat": "URU",
+"num": 18,
+"age": 35
+},
+{
+"n": "Ezequias Redín",
+"pos": "M",
+"nat": "URU",
+"num": 20,
+"age": 31
+},
+{
+"n": "Juan Pablo Hernández",
+"pos": "D",
+"nat": "URU",
+"num": 21,
+"age": null
+},
+{
+"n": "Juan Ramos",
+"pos": "D",
+"nat": "URU",
+"num": 22,
+"age": null
+},
+{
+"n": "Facundo Píriz",
+"pos": "M",
+"nat": "URU",
+"num": 23,
+"age": 36
+},
+{
+"n": "Joaquín Silva",
+"pos": "G",
+"nat": "URU",
+"num": 25,
+"age": null
+},
+{
+"n": "Cristian Barros",
+"pos": "M",
+"nat": "URU",
+"num": 27,
+"age": null
+},
+{
+"n": "Mariano Mendoza",
+"pos": "G",
+"nat": "URU",
+"num": 35,
+"age": null
+},
+{
+"n": "Guillermo Reyes",
+"pos": "G",
+"nat": "URU",
+"num": 44,
+"age": 40
+},
+{
+"n": "Lucas Carrizo",
+"pos": "F",
+"nat": "URU",
+"num": 80,
+"age": null
+}
+]
+},
+"URU/Fénix": {
+"title": "Leonardo Fernández (Uruguayan footballer)",
+"sq": []
+},
+"URU/Cerro": {
+"title": "Cerro Largo F.C.",
+"sq": [
+{
+"n": "Juan Moreno",
+"pos": "G",
+"nat": "COL",
+"num": 1,
+"age": null
+},
+{
+"n": "Gabriel Chocobar",
+"pos": "D",
+"nat": "ARG",
+"num": 2,
+"age": null
+},
+{
+"n": "Alexis Piegas",
+"pos": "D",
+"nat": "URU",
+"num": 3,
+"age": null
+},
+{
+"n": "Fernando Souza",
+"pos": "D",
+"nat": "URU",
+"num": 4,
+"age": null
+},
+{
+"n": "Santiago Marcel",
+"pos": "M",
+"nat": "URU",
+"num": 5,
+"age": null
+},
+{
+"n": "Mateo Monserrat",
+"pos": "D",
+"nat": "URU",
+"num": 6,
+"age": null
+},
+{
+"n": "Gustavo Viera",
+"pos": "F",
+"nat": "URU",
+"num": 7,
+"age": 26
+},
+{
+"n": "Mario García",
+"pos": "M",
+"nat": "URU",
+"num": 8,
+"age": null
+},
+{
+"n": "Tiziano Correa",
+"pos": "F",
+"nat": "URU",
+"num": 9,
+"age": null
+},
+{
+"n": "Axel Pandiani",
+"pos": "M",
+"nat": "URU",
+"num": 10,
+"age": null
+},
+{
+"n": "Maximiliano Añasco",
+"pos": "F",
+"nat": "URU",
+"num": 11,
+"age": null
+},
+{
+"n": "Pedro González",
+"pos": "G",
+"nat": "PAR",
+"num": 12,
+"age": null
+},
+{
+"n": "Borys Barone",
+"pos": "F",
+"nat": "URU",
+"num": 13,
+"age": null
+},
+{
+"n": "Lucas Correa",
+"pos": "D",
+"nat": "URU",
+"num": 14,
+"age": 42
+},
+{
+"n": "Sebastián Assis",
+"pos": "M",
+"nat": "URU",
+"num": 15,
+"age": 33
+},
+{
+"n": "Matías Fracchia",
+"pos": "D",
+"nat": "URU",
+"num": 16,
+"age": 31
+},
+{
+"n": "Alexander Hernández",
+"pos": "F",
+"nat": "URU",
+"num": 17,
+"age": null
+},
+{
+"n": "Diego Daguerre",
+"pos": "F",
+"nat": "URU",
+"num": 18,
+"age": null
+},
+{
+"n": "Federico Sellecchia",
+"pos": "F",
+"nat": "URU",
+"num": 19,
+"age": null
+},
+{
+"n": "Santiago Franca",
+"pos": "D",
+"nat": "URU",
+"num": 20,
+"age": null
+},
+{
+"n": "Julián Pou",
+"pos": "D",
+"nat": "URU",
+"num": 21,
+"age": null
+},
+{
+"n": "Nicolás Bertocchi",
+"pos": "M",
+"nat": "ARG",
+"num": 22,
+"age": 37
+},
+{
+"n": "Thomas González",
+"pos": "F",
+"nat": "URU",
+"num": 23,
+"age": null
+},
+{
+"n": "Lukas González",
+"pos": "G",
+"nat": "URU",
+"num": 24,
+"age": null
+},
+{
+"n": "Emiliano Jourdan",
+"pos": "M",
+"nat": "URU",
+"num": 25,
+"age": null
+},
+{
+"n": "Facundo Alvez",
+"pos": "D",
+"nat": "URU",
+"num": 27,
+"age": null
+},
+{
+"n": "Nicolás Ramos",
+"pos": "D",
+"nat": "URU",
+"num": 28,
+"age": null
+},
+{
+"n": "Ihojan Pérez",
+"pos": "F",
+"nat": "URU",
+"num": 29,
+"age": null
+},
+{
+"n": "Bruno Hernández",
+"pos": "M",
+"nat": "URU",
+"num": 30,
+"age": null
+}
+]
+},
+"URU/Albion": {
+"title": "Albion F.C.",
+"sq": [
+{
+"n": "Sebastián Jaume",
+"pos": "G",
+"nat": "URU",
+"num": 1,
+"age": null
+},
+{
+"n": "Francisco Couture",
+"pos": "D",
+"nat": "URU",
+"num": 2,
+"age": null
+},
+{
+"n": "Francisco Ginella",
+"pos": "M",
+"nat": "URU",
+"num": 5,
+"age": 27
+},
+{
+"n": "Tomás Moschión",
+"pos": "M",
+"nat": "ARG",
+"num": 6,
+"age": 26
+},
+{
+"n": "Leonardo Pais",
+"pos": "M",
+"nat": "URU",
+"num": 7,
+"age": 32
+},
+{
+"n": "Octavio Perdomo",
+"pos": "M",
+"nat": "URU",
+"num": 8,
+"age": null
+},
+{
+"n": "Álvaro López",
+"pos": "F",
+"nat": "ARG",
+"num": 9,
+"age": null
+},
+{
+"n": "Carlos Airala",
+"pos": "M",
+"nat": "ARG",
+"num": 10,
+"age": null
+},
+{
+"n": "Hernán Toledo",
+"pos": "F",
+"nat": "ARG",
+"num": 11,
+"age": 30
+},
+{
+"n": "Pedro Ramallo",
+"pos": "G",
+"nat": "URU",
+"num": 12,
+"age": null
+},
+{
+"n": "Pablo Lacoste",
+"pos": "D",
+"nat": "URU",
+"num": 13,
+"age": 38
+},
+{
+"n": "Mateo Alcoba",
+"pos": "F",
+"nat": "URU",
+"num": 14,
+"age": null
+},
+{
+"n": "Pablo Alcoba",
+"pos": "M",
+"nat": "URU",
+"num": 15,
+"age": null
+},
+{
+"n": "José Álvarez",
+"pos": "D",
+"nat": "URU",
+"num": 16,
+"age": null
+},
+{
+"n": "Matías de los Santos",
+"pos": "D",
+"nat": "URU",
+"num": 17,
+"age": 34
+},
+{
+"n": "Román Gutiérrez",
+"pos": "M",
+"nat": "URU",
+"num": 20,
+"age": null
+},
+{
+"n": "Lucas Rodríguez",
+"pos": "F",
+"nat": "URU",
+"num": 21,
+"age": null
+},
+{
+"n": "Agustín Vera",
+"pos": "F",
+"nat": "URU",
+"num": 22,
+"age": null
+},
+{
+"n": "Ezequiel Burdín",
+"pos": "D",
+"nat": "URU",
+"num": 24,
+"age": null
+},
+{
+"n": "Andrés Romero",
+"pos": "D",
+"nat": "URU",
+"num": 25,
+"age": null
+},
+{
+"n": "Santiago Costa",
+"pos": "M",
+"nat": "URU",
+"num": 27,
+"age": null
+},
+{
+"n": "Federico Puente",
+"pos": "D",
+"nat": "URU",
+"num": 29,
+"age": null
+},
+{
+"n": "Briam Acosta",
+"pos": "F",
+"nat": "URU",
+"num": 30,
+"age": 29
+},
+{
+"n": "Danilo Lerda",
+"pos": "G",
+"nat": "ARG",
+"num": 31,
+"age": 39
+},
+{
+"n": "Tobías Figueroa",
+"pos": "F",
+"nat": "ARG",
+"num": 32,
+"age": 34
+},
+{
+"n": "Agustín Pereira",
+"pos": "D",
+"nat": "URU",
+"num": 34,
+"age": null
+},
+{
+"n": "Nahuel Roldán",
+"pos": "F",
+"nat": "URU",
+"num": 79,
+"age": 28
+}
+]
 }
 }

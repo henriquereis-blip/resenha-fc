@@ -14,7 +14,7 @@ hookAround('mkNat42','mk99',function(next,__a){
   try{ if(typeof real73==='function'&&real73(c.name))return c;
     const R=rsw(c.name);if(!R)return c;
     const gen=c.squad.map(id=>G.players[id]).filter(Boolean);
-    const ord=r=>(r.num>=99?30:r.num)+Math.abs(r.age-27)*1.3;   // camisa 1-11 e idade perto do auge = mais provável titular
+    const ord=r=>(r.num>=99?30:r.num)+Math.abs(r.age-27)*0.6;   // camisa 1-11 e idade perto do auge = mais provável titular
     for(const role of Object.keys(LET).map(k=>LET[k])){
       const rs=R.filter(r=>r.role===role).sort((a,b)=>ord(a)-ord(b));
       const gs=gen.filter(p=>p.role===role).sort((a,b)=>b.ovr-a.ovr);
