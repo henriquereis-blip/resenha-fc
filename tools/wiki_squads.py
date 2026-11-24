@@ -13,11 +13,22 @@ LOOSE={'POR':['Boavista'],'ARG':['Godoy Cruz'],'NED':['Willem II','Cambuur','ADO
 LEAGUES=['URU','COL','CHI','PAR','ECU','PER','BOL','VEN','CHN','EGY','MAR','RSA']+list(LOOSE)
 TITLE={}   # ajuste manual: nome do jogo -> título exato na Wikipedia (preencher quando a busca errar)
 if os.path.exists(D+'wiki_titles.json'):TITLE=json.load(open(D+'wiki_titles.json'))
-def get(url,t=25):
-    r=subprocess.run(['curl','-s','-L','-m',str(t),'-A','ResenhaFC-data/1.0 (jogo de futebol, uso educativo)',url],capture_output=True)
-    return r.stdout.decode('utf-8','ignore')
+import time
+LAST=[0.0]
+def get(url,t=40):
+    # educado com a Wikipedia: no máximo ~1 requisição por segundo, espera e tenta de novo no 429
+    for tent in range(6):
+        w=1.1-(time.time()-LAST[0])
+        if w>0:time.sleep(w)
+        LAST[0]=time.time()
+        r=subprocess.run(['curl','-s','-L','-m',str(t),'-A','ResenhaFC-data/1.0 (jogo de futebol, uso educativo)',url],capture_output=True)
+        txt=r.stdout.decode('utf-8','ignore')
+        if 'too many requests' in txt.lower() or not txt.strip():time.sleep(20*(tent+1));continue
+        return txt
+    return ''
 def api(**kw):
-    return json.loads(get('https://en.wikipedia.org/w/api.php?format=json&'+urllib.parse.urlencode(kw)) or '{}')
+    try:return json.loads(get('https://en.wikipedia.org/w/api.php?format=json&'+urllib.parse.urlencode(kw)) or '{}')
+    except Exception:return {}
 def find_title(name,k):
     if name in TITLE:return TITLE[name]
     base=re.sub(r'\s*\(.*?\)|-[A-Z]{3}$','',name).strip()
@@ -32,7 +43,10 @@ POS={'GK':'G','DF':'D','MF':'M','FW':'F'}
 def squad(title):
     h=get('https://en.wikipedia.org/wiki/'+urllib.parse.quote(title.replace(' ','_')),40)
     out=[]
-    for tb in re.findall(r'<table class="wikitable football-squad.*?</table>',h,re.S):
+    i0=h.find('wikitable football-squad')
+    if i0<0:return out
+    m=re.search(r'<h[23][ >]',h[i0:]);seg=h[i0-60:i0+(m.start() if m else len(h)-i0)]   # só a seção 'Current squad' (as duas colunas), sem emprestados
+    for tb in re.findall(r'<table class="wikitable football-squad.*?</table>',seg,re.S):
         for tr in re.findall(r'<tr class="vcard agent">(.*?)</tr>',tb,re.S):
             tds=re.findall(r'<td[^>]*>(.*?)</td>',tr,re.S)
             if len(tds)<4:continue
@@ -42,29 +56,31 @@ def squad(title):
             link=re.search(r'href="https://en\.wikipedia\.org/wiki/([^"#]+)"',nm.group(1))
             out.append({'n':html.unescape(re.sub('<.*?>','',nm.group(1))).strip(),'pos':POS.get(pos.group(1),'M'),'nat':nat[0] if nat else 'XXX','num':int(num) if num.isdigit() else 99,
                         'pg':urllib.parse.unquote(link.group(1)) if link and 'redlink' not in nm.group(1) else None})
-        if out:break   # primeira tabela de elenco = elenco principal (as seguintes são emprestados/sub-20)
     return out
-def age(pg):
-    if not pg:return None
-    j=json.loads(get('https://en.wikipedia.org/api/rest_v1/page/summary/'+urllib.parse.quote(pg),20) or '{}')
-    m=re.search(r'born[^0-9]{0,12}(\d{1,2} \w+ )?(\d{4})',j.get('extract',''))
-    if not m:return None
-    return datetime.date(2026,11,24).year-int(m.group(2))
+def ages(pgs):
+    """pgs: lista de títulos (ou None). Devolve {titulo: idade} usando 'born ... AAAA' do resumo; 20 títulos por requisição."""
+    out={};ts=[p for p in pgs if p]
+    for i in range(0,len(ts),20):
+        j=api(action='query',prop='extracts',exintro=1,explaintext=1,exlimit=20,redirects=1,titles='|'.join(ts[i:i+20]))
+        Q=j.get('query',{});red={r['from']:r['to'] for r in Q.get('redirects',[])+Q.get('normalized',[])}
+        ex={p['title']:p.get('extract','') for p in Q.get('pages',{}).values()}
+        for t in ts[i:i+20]:
+            m=re.search(r'born[^0-9]{0,14}(?:\d{1,2} \w+ |\w+ \d{1,2}, )?(\d{4})',ex.get(red.get(t,t),ex.get(t.replace('_',' '),'')) or '')
+            if m:out[t]=2026-int(m.group(1))
+    return out
 def one(item):
     k,name=item
     t=find_title(name,k)
     if not t:return k,name,None,[]
-    s=squad(t)
-    with cf.ThreadPoolExecutor(8) as ex:ages=list(ex.map(lambda p:age(p['pg']),s))
-    for p,a in zip(s,ages):p['age']=a;p.pop('pg')
+    s=squad(t);A=ages([p['pg'] for p in s])
+    for p in s:p['age']=A.get(p['pg']);p.pop('pg')
     return k,name,t,s
 if __name__=='__main__':
     sel=sys.argv[1:] or LEAGUES
     res=json.load(open(OUT)) if os.path.exists(OUT) else {}
-    items=[(k,c) for k in sel for c in (W[k]['cl'] if k in W and k not in LOOSE else LOOSE.get(k,[]))]
-    items+=[(k,c) for k in sel if k in LOOSE and k in W for c in LOOSE[k]] if False else []
-    items=[(k,c) for k,c in items if f'{k}/{c}' not in res or not res[f'{k}/{c}']['sq']] if os.environ.get('RETRY') else items
-    with cf.ThreadPoolExecutor(6) as ex:
-        for k,name,t,s in ex.map(one,items):
-            res[f'{k}/{name}']={'title':t,'sq':s};print(k,name,'->',t,len(s),'idade ok:',sum(1 for p in s if p['age']),flush=True)
-    json.dump(res,open(OUT,'w'),ensure_ascii=False,indent=0)
+    items=[(k,c) for k in sel for c in (LOOSE[k] if k in LOOSE else W[k]['cl'])]
+    for k,name in items:
+        if res.get(f'{k}/{name}',{}).get('sq'):continue   # já coletado: retoma de onde parou
+        k,name,t,s=one((k,name));res[f'{k}/{name}']={'title':t,'sq':s}
+        print(k,name,'->',t,len(s),'idade ok:',sum(1 for p in s if p['age']),flush=True)
+        json.dump(res,open(OUT,'w'),ensure_ascii=False,indent=0)
