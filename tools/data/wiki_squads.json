@@ -51248,5 +51248,196 @@
 "age": null
 }
 ]
+},
+"ITA2/Brescia": {
+"title": "Brescia Calcio",
+"sq": []
+},
+"ITA2/Salernitana": {
+"title": "US Salernitana 1919",
+"sq": [
+{
+"n": "Leonards Čevers",
+"pos": "G",
+"nat": "LAT",
+"num": 1,
+"age": null
+},
+{
+"n": "Riccardo Zoia",
+"pos": "D",
+"nat": "ITA",
+"num": 3,
+"age": null
+},
+{
+"n": "Emmanuel Gyabuaa",
+"pos": "M",
+"nat": "ITA",
+"num": 4,
+"age": 25
+},
+{
+"n": "Daniele Celiento",
+"pos": "D",
+"nat": "ITA",
+"num": 5,
+"age": 32
+},
+{
+"n": "Kees de Boer",
+"pos": "M",
+"nat": "NED",
+"num": 6,
+"age": 26
+},
+{
+"n": "Ismail Achik",
+"pos": "F",
+"nat": "MAR",
+"num": 7,
+"age": null
+},
+{
+"n": "Mattia Tascone",
+"pos": "M",
+"nat": "ITA",
+"num": 8,
+"age": null
+},
+{
+"n": "Facundo Lescano",
+"pos": "F",
+"nat": "ARG",
+"num": 10,
+"age": 30
+},
+{
+"n": "Eugenio D'Ursi",
+"pos": "F",
+"nat": "ITA",
+"num": 11,
+"age": 31
+},
+{
+"n": "Cesare Galeotti",
+"pos": "G",
+"nat": "ITA",
+"num": 12,
+"age": null
+},
+{
+"n": "Luca Villa",
+"pos": "D",
+"nat": "ITA",
+"num": 14,
+"age": 27
+},
+{
+"n": "Manuel Llano",
+"pos": "D",
+"nat": "ARG",
+"num": 16,
+"age": 27
+},
+{
+"n": "Muhamed Djamanca",
+"pos": "F",
+"nat": "POR",
+"num": 17,
+"age": null
+},
+{
+"n": "Marco Capuano",
+"pos": "D",
+"nat": "ITA",
+"num": 19,
+"age": 35
+},
+{
+"n": "Antonino La Gumina",
+"pos": "F",
+"nat": "ITA",
+"num": 20,
+"age": 30
+},
+{
+"n": "Luca Boncori",
+"pos": "F",
+"nat": "ITA",
+"num": 21,
+"age": null
+},
+{
+"n": "Malik Djibril",
+"pos": "M",
+"nat": "TOG",
+"num": 25,
+"age": 23
+},
+{
+"n": "Jonas Heinz",
+"pos": "D",
+"nat": "ITA",
+"num": 26,
+"age": null
+},
+{
+"n": "Alessandro Del Pin",
+"pos": "D",
+"nat": "ITA",
+"num": 27,
+"age": null
+},
+{
+"n": "Gianluca Longobardi",
+"pos": "D",
+"nat": "ITA",
+"num": 28,
+"age": null
+},
+{
+"n": "Mattia Vitale",
+"pos": "M",
+"nat": "ITA",
+"num": 32,
+"age": 29
+},
+{
+"n": "Armando Anastasio",
+"pos": "D",
+"nat": "ITA",
+"num": 33,
+"age": 30
+},
+{
+"n": "Simone Pieraccini",
+"pos": "D",
+"nat": "ITA",
+"num": 73,
+"age": null
+},
+{
+"n": "Karim Cardoni",
+"pos": "M",
+"nat": "ITA",
+"num": 77,
+"age": null
+},
+{
+"n": "Pietro Perina",
+"pos": "G",
+"nat": "ITA",
+"num": 92,
+"age": 34
+},
+{
+"n": "Marco Bevilacqua",
+"pos": "F",
+"nat": "ITA",
+"num": 99,
+"age": null
+}
+]
 }
 }
