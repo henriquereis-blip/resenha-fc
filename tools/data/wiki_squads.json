@@ -52035,5 +52035,393 @@
 "age": null
 }
 ]
+},
+"ITA2/Cittadella": {
+"title": "AS Cittadella",
+"sq": [
+{
+"n": "Luca Maniero",
+"pos": "G",
+"nat": "ITA",
+"num": 2,
+"age": 31
+},
+{
+"n": "Francesco Toffanin",
+"pos": "D",
+"nat": "ITA",
+"num": 4,
+"age": null
+},
+{
+"n": "Andrea Barberis",
+"pos": "M",
+"nat": "ITA",
+"num": 5,
+"age": 33
+},
+{
+"n": "Emanuele Anastasia",
+"pos": "F",
+"nat": "ITA",
+"num": 7,
+"age": null
+},
+{
+"n": "Francesco Amatucci",
+"pos": "M",
+"nat": "ITA",
+"num": 8,
+"age": null
+},
+{
+"n": "Davis Mensah",
+"pos": "F",
+"nat": "ITA",
+"num": 9,
+"age": 35
+},
+{
+"n": "Mirko Antonucci",
+"pos": "M",
+"nat": "ITA",
+"num": 10,
+"age": 27
+},
+{
+"n": "Diego Falcinelli",
+"pos": "F",
+"nat": "ITA",
+"num": 11,
+"age": 35
+},
+{
+"n": "Carlo Crialese",
+"pos": "D",
+"nat": "ITA",
+"num": 14,
+"age": 34
+},
+{
+"n": "Joseph Ekuban",
+"pos": "F",
+"nat": "GHA",
+"num": 16,
+"age": 26
+},
+{
+"n": "Eduard Ihnatov",
+"pos": "F",
+"nat": "UKR",
+"num": 18,
+"age": null
+},
+{
+"n": "Francesco D'Alessio",
+"pos": "D",
+"nat": "ITA",
+"num": 19,
+"age": 22
+},
+{
+"n": "Mattia Sangalli",
+"pos": "M",
+"nat": "ITA",
+"num": 20,
+"age": null
+},
+{
+"n": "Cesare Sommacal",
+"pos": "G",
+"nat": "ITA",
+"num": 22,
+"age": null
+},
+{
+"n": "Lorenzo Paolucci",
+"pos": "M",
+"nat": "ITA",
+"num": 23,
+"age": 30
+},
+{
+"n": "Michele Gobbato",
+"pos": "D",
+"nat": "ITA",
+"num": 24,
+"age": null
+},
+{
+"n": "Andrea Cecchetto",
+"pos": "D",
+"nat": "ITA",
+"num": 25,
+"age": null
+},
+{
+"n": "Giulio Frisenna",
+"pos": "M",
+"nat": "ITA",
+"num": 33,
+"age": null
+},
+{
+"n": "Andrea Zilio",
+"pos": "D",
+"nat": "ITA",
+"num": 36,
+"age": null
+},
+{
+"n": "Angelo Ndrecka",
+"pos": "D",
+"nat": "ALB",
+"num": 43,
+"age": 25
+},
+{
+"n": "Alex Redolfi",
+"pos": "D",
+"nat": "ITA",
+"num": 55,
+"age": 32
+},
+{
+"n": "Alessandro Zanellati",
+"pos": "G",
+"nat": "ITA",
+"num": 69,
+"age": 27
+},
+{
+"n": "Andrea Ceccarelli",
+"pos": "F",
+"nat": "ITA",
+"num": 71,
+"age": null
+},
+{
+"n": "Bruno Martella",
+"pos": "D",
+"nat": "ITA",
+"num": 87,
+"age": 34
+},
+{
+"n": "Michael Fabbro",
+"pos": "F",
+"nat": "ITA",
+"num": 99,
+"age": 30
+}
+]
+},
+"ITA2/Padova": {
+"title": "Calcio Padova",
+"sq": [
+{
+"n": "Louis Mouquet",
+"pos": "G",
+"nat": "POR",
+"num": 1,
+"age": 22
+},
+{
+"n": "Antonio Barreca",
+"pos": "D",
+"nat": "ITA",
+"num": 3,
+"age": 31
+},
+{
+"n": "Matteo Lovato",
+"pos": "D",
+"nat": "ITA",
+"num": 5,
+"age": 26
+},
+{
+"n": "Giovanni Giunti",
+"pos": "M",
+"nat": "ITA",
+"num": 6,
+"age": null
+},
+{
+"n": "Kevin Varas",
+"pos": "M",
+"nat": "ECU",
+"num": 7,
+"age": 33
+},
+{
+"n": "Pietro Fusi",
+"pos": "M",
+"nat": "ITA",
+"num": 8,
+"age": null
+},
+{
+"n": "Luca Moro",
+"pos": "F",
+"nat": "ITA",
+"num": 9,
+"age": 25
+},
+{
+"n": "Gianluca Caprari",
+"pos": "F",
+"nat": "ITA",
+"num": 10,
+"age": 33
+},
+{
+"n": "Alessandro Seghetti",
+"pos": "F",
+"nat": "ITA",
+"num": 11,
+"age": null
+},
+{
+"n": "Simone Scaglia",
+"pos": "G",
+"nat": "ITA",
+"num": 12,
+"age": null
+},
+{
+"n": "Marco Pompetti",
+"pos": "M",
+"nat": "ITA",
+"num": 14,
+"age": 26
+},
+{
+"n": "Kevin Lasagna",
+"pos": "F",
+"nat": "ITA",
+"num": 15,
+"age": 34
+},
+{
+"n": "Alessandro Capelli",
+"pos": "M",
+"nat": "ITA",
+"num": 17,
+"age": null
+},
+{
+"n": "Enrico Silletti",
+"pos": "D",
+"nat": "ITA",
+"num": 18,
+"age": null
+},
+{
+"n": "Mattia Bortolussi",
+"pos": "F",
+"nat": "ITA",
+"num": 20,
+"age": 30
+},
+{
+"n": "Emanuele Zuelli",
+"pos": "M",
+"nat": "ITA",
+"num": 21,
+"age": 25
+},
+{
+"n": "Alessandro Sorrentino",
+"pos": "G",
+"nat": "ITA",
+"num": 22,
+"age": 24
+},
+{
+"n": "Francesco Di Mariano",
+"pos": "M",
+"nat": "ITA",
+"num": 23,
+"age": 30
+},
+{
+"n": "Lorenzo Carissoni",
+"pos": "D",
+"nat": "ITA",
+"num": 24,
+"age": 29
+},
+{
+"n": "Nicolas Galazzi",
+"pos": "M",
+"nat": "ITA",
+"num": 25,
+"age": 26
+},
+{
+"n": "Alessandro Dellavalle",
+"pos": "D",
+"nat": "ITA",
+"num": 27,
+"age": 22
+},
+{
+"n": "Filippo Sgarbi",
+"pos": "D",
+"nat": "ITA",
+"num": 32,
+"age": 29
+},
+{
+"n": "Matteo Cocchi",
+"pos": "D",
+"nat": "ITA",
+"num": 34,
+"age": 19
+},
+{
+"n": "Christian Pastina",
+"pos": "D",
+"nat": "ITA",
+"num": 58,
+"age": 25
+},
+{
+"n": "Carlo Faedo",
+"pos": "D",
+"nat": "ITA",
+"num": 72,
+"age": null
+},
+{
+"n": "Diego Marcolini",
+"pos": "M",
+"nat": "ITA",
+"num": 74,
+"age": null
+},
+{
+"n": "Gabriele Artistico",
+"pos": "F",
+"nat": "ITA",
+"num": 90,
+"age": 24
+},
+{
+"n": "Cristian Buonaiuto",
+"pos": "F",
+"nat": "ITA",
+"num": 92,
+"age": 34
+},
+{
+"n": "Luca Zanimacchia",
+"pos": "M",
+"nat": "ITA",
+"num": 98,
+"age": 28
+}
+]
 }
 }
