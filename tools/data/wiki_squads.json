@@ -57708,5 +57708,2982 @@
 "age": null
 }
 ]
+},
+"FRA2/Clermont": {
+"title": "Clermont Foot 63",
+"sq": [
+{
+"n": "Abdellah Baallal",
+"pos": "M",
+"nat": "MAR",
+"num": 2,
+"age": 22
+},
+{
+"n": "Andy Pelmard",
+"pos": "D",
+"nat": "MAD",
+"num": 3,
+"age": 26
+},
+{
+"n": "Ethan Kena Kabeya",
+"pos": "D",
+"nat": "COD",
+"num": 4,
+"age": null
+},
+{
+"n": "Jean Grillot",
+"pos": "M",
+"nat": "FRA",
+"num": 5,
+"age": null
+},
+{
+"n": "El Hadj Koné",
+"pos": "M",
+"nat": "FRA",
+"num": 6,
+"age": null
+},
+{
+"n": "Florian Bianchini",
+"pos": "F",
+"nat": "FRA",
+"num": 7,
+"age": 25
+},
+{
+"n": "Yuliwes Bellache",
+"pos": "M",
+"nat": "ALG",
+"num": 8,
+"age": 24
+},
+{
+"n": "Luís Semedo",
+"pos": "F",
+"nat": "POR",
+"num": 9,
+"age": 23
+},
+{
+"n": "Junior Sambia",
+"pos": "M",
+"nat": "CAF",
+"num": 10,
+"age": 30
+},
+{
+"n": "Maïdine Douane",
+"pos": "F",
+"nat": "ALG",
+"num": 11,
+"age": 24
+},
+{
+"n": "Vital Nsimba",
+"pos": "D",
+"nat": "COD",
+"num": 12,
+"age": 33
+},
+{
+"n": "Julien Astic",
+"pos": "M",
+"nat": "FRA",
+"num": 13,
+"age": null
+},
+{
+"n": "Massamba Ndiaye",
+"pos": "G",
+"nat": "SEN",
+"num": 16,
+"age": 25
+},
+{
+"n": "Ousmane Diop",
+"pos": "F",
+"nat": "SEN",
+"num": 17,
+"age": null
+},
+{
+"n": "Noam Strotz",
+"pos": "M",
+"nat": "FRA",
+"num": 18,
+"age": null
+},
+{
+"n": "Mohamed-Amine Bouchenna",
+"pos": "M",
+"nat": "FRA",
+"num": 19,
+"age": null
+},
+{
+"n": "Yoann Salmier",
+"pos": "D",
+"nat": "GUF",
+"num": 21,
+"age": 34
+},
+{
+"n": "Adrien Hunou",
+"pos": "M",
+"nat": "FRA",
+"num": 23,
+"age": 32
+},
+{
+"n": "Rominigue Kouamé",
+"pos": "M",
+"nat": "MLI",
+"num": 26,
+"age": 30
+},
+{
+"n": "Ivan M'Bahia",
+"pos": "D",
+"nat": "CIV",
+"num": 28,
+"age": null
+},
+{
+"n": "Arthur Saintorens",
+"pos": "F",
+"nat": "FRA",
+"num": 29,
+"age": null
+},
+{
+"n": "Théo Guivarch",
+"pos": "G",
+"nat": "FRA",
+"num": 30,
+"age": 31
+},
+{
+"n": "Jean Nyindong Tsamouna",
+"pos": "F",
+"nat": "FRA",
+"num": 39,
+"age": null
+},
+{
+"n": "Allan Ackra",
+"pos": "M",
+"nat": "FRA",
+"num": 44,
+"age": null
+},
+{
+"n": "Matys Donavin",
+"pos": "D",
+"nat": "FRA",
+"num": 45,
+"age": null
+},
+{
+"n": "Enzo Cantero",
+"pos": "F",
+"nat": "FRA",
+"num": 77,
+"age": null
+},
+{
+"n": "Christ Okou",
+"pos": "F",
+"nat": "FRA",
+"num": 90,
+"age": null
+},
+{
+"n": "Ibrahim Coulibaly",
+"pos": "D",
+"nat": "FRA",
+"num": 93,
+"age": null
+},
+{
+"n": "Kenji-Van Boto",
+"pos": "D",
+"nat": "MAD",
+"num": 97,
+"age": 30
+}
+]
+},
+"FRA2/Caen": {
+"title": "Stade Malherbe Caen",
+"sq": [
+{
+"n": "Anthony Mandrea",
+"pos": "G",
+"nat": "ALG",
+"num": 1,
+"age": 30
+},
+{
+"n": "Nassim Titebah",
+"pos": "D",
+"nat": "FRA",
+"num": 2,
+"age": null
+},
+{
+"n": "Diabé Bolumbu",
+"pos": "D",
+"nat": "FRA",
+"num": 3,
+"age": 22
+},
+{
+"n": "Sacha M'Baka",
+"pos": "D",
+"nat": "CAF",
+"num": 4,
+"age": 22
+},
+{
+"n": "Josué Kimboma",
+"pos": "M",
+"nat": "COD",
+"num": 6,
+"age": null
+},
+{
+"n": "Samuel Noireau-Dauriat",
+"pos": "F",
+"nat": "MAD",
+"num": 8,
+"age": 23
+},
+{
+"n": "Fahd El Khoumisti",
+"pos": "F",
+"nat": "FRA",
+"num": 9,
+"age": 33
+},
+{
+"n": "Ivann Botella",
+"pos": "F",
+"nat": "FRA",
+"num": 10,
+"age": 27
+},
+{
+"n": "Armand Gnanduillet",
+"pos": "F",
+"nat": "CIV",
+"num": 11,
+"age": 34
+},
+{
+"n": "Dennis Appiah",
+"pos": "D",
+"nat": "FRA",
+"num": 12,
+"age": 34
+},
+{
+"n": "Nazim Babaï",
+"pos": "D",
+"nat": "ALG",
+"num": 13,
+"age": null
+},
+{
+"n": "Yannis Clementia",
+"pos": "G",
+"nat": "MTQ",
+"num": 16,
+"age": 29
+},
+{
+"n": "Freddy Bomo",
+"pos": "M",
+"nat": "SUI",
+"num": 18,
+"age": null
+},
+{
+"n": "Hugo Lamouliatte",
+"pos": "D",
+"nat": "FRA",
+"num": 19,
+"age": null
+},
+{
+"n": "Keelyan Portut",
+"pos": "F",
+"nat": "FRA",
+"num": 20,
+"age": null
+},
+{
+"n": "Gabin Tomé",
+"pos": "M",
+"nat": "FRA",
+"num": 21,
+"age": null
+},
+{
+"n": "Mohamed Hafid",
+"pos": "F",
+"nat": "MAR",
+"num": 22,
+"age": 22
+},
+{
+"n": "Lionel Carole",
+"pos": "D",
+"nat": "FRA",
+"num": 23,
+"age": 35
+},
+{
+"n": "Léo Milliner",
+"pos": "M",
+"nat": "FRA",
+"num": 24,
+"age": null
+},
+{
+"n": "Zoumana Bagbema",
+"pos": "M",
+"nat": "FRA",
+"num": 25,
+"age": null
+},
+{
+"n": "Mohamed El Idrissi",
+"pos": "M",
+"nat": "MAR",
+"num": 27,
+"age": null
+},
+{
+"n": "Salim Diakité",
+"pos": "F",
+"nat": "FRA",
+"num": 29,
+"age": null
+},
+{
+"n": "Parfait Mandanda",
+"pos": "G",
+"nat": "COD",
+"num": 30,
+"age": 37
+},
+{
+"n": "Ryan Tutu",
+"pos": "G",
+"nat": "COD",
+"num": 40,
+"age": null
+}
+]
+},
+"FRA2/Amiens": {
+"title": "Amiens SC",
+"sq": [
+{
+"n": "Victor Delins",
+"pos": "G",
+"nat": "FRA",
+"num": 1,
+"age": null
+},
+{
+"n": "Adrien Julloux",
+"pos": "D",
+"nat": "FRA",
+"num": 3,
+"age": null
+},
+{
+"n": "Keny Mbala",
+"pos": "D",
+"nat": "FRA",
+"num": 4,
+"age": null
+},
+{
+"n": "Thomas Monconduit",
+"pos": "M",
+"nat": "FRA",
+"num": 5,
+"age": 35
+},
+{
+"n": "Gatien Foll",
+"pos": "M",
+"nat": "FRA",
+"num": 6,
+"age": null
+},
+{
+"n": "Ćazim Suljić",
+"pos": "M",
+"nat": "BIH",
+"num": 8,
+"age": 30
+},
+{
+"n": "Marvin Adélaïde",
+"pos": "F",
+"nat": "FRA",
+"num": 9,
+"age": null
+},
+{
+"n": "Zourab Sopromadze",
+"pos": "M",
+"nat": "GEO",
+"num": 10,
+"age": null
+},
+{
+"n": "Côme Fromager",
+"pos": "M",
+"nat": "FRA",
+"num": 11,
+"age": null
+},
+{
+"n": "Anthony Ribelin",
+"pos": "D",
+"nat": "FRA",
+"num": 12,
+"age": 30
+},
+{
+"n": "Enzo Couto",
+"pos": "D",
+"nat": "FRA",
+"num": 14,
+"age": null
+},
+{
+"n": "Mathis Colin",
+"pos": "F",
+"nat": "FRA",
+"num": 15,
+"age": null
+},
+{
+"n": "Calvin Obin",
+"pos": "G",
+"nat": "FRA",
+"num": 16,
+"age": null
+},
+{
+"n": "Alexis Giacomini",
+"pos": "M",
+"nat": "FRA",
+"num": 17,
+"age": null
+},
+{
+"n": "Messy Manitu",
+"pos": "M",
+"nat": "COD",
+"num": 18,
+"age": null
+},
+{
+"n": "Antoine Nuss",
+"pos": "D",
+"nat": "FRA",
+"num": 19,
+"age": null
+},
+{
+"n": "Lucas Llort",
+"pos": "D",
+"nat": "FRA",
+"num": 20,
+"age": null
+},
+{
+"n": "Alvin Doucet",
+"pos": "F",
+"nat": "FRA",
+"num": 21,
+"age": null
+},
+{
+"n": "Rémy Boissier",
+"pos": "D",
+"nat": "FRA",
+"num": 22,
+"age": 32
+},
+{
+"n": "Nolan Hérissé",
+"pos": "M",
+"nat": "FRA",
+"num": 23,
+"age": null
+},
+{
+"n": "Enzo Somon",
+"pos": "M",
+"nat": "FRA",
+"num": 24,
+"age": null
+},
+{
+"n": "Enzo Genton",
+"pos": "D",
+"nat": "FRA",
+"num": 25,
+"age": 20
+},
+{
+"n": "Christ Letono",
+"pos": "F",
+"nat": "CMR",
+"num": 26,
+"age": null
+},
+{
+"n": "Dan Sinaté",
+"pos": "D",
+"nat": "MLI",
+"num": 27,
+"age": 20
+},
+{
+"n": "Ely Julien",
+"pos": "F",
+"nat": "FRA",
+"num": 28,
+"age": null
+},
+{
+"n": "Mamadou Camara",
+"pos": "D",
+"nat": "FRA",
+"num": 29,
+"age": null
+},
+{
+"n": "Amine Chabane",
+"pos": "D",
+"nat": "MAR",
+"num": 39,
+"age": 20
+},
+{
+"n": "Yannick Pandor",
+"pos": "G",
+"nat": "COM",
+"num": 40,
+"age": 25
+},
+{
+"n": "Nathan Talbot",
+"pos": "D",
+"nat": "FRA",
+"num": 59,
+"age": null
+}
+]
+},
+"FRA2/Rodez": {
+"title": "Rodez AF",
+"sq": [
+{
+"n": "Quentin Braat",
+"pos": "G",
+"nat": "FRA",
+"num": 1,
+"age": 29
+},
+{
+"n": "Raphaël Lipinski",
+"pos": "D",
+"nat": "FRA",
+"num": 3,
+"age": 24
+},
+{
+"n": "Mathis Magnin",
+"pos": "D",
+"nat": "SUI",
+"num": 4,
+"age": null
+},
+{
+"n": "Mohamed Sylla",
+"pos": "D",
+"nat": "FRA",
+"num": 5,
+"age": null
+},
+{
+"n": "Jordan Mendes",
+"pos": "M",
+"nat": "CPV",
+"num": 6,
+"age": 22
+},
+{
+"n": "Kenny Nagera",
+"pos": "F",
+"nat": "FRA",
+"num": 7,
+"age": 24
+},
+{
+"n": "Damjan Pavlović",
+"pos": "M",
+"nat": "SRB",
+"num": 8,
+"age": 25
+},
+{
+"n": "Nachon Nsingi",
+"pos": "F",
+"nat": "BEL",
+"num": 9,
+"age": 25
+},
+{
+"n": "Mathis Saka",
+"pos": "M",
+"nat": "FRA",
+"num": 10,
+"age": 20
+},
+{
+"n": "Mathis Touho",
+"pos": "F",
+"nat": "FRA",
+"num": 11,
+"age": 22
+},
+{
+"n": "Corentin Issanchou",
+"pos": "F",
+"nat": "FRA",
+"num": 13,
+"age": null
+},
+{
+"n": "Jean Lambert Evans",
+"pos": "D",
+"nat": "FRA",
+"num": 15,
+"age": 28
+},
+{
+"n": "Lucas Margueron",
+"pos": "G",
+"nat": "FRA",
+"num": 16,
+"age": null
+},
+{
+"n": "Dylan Vangi",
+"pos": "D",
+"nat": "FRA",
+"num": 17,
+"age": null
+},
+{
+"n": "Hermann Tebily",
+"pos": "F",
+"nat": "FRA",
+"num": 19,
+"age": 24
+},
+{
+"n": "Ryan Ponti",
+"pos": "D",
+"nat": "MAD",
+"num": 20,
+"age": 28
+},
+{
+"n": "Kélian Nsona",
+"pos": "F",
+"nat": "FRA",
+"num": 21,
+"age": 24
+},
+{
+"n": "Octave Joly",
+"pos": "M",
+"nat": "FRA",
+"num": 22,
+"age": null
+},
+{
+"n": "Cheick Doumbia",
+"pos": "D",
+"nat": "MLI",
+"num": 23,
+"age": null
+},
+{
+"n": "Loni Laurent",
+"pos": "D",
+"nat": "FRA",
+"num": 24,
+"age": null
+},
+{
+"n": "Marco Essimi",
+"pos": "F",
+"nat": "FRA",
+"num": 27,
+"age": 27
+},
+{
+"n": "Steven Luyambula",
+"pos": "D",
+"nat": "FRA",
+"num": 28,
+"age": null
+},
+{
+"n": "Antonin Cartillier",
+"pos": "M",
+"nat": "FRA",
+"num": 29,
+"age": 22
+},
+{
+"n": "Enzo Crombez",
+"pos": "G",
+"nat": "FRA",
+"num": 30,
+"age": null
+},
+{
+"n": "Yanis Dahalani",
+"pos": "M",
+"nat": "FRA",
+"num": 34,
+"age": null
+}
+]
+},
+"FRA2/Pau": {
+"title": "Pau FC",
+"sq": [
+{
+"n": "Brice Maubleu",
+"pos": "G",
+"nat": "FRA",
+"num": 1,
+"age": 37
+},
+{
+"n": "Tom Pouilly",
+"pos": "D",
+"nat": "FRA",
+"num": 2,
+"age": 23
+},
+{
+"n": "Axel Dodote",
+"pos": "D",
+"nat": "FRA",
+"num": 4,
+"age": null
+},
+{
+"n": "Lorenzo Rajot",
+"pos": "M",
+"nat": "FRA",
+"num": 5,
+"age": 29
+},
+{
+"n": "Cheikh Fall",
+"pos": "M",
+"nat": "SEN",
+"num": 6,
+"age": 22
+},
+{
+"n": "Hacène Benali",
+"pos": "F",
+"nat": "ALG",
+"num": 7,
+"age": 27
+},
+{
+"n": "Souleymane Basse",
+"pos": "D",
+"nat": "SEN",
+"num": 8,
+"age": null
+},
+{
+"n": "Babacar Leye",
+"pos": "F",
+"nat": "FRA",
+"num": 9,
+"age": null
+},
+{
+"n": "Alexis Lefebvre",
+"pos": "F",
+"nat": "FRA",
+"num": 11,
+"age": 23
+},
+{
+"n": "Royce Openda",
+"pos": "F",
+"nat": "GAB",
+"num": 14,
+"age": 24
+},
+{
+"n": "Maxime Adam",
+"pos": "G",
+"nat": "FRA",
+"num": 16,
+"age": null
+},
+{
+"n": "Bilal Brahimi",
+"pos": "M",
+"nat": "FRA",
+"num": 17,
+"age": 26
+},
+{
+"n": "Jérémy Sebas",
+"pos": "F",
+"nat": "MTQ",
+"num": 18,
+"age": 23
+},
+{
+"n": "Tom Saettel",
+"pos": "F",
+"nat": "FRA",
+"num": 19,
+"age": 21
+},
+{
+"n": "Jessy Benet",
+"pos": "M",
+"nat": "FRA",
+"num": 21,
+"age": 31
+},
+{
+"n": "Rony Mimb Baheng",
+"pos": "D",
+"nat": "CMR",
+"num": 22,
+"age": null
+},
+{
+"n": "Anthony Briançon",
+"pos": "D",
+"nat": "FRA",
+"num": 23,
+"age": 32
+},
+{
+"n": "Quentin Daubin",
+"pos": "M",
+"nat": "FRA",
+"num": 25,
+"age": 31
+},
+{
+"n": "Luan Gadegbeku",
+"pos": "M",
+"nat": "FRA",
+"num": 27,
+"age": 19
+},
+{
+"n": "Gaëtan Paquiez",
+"pos": "D",
+"nat": "FRA",
+"num": 29,
+"age": 32
+},
+{
+"n": "Esteban Salles",
+"pos": "G",
+"nat": "FRA",
+"num": 30,
+"age": 32
+},
+{
+"n": "Mathys Tourraine",
+"pos": "D",
+"nat": "MAR",
+"num": 39,
+"age": 25
+},
+{
+"n": "Abdoulaye Mbaye",
+"pos": "F",
+"nat": "SEN",
+"num": 56,
+"age": null
+},
+{
+"n": "Axel Bamba",
+"pos": "D",
+"nat": "CIV",
+"num": 88,
+"age": 27
+},
+{
+"n": "Kyllian Gasnier",
+"pos": "M",
+"nat": "FRA",
+"num": 90,
+"age": 24
+},
+{
+"n": "Akim Abdallah",
+"pos": "D",
+"nat": "COM",
+"num": 97,
+"age": 29
+}
+]
+},
+"FRA2/Laval": {
+"title": "Stade Lavallois",
+"sq": [
+{
+"n": "Maxime Hautbois",
+"pos": "G",
+"nat": "FRA",
+"num": 1,
+"age": 35
+},
+{
+"n": "William Bianda",
+"pos": "D",
+"nat": "FRA",
+"num": 3,
+"age": 26
+},
+{
+"n": "Julien Maggiotti",
+"pos": "M",
+"nat": "FRA",
+"num": 5,
+"age": 31
+},
+{
+"n": "Sam Sanna",
+"pos": "M",
+"nat": "FRA",
+"num": 6,
+"age": 27
+},
+{
+"n": "Chafik Gourichy",
+"pos": "M",
+"nat": "FRA",
+"num": 7,
+"age": null
+},
+{
+"n": "Teddy Bouriaud",
+"pos": "M",
+"nat": "FRA",
+"num": 8,
+"age": null
+},
+{
+"n": "Trévis Dago",
+"pos": "F",
+"nat": "FRA",
+"num": 11,
+"age": 21
+},
+{
+"n": "Mattéo Commaret",
+"pos": "D",
+"nat": "FRA",
+"num": 12,
+"age": null
+},
+{
+"n": "Francis Coquelin",
+"pos": "M",
+"nat": "FRA",
+"num": 13,
+"age": 35
+},
+{
+"n": "Cyril Mandouki",
+"pos": "M",
+"nat": "MTQ",
+"num": 14,
+"age": 35
+},
+{
+"n": "Corentin Fatou",
+"pos": "F",
+"nat": "FRA",
+"num": 17,
+"age": null
+},
+{
+"n": "Aboubacar Lô",
+"pos": "D",
+"nat": "SEN",
+"num": 18,
+"age": 26
+},
+{
+"n": "Ethan Clavreul",
+"pos": "M",
+"nat": "FRA",
+"num": 20,
+"age": 20
+},
+{
+"n": "Alessio Beaudouin",
+"pos": "M",
+"nat": "FRA",
+"num": 21,
+"age": null
+},
+{
+"n": "Jules Gaudin",
+"pos": "D",
+"nat": "FRA",
+"num": 22,
+"age": 26
+},
+{
+"n": "Esteban Mouton",
+"pos": "D",
+"nat": "FRA",
+"num": 23,
+"age": null
+},
+{
+"n": "Sidi Bane",
+"pos": "D",
+"nat": "SEN",
+"num": 24,
+"age": 22
+},
+{
+"n": "Hermann Esmel",
+"pos": "M",
+"nat": "FRA",
+"num": 26,
+"age": null
+},
+{
+"n": "Alpha Diallo",
+"pos": "M",
+"nat": "FRA",
+"num": 27,
+"age": null
+},
+{
+"n": "Aboubakary Kanté",
+"pos": "F",
+"nat": "GAM",
+"num": 28,
+"age": 32
+},
+{
+"n": "Mamadou Sidibé",
+"pos": "D",
+"nat": "GUI",
+"num": 29,
+"age": null
+},
+{
+"n": "Mamadou Samassa",
+"pos": "G",
+"nat": "MLI",
+"num": 30,
+"age": 36
+},
+{
+"n": "Mathys Houdayer",
+"pos": "F",
+"nat": "FRA",
+"num": 31,
+"age": null
+},
+{
+"n": "Yanis Court",
+"pos": "M",
+"nat": "FRA",
+"num": 32,
+"age": null
+},
+{
+"n": "Layousse Samb",
+"pos": "D",
+"nat": "SEN",
+"num": 35,
+"age": null
+}
+]
+},
+"FRA2/Grenoble": {
+"title": "Grenoble Foot 38",
+"sq": [
+{
+"n": "Alexandre Olliero",
+"pos": "G",
+"nat": "FRA",
+"num": 1,
+"age": 30
+},
+{
+"n": "Moussa Djitté",
+"pos": "F",
+"nat": "SEN",
+"num": 2,
+"age": 27
+},
+{
+"n": "Farouq Limouri",
+"pos": "D",
+"nat": "NED",
+"num": 3,
+"age": 23
+},
+{
+"n": "Clément Vidal",
+"pos": "D",
+"nat": "FRA",
+"num": 5,
+"age": 26
+},
+{
+"n": "Yohann Magnin",
+"pos": "M",
+"nat": "FRA",
+"num": 6,
+"age": 29
+},
+{
+"n": "Lucas Bernadou",
+"pos": "M",
+"nat": "FRA",
+"num": 8,
+"age": 26
+},
+{
+"n": "Arthur Lallias",
+"pos": "F",
+"nat": "FRA",
+"num": 9,
+"age": null
+},
+{
+"n": "Baptiste Mouazan",
+"pos": "M",
+"nat": "FRA",
+"num": 10,
+"age": 25
+},
+{
+"n": "Mamady Bangré",
+"pos": "F",
+"nat": "BFA",
+"num": 11,
+"age": 25
+},
+{
+"n": "Ugo Bonnet",
+"pos": "F",
+"nat": "FRA",
+"num": 12,
+"age": 33
+},
+{
+"n": "Mael Corboz",
+"pos": "M",
+"nat": "USA",
+"num": 14,
+"age": 32
+},
+{
+"n": "Bobby Allain",
+"pos": "G",
+"nat": "FRA",
+"num": 16,
+"age": 35
+},
+{
+"n": "Leonardo Cerri",
+"pos": "F",
+"nat": "ITA",
+"num": 17,
+"age": 23
+},
+{
+"n": "Nesta Zahui",
+"pos": "D",
+"nat": "FRA",
+"num": 19,
+"age": null
+},
+{
+"n": "Owen Kouassi",
+"pos": "D",
+"nat": "CIV",
+"num": 21,
+"age": 23
+},
+{
+"n": "Ange-Loïc N'Gatta",
+"pos": "D",
+"nat": "CIV",
+"num": 22,
+"age": 23
+},
+{
+"n": "Dillon Hoogewerf",
+"pos": "F",
+"nat": "NED",
+"num": 23,
+"age": 23
+},
+{
+"n": "Théo Borne",
+"pos": "G",
+"nat": "FRA",
+"num": 25,
+"age": 24
+},
+{
+"n": "Matthéo Xantippe",
+"pos": "D",
+"nat": "FRA",
+"num": 27,
+"age": 24
+},
+{
+"n": "Samba Lélé Diba",
+"pos": "M",
+"nat": "SEN",
+"num": 30,
+"age": 23
+},
+{
+"n": "Zé Leite",
+"pos": "F",
+"nat": "POR",
+"num": 34,
+"age": null
+},
+{
+"n": "Mohamed Bechikh",
+"pos": "F",
+"nat": "FRA",
+"num": 37,
+"age": null
+},
+{
+"n": "Aurélien Pelon",
+"pos": "D",
+"nat": "FRA",
+"num": 43,
+"age": null
+},
+{
+"n": "Owen Martinez-Jullien",
+"pos": "M",
+"nat": "FRA",
+"num": 44,
+"age": null
+},
+{
+"n": "Jules Mouton",
+"pos": "M",
+"nat": "FRA",
+"num": 46,
+"age": null
+},
+{
+"n": "Kyliann Fofana",
+"pos": "F",
+"nat": "FRA",
+"num": 47,
+"age": null
+},
+{
+"n": "Sakhalou Niakaté",
+"pos": "D",
+"nat": "FRA",
+"num": 48,
+"age": null
+},
+{
+"n": "Jean-Guy Akpa Akpro",
+"pos": "F",
+"nat": "FRA",
+"num": 92,
+"age": null
+},
+{
+"n": "Yvann Maçon",
+"pos": "D",
+"nat": "GLP",
+"num": 97,
+"age": 28
+}
+]
+},
+"FRA2/Dunkerque": {
+"title": "USL Dunkerque",
+"sq": [
+{
+"n": "Ousmane Touré",
+"pos": "D",
+"nat": "FRA",
+"num": 2,
+"age": 21
+},
+{
+"n": "Bram Lagae",
+"pos": "D",
+"nat": "BEL",
+"num": 4,
+"age": 22
+},
+{
+"n": "Jordan Morel",
+"pos": "M",
+"nat": "FRA",
+"num": 6,
+"age": null
+},
+{
+"n": "Khalil Ayari",
+"pos": "F",
+"nat": "TUN",
+"num": 7,
+"age": 21
+},
+{
+"n": "Gaëtan Robail",
+"pos": "F",
+"nat": "FRA",
+"num": 9,
+"age": 32
+},
+{
+"n": "Adrien Lebeau",
+"pos": "M",
+"nat": "FRA",
+"num": 10,
+"age": 27
+},
+{
+"n": "Yegor Prutsev",
+"pos": "M",
+"nat": "RUS",
+"num": 11,
+"age": 24
+},
+{
+"n": "Steven Nzonzi",
+"pos": "M",
+"nat": "FRA",
+"num": 15,
+"age": 38
+},
+{
+"n": "Maxence Prévot",
+"pos": "G",
+"nat": "FRA",
+"num": 16,
+"age": 29
+},
+{
+"n": "Pape Malick Dieng",
+"pos": "F",
+"nat": "SEN",
+"num": 17,
+"age": null
+},
+{
+"n": "Théna Massock",
+"pos": "M",
+"nat": "FRA",
+"num": 18,
+"age": null
+},
+{
+"n": "Souleymane Keita",
+"pos": "F",
+"nat": "FRA",
+"num": 19,
+"age": null
+},
+{
+"n": "Lenny Dziki Loussilaho",
+"pos": "D",
+"nat": "CGO",
+"num": 21,
+"age": null
+},
+{
+"n": "Victor Mayela",
+"pos": "D",
+"nat": "COD",
+"num": 22,
+"age": null
+},
+{
+"n": "Arthylio Nadé",
+"pos": "F",
+"nat": "CIV",
+"num": 23,
+"age": null
+},
+{
+"n": "Lenny Vallier",
+"pos": "D",
+"nat": "FRA",
+"num": 24,
+"age": 27
+},
+{
+"n": "Franck Atoen",
+"pos": "M",
+"nat": "CMR",
+"num": 25,
+"age": null
+},
+{
+"n": "Opa Sanganté",
+"pos": "D",
+"nat": "GBS",
+"num": 26,
+"age": 35
+},
+{
+"n": "Allan Linguet",
+"pos": "D",
+"nat": "FRA",
+"num": 27,
+"age": 27
+},
+{
+"n": "Abner",
+"pos": "D",
+"nat": "BRA",
+"num": 30,
+"age": 30
+},
+{
+"n": "Mouhamed Sissokho",
+"pos": "G",
+"nat": "SEN",
+"num": 36,
+"age": null
+},
+{
+"n": "Maedine Makhloufi",
+"pos": "D",
+"nat": "FRA",
+"num": 42,
+"age": null
+},
+{
+"n": "Moha Ramos",
+"pos": "G",
+"nat": "ESP",
+"num": 73,
+"age": 26
+},
+{
+"n": "Alex Daho",
+"pos": "F",
+"nat": "FRA",
+"num": 93,
+"age": null
+},
+{
+"n": "Enzo Mayilla",
+"pos": "F",
+"nat": "FRA",
+"num": 94,
+"age": null
+},
+{
+"n": "M'Baye Niang",
+"pos": "F",
+"nat": "SEN",
+"num": 99,
+"age": 32
+}
+]
+},
+"FRA2/Red Star": {
+"title": "Red Star FC",
+"sq": [
+{
+"n": "Yanis Benchaouch",
+"pos": "G",
+"nat": "MAR",
+"num": 1,
+"age": null
+},
+{
+"n": "Théo Magnin",
+"pos": "D",
+"nat": "SUI",
+"num": 2,
+"age": 23
+},
+{
+"n": "Matthieu Huard",
+"pos": "D",
+"nat": "FRA",
+"num": 3,
+"age": 28
+},
+{
+"n": "Elyaz Zidane",
+"pos": "D",
+"nat": "FRA",
+"num": 4,
+"age": 21
+},
+{
+"n": "Josué Escartin",
+"pos": "D",
+"nat": "FRA",
+"num": 5,
+"age": 23
+},
+{
+"n": "Bradley Danger",
+"pos": "D",
+"nat": "FRA",
+"num": 6,
+"age": 28
+},
+{
+"n": "Damien Durand",
+"pos": "F",
+"nat": "FRA",
+"num": 7,
+"age": 31
+},
+{
+"n": "Guillaume Trani",
+"pos": "M",
+"nat": "FRA",
+"num": 8,
+"age": 29
+},
+{
+"n": "Ilija Despotovic",
+"pos": "F",
+"nat": "SUI",
+"num": 9,
+"age": null
+},
+{
+"n": "Saîf-Eddine Khaoui",
+"pos": "M",
+"nat": "TUN",
+"num": 10,
+"age": 31
+},
+{
+"n": "Kémo Cissé",
+"pos": "F",
+"nat": "FRA",
+"num": 11,
+"age": 30
+},
+{
+"n": "Sékou Guindo",
+"pos": "D",
+"nat": "MLI",
+"num": 12,
+"age": null
+},
+{
+"n": "Mahamadou Diawara",
+"pos": "M",
+"nat": "FRA",
+"num": 14,
+"age": 21
+},
+{
+"n": "Gaëtan Poussin",
+"pos": "G",
+"nat": "FRA",
+"num": 16,
+"age": 27
+},
+{
+"n": "Samuel Renel",
+"pos": "M",
+"nat": "MTQ",
+"num": 17,
+"age": 25
+},
+{
+"n": "Islam Halifa",
+"pos": "M",
+"nat": "FRA",
+"num": 19,
+"age": 22
+},
+{
+"n": "Dylan Durivaux",
+"pos": "D",
+"nat": "FRA",
+"num": 20,
+"age": 25
+},
+{
+"n": "Idrissa Sabaly",
+"pos": "M",
+"nat": "FRA",
+"num": 21,
+"age": null
+},
+{
+"n": "Jovany Ikanga",
+"pos": "F",
+"nat": "FRA",
+"num": 23,
+"age": 24
+},
+{
+"n": "Pierre Lemonnier",
+"pos": "D",
+"nat": "FRA",
+"num": 24,
+"age": 33
+},
+{
+"n": "Leonardo Buta",
+"pos": "D",
+"nat": "POR",
+"num": 25,
+"age": 24
+},
+{
+"n": "Godson Kyeremeh",
+"pos": "F",
+"nat": "FRA",
+"num": 27,
+"age": 26
+},
+{
+"n": "Cheick Konaté",
+"pos": "M",
+"nat": "CIV",
+"num": 45,
+"age": null
+},
+{
+"n": "Côme Bianay Balcot",
+"pos": "D",
+"nat": "FRA",
+"num": 80,
+"age": null
+},
+{
+"n": "Kévin Cabral",
+"pos": "F",
+"nat": "FRA",
+"num": 91,
+"age": 27
+}
+]
+},
+"FRA2/Annecy": {
+"title": "FC Annecy",
+"sq": [
+{
+"n": "Florian Escales",
+"pos": "G",
+"nat": "FRA",
+"num": 1,
+"age": 30
+},
+{
+"n": "Sacha Lima",
+"pos": "D",
+"nat": "FRA",
+"num": 4,
+"age": null
+},
+{
+"n": "Ahmed Kashi",
+"pos": "M",
+"nat": "ALG",
+"num": 5,
+"age": 38
+},
+{
+"n": "François Lajugie",
+"pos": "D",
+"nat": "FRA",
+"num": 6,
+"age": 30
+},
+{
+"n": "Alan Mondesir",
+"pos": "F",
+"nat": "FRA",
+"num": 7,
+"age": null
+},
+{
+"n": "Alexis Casadei",
+"pos": "M",
+"nat": "FRA",
+"num": 8,
+"age": null
+},
+{
+"n": "Thibault Rambaud",
+"pos": "F",
+"nat": "FRA",
+"num": 9,
+"age": 29
+},
+{
+"n": "Souleymane Fofana",
+"pos": "M",
+"nat": "CIV",
+"num": 11,
+"age": null
+},
+{
+"n": "Kadan Young",
+"pos": "F",
+"nat": "ENG",
+"num": 12,
+"age": 20
+},
+{
+"n": "Mohamed Koné",
+"pos": "M",
+"nat": "CIV",
+"num": 14,
+"age": null
+},
+{
+"n": "Pascal Mozie",
+"pos": "M",
+"nat": "POL",
+"num": 15,
+"age": null
+},
+{
+"n": "Thomas Callens",
+"pos": "G",
+"nat": "FRA",
+"num": 16,
+"age": 28
+},
+{
+"n": "Zépiqueno Redmond",
+"pos": "F",
+"nat": "NED",
+"num": 17,
+"age": 20
+},
+{
+"n": "Kilyan Jusseron-Veniere",
+"pos": "M",
+"nat": "FRA",
+"num": 19,
+"age": null
+},
+{
+"n": "Adam Yahi",
+"pos": "F",
+"nat": "FRA",
+"num": 20,
+"age": null
+},
+{
+"n": "Esteban Marre",
+"pos": "D",
+"nat": "FRA",
+"num": 21,
+"age": null
+},
+{
+"n": "Clément Billemaz",
+"pos": "F",
+"nat": "FRA",
+"num": 22,
+"age": 28
+},
+{
+"n": "Mattéo Veillon",
+"pos": "D",
+"nat": "FRA",
+"num": 23,
+"age": null
+},
+{
+"n": "Nolan Ferro",
+"pos": "M",
+"nat": "FRA",
+"num": 24,
+"age": null
+},
+{
+"n": "Paul Venot",
+"pos": "M",
+"nat": "FRA",
+"num": 25,
+"age": null
+},
+{
+"n": "Jonathan Do Marcolino",
+"pos": "D",
+"nat": "GAB",
+"num": 26,
+"age": 20
+},
+{
+"n": "Julien Kouadio",
+"pos": "D",
+"nat": "CAF",
+"num": 27,
+"age": 27
+},
+{
+"n": "Antoine Larose",
+"pos": "F",
+"nat": "FRA",
+"num": 28,
+"age": null
+},
+{
+"n": "Matéo Gonzalez",
+"pos": "G",
+"nat": "FRA",
+"num": 30,
+"age": null
+},
+{
+"n": "David Oduro",
+"pos": "D",
+"nat": "GHA",
+"num": 32,
+"age": 20
+},
+{
+"n": "Esteban Riou",
+"pos": "D",
+"nat": "FRA",
+"num": 34,
+"age": null
+},
+{
+"n": "Thibault Delphis",
+"pos": "D",
+"nat": "FRA",
+"num": 41,
+"age": null
+},
+{
+"n": "Moïse Sahi Dion",
+"pos": "F",
+"nat": "CIV",
+"num": 80,
+"age": 25
+}
+]
+},
+"FRA2/Martigues": {
+"title": "FC Martigues",
+"sq": []
+},
+"POR2/Marítimo": {
+"title": "C.S. Marítimo",
+"sq": [
+{
+"n": "Gonçalo Tabuaço",
+"pos": "G",
+"nat": "POR",
+"num": 1,
+"age": 25
+},
+{
+"n": "Igor Julião",
+"pos": "D",
+"nat": "BRA",
+"num": 2,
+"age": 32
+},
+{
+"n": "Nathanael Ogbeta",
+"pos": "D",
+"nat": "ENG",
+"num": 3,
+"age": 25
+},
+{
+"n": "Rafael Fernandes",
+"pos": "D",
+"nat": "POR",
+"num": 4,
+"age": 24
+},
+{
+"n": "Nilton Varela",
+"pos": "D",
+"nat": "POR",
+"num": 5,
+"age": 25
+},
+{
+"n": "Rodrigo Andrade",
+"pos": "M",
+"nat": "POR",
+"num": 6,
+"age": 25
+},
+{
+"n": "Enrique Zauner",
+"pos": "F",
+"nat": "VEN",
+"num": 7,
+"age": 26
+},
+{
+"n": "Maxime Dominguez",
+"pos": "M",
+"nat": "SUI",
+"num": 8,
+"age": 30
+},
+{
+"n": "José Melro",
+"pos": "F",
+"nat": "POR",
+"num": 9,
+"age": 22
+},
+{
+"n": "Martín Tejón",
+"pos": "M",
+"nat": "ESP",
+"num": 10,
+"age": 22
+},
+{
+"n": "Simo Bouzaidi",
+"pos": "F",
+"nat": "MAR",
+"num": 11,
+"age": 27
+},
+{
+"n": "Mons Bassouamina",
+"pos": "F",
+"nat": "CGO",
+"num": 12,
+"age": 28
+},
+{
+"n": "Alfonso Pastor",
+"pos": "G",
+"nat": "ESP",
+"num": 13,
+"age": 26
+},
+{
+"n": "Raphael Guzzo",
+"pos": "M",
+"nat": "POR",
+"num": 14,
+"age": 31
+},
+{
+"n": "Tomás Tavares",
+"pos": "D",
+"nat": "POR",
+"num": 15,
+"age": 25
+},
+{
+"n": "Francisco Silva",
+"pos": "M",
+"nat": "POR",
+"num": 16,
+"age": null
+},
+{
+"n": "Adrián Butzke",
+"pos": "F",
+"nat": "ESP",
+"num": 17,
+"age": 27
+},
+{
+"n": "Vladan Danilović",
+"pos": "M",
+"nat": "BIH",
+"num": 18,
+"age": 27
+},
+{
+"n": "Francisco Gomes",
+"pos": "F",
+"nat": "POR",
+"num": 20,
+"age": 22
+},
+{
+"n": "Ibrahim Alani",
+"pos": "M",
+"nat": "NGR",
+"num": 21,
+"age": 20
+},
+{
+"n": "Gábor Szalai",
+"pos": "D",
+"nat": "HUN",
+"num": 22,
+"age": 26
+},
+{
+"n": "Paulo Henrique",
+"pos": "D",
+"nat": "POR",
+"num": 23,
+"age": 30
+},
+{
+"n": "Yellu Santiago",
+"pos": "M",
+"nat": "ESP",
+"num": 25,
+"age": 22
+},
+{
+"n": "Samuel Bamba",
+"pos": "F",
+"nat": "GER",
+"num": 27,
+"age": 22
+},
+{
+"n": "Fran Vieites",
+"pos": "G",
+"nat": "ESP",
+"num": 30,
+"age": 27
+},
+{
+"n": "Kimiss Zavala",
+"pos": "G",
+"nat": "MOZ",
+"num": 34,
+"age": 22
+},
+{
+"n": "Bryan Limbombe",
+"pos": "F",
+"nat": "BEL",
+"num": 35,
+"age": 25
+},
+{
+"n": "Romain Correia",
+"pos": "D",
+"nat": "POR",
+"num": 44,
+"age": 27
+},
+{
+"n": "Israel Ayuma",
+"pos": "M",
+"nat": "NGR",
+"num": 66,
+"age": 21
+},
+{
+"n": "Nélio Batista",
+"pos": "M",
+"nat": "POR",
+"num": 68,
+"age": null
+},
+{
+"n": "Maurice Boakye",
+"pos": "F",
+"nat": "GER",
+"num": 90,
+"age": 22
+}
+]
+},
+"POR2/Paços de Ferreira": {
+"title": "F.C. Paços de Ferreira",
+"sq": [
+{
+"n": "Rafa",
+"pos": "G",
+"nat": "POR",
+"num": 1,
+"age": null
+},
+{
+"n": "Tiago Mesquita",
+"pos": "D",
+"nat": "POR",
+"num": 2,
+"age": 36
+},
+{
+"n": "Diegão",
+"pos": "D",
+"nat": "BRA",
+"num": 3,
+"age": null
+},
+{
+"n": "Marcão",
+"pos": "D",
+"nat": "BRA",
+"num": 5,
+"age": 25
+},
+{
+"n": "Tomás Podstawski",
+"pos": "M",
+"nat": "POR",
+"num": 6,
+"age": 31
+},
+{
+"n": "Jotta",
+"pos": "F",
+"nat": "BRA",
+"num": 7,
+"age": 23
+},
+{
+"n": "Nuno Cunha",
+"pos": "M",
+"nat": "POR",
+"num": 8,
+"age": null
+},
+{
+"n": "João Neto",
+"pos": "M",
+"nat": "BRA",
+"num": 10,
+"age": 23
+},
+{
+"n": "Sacra",
+"pos": "F",
+"nat": "POR",
+"num": 11,
+"age": null
+},
+{
+"n": "Leandro Dias",
+"pos": "D",
+"nat": "POR",
+"num": 15,
+"age": null
+},
+{
+"n": "Tomás Castro",
+"pos": "M",
+"nat": "POR",
+"num": 19,
+"age": 27
+},
+{
+"n": "Tiago Queiroz",
+"pos": "M",
+"nat": "POR",
+"num": 20,
+"age": null
+},
+{
+"n": "Wesley",
+"pos": "D",
+"nat": "BRA",
+"num": 22,
+"age": null
+},
+{
+"n": "Bubacar Djaló",
+"pos": "M",
+"nat": "POR",
+"num": 25,
+"age": 29
+},
+{
+"n": "Tiago Cerveira",
+"pos": "D",
+"nat": "POR",
+"num": 29,
+"age": 34
+},
+{
+"n": "Cristiano",
+"pos": "G",
+"nat": "POR",
+"num": 31,
+"age": 36
+},
+{
+"n": "Rafael Vieira",
+"pos": "D",
+"nat": "POR",
+"num": 33,
+"age": 34
+},
+{
+"n": "Anunciação",
+"pos": "M",
+"nat": "POR",
+"num": 34,
+"age": null
+},
+{
+"n": "Ianis Vulpe",
+"pos": "M",
+"nat": "ROU",
+"num": 37,
+"age": null
+},
+{
+"n": "Gabi",
+"pos": "M",
+"nat": "POR",
+"num": 38,
+"age": null
+},
+{
+"n": "João Sidónio",
+"pos": "D",
+"nat": "POR",
+"num": 43,
+"age": null
+},
+{
+"n": "Vitinho",
+"pos": "F",
+"nat": "BRA",
+"num": 70,
+"age": null
+},
+{
+"n": "Caio Rafael",
+"pos": "M",
+"nat": "BRA",
+"num": 80,
+"age": null
+},
+{
+"n": "Diogo Castro",
+"pos": "D",
+"nat": "POR",
+"num": 85,
+"age": null
+},
+{
+"n": "Chico Ramos",
+"pos": "M",
+"nat": "POR",
+"num": 88,
+"age": 31
+},
+{
+"n": "Miguel Falé",
+"pos": "F",
+"nat": "POR",
+"num": 96,
+"age": 22
+},
+{
+"n": "Platiny",
+"pos": "F",
+"nat": "BRA",
+"num": 99,
+"age": 36
+}
+]
+},
+"POR2/Vizela": {
+"title": "F.C. Vizela",
+"sq": [
+{
+"n": "Antonio Gomis",
+"pos": "G",
+"nat": "ESP",
+"num": 1,
+"age": 23
+},
+{
+"n": "Jean-Pierre Rhyner",
+"pos": "D",
+"nat": "PER",
+"num": 4,
+"age": 30
+},
+{
+"n": "Giovani Bamba",
+"pos": "M",
+"nat": "SUI",
+"num": 6,
+"age": 27
+},
+{
+"n": "Angel Bastunov",
+"pos": "M",
+"nat": "BUL",
+"num": 8,
+"age": 27
+},
+{
+"n": "Manu Garrido",
+"pos": "F",
+"nat": "ESP",
+"num": 9,
+"age": 26
+},
+{
+"n": "Natanael Ntolla",
+"pos": "F",
+"nat": "FRA",
+"num": 11,
+"age": 27
+},
+{
+"n": "Tim Guillou",
+"pos": "G",
+"nat": "FRA",
+"num": 12,
+"age": null
+},
+{
+"n": "Luís Rocha",
+"pos": "D",
+"nat": "POR",
+"num": 13,
+"age": 40
+},
+{
+"n": "Miguel Pires",
+"pos": "M",
+"nat": "POR",
+"num": 16,
+"age": null
+},
+{
+"n": "Miguel Tavares",
+"pos": "F",
+"nat": "POR",
+"num": 17,
+"age": 28
+},
+{
+"n": "Aleksandar Vulić",
+"pos": "G",
+"nat": "SRB",
+"num": 19,
+"age": null
+},
+{
+"n": "Bright Godwin",
+"pos": "D",
+"nat": "NGR",
+"num": 20,
+"age": null
+},
+{
+"n": "Rodrigo Ramos",
+"pos": "M",
+"nat": "POR",
+"num": 21,
+"age": null
+},
+{
+"n": "Lucas Antañón",
+"pos": "F",
+"nat": "ESP",
+"num": 22,
+"age": null
+},
+{
+"n": "Yassin Fortuné",
+"pos": "F",
+"nat": "HAI",
+"num": 23,
+"age": 27
+},
+{
+"n": "Heinz Mörschel",
+"pos": "M",
+"nat": "DOM",
+"num": 24,
+"age": 29
+},
+{
+"n": "Luis Mina",
+"pos": "D",
+"nat": "COL",
+"num": 26,
+"age": null
+},
+{
+"n": "Ângelo Neto",
+"pos": "M",
+"nat": "BRA",
+"num": 31,
+"age": 35
+},
+{
+"n": "Alfred Caicedo",
+"pos": "D",
+"nat": "ECU",
+"num": 33,
+"age": 22
+},
+{
+"n": "Matías Lacava",
+"pos": "M",
+"nat": "VEN",
+"num": 36,
+"age": 24
+},
+{
+"n": "José Sampaio",
+"pos": "D",
+"nat": "POR",
+"num": 37,
+"age": null
+},
+{
+"n": "Ismaël Diallo",
+"pos": "D",
+"nat": "CIV",
+"num": 39,
+"age": 29
+},
+{
+"n": "Andrea Hristov",
+"pos": "D",
+"nat": "BUL",
+"num": 55,
+"age": 27
+},
+{
+"n": "Cristian Cañozales",
+"pos": "F",
+"nat": "COL",
+"num": 70,
+"age": 27
+},
+{
+"n": "Jójó",
+"pos": "D",
+"nat": "CPV",
+"num": 77,
+"age": 25
+},
+{
+"n": "Pedro Souza",
+"pos": "G",
+"nat": "POR",
+"num": 92,
+"age": null
+},
+{
+"n": "Aliou Traoré",
+"pos": "M",
+"nat": "FRA",
+"num": 95,
+"age": 25
+},
+{
+"n": "Augustine Adamu",
+"pos": "F",
+"nat": "NGR",
+"num": 96,
+"age": null
+},
+{
+"n": "Moustapha Sanogo",
+"pos": "M",
+"nat": "CIV",
+"num": 98,
+"age": null
+},
+{
+"n": "Anthony Carter",
+"pos": "F",
+"nat": "AUS",
+"num": 99,
+"age": 32
+}
+]
+},
+"POR2/Farense": {
+"title": "S.C. Farense",
+"sq": [
+{
+"n": "Jakob Tånnander",
+"pos": "G",
+"nat": "SWE",
+"num": 1,
+"age": 26
+},
+{
+"n": "Lucas D'Agrella",
+"pos": "D",
+"nat": "POR",
+"num": 3,
+"age": null
+},
+{
+"n": "Rodrigo Borges",
+"pos": "D",
+"nat": "POR",
+"num": 5,
+"age": 28
+},
+{
+"n": "Derick Poloni",
+"pos": "D",
+"nat": "BRA",
+"num": 6,
+"age": 33
+},
+{
+"n": "João Resende",
+"pos": "F",
+"nat": "POR",
+"num": 7,
+"age": 23
+},
+{
+"n": "Miguel Menino",
+"pos": "M",
+"nat": "POR",
+"num": 8,
+"age": 23
+},
+{
+"n": "Gabriel Barbosa",
+"pos": "F",
+"nat": "BRA",
+"num": 9,
+"age": 27
+},
+{
+"n": "Sarpreet Singh",
+"pos": "M",
+"nat": "NZL",
+"num": 10,
+"age": 27
+},
+{
+"n": "Nélson Oliveira",
+"pos": "F",
+"nat": "POR",
+"num": 11,
+"age": 35
+},
+{
+"n": "Joseph Nduquidi",
+"pos": "M",
+"nat": "ANG",
+"num": 15,
+"age": 22
+},
+{
+"n": "André Candeias",
+"pos": "F",
+"nat": "POR",
+"num": 17,
+"age": null
+},
+{
+"n": "Cuba",
+"pos": "F",
+"nat": "POR",
+"num": 18,
+"age": null
+},
+{
+"n": "Leonardo Oliveira",
+"pos": "F",
+"nat": "SWE",
+"num": 19,
+"age": null
+},
+{
+"n": "Toni Herrero",
+"pos": "D",
+"nat": "ESP",
+"num": 22,
+"age": null
+},
+{
+"n": "Mattheus Oliveira",
+"pos": "M",
+"nat": "BRA",
+"num": 27,
+"age": 32
+},
+{
+"n": "Claudio Falcão",
+"pos": "M",
+"nat": "BRA",
+"num": 29,
+"age": 32
+},
+{
+"n": "Gonçalo Silva",
+"pos": "D",
+"nat": "POR",
+"num": 37,
+"age": 35
+},
+{
+"n": "Bernardo Antunes",
+"pos": "D",
+"nat": "POR",
+"num": 36,
+"age": null
+},
+{
+"n": "Rodrigo Laranjeira",
+"pos": "D",
+"nat": "POR",
+"num": 42,
+"age": null
+},
+{
+"n": "Dário Miranda",
+"pos": "D",
+"nat": "POR",
+"num": 43,
+"age": null
+},
+{
+"n": "Nermin Zolotić",
+"pos": "D",
+"nat": "BIH",
+"num": 44,
+"age": 33
+},
+{
+"n": "Kauã Paes",
+"pos": "G",
+"nat": "BRA",
+"num": 50,
+"age": null
+},
+{
+"n": "Victor Barbara",
+"pos": "F",
+"nat": "BRA",
+"num": 70,
+"age": null
+},
+{
+"n": "Alex Pinto",
+"pos": "D",
+"nat": "POR",
+"num": 78,
+"age": 28
+},
+{
+"n": "Rafinha",
+"pos": "M",
+"nat": "POR",
+"num": 88,
+"age": null
+},
+{
+"n": "João Gastão",
+"pos": "F",
+"nat": "ANG",
+"num": 89,
+"age": null
+},
+{
+"n": "Fabijan Buntić",
+"pos": "G",
+"nat": "CRO",
+"num": 97,
+"age": 29
+}
+]
+},
+"POR2/Chaves": {
+"title": "G.D. Chaves",
+"sq": [
+{
+"n": "João Valido",
+"pos": "G",
+"nat": "POR",
+"num": 1,
+"age": 25
+},
+{
+"n": "Anthony Herbert",
+"pos": "D",
+"nat": "PAN",
+"num": 2,
+"age": null
+},
+{
+"n": "Aarón Romero",
+"pos": "D",
+"nat": "ESP",
+"num": 3,
+"age": 27
+},
+{
+"n": "Bruno Rodrigues",
+"pos": "D",
+"nat": "POR",
+"num": 4,
+"age": 25
+},
+{
+"n": "Kiko",
+"pos": "D",
+"nat": "POR",
+"num": 5,
+"age": null
+},
+{
+"n": "Brice Eboudjé",
+"pos": "M",
+"nat": "CMR",
+"num": 6,
+"age": null
+},
+{
+"n": "Robyn Esajas",
+"pos": "F",
+"nat": "NED",
+"num": 7,
+"age": 24
+},
+{
+"n": "João Teixeira",
+"pos": "M",
+"nat": "POR",
+"num": 8,
+"age": 32
+},
+{
+"n": "Marquinhos",
+"pos": "F",
+"nat": "BRA",
+"num": 9,
+"age": 23
+},
+{
+"n": "André Rodrigues",
+"pos": "M",
+"nat": "POR",
+"num": 10,
+"age": null
+},
+{
+"n": "Pedro Pelágio",
+"pos": "M",
+"nat": "POR",
+"num": 11,
+"age": 26
+},
+{
+"n": "Ivo Vázquez",
+"pos": "D",
+"nat": "MEX",
+"num": 13,
+"age": 26
+},
+{
+"n": "Néstor Araujo",
+"pos": "D",
+"nat": "MEX",
+"num": 14,
+"age": 35
+},
+{
+"n": "Dru Yearwood",
+"pos": "M",
+"nat": "ENG",
+"num": 16,
+"age": 26
+},
+{
+"n": "Roberto",
+"pos": "F",
+"nat": "POR",
+"num": 17,
+"age": 38
+},
+{
+"n": "Wilson Tavares",
+"pos": "F",
+"nat": "CPV",
+"num": 18,
+"age": null
+},
+{
+"n": "Gilberto García",
+"pos": "M",
+"nat": "MEX",
+"num": 19,
+"age": 26
+},
+{
+"n": "Keyns Abdala",
+"pos": "M",
+"nat": "MOZ",
+"num": 22,
+"age": null
+},
+{
+"n": "Léo Alaba",
+"pos": "D",
+"nat": "BRA",
+"num": 23,
+"age": null
+},
+{
+"n": "Armando Jr",
+"pos": "F",
+"nat": "ESP",
+"num": 27,
+"age": null
+},
+{
+"n": "Mamadou Tounkara",
+"pos": "D",
+"nat": "MLI",
+"num": 29,
+"age": 25
+},
+{
+"n": "Costinha",
+"pos": "F",
+"nat": "POR",
+"num": 30,
+"age": null
+},
+{
+"n": "Rodrigo Moura",
+"pos": "G",
+"nat": "BRA",
+"num": 31,
+"age": 30
+},
+{
+"n": "Tiago Simões",
+"pos": "D",
+"nat": "POR",
+"num": 33,
+"age": null
+},
+{
+"n": "Ricardo Alves",
+"pos": "D",
+"nat": "POR",
+"num": 34,
+"age": 35
+},
+{
+"n": "Aílson Tavares",
+"pos": "M",
+"nat": "CPV",
+"num": 42,
+"age": 28
+},
+{
+"n": "Lucas Lima",
+"pos": "M",
+"nat": "CAN",
+"num": 50,
+"age": null
+},
+{
+"n": "Divin Muteba",
+"pos": "M",
+"nat": "COD",
+"num": 60,
+"age": null
+},
+{
+"n": "Di Cardoso",
+"pos": "M",
+"nat": "POR",
+"num": 70,
+"age": null
+},
+{
+"n": "Mohamed Fofana",
+"pos": "M",
+"nat": "CIV",
+"num": 80,
+"age": null
+},
+{
+"n": "Marko Gudžulić",
+"pos": "G",
+"nat": "SRB",
+"num": 88,
+"age": 24
+},
+{
+"n": "Thiago Pereira",
+"pos": "G",
+"nat": "POR",
+"num": 94,
+"age": null
+},
+{
+"n": "GB",
+"pos": "F",
+"nat": "BRA",
+"num": 99,
+"age": 21
+}
+]
 }
 }
