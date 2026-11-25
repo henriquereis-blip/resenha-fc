@@ -43630,8 +43630,191 @@
 ]
 },
 "ENG2/Cardiff City": {
-"title": "Cardiff City Stadium",
-"sq": []
+"title": "Cardiff City F.C.",
+"sq": [
+{
+"n": "Nathan Trott",
+"pos": "G",
+"nat": "ENG",
+"num": 1,
+"age": 28
+},
+{
+"n": "Will Fish",
+"pos": "D",
+"nat": "ENG",
+"num": 2,
+"age": 23
+},
+{
+"n": "Joel Bagan",
+"pos": "D",
+"nat": "IRL",
+"num": 3,
+"age": 25
+},
+{
+"n": "Gabriel Osho",
+"pos": "D",
+"nat": "NGR",
+"num": 4,
+"age": 28
+},
+{
+"n": "Krystian Bielik",
+"pos": "D",
+"nat": "POL",
+"num": 5,
+"age": 28
+},
+{
+"n": "Jack Moylan",
+"pos": "M",
+"nat": "IRL",
+"num": 8,
+"age": 25
+},
+{
+"n": "Yousef Salech",
+"pos": "F",
+"nat": "DEN",
+"num": 9,
+"age": 24
+},
+{
+"n": "Rubin Colwill",
+"pos": "M",
+"nat": "WAL",
+"num": 10,
+"age": 24
+},
+{
+"n": "Ollie Tanner",
+"pos": "F",
+"nat": "ENG",
+"num": 11,
+"age": 24
+},
+{
+"n": "Calum Chambers",
+"pos": "D",
+"nat": "ENG",
+"num": 12,
+"age": 31
+},
+{
+"n": "David Turnbull",
+"pos": "M",
+"nat": "SCO",
+"num": 14,
+"age": 27
+},
+{
+"n": "Chris Willock",
+"pos": "M",
+"nat": "ENG",
+"num": 16,
+"age": 28
+},
+{
+"n": "Alex Robertson",
+"pos": "M",
+"nat": "AUS",
+"num": 18,
+"age": null
+},
+{
+"n": "Calum Scanlon",
+"pos": "D",
+"nat": "ENG",
+"num": 23,
+"age": 21
+},
+{
+"n": "Joel Colwill",
+"pos": "M",
+"nat": "WAL",
+"num": 27,
+"age": 22
+},
+{
+"n": "Harry Tyrer",
+"pos": "G",
+"nat": "ENG",
+"num": 30,
+"age": 25
+},
+{
+"n": "Rob Tankiewicz",
+"pos": "M",
+"nat": "WAL",
+"num": 33,
+"age": 17
+},
+{
+"n": "Perry Ng",
+"pos": "D",
+"nat": "SGP",
+"num": 38,
+"age": 30
+},
+{
+"n": "Isaak Davies",
+"pos": "F",
+"nat": "WAL",
+"num": 39,
+"age": 25
+},
+{
+"n": "Noah Anyadike",
+"pos": "D",
+"nat": "WAL",
+"num": 40,
+"age": 15
+},
+{
+"n": "Matthew Turner",
+"pos": "G",
+"nat": "WAL",
+"num": 41,
+"age": 24
+},
+{
+"n": "Paul Moreno",
+"pos": "M",
+"nat": "WAL",
+"num": 43,
+"age": null
+},
+{
+"n": "Ronan Kpakio",
+"pos": "D",
+"nat": "WAL",
+"num": 44,
+"age": 19
+},
+{
+"n": "Cian Ashford",
+"pos": "M",
+"nat": "WAL",
+"num": 45,
+"age": null
+},
+{
+"n": "Callum Robinson",
+"pos": "F",
+"nat": "IRL",
+"num": 47,
+"age": 31
+},
+{
+"n": "Dylan Lawlor",
+"pos": "D",
+"nat": "WAL",
+"num": 48,
+"age": 20
+}
+]
 },
 "ENG2/Queens Park Rangers": {
 "title": "Queens Park Rangers F.C.",
@@ -43821,8 +44004,282 @@
 ]
 },
 "ENG2/Derby County": {
-"title": "Archie Brown (footballer)",
-"sq": []
+"title": "Derby County F.C.",
+"sq": [
+{
+"n": "Jacob Widell Zetterström",
+"pos": "G",
+"nat": "SWE",
+"num": 1,
+"age": 28
+},
+{
+"n": "Derry Murkin",
+"pos": "D",
+"nat": "ENG",
+"num": 2,
+"age": 27
+},
+{
+"n": "Craig Forsyth",
+"pos": "D",
+"nat": "SCO",
+"num": 3,
+"age": 37
+},
+{
+"n": "David Ozoh",
+"pos": "M",
+"nat": "ENG",
+"num": 4,
+"age": 21
+},
+{
+"n": "Matt Clarke",
+"pos": "D",
+"nat": "ENG",
+"num": 5,
+"age": 30
+},
+{
+"n": "Sondre Langås",
+"pos": "D",
+"nat": "NOR",
+"num": 6,
+"age": 25
+},
+{
+"n": "Patrick Agyemang",
+"pos": "F",
+"nat": "USA",
+"num": 7,
+"age": 26
+},
+{
+"n": "Bobby Clark",
+"pos": "M",
+"nat": "ENG",
+"num": 8,
+"age": 21
+},
+{
+"n": "Carlton Morris",
+"pos": "F",
+"nat": "ENG",
+"num": 9,
+"age": 31
+},
+{
+"n": "Rhian Brewster",
+"pos": "F",
+"nat": "ENG",
+"num": 10,
+"age": 26
+},
+{
+"n": "Sammie Szmodics",
+"pos": "M",
+"nat": "IRL",
+"num": 11,
+"age": 31
+},
+{
+"n": "Richard O'Donnell",
+"pos": "G",
+"nat": "ENG",
+"num": 12,
+"age": 38
+},
+{
+"n": "Filip Bilbija",
+"pos": "M",
+"nat": "GER",
+"num": 13,
+"age": 26
+},
+{
+"n": "Jack Robinson",
+"pos": "D",
+"nat": "ENG",
+"num": 14,
+"age": 33
+},
+{
+"n": "Lars-Jørgen Salvesen",
+"pos": "F",
+"nat": "NOR",
+"num": 15,
+"age": 30
+},
+{
+"n": "Mohammed Fuseini",
+"pos": "F",
+"nat": "GHA",
+"num": 16,
+"age": 24
+},
+{
+"n": "Charlie Taylor",
+"pos": "D",
+"nat": "ENG",
+"num": 18,
+"age": 33
+},
+{
+"n": "Henrik Meister",
+"pos": "F",
+"nat": "DEN",
+"num": 19,
+"age": 23
+},
+{
+"n": "Alex Mowatt",
+"pos": "M",
+"nat": "ENG",
+"num": 20,
+"age": 31
+},
+{
+"n": "Max Johnston",
+"pos": "D",
+"nat": "SCO",
+"num": 22,
+"age": 23
+},
+{
+"n": "Joe Ward",
+"pos": "M",
+"nat": "ENG",
+"num": 23,
+"age": 31
+},
+{
+"n": "Ryan Nyambe",
+"pos": "D",
+"nat": "NAM",
+"num": 24,
+"age": 29
+},
+{
+"n": "Shane Duffy",
+"pos": "D",
+"nat": "IRL",
+"num": 25,
+"age": 34
+},
+{
+"n": "Ryan Hedges",
+"pos": "M",
+"nat": "WAL",
+"num": 26,
+"age": 31
+},
+{
+"n": "Lewis Travis",
+"pos": "M",
+"nat": "ENG",
+"num": 27,
+"age": 29
+},
+{
+"n": "Dion Sanderson",
+"pos": "D",
+"nat": "ENG",
+"num": 28,
+"age": 27
+},
+{
+"n": "Oscar Fraulo",
+"pos": "M",
+"nat": "DEN",
+"num": 29,
+"age": 23
+},
+{
+"n": "Josh Vickers",
+"pos": "G",
+"nat": "ENG",
+"num": 31,
+"age": 31
+},
+{
+"n": "Corey Blackett-Taylor",
+"pos": "F",
+"nat": "ENG",
+"num": 33,
+"age": 29
+},
+{
+"n": "Nicholas Bilokapic",
+"pos": "G",
+"nat": "AUS",
+"num": 39,
+"age": 24
+},
+{
+"n": "Charlie Smith",
+"pos": "M",
+"nat": "ENG",
+"num": 41,
+"age": null
+},
+{
+"n": "Isaac Gordon",
+"pos": "D",
+"nat": "ENG",
+"num": 43,
+"age": null
+},
+{
+"n": "Eiran Cashin",
+"pos": "D",
+"nat": "IRL",
+"num": 44,
+"age": 25
+},
+{
+"n": "Kenzo Goudmijn",
+"pos": "M",
+"nat": "NED",
+"num": 17,
+"age": 25
+},
+{
+"n": "Owen Eames",
+"pos": "M",
+"nat": "ENG",
+"num": 37,
+"age": 20
+},
+{
+"n": "Dajaune Brown",
+"pos": "F",
+"nat": "JAM",
+"num": 39,
+"age": 21
+},
+{
+"n": "Cruz Allen",
+"pos": "M",
+"nat": "WAL",
+"num": 40,
+"age": 19
+},
+{
+"n": "Raymond Offor",
+"pos": "D",
+"nat": "IRL",
+"num": 42,
+"age": null
+},
+{
+"n": "Rio Canoville",
+"pos": "D",
+"nat": "ENG",
+"num": 45,
+"age": null
+}
+]
 },
 "ENG2/Portsmouth": {
 "title": "Portsmouth F.C.",
@@ -51250,8 +51707,205 @@
 ]
 },
 "ITA2/Brescia": {
-"title": "Brescia Calcio",
-"sq": []
+"title": "Union Brescia",
+"sq": [
+{
+"n": "Luca Liverani",
+"pos": "G",
+"nat": "ITA",
+"num": 1,
+"age": 37
+},
+{
+"n": "Alberto Rizzo",
+"pos": "D",
+"nat": "ITA",
+"num": 3,
+"age": 29
+},
+{
+"n": "Frederik Sørensen",
+"pos": "D",
+"nat": "DEN",
+"num": 4,
+"age": 34
+},
+{
+"n": "Nicola Pasini",
+"pos": "D",
+"nat": "ITA",
+"num": 5,
+"age": 35
+},
+{
+"n": "Alessandro Mercati",
+"pos": "M",
+"nat": "ITA",
+"num": 6,
+"age": 24
+},
+{
+"n": "Davide Di Molfetta",
+"pos": "F",
+"nat": "ITA",
+"num": 7,
+"age": 30
+},
+{
+"n": "Davide Balestrero",
+"pos": "M",
+"nat": "ITA",
+"num": 8,
+"age": 31
+},
+{
+"n": "Valerio Crespi",
+"pos": "F",
+"nat": "ITA",
+"num": 9,
+"age": null
+},
+{
+"n": "Samuel Henry Mbengue",
+"pos": "G",
+"nat": "ITA",
+"num": 12,
+"age": null
+},
+{
+"n": "Alessandro Mallamo",
+"pos": "M",
+"nat": "ITA",
+"num": 14,
+"age": 27
+},
+{
+"n": "Tiago Casasola",
+"pos": "M",
+"nat": "ARG",
+"num": 15,
+"age": 31
+},
+{
+"n": "Manuel Marras",
+"pos": "F",
+"nat": "ITA",
+"num": 17,
+"age": 33
+},
+{
+"n": "Vincent De Maria",
+"pos": "M",
+"nat": "ITA",
+"num": 18,
+"age": null
+},
+{
+"n": "Mattia Zennaro",
+"pos": "M",
+"nat": "ITA",
+"num": 20,
+"age": 26
+},
+{
+"n": "Brayan Boci",
+"pos": "D",
+"nat": "ALB",
+"num": 24,
+"age": 23
+},
+{
+"n": "Andrea Rizzo Pinna",
+"pos": "M",
+"nat": "ITA",
+"num": 25,
+"age": null
+},
+{
+"n": "Marco Frigerio",
+"pos": "M",
+"nat": "ITA",
+"num": 26,
+"age": 25
+},
+{
+"n": "Alessandro Lamesta",
+"pos": "M",
+"nat": "ITA",
+"num": 27,
+"age": null
+},
+{
+"n": "Luigi Silvestri",
+"pos": "D",
+"nat": "ITA",
+"num": 28,
+"age": 33
+},
+{
+"n": "Jacopo Pellegrini",
+"pos": "F",
+"nat": "ITA",
+"num": 30,
+"age": 26
+},
+{
+"n": "Gioele Zacchi",
+"pos": "G",
+"nat": "ITA",
+"num": 43,
+"age": 23
+},
+{
+"n": "Davide Guglielmotti",
+"pos": "M",
+"nat": "ITA",
+"num": 44,
+"age": 32
+},
+{
+"n": "Nicola Grazioli",
+"pos": "G",
+"nat": "ITA",
+"num": 55,
+"age": null
+},
+{
+"n": "Stefano Gori",
+"pos": "G",
+"nat": "ITA",
+"num": 66,
+"age": 30
+},
+{
+"n": "Filippo Armanini",
+"pos": "M",
+"nat": "ITA",
+"num": 72,
+"age": null
+},
+{
+"n": "Loris Armati",
+"pos": "D",
+"nat": "ITA",
+"num": 82,
+"age": null
+},
+{
+"n": "Alberto Spagnoli",
+"pos": "F",
+"nat": "ITA",
+"num": 91,
+"age": 32
+},
+{
+"n": "Samuele Sina",
+"pos": "D",
+"nat": "ALB",
+"num": 95,
+"age": 19
+}
+]
 },
 "ITA2/Salernitana": {
 "title": "US Salernitana 1919",
@@ -52635,6 +53289,228 @@
 "pos": "F",
 "nat": "SRB",
 "num": 99,
+"age": null
+}
+]
+},
+"ITA2/Carrarese": {
+"title": "Carrarese Calcio 1908",
+"sq": [
+{
+"n": "Semuel Pizzignacco",
+"pos": "G",
+"nat": "ITA",
+"num": 1,
+"age": 25
+},
+{
+"n": "Colin Dagba",
+"pos": "D",
+"nat": "FRA",
+"num": 2,
+"age": 28
+},
+{
+"n": "David Vujević",
+"pos": "D",
+"nat": "CRO",
+"num": 4,
+"age": null
+},
+{
+"n": "Tommaso Macchioni",
+"pos": "D",
+"nat": "ITA",
+"num": 5,
+"age": null
+},
+{
+"n": "Filippo Oliana",
+"pos": "D",
+"nat": "ITA",
+"num": 6,
+"age": 27
+},
+{
+"n": "Niccolò Belloni",
+"pos": "M",
+"nat": "ITA",
+"num": 7,
+"age": 32
+},
+{
+"n": "Yanis Khafi",
+"pos": "M",
+"nat": "MAR",
+"num": 8,
+"age": null
+},
+{
+"n": "Fabio Abiuso",
+"pos": "F",
+"nat": "ITA",
+"num": 9,
+"age": 23
+},
+{
+"n": "Tommaso Rubino",
+"pos": "M",
+"nat": "ITA",
+"num": 10,
+"age": 20
+},
+{
+"n": "Moustapha Cissé",
+"pos": "F",
+"nat": "GUI",
+"num": 11,
+"age": 23
+},
+{
+"n": "Giovanni Garofani",
+"pos": "G",
+"nat": "ITA",
+"num": 12,
+"age": 24
+},
+{
+"n": "Fabio Andrea Ruggeri",
+"pos": "D",
+"nat": "ITA",
+"num": 13,
+"age": null
+},
+{
+"n": "Luka Topalović",
+"pos": "M",
+"nat": "SLO",
+"num": 17,
+"age": 20
+},
+{
+"n": "Nicolás Schiavi",
+"pos": "M",
+"nat": "ARG",
+"num": 18,
+"age": 31
+},
+{
+"n": "Gonçalo Esteves",
+"pos": "D",
+"nat": "POR",
+"num": 20,
+"age": 22
+},
+{
+"n": "Nicholas Bonfanti",
+"pos": "F",
+"nat": "ITA",
+"num": 21,
+"age": 24
+},
+{
+"n": "Matthias Braunöder",
+"pos": "M",
+"nat": "AUT",
+"num": 23,
+"age": 24
+},
+{
+"n": "Giulio Cianti",
+"pos": "D",
+"nat": "ITA",
+"num": 27,
+"age": null
+},
+{
+"n": "Jacopo Martini",
+"pos": "M",
+"nat": "ITA",
+"num": 28,
+"age": 22
+},
+{
+"n": "Nicola Ravaglia",
+"pos": "G",
+"nat": "ITA",
+"num": 30,
+"age": 38
+},
+{
+"n": "Mattia Finotto",
+"pos": "F",
+"nat": "ITA",
+"num": 32,
+"age": 34
+},
+{
+"n": "Filippo Reale",
+"pos": "D",
+"nat": "ITA",
+"num": 33,
+"age": null
+},
+{
+"n": "Lorenzo Romani",
+"pos": "D",
+"nat": "ITA",
+"num": 41,
+"age": null
+},
+{
+"n": "Pietro Pinelli",
+"pos": "M",
+"nat": "ITA",
+"num": 66,
+"age": null
+},
+{
+"n": "Nicolò Cudrig",
+"pos": "M",
+"nat": "ITA",
+"num": 70,
+"age": 24
+},
+{
+"n": "Giulio Baroncelli",
+"pos": "M",
+"nat": "ITA",
+"num": 71,
+"age": null
+},
+{
+"n": "Jonas Rouhi",
+"pos": "D",
+"nat": "SWE",
+"num": 73,
+"age": 22
+},
+{
+"n": "Gabriele Parlanti",
+"pos": "M",
+"nat": "ITA",
+"num": 77,
+"age": 22
+},
+{
+"n": "Tommaso Guercio",
+"pos": "D",
+"nat": "POL",
+"num": 78,
+"age": 21
+},
+{
+"n": "Stefano Mazzini",
+"pos": "G",
+"nat": "ITA",
+"num": 87,
+"age": 28
+},
+{
+"n": "Giacomo Marconi",
+"pos": "F",
+"nat": "ITA",
+"num": 91,
 "age": null
 }
 ]
