@@ -24555,5 +24555,4951 @@
 "age": null
 }
 ]
+},
+"CHN/Liaoning Tieren": {
+"title": "Liaoning Tieren F.C.",
+"sq": [
+{
+"n": "Pan Ximing",
+"pos": "D",
+"nat": "CHN",
+"num": 3,
+"age": null
+},
+{
+"n": "Dilmurat Mawlanyaz",
+"pos": "D",
+"nat": "CHN",
+"num": 5,
+"age": null
+},
+{
+"n": "Ange Kouamé",
+"pos": "F",
+"nat": "TPE",
+"num": 7,
+"age": null
+},
+{
+"n": "Yan Dinghao",
+"pos": "M",
+"nat": "CHN",
+"num": 8,
+"age": null
+},
+{
+"n": "Guy Mbenza",
+"pos": "F",
+"nat": "CGO",
+"num": 9,
+"age": null
+},
+{
+"n": "Takahiro Kunimoto",
+"pos": "F",
+"nat": "JPN",
+"num": 10,
+"age": null
+},
+{
+"n": "Chen Binbin",
+"pos": "F",
+"nat": "CHN",
+"num": 11,
+"age": null
+},
+{
+"n": "Jie Jintian",
+"pos": "G",
+"nat": "CHN",
+"num": 13,
+"age": null
+},
+{
+"n": "Zang Yifeng",
+"pos": "F",
+"nat": "CHN",
+"num": 14,
+"age": null
+},
+{
+"n": "Felipe",
+"pos": "D",
+"nat": "BRA",
+"num": 15,
+"age": null
+},
+{
+"n": "Wang Tianai",
+"pos": "G",
+"nat": "CHN",
+"num": 16,
+"age": null
+},
+{
+"n": "Tian Yuda",
+"pos": "F",
+"nat": "CHN",
+"num": 17,
+"age": null
+},
+{
+"n": "Li Tixiang",
+"pos": "M",
+"nat": "CHN",
+"num": 18,
+"age": null
+},
+{
+"n": "Wu Mingyu",
+"pos": "D",
+"nat": "CHN",
+"num": 19,
+"age": null
+},
+{
+"n": "Han Rongze",
+"pos": "G",
+"nat": "CHN",
+"num": 21,
+"age": null
+},
+{
+"n": "Liu Guobo",
+"pos": "G",
+"nat": "CHN",
+"num": 22,
+"age": null
+},
+{
+"n": "Yuan Mincheng",
+"pos": "D",
+"nat": "CHN",
+"num": 26,
+"age": null
+},
+{
+"n": "Gao Jiarun",
+"pos": "D",
+"nat": "CHN",
+"num": 27,
+"age": null
+},
+{
+"n": "Xu Dong",
+"pos": "D",
+"nat": "CHN",
+"num": 28,
+"age": null
+},
+{
+"n": "Zhang Yan",
+"pos": "G",
+"nat": "CHN",
+"num": 29,
+"age": null
+},
+{
+"n": "Pang Shenghan",
+"pos": "D",
+"nat": "CHN",
+"num": 30,
+"age": null
+},
+{
+"n": "Tian Yinong",
+"pos": "M",
+"nat": "CHN",
+"num": 33,
+"age": null
+},
+{
+"n": "Zhang Hongfu",
+"pos": "D",
+"nat": "CHN",
+"num": 34,
+"age": null
+},
+{
+"n": "Li Haoran",
+"pos": "D",
+"nat": "CHN",
+"num": 35,
+"age": null
+},
+{
+"n": "Tian De'ao",
+"pos": "D",
+"nat": "CHN",
+"num": 36,
+"age": null
+},
+{
+"n": "Zheng Jiacheng",
+"pos": "M",
+"nat": "BEL",
+"num": 37,
+"age": 21
+},
+{
+"n": "Li Shiqi",
+"pos": "D",
+"nat": "CHN",
+"num": 39,
+"age": null
+},
+{
+"n": "Jeffinho",
+"pos": "F",
+"nat": "BRA",
+"num": 47,
+"age": 27
+}
+]
+},
+"CHN/Yunnan Yukun": {
+"title": "Yunnan Yukun F.C.",
+"sq": [
+{
+"n": "Bao Yaxiong",
+"pos": "G",
+"nat": "CHN",
+"num": 1,
+"age": 29
+},
+{
+"n": "Hu Ruibao",
+"pos": "D",
+"nat": "CHN",
+"num": 2,
+"age": 30
+},
+{
+"n": "Tsui Wang Kit",
+"pos": "D",
+"nat": "HKG",
+"num": 3,
+"age": 29
+},
+{
+"n": "Shi Ke",
+"pos": "D",
+"nat": "CHN",
+"num": 5,
+"age": 33
+},
+{
+"n": "Zhao Yuhao",
+"pos": "M",
+"nat": "CHN",
+"num": 6,
+"age": 33
+},
+{
+"n": "Ye Chugui",
+"pos": "M",
+"nat": "CHN",
+"num": 7,
+"age": 32
+},
+{
+"n": "Xu Xin",
+"pos": "M",
+"nat": "CHN",
+"num": 8,
+"age": 32
+},
+{
+"n": "Cléber",
+"pos": "F",
+"nat": "BRA",
+"num": 9,
+"age": 30
+},
+{
+"n": "Alexandru Ioniță",
+"pos": "M",
+"nat": "ROU",
+"num": 10,
+"age": 32
+},
+{
+"n": "Oscar Maritu",
+"pos": "F",
+"nat": "COD",
+"num": 11,
+"age": 27
+},
+{
+"n": "Qiu Shengjun",
+"pos": "G",
+"nat": "CHN",
+"num": 13,
+"age": null
+},
+{
+"n": "Wang Xinghao",
+"pos": "G",
+"nat": "CHN",
+"num": 14,
+"age": 22
+},
+{
+"n": "Zhang Xiangshuo",
+"pos": "D",
+"nat": "CHN",
+"num": 16,
+"age": 25
+},
+{
+"n": "Sun Xuelong",
+"pos": "M",
+"nat": "CHN",
+"num": 17,
+"age": 27
+},
+{
+"n": "Yi Teng",
+"pos": "D",
+"nat": "CHN",
+"num": 18,
+"age": 36
+},
+{
+"n": "Huang Zichang",
+"pos": "F",
+"nat": "CHN",
+"num": 19,
+"age": 29
+},
+{
+"n": "Zhang Zihao",
+"pos": "D",
+"nat": "CHN",
+"num": 21,
+"age": null
+},
+{
+"n": "Duan Liuyu",
+"pos": "G",
+"nat": "CHN",
+"num": 22,
+"age": 28
+},
+{
+"n": "Wang Zhifeng",
+"pos": "G",
+"nat": "CHN",
+"num": 23,
+"age": 29
+},
+{
+"n": "Yu Jianxian",
+"pos": "G",
+"nat": "CHN",
+"num": 24,
+"age": null
+},
+{
+"n": "Deng Hanwen",
+"pos": "D",
+"nat": "CHN",
+"num": 25,
+"age": 31
+},
+{
+"n": "Zhang Chenliang",
+"pos": "D",
+"nat": "CHN",
+"num": 26,
+"age": 28
+},
+{
+"n": "Han Zilong",
+"pos": "F",
+"nat": "CHN",
+"num": 27,
+"age": 32
+},
+{
+"n": "John Hou Sæter",
+"pos": "M",
+"nat": "NOR",
+"num": 30,
+"age": 28
+},
+{
+"n": "Andrei Burcă",
+"pos": "D",
+"nat": "ROU",
+"num": 33,
+"age": 33
+},
+{
+"n": "Caio Vinícius",
+"pos": "M",
+"nat": "BRA",
+"num": 34,
+"age": 27
+},
+{
+"n": "Cui Qi",
+"pos": "D",
+"nat": "CHN",
+"num": 35,
+"age": 29
+},
+{
+"n": "Fei Ernanduo",
+"pos": "F",
+"nat": "CHN",
+"num": 36,
+"age": 25
+},
+{
+"n": "Bunyamin Abdusalam",
+"pos": "M",
+"nat": "CHN",
+"num": 39,
+"age": 18
+}
+]
+},
+"CHN/Wuhan Three Towns": {
+"title": "Wuhan Three Towns F.C.",
+"sq": [
+{
+"n": "He Jianqiu",
+"pos": "G",
+"nat": "CHN",
+"num": 1,
+"age": null
+},
+{
+"n": "He Guan",
+"pos": "D",
+"nat": "CHN",
+"num": 2,
+"age": 33
+},
+{
+"n": "Xu Haofeng",
+"pos": "D",
+"nat": "CHN",
+"num": 4,
+"age": 27
+},
+{
+"n": "Li Shenyuan",
+"pos": "D",
+"nat": "CHN",
+"num": 5,
+"age": 29
+},
+{
+"n": "Long Wei",
+"pos": "M",
+"nat": "CHN",
+"num": 6,
+"age": 31
+},
+{
+"n": "Gustavo Sauer",
+"pos": "M",
+"nat": "BRA",
+"num": 7,
+"age": 33
+},
+{
+"n": "Wang Jinxian",
+"pos": "M",
+"nat": "CHN",
+"num": 8,
+"age": 30
+},
+{
+"n": "Zheng Haoqian",
+"pos": "F",
+"nat": "CHN",
+"num": 9,
+"age": 28
+},
+{
+"n": "Kilian Bevis",
+"pos": "F",
+"nat": "GLP",
+"num": 10,
+"age": 28
+},
+{
+"n": "Li Ang",
+"pos": "D",
+"nat": "CHN",
+"num": 11,
+"age": 33
+},
+{
+"n": "Liao Chengjian",
+"pos": "D",
+"nat": "CHN",
+"num": 12,
+"age": 33
+},
+{
+"n": "Zheng Kaimu",
+"pos": "M",
+"nat": "CHN",
+"num": 13,
+"age": 34
+},
+{
+"n": "Chen Zhechao",
+"pos": "D",
+"nat": "CHN",
+"num": 15,
+"age": 31
+},
+{
+"n": "Min Zixi",
+"pos": "M",
+"nat": "CHN",
+"num": 16,
+"age": null
+},
+{
+"n": "Halit Abdugheni",
+"pos": "M",
+"nat": "CHN",
+"num": 17,
+"age": null
+},
+{
+"n": "Zhang Xiaobin",
+"pos": "M",
+"nat": "CHN",
+"num": 18,
+"age": 33
+},
+{
+"n": "Liu Yiming",
+"pos": "D",
+"nat": "CHN",
+"num": 19,
+"age": 31
+},
+{
+"n": "Adriano",
+"pos": "M",
+"nat": "BRA",
+"num": 20,
+"age": 27
+},
+{
+"n": "Xiong Jizheng",
+"pos": "M",
+"nat": "CHN",
+"num": 21,
+"age": null
+},
+{
+"n": "Fang Jingqi",
+"pos": "G",
+"nat": "CHN",
+"num": 22,
+"age": 33
+},
+{
+"n": "Jiang Lixun",
+"pos": "F",
+"nat": "CHN",
+"num": 24,
+"age": null
+},
+{
+"n": "Ming Tian",
+"pos": "D",
+"nat": "CHN",
+"num": 25,
+"age": 31
+},
+{
+"n": "Xia Zihao",
+"pos": "M",
+"nat": "CHN",
+"num": 27,
+"age": null
+},
+{
+"n": "Denny Wang",
+"pos": "D",
+"nat": "ITA",
+"num": 28,
+"age": 28
+},
+{
+"n": "Jhonder Cádiz",
+"pos": "F",
+"nat": "VEN",
+"num": 29,
+"age": 31
+},
+{
+"n": "Zhong Jinbao",
+"pos": "M",
+"nat": "CHN",
+"num": 30,
+"age": 32
+},
+{
+"n": "Guo Jiayu",
+"pos": "G",
+"nat": "CHN",
+"num": 31,
+"age": 22
+},
+{
+"n": "Liu Binbin",
+"pos": "M",
+"nat": "CHN",
+"num": 33,
+"age": 33
+},
+{
+"n": "Yu Tianle",
+"pos": "D",
+"nat": "CHN",
+"num": 35,
+"age": null
+},
+{
+"n": "Wang Kang",
+"pos": "F",
+"nat": "CHN",
+"num": 37,
+"age": null
+},
+{
+"n": "Antoine Leautey",
+"pos": "M",
+"nat": "FRA",
+"num": 50,
+"age": 30
+},
+{
+"n": "Xu Zhengpeng",
+"pos": "M",
+"nat": "CHN",
+"num": 54,
+"age": null
+}
+]
+},
+"CHN/Chongqing Tonglianglong": {
+"title": "Chongqing Tonglianglong F.C.",
+"sq": [
+{
+"n": "Yao Haoyang",
+"pos": "G",
+"nat": "CHN",
+"num": 1,
+"age": 20
+},
+{
+"n": "Zhang Yingkai",
+"pos": "D",
+"nat": "CHN",
+"num": 3,
+"age": 22
+},
+{
+"n": "Yue Ruijie",
+"pos": "D",
+"nat": "CHN",
+"num": 4,
+"age": 19
+},
+{
+"n": "Jin Pengxiang",
+"pos": "D",
+"nat": "CHN",
+"num": 6,
+"age": 36
+},
+{
+"n": "Xiang Yuwang",
+"pos": "F",
+"nat": "CHN",
+"num": 7,
+"age": 23
+},
+{
+"n": "Li Zhenquan",
+"pos": "M",
+"nat": "CHN",
+"num": 8,
+"age": 23
+},
+{
+"n": "Alexandru Cîmpanu",
+"pos": "F",
+"nat": "ROU",
+"num": 9,
+"age": 26
+},
+{
+"n": "Ibrahim Amadou",
+"pos": "M",
+"nat": "FRA",
+"num": 10,
+"age": 33
+},
+{
+"n": "Landry Dimata",
+"pos": "F",
+"nat": "BEL",
+"num": 11,
+"age": 29
+},
+{
+"n": "Chen Chunxin",
+"pos": "M",
+"nat": "CHN",
+"num": 15,
+"age": 29
+},
+{
+"n": "Zhang Zhixiong",
+"pos": "M",
+"nat": "CHN",
+"num": 16,
+"age": 20
+},
+{
+"n": "Ng Yu Hei",
+"pos": "M",
+"nat": "HKG",
+"num": 17,
+"age": 20
+},
+{
+"n": "Liang Weipeng",
+"pos": "F",
+"nat": "CHN",
+"num": 18,
+"age": null
+},
+{
+"n": "Du Yuezheng",
+"pos": "F",
+"nat": "CHN",
+"num": 19,
+"age": 21
+},
+{
+"n": "Liu Jiale",
+"pos": "M",
+"nat": "CHN",
+"num": 21,
+"age": 18
+},
+{
+"n": "Liu Mingshi",
+"pos": "D",
+"nat": "CHN",
+"num": 24,
+"age": null
+},
+{
+"n": "Yerjet Yerzat",
+"pos": "G",
+"nat": "CHN",
+"num": 25,
+"age": 33
+},
+{
+"n": "He Xiaoqiang",
+"pos": "D",
+"nat": "CHN",
+"num": 26,
+"age": 24
+},
+{
+"n": "Wu Yongqiang",
+"pos": "M",
+"nat": "CHN",
+"num": 27,
+"age": null
+},
+{
+"n": "Bai Yutao",
+"pos": "M",
+"nat": "CHN",
+"num": 30,
+"age": null
+},
+{
+"n": "Wu Zitong",
+"pos": "G",
+"nat": "CHN",
+"num": 31,
+"age": 19
+},
+{
+"n": "Michael Ngadeu-Ngadjui",
+"pos": "D",
+"nat": "CMR",
+"num": 32,
+"age": 36
+},
+{
+"n": "Lucão",
+"pos": "D",
+"nat": "BRA",
+"num": 33,
+"age": 30
+},
+{
+"n": "Wei Suowei",
+"pos": "D",
+"nat": "CHN",
+"num": 37,
+"age": 21
+},
+{
+"n": "Ruan Qilong",
+"pos": "D",
+"nat": "CHN",
+"num": 38,
+"age": 25
+}
+]
+},
+"EGY/Al Ahly": {
+"title": "Al Ahly SC",
+"sq": [
+{
+"n": "Mohamed El Shenawy",
+"pos": "G",
+"nat": "EGY",
+"num": 1,
+"age": 38
+},
+{
+"n": "Yassin Marei",
+"pos": "D",
+"nat": "EGY",
+"num": 2,
+"age": 25
+},
+{
+"n": "Achraf Dari",
+"pos": "D",
+"nat": "MAR",
+"num": 3,
+"age": 27
+},
+{
+"n": "Ahmed Eid",
+"pos": "D",
+"nat": "EGY",
+"num": 4,
+"age": 25
+},
+{
+"n": "Hady Reyad",
+"pos": "D",
+"nat": "EGY",
+"num": 5,
+"age": 28
+},
+{
+"n": "Yasser Ibrahim",
+"pos": "D",
+"nat": "EGY",
+"num": 6,
+"age": 33
+},
+{
+"n": "Taher Mohamed",
+"pos": "F",
+"nat": "EGY",
+"num": 7,
+"age": 29
+},
+{
+"n": "Ahmed Reda",
+"pos": "M",
+"nat": "EGY",
+"num": 8,
+"age": null
+},
+{
+"n": "Soufiane Benjdida",
+"pos": "F",
+"nat": "MAR",
+"num": 9,
+"age": 25
+},
+{
+"n": "Monsef Bakrar",
+"pos": "F",
+"nat": "ALG",
+"num": 10,
+"age": 25
+},
+{
+"n": "Karim El Debes",
+"pos": "D",
+"nat": "EGY",
+"num": 11,
+"age": 23
+},
+{
+"n": "Akram Tawfik",
+"pos": "M",
+"nat": "EGY",
+"num": 12,
+"age": 29
+},
+{
+"n": "Marwan Attia",
+"pos": "M",
+"nat": "EGY",
+"num": 13,
+"age": 28
+},
+{
+"n": "Hussein El Shahat",
+"pos": "F",
+"nat": "EGY",
+"num": 14,
+"age": 34
+},
+{
+"n": "Omar El Saaiy",
+"pos": "M",
+"nat": "EGY",
+"num": 15,
+"age": 23
+},
+{
+"n": "Achraf Bencharki",
+"pos": "F",
+"nat": "MAR",
+"num": 17,
+"age": 32
+},
+{
+"n": "Omar Moawad",
+"pos": "F",
+"nat": "EGY",
+"num": 18,
+"age": 20
+},
+{
+"n": "Afsha",
+"pos": "F",
+"nat": "EGY",
+"num": 19,
+"age": 30
+},
+{
+"n": "Youssef Belammari",
+"pos": "D",
+"nat": "MAR",
+"num": 20,
+"age": 28
+},
+{
+"n": "Ali Mahmoud",
+"pos": "M",
+"nat": "EGY",
+"num": 21,
+"age": 24
+},
+{
+"n": "Emam Ashour",
+"pos": "M",
+"nat": "EGY",
+"num": 22,
+"age": 28
+},
+{
+"n": "Tawfik Mohamed",
+"pos": "D",
+"nat": "EGY",
+"num": 24,
+"age": 26
+},
+{
+"n": "Zizo",
+"pos": "F",
+"nat": "EGY",
+"num": 25,
+"age": null
+},
+{
+"n": "Amr El Gazar",
+"pos": "D",
+"nat": "EGY",
+"num": 26,
+"age": 27
+},
+{
+"n": "Aqtay Abdallah",
+"pos": "F",
+"nat": "EGY",
+"num": 27,
+"age": 23
+},
+{
+"n": "Karim Fouad",
+"pos": "F",
+"nat": "EGY",
+"num": 28,
+"age": 27
+},
+{
+"n": "Reda Slim",
+"pos": "F",
+"nat": "MAR",
+"num": 29,
+"age": 27
+},
+{
+"n": "Mohamed Hany",
+"pos": "D",
+"nat": "EGY",
+"num": 30,
+"age": 30
+},
+{
+"n": "Mostafa Shobeir",
+"pos": "G",
+"nat": "EGY",
+"num": 31,
+"age": 26
+},
+{
+"n": "Mohamed Raafat",
+"pos": "F",
+"nat": "EGY",
+"num": 32,
+"age": null
+},
+{
+"n": "Hamza Alaa",
+"pos": "G",
+"nat": "EGY",
+"num": 33,
+"age": 25
+},
+{
+"n": "Kabaka",
+"pos": "M",
+"nat": "EGY",
+"num": 34,
+"age": 21
+},
+{
+"n": "Ahmed Nabil Koka",
+"pos": "M",
+"nat": "EGY",
+"num": 36,
+"age": 25
+},
+{
+"n": "Mohamed Abdallah",
+"pos": "F",
+"nat": "EGY",
+"num": 38,
+"age": 21
+},
+{
+"n": "Mahmoud Salah",
+"pos": "F",
+"nat": "EGY",
+"num": 39,
+"age": 19
+},
+{
+"n": "Ibrahim El Asyuti",
+"pos": "D",
+"nat": "EGY",
+"num": 49,
+"age": null
+}
+]
+},
+"EGY/Pyramids FC": {
+"title": "Pyramids FC",
+"sq": [
+{
+"n": "Ahmed El Shenawy",
+"pos": "G",
+"nat": "EGY",
+"num": 1,
+"age": 35
+},
+{
+"n": "Mahmoud Marei",
+"pos": "D",
+"nat": "EGY",
+"num": 3,
+"age": 28
+},
+{
+"n": "Ahmed Samy",
+"pos": "D",
+"nat": "EGY",
+"num": 4,
+"age": 34
+},
+{
+"n": "Ali Gabr",
+"pos": "D",
+"nat": "EGY",
+"num": 5,
+"age": 37
+},
+{
+"n": "Osama Galal",
+"pos": "D",
+"nat": "EGY",
+"num": 6,
+"age": 29
+},
+{
+"n": "Youssef Obama",
+"pos": "M",
+"nat": "EGY",
+"num": 7,
+"age": 31
+},
+{
+"n": "Mahmoud Saber",
+"pos": "M",
+"nat": "EGY",
+"num": 8,
+"age": 25
+},
+{
+"n": "Ahmed Kader",
+"pos": "F",
+"nat": "EGY",
+"num": 9,
+"age": 27
+},
+{
+"n": "Mostafa Fathi",
+"pos": "F",
+"nat": "EGY",
+"num": 11,
+"age": 32
+},
+{
+"n": "Ahmed Tawfik",
+"pos": "D",
+"nat": "EGY",
+"num": 12,
+"age": 35
+},
+{
+"n": "Nadhir Benbouali",
+"pos": "F",
+"nat": "ALG",
+"num": 13,
+"age": 26
+},
+{
+"n": "Mohanad Lasheen",
+"pos": "M",
+"nat": "EGY",
+"num": 14,
+"age": 30
+},
+{
+"n": "Mohamed Chibi",
+"pos": "D",
+"nat": "MAR",
+"num": 15,
+"age": 33
+},
+{
+"n": "Zalaka",
+"pos": "M",
+"nat": "EGY",
+"num": 17,
+"age": null
+},
+{
+"n": "Walid El Karti",
+"pos": "M",
+"nat": "MAR",
+"num": 18,
+"age": 32
+},
+{
+"n": "Abdel Rahman Magdy",
+"pos": "F",
+"nat": "EGY",
+"num": 20,
+"age": 29
+},
+{
+"n": "Mohamed Hamdy",
+"pos": "D",
+"nat": "EGY",
+"num": 21,
+"age": 31
+},
+{
+"n": "Otta",
+"pos": "M",
+"nat": "EGY",
+"num": 23,
+"age": 24
+},
+{
+"n": "Odeh Al-Fakhouri",
+"pos": "F",
+"nat": "JOR",
+"num": 25,
+"age": 21
+},
+{
+"n": "Mohamed El Gabbas",
+"pos": "F",
+"nat": "EGY",
+"num": 26,
+"age": 38
+},
+{
+"n": "Nasser Maher",
+"pos": "M",
+"nat": "EGY",
+"num": 27,
+"age": 29
+},
+{
+"n": "Mahmoud Gad",
+"pos": "G",
+"nat": "EGY",
+"num": 28,
+"age": 28
+},
+{
+"n": "Karim Hafez",
+"pos": "D",
+"nat": "EGY",
+"num": 29,
+"age": 30
+},
+{
+"n": "Mostafa Ziko",
+"pos": "F",
+"nat": "EGY",
+"num": 30,
+"age": 29
+},
+{
+"n": "Hazem Gamal",
+"pos": "G",
+"nat": "EGY",
+"num": 31,
+"age": 21
+},
+{
+"n": "Ewerton",
+"pos": "M",
+"nat": "BRA",
+"num": 32,
+"age": 30
+},
+{
+"n": "Eyad El Askalany",
+"pos": "D",
+"nat": "EGY",
+"num": 34,
+"age": 22
+},
+{
+"n": "Ahmed Fawzi",
+"pos": "M",
+"nat": "EGY",
+"num": 35,
+"age": null
+},
+{
+"n": "Hassan Tarek",
+"pos": "M",
+"nat": "EGY",
+"num": 37,
+"age": null
+},
+{
+"n": "Ali Hamouda",
+"pos": "F",
+"nat": "EGY",
+"num": 38,
+"age": null
+},
+{
+"n": "Mesho",
+"pos": "F",
+"nat": "EGY",
+"num": 39,
+"age": null
+},
+{
+"n": "Ziad Saoudi",
+"pos": "M",
+"nat": "EGY",
+"num": 40,
+"age": null
+}
+]
+},
+"EGY/Zamalek SC": {
+"title": "Zamalek SC",
+"sq": [
+{
+"n": "Ahmad Hossam",
+"pos": "D",
+"nat": "EGY",
+"num": 2,
+"age": null
+},
+{
+"n": "Mahmoud Bentayg",
+"pos": "D",
+"nat": "MAR",
+"num": 3,
+"age": 27
+},
+{
+"n": "Omar Gaber",
+"pos": "D",
+"nat": "EGY",
+"num": 4,
+"age": 34
+},
+{
+"n": "Mahmoud Gehad",
+"pos": "M",
+"nat": "EGY",
+"num": 6,
+"age": null
+},
+{
+"n": "Hossam Ashraf",
+"pos": "F",
+"nat": "EGY",
+"num": 7,
+"age": 25
+},
+{
+"n": "Nasser Mansi",
+"pos": "F",
+"nat": "EGY",
+"num": 9,
+"age": 29
+},
+{
+"n": "Ahmed Abdel Rahim",
+"pos": "F",
+"nat": "EGY",
+"num": 11,
+"age": 23
+},
+{
+"n": "Ahmed Rabie",
+"pos": "M",
+"nat": "EGY",
+"num": 12,
+"age": null
+},
+{
+"n": "Ahmed Abou El Fotouh",
+"pos": "D",
+"nat": "EGY",
+"num": 13,
+"age": null
+},
+{
+"n": "Seif Gaafar",
+"pos": "M",
+"nat": "EGY",
+"num": 14,
+"age": 27
+},
+{
+"n": "Mohamed Sobhy",
+"pos": "G",
+"nat": "EGY",
+"num": 16,
+"age": 27
+},
+{
+"n": "Mohamed Shehata",
+"pos": "M",
+"nat": "EGY",
+"num": 17,
+"age": 25
+},
+{
+"n": "Adam Kaied",
+"pos": "M",
+"nat": "PLE",
+"num": 18,
+"age": 24
+},
+{
+"n": "Mostafa El Zenary",
+"pos": "D",
+"nat": "EGY",
+"num": 20,
+"age": 27
+},
+{
+"n": "Abdallah El Said",
+"pos": "M",
+"nat": "EGY",
+"num": 19,
+"age": 41
+},
+{
+"n": "Ahmed Jafeli",
+"pos": "F",
+"nat": "TUN",
+"num": 21,
+"age": null
+},
+{
+"n": "Mohamed Ismail",
+"pos": "D",
+"nat": "EGY",
+"num": 24,
+"age": 27
+},
+{
+"n": "Mahmoud Hamdy",
+"pos": "D",
+"nat": "EGY",
+"num": 28,
+"age": 31
+},
+{
+"n": "Ahmed Sherif",
+"pos": "F",
+"nat": "EGY",
+"num": 31,
+"age": 23
+},
+{
+"n": "El Mahdy Soliman",
+"pos": "G",
+"nat": "EGY",
+"num": 37,
+"age": 39
+},
+{
+"n": "Omar AbdulAziz",
+"pos": "G",
+"nat": "EGY",
+"num": 38,
+"age": 18
+},
+{
+"n": "Mohamed El Sayed",
+"pos": "M",
+"nat": "EGY",
+"num": 39,
+"age": 20
+},
+{
+"n": "Alsayed Osama",
+"pos": "D",
+"nat": "EGY",
+"num": 43,
+"age": null
+},
+{
+"n": "Youssef Wael",
+"pos": "M",
+"nat": "EGY",
+"num": 44,
+"age": null
+},
+{
+"n": "Mahmoud Ashraf",
+"pos": "G",
+"nat": "EGY",
+"num": 46,
+"age": null
+},
+{
+"n": "Mohamed Ebrahim",
+"pos": "D",
+"nat": "EGY",
+"num": 52,
+"age": null
+},
+{
+"n": "Muhammad Hamad",
+"pos": "M",
+"nat": "EGY",
+"num": 55,
+"age": null
+},
+{
+"n": "Ahmad Safwat",
+"pos": "M",
+"nat": "EGY",
+"num": 56,
+"age": null
+},
+{
+"n": "Adham Hasseib",
+"pos": "F",
+"nat": "EGY",
+"num": 57,
+"age": null
+},
+{
+"n": "Mohamed Faraj",
+"pos": "D",
+"nat": "EGY",
+"num": 58,
+"age": null
+},
+{
+"n": "Chico Banza",
+"pos": "F",
+"nat": "ANG",
+"num": 81,
+"age": 28
+},
+{
+"n": "Amr Nasser",
+"pos": "F",
+"nat": "EGY",
+"num": 90,
+"age": null
+},
+{
+"n": "Ahmed Alkhoudary",
+"pos": "D",
+"nat": "EGY",
+"num": 97,
+"age": null
+},
+{
+"n": "Oday Dabbagh",
+"pos": "F",
+"nat": "PLE",
+"num": 98,
+"age": 28
+},
+{
+"n": "Mohamed Awad",
+"pos": "G",
+"nat": "EGY",
+"num": 99,
+"age": 34
+}
+]
+},
+"EGY/Ceramica Cleopatra": {
+"title": "Ceramica Cleopatra FC",
+"sq": [
+{
+"n": "Mohamed Koko",
+"pos": "G",
+"nat": "EGY",
+"num": 1,
+"age": null
+},
+{
+"n": "Ahmed Hany",
+"pos": "D",
+"nat": "EGY",
+"num": 2,
+"age": null
+},
+{
+"n": "Omar Kamal",
+"pos": "D",
+"nat": "EGY",
+"num": 3,
+"age": 33
+},
+{
+"n": "Karim Nedved",
+"pos": "M",
+"nat": "EGY",
+"num": 4,
+"age": null
+},
+{
+"n": "Ragab Nabil",
+"pos": "D",
+"nat": "EGY",
+"num": 5,
+"age": null
+},
+{
+"n": "Saad Samir",
+"pos": "D",
+"nat": "EGY",
+"num": 6,
+"age": 37
+},
+{
+"n": "Islam Issa",
+"pos": "F",
+"nat": "EGY",
+"num": 7,
+"age": 30
+},
+{
+"n": "Abdallah Magdy",
+"pos": "M",
+"nat": "EGY",
+"num": 8,
+"age": null
+},
+{
+"n": "Nejc Gradišar",
+"pos": "F",
+"nat": "SLO",
+"num": 9,
+"age": 24
+},
+{
+"n": "Ahmed Belhadji",
+"pos": "M",
+"nat": "MAR",
+"num": 10,
+"age": 29
+},
+{
+"n": "Peter Gwargis",
+"pos": "F",
+"nat": "IRQ",
+"num": 11,
+"age": 26
+},
+{
+"n": "Mohamed Tarek",
+"pos": "G",
+"nat": "EGY",
+"num": 13,
+"age": null
+},
+{
+"n": "Hema Mohamed",
+"pos": "M",
+"nat": "EGY",
+"num": 14,
+"age": null
+},
+{
+"n": "Samir El Eraki",
+"pos": "F",
+"nat": "EGY",
+"num": 15,
+"age": null
+},
+{
+"n": "Islam Reisha",
+"pos": "G",
+"nat": "EGY",
+"num": 16,
+"age": null
+},
+{
+"n": "Amr El Solia",
+"pos": "M",
+"nat": "EGY",
+"num": 17,
+"age": 36
+},
+{
+"n": "Mohamed Bassam",
+"pos": "G",
+"nat": "EGY",
+"num": 18,
+"age": 36
+},
+{
+"n": "Ayman Mukka",
+"pos": "F",
+"nat": "EGY",
+"num": 19,
+"age": null
+},
+{
+"n": "Mohamed Sadek",
+"pos": "M",
+"nat": "EGY",
+"num": 20,
+"age": 29
+},
+{
+"n": "Ahmed Moaz",
+"pos": "D",
+"nat": "EGY",
+"num": 21,
+"age": null
+},
+{
+"n": "Khaled Al-Nabris",
+"pos": "F",
+"nat": "PLE",
+"num": 22,
+"age": 23
+},
+{
+"n": "Justice Arthur",
+"pos": "M",
+"nat": "GHA",
+"num": 24,
+"age": null
+},
+{
+"n": "Mohamed \"Shika\" Ibrahim",
+"pos": "F",
+"nat": "EGY",
+"num": 25,
+"age": null
+},
+{
+"n": "Hussein El Sayed",
+"pos": "D",
+"nat": "EGY",
+"num": 27,
+"age": null
+},
+{
+"n": "Amr Kalawa",
+"pos": "M",
+"nat": "EGY",
+"num": 28,
+"age": null
+},
+{
+"n": "Karim El Debes",
+"pos": "D",
+"nat": "EGY",
+"num": 33,
+"age": 23
+},
+{
+"n": "Ahmed Abdin",
+"pos": "D",
+"nat": "EGY",
+"num": 34,
+"age": null
+},
+{
+"n": "Ashour Shika",
+"pos": "F",
+"nat": "EGY",
+"num": 35,
+"age": null
+},
+{
+"n": "Mohamed Abdallah",
+"pos": "M",
+"nat": "EGY",
+"num": 37,
+"age": null
+},
+{
+"n": "Umar Abdulrauf",
+"pos": "F",
+"nat": "GHA",
+"num": 41,
+"age": null
+},
+{
+"n": "Mohamed El Maghrabi",
+"pos": "D",
+"nat": "EGY",
+"num": 66,
+"age": 25
+},
+{
+"n": "Bobo",
+"pos": "F",
+"nat": "EGY",
+"num": 77,
+"age": 26
+},
+{
+"n": "Ahmed Samir",
+"pos": "F",
+"nat": "EGY",
+"num": 97,
+"age": 32
+}
+]
+},
+"EGY/Al Masry": {
+"title": "Al Masry SC",
+"sq": [
+{
+"n": "Essam Tharwat",
+"pos": "G",
+"nat": "EGY",
+"num": 1,
+"age": 37
+},
+{
+"n": "Baher El Mohamady",
+"pos": "D",
+"nat": "EGY",
+"num": 2,
+"age": 30
+},
+{
+"n": "Mohamed Shokry",
+"pos": "D",
+"nat": "EGY",
+"num": 3,
+"age": 27
+},
+{
+"n": "Yassin El Mallah",
+"pos": "M",
+"nat": "EGY",
+"num": 4,
+"age": null
+},
+{
+"n": "Khaled Sobhi",
+"pos": "D",
+"nat": "EGY",
+"num": 5,
+"age": 31
+},
+{
+"n": "Mohamed Makhlouf",
+"pos": "M",
+"nat": "EGY",
+"num": 6,
+"age": null
+},
+{
+"n": "Karim El Eraki",
+"pos": "D",
+"nat": "EGY",
+"num": 7,
+"age": 29
+},
+{
+"n": "Hassan Ali",
+"pos": "M",
+"nat": "EGY",
+"num": 8,
+"age": null
+},
+{
+"n": "Salah Mohsen",
+"pos": "F",
+"nat": "EGY",
+"num": 9,
+"age": 28
+},
+{
+"n": "Karim Bambo",
+"pos": "F",
+"nat": "EGY",
+"num": 10,
+"age": 33
+},
+{
+"n": "Mohammed Al Shamy",
+"pos": "F",
+"nat": "EGY",
+"num": 11,
+"age": null
+},
+{
+"n": "Mostafa Aboul-Kheir",
+"pos": "M",
+"nat": "EGY",
+"num": 12,
+"age": null
+},
+{
+"n": "Amr El Saadawy",
+"pos": "D",
+"nat": "EGY",
+"num": 13,
+"age": null
+},
+{
+"n": "Mahmoud Hamada",
+"pos": "M",
+"nat": "EGY",
+"num": 14,
+"age": 32
+},
+{
+"n": "Ahmed El Armouty",
+"pos": "M",
+"nat": "EGY",
+"num": 15,
+"age": null
+},
+{
+"n": "Mahmoud Hamdy",
+"pos": "G",
+"nat": "EGY",
+"num": 16,
+"age": null
+},
+{
+"n": "Youssef El Gohary",
+"pos": "M",
+"nat": "EGY",
+"num": 17,
+"age": null
+},
+{
+"n": "Ameed Sawafta",
+"pos": "M",
+"nat": "PLE",
+"num": 18,
+"age": 26
+},
+{
+"n": "Kheireddine Toual",
+"pos": "M",
+"nat": "ALG",
+"num": 20,
+"age": 25
+},
+{
+"n": "Moustafa Zeidan",
+"pos": "M",
+"nat": "PLE",
+"num": 24,
+"age": 28
+},
+{
+"n": "Mounder Temine",
+"pos": "F",
+"nat": "ALG",
+"num": 25,
+"age": null
+},
+{
+"n": "Mohamed Seha",
+"pos": "G",
+"nat": "EGY",
+"num": 26,
+"age": 25
+},
+{
+"n": "Abdellah Ziani",
+"pos": "F",
+"nat": "MAR",
+"num": 27,
+"age": null
+},
+{
+"n": "Mohamed Hashem",
+"pos": "D",
+"nat": "EGY",
+"num": 29,
+"age": null
+},
+{
+"n": "Abderrahim Deghmoum",
+"pos": "M",
+"nat": "ALG",
+"num": 30,
+"age": 28
+},
+{
+"n": "Mohamed Shehata",
+"pos": "G",
+"nat": "EGY",
+"num": 31,
+"age": null
+},
+{
+"n": "Mostafa El Aash",
+"pos": "D",
+"nat": "EGY",
+"num": 33,
+"age": 26
+},
+{
+"n": "Hossam Hassan",
+"pos": "F",
+"nat": "EGY",
+"num": 34,
+"age": null
+},
+{
+"n": "Abdo Nader",
+"pos": "D",
+"nat": "EGY",
+"num": 36,
+"age": null
+},
+{
+"n": "Ahmed Ashraf",
+"pos": "F",
+"nat": "EGY",
+"num": 37,
+"age": null
+},
+{
+"n": "Ahmed Wahp",
+"pos": "G",
+"nat": "EGY",
+"num": 39,
+"age": null
+},
+{
+"n": "Ali Sulieman",
+"pos": "F",
+"nat": "ERI",
+"num": 99,
+"age": 26
+}
+]
+},
+"EGY/National Bank of Egypt": {
+"title": "National Bank of Egypt SC",
+"sq": [
+{
+"n": "Ahmed Sobhi",
+"pos": "G",
+"nat": "EGY",
+"num": 1,
+"age": null
+},
+{
+"n": "Mohamed Nasr",
+"pos": "D",
+"nat": "EGY",
+"num": 2,
+"age": null
+},
+{
+"n": "Mahmoud El-Gazzar",
+"pos": "D",
+"nat": "EGY",
+"num": 6,
+"age": null
+},
+{
+"n": "Hesham Salah",
+"pos": "D",
+"nat": "EGY",
+"num": 7,
+"age": null
+},
+{
+"n": "Rashad El Metwaly",
+"pos": "M",
+"nat": "EGY",
+"num": 8,
+"age": null
+},
+{
+"n": "Osama Faisal",
+"pos": "F",
+"nat": "EGY",
+"num": 9,
+"age": null
+},
+{
+"n": "Sayed Abdallah",
+"pos": "F",
+"nat": "EGY",
+"num": 10,
+"age": 26
+},
+{
+"n": "Mostafa Shalaby",
+"pos": "F",
+"nat": "EGY",
+"num": 11,
+"age": 32
+},
+{
+"n": "Ahmed Meteb",
+"pos": "D",
+"nat": "EGY",
+"num": 12,
+"age": null
+},
+{
+"n": "Shefo",
+"pos": "D",
+"nat": "EGY",
+"num": 13,
+"age": null
+},
+{
+"n": "Ali Hamdi",
+"pos": "M",
+"nat": "EGY",
+"num": 14,
+"age": null
+},
+{
+"n": "Salah Bouchama",
+"pos": "M",
+"nat": "ALG",
+"num": 15,
+"age": null
+},
+{
+"n": "Mody Naser",
+"pos": "M",
+"nat": "EGY",
+"num": 17,
+"age": null
+},
+{
+"n": "Karim Hamed",
+"pos": "F",
+"nat": "EGY",
+"num": 18,
+"age": null
+},
+{
+"n": "Amir Medhat",
+"pos": "D",
+"nat": "EGY",
+"num": 20,
+"age": null
+},
+{
+"n": "Ahmed Madbouly",
+"pos": "M",
+"nat": "EGY",
+"num": 21,
+"age": null
+},
+{
+"n": "Anderson Ceará",
+"pos": "F",
+"nat": "BRA",
+"num": 22,
+"age": 27
+},
+{
+"n": "Oufa",
+"pos": "F",
+"nat": "EGY",
+"num": 23,
+"age": null
+},
+{
+"n": "Mostafa Dowidar",
+"pos": "M",
+"nat": "EGY",
+"num": 24,
+"age": null
+},
+{
+"n": "Bencharki",
+"pos": "M",
+"nat": "EGY",
+"num": 25,
+"age": null
+},
+{
+"n": "Abdelaziz El Balouti",
+"pos": "G",
+"nat": "EGY",
+"num": 27,
+"age": null
+},
+{
+"n": "Hatem Sukar",
+"pos": "D",
+"nat": "EGY",
+"num": 28,
+"age": null
+},
+{
+"n": "Ahmed Yasser Rayyan",
+"pos": "F",
+"nat": "EGY",
+"num": 29,
+"age": 28
+},
+{
+"n": "Yaw Annor",
+"pos": "F",
+"nat": "TOG",
+"num": 30,
+"age": 29
+},
+{
+"n": "Ahmed Tarek Soliman",
+"pos": "G",
+"nat": "EGY",
+"num": 31,
+"age": null
+},
+{
+"n": "Cyril Dao",
+"pos": "D",
+"nat": "BFA",
+"num": 33,
+"age": null
+},
+{
+"n": "Mohamed Reda",
+"pos": "M",
+"nat": "EGY",
+"num": 70,
+"age": null
+},
+{
+"n": "Mohamed Gamal",
+"pos": "M",
+"nat": "EGY",
+"num": 77,
+"age": null
+}
+]
+},
+"EGY/Al Ittihad Alexandria": {
+"title": "Al Ittihad Alexandria Club",
+"sq": [
+{
+"n": "Sobhi Soliman",
+"pos": "G",
+"nat": "EGY",
+"num": 1,
+"age": null
+},
+{
+"n": "Islam Abdellah",
+"pos": "D",
+"nat": "EGY",
+"num": 4,
+"age": null
+},
+{
+"n": "Mostafa Ibrahim",
+"pos": "D",
+"nat": "EGY",
+"num": 5,
+"age": null
+},
+{
+"n": "Mido Mostafa",
+"pos": "D",
+"nat": "EGY",
+"num": 7,
+"age": null
+},
+{
+"n": "Mazen Osama",
+"pos": "D",
+"nat": "EGY",
+"num": 99,
+"age": null
+},
+{
+"n": "Mohamed Tony",
+"pos": "M",
+"nat": "EGY",
+"num": 8,
+"age": null
+},
+{
+"n": "Abdo Hesham",
+"pos": "D",
+"nat": "EGY",
+"num": 99,
+"age": null
+},
+{
+"n": "Hossam Hassan",
+"pos": "F",
+"nat": "EGY",
+"num": 10,
+"age": 33
+},
+{
+"n": "Youssry Wahid",
+"pos": "F",
+"nat": "EGY",
+"num": 11,
+"age": null
+},
+{
+"n": "Moamen Sherif",
+"pos": "D",
+"nat": "EGY",
+"num": 12,
+"age": null
+},
+{
+"n": "Anas Wael",
+"pos": "M",
+"nat": "EGY",
+"num": 99,
+"age": null
+},
+{
+"n": "Mohamed Fakhri",
+"pos": "M",
+"nat": "EGY",
+"num": 14,
+"age": 27
+},
+{
+"n": "Ahmed El Arabi",
+"pos": "G",
+"nat": "EGY",
+"num": 16,
+"age": null
+},
+{
+"n": "John Ebuka",
+"pos": "F",
+"nat": "NGR",
+"num": 18,
+"age": null
+},
+{
+"n": "Ahmed El Sayed",
+"pos": "M",
+"nat": "EGY",
+"num": 19,
+"age": null
+},
+{
+"n": "Ahmed Hamdi",
+"pos": "M",
+"nat": "EGY",
+"num": 21,
+"age": 28
+},
+{
+"n": "Nour Alaa",
+"pos": "F",
+"nat": "EGY",
+"num": 22,
+"age": null
+},
+{
+"n": "Saviour Isaac",
+"pos": "M",
+"nat": "NGR",
+"num": 23,
+"age": null
+},
+{
+"n": "Momen Awad",
+"pos": "D",
+"nat": "EGY",
+"num": 24,
+"age": null
+},
+{
+"n": "Mahmoud Emad",
+"pos": "M",
+"nat": "EGY",
+"num": 25,
+"age": null
+},
+{
+"n": "Khaled Mosaad",
+"pos": "D",
+"nat": "EGY",
+"num": 30,
+"age": null
+},
+{
+"n": "Ali El Gabry",
+"pos": "G",
+"nat": "EGY",
+"num": 31,
+"age": null
+},
+{
+"n": "Pascal Phiri",
+"pos": "F",
+"nat": "ZAM",
+"num": 35,
+"age": null
+},
+{
+"n": "Ahmed Atef",
+"pos": "M",
+"nat": "EGY",
+"num": 37,
+"age": null
+},
+{
+"n": "Kenneth Semakula",
+"pos": "M",
+"nat": "UGA",
+"num": 44,
+"age": 24
+},
+{
+"n": "Mostafa Moawad",
+"pos": "D",
+"nat": "EGY",
+"num": 47,
+"age": null
+},
+{
+"n": "Ahmed Eid",
+"pos": "M",
+"nat": "EGY",
+"num": 77,
+"age": null
+},
+{
+"n": "Joseph Arumala",
+"pos": "F",
+"nat": "NGR",
+"num": 80,
+"age": null
+}
+]
+},
+"EGY/Tala'ea El Gaish": {
+"title": "Tala'ea El Gaish SC",
+"sq": [
+{
+"n": "Omar Radwan",
+"pos": "G",
+"nat": "EGY",
+"num": 1,
+"age": null
+},
+{
+"n": "Moamen Mahmoud",
+"pos": "D",
+"nat": "EGY",
+"num": 2,
+"age": null
+},
+{
+"n": "Amro Tarek",
+"pos": "D",
+"nat": "EGY",
+"num": 3,
+"age": 34
+},
+{
+"n": "Mohamed Camacho",
+"pos": "D",
+"nat": "EGY",
+"num": 4,
+"age": null
+},
+{
+"n": "Houssem Eddine Souissi",
+"pos": "M",
+"nat": "TUN",
+"num": 5,
+"age": 29
+},
+{
+"n": "Khaled Stouhi",
+"pos": "D",
+"nat": "EGY",
+"num": 6,
+"age": null
+},
+{
+"n": "Riga",
+"pos": "F",
+"nat": "EGY",
+"num": 7,
+"age": null
+},
+{
+"n": "Ahmed Zola",
+"pos": "D",
+"nat": "EGY",
+"num": 8,
+"age": null
+},
+{
+"n": "Fares Hatem",
+"pos": "F",
+"nat": "EGY",
+"num": 9,
+"age": null
+},
+{
+"n": "Mohamed Hany",
+"pos": "F",
+"nat": "EGY",
+"num": 10,
+"age": null
+},
+{
+"n": "Karim Tarek",
+"pos": "F",
+"nat": "EGY",
+"num": 11,
+"age": 34
+},
+{
+"n": "Islam Mohareb",
+"pos": "M",
+"nat": "EGY",
+"num": 12,
+"age": 34
+},
+{
+"n": "Arnaud Komlavi",
+"pos": "M",
+"nat": "TOG",
+"num": 13,
+"age": null
+},
+{
+"n": "Ahmed Wahid",
+"pos": "M",
+"nat": "EGY",
+"num": 14,
+"age": null
+},
+{
+"n": "Mahmoud Shabana",
+"pos": "D",
+"nat": "EGY",
+"num": 15,
+"age": null
+},
+{
+"n": "Emad El Sayed",
+"pos": "G",
+"nat": "EGY",
+"num": 18,
+"age": null
+},
+{
+"n": "Hamed El Gabry",
+"pos": "D",
+"nat": "EGY",
+"num": 19,
+"age": null
+},
+{
+"n": "Mahmoud Abdelaziz",
+"pos": "M",
+"nat": "EGY",
+"num": 20,
+"age": null
+},
+{
+"n": "Khaled Aboziada",
+"pos": "F",
+"nat": "EGY",
+"num": 21,
+"age": null
+},
+{
+"n": "Mostafa El Khawaga",
+"pos": "M",
+"nat": "EGY",
+"num": 22,
+"age": null
+},
+{
+"n": "Zaghloul El Zoughbi",
+"pos": "D",
+"nat": "EGY",
+"num": 24,
+"age": null
+},
+{
+"n": "Ahmed Tarek",
+"pos": "M",
+"nat": "EGY",
+"num": 25,
+"age": null
+},
+{
+"n": "Ahmed Alaa",
+"pos": "D",
+"nat": "EGY",
+"num": 27,
+"age": 32
+},
+{
+"n": "Ismaïl Ouro-Agoro",
+"pos": "F",
+"nat": "TOG",
+"num": 28,
+"age": 30
+},
+{
+"n": "Mohamed Atef",
+"pos": "F",
+"nat": "EGY",
+"num": 30,
+"age": null
+},
+{
+"n": "Mohamed Yasser",
+"pos": "M",
+"nat": "EGY",
+"num": 31,
+"age": null
+},
+{
+"n": "Yehia Mostafa",
+"pos": "M",
+"nat": "EGY",
+"num": 32,
+"age": null
+},
+{
+"n": "Ayman Amir Abdelaziz",
+"pos": "F",
+"nat": "EGY",
+"num": 33,
+"age": null
+},
+{
+"n": "Hossam Awad",
+"pos": "D",
+"nat": "EGY",
+"num": 34,
+"age": null
+},
+{
+"n": "Mohamed Magdy",
+"pos": "G",
+"nat": "EGY",
+"num": 77,
+"age": null
+}
+]
+},
+"EGY/Modern Sport FC": {
+"title": "Modern Sport FC",
+"sq": [
+{
+"n": "Sharkia",
+"pos": "D",
+"nat": "EGY",
+"num": 3,
+"age": null
+},
+{
+"n": "Khaled Reda",
+"pos": "D",
+"nat": "EGY",
+"num": 4,
+"age": null
+},
+{
+"n": "Tarek Mohamed",
+"pos": "D",
+"nat": "EGY",
+"num": 5,
+"age": null
+},
+{
+"n": "Mohamed Sabry",
+"pos": "M",
+"nat": "EGY",
+"num": 8,
+"age": null
+},
+{
+"n": "Mahmoud Mamdouh",
+"pos": "F",
+"nat": "EGY",
+"num": 9,
+"age": null
+},
+{
+"n": "Walid Mostafa",
+"pos": "D",
+"nat": "EGY",
+"num": 11,
+"age": null
+},
+{
+"n": "Ahmed Youssef",
+"pos": "M",
+"nat": "EGY",
+"num": 12,
+"age": null
+},
+{
+"n": "Ahmed Yehia",
+"pos": "G",
+"nat": "EGY",
+"num": 13,
+"age": 38
+},
+{
+"n": "Ahmed Mostafa",
+"pos": "M",
+"nat": "EGY",
+"num": 14,
+"age": 29
+},
+{
+"n": "Mostafa Ashraf",
+"pos": "D",
+"nat": "EGY",
+"num": 15,
+"age": null
+},
+{
+"n": "Karim Emad",
+"pos": "G",
+"nat": "EGY",
+"num": 16,
+"age": null
+},
+{
+"n": "Abdelrahman Shika",
+"pos": "M",
+"nat": "EGY",
+"num": 17,
+"age": null
+},
+{
+"n": "Mahmoud El Zanfaly",
+"pos": "G",
+"nat": "EGY",
+"num": 18,
+"age": 34
+},
+{
+"n": "Mohamed Mosaad",
+"pos": "M",
+"nat": "EGY",
+"num": 19,
+"age": null
+},
+{
+"n": "Mahmoud El Halawani",
+"pos": "D",
+"nat": "EGY",
+"num": 20,
+"age": null
+},
+{
+"n": "Ali Zazaa",
+"pos": "M",
+"nat": "EGY",
+"num": 22,
+"age": null
+},
+{
+"n": "Ghanam Mohamed",
+"pos": "M",
+"nat": "EGY",
+"num": 27,
+"age": 29
+},
+{
+"n": "Michael Ephson",
+"pos": "F",
+"nat": "GHA",
+"num": 29,
+"age": null
+},
+{
+"n": "Hamdi Marcelo",
+"pos": "D",
+"nat": "EGY",
+"num": 33,
+"age": null
+},
+{
+"n": "Youssef Ali",
+"pos": "F",
+"nat": "EGY",
+"num": 37,
+"age": null
+},
+{
+"n": "Arnold Eba",
+"pos": "M",
+"nat": "CMR",
+"num": 38,
+"age": null
+},
+{
+"n": "Ali Fawzi",
+"pos": "M",
+"nat": "EGY",
+"num": 77,
+"age": 34
+},
+{
+"n": "El Limby",
+"pos": "M",
+"nat": "EGY",
+"num": 88,
+"age": null
+},
+{
+"n": "Mohamed Gharib",
+"pos": "F",
+"nat": "EGY",
+"num": 90,
+"age": null
+},
+{
+"n": "Kamel Kaboria",
+"pos": "F",
+"nat": "EGY",
+"num": 98,
+"age": null
+},
+{
+"n": "Mostafa Makhlouf",
+"pos": "G",
+"nat": "EGY",
+"num": 99,
+"age": 23
+},
+{
+"n": "Karim Yehia",
+"pos": "D",
+"nat": "EGY",
+"num": 99,
+"age": null
+},
+{
+"n": "Ismail Ayodele",
+"pos": "F",
+"nat": "NGR",
+"num": 99,
+"age": null
+},
+{
+"n": "Adham Nabil",
+"pos": "D",
+"nat": "EGY",
+"num": 99,
+"age": null
+},
+{
+"n": "Mostafa Gamal",
+"pos": "D",
+"nat": "EGY",
+"num": 99,
+"age": null
+},
+{
+"n": "Sayed Sobhy",
+"pos": "G",
+"nat": "EGY",
+"num": 99,
+"age": null
+},
+{
+"n": "Seif Oufa",
+"pos": "F",
+"nat": "EGY",
+"num": 99,
+"age": null
+}
+]
+},
+"EGY/Petrojet": {
+"title": "Petrojet SC",
+"sq": [
+{
+"n": "Omar Salah",
+"pos": "G",
+"nat": "EGY",
+"num": 1,
+"age": null
+},
+{
+"n": "Ahmed Ghoneim",
+"pos": "D",
+"nat": "EGY",
+"num": 2,
+"age": null
+},
+{
+"n": "Islam Abdallah",
+"pos": "D",
+"nat": "EGY",
+"num": 3,
+"age": null
+},
+{
+"n": "Mahmoud Shedid Kenawi",
+"pos": "D",
+"nat": "EGY",
+"num": 4,
+"age": null
+},
+{
+"n": "Youssef Limouri",
+"pos": "D",
+"nat": "MAR",
+"num": 5,
+"age": null
+},
+{
+"n": "Ammar Hamdy",
+"pos": "M",
+"nat": "EGY",
+"num": 7,
+"age": 27
+},
+{
+"n": "Mohamed Ali Okasha",
+"pos": "M",
+"nat": "EGY",
+"num": 8,
+"age": null
+},
+{
+"n": "Bader Mousa",
+"pos": "F",
+"nat": "PLE",
+"num": 9,
+"age": 27
+},
+{
+"n": "Gabriel Chukwudi",
+"pos": "F",
+"nat": "NGR",
+"num": 10,
+"age": null
+},
+{
+"n": "Mohamed Dodo",
+"pos": "M",
+"nat": "EGY",
+"num": 11,
+"age": null
+},
+{
+"n": "Amadou Bah",
+"pos": "M",
+"nat": "GUI",
+"num": 13,
+"age": null
+},
+{
+"n": "Mostafa El Gamal",
+"pos": "M",
+"nat": "EGY",
+"num": 14,
+"age": 29
+},
+{
+"n": "Ahmed Bahbah",
+"pos": "D",
+"nat": "EGY",
+"num": 15,
+"age": null
+},
+{
+"n": "Abdelkafi Ragab",
+"pos": "G",
+"nat": "EGY",
+"num": 16,
+"age": null
+},
+{
+"n": "Adham Hamed",
+"pos": "M",
+"nat": "EGY",
+"num": 17,
+"age": null
+},
+{
+"n": "Tawfik Mohamed",
+"pos": "D",
+"nat": "EGY",
+"num": 18,
+"age": null
+},
+{
+"n": "Mostafa El Badry",
+"pos": "M",
+"nat": "EGY",
+"num": 19,
+"age": 29
+},
+{
+"n": "Rasheed Ahmed",
+"pos": "F",
+"nat": "NGR",
+"num": 20,
+"age": null
+},
+{
+"n": "Mahmoud Morsi",
+"pos": "F",
+"nat": "EGY",
+"num": 22,
+"age": null
+},
+{
+"n": "Qobolwakhe Sibande",
+"pos": "D",
+"nat": "RSA",
+"num": 23,
+"age": null
+},
+{
+"n": "Barakat Haggag",
+"pos": "D",
+"nat": "EGY",
+"num": 25,
+"age": null
+},
+{
+"n": "Ahmed Yassin",
+"pos": "D",
+"nat": "EGY",
+"num": 29,
+"age": null
+},
+{
+"n": "Omar Reda",
+"pos": "M",
+"nat": "EGY",
+"num": 30,
+"age": null
+},
+{
+"n": "Abdoulaye Diabaté",
+"pos": "M",
+"nat": "CIV",
+"num": 39,
+"age": null
+},
+{
+"n": "Sekou Sonko",
+"pos": "F",
+"nat": "SEN",
+"num": 40,
+"age": null
+},
+{
+"n": "Mohamed Khalifa",
+"pos": "G",
+"nat": "EGY",
+"num": 77,
+"age": null
+},
+{
+"n": "Samir Mohamed",
+"pos": "F",
+"nat": "EGY",
+"num": 99,
+"age": 23
+}
+]
+},
+"EGY/El Gouna": {
+"title": "El Gouna FC",
+"sq": [
+{
+"n": "Ahmed Masoud",
+"pos": "G",
+"nat": "EGY",
+"num": 1,
+"age": 35
+},
+{
+"n": "Abdelgawad Taalab",
+"pos": "D",
+"nat": "EGY",
+"num": 2,
+"age": null
+},
+{
+"n": "Khaled Ahmed",
+"pos": "D",
+"nat": "EGY",
+"num": 3,
+"age": null
+},
+{
+"n": "Saber El Shimi",
+"pos": "D",
+"nat": "EGY",
+"num": 5,
+"age": null
+},
+{
+"n": "Hafiz Ibrahim",
+"pos": "M",
+"nat": "GHA",
+"num": 6,
+"age": null
+},
+{
+"n": "Ahmed Refaat",
+"pos": "F",
+"nat": "EGY",
+"num": 7,
+"age": null
+},
+{
+"n": "Reda Salah",
+"pos": "M",
+"nat": "EGY",
+"num": 8,
+"age": null
+},
+{
+"n": "Marwan Mohsen",
+"pos": "F",
+"nat": "EGY",
+"num": 9,
+"age": 37
+},
+{
+"n": "Mohamed Mahmoud",
+"pos": "M",
+"nat": "EGY",
+"num": 10,
+"age": 28
+},
+{
+"n": "Ahmed Zaki",
+"pos": "F",
+"nat": "EGY",
+"num": 11,
+"age": null
+},
+{
+"n": "Mahmoud Hassouna",
+"pos": "M",
+"nat": "EGY",
+"num": 12,
+"age": null
+},
+{
+"n": "Omar El Gazar",
+"pos": "M",
+"nat": "EGY",
+"num": 13,
+"age": null
+},
+{
+"n": "Nour El Sayed",
+"pos": "M",
+"nat": "EGY",
+"num": 14,
+"age": 42
+},
+{
+"n": "Islam Reisha",
+"pos": "G",
+"nat": "EGY",
+"num": 16,
+"age": null
+},
+{
+"n": "Belal El Sayed",
+"pos": "M",
+"nat": "EGY",
+"num": 19,
+"age": null
+},
+{
+"n": "Ahmed Belia",
+"pos": "D",
+"nat": "EGY",
+"num": 20,
+"age": null
+},
+{
+"n": "Mohamed Reda",
+"pos": "M",
+"nat": "EGY",
+"num": 22,
+"age": null
+},
+{
+"n": "Ali El Zahdi",
+"pos": "F",
+"nat": "EGY",
+"num": 24,
+"age": null
+},
+{
+"n": "Abdallah El Said",
+"pos": "D",
+"nat": "EGY",
+"num": 25,
+"age": null
+},
+{
+"n": "Ziad Askar",
+"pos": "G",
+"nat": "EGY",
+"num": 26,
+"age": null
+},
+{
+"n": "Salah Zayed",
+"pos": "F",
+"nat": "EGY",
+"num": 27,
+"age": null
+},
+{
+"n": "Samuel Ojo",
+"pos": "F",
+"nat": "NGR",
+"num": 29,
+"age": null
+},
+{
+"n": "Mohamed Emad",
+"pos": "M",
+"nat": "EGY",
+"num": 30,
+"age": null
+},
+{
+"n": "David Simukonda",
+"pos": "M",
+"nat": "ZAM",
+"num": 33,
+"age": null
+},
+{
+"n": "AMarwan Essam",
+"pos": "D",
+"nat": "EGY",
+"num": 34,
+"age": null
+},
+{
+"n": "Alpha Turay",
+"pos": "M",
+"nat": "SLE",
+"num": 36,
+"age": 21
+},
+{
+"n": "Michael Egbemba",
+"pos": "M",
+"nat": "CMR",
+"num": 42,
+"age": null
+},
+{
+"n": "Ahmed Gamal",
+"pos": "F",
+"nat": "EGY",
+"num": 70,
+"age": null
+},
+{
+"n": "Wilfried Teukeu",
+"pos": "M",
+"nat": "CMR",
+"num": 90,
+"age": null
+},
+{
+"n": "Badreldin Walid",
+"pos": "G",
+"nat": "EGY",
+"num": 99,
+"age": null
+}
+]
+},
+"EGY/ZED FC": {
+"title": "ZED FC",
+"sq": [
+{
+"n": "Ali Lotfi",
+"pos": "G",
+"nat": "EGY",
+"num": 1,
+"age": 37
+},
+{
+"n": "Mohamed Hussein",
+"pos": "D",
+"nat": "EGY",
+"num": 2,
+"age": null
+},
+{
+"n": "Abdallah Bakri",
+"pos": "D",
+"nat": "EGY",
+"num": 3,
+"age": null
+},
+{
+"n": "Ahmed Castelo",
+"pos": "D",
+"nat": "EGY",
+"num": 4,
+"age": null
+},
+{
+"n": "Ahmed Tarek",
+"pos": "D",
+"nat": "EGY",
+"num": 5,
+"age": null
+},
+{
+"n": "Rafaat Khalil",
+"pos": "F",
+"nat": "EGY",
+"num": 7,
+"age": null
+},
+{
+"n": "Ahmed Sayed",
+"pos": "D",
+"nat": "EGY",
+"num": 8,
+"age": null
+},
+{
+"n": "Ahmed Atef",
+"pos": "F",
+"nat": "EGY",
+"num": 9,
+"age": 28
+},
+{
+"n": "Mostafa Saad",
+"pos": "F",
+"nat": "EGY",
+"num": 10,
+"age": 25
+},
+{
+"n": "Abdel Rahman El Banouby",
+"pos": "M",
+"nat": "EGY",
+"num": 11,
+"age": null
+},
+{
+"n": "Maged Hany",
+"pos": "M",
+"nat": "EGY",
+"num": 12,
+"age": null
+},
+{
+"n": "Amara Keita",
+"pos": "D",
+"nat": "SLE",
+"num": 13,
+"age": null
+},
+{
+"n": "Ahmed Adel",
+"pos": "F",
+"nat": "EGY",
+"num": 14,
+"age": null
+},
+{
+"n": "Sameh Ibrahim",
+"pos": "D",
+"nat": "EGY",
+"num": 15,
+"age": null
+},
+{
+"n": "Mohammed Mazzika",
+"pos": "G",
+"nat": "EGY",
+"num": 16,
+"age": null
+},
+{
+"n": "Mamadou Bah",
+"pos": "F",
+"nat": "LBR",
+"num": 17,
+"age": null
+},
+{
+"n": "Ahmed El Saghiri",
+"pos": "F",
+"nat": "EGY",
+"num": 18,
+"age": null
+},
+{
+"n": "Mohamed Ezz",
+"pos": "M",
+"nat": "EGY",
+"num": 19,
+"age": null
+},
+{
+"n": "Hamdy Alaa",
+"pos": "M",
+"nat": "EGY",
+"num": 20,
+"age": null
+},
+{
+"n": "Mohamed Ashraf",
+"pos": "D",
+"nat": "EGY",
+"num": 21,
+"age": null
+},
+{
+"n": "Mahmoud Bolbol",
+"pos": "M",
+"nat": "EGY",
+"num": 22,
+"age": null
+},
+{
+"n": "Tarek Alaa",
+"pos": "D",
+"nat": "EGY",
+"num": 23,
+"age": 24
+},
+{
+"n": "Abdo Gouda",
+"pos": "D",
+"nat": "EGY",
+"num": 24,
+"age": null
+},
+{
+"n": "Mohamed Rabia",
+"pos": "D",
+"nat": "EGY",
+"num": 26,
+"age": null
+},
+{
+"n": "Rasheed Ahmed",
+"pos": "F",
+"nat": "NGR",
+"num": 29,
+"age": null
+},
+{
+"n": "Walid Farag",
+"pos": "M",
+"nat": "EGY",
+"num": 30,
+"age": null
+},
+{
+"n": "Ahmed El Sayed",
+"pos": "G",
+"nat": "EGY",
+"num": 31,
+"age": null
+},
+{
+"n": "Abdallah Bostangy",
+"pos": "D",
+"nat": "EGY",
+"num": 32,
+"age": null
+},
+{
+"n": "Mohamed Ibrahim",
+"pos": "M",
+"nat": "EGY",
+"num": 33,
+"age": 34
+},
+{
+"n": "Moussa Mohamed",
+"pos": "D",
+"nat": "EGY",
+"num": 34,
+"age": null
+},
+{
+"n": "Omar Khedr",
+"pos": "M",
+"nat": "EGY",
+"num": 35,
+"age": 20
+},
+{
+"n": "Abdelmonem Tamer",
+"pos": "G",
+"nat": "EGY",
+"num": 36,
+"age": null
+},
+{
+"n": "Maata Magassa",
+"pos": "M",
+"nat": "MTN",
+"num": 37,
+"age": null
+},
+{
+"n": "Marwane Hajij",
+"pos": "M",
+"nat": "FRA",
+"num": 72,
+"age": null
+},
+{
+"n": "Wajdi Nabhan",
+"pos": "D",
+"nat": "PLE",
+"num": 73,
+"age": 25
+},
+{
+"n": "Mahmoud Ouka",
+"pos": "M",
+"nat": "EGY",
+"num": 74,
+"age": null
+}
+]
+},
+"EGY/Smouha": {
+"title": "Smouha SC",
+"sq": []
+},
+"EGY/Wadi Degla": {
+"title": "Wadi Degla SC",
+"sq": [
+{
+"n": "Amr Hossam",
+"pos": "G",
+"nat": "EGY",
+"num": 1,
+"age": null
+},
+{
+"n": "Shady Maher",
+"pos": "D",
+"nat": "EGY",
+"num": 2,
+"age": null
+},
+{
+"n": "Omar Adly",
+"pos": "D",
+"nat": "EGY",
+"num": 3,
+"age": null
+},
+{
+"n": "Islam Adel",
+"pos": "M",
+"nat": "EGY",
+"num": 4,
+"age": 38
+},
+{
+"n": "Ahmed Dahroug",
+"pos": "D",
+"nat": "EGY",
+"num": 5,
+"age": null
+},
+{
+"n": "Kamal Aboul-Fetouh",
+"pos": "D",
+"nat": "EGY",
+"num": 6,
+"age": null
+},
+{
+"n": "Ali Hussein",
+"pos": "F",
+"nat": "EGY",
+"num": 7,
+"age": null
+},
+{
+"n": "Ahmed Scholes",
+"pos": "M",
+"nat": "EGY",
+"num": 8,
+"age": null
+},
+{
+"n": "Franck Boli",
+"pos": "F",
+"nat": "CIV",
+"num": 9,
+"age": 33
+},
+{
+"n": "Mahmoud Diasty",
+"pos": "F",
+"nat": "EGY",
+"num": 10,
+"age": null
+},
+{
+"n": "Mohamed Abdelrahim",
+"pos": "F",
+"nat": "EGY",
+"num": 11,
+"age": null
+},
+{
+"n": "Ahmed Dahesh",
+"pos": "D",
+"nat": "EGY",
+"num": 12,
+"age": null
+},
+{
+"n": "Mohamed Abdelaati",
+"pos": "M",
+"nat": "EGY",
+"num": 14,
+"age": null
+},
+{
+"n": "Mahmoud Talaat",
+"pos": "M",
+"nat": "EGY",
+"num": 17,
+"age": null
+},
+{
+"n": "Greisha",
+"pos": "G",
+"nat": "EGY",
+"num": 18,
+"age": null
+},
+{
+"n": "Mahmoud Adel",
+"pos": "D",
+"nat": "EGY",
+"num": 19,
+"age": null
+},
+{
+"n": "Juhayna",
+"pos": "M",
+"nat": "EGY",
+"num": 20,
+"age": null
+},
+{
+"n": "Ahmed Reda",
+"pos": "D",
+"nat": "EGY",
+"num": 21,
+"age": null
+},
+{
+"n": "Ziad Anwar",
+"pos": "M",
+"nat": "EGY",
+"num": 22,
+"age": null
+},
+{
+"n": "Ahmed Ayman",
+"pos": "D",
+"nat": "EGY",
+"num": 23,
+"age": null
+},
+{
+"n": "Mohamed Ragab",
+"pos": "D",
+"nat": "EGY",
+"num": 24,
+"age": null
+},
+{
+"n": "Ibrahim El Bahnasi",
+"pos": "M",
+"nat": "EGY",
+"num": 25,
+"age": null
+},
+{
+"n": "Ahmed Refaat",
+"pos": "F",
+"nat": "EGY",
+"num": 27,
+"age": null
+},
+{
+"n": "Seif Teka",
+"pos": "D",
+"nat": "TUN",
+"num": 28,
+"age": 35
+},
+{
+"n": "Mohamed Fathy",
+"pos": "M",
+"nat": "EGY",
+"num": 30,
+"age": 32
+},
+{
+"n": "Mahmoud Adel",
+"pos": "M",
+"nat": "EGY",
+"num": 31,
+"age": null
+},
+{
+"n": "Ahmed Farouk",
+"pos": "F",
+"nat": "EGY",
+"num": 32,
+"age": null
+},
+{
+"n": "Halimo",
+"pos": "M",
+"nat": "EGY",
+"num": 33,
+"age": null
+},
+{
+"n": "Mees Kaandorp",
+"pos": "M",
+"nat": "NED",
+"num": 34,
+"age": 28
+},
+{
+"n": "Ahmed Abdin",
+"pos": "D",
+"nat": "EGY",
+"num": 40,
+"age": null
+},
+{
+"n": "Ahmed El Shimi",
+"pos": "M",
+"nat": "EGY",
+"num": 44,
+"age": null
+},
+{
+"n": "Abdelrahman Qattawy",
+"pos": "G",
+"nat": "EGY",
+"num": 99,
+"age": null
+}
+]
+},
+"EGY/El Mokawloon El Arab": {
+"title": "Al Mokawloon Al Arab SC",
+"sq": [
+{
+"n": "Mahmoud Abou El Saoud",
+"pos": "G",
+"nat": "EGY",
+"num": 1,
+"age": 39
+},
+{
+"n": "Amir Abed",
+"pos": "D",
+"nat": "EGY",
+"num": 2,
+"age": null
+},
+{
+"n": "Youssef El Gohary",
+"pos": "M",
+"nat": "EGY",
+"num": 3,
+"age": null
+},
+{
+"n": "Ahmed El Shimi",
+"pos": "M",
+"nat": "EGY",
+"num": 4,
+"age": null
+},
+{
+"n": "Mamadou Niass",
+"pos": "F",
+"nat": "MTN",
+"num": 7,
+"age": 32
+},
+{
+"n": "Mohamed Rizk",
+"pos": "M",
+"nat": "EGY",
+"num": 8,
+"age": 38
+},
+{
+"n": "Mohamed Salem",
+"pos": "F",
+"nat": "EGY",
+"num": 9,
+"age": 32
+},
+{
+"n": "Omar Saviola",
+"pos": "M",
+"nat": "EGY",
+"num": 10,
+"age": null
+},
+{
+"n": "Louay Wael",
+"pos": "D",
+"nat": "EGY",
+"num": 11,
+"age": 34
+},
+{
+"n": "Ahmed Afifi",
+"pos": "M",
+"nat": "EGY",
+"num": 12,
+"age": 33
+},
+{
+"n": "Gebna",
+"pos": "F",
+"nat": "EGY",
+"num": 14,
+"age": null
+},
+{
+"n": "Hassan Mahmoud Shahin",
+"pos": "G",
+"nat": "EGY",
+"num": 16,
+"age": null
+},
+{
+"n": "Fady Farid",
+"pos": "F",
+"nat": "EGY",
+"num": 17,
+"age": null
+},
+{
+"n": "Ahmed El Arabi",
+"pos": "G",
+"nat": "EGY",
+"num": 18,
+"age": null
+},
+{
+"n": "Mohamed Magli",
+"pos": "M",
+"nat": "EGY",
+"num": 19,
+"age": null
+},
+{
+"n": "Ahmed Alaa",
+"pos": "D",
+"nat": "EGY",
+"num": 20,
+"age": 32
+},
+{
+"n": "Farouck Kabore",
+"pos": "D",
+"nat": "BFA",
+"num": 21,
+"age": null
+},
+{
+"n": "Mohamed Gharib",
+"pos": "D",
+"nat": "EGY",
+"num": 22,
+"age": null
+},
+{
+"n": "Joseph Ochaya",
+"pos": "D",
+"nat": "UGA",
+"num": 23,
+"age": 33
+},
+{
+"n": "Luis Hinestroza",
+"pos": "F",
+"nat": "COL",
+"num": 24,
+"age": 34
+},
+{
+"n": "Ahmed Eid",
+"pos": "D",
+"nat": "EGY",
+"num": 26,
+"age": null
+},
+{
+"n": "Ammar Hamdy",
+"pos": "M",
+"nat": "EGY",
+"num": 27,
+"age": 27
+},
+{
+"n": "John Okoli",
+"pos": "F",
+"nat": "NGR",
+"num": 28,
+"age": 29
+},
+{
+"n": "Mahmoud Wadi",
+"pos": "F",
+"nat": "PLE",
+"num": 29,
+"age": 32
+},
+{
+"n": "Mohamed Hozian",
+"pos": "D",
+"nat": "EGY",
+"num": 32,
+"age": null
+},
+{
+"n": "Ahmed Fawzi",
+"pos": "M",
+"nat": "EGY",
+"num": 35,
+"age": null
+},
+{
+"n": "Ahmed Atef",
+"pos": "F",
+"nat": "EGY",
+"num": 70,
+"age": null
+},
+{
+"n": "Mostafa Mokhtar",
+"pos": "D",
+"nat": "EGY",
+"num": 74,
+"age": null
+}
+]
+},
+"EGY/Eastern Enppi": {
+"title": "Salah Ashour",
+"sq": []
+},
+"EGY/Abu Qir Fertilizers": {
+"title": "Abou Qir Fertilizers SC",
+"sq": [
+{
+"n": "Mohamed El-Saify",
+"pos": "G",
+"nat": "EGY",
+"num": 1,
+"age": null
+},
+{
+"n": "Mohamed Kamal",
+"pos": "D",
+"nat": "EGY",
+"num": 2,
+"age": null
+},
+{
+"n": "Mohamed Ali",
+"pos": "D",
+"nat": "EGY",
+"num": 3,
+"age": null
+},
+{
+"n": "Rida Mohsen",
+"pos": "D",
+"nat": "EGY",
+"num": 4,
+"age": null
+},
+{
+"n": "Tamer Samir",
+"pos": "D",
+"nat": "EGY",
+"num": 5,
+"age": null
+},
+{
+"n": "Tamer Abd El-Gwad",
+"pos": "M",
+"nat": "EGY",
+"num": 6,
+"age": null
+},
+{
+"n": "Mohamed Mahran",
+"pos": "M",
+"nat": "EGY",
+"num": 7,
+"age": null
+},
+{
+"n": "Islam Ali",
+"pos": "M",
+"nat": "EGY",
+"num": 8,
+"age": null
+},
+{
+"n": "Amro El-Shikh",
+"pos": "M",
+"nat": "EGY",
+"num": 9,
+"age": null
+},
+{
+"n": "Mohamad Ramadan",
+"pos": "F",
+"nat": "EGY",
+"num": 11,
+"age": null
+},
+{
+"n": "Mohamad Atia",
+"pos": "G",
+"nat": "EGY",
+"num": 12,
+"age": null
+},
+{
+"n": "Hassen Mohamad",
+"pos": "D",
+"nat": "EGY",
+"num": 13,
+"age": null
+},
+{
+"n": "Mohamad Said",
+"pos": "M",
+"nat": "EGY",
+"num": 14,
+"age": null
+},
+{
+"n": "Mohamed Mostafa",
+"pos": "M",
+"nat": "EGY",
+"num": 17,
+"age": null
+}
+]
+},
+"EGY/Asyut Petroleum": {
+"title": "Asyut Petroleum SC",
+"sq": [
+{
+"n": "Amgad Youssef",
+"pos": "G",
+"nat": "EGY",
+"num": 1,
+"age": null
+},
+{
+"n": "Moamen Eid",
+"pos": "D",
+"nat": "EGY",
+"num": 2,
+"age": null
+},
+{
+"n": "Ali Mahran",
+"pos": "D",
+"nat": "EGY",
+"num": 4,
+"age": null
+},
+{
+"n": "Mahmoud Alaa",
+"pos": "D",
+"nat": "EGY",
+"num": 5,
+"age": 35
+},
+{
+"n": "Ahmed Magdy",
+"pos": "D",
+"nat": "EGY",
+"num": 6,
+"age": null
+},
+{
+"n": "Ahmed Younes",
+"pos": "F",
+"nat": "EGY",
+"num": 7,
+"age": null
+},
+{
+"n": "Fathy Gamal",
+"pos": "M",
+"nat": "EGY",
+"num": 8,
+"age": null
+},
+{
+"n": "Mohamed Eid",
+"pos": "F",
+"nat": "EGY",
+"num": 9,
+"age": null
+},
+{
+"n": "Mostafa Sadafa",
+"pos": "F",
+"nat": "EGY",
+"num": 11,
+"age": null
+},
+{
+"n": "Ziad Tarek",
+"pos": "D",
+"nat": "EGY",
+"num": 12,
+"age": null
+},
+{
+"n": "Ismail Ashraf",
+"pos": "F",
+"nat": "EGY",
+"num": 13,
+"age": null
+},
+{
+"n": "Ahmed Arabi",
+"pos": "F",
+"nat": "EGY",
+"num": 14,
+"age": null
+},
+{
+"n": "Ahmed Khaled",
+"pos": "F",
+"nat": "EGY",
+"num": 15,
+"age": null
+},
+{
+"n": "Karim Emad",
+"pos": "G",
+"nat": "EGY",
+"num": 16,
+"age": null
+},
+{
+"n": "Ahmed Hamzawi",
+"pos": "M",
+"nat": "EGY",
+"num": 17,
+"age": null
+},
+{
+"n": "Abdo Keshkesh",
+"pos": "M",
+"nat": "EGY",
+"num": 18,
+"age": null
+},
+{
+"n": "Mohamed Hesha",
+"pos": "M",
+"nat": "EGY",
+"num": 19,
+"age": null
+},
+{
+"n": "Ahmed Shokry",
+"pos": "D",
+"nat": "EGY",
+"num": 20,
+"age": null
+},
+{
+"n": "Bakr Fawzi",
+"pos": "M",
+"nat": "EGY",
+"num": 21,
+"age": null
+},
+{
+"n": "Ahmed Gamal",
+"pos": "G",
+"nat": "EGY",
+"num": 23,
+"age": null
+},
+{
+"n": "Mahmoud Okal",
+"pos": "D",
+"nat": "EGY",
+"num": 24,
+"age": null
+},
+{
+"n": "Abdelaziz Ahmed",
+"pos": "G",
+"nat": "EGY",
+"num": 25,
+"age": null
+},
+{
+"n": "Abdelrahman El Khamisi",
+"pos": "M",
+"nat": "EGY",
+"num": 26,
+"age": null
+},
+{
+"n": "Abdelrahman Morgan",
+"pos": "D",
+"nat": "EGY",
+"num": 29,
+"age": null
+},
+{
+"n": "Abdelrahman Medhat",
+"pos": "D",
+"nat": "EGY",
+"num": 30,
+"age": null
+},
+{
+"n": "Alabi Salam",
+"pos": "M",
+"nat": "NGR",
+"num": 31,
+"age": null
+},
+{
+"n": "Khaled Abdelaal",
+"pos": "D",
+"nat": "EGY",
+"num": 34,
+"age": null
+},
+{
+"n": "Che Corines Bodne",
+"pos": "F",
+"nat": "CMR",
+"num": 35,
+"age": null
+},
+{
+"n": "Joshua Egaji",
+"pos": "F",
+"nat": "NGR",
+"num": 38,
+"age": null
+},
+{
+"n": "Youssef Ahmed Hassan",
+"pos": "M",
+"nat": "EGY",
+"num": 40,
+"age": null
+}
+]
+},
+"EGY/El Qanah": {
+"title": "El Qanah FC",
+"sq": [
+{
+"n": "Mostafa Mahmoud",
+"pos": "G",
+"nat": "EGY",
+"num": 1,
+"age": null
+},
+{
+"n": "Momen Mahdy",
+"pos": "D",
+"nat": "EGY",
+"num": 2,
+"age": null
+},
+{
+"n": "Ali Elfil",
+"pos": "D",
+"nat": "EGY",
+"num": 3,
+"age": null
+},
+{
+"n": "Mahmoud Rizk",
+"pos": "D",
+"nat": "EGY",
+"num": 4,
+"age": 33
+},
+{
+"n": "Ibrahim Samy",
+"pos": "D",
+"nat": "EGY",
+"num": 5,
+"age": null
+},
+{
+"n": "Momen Rady",
+"pos": "M",
+"nat": "EGY",
+"num": 6,
+"age": null
+},
+{
+"n": "Hossam Greisha",
+"pos": "M",
+"nat": "EGY",
+"num": 7,
+"age": null
+},
+{
+"n": "Mahmoud Hersha",
+"pos": "M",
+"nat": "EGY",
+"num": 8,
+"age": null
+},
+{
+"n": "Hazem Abosena",
+"pos": "F",
+"nat": "EGY",
+"num": 9,
+"age": null
+},
+{
+"n": "Mody Shalata",
+"pos": "F",
+"nat": "EGY",
+"num": 10,
+"age": null
+},
+{
+"n": "Mohamed Hamdi",
+"pos": "F",
+"nat": "EGY",
+"num": 11,
+"age": 26
+},
+{
+"n": "Mohamed Hany Treka",
+"pos": "D",
+"nat": "EGY",
+"num": 13,
+"age": null
+},
+{
+"n": "Mohamed El Kout",
+"pos": "M",
+"nat": "EGY",
+"num": 14,
+"age": null
+},
+{
+"n": "Mohab Samy",
+"pos": "D",
+"nat": "EGY",
+"num": 15,
+"age": null
+},
+{
+"n": "Mohamed Shaaban",
+"pos": "G",
+"nat": "EGY",
+"num": 16,
+"age": 42
+},
+{
+"n": "Rudolf Mensah",
+"pos": "F",
+"nat": "GHA",
+"num": 17,
+"age": 25
+},
+{
+"n": "Mawuli Wayo",
+"pos": "F",
+"nat": "GHA",
+"num": 18,
+"age": null
+},
+{
+"n": "Mohamed El Shebini",
+"pos": "D",
+"nat": "EGY",
+"num": 19,
+"age": null
+},
+{
+"n": "Hafiz Ibrahim",
+"pos": "M",
+"nat": "GHA",
+"num": 20,
+"age": null
+},
+{
+"n": "Islam Halima",
+"pos": "D",
+"nat": "EGY",
+"num": 21,
+"age": null
+},
+{
+"n": "Mohamed Antar",
+"pos": "M",
+"nat": "EGY",
+"num": 22,
+"age": 33
+},
+{
+"n": "Mohamed Diab",
+"pos": "M",
+"nat": "EGY",
+"num": 24,
+"age": 48
+},
+{
+"n": "Mostafa Hamada",
+"pos": "M",
+"nat": "EGY",
+"num": 25,
+"age": null
+},
+{
+"n": "Ahmed Ali",
+"pos": "M",
+"nat": "EGY",
+"num": 27,
+"age": null
+},
+{
+"n": "Osama El Nagar",
+"pos": "D",
+"nat": "EGY",
+"num": 30,
+"age": null
+},
+{
+"n": "Mohamed Sadek",
+"pos": "M",
+"nat": "EGY",
+"num": 33,
+"age": null
+},
+{
+"n": "Ibrahim El Sayed",
+"pos": "F",
+"nat": "EGY",
+"num": 40,
+"age": null
+},
+{
+"n": "Mohamed Helal",
+"pos": "M",
+"nat": "EGY",
+"num": 66,
+"age": null
+},
+{
+"n": "Ahmed Castelo",
+"pos": "G",
+"nat": "EGY",
+"num": 77,
+"age": null
+},
+{
+"n": "Hassan El Shazly",
+"pos": "D",
+"nat": "EGY",
+"num": 98,
+"age": null
+},
+{
+"n": "Ramy Najjarine",
+"pos": "F",
+"nat": "LBN",
+"num": 99,
+"age": 26
+}
+]
+},
+"EGY/Ghazl El Mahalla": {
+"title": "Ghazl El Mahalla SC",
+"sq": [
+{
+"n": "Ahmed El Nafarawy",
+"pos": "G",
+"nat": "EGY",
+"num": 1,
+"age": null
+},
+{
+"n": "Bassam Walid",
+"pos": "D",
+"nat": "EGY",
+"num": 2,
+"age": null
+},
+{
+"n": "Youssef Hassan",
+"pos": "M",
+"nat": "EGY",
+"num": 3,
+"age": null
+},
+{
+"n": "Ahmed Castelo",
+"pos": "D",
+"nat": "EGY",
+"num": 4,
+"age": null
+},
+{
+"n": "Amr El Gazar",
+"pos": "D",
+"nat": "EGY",
+"num": 5,
+"age": null
+},
+{
+"n": "Ahmed Hakam",
+"pos": "D",
+"nat": "EGY",
+"num": 6,
+"age": null
+},
+{
+"n": "Mohamed Gaber",
+"pos": "D",
+"nat": "EGY",
+"num": 7,
+"age": null
+},
+{
+"n": "Mohamed Osama",
+"pos": "M",
+"nat": "EGY",
+"num": 8,
+"age": null
+},
+{
+"n": "Abdo Yehia",
+"pos": "F",
+"nat": "EGY",
+"num": 9,
+"age": null
+},
+{
+"n": "Ahmed Magdy",
+"pos": "M",
+"nat": "EGY",
+"num": 10,
+"age": 37
+},
+{
+"n": "Mohamed Hamdy",
+"pos": "F",
+"nat": "EGY",
+"num": 11,
+"age": 35
+},
+{
+"n": "Yehia Zakaria",
+"pos": "D",
+"nat": "EGY",
+"num": 12,
+"age": null
+},
+{
+"n": "Ibrahim Hassan",
+"pos": "F",
+"nat": "EGY",
+"num": 13,
+"age": null
+},
+{
+"n": "Khaled El Akhmimi",
+"pos": "M",
+"nat": "EGY",
+"num": 14,
+"age": null
+},
+{
+"n": "Mohamed Ashraf",
+"pos": "M",
+"nat": "EGY",
+"num": 15,
+"age": null
+},
+{
+"n": "Amer Mohamed",
+"pos": "G",
+"nat": "EGY",
+"num": 16,
+"age": 39
+},
+{
+"n": "Hazem Abosena",
+"pos": "F",
+"nat": "EGY",
+"num": 17,
+"age": null
+},
+{
+"n": "Ahmed El Arabi",
+"pos": "G",
+"nat": "EGY",
+"num": 18,
+"age": null
+},
+{
+"n": "Mohamed Essam",
+"pos": "M",
+"nat": "EGY",
+"num": 19,
+"age": 32
+},
+{
+"n": "Mohamed Ali Ben Hammouda",
+"pos": "F",
+"nat": "TUN",
+"num": 20,
+"age": 28
+},
+{
+"n": "Abdelrahman Body",
+"pos": "D",
+"nat": "EGY",
+"num": 21,
+"age": null
+},
+{
+"n": "Abdelnaser Mohamed",
+"pos": "M",
+"nat": "EGY",
+"num": 22,
+"age": null
+},
+{
+"n": "Abdelrahim Amoory",
+"pos": "D",
+"nat": "EGY",
+"num": 24,
+"age": null
+},
+{
+"n": "Mohamed Ashraf",
+"pos": "M",
+"nat": "EGY",
+"num": 25,
+"age": null
+},
+{
+"n": "Hamidu Fatawu",
+"pos": "D",
+"nat": "GHA",
+"num": 26,
+"age": null
+},
+{
+"n": "Hossam Greisha",
+"pos": "F",
+"nat": "EGY",
+"num": 28,
+"age": null
+},
+{
+"n": "Osama El Nagar",
+"pos": "D",
+"nat": "EGY",
+"num": 30,
+"age": null
+},
+{
+"n": "Mahmoud Sotohi",
+"pos": "F",
+"nat": "EGY",
+"num": 32,
+"age": null
+},
+{
+"n": "Mory Touré",
+"pos": "M",
+"nat": "CIV",
+"num": 33,
+"age": null
+},
+{
+"n": "Abdo Semida",
+"pos": "D",
+"nat": "EGY",
+"num": 35,
+"age": null
+},
+{
+"n": "Abdoul Aziz Coulibaly",
+"pos": "D",
+"nat": "CIV",
+"num": 38,
+"age": null
+},
+{
+"n": "Mohamed Nabih",
+"pos": "D",
+"nat": "EGY",
+"num": 43,
+"age": null
+}
+]
+},
+"MAR/Raja Casablanca": {
+"title": "Raja CA",
+"sq": [
+{
+"n": "El Mehdi Al Harrar",
+"pos": "G",
+"nat": "MAR",
+"num": 1,
+"age": 26
+},
+{
+"n": "Marian Huja",
+"pos": "D",
+"nat": "POR",
+"num": 2,
+"age": 27
+},
+{
+"n": "Chemseddine Knaidil",
+"pos": "D",
+"nat": "MAR",
+"num": 3,
+"age": null
+},
+{
+"n": "Ismael Mokadem",
+"pos": "D",
+"nat": "MAR",
+"num": 4,
+"age": 31
+},
+{
+"n": "Bouchaib Arrassi",
+"pos": "D",
+"nat": "MAR",
+"num": 5,
+"age": 26
+},
+{
+"n": "Aymen Barkok",
+"pos": "M",
+"nat": "MAR",
+"num": 6,
+"age": 28
+},
+{
+"n": "Mohamed Boulacsoute",
+"pos": "D",
+"nat": "MAR",
+"num": 7,
+"age": 28
+},
+{
+"n": "Ishak Zidani",
+"pos": "M",
+"nat": "MAR",
+"num": 8,
+"age": null
+},
+{
+"n": "Ismail Khafi",
+"pos": "F",
+"nat": "MAR",
+"num": 9,
+"age": 31
+},
+{
+"n": "Felipinho",
+"pos": "F",
+"nat": "BRA",
+"num": 10,
+"age": null
+},
+{
+"n": "Youness Dahmani",
+"pos": "F",
+"nat": "MAR",
+"num": 11,
+"age": null
+},
+{
+"n": "Khalid Kbiri Alaoui",
+"pos": "G",
+"nat": "MAR",
+"num": 12,
+"age": 30
+},
+{
+"n": "Badr Benoun",
+"pos": "D",
+"nat": "MAR",
+"num": 13,
+"age": 33
+},
+{
+"n": "Younes Bakiz",
+"pos": "M",
+"nat": "DEN",
+"num": 14,
+"age": 27
+},
+{
+"n": "Anas Benomar",
+"pos": "M",
+"nat": "MAR",
+"num": 16,
+"age": null
+},
+{
+"n": "Ayoub El Amloud",
+"pos": "D",
+"nat": "MAR",
+"num": 17,
+"age": 32
+},
+{
+"n": "Yahya Iguiz",
+"pos": "F",
+"nat": "MAR",
+"num": 18,
+"age": null
+},
+{
+"n": "Othmane Chraibi",
+"pos": "M",
+"nat": "MAR",
+"num": 19,
+"age": null
+},
+{
+"n": "Adel Bettaieb",
+"pos": "F",
+"nat": "TUN",
+"num": 21,
+"age": 29
+},
+{
+"n": "Saad Antra",
+"pos": "G",
+"nat": "MAR",
+"num": 22,
+"age": null
+},
+{
+"n": "Mohamed Al Makahasi",
+"pos": "M",
+"nat": "MAR",
+"num": 23,
+"age": 31
+},
+{
+"n": "Amine Khammas",
+"pos": "D",
+"nat": "MAR",
+"num": 24,
+"age": 27
+},
+{
+"n": "Sharara",
+"pos": "F",
+"nat": "JOR",
+"num": 27,
+"age": 29
+},
+{
+"n": "Michael Agbekpornu",
+"pos": "M",
+"nat": "GHA",
+"num": 30,
+"age": 28
+},
+{
+"n": "Yassine Zoubir",
+"pos": "G",
+"nat": "MAR",
+"num": 32,
+"age": null
+},
+{
+"n": "Bilal Ould-Chikh",
+"pos": "F",
+"nat": "MAR",
+"num": 45,
+"age": 29
+},
+{
+"n": "Mounaïm El Idrissy",
+"pos": "F",
+"nat": "MAR",
+"num": 70,
+"age": 27
+},
+{
+"n": "Adam Ennafati",
+"pos": "F",
+"nat": "MAR",
+"num": 77,
+"age": 32
+},
+{
+"n": "Mathias Oyewusi",
+"pos": "F",
+"nat": "NGR",
+"num": 99,
+"age": 27
+}
+]
 }
 }
