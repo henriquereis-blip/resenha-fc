@@ -52423,5 +52423,220 @@
 "age": 28
 }
 ]
+},
+"ITA2/Mantova": {
+"title": "Mantova 1911",
+"sq": [
+{
+"n": "Luca Gemello",
+"pos": "G",
+"nat": "ITA",
+"num": 1,
+"age": null
+},
+{
+"n": "Bodin Tomašević",
+"pos": "D",
+"nat": "MNE",
+"num": 5,
+"age": null
+},
+{
+"n": "Jean-Pierre Longonda",
+"pos": "M",
+"nat": "BEL",
+"num": 6,
+"age": null
+},
+{
+"n": "Matteo Spinaccè",
+"pos": "F",
+"nat": "ITA",
+"num": 7,
+"age": null
+},
+{
+"n": "Rareș Ilie",
+"pos": "M",
+"nat": "ROU",
+"num": 8,
+"age": null
+},
+{
+"n": "Ettore Gliozzi",
+"pos": "F",
+"nat": "ITA",
+"num": 9,
+"age": null
+},
+{
+"n": "David Wieser",
+"pos": "M",
+"nat": "ITA",
+"num": 10,
+"age": null
+},
+{
+"n": "Ismael Cajazzo",
+"pos": "M",
+"nat": "CAN",
+"num": 11,
+"age": null
+},
+{
+"n": "Manuel Gasparini",
+"pos": "G",
+"nat": "ITA",
+"num": 12,
+"age": null
+},
+{
+"n": "Andrea Meroni",
+"pos": "D",
+"nat": "ITA",
+"num": 13,
+"age": null
+},
+{
+"n": "Nicolò Radaelli",
+"pos": "D",
+"nat": "ITA",
+"num": 17,
+"age": null
+},
+{
+"n": "Sambaly Keïta",
+"pos": "M",
+"nat": "FRA",
+"num": 18,
+"age": null
+},
+{
+"n": "Francesco Ruocco",
+"pos": "F",
+"nat": "ITA",
+"num": 19,
+"age": null
+},
+{
+"n": "Flavio Paoletti",
+"pos": "M",
+"nat": "ITA",
+"num": 20,
+"age": null
+},
+{
+"n": "Simone Trimboli",
+"pos": "M",
+"nat": "ITA",
+"num": 21,
+"age": null
+},
+{
+"n": "Francesco Bardi",
+"pos": "G",
+"nat": "ITA",
+"num": 22,
+"age": null
+},
+{
+"n": "Lorenzo Ignacchiti",
+"pos": "M",
+"nat": "ITA",
+"num": 25,
+"age": null
+},
+{
+"n": "Alessio Castellini",
+"pos": "D",
+"nat": "ITA",
+"num": 27,
+"age": null
+},
+{
+"n": "Stefano Cella",
+"pos": "D",
+"nat": "ITA",
+"num": 29,
+"age": null
+},
+{
+"n": "Davide Bragantini",
+"pos": "F",
+"nat": "ITA",
+"num": 30,
+"age": null
+},
+{
+"n": "Cristian Marai",
+"pos": "D",
+"nat": "ITA",
+"num": 33,
+"age": null
+},
+{
+"n": "Jonathan Silva",
+"pos": "M",
+"nat": "BRA",
+"num": 41,
+"age": null
+},
+{
+"n": "Yassin Banna",
+"pos": "M",
+"nat": "ITA",
+"num": 44,
+"age": null
+},
+{
+"n": "Fahem Benaïssa-Yahia",
+"pos": "D",
+"nat": "ALG",
+"num": 50,
+"age": null
+},
+{
+"n": "Tommaso Del Lungo",
+"pos": "F",
+"nat": "ITA",
+"num": 58,
+"age": null
+},
+{
+"n": "Federico Chinetti",
+"pos": "F",
+"nat": "ITA",
+"num": 71,
+"age": null
+},
+{
+"n": "Eman Košpo",
+"pos": "D",
+"nat": "BIH",
+"num": 75,
+"age": null
+},
+{
+"n": "Filippo Vesentini",
+"pos": "M",
+"nat": "ITA",
+"num": 77,
+"age": null
+},
+{
+"n": "Rachid Kouda",
+"pos": "M",
+"nat": "BFA",
+"num": 80,
+"age": null
+},
+{
+"n": "Vanja Vlahović",
+"pos": "F",
+"nat": "SRB",
+"num": 99,
+"age": null
+}
+]
 }
 }

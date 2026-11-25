@@ -4,6 +4,7 @@
 # transferencias_aplicadas_v2.9.csv (todos do Drive, pasta Resenha FC), wld.json (nomes dos clubes do jogo; gerado por tools/dump_wld.js).
 # Quando o Henrique subir jogadores_jogo_v2_9_1.csv no Drive, trocar jog_v2.csv por ele e dispensar ovr292/transf.
 import csv,json,re,unicodedata,collections,sys
+sys.path.insert(0,'tools');import fifa   # v137: overall do FC26 é a fonte principal
 D='tools/data/'
 rd=lambda f:list(csv.DictReader(open(D+f,encoding='utf-8-sig')))
 J=rd('jogadores_jogo_v2.csv');O=rd('overall_corrigido_v2.9.2.csv');T=rd('transferencias_aplicadas_v2.9.csv')
@@ -107,6 +108,7 @@ by=collections.defaultdict(list)
 for x in P.values():
     if x['gerado']!='0':continue
     by[x['clube']].append(x)
+FIFA_N=[0,0];FIFA_D=[]
 out={};short=[]
 for g,(k,d) in mp.items():
     pl=[]
@@ -117,11 +119,19 @@ for g,(k,d) in mp.items():
         pl.append(dict(n=x['nome'],r=role(x),a=int(round(float(x['idade']))),o=ovr,p=max(ovr,pot),nat=nat3(x['nacionalidade']),v=round(float(x['valor_eur'] or 0)/1e6,1)))
     for p in pl:
         if norm(p['n']) in MANOV:p['o']=MANOV[norm(p['n'])];p['p']=max(p['p'],p['o'])
+        else:
+            fo=fifa.lookup(p['n'],p['a'])
+            if fo:FIFA_N[0]+=1;FIFA_D.append(fo-p['o']);p['p']=max(fo,p['p']+fo-p['o']);p['o']=fo
+            else:FIFA_N[1]+=1
     names={norm(p['n']):p for p in pl}
     for (nm,r,club,o,a,nt) in STARS:
         if club!=g:continue
         if norm(nm) in MANUAL:continue   # v132: ajuste manual do dono (overall_corrigido, ajuste_manual=1) vale mais que o craque calibrado antigo
         c=[p for p in pl if norm(p['n'])==norm(nm)] or [p for p in pl if key(p['n'])==key(nm) and p['r']==r]
+        if c and fifa.lookup(c[0]['n'],c[0]['a']):continue   # v137: FC26 manda; craque calibrado antigo só vale onde o FC26 não tem o jogador
+        if not c:
+            fo=fifa.lookup(nm,a)
+            if fo:o=fo
         if c:c[0].update(o=o,a=a,r=r,nat=nt,p=max(o,c[0]['p']),n=nm)
         else:pl.append(dict(n=nm,r=r,a=a,o=o,p=o,nat=nt,v=round(max(5,(o-60)*(o-60)/6.0),1)))
     sel=[]
@@ -134,6 +144,8 @@ for g,(k,d) in mp.items():
     if len(pl)<20:short.append((g,len(pl)))
     if len(pl)<18:continue   # v132: clube sem elenco de verdade na base (ex.: ligado por engano) fica com o elenco gerado
     out[g]=';'.join('|'.join(map(str,[p['n'].replace(';',',').replace('|','/'),p['r'][0] if p['r']!='PNT' else 'P',p['a'],p['o'],p['p'],p['nat'],p['v']])) for p in sel)
+import statistics
+print('FC26: overall aplicado em',FIFA_N[0],'jogadores; sem FC26 (ficam com a base):',FIFA_N[1],'| diferença média FC26 - base: %.2f'%statistics.mean(FIFA_D))
 print('elencos:',len(out),'| curtos:',short)
 MAN72={x['jogador']:int(x['overall']) for x in AJ if x.get('overall','').strip().isdigit()}
 MAN72.update(DONO)
