@@ -35,7 +35,9 @@ NATD=ast.literal_eval(re.search(r"^NAT=(\{.*\})$",open('tools/gen_ext72.py',enco
 NATD.update({'Holland':'NED','Korea Republic':'KOR','China PR':'CHN','Republic of Ireland':'IRL','Turkey':'TUR',"Côte d'Ivoire":'CIV','Bosnia and Herzegovina':'BIH','Congo DR':'COD','Cape Verde Islands':'CPV','Gambia':'GAM','Curaçao':'CUW','Bolivia':'BOL','India':'IND','Azerbaijan':'AZE','Peru':'PER','Korea, South':'KOR'})
 ROLE={'GK':'G','CB':'Z','RB':'L','LB':'L','CDM':'V','CM':'M','CAM':'M','LM':'P','RM':'P','LW':'P','RW':'P','ST':'A','CF':'A'}
 FR=list(csv.DictReader(open(D+'ea_fc26_players.csv',encoding='utf-8-sig')))
-LGS={'ENG3':('England',{'Premier League','EFL Championship','EFL League One','EFL League Two'}),'ENG4':('England',{'Premier League','EFL Championship','EFL League One','EFL League Two'}),
+EN=('England',{'Premier League','EFL Championship','EFL League One','EFL League Two'})
+LGS={'ENG2':EN,'GER2':('Germany',{'Bundesliga','Bundesliga 2','3. Liga'}),'ESP2':('Spain',{'LALIGA EA SPORTS','LALIGA HYPERMOTION'}),'ITA2':('Italy',{'Serie A Enilive','Serie BKT'}),'FRA2':('France',{"Ligue 1 McDonald's",'Ligue 2 BKT'}),
+     'ENG3':('England',{'Premier League','EFL Championship','EFL League One','EFL League Two'}),'ENG4':('England',{'Premier League','EFL Championship','EFL League One','EFL League Two'}),
      'GER3':('Germany',{'Bundesliga','Bundesliga 2','3. Liga'})}
 ALIAS={'Milton Keynes Dons':'MK Dons','Cambridge United':'Cambridge Utd','Wycombe Wanderers':'Wycombe','Ingolstadt':'FC Ingolstadt 04','Erzgebirge Aue':'Erzgebirge Aue','Wehen Wiesbaden':'Wehen Wiesbaden',
        'Hallescher FC':'Hallescher FC','Viktoria Köln':'Viktoria Köln','Osnabrück':'VfL Osnabrück','Jahn Regensburg':'SSV Jahn Regensburg','Saarbrücken':'1. FC Saarbrücken','1860 München':'1860 München'}
@@ -60,7 +62,7 @@ for key,(ctry,lgset) in LGS.items():
             yr=int(re.search(r'/(\d{4})',r['birthdate']).group(1))
             rows.append('|'.join(map(str,[nm,ROLE.get(r['position'],'M'),2026-yr,NATD.get(r['nationality'],re.sub('[^A-Z]','',r['nationality'].upper())[:3] or 'XXX'),99,int(r['overallRating'])])))
         direct[g]=';'.join(rows)
-out.update({k:v for k,v in direct.items() if k not in out})
+out.update({k:v for k,v in direct.items() if k not in out})   # FC26 completa só o que a Wikipedia não trouxe
 print('direto do FC26:',len(direct),'clubes | sem par:',dmiss)
 js=('/* ext99 (v136): elencos REAIS (nome, posição, idade, nacionalidade) de ligas fora da base do chat de pesquisa. GERADO por tools/gen_ext99.py a partir de tools/wiki_squads.py (Wikipedia): não editar à mão.\n'
     '   Formato: "Nome|papel|idade|nat|camisa|overall". Overall = FC26 quando casou (0 = não casou): aí o hook distribui o overall que o jogo já calibrou para o clube (melhor camisa/idade = melhor overall). */\n'
