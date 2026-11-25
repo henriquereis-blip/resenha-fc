@@ -53514,5 +53514,1059 @@
 "age": null
 }
 ]
+},
+"GER2/Schalke 04": {
+"title": "FC Schalke 04",
+"sq": [
+{
+"n": "Loris Karius",
+"pos": "G",
+"nat": "GER",
+"num": 1,
+"age": 33
+},
+{
+"n": "Hasan Kuruçay",
+"pos": "D",
+"nat": "TUR",
+"num": 4,
+"age": 29
+},
+{
+"n": "Timo Becker",
+"pos": "D",
+"nat": "GER",
+"num": 5,
+"age": 29
+},
+{
+"n": "Ron Schallenberg",
+"pos": "M",
+"nat": "GER",
+"num": 6,
+"age": 28
+},
+{
+"n": "Hwang Hee-chan",
+"pos": "F",
+"nat": "KOR",
+"num": 7,
+"age": 30
+},
+{
+"n": "Robin Gosens",
+"pos": "M",
+"nat": "GER",
+"num": 8,
+"age": 32
+},
+{
+"n": "Moussa Sylla",
+"pos": "F",
+"nat": "MLI",
+"num": 9,
+"age": 27
+},
+{
+"n": "Edin Džeko",
+"pos": "F",
+"nat": "BIH",
+"num": 10,
+"age": 40
+},
+{
+"n": "Bryan Lasme",
+"pos": "F",
+"nat": "FRA",
+"num": 11,
+"age": 28
+},
+{
+"n": "Satoshi Tanaka",
+"pos": "M",
+"nat": "JPN",
+"num": 13,
+"age": 24
+},
+{
+"n": "Janik Bachmann",
+"pos": "M",
+"nat": "GER",
+"num": 14,
+"age": 30
+},
+{
+"n": "Emil Højlund",
+"pos": "F",
+"nat": "DEN",
+"num": 15,
+"age": 21
+},
+{
+"n": "Adrian Gantenbein",
+"pos": "D",
+"nat": "SUI",
+"num": 17,
+"age": 25
+},
+{
+"n": "Kenan Karaman",
+"pos": "F",
+"nat": "TUR",
+"num": 19,
+"age": 32
+},
+{
+"n": "Junior Adamu",
+"pos": "F",
+"nat": "AUT",
+"num": 20,
+"age": 25
+},
+{
+"n": "Dejan Ljubičić",
+"pos": "M",
+"nat": "AUT",
+"num": 21,
+"age": 29
+},
+{
+"n": "Kevin Müller",
+"pos": "G",
+"nat": "GER",
+"num": 22,
+"age": 35
+},
+{
+"n": "Soufiane El-Faouzi",
+"pos": "M",
+"nat": "MAR",
+"num": 23,
+"age": 24
+},
+{
+"n": "Adil Aouchiche",
+"pos": "M",
+"nat": "ALG",
+"num": 24,
+"age": 24
+},
+{
+"n": "Nikola Katić",
+"pos": "D",
+"nat": "BIH",
+"num": 25,
+"age": 30
+},
+{
+"n": "Finn Porath",
+"pos": "M",
+"nat": "GER",
+"num": 27,
+"age": 29
+},
+{
+"n": "Junior Dina Ebimbe",
+"pos": "M",
+"nat": "CMR",
+"num": 29,
+"age": 26
+},
+{
+"n": "Vitalie Becker",
+"pos": "D",
+"nat": "GER",
+"num": 33,
+"age": 21
+},
+{
+"n": "Johannes Siebeking",
+"pos": "G",
+"nat": "GER",
+"num": 36,
+"age": null
+},
+{
+"n": "Luca Vozar",
+"pos": "M",
+"nat": "GER",
+"num": 38,
+"age": null
+},
+{
+"n": "Maximilian Wöber",
+"pos": "D",
+"nat": "AUT",
+"num": 39,
+"age": 28
+},
+{
+"n": "Mertcan Ayhan",
+"pos": "D",
+"nat": "TUR",
+"num": 43,
+"age": 20
+}
+]
+},
+"GER2/Hertha BSC": {
+"title": "Hertha BSC",
+"sq": [
+{
+"n": "Julian Eitschberger",
+"pos": "D",
+"nat": "GER",
+"num": 2,
+"age": null
+},
+{
+"n": "Josip Brekalo",
+"pos": "F",
+"nat": "CRO",
+"num": 7,
+"age": null
+},
+{
+"n": "Kevin Sessa",
+"pos": "M",
+"nat": "GER",
+"num": 8,
+"age": null
+},
+{
+"n": "Gustaf Nilsson",
+"pos": "F",
+"nat": "SWE",
+"num": 9,
+"age": null
+},
+{
+"n": "Konstantin Heide",
+"pos": "G",
+"nat": "GER",
+"num": 13,
+"age": null
+},
+{
+"n": "Sebastian Grønning",
+"pos": "F",
+"nat": "DEN",
+"num": 17,
+"age": null
+},
+{
+"n": "Luca Schuler",
+"pos": "F",
+"nat": "GER",
+"num": 18,
+"age": null
+},
+{
+"n": "Oluwaseun Adewumi",
+"pos": "M",
+"nat": "AUT",
+"num": 19,
+"age": null
+},
+{
+"n": "Farid Alfa-Ruprecht",
+"pos": "F",
+"nat": "GER",
+"num": 20,
+"age": null
+},
+{
+"n": "Boris Mamuzah Lum",
+"pos": "M",
+"nat": "GER",
+"num": 21,
+"age": null
+},
+{
+"n": "Mads Pedersen",
+"pos": "D",
+"nat": "DEN",
+"num": 22,
+"age": null
+},
+{
+"n": "Jón Dagur Þorsteinsson",
+"pos": "F",
+"nat": "ISL",
+"num": 24,
+"age": null
+},
+{
+"n": "Niklas Hildebrandt",
+"pos": "F",
+"nat": "GER",
+"num": 26,
+"age": null
+},
+{
+"n": "Niklas Kolbe",
+"pos": "D",
+"nat": "GER",
+"num": 27,
+"age": null
+},
+{
+"n": "Jelani Ndi",
+"pos": "F",
+"nat": "GER",
+"num": 28,
+"age": null
+},
+{
+"n": "Jerome Diallo",
+"pos": "D",
+"nat": "GER",
+"num": 29,
+"age": null
+},
+{
+"n": "Paul Seguin",
+"pos": "M",
+"nat": "GER",
+"num": 30,
+"age": null
+},
+{
+"n": "Márton Dárdai",
+"pos": "D",
+"nat": "HUN",
+"num": 31,
+"age": null
+},
+{
+"n": "Soufian Gouram",
+"pos": "M",
+"nat": "GER",
+"num": 33,
+"age": null
+},
+{
+"n": "Mayson Grothe",
+"pos": "D",
+"nat": "GER",
+"num": 34,
+"age": null
+},
+{
+"n": "Marius Gersbeck",
+"pos": "G",
+"nat": "GER",
+"num": 35,
+"age": null
+},
+{
+"n": "Kian Todorović",
+"pos": "M",
+"nat": "TUR",
+"num": 36,
+"age": null
+},
+{
+"n": "Pascal Klemens",
+"pos": "D",
+"nat": "GER",
+"num": 41,
+"age": null
+},
+{
+"n": "Deyovaisio Zeefuik",
+"pos": "D",
+"nat": "SUR",
+"num": 42,
+"age": null
+},
+{
+"n": "Tim Goller",
+"pos": "G",
+"nat": "GER",
+"num": 43,
+"age": null
+},
+{
+"n": "Linus Gechter",
+"pos": "D",
+"nat": "GER",
+"num": 44,
+"age": null
+},
+{
+"n": "Selim Telib",
+"pos": "M",
+"nat": "EGY",
+"num": 47,
+"age": null
+}
+]
+},
+"GER2/Hannover 96": {
+"title": "Hannover 96",
+"sq": [
+{
+"n": "Pascal Loretz",
+"pos": "G",
+"nat": "SUI",
+"num": 1,
+"age": 23
+},
+{
+"n": "Boris Tomiak",
+"pos": "D",
+"nat": "GER",
+"num": 3,
+"age": 28
+},
+{
+"n": "Jean Hugonet",
+"pos": "D",
+"nat": "FRA",
+"num": 4,
+"age": 27
+},
+{
+"n": "Virgil Ghiță",
+"pos": "D",
+"nat": "ROU",
+"num": 5,
+"age": 28
+},
+{
+"n": "Mustapha Bundu",
+"pos": "F",
+"nat": "SLE",
+"num": 7,
+"age": 29
+},
+{
+"n": "Waniss Taïbi",
+"pos": "M",
+"nat": "FRA",
+"num": 8,
+"age": 24
+},
+{
+"n": "Benjamin Källman",
+"pos": "F",
+"nat": "FIN",
+"num": 9,
+"age": 28
+},
+{
+"n": "Marcel Hartel",
+"pos": "M",
+"nat": "GER",
+"num": 10,
+"age": 30
+},
+{
+"n": "Benedikt Pichler",
+"pos": "F",
+"nat": "AUT",
+"num": 11,
+"age": 29
+},
+{
+"n": "Franz Roggow",
+"pos": "M",
+"nat": "GER",
+"num": 13,
+"age": 24
+},
+{
+"n": "Husseyn Chakroun",
+"pos": "M",
+"nat": "LBN",
+"num": 14,
+"age": 22
+},
+{
+"n": "Karl Steinmann",
+"pos": "D",
+"nat": "GER",
+"num": 16,
+"age": null
+},
+{
+"n": "Bastian Allgeier",
+"pos": "D",
+"nat": "GER",
+"num": 17,
+"age": 24
+},
+{
+"n": "Ime Okon",
+"pos": "D",
+"nat": "RSA",
+"num": 20,
+"age": 22
+},
+{
+"n": "Mwisho Mhango",
+"pos": "M",
+"nat": "MAW",
+"num": 21,
+"age": 19
+},
+{
+"n": "Noah Engelbreth",
+"pos": "M",
+"nat": "GER",
+"num": 22,
+"age": null
+},
+{
+"n": "Stefán Teitur Þórðarson",
+"pos": "M",
+"nat": "ISL",
+"num": 23,
+"age": 28
+},
+{
+"n": "Yunus Ünal",
+"pos": "M",
+"nat": "GER",
+"num": 24,
+"age": null
+},
+{
+"n": "Lars Gindorf",
+"pos": "M",
+"nat": "GER",
+"num": 25,
+"age": 25
+},
+{
+"n": "Tom Hobrecht",
+"pos": "F",
+"nat": "GER",
+"num": 26,
+"age": null
+},
+{
+"n": "Hayate Matsuda",
+"pos": "D",
+"nat": "JPN",
+"num": 27,
+"age": 23
+},
+{
+"n": "Taycan Etçibaşı",
+"pos": "F",
+"nat": "GER",
+"num": 28,
+"age": null
+},
+{
+"n": "Kolja Oudenne",
+"pos": "M",
+"nat": "SWE",
+"num": 29,
+"age": 25
+},
+{
+"n": "Leo Weinkauf",
+"pos": "G",
+"nat": "GER",
+"num": 30,
+"age": 30
+},
+{
+"n": "Maurice Neubauer",
+"pos": "D",
+"nat": "GER",
+"num": 33,
+"age": 30
+},
+{
+"n": "Joschua Siewert",
+"pos": "D",
+"nat": "GER",
+"num": 35,
+"age": null
+},
+{
+"n": "Alexander Vogel",
+"pos": "M",
+"nat": "GER",
+"num": 37,
+"age": null
+},
+{
+"n": "Taycan Kurt",
+"pos": "F",
+"nat": "TUR",
+"num": 39,
+"age": null
+},
+{
+"n": "Jonas Schwanke",
+"pos": "G",
+"nat": "GER",
+"num": 40,
+"age": null
+},
+{
+"n": "Emir Sahiti",
+"pos": "M",
+"nat": "KOS",
+"num": 44,
+"age": 28
+},
+{
+"n": "Merlin Sinanović",
+"pos": "F",
+"nat": "GER",
+"num": 49,
+"age": null
+}
+]
+},
+"GER2/Fortuna Düsseldorf": {
+"title": "Fortuna Düsseldorf",
+"sq": [
+{
+"n": "Lasse Rieß",
+"pos": "G",
+"nat": "GER",
+"num": 1,
+"age": 25
+},
+{
+"n": "Steven van der Sloot",
+"pos": "D",
+"nat": "NED",
+"num": 2,
+"age": 24
+},
+{
+"n": "Dominique Heintz",
+"pos": "D",
+"nat": "GER",
+"num": 3,
+"age": 33
+},
+{
+"n": "Lukas Bornschein",
+"pos": "D",
+"nat": "GER",
+"num": 4,
+"age": null
+},
+{
+"n": "Yassine Bouchama",
+"pos": "M",
+"nat": "GER",
+"num": 5,
+"age": null
+},
+{
+"n": "Andreas Müller",
+"pos": "M",
+"nat": "GER",
+"num": 6,
+"age": 26
+},
+{
+"n": "Erik Wekesser",
+"pos": "D",
+"nat": "GER",
+"num": 7,
+"age": 29
+},
+{
+"n": "Jorrit Hendrix",
+"pos": "M",
+"nat": "NED",
+"num": 8,
+"age": 31
+},
+{
+"n": "Eric Hottmann",
+"pos": "F",
+"nat": "GER",
+"num": 9,
+"age": 26
+},
+{
+"n": "Philipp Förster",
+"pos": "M",
+"nat": "GER",
+"num": 10,
+"age": 31
+},
+{
+"n": "Lukas Eixler",
+"pos": "F",
+"nat": "GER",
+"num": 11,
+"age": null
+},
+{
+"n": "Jomaine Consbruch",
+"pos": "M",
+"nat": "GER",
+"num": 14,
+"age": 24
+},
+{
+"n": "Tim Oberdorf",
+"pos": "D",
+"nat": "GER",
+"num": 15,
+"age": 30
+},
+{
+"n": "Marcel Benger",
+"pos": "M",
+"nat": "GER",
+"num": 16,
+"age": 28
+},
+{
+"n": "Miguel Fernandes Gonçalves",
+"pos": "M",
+"nat": "LUX",
+"num": 18,
+"age": null
+},
+{
+"n": "Felix Meiser",
+"pos": "D",
+"nat": "GER",
+"num": 20,
+"age": null
+},
+{
+"n": "Louis Lord",
+"pos": "G",
+"nat": "GER",
+"num": 22,
+"age": null
+},
+{
+"n": "Filimon Gerezgiher",
+"pos": "F",
+"nat": "ERI",
+"num": 23,
+"age": 26
+},
+{
+"n": "Fabian Schleusener",
+"pos": "F",
+"nat": "GER",
+"num": 24,
+"age": 35
+},
+{
+"n": "Matthias Zimmermann",
+"pos": "D",
+"nat": "GER",
+"num": 25,
+"age": 34
+},
+{
+"n": "Jordi Paulina",
+"pos": "F",
+"nat": "CUW",
+"num": 27,
+"age": 22
+},
+{
+"n": "Sascha Risch",
+"pos": "D",
+"nat": "GER",
+"num": 28,
+"age": 26
+},
+{
+"n": "Kilian Sauck",
+"pos": "F",
+"nat": "GER",
+"num": 29,
+"age": null
+},
+{
+"n": "Anas Slimani",
+"pos": "M",
+"nat": "MAR",
+"num": 34,
+"age": null
+},
+{
+"n": "Elias Arden",
+"pos": "M",
+"nat": "GER",
+"num": 38,
+"age": null
+},
+{
+"n": "Kaden Amaniampong",
+"pos": "D",
+"nat": "GER",
+"num": 39,
+"age": null
+},
+{
+"n": "Hamza Anhari",
+"pos": "M",
+"nat": "MAR",
+"num": 40,
+"age": 22
+},
+{
+"n": "Milán Czakó",
+"pos": "G",
+"nat": "HUN",
+"num": 41,
+"age": null
+},
+{
+"n": "Noah Egouli",
+"pos": "D",
+"nat": "GER",
+"num": 43,
+"age": null
+},
+{
+"n": "Elias Egouli",
+"pos": "D",
+"nat": "GER",
+"num": 44,
+"age": null
+}
+]
+},
+"GER2/Paderborn": {
+"title": "SC Paderborn 07",
+"sq": [
+{
+"n": "Markus Schubert",
+"pos": "G",
+"nat": "GER",
+"num": 1,
+"age": 28
+},
+{
+"n": "Ruben Müller",
+"pos": "D",
+"nat": "GER",
+"num": 2,
+"age": 21
+},
+{
+"n": "Jonah Sticker",
+"pos": "D",
+"nat": "GER",
+"num": 3,
+"age": 22
+},
+{
+"n": "Nyamekye Awortwie-Grant",
+"pos": "D",
+"nat": "GER",
+"num": 4,
+"age": 26
+},
+{
+"n": "Santiago Castañeda",
+"pos": "M",
+"nat": "USA",
+"num": 5,
+"age": 22
+},
+{
+"n": "Tom Baack",
+"pos": "M",
+"nat": "GER",
+"num": 6,
+"age": 27
+},
+{
+"n": "Oliver Batista Meier",
+"pos": "M",
+"nat": "GER",
+"num": 7,
+"age": 25
+},
+{
+"n": "Luka Đurić",
+"pos": "M",
+"nat": "BIH",
+"num": 8,
+"age": 23
+},
+{
+"n": "Rayan Philippe",
+"pos": "F",
+"nat": "FRA",
+"num": 9,
+"age": 26
+},
+{
+"n": "Sven Michel",
+"pos": "F",
+"nat": "GER",
+"num": 11,
+"age": 36
+},
+{
+"n": "Nahuel Noll",
+"pos": "G",
+"nat": "GER",
+"num": 15,
+"age": 23
+},
+{
+"n": "Laurin Curda",
+"pos": "D",
+"nat": "GER",
+"num": 17,
+"age": 25
+},
+{
+"n": "Marvin Pieringer",
+"pos": "F",
+"nat": "GER",
+"num": 18,
+"age": 27
+},
+{
+"n": "Albert Millgramm",
+"pos": "F",
+"nat": "GER",
+"num": 19,
+"age": 22
+},
+{
+"n": "Felix Götze",
+"pos": "D",
+"nat": "GER",
+"num": 20,
+"age": 28
+},
+{
+"n": "Jano ter Horst",
+"pos": "D",
+"nat": "GER",
+"num": 21,
+"age": 24
+},
+{
+"n": "Mattes Hansen",
+"pos": "M",
+"nat": "GER",
+"num": 22,
+"age": 22
+},
+{
+"n": "Raphael Obermair",
+"pos": "M",
+"nat": "PHI",
+"num": 23,
+"age": 30
+},
+{
+"n": "Niklas Mohr",
+"pos": "D",
+"nat": "GER",
+"num": 24,
+"age": 22
+},
+{
+"n": "Tjark Scheller",
+"pos": "D",
+"nat": "GER",
+"num": 25,
+"age": 24
+},
+{
+"n": "Sebastian Klaas",
+"pos": "M",
+"nat": "GER",
+"num": 26,
+"age": 28
+},
+{
+"n": "Steffen Tigges",
+"pos": "F",
+"nat": "GER",
+"num": 27,
+"age": 28
+},
+{
+"n": "Laurin Ulrich",
+"pos": "M",
+"nat": "GER",
+"num": 28,
+"age": 21
+},
+{
+"n": "Clemens Lippmann",
+"pos": "D",
+"nat": "GER",
+"num": 29,
+"age": null
+},
+{
+"n": "Stefano Marino",
+"pos": "F",
+"nat": "GER",
+"num": 30,
+"age": 22
+},
+{
+"n": "Florian Pruhs",
+"pos": "G",
+"nat": "GER",
+"num": 31,
+"age": null
+},
+{
+"n": "Lasse Eickel",
+"pos": "F",
+"nat": "GER",
+"num": 32,
+"age": null
+},
+{
+"n": "Marcel Hoffmeier",
+"pos": "D",
+"nat": "GER",
+"num": 33,
+"age": 27
+},
+{
+"n": "Deniz Zeitler",
+"pos": "F",
+"nat": "GER",
+"num": 38,
+"age": 20
+},
+{
+"n": "Gabriel Vidović",
+"pos": "F",
+"nat": "CRO",
+"num": 40,
+"age": 23
+},
+{
+"n": "Timur Gayret",
+"pos": "M",
+"nat": "GER",
+"num": 44,
+"age": null
+},
+{
+"n": "Tristan Zobel",
+"pos": "D",
+"nat": "GER",
+"num": 46,
+"age": null
+}
+]
 }
 }
