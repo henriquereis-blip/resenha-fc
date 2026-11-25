@@ -6617,7 +6617,7 @@
 ]
 },
 "COL/Jaguares": {
-"title": "Óscar Cortés (footballer, born 2003)",
+"title": "Jaguares de Córdoba F.C.",
 "sq": []
 },
 "COL/Llaneros": {
@@ -7047,18 +7047,207 @@
 "title": "Colo-Colo",
 "sq": [
 {
-"n": "Miguel Toledo",
+"n": "Fernando de Paul",
+"pos": "G",
+"nat": "CHI",
+"num": 1,
+"age": 35
+},
+{
+"n": "Jonathan Villagra",
 "pos": "D",
 "nat": "CHI",
-"num": 99,
+"num": 2,
+"age": 25
+},
+{
+"n": "Alonso Olguín",
+"pos": "D",
+"nat": "CHI",
+"num": 3,
 "age": null
 },
 {
-"n": "Bastián Silva",
+"n": "Joaquín Sosa",
+"pos": "D",
+"nat": "URU",
+"num": 4,
+"age": 24
+},
+{
+"n": "Felipe Méndez",
 "pos": "M",
 "nat": "CHI",
-"num": 99,
-"age": 22
+"num": 5,
+"age": 27
+},
+{
+"n": "Tomás Alarcón",
+"pos": "M",
+"nat": "CHI",
+"num": 6,
+"age": 27
+},
+{
+"n": "Francisco Marchant",
+"pos": "F",
+"nat": "CHI",
+"num": 7,
+"age": 20
+},
+{
+"n": "Álvaro Madrid",
+"pos": "M",
+"nat": "CHI",
+"num": 8,
+"age": 31
+},
+{
+"n": "Javier Correa",
+"pos": "F",
+"nat": "ARG",
+"num": 9,
+"age": 34
+},
+{
+"n": "Lautaro Pastrán",
+"pos": "F",
+"nat": "ARG",
+"num": 10,
+"age": 24
+},
+{
+"n": "Marcos Bolados",
+"pos": "F",
+"nat": "CHI",
+"num": 11,
+"age": 30
+},
+{
+"n": "Eduardo Villanueva",
+"pos": "G",
+"nat": "CHI",
+"num": 12,
+"age": null
+},
+{
+"n": "Matías Fernández",
+"pos": "D",
+"nat": "CHI",
+"num": 13,
+"age": 31
+},
+{
+"n": "Iván Román",
+"pos": "D",
+"nat": "CHI",
+"num": 17,
+"age": 20
+},
+{
+"n": "Maximiliano Romero",
+"pos": "F",
+"nat": "ARG",
+"num": 19,
+"age": 27
+},
+{
+"n": "Javier Méndez",
+"pos": "D",
+"nat": "URU",
+"num": 20,
+"age": 32
+},
+{
+"n": "Erick Wiemberg",
+"pos": "D",
+"nat": "CHI",
+"num": 21,
+"age": 32
+},
+{
+"n": "Claudio Aquino",
+"pos": "M",
+"nat": "ARG",
+"num": 22,
+"age": 35
+},
+{
+"n": "Arturo Vidal",
+"pos": "M",
+"nat": "CHI",
+"num": 23,
+"age": 39
+},
+{
+"n": "Leandro Hernández",
+"pos": "F",
+"nat": "CHI",
+"num": 24,
+"age": 21
+},
+{
+"n": "Gabriel Maureira",
+"pos": "G",
+"nat": "CHI",
+"num": 25,
+"age": 19
+},
+{
+"n": "Diego Ulloa",
+"pos": "D",
+"nat": "CHI",
+"num": 26,
+"age": 23
+},
+{
+"n": "Jeyson Rojas",
+"pos": "D",
+"nat": "CHI",
+"num": 28,
+"age": 24
+},
+{
+"n": "Vozinha",
+"pos": "G",
+"nat": "CPV",
+"num": 29,
+"age": 40
+},
+{
+"n": "Yastin Cuevas",
+"pos": "F",
+"nat": "CHI",
+"num": 30,
+"age": null
+},
+{
+"n": "Vicente Martínez",
+"pos": "F",
+"nat": "CHI",
+"num": 32,
+"age": null
+},
+{
+"n": "Rodrigo Catalán",
+"pos": "M",
+"nat": "CHI",
+"num": 34,
+"age": null
+},
+{
+"n": "Bruno Torres",
+"pos": "D",
+"nat": "CHI",
+"num": 39,
+"age": null
+},
+{
+"n": "Felipe Raipán",
+"pos": "F",
+"nat": "CHI",
+"num": 50,
+"age": null
 }
 ]
 },
@@ -7412,25 +7601,242 @@
 "title": "Huachipato FC",
 "sq": [
 {
-"n": "Sergio Núñez",
+"n": "Sebastián Mella",
+"pos": "G",
+"nat": "CHI",
+"num": 1,
+"age": 21
+},
+{
+"n": "Guillermo Guaiquil",
+"pos": "D",
+"nat": "CHI",
+"num": 2,
+"age": null
+},
+{
+"n": "Benjamín Mellado",
+"pos": "D",
+"nat": "CHI",
+"num": 3,
+"age": null
+},
+{
+"n": "José Castro",
+"pos": "D",
+"nat": "CHI",
+"num": 4,
+"age": 25
+},
+{
+"n": "Rafael Caroca",
+"pos": "M",
+"nat": "CHI",
+"num": 5,
+"age": 37
+},
+{
+"n": "Claudio Sepúlveda",
+"pos": "M",
+"nat": "CHI",
+"num": 6,
+"age": 34
+},
+{
+"n": "Mario Briceño",
 "pos": "F",
-"nat": "URU",
-"num": 99,
+"nat": "CHI",
+"num": 7,
+"age": 30
+},
+{
+"n": "Lionel Altamirano",
+"pos": "F",
+"nat": "ARG",
+"num": 9,
+"age": 34
+},
+{
+"n": "Ezequiel Cañete",
+"pos": "M",
+"nat": "ARG",
+"num": 10,
+"age": 27
+},
+{
+"n": "Juan Figueroa",
+"pos": "F",
+"nat": "CHI",
+"num": 11,
+"age": 23
+},
+{
+"n": "Christian Bravo",
+"pos": "G",
+"nat": "CHI",
+"num": 12,
+"age": 20
+},
+{
+"n": "Nicolás Vargas",
+"pos": "D",
+"nat": "CHI",
+"num": 14,
+"age": 33
+},
+{
+"n": "Maximiliano Rodríguez",
+"pos": "F",
+"nat": "CHI",
+"num": 15,
 "age": 26
 },
 {
-"n": "Santiago Silva",
+"n": "Luciano Arriagada",
+"pos": "F",
+"nat": "CHI",
+"num": 16,
+"age": 24
+},
+{
+"n": "Benjamín Ampuero",
+"pos": "M",
+"nat": "CHI",
+"num": 18,
+"age": null
+},
+{
+"n": "Sergio Núñez",
+"pos": "F",
+"nat": "URU",
+"num": 19,
+"age": 26
+},
+{
+"n": "Cristian Toro",
+"pos": "D",
+"nat": "CHI",
+"num": 20,
+"age": 26
+},
+{
+"n": "Carlos Herrera",
+"pos": "M",
+"nat": "CHI",
+"num": 21,
+"age": null
+},
+{
+"n": "Nicolás Cárcamo",
+"pos": "M",
+"nat": "CHI",
+"num": 22,
+"age": null
+},
+{
+"n": "Cris Martínez",
+"pos": "F",
+"nat": "PAR",
+"num": 23,
+"age": 33
+},
+{
+"n": "Maicol León",
+"pos": "M",
+"nat": "CHI",
+"num": 24,
+"age": 23
+},
+{
+"n": "Rodrigo Odriozola",
+"pos": "G",
+"nat": "URU",
+"num": 25,
+"age": 38
+},
+{
+"n": "Harold Antiñirre",
+"pos": "F",
+"nat": "CHI",
+"num": 26,
+"age": null
+},
+{
+"n": "Lucas Velásquez",
+"pos": "D",
+"nat": "CHI",
+"num": 27,
+"age": 20
+},
+{
+"n": "Claudio Torres",
+"pos": "M",
+"nat": "CHI",
+"num": 29,
+"age": 23
+},
+{
+"n": "Kevin Altez",
 "pos": "M",
 "nat": "URU",
-"num": 8,
+"num": 30,
 "age": 22
 },
 {
-"n": "Renzo Malanca",
+"n": "Álvaro Abarzúa",
+"pos": "F",
+"nat": "CHI",
+"num": 33,
+"age": null
+},
+{
+"n": "Ezequiel Osorio",
 "pos": "D",
-"nat": "ARG",
-"num": 13,
-"age": 23
+"nat": "CHI",
+"num": 36,
+"age": null
+},
+{
+"n": "Sebastián Melgarejo",
+"pos": "D",
+"nat": "CHI",
+"num": 38,
+"age": null
+},
+{
+"n": "Pablo Bohle",
+"pos": "F",
+"nat": "CHI",
+"num": 42,
+"age": null
+},
+{
+"n": "Ignacio Cruzat",
+"pos": "G",
+"nat": "CHI",
+"num": 49,
+"age": null
+},
+{
+"n": "Martín Torrejón",
+"pos": "M",
+"nat": "CHI",
+"num": 51,
+"age": null
+},
+{
+"n": "David Larrahondo",
+"pos": "F",
+"nat": "COL",
+"num": 52,
+"age": null
+},
+{
+"n": "Freddy Alegría",
+"pos": "F",
+"nat": "COL",
+"num": 53,
+"age": null
 }
 ]
 },
@@ -7671,116 +8077,242 @@
 "title": "Unión Española",
 "sq": [
 {
-"n": "Sebastián Pereira",
+"n": "Kevin Contreras",
 "pos": "D",
 "nat": "CHI",
-"num": 99,
-"age": 27
+"num": 2,
+"age": null
 },
 {
-"n": "Brayan Véjar",
+"n": "Rodrigo Alarcón",
 "pos": "D",
 "nat": "CHI",
-"num": 99,
-"age": 31
+"num": 3,
+"age": null
 },
 {
-"n": "Felipe Espinoza",
+"n": "Milovan Celis",
 "pos": "D",
 "nat": "CHI",
-"num": 99,
-"age": 27
+"num": 4,
+"age": null
 },
 {
-"n": "Agustín Nadruz",
+"n": "William Machado",
 "pos": "M",
 "nat": "URU",
-"num": 99,
-"age": 30
-},
-{
-"n": "Alonso Montecinos",
-"pos": "G",
-"nat": "CHI",
-"num": 1,
-"age": null
-},
-{
-"n": "Diego González",
-"pos": "M",
-"nat": "ARG",
 "num": 5,
-"age": 38
-},
-{
-"n": "Luis Pavez",
-"pos": "D",
-"nat": "CHI",
-"num": 6,
-"age": 31
-},
-{
-"n": "Leandro Benegas",
-"pos": "F",
-"nat": "CHI",
-"num": 9,
-"age": 38
-},
-{
-"n": "Emiliano Vecchio",
-"pos": "M",
-"nat": "ARG",
-"num": 10,
-"age": 38
-},
-{
-"n": "Martín Ballesteros",
-"pos": "G",
-"nat": "CHI",
-"num": 13,
-"age": null
-},
-{
-"n": "Bastián Yáñez",
-"pos": "F",
-"nat": "CHI",
-"num": 22,
-"age": 25
-},
-{
-"n": "Stefano Magnasco",
-"pos": "D",
-"nat": "CHI",
-"num": 29,
-"age": 34
-},
-{
-"n": "José Tiznado",
-"pos": "D",
-"nat": "CHI",
-"num": 30,
 "age": 32
 },
 {
-"n": "Sebastián Leyton",
+"n": "Bruno Jáuregui",
 "pos": "M",
 "nat": "CHI",
-"num": 33,
+"num": 6,
+"age": null
+},
+{
+"n": "Rodrigo Vásquez",
+"pos": "F",
+"nat": "CHI",
+"num": 7,
+"age": null
+},
+{
+"n": "Patricio Rubio",
+"pos": "F",
+"nat": "CHI",
+"num": 8,
+"age": 37
+},
+{
+"n": "Andrés Vilches",
+"pos": "F",
+"nat": "CHI",
+"num": 9,
+"age": 34
+},
+{
+"n": "Pablo Aránguiz",
+"pos": "M",
+"nat": "CHI",
+"num": 10,
+"age": 29
+},
+{
+"n": "Franco Ratotti",
+"pos": "F",
+"nat": "ARG",
+"num": 11,
+"age": 21
+},
+{
+"n": "Enzo Uribe",
+"pos": "G",
+"nat": "CHI",
+"num": 12,
+"age": null
+},
+{
+"n": "Julio Fierro",
+"pos": "G",
+"nat": "CHI",
+"num": 13,
+"age": 24
+},
+{
+"n": "Ignacio Núñez",
+"pos": "M",
+"nat": "CHI",
+"num": 14,
+"age": 27
+},
+{
+"n": "Benjamín Droguett",
+"pos": "M",
+"nat": "CHI",
+"num": 15,
+"age": null
+},
+{
+"n": "Martín Ormeño",
+"pos": "D",
+"nat": "CHI",
+"num": 16,
+"age": null
+},
+{
+"n": "Felipe Massri",
+"pos": "M",
+"nat": "PLE",
+"num": 17,
+"age": 24
+},
+{
+"n": "José Aja",
+"pos": "D",
+"nat": "URU",
+"num": 18,
 "age": 33
 },
 {
-"n": "Fernando Ovelar",
-"pos": "F",
-"nat": "PAR",
-"num": 34,
-"age": 22
+"n": "Ángelo Araos",
+"pos": "M",
+"nat": "CHI",
+"num": 19,
+"age": 29
 },
 {
-"n": "Jeyson Rojas",
+"n": "Mitchell Wassenne",
+"pos": "F",
+"nat": "CHI",
+"num": 20,
+"age": null
+},
+{
+"n": "Sebastián Pereira",
 "pos": "D",
 "nat": "CHI",
+"num": 21,
+"age": 27
+},
+{
+"n": "Agustín Núñez",
+"pos": "M",
+"nat": "CHI",
+"num": 22,
+"age": null
+},
+{
+"n": "Gabriel Norambuena",
+"pos": "D",
+"nat": "CHI",
+"num": 24,
+"age": 23
+},
+{
+"n": "Tomás Ovando",
+"pos": "F",
+"nat": "CHI",
+"num": 25,
+"age": null
+},
+{
+"n": "Bastián Roco",
+"pos": "D",
+"nat": "CHI",
+"num": 26,
+"age": 23
+},
+{
+"n": "Diego Vallecilla",
+"pos": "F",
+"nat": "COL",
+"num": 27,
+"age": null
+},
+{
+"n": "Nicolás Valencia",
+"pos": "M",
+"nat": "CHI",
+"num": 28,
+"age": 25
+},
+{
+"n": "Bayron Veas",
+"pos": "F",
+"nat": "CHI",
+"num": 29,
+"age": null
+},
+{
+"n": "Renato Cordero",
+"pos": "M",
+"nat": "CHI",
+"num": 30,
+"age": 23
+},
+{
+"n": "Martín Parra",
+"pos": "G",
+"nat": "CHI",
+"num": 31,
+"age": 26
+},
+{
+"n": "Lucas Molina",
+"pos": "D",
+"nat": "CHI",
+"num": 32,
+"age": null
+},
+{
+"n": "Cristóbal Jaramillo",
+"pos": "M",
+"nat": "CHI",
+"num": 33,
+"age": null
+},
+{
+"n": "Fernando Soto",
+"pos": "G",
+"nat": "CHI",
+"num": 34,
+"age": null
+},
+{
+"n": "Matías Ortiz",
+"pos": "F",
+"nat": "CHI",
 "num": 37,
-"age": 24
+"age": null
+},
+{
+"n": "Cristóbal Chadwick",
+"pos": "F",
+"nat": "CHI",
+"num": 38,
+"age": null
 }
 ]
 },
@@ -7788,38 +8320,255 @@
 "title": "Coquimbo Unido",
 "sq": [
 {
-"n": "Dylan Escobar",
-"pos": "D",
+"n": "Gonzalo Flores",
+"pos": "G",
 "nat": "CHI",
-"num": 99,
+"num": 1,
 "age": 26
 },
 {
-"n": "Dylan Glaby",
+"n": "Benjamín Gazzolo",
+"pos": "D",
+"nat": "CHI",
+"num": 2,
+"age": 29
+},
+{
+"n": "Manuel Fernández",
+"pos": "D",
+"nat": "URU",
+"num": 3,
+"age": 37
+},
+{
+"n": "Elvis Hernández",
+"pos": "D",
+"nat": "ARG",
+"num": 4,
+"age": 27
+},
+{
+"n": "Sebastián Galani",
+"pos": "M",
+"nat": "CHI",
+"num": 7,
+"age": 29
+},
+{
+"n": "Alejandro Camargo",
 "pos": "M",
 "nat": "ARG",
-"num": 99,
+"num": 8,
+"age": 37
+},
+{
+"n": "Nicolás Johansen",
+"pos": "F",
+"nat": "ARG",
+"num": 9,
+"age": 27
+},
+{
+"n": "Guido Vadalá",
+"pos": "M",
+"nat": "ARG",
+"num": 10,
+"age": 29
+},
+{
+"n": "Alejandro Azócar",
+"pos": "F",
+"nat": "CHI",
+"num": 11,
+"age": 26
+},
+{
+"n": "Lucas Pratto",
+"pos": "F",
+"nat": "ARG",
+"num": 12,
+"age": 38
+},
+{
+"n": "Diego Sánchez",
+"pos": "G",
+"nat": "CHI",
+"num": 13,
+"age": 39
+},
+{
+"n": "Salvador Cordero",
+"pos": "D",
+"nat": "CHI",
+"num": 14,
 "age": 30
 },
 {
-"n": "Nicolás Julio",
+"n": "Cristián Zavala",
+"pos": "F",
+"nat": "CHI",
+"num": 15,
+"age": 27
+},
+{
+"n": "Juan Cornejo",
+"pos": "D",
+"nat": "CHI",
+"num": 16,
+"age": 36
+},
+{
+"n": "Francisco Salinas",
+"pos": "D",
+"nat": "CHI",
+"num": 17,
+"age": 27
+},
+{
+"n": "Pablo Rodríguez",
 "pos": "M",
 "nat": "CHI",
-"num": 99,
+"num": 18,
+"age": 20
+},
+{
+"n": "Joshua Arancibia",
+"pos": "D",
+"nat": "USA",
+"num": 19,
 "age": null
 },
 {
-"n": "Diego Ortiz",
-"pos": "M",
+"n": "Martín Mundaca",
+"pos": "F",
 "nat": "CHI",
-"num": 99,
+"num": 20,
+"age": 19
+},
+{
+"n": "Cristóbal Dorador",
+"pos": "G",
+"nat": "CHI",
+"num": 21,
 "age": null
 },
 {
-"n": "Diego Plaza",
+"n": "Matías Zepeda",
 "pos": "M",
 "nat": "CHI",
-"num": 99,
+"num": 23,
+"age": 22
+},
+{
+"n": "Matías Alvarado",
+"pos": "F",
+"nat": "CHI",
+"num": 24,
+"age": null
+},
+{
+"n": "Vicente Villegas",
+"pos": "G",
+"nat": "CHI",
+"num": 25,
+"age": null
+},
+{
+"n": "Lukas Soza",
+"pos": "D",
+"nat": "CHI",
+"num": 26,
+"age": 28
+},
+{
+"n": "Luis Riveros",
+"pos": "F",
+"nat": "PAR",
+"num": 27,
+"age": 28
+},
+{
+"n": "Sebastián Cabrera",
+"pos": "D",
+"nat": "CHI",
+"num": 28,
+"age": 28
+},
+{
+"n": "Facundo Pons",
+"pos": "F",
+"nat": "ARG",
+"num": 29,
+"age": 31
+},
+{
+"n": "Benjamín Chandía",
+"pos": "M",
+"nat": "CHI",
+"num": 30,
+"age": 24
+},
+{
+"n": "Dixon Pereira",
+"pos": "F",
+"nat": "CHI",
+"num": 31,
+"age": null
+},
+{
+"n": "Diego Chávez",
+"pos": "M",
+"nat": "CHI",
+"num": 33,
+"age": null
+},
+{
+"n": "Paulo Torres",
+"pos": "M",
+"nat": "CHI",
+"num": 34,
+"age": null
+},
+{
+"n": "Gino Alfaro",
+"pos": "F",
+"nat": "CHI",
+"num": 35,
+"age": null
+},
+{
+"n": "Joaquín Rojas",
+"pos": "M",
+"nat": "CHI",
+"num": 36,
+"age": null
+},
+{
+"n": "Adriano Calderón",
+"pos": "F",
+"nat": "CHI",
+"num": 37,
+"age": null
+},
+{
+"n": "Lucas Saavedra",
+"pos": "F",
+"nat": "CHI",
+"num": 38,
+"age": null
+},
+{
+"n": "Ythans Blanco",
+"pos": "M",
+"nat": "CHI",
+"num": 39,
+"age": null
+},
+{
+"n": "Salvador Muñoz",
+"pos": "D",
+"nat": "CHI",
+"num": 40,
 "age": null
 }
 ]
@@ -8071,6 +8820,216 @@
 "title": "Cobresal",
 "sq": [
 {
+"n": "Renato González",
+"pos": "G",
+"nat": "CHI",
+"num": 1,
+"age": null
+},
+{
+"n": "Axel Fuentes",
+"pos": "D",
+"nat": "CHI",
+"num": 2,
+"age": null
+},
+{
+"n": "Benjamín Villarroel",
+"pos": "D",
+"nat": "CHI",
+"num": 3,
+"age": null
+},
+{
+"n": "Rodrigo Sandoval",
+"pos": "D",
+"nat": "CHI",
+"num": 4,
+"age": null
+},
+{
+"n": "Esteban Valencia",
+"pos": "M",
+"nat": "CHI",
+"num": 6,
+"age": 27
+},
+{
+"n": "César Yanis",
+"pos": "F",
+"nat": "PAN",
+"num": 7,
+"age": 30
+},
+{
+"n": "Steffan Pino",
+"pos": "F",
+"nat": "CHI",
+"num": 8,
+"age": 32
+},
+{
+"n": "Bryan Carvallo",
+"pos": "M",
+"nat": "CHI",
+"num": 10,
+"age": 30
+},
+{
+"n": "Julián Brea",
+"pos": "F",
+"nat": "ARG",
+"num": 11,
+"age": 27
+},
+{
+"n": "Alejandro Santander",
+"pos": "G",
+"nat": "CHI",
+"num": 12,
+"age": null
+},
+{
+"n": "Benjamín Valenzuela",
+"pos": "M",
+"nat": "CHI",
+"num": 13,
+"age": null
+},
+{
+"n": "Renato Huerta",
+"pos": "F",
+"nat": "CHI",
+"num": 14,
+"age": 22
+},
+{
+"n": "Antonio Castillo",
+"pos": "D",
+"nat": "CHI",
+"num": 15,
+"age": 28
+},
+{
+"n": "Franco Bechtholdt",
+"pos": "D",
+"nat": "ARG",
+"num": 16,
+"age": 33
+},
+{
+"n": "Juan Fuentes",
+"pos": "M",
+"nat": "CHI",
+"num": 17,
+"age": 31
+},
+{
+"n": "Christian Moreno",
+"pos": "D",
+"nat": "ARG",
+"num": 18,
+"age": 30
+},
+{
+"n": "Sergio Carrasco",
+"pos": "F",
+"nat": "CHI",
+"num": 19,
+"age": null
+},
+{
+"n": "José Tiznado",
+"pos": "D",
+"nat": "CHI",
+"num": 20,
+"age": 32
+},
+{
+"n": "Matías Sepúlveda",
+"pos": "F",
+"nat": "CHI",
+"num": 21,
+"age": null
+},
+{
+"n": "Aaron Astudillo",
+"pos": "D",
+"nat": "VEN",
+"num": 22,
+"age": 26
+},
+{
+"n": "Guillermo Pacheco",
+"pos": "D",
+"nat": "CHI",
+"num": 23,
+"age": 37
+},
+{
+"n": "Benjamín Ramírez",
+"pos": "M",
+"nat": "CHI",
+"num": 24,
+"age": null
+},
+{
+"n": "Matías Vásquez",
+"pos": "G",
+"nat": "CHI",
+"num": 25,
+"age": null
+},
+{
+"n": "Vicente Belmar",
+"pos": "M",
+"nat": "CHI",
+"num": 26,
+"age": null
+},
+{
+"n": "Milan Roki",
+"pos": "M",
+"nat": "CHI",
+"num": 27,
+"age": null
+},
+{
+"n": "Francisco Moreno",
+"pos": "F",
+"nat": "CHI",
+"num": 28,
+"age": null
+},
+{
+"n": "Dennis Leyton",
+"pos": "M",
+"nat": "CHI",
+"num": 31,
+"age": null
+},
+{
+"n": "Franco Frías",
+"pos": "F",
+"nat": "ARG",
+"num": 32,
+"age": 24
+},
+{
+"n": "Anibal Gajardo",
+"pos": "D",
+"nat": "CHI",
+"num": 34,
+"age": null
+},
+{
+"n": "Matías Contreras",
+"pos": "M",
+"nat": "CHI",
+"num": 35,
+"age": null
+},
+{
 "n": "Matías Olguín",
 "pos": "G",
 "nat": "CHI",
@@ -8099,6 +9058,27 @@
 "age": 28
 },
 {
+"n": "Facundo Vergara",
+"pos": "F",
+"nat": "CHI",
+"num": 40,
+"age": null
+},
+{
+"n": "Edgar Nava",
+"pos": "M",
+"nat": "VEN",
+"num": 41,
+"age": null
+},
+{
+"n": "Vicente Torres",
+"pos": "D",
+"nat": "CHI",
+"num": 42,
+"age": null
+},
+{
 "n": "Víctor Campos",
 "pos": "D",
 "nat": "CHI",
@@ -8106,38 +9086,52 @@
 "age": null
 },
 {
-"n": "Fernando González",
-"pos": "D",
-"nat": "PAR",
-"num": 99,
-"age": null
-},
-{
-"n": "Agustín Nadruz",
-"pos": "M",
-"nat": "URU",
-"num": 5,
-"age": 30
-},
-{
-"n": "Oliver Ramis",
-"pos": "M",
-"nat": "CHI",
-"num": 29,
-"age": null
-},
-{
-"n": "Jorge Pinos",
+"n": "Camilo Sepúlveda",
 "pos": "G",
-"nat": "ECU",
-"num": 30,
-"age": 37
+"nat": "CHI",
+"num": 44,
+"age": null
 }
 ]
 },
 "CHI/Everton de Viña": {
 "title": "Everton de Viña del Mar",
 "sq": [
+{
+"n": "Ignacio González",
+"pos": "G",
+"nat": "CHI",
+"num": 1,
+"age": 37
+},
+{
+"n": "Óscar Opazo",
+"pos": "D",
+"nat": "CHI",
+"num": 2,
+"age": 36
+},
+{
+"n": "Pablo Martínez",
+"pos": "D",
+"nat": "CHI",
+"num": 3,
+"age": null
+},
+{
+"n": "Hugo Magallanes",
+"pos": "D",
+"nat": "URU",
+"num": 4,
+"age": 29
+},
+{
+"n": "Ramiro González",
+"pos": "D",
+"nat": "ARG",
+"num": 5,
+"age": 36
+},
 {
 "n": "Gustavo Charrupí",
 "pos": "M",
@@ -8146,11 +9140,81 @@
 "age": 22
 },
 {
-"n": "Andrés Arroyo",
+"n": "Joaquín Moya",
+"pos": "M",
+"nat": "CHI",
+"num": 7,
+"age": 33
+},
+{
+"n": "Lucas Soto",
+"pos": "M",
+"nat": "CHI",
+"num": 8,
+"age": 23
+},
+{
+"n": "Julián Alfaro",
 "pos": "F",
-"nat": "COL",
-"num": 13,
-"age": 24
+"nat": "CHI",
+"num": 9,
+"age": 25
+},
+{
+"n": "Alan Medina",
+"pos": "M",
+"nat": "URU",
+"num": 10,
+"age": 28
+},
+{
+"n": "Emiliano Ramos",
+"pos": "F",
+"nat": "CHI",
+"num": 11,
+"age": 21
+},
+{
+"n": "Isaac Esquenazi",
+"pos": "G",
+"nat": "CHI",
+"num": 12,
+"age": null
+},
+{
+"n": "Nicolás Baeza",
+"pos": "D",
+"nat": "CHI",
+"num": 14,
+"age": 29
+},
+{
+"n": "Vicente Fernández",
+"pos": "D",
+"nat": "CHI",
+"num": 15,
+"age": 27
+},
+{
+"n": "Ricardo Rebolledo",
+"pos": "M",
+"nat": "CHI",
+"num": 16,
+"age": null
+},
+{
+"n": "Cristopher Barrera",
+"pos": "D",
+"nat": "CHI",
+"num": 17,
+"age": 28
+},
+{
+"n": "Vicente Vega",
+"pos": "D",
+"nat": "CHI",
+"num": 19,
+"age": null
 },
 {
 "n": "Josué Ovalle",
@@ -8160,53 +9224,95 @@
 "age": 26
 },
 {
-"n": "Dieter Villalpando",
+"n": "Benjamín Berríos",
 "pos": "M",
-"nat": "MEX",
-"num": 8,
-"age": 35
-},
-{
-"n": "Andrés Arroyo",
-"pos": "F",
-"nat": "COL",
-"num": 13,
-"age": 24
-},
-{
-"n": "Cristóbal Chadwick",
-"pos": "F",
 "nat": "CHI",
-"num": 18,
+"num": 21,
+"age": 28
+},
+{
+"n": "Martín Guzmán",
+"pos": "M",
+"nat": "CHI",
+"num": 23,
 "age": null
 },
 {
-"n": "Felipe Villagrán",
-"pos": "M",
-"nat": "CHI",
-"num": 20,
-"age": 29
-},
-{
-"n": "Santiago Londoño",
-"pos": "F",
-"nat": "COL",
-"num": 22,
-"age": 18
-},
-{
-"n": "Sebastián Sosa",
-"pos": "F",
-"nat": "URU",
-"num": 33,
-"age": 32
-},
-{
-"n": "Byron Navarro",
+"n": "Diego Oyarzún",
 "pos": "D",
 "nat": "CHI",
-"num": 36,
+"num": 24,
+"age": 33
+},
+{
+"n": "Esteban Kirkman",
+"pos": "G",
+"nat": "CHI",
+"num": 25,
 "age": null
+},
+{
+"n": "José Tomás Hernández",
+"pos": "F",
+"nat": "CHI",
+"num": 26,
+"age": null
+},
+{
+"n": "Santiago Reinoso",
+"pos": "F",
+"nat": "CHI",
+"num": 27,
+"age": null
+},
+{
+"n": "Amaro León",
+"pos": "M",
+"nat": "CHI",
+"num": 28,
+"age": null
+},
+{
+"n": "Braian Martínez",
+"pos": "F",
+"nat": "ARG",
+"num": 29,
+"age": 27
+},
+{
+"n": "Cristian Palacios",
+"pos": "F",
+"nat": "URU",
+"num": 30,
+"age": 36
+},
+{
+"n": "Félix Barrera",
+"pos": "F",
+"nat": "CHI",
+"num": 32,
+"age": null
+},
+{
+"n": "Excequiel Bustamante",
+"pos": "G",
+"nat": "CHI",
+"num": 34,
+"age": null
+},
+{
+"n": "Valentín Vidal",
+"pos": "D",
+"nat": "CHI",
+"num": 37,
+"age": 22
+},
+{
+"n": "Nicolás Montiel",
+"pos": "F",
+"nat": "ARG",
+"num": 40,
+"age": 21
 }
 ]
 },
