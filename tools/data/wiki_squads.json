@@ -51439,5 +51439,601 @@
 "age": null
 }
 ]
+},
+"ITA2/Südtirol": {
+"title": "FC Südtirol",
+"sq": [
+{
+"n": "Davide Veroli",
+"pos": "D",
+"nat": "ITA",
+"num": 3,
+"age": null
+},
+{
+"n": "Riccardo Stivanello",
+"pos": "D",
+"nat": "ITA",
+"num": 4,
+"age": null
+},
+{
+"n": "Simone Tronchin",
+"pos": "M",
+"nat": "ITA",
+"num": 5,
+"age": null
+},
+{
+"n": "Niklas Pyyhtiä",
+"pos": "M",
+"nat": "FIN",
+"num": 8,
+"age": null
+},
+{
+"n": "Rareș Burnete",
+"pos": "F",
+"nat": "ROU",
+"num": 9,
+"age": null
+},
+{
+"n": "Fabio Rispoli",
+"pos": "M",
+"nat": "ITA",
+"num": 10,
+"age": null
+},
+{
+"n": "Vasco Lopes",
+"pos": "F",
+"nat": "CPV",
+"num": 11,
+"age": null
+},
+{
+"n": "Rok Vadjunec",
+"pos": "G",
+"nat": "SLO",
+"num": 12,
+"age": null
+},
+{
+"n": "Marco Varnier",
+"pos": "D",
+"nat": "ITA",
+"num": 13,
+"age": null
+},
+{
+"n": "Aljoša Vasić",
+"pos": "M",
+"nat": "SRB",
+"num": 14,
+"age": null
+},
+{
+"n": "Lorenzo Anghelè",
+"pos": "F",
+"nat": "ITA",
+"num": 17,
+"age": null
+},
+{
+"n": "Kevin Zeroli",
+"pos": "M",
+"nat": "ITA",
+"num": 18,
+"age": null
+},
+{
+"n": "Mattia Pellini",
+"pos": "M",
+"nat": "ITA",
+"num": 19,
+"age": null
+},
+{
+"n": "Bjarki Bjarkason",
+"pos": "M",
+"nat": "ISL",
+"num": 20,
+"age": null
+},
+{
+"n": "Fabian Tait",
+"pos": "M",
+"nat": "ITA",
+"num": 21,
+"age": null
+},
+{
+"n": "Alessandro Plizzari",
+"pos": "G",
+"nat": "ITA",
+"num": 22,
+"age": null
+},
+{
+"n": "Federico Davi",
+"pos": "D",
+"nat": "ITA",
+"num": 23,
+"age": null
+},
+{
+"n": "Simone Davi",
+"pos": "D",
+"nat": "ITA",
+"num": 24,
+"age": null
+},
+{
+"n": "Kenny Mixtur",
+"pos": "F",
+"nat": "GLP",
+"num": 25,
+"age": null
+},
+{
+"n": "Giacomo Stabile",
+"pos": "D",
+"nat": "ITA",
+"num": 27,
+"age": null
+},
+{
+"n": "Dhirar Brik",
+"pos": "M",
+"nat": "TUN",
+"num": 46,
+"age": null
+},
+{
+"n": "Andrea Giorgini",
+"pos": "D",
+"nat": "ITA",
+"num": 55,
+"age": null
+},
+{
+"n": "Salvatore Molina",
+"pos": "M",
+"nat": "ITA",
+"num": 79,
+"age": null
+},
+{
+"n": "Elias Schrott",
+"pos": "M",
+"nat": "ITA",
+"num": 80,
+"age": null
+},
+{
+"n": "Alvin Okoro",
+"pos": "F",
+"nat": "ITA",
+"num": 90,
+"age": null
+},
+{
+"n": "Hamza El Kaouakibi",
+"pos": "D",
+"nat": "MAR",
+"num": 94,
+"age": 28
+}
+]
+},
+"ITA2/Reggiana": {
+"title": "AC Reggiana 1919",
+"sq": [
+{
+"n": "Jacopo Furlan",
+"pos": "G",
+"nat": "ITA",
+"num": 1,
+"age": 33
+},
+{
+"n": "Alessandro Tripaldelli",
+"pos": "D",
+"nat": "ITA",
+"num": 3,
+"age": 27
+},
+{
+"n": "Paolo Rozzio",
+"pos": "D",
+"nat": "ITA",
+"num": 4,
+"age": 34
+},
+{
+"n": "Lorenzo Crisetig",
+"pos": "M",
+"nat": "ITA",
+"num": 6,
+"age": 33
+},
+{
+"n": "Kristofér Jónsson",
+"pos": "M",
+"nat": "ISL",
+"num": 8,
+"age": null
+},
+{
+"n": "Thomas Henry",
+"pos": "F",
+"nat": "FRA",
+"num": 9,
+"age": 32
+},
+{
+"n": "Francesco Borriello",
+"pos": "G",
+"nat": "ITA",
+"num": 12,
+"age": 21
+},
+{
+"n": "Matteo Battistini",
+"pos": "D",
+"nat": "ITA",
+"num": 13,
+"age": 32
+},
+{
+"n": "Danilo Quaranta",
+"pos": "D",
+"nat": "ITA",
+"num": 14,
+"age": 29
+},
+{
+"n": "Michele Cavion",
+"pos": "M",
+"nat": "ITA",
+"num": 16,
+"age": 32
+},
+{
+"n": "Lorenzo Libutti",
+"pos": "D",
+"nat": "ITA",
+"num": 17,
+"age": 29
+},
+{
+"n": "Damiano Basili",
+"pos": "M",
+"nat": "ITA",
+"num": 19,
+"age": null
+},
+{
+"n": "Michele Castagnetti",
+"pos": "M",
+"nat": "ITA",
+"num": 20,
+"age": 37
+},
+{
+"n": "Francesco Vallarelli",
+"pos": "M",
+"nat": "ITA",
+"num": 21,
+"age": null
+},
+{
+"n": "Matteo Sorzi",
+"pos": "G",
+"nat": "ITA",
+"num": 22,
+"age": null
+},
+{
+"n": "Matteo Rover",
+"pos": "M",
+"nat": "ITA",
+"num": 23,
+"age": 27
+},
+{
+"n": "Leon Šipoš",
+"pos": "F",
+"nat": "CRO",
+"num": 25,
+"age": 26
+},
+{
+"n": "Massimo Bertagnoli",
+"pos": "M",
+"nat": "ITA",
+"num": 26,
+"age": 27
+},
+{
+"n": "Edoardo Cavaliere",
+"pos": "F",
+"nat": "ITA",
+"num": 32,
+"age": null
+},
+{
+"n": "Fabio Ponsi",
+"pos": "D",
+"nat": "ITA",
+"num": 33,
+"age": 25
+},
+{
+"n": "Simone Bonetti",
+"pos": "D",
+"nat": "ITA",
+"num": 43,
+"age": null
+},
+{
+"n": "Matteo Tessitori",
+"pos": "M",
+"nat": "ITA",
+"num": 47,
+"age": null
+},
+{
+"n": "Samuel Ledain",
+"pos": "M",
+"nat": "FRA",
+"num": 70,
+"age": null
+},
+{
+"n": "Natan Girma",
+"pos": "F",
+"nat": "SUI",
+"num": 80,
+"age": 25
+},
+{
+"n": "Ashton Ezinwa",
+"pos": "D",
+"nat": "FIN",
+"num": 85,
+"age": null
+},
+{
+"n": "Manolo Portanova",
+"pos": "M",
+"nat": "ITA",
+"num": 90,
+"age": 26
+},
+{
+"n": "Tomas Lepri",
+"pos": "D",
+"nat": "ITA",
+"num": 98,
+"age": null
+}
+]
+},
+"ITA2/Juve Stabia": {
+"title": "SS Juve Stabia",
+"sq": [
+{
+"n": "Ante Vuković",
+"pos": "G",
+"nat": "CRO",
+"num": 1,
+"age": null
+},
+{
+"n": "Manuel Ricciardi",
+"pos": "D",
+"nat": "ITA",
+"num": 2,
+"age": 26
+},
+{
+"n": "Matteo Baldi",
+"pos": "D",
+"nat": "ITA",
+"num": 4,
+"age": null
+},
+{
+"n": "Thomas Battistella",
+"pos": "M",
+"nat": "ITA",
+"num": 5,
+"age": 25
+},
+{
+"n": "Marco Bellich",
+"pos": "D",
+"nat": "ITA",
+"num": 6,
+"age": 27
+},
+{
+"n": "Nicola Patanè",
+"pos": "F",
+"nat": "ITA",
+"num": 7,
+"age": null
+},
+{
+"n": "Davide Buglio",
+"pos": "M",
+"nat": "ITA",
+"num": 8,
+"age": 28
+},
+{
+"n": "Antonio Di Nardo",
+"pos": "F",
+"nat": "ITA",
+"num": 9,
+"age": 28
+},
+{
+"n": "Christian Pierobon",
+"pos": "M",
+"nat": "ITA",
+"num": 10,
+"age": null
+},
+{
+"n": "Kevin Piscopo",
+"pos": "F",
+"nat": "ITA",
+"num": 11,
+"age": 28
+},
+{
+"n": "Alessandro Signorini",
+"pos": "G",
+"nat": "ITA",
+"num": 16,
+"age": null
+},
+{
+"n": "Nermin Karić",
+"pos": "M",
+"nat": "SWE",
+"num": 17,
+"age": 27
+},
+{
+"n": "Daniel Perin",
+"pos": "M",
+"nat": "ITA",
+"num": 18,
+"age": null
+},
+{
+"n": "Nicola Pietrangeli",
+"pos": "D",
+"nat": "ITA",
+"num": 19,
+"age": 93
+},
+{
+"n": "Luigi Caccavo",
+"pos": "F",
+"nat": "ITA",
+"num": 20,
+"age": null
+},
+{
+"n": "Pietro Boer",
+"pos": "G",
+"nat": "ITA",
+"num": 23,
+"age": 24
+},
+{
+"n": "Justin Kumi",
+"pos": "M",
+"nat": "ITA",
+"num": 24,
+"age": 22
+},
+{
+"n": "Terrence Douglas",
+"pos": "D",
+"nat": "NED",
+"num": 25,
+"age": 25
+},
+{
+"n": "Leonardo Candellone",
+"pos": "F",
+"nat": "ITA",
+"num": 27,
+"age": 29
+},
+{
+"n": "Romeo Sandrucci",
+"pos": "F",
+"nat": "ITA",
+"num": 30,
+"age": null
+},
+{
+"n": "Giuseppe Sibilli",
+"pos": "M",
+"nat": "ITA",
+"num": 33,
+"age": 30
+},
+{
+"n": "Fabio Maistro",
+"pos": "M",
+"nat": "ITA",
+"num": 37,
+"age": 28
+},
+{
+"n": "Giulio Scuderi",
+"pos": "D",
+"nat": "ITA",
+"num": 73,
+"age": null
+},
+{
+"n": "Saná Fernandes",
+"pos": "F",
+"nat": "GBS",
+"num": 77,
+"age": 20
+},
+{
+"n": "Federico Artioli",
+"pos": "M",
+"nat": "ITA",
+"num": 80,
+"age": null
+},
+{
+"n": "Edoardo Lonardo",
+"pos": "F",
+"nat": "ITA",
+"num": 82,
+"age": null
+},
+{
+"n": "Davide Bettella",
+"pos": "D",
+"nat": "ITA",
+"num": 87,
+"age": 26
+},
+{
+"n": "Francesco Gallea",
+"pos": "D",
+"nat": "MLI",
+"num": 92,
+"age": null
+},
+{
+"n": "Paolo Vismara",
+"pos": "G",
+"nat": "ITA",
+"num": 95,
+"age": null
+},
+{
+"n": "Tommaso Maggioni",
+"pos": "D",
+"nat": "ITA",
+"num": 96,
+"age": null
+}
+]
 }
 }
