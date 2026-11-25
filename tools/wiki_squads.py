@@ -41,21 +41,30 @@ def find_title(name,k):
     return None
 POS={'GK':'G','DF':'D','MF':'M','FW':'F'}
 def squad(title):
+    """Aceita os dois modelos de tabela da Wikipedia (football-squad novo e a tabela antiga 'Current squad')."""
     h=get('https://en.wikipedia.org/wiki/'+urllib.parse.quote(title.replace(' ','_')),40)
+    ft=h.find('wikitable football-squad')
+    hp=[m.start() for m in re.finditer(r'<h2[^>]*>\s*(?:<[^>]*>)*\s*(?:Players|Squad|Current squad|First[- ]team)',h)]
+    i0=hp[-1] if hp else (ft-60 if ft>=0 else -1)
+    if i0<0:return []
+    seg=h[i0:];end=len(seg)
+    for m in re.finditer(r'<h([23])[^>]*>(.*?)</h\1>',seg[10:],re.S):
+        t=re.sub('<.*?>','',m.group(2))
+        if m.group(1)=='2' and not re.match(r'\s*(Players|Squad|Current squad|First)',t) or re.search(r'loan|other|youth|academy|reserve|former|retired|transfer|manag|coach|out\b',t,re.I):end=m.start()+10;break
+    seg=seg[:end]
     out=[]
-    i0=h.find('wikitable football-squad')
-    if i0<0:return out
-    m=re.search(r'<h[23][ >]',h[i0:]);seg=h[i0-60:i0+(m.start() if m else len(h)-i0)]   # só a seção 'Current squad' (as duas colunas), sem emprestados
-    for tb in re.findall(r'<table class="wikitable football-squad.*?</table>',seg,re.S):
-        for tr in re.findall(r'<tr class="vcard agent">(.*?)</tr>',tb,re.S):
-            tds=re.findall(r'<td[^>]*>(.*?)</td>',tr,re.S)
-            if len(tds)<4:continue
-            num=re.sub('<.*?>','',tds[0]).strip();pos=re.search(r'<abbr title="[^"]*">([A-Z]{2})</abbr>',tds[1])
-            nat=re.findall(r'>([A-Z]{3})</a>',tds[2]);nm=re.search(r'class="fn">(.*?)</span>',tds[3],re.S)
-            if not(pos and nm):continue
-            link=re.search(r'href="https://en\.wikipedia\.org/wiki/([^"#]+)"',nm.group(1))
-            out.append({'n':html.unescape(re.sub('<.*?>','',nm.group(1))).strip(),'pos':POS.get(pos.group(1),'M'),'nat':nat[0] if nat else 'XXX','num':int(num) if num.isdigit() else 99,
-                        'pg':urllib.parse.unquote(link.group(1)) if link and 'redlink' not in nm.group(1) else None})
+    for tr in re.findall(r'<tr[^>]*>(.*?)</tr>',seg,re.S):
+        tds=re.findall(r'<td[^>]*>(.*?)</td>',tr,re.S)
+        if len(tds)<4:continue
+        num=re.sub('<.*?>','',tds[0]).strip()
+        if not num.isdigit():continue
+        txt=[re.sub('<.*?>','',t).strip() for t in tds[:3]]
+        pos=next((x for x in txt[1:] if x in POS),None);nat=next((x for x in txt[1:] if re.fullmatch(r'[A-Z]{3}',x) and x not in POS),'XXX')
+        nm=re.search(r'class="fn">(.*?)</span>',tds[3],re.S)
+        if not(pos and nm):continue
+        link=re.search(r'href="https://en\.wikipedia\.org/wiki/([^"#]+)"',nm.group(1))
+        out.append({'n':html.unescape(re.sub('<.*?>','',nm.group(1))).strip(),'pos':POS[pos],'nat':nat,'num':int(num),
+                    'pg':urllib.parse.unquote(link.group(1)) if link and 'redlink' not in nm.group(1) else None})
     return out
 def ages(pgs):
     """pgs: lista de títulos (ou None). Devolve {titulo: idade} usando 'born ... AAAA' do resumo; 20 títulos por requisição."""
@@ -80,7 +89,7 @@ if __name__=='__main__':
     res=json.load(open(OUT)) if os.path.exists(OUT) else {}
     items=[(k,c) for k in sel for c in (LOOSE[k] if k in LOOSE else W[k]['cl'])]
     for k,name in items:
-        if res.get(f'{k}/{name}',{}).get('sq'):continue   # já coletado: retoma de onde parou
+        if len(res.get(f'{k}/{name}',{}).get('sq') or [])>=18:continue   # já coletado: retoma de onde parou
         k,name,t,s=one((k,name));res[f'{k}/{name}']={'title':t,'sq':s}
         print(k,name,'->',t,len(s),'idade ok:',sum(1 for p in s if p['age']),flush=True)
         json.dump(res,open(OUT,'w'),ensure_ascii=False,indent=0)
