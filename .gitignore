@@ -4,3 +4,4 @@ resenha-fc-v2.html
 tools/data/*.csv
 .testout/
 tools/sim/out/
+__pycache__/
