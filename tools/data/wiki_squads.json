@@ -43632,5 +43632,196 @@
 "ENG2/Cardiff City": {
 "title": "Cardiff City Stadium",
 "sq": []
+},
+"ENG2/Queens Park Rangers": {
+"title": "Queens Park Rangers F.C.",
+"sq": [
+{
+"n": "Pierce Charles",
+"pos": "G",
+"nat": "NIR",
+"num": 1,
+"age": 21
+},
+{
+"n": "Kealey Adamson",
+"pos": "D",
+"nat": "AUS",
+"num": 2,
+"age": 23
+},
+{
+"n": "Jimmy Dunne",
+"pos": "D",
+"nat": "IRL",
+"num": 3,
+"age": 29
+},
+{
+"n": "Liam Morrison",
+"pos": "D",
+"nat": "SCO",
+"num": 4,
+"age": 23
+},
+{
+"n": "Ronnie Edwards",
+"pos": "D",
+"nat": "ENG",
+"num": 5,
+"age": 23
+},
+{
+"n": "Jake Clarke-Salter",
+"pos": "D",
+"nat": "ENG",
+"num": 6,
+"age": 29
+},
+{
+"n": "Karamoko Dembélé",
+"pos": "M",
+"nat": "ENG",
+"num": 7,
+"age": 23
+},
+{
+"n": "Ilias Chair",
+"pos": "M",
+"nat": "MAR",
+"num": 10,
+"age": 29
+},
+{
+"n": "Paul Smyth",
+"pos": "M",
+"nat": "NIR",
+"num": 11,
+"age": 29
+},
+{
+"n": "Boy Kemper",
+"pos": "D",
+"nat": "NED",
+"num": 12,
+"age": 27
+},
+{
+"n": "Calum Ward",
+"pos": "G",
+"nat": "ENG",
+"num": 13,
+"age": 26
+},
+{
+"n": "Kōki Saitō",
+"pos": "M",
+"nat": "JPN",
+"num": 14,
+"age": 25
+},
+{
+"n": "Alfie Lloyd",
+"pos": "F",
+"nat": "ENG",
+"num": 15,
+"age": 23
+},
+{
+"n": "Rumarn Burrell",
+"pos": "F",
+"nat": "JAM",
+"num": 16,
+"age": 26
+},
+{
+"n": "Kwame Poku",
+"pos": "M",
+"nat": "GHA",
+"num": 17,
+"age": 25
+},
+{
+"n": "Glen Kamara",
+"pos": "M",
+"nat": "FIN",
+"num": 18,
+"age": 31
+},
+{
+"n": "Dennis Cirkin",
+"pos": "D",
+"nat": "LAT",
+"num": 19,
+"age": 24
+},
+{
+"n": "Harvey Vale",
+"pos": "M",
+"nat": "IRL",
+"num": 20,
+"age": 23
+},
+{
+"n": "Richard Kone",
+"pos": "F",
+"nat": "CIV",
+"num": 22,
+"age": 23
+},
+{
+"n": "Nicolas Madsen",
+"pos": "M",
+"nat": "DEN",
+"num": 24,
+"age": 26
+},
+{
+"n": "Justin Obikwu",
+"pos": "F",
+"nat": "TTO",
+"num": 25,
+"age": 22
+},
+{
+"n": "Rayan Kolli",
+"pos": "F",
+"nat": "ALG",
+"num": 26,
+"age": 21
+},
+{
+"n": "Amadou Mbengue",
+"pos": "D",
+"nat": "SEN",
+"num": 27,
+"age": 24
+},
+{
+"n": "Matteo Salamon",
+"pos": "G",
+"nat": "ENG",
+"num": 32,
+"age": null
+},
+{
+"n": "Jonathan Varane",
+"pos": "M",
+"nat": "MTQ",
+"num": 40,
+"age": 25
+},
+{
+"n": "Tariq Lamptey",
+"pos": "D",
+"nat": "GHA",
+"num": 48,
+"age": 26
+}
+]
+},
+"ENG2/Derby County": {
+"title": "Archie Brown (footballer)",
+"sq": []
 }
 }
