@@ -2239,7 +2239,7 @@
 ]
 },
 "URU/Fénix": {
-"title": "Leonardo Fernández (Uruguayan footballer)",
+"title": "C.A. Fénix",
 "sq": []
 },
 "URU/Cerro": {
@@ -5700,6 +5700,242 @@
 },
 {
 "n": "Jhon Romaña",
+"pos": "M",
+"nat": "COL",
+"num": 99,
+"age": null
+}
+]
+},
+"COL/Deportivo Pasto": {
+"title": "Deportivo Pasto",
+"sq": [
+{
+"n": "Ederson Cabezas",
+"pos": "G",
+"nat": "COL",
+"num": 1,
+"age": null
+},
+{
+"n": "Fainer Torijano",
+"pos": "D",
+"nat": "COL",
+"num": 2,
+"age": null
+},
+{
+"n": "Joyce Ossa",
+"pos": "D",
+"nat": "COL",
+"num": 3,
+"age": null
+},
+{
+"n": "Derik Osede",
+"pos": "D",
+"nat": "ESP",
+"num": 4,
+"age": 33
+},
+{
+"n": "Nicolás Gil",
+"pos": "D",
+"nat": "COL",
+"num": 5,
+"age": null
+},
+{
+"n": "Santiago Jiménez",
+"pos": "D",
+"nat": "COL",
+"num": 6,
+"age": null
+},
+{
+"n": "Jonathan Perlaza",
+"pos": "M",
+"nat": "COL",
+"num": 7,
+"age": null
+},
+{
+"n": "Enrique Serje",
+"pos": "M",
+"nat": "COL",
+"num": 8,
+"age": 30
+},
+{
+"n": "Jorge Obregón",
+"pos": "F",
+"nat": "COL",
+"num": 9,
+"age": 29
+},
+{
+"n": "Diego Chávez",
+"pos": "M",
+"nat": "ARG",
+"num": 10,
+"age": 29
+},
+{
+"n": "Andrés Ibargüen",
+"pos": "F",
+"nat": "COL",
+"num": 11,
+"age": 34
+},
+{
+"n": "Geovanni Banguera",
+"pos": "G",
+"nat": "COL",
+"num": 12,
+"age": 31
+},
+{
+"n": "Harrinson Mancilla",
+"pos": "M",
+"nat": "COL",
+"num": 15,
+"age": 35
+},
+{
+"n": "Mayer Gil",
+"pos": "F",
+"nat": "ESA",
+"num": 16,
+"age": 23
+},
+{
+"n": "John Méndez",
+"pos": "M",
+"nat": "COL",
+"num": 17,
+"age": null
+},
+{
+"n": "Joider Micolta",
+"pos": "F",
+"nat": "COL",
+"num": 18,
+"age": null
+},
+{
+"n": "Patrick Preciado",
+"pos": "F",
+"nat": "COL",
+"num": 19,
+"age": null
+},
+{
+"n": "Yeison Tolosa",
+"pos": "M",
+"nat": "COL",
+"num": 22,
+"age": 27
+},
+{
+"n": "Yéiler Góez",
+"pos": "M",
+"nat": "COL",
+"num": 23,
+"age": 27
+},
+{
+"n": "Luis Marquínez",
+"pos": "G",
+"nat": "COL",
+"num": 24,
+"age": null
+},
+{
+"n": "Franco Leys",
+"pos": "M",
+"nat": "ARG",
+"num": 25,
+"age": 33
+},
+{
+"n": "Heiler Moreno",
+"pos": "D",
+"nat": "COL",
+"num": 26,
+"age": null
+},
+{
+"n": "Hervin Goyes",
+"pos": "D",
+"nat": "COL",
+"num": 27,
+"age": null
+},
+{
+"n": "Santiago Córdoba",
+"pos": "F",
+"nat": "COL",
+"num": 29,
+"age": null
+},
+{
+"n": "David Guerrero",
+"pos": "M",
+"nat": "COL",
+"num": 30,
+"age": null
+},
+{
+"n": "Luther Rueda",
+"pos": "F",
+"nat": "COL",
+"num": 31,
+"age": null
+},
+{
+"n": "Matías Pisano",
+"pos": "M",
+"nat": "ARG",
+"num": 32,
+"age": 35
+},
+{
+"n": "Mateo Garavito",
+"pos": "D",
+"nat": "COL",
+"num": 33,
+"age": null
+},
+{
+"n": "Frank Martínez",
+"pos": "M",
+"nat": "COL",
+"num": 35,
+"age": null
+},
+{
+"n": "Julián Quiñones",
+"pos": "D",
+"nat": "COL",
+"num": 36,
+"age": null
+},
+{
+"n": "Ramiro Morales",
+"pos": "D",
+"nat": "COL",
+"num": 99,
+"age": null
+},
+{
+"n": "Gian Cabezas",
+"pos": "M",
+"nat": "COL",
+"num": 99,
+"age": null
+},
+{
+"n": "Willian Ordóñez",
 "pos": "M",
 "nat": "COL",
 "num": 99,
