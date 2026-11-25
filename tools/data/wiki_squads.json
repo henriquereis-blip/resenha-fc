@@ -5942,5 +5942,682 @@
 "age": null
 }
 ]
+},
+"COL/Alianza FC": {
+"title": "Alianza Valledupar F.C.",
+"sq": [
+{
+"n": "Johan Wallens",
+"pos": "G",
+"nat": "COL",
+"num": 1,
+"age": 34
+},
+{
+"n": "Kevin Moreno",
+"pos": "D",
+"nat": "COL",
+"num": 3,
+"age": 26
+},
+{
+"n": "Joseb Mosquera",
+"pos": "D",
+"nat": "COL",
+"num": 4,
+"age": null
+},
+{
+"n": "Pedro Franco",
+"pos": "D",
+"nat": "COL",
+"num": 5,
+"age": 35
+},
+{
+"n": "Ever Meza",
+"pos": "M",
+"nat": "COL",
+"num": 6,
+"age": null
+},
+{
+"n": "Jhair Castillo",
+"pos": "M",
+"nat": "COL",
+"num": 7,
+"age": null
+},
+{
+"n": "Jesús Muñoz",
+"pos": "F",
+"nat": "COL",
+"num": 8,
+"age": null
+},
+{
+"n": "Deinner Quiñones",
+"pos": "M",
+"nat": "COL",
+"num": 10,
+"age": 31
+},
+{
+"n": "Sergio Aponzá",
+"pos": "M",
+"nat": "COL",
+"num": 11,
+"age": null
+},
+{
+"n": "Juan Camilo Chaverra",
+"pos": "G",
+"nat": "COL",
+"num": 12,
+"age": null
+},
+{
+"n": "Charly Villegas",
+"pos": "M",
+"nat": "COL",
+"num": 14,
+"age": null
+},
+{
+"n": "Carlos Esparragoza",
+"pos": "M",
+"nat": "COL",
+"num": 15,
+"age": null
+},
+{
+"n": "Felipe Pardo",
+"pos": "M",
+"nat": "COL",
+"num": 17,
+"age": 36
+},
+{
+"n": "Cristian Vergara",
+"pos": "F",
+"nat": "COL",
+"num": 18,
+"age": null
+},
+{
+"n": "Francesco Fiorelli",
+"pos": "F",
+"nat": "URU",
+"num": 19,
+"age": null
+},
+{
+"n": "Lucas Valencia",
+"pos": "F",
+"nat": "COL",
+"num": 20,
+"age": null
+},
+{
+"n": "Fabián Cantillo",
+"pos": "D",
+"nat": "COL",
+"num": 21,
+"age": null
+},
+{
+"n": "Jesús Figueroa",
+"pos": "D",
+"nat": "COL",
+"num": 22,
+"age": null
+},
+{
+"n": "Israel Alba",
+"pos": "D",
+"nat": "COL",
+"num": 23,
+"age": null
+},
+{
+"n": "Eduard Banguero",
+"pos": "D",
+"nat": "COL",
+"num": 24,
+"age": null
+},
+{
+"n": "Josy Pérez",
+"pos": "F",
+"nat": "COL",
+"num": 25,
+"age": null
+},
+{
+"n": "Howenn Rada",
+"pos": "F",
+"nat": "COL",
+"num": 26,
+"age": null
+},
+{
+"n": "Yeiner Londoño",
+"pos": "M",
+"nat": "COL",
+"num": 27,
+"age": null
+},
+{
+"n": "Jeison Osorio",
+"pos": "M",
+"nat": "COL",
+"num": 28,
+"age": null
+},
+{
+"n": "Jean Rojas",
+"pos": "D",
+"nat": "COL",
+"num": 29,
+"age": null
+},
+{
+"n": "Jhon Valoyes",
+"pos": "F",
+"nat": "COL",
+"num": 30,
+"age": null
+},
+{
+"n": "Juan Viveros",
+"pos": "D",
+"nat": "COL",
+"num": 32,
+"age": null
+},
+{
+"n": "Jhildrey Lasso",
+"pos": "D",
+"nat": "COL",
+"num": 33,
+"age": null
+},
+{
+"n": "Eduar Esteban",
+"pos": "G",
+"nat": "COL",
+"num": 40,
+"age": null
+},
+{
+"n": "Wiston Fernández",
+"pos": "M",
+"nat": "URU",
+"num": 55,
+"age": 28
+},
+{
+"n": "Yilson Rosales",
+"pos": "D",
+"nat": "COL",
+"num": 60,
+"age": null
+},
+{
+"n": "Misael Martínez",
+"pos": "F",
+"nat": "COL",
+"num": 77,
+"age": null
+},
+{
+"n": "Leyner Palacios",
+"pos": "F",
+"nat": "COL",
+"num": 88,
+"age": null
+},
+{
+"n": "Samuel Nieto",
+"pos": "F",
+"nat": "COL",
+"num": 99,
+"age": null
+},
+{
+"n": "Eudy Pérez",
+"pos": "F",
+"nat": "COL",
+"num": 99,
+"age": null
+}
+]
+},
+"COL/Envigado": {
+"title": "Envigado F.C.",
+"sq": [
+{
+"n": "Jaime Mora",
+"pos": "G",
+"nat": "COL",
+"num": 1,
+"age": null
+},
+{
+"n": "Didier Palacios",
+"pos": "D",
+"nat": "COL",
+"num": 2,
+"age": null
+},
+{
+"n": "Santiago Noreña",
+"pos": "D",
+"nat": "COL",
+"num": 5,
+"age": null
+},
+{
+"n": "Julián Palacios",
+"pos": "M",
+"nat": "COL",
+"num": 6,
+"age": null
+},
+{
+"n": "Didier Dawson",
+"pos": "F",
+"nat": "PAN",
+"num": 7,
+"age": null
+},
+{
+"n": "Rubio César España",
+"pos": "F",
+"nat": "COL",
+"num": 8,
+"age": 22
+},
+{
+"n": "Ángelo Rodríguez",
+"pos": "F",
+"nat": "COL",
+"num": 9,
+"age": 37
+},
+{
+"n": "Joao Rodríguez",
+"pos": "F",
+"nat": "COL",
+"num": 10,
+"age": 30
+},
+{
+"n": "Matías Villa",
+"pos": "G",
+"nat": "COL",
+"num": 12,
+"age": null
+},
+{
+"n": "Juan José Rey",
+"pos": "F",
+"nat": "COL",
+"num": 13,
+"age": null
+},
+{
+"n": "Mateo Betancurt",
+"pos": "D",
+"nat": "COL",
+"num": 14,
+"age": null
+},
+{
+"n": "Gendry Cuervo",
+"pos": "D",
+"nat": "COL",
+"num": 15,
+"age": null
+},
+{
+"n": "Yeferson Rodallega",
+"pos": "D",
+"nat": "COL",
+"num": 17,
+"age": 26
+},
+{
+"n": "William Hurtado",
+"pos": "M",
+"nat": "COL",
+"num": 18,
+"age": 22
+},
+{
+"n": "Stiwart Acuña",
+"pos": "F",
+"nat": "COL",
+"num": 19,
+"age": 27
+},
+{
+"n": "Juan José Cataño",
+"pos": "M",
+"nat": "COL",
+"num": 20,
+"age": null
+},
+{
+"n": "Juan Palacios",
+"pos": "D",
+"nat": "COL",
+"num": 22,
+"age": null
+},
+{
+"n": "Jesús Cuero",
+"pos": "M",
+"nat": "COL",
+"num": 25,
+"age": null
+},
+{
+"n": "Juan Quejada",
+"pos": "D",
+"nat": "COL",
+"num": 27,
+"age": null
+},
+{
+"n": "Jhon Gamboa",
+"pos": "D",
+"nat": "COL",
+"num": 28,
+"age": null
+},
+{
+"n": "Emanuel Londoño",
+"pos": "D",
+"nat": "COL",
+"num": 33,
+"age": null
+},
+{
+"n": "Dairon Valencia",
+"pos": "F",
+"nat": "COL",
+"num": 77,
+"age": null
+},
+{
+"n": "Juan Aristizábal",
+"pos": "M",
+"nat": "COL",
+"num": 80,
+"age": null
+},
+{
+"n": "Andrés Tovar",
+"pos": "G",
+"nat": "COL",
+"num": 88,
+"age": null
+},
+{
+"n": "Miguel Marulanda",
+"pos": "F",
+"nat": "COL",
+"num": 99,
+"age": null
+},
+{
+"n": "Jhojan Nieva",
+"pos": "M",
+"nat": "COL",
+"num": 99,
+"age": null
+},
+{
+"n": "Jefferson Palacios",
+"pos": "F",
+"nat": "COL",
+"num": 99,
+"age": null
+}
+]
+},
+"COL/Fortaleza CEIF": {
+"title": "Fortaleza F.C.",
+"sq": [
+{
+"n": "Williams Barlasina",
+"pos": "G",
+"nat": "ARG",
+"num": 1,
+"age": null
+},
+{
+"n": "Andrés Copete",
+"pos": "D",
+"nat": "COL",
+"num": 2,
+"age": null
+},
+{
+"n": "David Ramírez",
+"pos": "D",
+"nat": "COL",
+"num": 3,
+"age": null
+},
+{
+"n": "Edwin Cabezas",
+"pos": "D",
+"nat": "COL",
+"num": 4,
+"age": null
+},
+{
+"n": "Jeferson Medina",
+"pos": "D",
+"nat": "COL",
+"num": 5,
+"age": null
+},
+{
+"n": "Yesid Díaz",
+"pos": "M",
+"nat": "COL",
+"num": 6,
+"age": null
+},
+{
+"n": "Ítalo Montaño",
+"pos": "F",
+"nat": "COL",
+"num": 7,
+"age": null
+},
+{
+"n": "Sebastián Navarro",
+"pos": "M",
+"nat": "COL",
+"num": 8,
+"age": null
+},
+{
+"n": "Juan Sebastián Herrera",
+"pos": "F",
+"nat": "COL",
+"num": 9,
+"age": 32
+},
+{
+"n": "Jhon Velásquez",
+"pos": "M",
+"nat": "COL",
+"num": 10,
+"age": null
+},
+{
+"n": "Andy Batioja",
+"pos": "F",
+"nat": "COL",
+"num": 11,
+"age": null
+},
+{
+"n": "Cristian Santander",
+"pos": "G",
+"nat": "COL",
+"num": 12,
+"age": null
+},
+{
+"n": "Brandon Mejía",
+"pos": "M",
+"nat": "COL",
+"num": 13,
+"age": null
+},
+{
+"n": "Leonardo Pico",
+"pos": "M",
+"nat": "COL",
+"num": 14,
+"age": 35
+},
+{
+"n": "Santiago Cuero",
+"pos": "D",
+"nat": "COL",
+"num": 15,
+"age": null
+},
+{
+"n": "Joan Cajares",
+"pos": "D",
+"nat": "COL",
+"num": 16,
+"age": null
+},
+{
+"n": "Kevin Balanta",
+"pos": "M",
+"nat": "COL",
+"num": 17,
+"age": null
+},
+{
+"n": "Harold Balanta",
+"pos": "D",
+"nat": "COL",
+"num": 18,
+"age": null
+},
+{
+"n": "Franco Pulicastro",
+"pos": "F",
+"nat": "ARG",
+"num": 19,
+"age": null
+},
+{
+"n": "Jhonier Blanco",
+"pos": "F",
+"nat": "COL",
+"num": 20,
+"age": null
+},
+{
+"n": "Michael Barragán",
+"pos": "G",
+"nat": "COL",
+"num": 22,
+"age": null
+},
+{
+"n": "Juan Castillo",
+"pos": "D",
+"nat": "COL",
+"num": 23,
+"age": null
+},
+{
+"n": "Jhonier Salas",
+"pos": "F",
+"nat": "COL",
+"num": 24,
+"age": null
+},
+{
+"n": "Juan David García",
+"pos": "M",
+"nat": "COL",
+"num": 25,
+"age": null
+},
+{
+"n": "Richardson Rivas",
+"pos": "F",
+"nat": "COL",
+"num": 26,
+"age": null
+},
+{
+"n": "Julio Sinisterra",
+"pos": "F",
+"nat": "COL",
+"num": 27,
+"age": null
+},
+{
+"n": "Santiago Vivas",
+"pos": "M",
+"nat": "COL",
+"num": 28,
+"age": null
+},
+{
+"n": "Teun Wilke",
+"pos": "F",
+"nat": "MEX",
+"num": 29,
+"age": 24
+},
+{
+"n": "Jhon Solís",
+"pos": "M",
+"nat": "COL",
+"num": 30,
+"age": 27
+},
+{
+"n": "Mariano Vázquez",
+"pos": "M",
+"nat": "ARG",
+"num": 32,
+"age": 34
+},
+{
+"n": "Jonathan Marulanda",
+"pos": "D",
+"nat": "COL",
+"num": 99,
+"age": null
+},
+{
+"n": "Jerónimo Barrera",
+"pos": "M",
+"nat": "COL",
+"num": 99,
+"age": null
+}
+]
+},
+"COL/Jaguares": {
+"title": "Óscar Cortés (footballer, born 2003)",
+"sq": []
 }
 }
