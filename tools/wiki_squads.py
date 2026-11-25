@@ -18,9 +18,9 @@ if os.path.exists(D+'wiki_titles.json'):TITLE=json.load(open(D+'wiki_titles.json
 import time
 LAST=[0.0]
 def get(url,t=40):
-    # educado com a Wikipedia: no máximo ~1 requisição por segundo, espera e tenta de novo no 429
+    # educado com a Wikipedia: no máximo ~1 requisição a cada 2,5 s, espera e tenta de novo no 429
     for tent in range(6):
-        w=1.1-(time.time()-LAST[0])
+        w=2.5-(time.time()-LAST[0])
         if w>0:time.sleep(w)
         LAST[0]=time.time()
         r=subprocess.run(['curl','-s','-L','-m',str(t),'-A','ResenhaFC-data/1.0 (jogo de futebol, uso educativo)',url],capture_output=True)
