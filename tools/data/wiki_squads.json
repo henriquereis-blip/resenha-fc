@@ -29501,5 +29501,3750 @@
 "age": 27
 }
 ]
+},
+"MAR/Wydad Casablanca": {
+"title": "Wydad AC",
+"sq": [
+{
+"n": "Mohamed Moufid",
+"pos": "D",
+"nat": "MAR",
+"num": 2,
+"age": 26
+},
+{
+"n": "Hamza Jananallah",
+"pos": "D",
+"nat": "MAR",
+"num": 3,
+"age": null
+},
+{
+"n": "Yahya Jabrane",
+"pos": "M",
+"nat": "MAR",
+"num": 5,
+"age": 35
+},
+{
+"n": "Naïm Byar",
+"pos": "M",
+"nat": "MAR",
+"num": 6,
+"age": 21
+},
+{
+"n": "Haitam Hamani",
+"pos": "F",
+"nat": "MAR",
+"num": 7,
+"age": null
+},
+{
+"n": "Ayman El Hassouni",
+"pos": "M",
+"nat": "MAR",
+"num": 10,
+"age": 31
+},
+{
+"n": "Abderrazak El Wadi",
+"pos": "G",
+"nat": "MAR",
+"num": 12,
+"age": null
+},
+{
+"n": "Sallah Moussaddaq",
+"pos": "D",
+"nat": "MAR",
+"num": 13,
+"age": null
+},
+{
+"n": "Yahya Attiyat Allah",
+"pos": "D",
+"nat": "MAR",
+"num": 14,
+"age": 31
+},
+{
+"n": "Silvère Ganvoula",
+"pos": "F",
+"nat": "CGO",
+"num": 15,
+"age": 30
+},
+{
+"n": "Mehdi Benabid",
+"pos": "G",
+"nat": "MAR",
+"num": 16,
+"age": 28
+},
+{
+"n": "Rayane Mahtou",
+"pos": "M",
+"nat": "MAR",
+"num": 17,
+"age": null
+},
+{
+"n": "Nizar Al-Rashdan",
+"pos": "M",
+"nat": "JOR",
+"num": 18,
+"age": 27
+},
+{
+"n": "Hamza Hannouri",
+"pos": "F",
+"nat": "MAR",
+"num": 19,
+"age": null
+},
+{
+"n": "Moises Paniagua",
+"pos": "F",
+"nat": "BOL",
+"num": 20,
+"age": null
+},
+{
+"n": "Mouad Enzo",
+"pos": "F",
+"nat": "MAR",
+"num": 22,
+"age": null
+},
+{
+"n": "Oussama Zemraoui",
+"pos": "M",
+"nat": "MAR",
+"num": 23,
+"age": 24
+},
+{
+"n": "Issoufou Dayo",
+"pos": "D",
+"nat": "BFA",
+"num": 25,
+"age": 35
+},
+{
+"n": "Joseph Bakasu",
+"pos": "M",
+"nat": "COD",
+"num": 27,
+"age": null
+},
+{
+"n": "Walid Nassi",
+"pos": "F",
+"nat": "MAR",
+"num": 28,
+"age": 26
+},
+{
+"n": "Salaheddine Cofi",
+"pos": "D",
+"nat": "MAR",
+"num": 32,
+"age": null
+},
+{
+"n": "Adil Khalloufi",
+"pos": "M",
+"nat": "MAR",
+"num": 33,
+"age": null
+},
+{
+"n": "Omar Aqzdaou",
+"pos": "G",
+"nat": "MAR",
+"num": 40,
+"age": null
+},
+{
+"n": "Yassine Jabrane",
+"pos": "F",
+"nat": "MAR",
+"num": 91,
+"age": null
+},
+{
+"n": "Rachid Ghanimi",
+"pos": "G",
+"nat": "MAR",
+"num": 99,
+"age": 25
+},
+{
+"n": "Soufiane Hetli",
+"pos": "F",
+"nat": "NED",
+"num": 99,
+"age": 25
+}
+]
+},
+"MAR/RS Berkane": {
+"title": "RS Berkane",
+"sq": [
+{
+"n": "Munir Mohamedi",
+"pos": "G",
+"nat": "MAR",
+"num": 1,
+"age": 37
+},
+{
+"n": "Mohamed Aymen Sadil",
+"pos": "D",
+"nat": "MAR",
+"num": 3,
+"age": null
+},
+{
+"n": "Oussama Haddadi",
+"pos": "D",
+"nat": "TUN",
+"num": 4,
+"age": 34
+},
+{
+"n": "Jamal Harkass",
+"pos": "D",
+"nat": "MAR",
+"num": 5,
+"age": 31
+},
+{
+"n": "Youssef Aït Bennasser",
+"pos": "M",
+"nat": "MAR",
+"num": 6,
+"age": 30
+},
+{
+"n": "Soumaila Sidibe",
+"pos": "M",
+"nat": "MLI",
+"num": 7,
+"age": 34
+},
+{
+"n": "Ayoub Khairi",
+"pos": "M",
+"nat": "MAR",
+"num": 8,
+"age": null
+},
+{
+"n": "Oussama Lamlioui",
+"pos": "F",
+"nat": "MAR",
+"num": 9,
+"age": 30
+},
+{
+"n": "Ryan Mendes",
+"pos": "F",
+"nat": "CPV",
+"num": 10,
+"age": 36
+},
+{
+"n": "Youssef Mehri",
+"pos": "F",
+"nat": "MAR",
+"num": 11,
+"age": null
+},
+{
+"n": "Mehdi Miftah",
+"pos": "G",
+"nat": "MAR",
+"num": 12,
+"age": null
+},
+{
+"n": "Adil Tahif",
+"pos": "D",
+"nat": "MAR",
+"num": 13,
+"age": 25
+},
+{
+"n": "Rayane Aabid",
+"pos": "M",
+"nat": "FRA",
+"num": 14,
+"age": 34
+},
+{
+"n": "Abdelghafour Lamirat",
+"pos": "M",
+"nat": "MAR",
+"num": 15,
+"age": null
+},
+{
+"n": "Yassine Labhiri",
+"pos": "M",
+"nat": "MAR",
+"num": 17,
+"age": null
+},
+{
+"n": "Mohamed Amine Essahel",
+"pos": "M",
+"nat": "MAR",
+"num": 18,
+"age": null
+},
+{
+"n": "Hamza El Moussaoui",
+"pos": "D",
+"nat": "MAR",
+"num": 19,
+"age": 33
+},
+{
+"n": "Haytam Manaout",
+"pos": "D",
+"nat": "MAR",
+"num": 20,
+"age": 25
+},
+{
+"n": "Youssef El Motie",
+"pos": "G",
+"nat": "MAR",
+"num": 22,
+"age": 32
+},
+{
+"n": "Mounir Chouiar",
+"pos": "F",
+"nat": "MAR",
+"num": 23,
+"age": 27
+},
+{
+"n": "Youness El Kaabi",
+"pos": "F",
+"nat": "MAR",
+"num": 24,
+"age": null
+},
+{
+"n": "Omar El Manssouri",
+"pos": "M",
+"nat": "FRA",
+"num": 26,
+"age": null
+},
+{
+"n": "Ismaël Kandouss",
+"pos": "D",
+"nat": "MAR",
+"num": 27,
+"age": 29
+},
+{
+"n": "Zinédine Machach",
+"pos": "M",
+"nat": "FRA",
+"num": 29,
+"age": 30
+},
+{
+"n": "Mohamed Ouyahia",
+"pos": "M",
+"nat": "MAR",
+"num": 32,
+"age": null
+},
+{
+"n": "Et-Tayeb Boukhriss",
+"pos": "D",
+"nat": "MAR",
+"num": 33,
+"age": null
+},
+{
+"n": "Reda Hajji",
+"pos": "M",
+"nat": "MAR",
+"num": 35,
+"age": null
+}
+]
+},
+"MAR/AS FAR": {
+"title": "AS FAR",
+"sq": [
+{
+"n": "Ayoub El Khayati",
+"pos": "G",
+"nat": "MAR",
+"num": 1,
+"age": null
+},
+{
+"n": "Tó Carneiro",
+"pos": "D",
+"nat": "ANG",
+"num": 2,
+"age": 31
+},
+{
+"n": "Anas Bach",
+"pos": "M",
+"nat": "MAR",
+"num": 3,
+"age": 28
+},
+{
+"n": "Fallou Mendy",
+"pos": "D",
+"nat": "SEN",
+"num": 4,
+"age": null
+},
+{
+"n": "Zineddine Derrag",
+"pos": "M",
+"nat": "MAR",
+"num": 6,
+"age": null
+},
+{
+"n": "Youssef El Fahli",
+"pos": "F",
+"nat": "MAR",
+"num": 7,
+"age": 29
+},
+{
+"n": "Khalid Aït Ouarkhane",
+"pos": "M",
+"nat": "MAR",
+"num": 8,
+"age": null
+},
+{
+"n": "Mouhcine Bouriga",
+"pos": "F",
+"nat": "MAR",
+"num": 9,
+"age": null
+},
+{
+"n": "Ahmed Hammoudan",
+"pos": "F",
+"nat": "MAR",
+"num": 11,
+"age": 35
+},
+{
+"n": "Merveil Ndockyt",
+"pos": "M",
+"nat": "CGO",
+"num": 13,
+"age": 28
+},
+{
+"n": "Marouane Louadni",
+"pos": "D",
+"nat": "MAR",
+"num": 15,
+"age": 31
+},
+{
+"n": "Ahmed Reda Tagnaouti",
+"pos": "G",
+"nat": "MAR",
+"num": 16,
+"age": 30
+},
+{
+"n": "Yazid Faffa",
+"pos": "F",
+"nat": "MAR",
+"num": 19,
+"age": null
+},
+{
+"n": "Marouane Oujeddou",
+"pos": "F",
+"nat": "MAR",
+"num": 21,
+"age": null
+},
+{
+"n": "Hakim Mesbahi",
+"pos": "G",
+"nat": "MAR",
+"num": 22,
+"age": null
+},
+{
+"n": "Jamal Ech-Chamakh",
+"pos": "D",
+"nat": "MAR",
+"num": 23,
+"age": null
+},
+{
+"n": "Ayoub Ait Khassou",
+"pos": "D",
+"nat": "MAR",
+"num": 27,
+"age": null
+},
+{
+"n": "Jephte Kitambala",
+"pos": "F",
+"nat": "COD",
+"num": 30,
+"age": null
+},
+{
+"n": "Abdelfettah Hadraf",
+"pos": "M",
+"nat": "MAR",
+"num": 40,
+"age": null
+},
+{
+"n": "Mohamed Jemjami",
+"pos": "G",
+"nat": "MAR",
+"num": 99,
+"age": null
+},
+{
+"n": "Nadir Lougmani",
+"pos": "D",
+"nat": "MAR",
+"num": 99,
+"age": null
+},
+{
+"n": "Nabil Marmouk",
+"pos": "D",
+"nat": "MAR",
+"num": 99,
+"age": 28
+},
+{
+"n": "Soulaimane El Bouchqali",
+"pos": "M",
+"nat": "MAR",
+"num": 99,
+"age": null
+},
+{
+"n": "Allan Okello",
+"pos": "M",
+"nat": "UGA",
+"num": 99,
+"age": 26
+},
+{
+"n": "Joël Beya",
+"pos": "F",
+"nat": "COD",
+"num": 99,
+"age": 27
+},
+{
+"n": "Salaheddine Errahouli",
+"pos": "F",
+"nat": "MAR",
+"num": 99,
+"age": null
+}
+]
+},
+"MAR/Maghreb Fez": {
+"title": "Maghreb Fez",
+"sq": [
+{
+"n": "Diogo Calila",
+"pos": "D",
+"nat": "MOZ",
+"num": 2,
+"age": 28
+},
+{
+"n": "Samba Mbengue",
+"pos": "D",
+"nat": "SEN",
+"num": 4,
+"age": null
+},
+{
+"n": "Aymane Chbani",
+"pos": "D",
+"nat": "MAR",
+"num": 5,
+"age": null
+},
+{
+"n": "Oussama Noureddine",
+"pos": "M",
+"nat": "MAR",
+"num": 6,
+"age": null
+},
+{
+"n": "Khalid Baba",
+"pos": "F",
+"nat": "MAR",
+"num": 7,
+"age": null
+},
+{
+"n": "Achraf Harmach",
+"pos": "M",
+"nat": "MAR",
+"num": 8,
+"age": null
+},
+{
+"n": "Tshegofatso Mabaso",
+"pos": "F",
+"nat": "RSA",
+"num": 9,
+"age": 30
+},
+{
+"n": "Amine El Farissi",
+"pos": "F",
+"nat": "FRA",
+"num": 10,
+"age": null
+},
+{
+"n": "Soulyman Allouch",
+"pos": "F",
+"nat": "NED",
+"num": 11,
+"age": 24
+},
+{
+"n": "Oussama Errahmany",
+"pos": "G",
+"nat": "MAR",
+"num": 12,
+"age": null
+},
+{
+"n": "Adil Rhaili",
+"pos": "D",
+"nat": "MAR",
+"num": 13,
+"age": 35
+},
+{
+"n": "Adam Brika",
+"pos": "F",
+"nat": "MAR",
+"num": 14,
+"age": null
+},
+{
+"n": "Abdellah Khafifi",
+"pos": "D",
+"nat": "MAR",
+"num": 15,
+"age": 33
+},
+{
+"n": "Salaheddine Chihab",
+"pos": "G",
+"nat": "MAR",
+"num": 16,
+"age": 33
+},
+{
+"n": "Anas El Mahraoui",
+"pos": "F",
+"nat": "MAR",
+"num": 17,
+"age": 25
+},
+{
+"n": "Christopher Ibayi",
+"pos": "F",
+"nat": "CGO",
+"num": 18,
+"age": 31
+},
+{
+"n": "Anas Tahiri",
+"pos": "M",
+"nat": "MAR",
+"num": 19,
+"age": 31
+},
+{
+"n": "Salaheddine Ghedamsi",
+"pos": "D",
+"nat": "TUN",
+"num": 20,
+"age": null
+},
+{
+"n": "Marouane Ouhrou",
+"pos": "D",
+"nat": "MAR",
+"num": 21,
+"age": null
+},
+{
+"n": "Hamza Ait Allal",
+"pos": "D",
+"nat": "MAR",
+"num": 22,
+"age": null
+},
+{
+"n": "Youssef Hafidi",
+"pos": "F",
+"nat": "MAR",
+"num": 23,
+"age": null
+},
+{
+"n": "Devin Titus",
+"pos": "F",
+"nat": "RSA",
+"num": 26,
+"age": 25
+},
+{
+"n": "Mohamed Jaouab",
+"pos": "D",
+"nat": "MAR",
+"num": 27,
+"age": 24
+},
+{
+"n": "Abdoul Kabir Ouédraogo",
+"pos": "F",
+"nat": "BFA",
+"num": 28,
+"age": null
+},
+{
+"n": "El Habib Brija",
+"pos": "M",
+"nat": "MAR",
+"num": 29,
+"age": null
+},
+{
+"n": "Hamza Afsal",
+"pos": "M",
+"nat": "MAR",
+"num": 30,
+"age": null
+},
+{
+"n": "Mounir El Gouje",
+"pos": "M",
+"nat": "MAR",
+"num": 31,
+"age": null
+},
+{
+"n": "Zakaria Allaoui",
+"pos": "F",
+"nat": "MAR",
+"num": 36,
+"age": null
+},
+{
+"n": "Walid Laghrissi",
+"pos": "G",
+"nat": "MAR",
+"num": 99,
+"age": null
+}
+]
+},
+"MAR/DH El Jadida": {
+"title": "Difaâ Hassani El Jadidi",
+"sq": [
+{
+"n": "Oussama Benchchaoui",
+"pos": "D",
+"nat": "MAR",
+"num": 2,
+"age": null
+},
+{
+"n": "Hamza Malki",
+"pos": "D",
+"nat": "MAR",
+"num": 3,
+"age": null
+},
+{
+"n": "Reda Ech-Chgraoui",
+"pos": "M",
+"nat": "MAR",
+"num": 5,
+"age": null
+},
+{
+"n": "Brahim Bouzidi",
+"pos": "M",
+"nat": "MAR",
+"num": 6,
+"age": null
+},
+{
+"n": "Imad Sabik",
+"pos": "M",
+"nat": "MAR",
+"num": 7,
+"age": null
+},
+{
+"n": "Ayoub El Khafi",
+"pos": "M",
+"nat": "MAR",
+"num": 8,
+"age": null
+},
+{
+"n": "Romuald Dacosta",
+"pos": "F",
+"nat": "SEN",
+"num": 9,
+"age": null
+},
+{
+"n": "Mouad Mouchtanim",
+"pos": "M",
+"nat": "MAR",
+"num": 10,
+"age": null
+},
+{
+"n": "Omar Hmamouch",
+"pos": "M",
+"nat": "MAR",
+"num": 11,
+"age": null
+},
+{
+"n": "Aymen Riyane",
+"pos": "D",
+"nat": "MAR",
+"num": 13,
+"age": null
+},
+{
+"n": "Mohamed Bentarcha",
+"pos": "D",
+"nat": "MAR",
+"num": 14,
+"age": null
+},
+{
+"n": "Yassine El Ouatki",
+"pos": "M",
+"nat": "FRA",
+"num": 15,
+"age": 28
+},
+{
+"n": "Ayoub Ait Wahmane",
+"pos": "G",
+"nat": "MAR",
+"num": 16,
+"age": null
+},
+{
+"n": "Abderrazak Ennakouss",
+"pos": "F",
+"nat": "MAR",
+"num": 17,
+"age": null
+},
+{
+"n": "Moctar El Hacen",
+"pos": "M",
+"nat": "MTN",
+"num": 18,
+"age": 29
+},
+{
+"n": "Houdaifa Jamaäne",
+"pos": "M",
+"nat": "MAR",
+"num": 19,
+"age": null
+},
+{
+"n": "Boulkassoum Diarra",
+"pos": "D",
+"nat": "MLI",
+"num": 20,
+"age": null
+},
+{
+"n": "Mohamed Hilali",
+"pos": "M",
+"nat": "MAR",
+"num": 22,
+"age": null
+},
+{
+"n": "Soufiane Abaaziz",
+"pos": "D",
+"nat": "MAR",
+"num": 23,
+"age": null
+},
+{
+"n": "Zakaria Oubraim",
+"pos": "D",
+"nat": "MAR",
+"num": 24,
+"age": null
+},
+{
+"n": "Babacar Niasse",
+"pos": "G",
+"nat": "MTN",
+"num": 30,
+"age": 30
+},
+{
+"n": "Papa Diallo",
+"pos": "F",
+"nat": "SEN",
+"num": 55,
+"age": null
+},
+{
+"n": "Megue",
+"pos": "M",
+"nat": "ANG",
+"num": 70,
+"age": null
+},
+{
+"n": "Ibra Lo",
+"pos": "F",
+"nat": "SEN",
+"num": 77,
+"age": null
+},
+{
+"n": "Youssef Michte",
+"pos": "M",
+"nat": "MAR",
+"num": 88,
+"age": null
+},
+{
+"n": "Achraf Al Idrissi",
+"pos": "M",
+"nat": "MAR",
+"num": 99,
+"age": null
+},
+{
+"n": "Abdellah Farah",
+"pos": "F",
+"nat": "MAR",
+"num": 99,
+"age": null
+},
+{
+"n": "Anas Moulhami",
+"pos": "D",
+"nat": "MAR",
+"num": 99,
+"age": null
+}
+]
+},
+"MAR/Ittihad Tanger": {
+"title": "IR Tanger",
+"sq": [
+{
+"n": "Reda El Meliani",
+"pos": "D",
+"nat": "MAR",
+"num": 2,
+"age": null
+},
+{
+"n": "Mohamed Saoud",
+"pos": "D",
+"nat": "MAR",
+"num": 4,
+"age": null
+},
+{
+"n": "Bilal El Ouadghiri",
+"pos": "D",
+"nat": "MAR",
+"num": 6,
+"age": 25
+},
+{
+"n": "Younes Najari",
+"pos": "F",
+"nat": "MAR",
+"num": 7,
+"age": null
+},
+{
+"n": "Gape Mohutsiwa",
+"pos": "M",
+"nat": "BOT",
+"num": 8,
+"age": 29
+},
+{
+"n": "Mohamed El Arouch",
+"pos": "M",
+"nat": "FRA",
+"num": 10,
+"age": 22
+},
+{
+"n": "Malcolm Barcola",
+"pos": "G",
+"nat": "TOG",
+"num": 12,
+"age": 27
+},
+{
+"n": "Aymane Douieb",
+"pos": "G",
+"nat": "MAR",
+"num": 13,
+"age": null
+},
+{
+"n": "Achraf Laâziri",
+"pos": "D",
+"nat": "MAR",
+"num": 15,
+"age": 23
+},
+{
+"n": "Akram Tali",
+"pos": "F",
+"nat": "MAR",
+"num": 16,
+"age": null
+},
+{
+"n": "Abdelhamid Maâli",
+"pos": "F",
+"nat": "MAR",
+"num": 17,
+"age": null
+},
+{
+"n": "Soufyan Ahannach",
+"pos": "M",
+"nat": "NED",
+"num": 18,
+"age": 31
+},
+{
+"n": "Ennaama El Bellali",
+"pos": "M",
+"nat": "MAR",
+"num": 20,
+"age": null
+},
+{
+"n": "Hamza El Moudene",
+"pos": "M",
+"nat": "MAR",
+"num": 21,
+"age": null
+},
+{
+"n": "Zakaria Kiani",
+"pos": "D",
+"nat": "MAR",
+"num": 22,
+"age": null
+},
+{
+"n": "Anass Lamrabat",
+"pos": "D",
+"nat": "MAR",
+"num": 23,
+"age": null
+},
+{
+"n": "Akram El Wahabi",
+"pos": "D",
+"nat": "ESP",
+"num": 24,
+"age": null
+},
+{
+"n": "Ahmed Azmi",
+"pos": "G",
+"nat": "MAR",
+"num": 25,
+"age": null
+},
+{
+"n": "Saad Ait Khorsa",
+"pos": "D",
+"nat": "MAR",
+"num": 27,
+"age": 32
+},
+{
+"n": "Babacar Sarr",
+"pos": "M",
+"nat": "SEN",
+"num": 29,
+"age": null
+},
+{
+"n": "Ibrahima Dieng",
+"pos": "F",
+"nat": "SEN",
+"num": 31,
+"age": null
+},
+{
+"n": "Mohamed El Guartit",
+"pos": "M",
+"nat": "MAR",
+"num": 34,
+"age": null
+},
+{
+"n": "Saad Karouat",
+"pos": "D",
+"nat": "MAR",
+"num": 36,
+"age": null
+},
+{
+"n": "Achraf El Quaraoui",
+"pos": "M",
+"nat": "MAR",
+"num": 48,
+"age": null
+},
+{
+"n": "Badreddine Abyir",
+"pos": "G",
+"nat": "MAR",
+"num": 61,
+"age": null
+},
+{
+"n": "Haytham Bakhlakh",
+"pos": "F",
+"nat": "ENG",
+"num": 67,
+"age": null
+},
+{
+"n": "Ousama Siddiki",
+"pos": "F",
+"nat": "MAR",
+"num": 77,
+"age": 28
+},
+{
+"n": "Yassine Karmadi",
+"pos": "D",
+"nat": "MAR",
+"num": 98,
+"age": null
+},
+{
+"n": "Senad Jarović",
+"pos": "F",
+"nat": "GER",
+"num": 99,
+"age": 28
+}
+]
+},
+"MAR/FUS Rabat": {
+"title": "FUS Rabat (basketball)",
+"sq": []
+},
+"MAR/MA Tétouan": {
+"title": "MA Tétouan",
+"sq": [
+{
+"n": "Mehdi El Jourbaoui",
+"pos": "G",
+"nat": "MAR",
+"num": 1,
+"age": null
+},
+{
+"n": "Abdelilah Madkour",
+"pos": "D",
+"nat": "MAR",
+"num": 3,
+"age": null
+},
+{
+"n": "Mohammed El Fakih",
+"pos": "M",
+"nat": "MAR",
+"num": 5,
+"age": 36
+},
+{
+"n": "Ouail el Merabet",
+"pos": "M",
+"nat": "NED",
+"num": 6,
+"age": null
+},
+{
+"n": "El Mehdi El Khamlichi",
+"pos": "M",
+"nat": "MAR",
+"num": 7,
+"age": null
+},
+{
+"n": "Hamza Darai",
+"pos": "F",
+"nat": "MAR",
+"num": 9,
+"age": null
+},
+{
+"n": "Zaid Krouch",
+"pos": "M",
+"nat": "MAR",
+"num": 10,
+"age": null
+},
+{
+"n": "Bilal El Megri",
+"pos": "F",
+"nat": "MAR",
+"num": 11,
+"age": 36
+},
+{
+"n": "Yahia El Filali",
+"pos": "G",
+"nat": "MAR",
+"num": 13,
+"age": null
+},
+{
+"n": "Diae-Eddine Eddaoudi",
+"pos": "M",
+"nat": "MAR",
+"num": 14,
+"age": null
+},
+{
+"n": "Yassine Amhih",
+"pos": "D",
+"nat": "MAR",
+"num": 17,
+"age": null
+},
+{
+"n": "Zaid Ben Khajjou",
+"pos": "M",
+"nat": "MAR",
+"num": 21,
+"age": null
+},
+{
+"n": "Abraham Wayo",
+"pos": "F",
+"nat": "GHA",
+"num": 23,
+"age": 23
+},
+{
+"n": "Ayoub Chabboud",
+"pos": "D",
+"nat": "MAR",
+"num": 24,
+"age": null
+},
+{
+"n": "Imad Errahouli",
+"pos": "M",
+"nat": "MAR",
+"num": 26,
+"age": null
+},
+{
+"n": "Ismaïla Simpara",
+"pos": "D",
+"nat": "MLI",
+"num": 27,
+"age": null
+},
+{
+"n": "Mohamed Kamal",
+"pos": "F",
+"nat": "MAR",
+"num": 31,
+"age": null
+},
+{
+"n": "Mohamed Dades",
+"pos": "D",
+"nat": "MAR",
+"num": 33,
+"age": null
+},
+{
+"n": "Mouad Karmoun",
+"pos": "M",
+"nat": "MAR",
+"num": 44,
+"age": null
+},
+{
+"n": "Houssam Ben Youssef",
+"pos": "D",
+"nat": "MAR",
+"num": 64,
+"age": null
+},
+{
+"n": "Yassine Karraz",
+"pos": "D",
+"nat": "MAR",
+"num": 66,
+"age": null
+},
+{
+"n": "Roshdi Wahabi",
+"pos": "M",
+"nat": "MAR",
+"num": 74,
+"age": null
+},
+{
+"n": "Youssef El Houari",
+"pos": "F",
+"nat": "MAR",
+"num": 77,
+"age": null
+},
+{
+"n": "Ayoub Lakhal",
+"pos": "F",
+"nat": "MAR",
+"num": 90,
+"age": 30
+},
+{
+"n": "Akram Mejdoub",
+"pos": "D",
+"nat": "MAR",
+"num": 93,
+"age": null
+},
+{
+"n": "Yassine El Ghazouani",
+"pos": "D",
+"nat": "MAR",
+"num": 95,
+"age": null
+},
+{
+"n": "Mohamed Rahim",
+"pos": "D",
+"nat": "MAR",
+"num": 96,
+"age": null
+},
+{
+"n": "Mohamed Cheikhi",
+"pos": "D",
+"nat": "MAR",
+"num": 97,
+"age": null
+},
+{
+"n": "Salaheddine Ben Merzouka",
+"pos": "M",
+"nat": "MAR",
+"num": 98,
+"age": null
+}
+]
+},
+"MAR/Kawkab Marrakech": {
+"title": "KAC Marrakech",
+"sq": [
+{
+"n": "Mohamed Baayou",
+"pos": "G",
+"nat": "MAR",
+"num": 1,
+"age": null
+},
+{
+"n": "Mohamed Adam Benhita",
+"pos": "D",
+"nat": "MAR",
+"num": 4,
+"age": null
+},
+{
+"n": "Oussama Mahrous",
+"pos": "M",
+"nat": "MAR",
+"num": 5,
+"age": null
+},
+{
+"n": "Hamza Founti",
+"pos": "F",
+"nat": "MAR",
+"num": 7,
+"age": null
+},
+{
+"n": "Khalil Tamrani",
+"pos": "M",
+"nat": "MAR",
+"num": 8,
+"age": null
+},
+{
+"n": "Saleh Essallami",
+"pos": "F",
+"nat": "MAR",
+"num": 11,
+"age": null
+},
+{
+"n": "Akram El Hamdaoui",
+"pos": "D",
+"nat": "MAR",
+"num": 12,
+"age": null
+},
+{
+"n": "Abdellah Haimoud",
+"pos": "M",
+"nat": "MAR",
+"num": 13,
+"age": 25
+},
+{
+"n": "Hamza Smaali",
+"pos": "D",
+"nat": "MAR",
+"num": 14,
+"age": null
+},
+{
+"n": "Mahmoud El Kayssoumi",
+"pos": "M",
+"nat": "MAR",
+"num": 16,
+"age": null
+},
+{
+"n": "Youssef Zghoudi",
+"pos": "F",
+"nat": "MAR",
+"num": 17,
+"age": null
+},
+{
+"n": "Jawad Ghabra",
+"pos": "F",
+"nat": "MAR",
+"num": 19,
+"age": null
+},
+{
+"n": "Mohssine Rabja",
+"pos": "D",
+"nat": "MAR",
+"num": 20,
+"age": null
+},
+{
+"n": "Hamza Rafaa",
+"pos": "M",
+"nat": "MAR",
+"num": 21,
+"age": null
+},
+{
+"n": "Abdelali Mhamdi",
+"pos": "G",
+"nat": "MAR",
+"num": 22,
+"age": 35
+},
+{
+"n": "Youssef Raiani",
+"pos": "M",
+"nat": "MAR",
+"num": 24,
+"age": null
+},
+{
+"n": "Nabil Khali",
+"pos": "D",
+"nat": "FRA",
+"num": 25,
+"age": null
+},
+{
+"n": "Hamza Fassoukh",
+"pos": "D",
+"nat": "MAR",
+"num": 26,
+"age": null
+},
+{
+"n": "Mohammed Battah",
+"pos": "D",
+"nat": "MAR",
+"num": 27,
+"age": null
+},
+{
+"n": "Mohamed Elabdi",
+"pos": "D",
+"nat": "MAR",
+"num": 31,
+"age": null
+},
+{
+"n": "Hamza Zagmouzi",
+"pos": "F",
+"nat": "MAR",
+"num": 34,
+"age": null
+},
+{
+"n": "Naoufal Ait Oubna",
+"pos": "G",
+"nat": "MAR",
+"num": 37,
+"age": null
+},
+{
+"n": "Ismail El Alami",
+"pos": "D",
+"nat": "MAR",
+"num": 44,
+"age": null
+},
+{
+"n": "Amine El Ouaad",
+"pos": "G",
+"nat": "MAR",
+"num": 67,
+"age": null
+},
+{
+"n": "Mohamed Welé",
+"pos": "D",
+"nat": "SEN",
+"num": 71,
+"age": null
+},
+{
+"n": "Ayoub Maamouri",
+"pos": "F",
+"nat": "MAR",
+"num": 77,
+"age": 26
+},
+{
+"n": "Anass Rachak",
+"pos": "G",
+"nat": "MAR",
+"num": 80,
+"age": null
+},
+{
+"n": "Mohamed Dadssi",
+"pos": "M",
+"nat": "MAR",
+"num": 88,
+"age": null
+},
+{
+"n": "Oussama Haffari",
+"pos": "F",
+"nat": "MAR",
+"num": 99,
+"age": null
+},
+{
+"n": "Abdelkrim Baadi",
+"pos": "D",
+"nat": "MAR",
+"num": 99,
+"age": 30
+},
+{
+"n": "Aboubacar Camara",
+"pos": "D",
+"nat": "GUI",
+"num": 99,
+"age": null
+}
+]
+},
+"MAR/COD Meknes": {
+"title": "COD Meknès",
+"sq": []
+},
+"MAR/RCA Zemamra": {
+"title": "RCA Zemamra",
+"sq": []
+},
+"MAR/Hassania Agadir": {
+"title": "Hassania Agadir",
+"sq": [
+{
+"n": "Gaya Merbah",
+"pos": "G",
+"nat": "ALG",
+"num": 1,
+"age": 32
+},
+{
+"n": "Ayoub Benaadi",
+"pos": "M",
+"nat": "MAR",
+"num": 2,
+"age": null
+},
+{
+"n": "Badreddine Octobre",
+"pos": "M",
+"nat": "MAR",
+"num": 3,
+"age": null
+},
+{
+"n": "Jalal Tachtach",
+"pos": "M",
+"nat": "MAR",
+"num": 5,
+"age": null
+},
+{
+"n": "Mouad Bahsain",
+"pos": "D",
+"nat": "MAR",
+"num": 6,
+"age": null
+},
+{
+"n": "Salaheddine Benyachou",
+"pos": "F",
+"nat": "MAR",
+"num": 7,
+"age": 27
+},
+{
+"n": "Walid Jarmouni",
+"pos": "F",
+"nat": "FRA",
+"num": 9,
+"age": 26
+},
+{
+"n": "Abderrahmane Qassaq",
+"pos": "M",
+"nat": "MAR",
+"num": 10,
+"age": null
+},
+{
+"n": "Amine Azri",
+"pos": "F",
+"nat": "MAR",
+"num": 11,
+"age": null
+},
+{
+"n": "Abdelali Ait Brayim",
+"pos": "M",
+"nat": "MAR",
+"num": 14,
+"age": null
+},
+{
+"n": "Ayoub Qasmi",
+"pos": "D",
+"nat": "MAR",
+"num": 15,
+"age": null
+},
+{
+"n": "Rodrigue Kossi",
+"pos": "M",
+"nat": "BEN",
+"num": 16,
+"age": 26
+},
+{
+"n": "Hamza Moumadi",
+"pos": "M",
+"nat": "MAR",
+"num": 17,
+"age": null
+},
+{
+"n": "Euclides Cabral",
+"pos": "D",
+"nat": "POR",
+"num": 19,
+"age": 27
+},
+{
+"n": "Imad Riahi",
+"pos": "F",
+"nat": "MAR",
+"num": 20,
+"age": null
+},
+{
+"n": "Hamza Antara",
+"pos": "G",
+"nat": "MAR",
+"num": 22,
+"age": null
+},
+{
+"n": "Hamid Ahadad",
+"pos": "F",
+"nat": "MAR",
+"num": 23,
+"age": 32
+},
+{
+"n": "Ayoub Boucheta",
+"pos": "D",
+"nat": "MAR",
+"num": 24,
+"age": 33
+},
+{
+"n": "Youssef Arbidi",
+"pos": "F",
+"nat": "MAR",
+"num": 26,
+"age": null
+},
+{
+"n": "Ayman Tarrazi",
+"pos": "D",
+"nat": "MAR",
+"num": 27,
+"age": null
+},
+{
+"n": "Soulaiman El Amrani",
+"pos": "D",
+"nat": "MAR",
+"num": 30,
+"age": null
+},
+{
+"n": "Ilyass Motik",
+"pos": "G",
+"nat": "MAR",
+"num": 31,
+"age": null
+},
+{
+"n": "Mehdi Akoumi",
+"pos": "M",
+"nat": "MAR",
+"num": 32,
+"age": null
+},
+{
+"n": "Fahd Bendahmane",
+"pos": "F",
+"nat": "MAR",
+"num": 33,
+"age": null
+},
+{
+"n": "Ismail Hrila",
+"pos": "D",
+"nat": "MAR",
+"num": 34,
+"age": null
+},
+{
+"n": "Younes El Amali",
+"pos": "D",
+"nat": "MAR",
+"num": 36,
+"age": null
+},
+{
+"n": "Mohamed Doumbia",
+"pos": "M",
+"nat": "CIV",
+"num": 42,
+"age": 28
+},
+{
+"n": "Ayoub Sahnoune",
+"pos": "D",
+"nat": "MAR",
+"num": 45,
+"age": null
+}
+]
+},
+"MAR/UTS Rabat": {
+"title": "UTS Rabat",
+"sq": [
+{
+"n": "Reda Asmama",
+"pos": "G",
+"nat": "MAR",
+"num": 1,
+"age": null
+},
+{
+"n": "Youness Akharraz",
+"pos": "D",
+"nat": "MAR",
+"num": 2,
+"age": null
+},
+{
+"n": "Anas Nanah",
+"pos": "D",
+"nat": "MAR",
+"num": 3,
+"age": null
+},
+{
+"n": "Tahar El Khalej",
+"pos": "D",
+"nat": "POR",
+"num": 4,
+"age": null
+},
+{
+"n": "Yassine El Khalej",
+"pos": "D",
+"nat": "MAR",
+"num": 5,
+"age": null
+},
+{
+"n": "Danny",
+"pos": "M",
+"nat": "POR",
+"num": 6,
+"age": null
+},
+{
+"n": "Nasreddine Moustaghfir",
+"pos": "F",
+"nat": "MAR",
+"num": 9,
+"age": null
+},
+{
+"n": "Youssef Kajai",
+"pos": "D",
+"nat": "MAR",
+"num": 13,
+"age": null
+},
+{
+"n": "Abdelkabir El Ouadi",
+"pos": "F",
+"nat": "MAR",
+"num": 14,
+"age": 33
+},
+{
+"n": "Hamza Regragui",
+"pos": "D",
+"nat": "MAR",
+"num": 15,
+"age": 29
+},
+{
+"n": "Houssam Bouelainine",
+"pos": "G",
+"nat": "MAR",
+"num": 16,
+"age": null
+},
+{
+"n": "Omar Arjoune",
+"pos": "M",
+"nat": "MAR",
+"num": 18,
+"age": 30
+},
+{
+"n": "Samuel Tebily",
+"pos": "F",
+"nat": "CIV",
+"num": 19,
+"age": null
+},
+{
+"n": "Saad Lotfi",
+"pos": "F",
+"nat": "MAR",
+"num": 20,
+"age": null
+},
+{
+"n": "Redouan Ait Lamkadem",
+"pos": "M",
+"nat": "MAR",
+"num": 21,
+"age": null
+},
+{
+"n": "Mouad Dahak",
+"pos": "F",
+"nat": "MAR",
+"num": 22,
+"age": null
+},
+{
+"n": "Ayoub Ajerrar",
+"pos": "F",
+"nat": "MAR",
+"num": 27,
+"age": null
+},
+{
+"n": "Khalid Kasbi",
+"pos": "D",
+"nat": "MAR",
+"num": 28,
+"age": null
+},
+{
+"n": "Abdeljalil Chaynane",
+"pos": "F",
+"nat": "MAR",
+"num": 29,
+"age": null
+},
+{
+"n": "Oussama Jalfate",
+"pos": "D",
+"nat": "MAR",
+"num": 30,
+"age": null
+},
+{
+"n": "Walid Rhailouf",
+"pos": "M",
+"nat": "MAR",
+"num": 31,
+"age": null
+},
+{
+"n": "Adam Chakir",
+"pos": "M",
+"nat": "MAR",
+"num": 32,
+"age": null
+},
+{
+"n": "Salim Ghazzani",
+"pos": "F",
+"nat": "MAR",
+"num": 37,
+"age": null
+},
+{
+"n": "Mehdi Ashabi",
+"pos": "D",
+"nat": "MAR",
+"num": 41,
+"age": null
+},
+{
+"n": "Konan Gatou Koffi",
+"pos": "M",
+"nat": "CIV",
+"num": 45,
+"age": null
+},
+{
+"n": "Walid Hasbi",
+"pos": "G",
+"nat": "MAR",
+"num": 50,
+"age": null
+}
+]
+},
+"MAR/Wydad Témara": {
+"title": "WS Témara",
+"sq": []
+},
+"MAR/Amal Tiznit": {
+"title": "US Amal Tiznit",
+"sq": []
+},
+"RSA/Mamelodi Sundowns": {
+"title": "Mamelodi Sundowns F.C.",
+"sq": [
+{
+"n": "Denis Onyango",
+"pos": "G",
+"nat": "UGA",
+"num": 1,
+"age": 41
+},
+{
+"n": "Malibongwe Khoza",
+"pos": "D",
+"nat": "RSA",
+"num": 2,
+"age": 22
+},
+{
+"n": "Khulumani Ndamane",
+"pos": "D",
+"nat": "RSA",
+"num": 3,
+"age": 22
+},
+{
+"n": "Teboho Mokoena",
+"pos": "M",
+"nat": "RSA",
+"num": 4,
+"age": 29
+},
+{
+"n": "Divine Lunga",
+"pos": "D",
+"nat": "ZIM",
+"num": 5,
+"age": null
+},
+{
+"n": "Aubrey Modiba",
+"pos": "D",
+"nat": "RSA",
+"num": 6,
+"age": 31
+},
+{
+"n": "Arthur Sales",
+"pos": "F",
+"nat": "BRA",
+"num": 9,
+"age": 24
+},
+{
+"n": "Nuno Santos",
+"pos": "M",
+"nat": "POR",
+"num": 10,
+"age": 27
+},
+{
+"n": "Marcelo Allende",
+"pos": "M",
+"nat": "CHI",
+"num": 11,
+"age": 27
+},
+{
+"n": "Brayan León",
+"pos": "F",
+"nat": "COL",
+"num": 12,
+"age": 26
+},
+{
+"n": "Iqraam Rayners",
+"pos": "F",
+"nat": "RSA",
+"num": 13,
+"age": 31
+},
+{
+"n": "Monnapule Saleng",
+"pos": "F",
+"nat": "RSA",
+"num": 14,
+"age": 28
+},
+{
+"n": "Bathusi Aubaas",
+"pos": "M",
+"nat": "RSA",
+"num": 15,
+"age": 31
+},
+{
+"n": "Tashreeq Matthews",
+"pos": "F",
+"nat": "RSA",
+"num": 17,
+"age": 26
+},
+{
+"n": "Themba Zwane",
+"pos": "M",
+"nat": "RSA",
+"num": 18,
+"age": 37
+},
+{
+"n": "Thabo Cele",
+"pos": "M",
+"nat": "RSA",
+"num": 19,
+"age": 29
+},
+{
+"n": "Grant Kekana",
+"pos": "D",
+"nat": "RSA",
+"num": 20,
+"age": 34
+},
+{
+"n": "Sphelele Mkhulise",
+"pos": "M",
+"nat": "RSA",
+"num": 21,
+"age": 30
+},
+{
+"n": "Thabang Matuludi",
+"pos": "D",
+"nat": "RSA",
+"num": 22,
+"age": 27
+},
+{
+"n": "Fawaaz Basadien",
+"pos": "D",
+"nat": "RSA",
+"num": 23,
+"age": 30
+},
+{
+"n": "Keanu Cupido",
+"pos": "D",
+"nat": "RSA",
+"num": 24,
+"age": 28
+},
+{
+"n": "Khuliso Mudau",
+"pos": "D",
+"nat": "RSA",
+"num": 25,
+"age": 31
+},
+{
+"n": "Reyaad Pieterse",
+"pos": "G",
+"nat": "RSA",
+"num": 26,
+"age": 34
+},
+{
+"n": "Thapelo Morena",
+"pos": "D",
+"nat": "RSA",
+"num": 27,
+"age": 33
+},
+{
+"n": "Zuko Mdunyelwa",
+"pos": "D",
+"nat": "RSA",
+"num": 28,
+"age": 27
+},
+{
+"n": "Antonio van Wyk",
+"pos": "F",
+"nat": "RSA",
+"num": 29,
+"age": 24
+},
+{
+"n": "Ronwen Williams",
+"pos": "G",
+"nat": "RSA",
+"num": 30,
+"age": 34
+},
+{
+"n": "Ricardo Goss",
+"pos": "G",
+"nat": "RSA",
+"num": 31,
+"age": 32
+},
+{
+"n": "Cassius Mailula",
+"pos": "F",
+"nat": "RSA",
+"num": 33,
+"age": 25
+},
+{
+"n": "Tsiki Ntsabeleng",
+"pos": "M",
+"nat": "RSA",
+"num": 34,
+"age": 28
+},
+{
+"n": "Lebo Mothiba",
+"pos": "F",
+"nat": "RSA",
+"num": 35,
+"age": 30
+},
+{
+"n": "Kegan Johannes",
+"pos": "D",
+"nat": "RSA",
+"num": 37,
+"age": 25
+},
+{
+"n": "Siyanda Ndlovu",
+"pos": "F",
+"nat": "RSA",
+"num": 38,
+"age": 24
+},
+{
+"n": "Mothobi Mvala",
+"pos": "D",
+"nat": "RSA",
+"num": 40,
+"age": 32
+},
+{
+"n": "Kutlwano Letlhaku",
+"pos": "F",
+"nat": "RSA",
+"num": 43,
+"age": 20
+},
+{
+"n": "Gomolemo Kekana",
+"pos": "M",
+"nat": "RSA",
+"num": 44,
+"age": 20
+},
+{
+"n": "Wandile Dube",
+"pos": "D",
+"nat": "RSA",
+"num": 45,
+"age": null
+},
+{
+"n": "Bennett Mokoena",
+"pos": "F",
+"nat": "RSA",
+"num": 46,
+"age": null
+},
+{
+"n": "Deano van Rooyen",
+"pos": "D",
+"nat": "RSA",
+"num": 47,
+"age": 30
+}
+]
+},
+"RSA/Orlando Pirates": {
+"title": "Orlando Pirates F.C.",
+"sq": [
+{
+"n": "Nkosikhona Ndaba",
+"pos": "D",
+"nat": "RSA",
+"num": 3,
+"age": null
+},
+{
+"n": "Abdoulaye Fousseyni Mariko",
+"pos": "M",
+"nat": "MLI",
+"num": 4,
+"age": null
+},
+{
+"n": "Nkosinathi Sibisi",
+"pos": "D",
+"nat": "RSA",
+"num": 5,
+"age": 31
+},
+{
+"n": "Lebone Seema",
+"pos": "D",
+"nat": "RSA",
+"num": 6,
+"age": 23
+},
+{
+"n": "Deon Hotto",
+"pos": "D",
+"nat": "NAM",
+"num": 7,
+"age": 36
+},
+{
+"n": "Makhehleni Makhaula",
+"pos": "M",
+"nat": "RSA",
+"num": 8,
+"age": 37
+},
+{
+"n": "Yanela Mbuthuma",
+"pos": "F",
+"nat": "RSA",
+"num": 9,
+"age": 24
+},
+{
+"n": "Tshepang Moremi",
+"pos": "F",
+"nat": "RSA",
+"num": 11,
+"age": 26
+},
+{
+"n": "Oswin Appollis",
+"pos": "M",
+"nat": "RSA",
+"num": 12,
+"age": 25
+},
+{
+"n": "Andre de Jong",
+"pos": "F",
+"nat": "NZL",
+"num": 14,
+"age": 30
+},
+{
+"n": "Masindi Nemtajela",
+"pos": "M",
+"nat": "RSA",
+"num": 15,
+"age": null
+},
+{
+"n": "Thalente Mbatha",
+"pos": "M",
+"nat": "RSA",
+"num": 16,
+"age": 26
+},
+{
+"n": "Evidence Makgopa",
+"pos": "F",
+"nat": "RSA",
+"num": 17,
+"age": 26
+},
+{
+"n": "Kabelo Dlamini",
+"pos": "F",
+"nat": "RSA",
+"num": 18,
+"age": 30
+},
+{
+"n": "Neo Rapoo",
+"pos": "D",
+"nat": "RSA",
+"num": 19,
+"age": 21
+},
+{
+"n": "Simphiwe Selepe",
+"pos": "M",
+"nat": "RSA",
+"num": 20,
+"age": 21
+},
+{
+"n": "Gamphani Lungu",
+"pos": "F",
+"nat": "ZAM",
+"num": 23,
+"age": 28
+},
+{
+"n": "Sipho Chaine",
+"pos": "G",
+"nat": "RSA",
+"num": 24,
+"age": 30
+},
+{
+"n": "Boitumelo Radiopane",
+"pos": "F",
+"nat": "RSA",
+"num": 25,
+"age": 24
+},
+{
+"n": "Matome Mmolai",
+"pos": "M",
+"nat": "RSA",
+"num": 26,
+"age": null
+},
+{
+"n": "Tapelo Xoki",
+"pos": "D",
+"nat": "RSA",
+"num": 27,
+"age": null
+},
+{
+"n": "Mthetheleli Mthiyane",
+"pos": "M",
+"nat": "RSA",
+"num": 29,
+"age": 25
+},
+{
+"n": "Sihle Nduli",
+"pos": "M",
+"nat": "RSA",
+"num": 30,
+"age": 31
+},
+{
+"n": "Sebastian Pedersen",
+"pos": "F",
+"nat": "NOR",
+"num": 31,
+"age": 27
+},
+{
+"n": "Siyabonga Dladla",
+"pos": "G",
+"nat": "RSA",
+"num": 32,
+"age": null
+},
+{
+"n": "Thapelo Mokobodi",
+"pos": "M",
+"nat": "RSA",
+"num": 33,
+"age": 24
+},
+{
+"n": "Kamogelo Sebelebele",
+"pos": "F",
+"nat": "RSA",
+"num": 36,
+"age": 24
+},
+{
+"n": "Sbangani Zulu",
+"pos": "D",
+"nat": "RSA",
+"num": 37,
+"age": null
+},
+{
+"n": "Mpho Phadime",
+"pos": "F",
+"nat": "RSA",
+"num": 38,
+"age": null
+},
+{
+"n": "Sfiso Luthuli",
+"pos": "F",
+"nat": "RSA",
+"num": 39,
+"age": null
+},
+{
+"n": "Zoey Monyepao",
+"pos": "G",
+"nat": "RSA",
+"num": 40,
+"age": null
+},
+{
+"n": "Reece Braithwaite",
+"pos": "D",
+"nat": "RSA",
+"num": 41,
+"age": null
+},
+{
+"n": "Mpho Chabatsane",
+"pos": "D",
+"nat": "RSA",
+"num": 43,
+"age": null
+},
+{
+"n": "Christian Derbyshire",
+"pos": "D",
+"nat": "RSA",
+"num": 44,
+"age": null
+},
+{
+"n": "Daniel Msendami",
+"pos": "M",
+"nat": "ZIM",
+"num": 45,
+"age": 26
+},
+{
+"n": "Cemran Dansin",
+"pos": "M",
+"nat": "RSA",
+"num": 46,
+"age": 21
+},
+{
+"n": "Bohlale Ngwato",
+"pos": "F",
+"nat": "RSA",
+"num": 47,
+"age": null
+},
+{
+"n": "Simphiwe Masilela",
+"pos": "M",
+"nat": "RSA",
+"num": 48,
+"age": null
+},
+{
+"n": "Kabelo Kgositsile",
+"pos": "F",
+"nat": "RSA",
+"num": 49,
+"age": null
+},
+{
+"n": "Dublin Boon",
+"pos": "G",
+"nat": "NZL",
+"num": 99,
+"age": null
+}
+]
+},
+"RSA/Kaizer Chiefs": {
+"title": "Kaizer Chiefs F.C.",
+"sq": [
+{
+"n": "Brandon Peterson",
+"pos": "G",
+"nat": "RSA",
+"num": 1,
+"age": null
+},
+{
+"n": "Thabiso Monyane",
+"pos": "D",
+"nat": "RSA",
+"num": 2,
+"age": 26
+},
+{
+"n": "Khanyisa Mayo",
+"pos": "F",
+"nat": "RSA",
+"num": 3,
+"age": 28
+},
+{
+"n": "Zitha Kwinika",
+"pos": "D",
+"nat": "RSA",
+"num": 4,
+"age": 32
+},
+{
+"n": "Sibongiseni Mthethwa",
+"pos": "M",
+"nat": "RSA",
+"num": 5,
+"age": 32
+},
+{
+"n": "Lebohang Maboe",
+"pos": "M",
+"nat": "RSA",
+"num": 6,
+"age": 32
+},
+{
+"n": "Mduduzi Shabalala",
+"pos": "F",
+"nat": "RSA",
+"num": 7,
+"age": 22
+},
+{
+"n": "Siphesihle Ndlovu",
+"pos": "M",
+"nat": "RSA",
+"num": 8,
+"age": 30
+},
+{
+"n": "Luke Baartman",
+"pos": "F",
+"nat": "RSA",
+"num": 11,
+"age": 20
+},
+{
+"n": "Nkosingiphile Ngcobo",
+"pos": "M",
+"nat": "RSA",
+"num": 12,
+"age": 27
+},
+{
+"n": "Pule Mmodi",
+"pos": "F",
+"nat": "RSA",
+"num": 13,
+"age": 33
+},
+{
+"n": "Rushwin Dortley",
+"pos": "D",
+"nat": "RSA",
+"num": 14,
+"age": 24
+},
+{
+"n": "Renaldo Leaner",
+"pos": "G",
+"nat": "RSA",
+"num": 16,
+"age": 28
+},
+{
+"n": "Asanele Velebayi",
+"pos": "M",
+"nat": "RSA",
+"num": 17,
+"age": null
+},
+{
+"n": "Dillan Solomons",
+"pos": "D",
+"nat": "RSA",
+"num": 18,
+"age": 30
+},
+{
+"n": "Thabo Cele",
+"pos": "M",
+"nat": "RSA",
+"num": 21,
+"age": 29
+},
+{
+"n": "Adolf Bitegeko",
+"pos": "M",
+"nat": "TAN",
+"num": 22,
+"age": null
+},
+{
+"n": "Ethan Chislett",
+"pos": "M",
+"nat": "RSA",
+"num": 23,
+"age": 28
+},
+{
+"n": "Mfundo Vilakazi",
+"pos": "M",
+"nat": "RSA",
+"num": 28,
+"age": 21
+},
+{
+"n": "Paseka Mako",
+"pos": "D",
+"nat": "RSA",
+"num": 29,
+"age": 32
+},
+{
+"n": "Naledi Hlongwane",
+"pos": "F",
+"nat": "RSA",
+"num": 31,
+"age": null
+},
+{
+"n": "Thulani Mabaso",
+"pos": "M",
+"nat": "RSA",
+"num": 34,
+"age": null
+},
+{
+"n": "Reeve Frosler",
+"pos": "D",
+"nat": "RSA",
+"num": 39,
+"age": 28
+},
+{
+"n": "Thabo Moloisane",
+"pos": "D",
+"nat": "RSA",
+"num": 42,
+"age": 27
+},
+{
+"n": "Bruce Bvuma",
+"pos": "G",
+"nat": "RSA",
+"num": 44,
+"age": 31
+},
+{
+"n": "Wandile Duba",
+"pos": "F",
+"nat": "RSA",
+"num": 47,
+"age": 22
+},
+{
+"n": "Bradley Cross",
+"pos": "D",
+"nat": "RSA",
+"num": 48,
+"age": 25
+},
+{
+"n": "Etiosa Ighodaro",
+"pos": "F",
+"nat": "NGR",
+"num": 50,
+"age": null
+},
+{
+"n": "Langelihle Phili",
+"pos": "F",
+"nat": "RSA",
+"num": 70,
+"age": null
+},
+{
+"n": "Nkanyiso Shinga",
+"pos": "D",
+"nat": "RSA",
+"num": 74,
+"age": null
+},
+{
+"n": "Flávio Silva",
+"pos": "F",
+"nat": "GBS",
+"num": 77,
+"age": 30
+},
+{
+"n": "Inácio Miguel",
+"pos": "D",
+"nat": "ANG",
+"num": 84,
+"age": 31
+},
+{
+"n": "Faiz Abrahams",
+"pos": "M",
+"nat": "RSA",
+"num": 99,
+"age": null
+},
+{
+"n": "Elias Mokwana",
+"pos": "F",
+"nat": "RSA",
+"num": 99,
+"age": 27
+}
+]
+},
+"RSA/Stellenbosch": {
+"title": "Stellenbosch F.C.",
+"sq": [
+{
+"n": "Nathan Garrow",
+"pos": "G",
+"nat": "NZL",
+"num": 1,
+"age": 22
+},
+{
+"n": "Kgaogelo Ramushu",
+"pos": "M",
+"nat": "RSA",
+"num": 2,
+"age": null
+},
+{
+"n": "Luthando Vena",
+"pos": "D",
+"nat": "RSA",
+"num": 4,
+"age": null
+},
+{
+"n": "Tlakusani Mthethwa",
+"pos": "M",
+"nat": "RSA",
+"num": 6,
+"age": null
+},
+{
+"n": "Vuyolwethu Andrieas",
+"pos": "M",
+"nat": "RSA",
+"num": 8,
+"age": null
+},
+{
+"n": "Ashley Du Preez",
+"pos": "F",
+"nat": "RSA",
+"num": 10,
+"age": 29
+},
+{
+"n": "Quwan Plaatjies",
+"pos": "F",
+"nat": "RSA",
+"num": 11,
+"age": null
+},
+{
+"n": "Sinoxolo Kwayiba",
+"pos": "F",
+"nat": "RSA",
+"num": 14,
+"age": 26
+},
+{
+"n": "Sage Stephens",
+"pos": "G",
+"nat": "RSA",
+"num": 17,
+"age": 35
+},
+{
+"n": "Genino Palace",
+"pos": "M",
+"nat": "RSA",
+"num": 19,
+"age": 28
+},
+{
+"n": "Keanan Johannesen",
+"pos": "M",
+"nat": "RSA",
+"num": 20,
+"age": null
+},
+{
+"n": "Gopolang Taunyana",
+"pos": "D",
+"nat": "RSA",
+"num": 21,
+"age": null
+},
+{
+"n": "Qobolwakhe Sibande",
+"pos": "D",
+"nat": "RSA",
+"num": 22,
+"age": null
+},
+{
+"n": "Orlando Mbembe",
+"pos": "M",
+"nat": "RSA",
+"num": 24,
+"age": null
+},
+{
+"n": "Siviwe Nkwali",
+"pos": "D",
+"nat": "RSA",
+"num": 26,
+"age": null
+},
+{
+"n": "Terrence Mashego",
+"pos": "D",
+"nat": "RSA",
+"num": 27,
+"age": 30
+},
+{
+"n": "Lehlogonolo Matlou",
+"pos": "F",
+"nat": "RSA",
+"num": 28,
+"age": null
+},
+{
+"n": "Sphiwe Msimango",
+"pos": "D",
+"nat": "RSA",
+"num": 30,
+"age": null
+},
+{
+"n": "Darrel Matsheke",
+"pos": "D",
+"nat": "RSA",
+"num": 31,
+"age": null
+},
+{
+"n": "Raoul Daniels",
+"pos": "F",
+"nat": "RSA",
+"num": 32,
+"age": null
+},
+{
+"n": "Chumani Butsaka",
+"pos": "M",
+"nat": "RSA",
+"num": 33,
+"age": 25
+},
+{
+"n": "Njabulo Blom",
+"pos": "M",
+"nat": "RSA",
+"num": 35,
+"age": 30
+},
+{
+"n": "Wonderboy Makhubu",
+"pos": "F",
+"nat": "RSA",
+"num": 36,
+"age": null
+},
+{
+"n": "Thabiso Lebitso",
+"pos": "D",
+"nat": "RSA",
+"num": 37,
+"age": 34
+},
+{
+"n": "Bradley Grobler",
+"pos": "F",
+"nat": "RSA",
+"num": 67,
+"age": 38
+},
+{
+"n": "Shakeel April",
+"pos": "F",
+"nat": "RSA",
+"num": 77,
+"age": 21
+},
+{
+"n": "Surprise Nhlabathi",
+"pos": "D",
+"nat": "RSA",
+"num": 99,
+"age": null
+}
+]
+},
+"RSA/AmaZulu": {
+"title": "AmaZulu F.C.",
+"sq": [
+{
+"n": "Olwethu Mzimela",
+"pos": "G",
+"nat": "RSA",
+"num": 1,
+"age": 25
+},
+{
+"n": "Athini Maqokola",
+"pos": "M",
+"nat": "RSA",
+"num": 2,
+"age": null
+},
+{
+"n": "Omega Mdaka",
+"pos": "D",
+"nat": "RSA",
+"num": 3,
+"age": null
+},
+{
+"n": "Riaan Hanamub",
+"pos": "D",
+"nat": "NAM",
+"num": 4,
+"age": 31
+},
+{
+"n": "Keegan Allan",
+"pos": "D",
+"nat": "RSA",
+"num": 5,
+"age": 25
+},
+{
+"n": "Siyanda Hlangabeza",
+"pos": "M",
+"nat": "RSA",
+"num": 6,
+"age": null
+},
+{
+"n": "Khomotjo Lekoloane",
+"pos": "M",
+"nat": "RSA",
+"num": 8,
+"age": null
+},
+{
+"n": "Ryan Moon",
+"pos": "F",
+"nat": "RSA",
+"num": 9,
+"age": 30
+},
+{
+"n": "Siphesihle Maduna",
+"pos": "F",
+"nat": "RSA",
+"num": 10,
+"age": null
+},
+{
+"n": "Andiswa Sithole",
+"pos": "F",
+"nat": "RSA",
+"num": 11,
+"age": null
+},
+{
+"n": "Taariq Fielies",
+"pos": "D",
+"nat": "RSA",
+"num": 12,
+"age": 34
+},
+{
+"n": "Nkosikhona Radebe",
+"pos": "D",
+"nat": "RSA",
+"num": 14,
+"age": 25
+},
+{
+"n": "Mondli Mbanjwa",
+"pos": "D",
+"nat": "RSA",
+"num": 15,
+"age": null
+},
+{
+"n": "Darren Johnson",
+"pos": "G",
+"nat": "RSA",
+"num": 16,
+"age": null
+},
+{
+"n": "Liam Bern",
+"pos": "M",
+"nat": "RSA",
+"num": 17,
+"age": 23
+},
+{
+"n": "Neo Mokoena",
+"pos": "M",
+"nat": "RSA",
+"num": 18,
+"age": null
+},
+{
+"n": "Siphamandla Zikhali",
+"pos": "M",
+"nat": "RSA",
+"num": 19,
+"age": null
+},
+{
+"n": "Tebogo Mashigo",
+"pos": "M",
+"nat": "RSA",
+"num": 20,
+"age": null
+},
+{
+"n": "Thapelo Matlhoko",
+"pos": "F",
+"nat": "RSA",
+"num": 21,
+"age": null
+},
+{
+"n": "Bayanda Thabede",
+"pos": "M",
+"nat": "RSA",
+"num": 22,
+"age": null
+},
+{
+"n": "Thandolwenkosi Ngwenya",
+"pos": "F",
+"nat": "ZIM",
+"num": 23,
+"age": 24
+},
+{
+"n": "Faveur Wilfried Kouassi",
+"pos": "G",
+"nat": "CIV",
+"num": 24,
+"age": null
+},
+{
+"n": "Hendrick Ekstein",
+"pos": "M",
+"nat": "RSA",
+"num": 27,
+"age": 35
+},
+{
+"n": "Onke Ncama",
+"pos": "D",
+"nat": "RSA",
+"num": 30,
+"age": null
+},
+{
+"n": "Keenan Phillips",
+"pos": "D",
+"nat": "RSA",
+"num": 33,
+"age": 26
+},
+{
+"n": "Asanda Mzobe",
+"pos": "D",
+"nat": "RSA",
+"num": 35,
+"age": null
+},
+{
+"n": "Minenhle Ngcobo",
+"pos": "D",
+"nat": "RSA",
+"num": 36,
+"age": null
+},
+{
+"n": "Thandanani Mhlongo",
+"pos": "F",
+"nat": "RSA",
+"num": 37,
+"age": null
+},
+{
+"n": "Gape Moralo",
+"pos": "M",
+"nat": "RSA",
+"num": 38,
+"age": 26
+},
+{
+"n": "Tebogo Mashigo",
+"pos": "F",
+"nat": "RSA",
+"num": 39,
+"age": null
+},
+{
+"n": "Sandile Mthethwa",
+"pos": "D",
+"nat": "RSA",
+"num": 42,
+"age": 29
+},
+{
+"n": "Luyolo Slatsha",
+"pos": "M",
+"nat": "RSA",
+"num": 44,
+"age": null
+},
+{
+"n": "Moses Shumah",
+"pos": "F",
+"nat": "KEN",
+"num": 45,
+"age": 24
+},
+{
+"n": "Langelihle Mhlongo",
+"pos": "M",
+"nat": "RSA",
+"num": 50,
+"age": null
+},
+{
+"n": "Rocco Rocha",
+"pos": "M",
+"nat": "RSA",
+"num": 99,
+"age": null
+},
+{
+"n": "Leonardo Rooi",
+"pos": "M",
+"nat": "RSA",
+"num": 99,
+"age": null
+},
+{
+"n": "Ahoutou Landry Angenor Zouzou",
+"pos": "D",
+"nat": "CIV",
+"num": 99,
+"age": null
+},
+{
+"n": "Siphelele Zulu",
+"pos": "G",
+"nat": "RSA",
+"num": 99,
+"age": null
+}
+]
+},
+"RSA/Sekhukhune United": {
+"title": "Sekhukhune United F.C.",
+"sq": [
+{
+"n": "Toaster Nsabata",
+"pos": "G",
+"nat": "ZAM",
+"num": 1,
+"age": 33
+},
+{
+"n": "Tshepho Mashiloane",
+"pos": "D",
+"nat": "RSA",
+"num": 2,
+"age": null
+},
+{
+"n": "Bright Ndlovu",
+"pos": "D",
+"nat": "RSA",
+"num": 3,
+"age": null
+},
+{
+"n": "Daniel Cardoso",
+"pos": "D",
+"nat": "RSA",
+"num": 4,
+"age": 37
+},
+{
+"n": "Miguel Timm",
+"pos": "M",
+"nat": "RSA",
+"num": 6,
+"age": 34
+},
+{
+"n": "Keletso Makgalwa",
+"pos": "F",
+"nat": "RSA",
+"num": 7,
+"age": 29
+},
+{
+"n": "Thabang Monare",
+"pos": "M",
+"nat": "RSA",
+"num": 8,
+"age": 37
+},
+{
+"n": "Vusimuzi Mncube",
+"pos": "F",
+"nat": "RSA",
+"num": 10,
+"age": null
+},
+{
+"n": "Mpho Rammala",
+"pos": "D",
+"nat": "RSA",
+"num": 11,
+"age": null
+},
+{
+"n": "Shaune Mogaila",
+"pos": "D",
+"nat": "RSA",
+"num": 12,
+"age": 31
+},
+{
+"n": "Sikhosonke Langa",
+"pos": "D",
+"nat": "RSA",
+"num": 14,
+"age": null
+},
+{
+"n": "Siphesihle Mkhize",
+"pos": "M",
+"nat": "RSA",
+"num": 15,
+"age": 27
+},
+{
+"n": "Renaldo Leaner",
+"pos": "G",
+"nat": "RSA",
+"num": 16,
+"age": 28
+},
+{
+"n": "Bradley Grobler",
+"pos": "F",
+"nat": "RSA",
+"num": 17,
+"age": 38
+},
+{
+"n": "Sphiwe Mahlangu",
+"pos": "F",
+"nat": "RSA",
+"num": 18,
+"age": null
+},
+{
+"n": "Medupi Thokolo",
+"pos": "D",
+"nat": "RSA",
+"num": 19,
+"age": null
+},
+{
+"n": "Malekgene Mampuru",
+"pos": "M",
+"nat": "RSA",
+"num": 20,
+"age": null
+},
+{
+"n": "Olerato Mandi",
+"pos": "F",
+"nat": "RSA",
+"num": 22,
+"age": null
+},
+{
+"n": "Linda Mntambo",
+"pos": "M",
+"nat": "RSA",
+"num": 23,
+"age": 37
+},
+{
+"n": "Sydney Malivha",
+"pos": "M",
+"nat": "RSA",
+"num": 24,
+"age": null
+},
+{
+"n": "Vuyo Letlapa",
+"pos": "D",
+"nat": "RSA",
+"num": 25,
+"age": null
+},
+{
+"n": "Katlego Mohamme",
+"pos": "D",
+"nat": "RSA",
+"num": 26,
+"age": 28
+},
+{
+"n": "Ronaldo Maarman",
+"pos": "M",
+"nat": "RSA",
+"num": 27,
+"age": 27
+},
+{
+"n": "Tsepo Matsimbi",
+"pos": "D",
+"nat": "RSA",
+"num": 28,
+"age": null
+},
+{
+"n": "Trésor Tshibwabwa",
+"pos": "D",
+"nat": "COD",
+"num": 29,
+"age": null
+},
+{
+"n": "Manuel Sapunga",
+"pos": "G",
+"nat": "GEQ",
+"num": 30,
+"age": 34
+},
+{
+"n": "Tshepo Mokoane",
+"pos": "M",
+"nat": "RSA",
+"num": 31,
+"age": null
+},
+{
+"n": "Samkele Sihlali",
+"pos": "F",
+"nat": "RSA",
+"num": 38,
+"age": null
+},
+{
+"n": "Kgoleng Ratisani",
+"pos": "G",
+"nat": "RSA",
+"num": 40,
+"age": null
+},
+{
+"n": "Karabo Tlaka",
+"pos": "M",
+"nat": "RSA",
+"num": 45,
+"age": null
+}
+]
+},
+"RSA/Golden Arrows": {
+"title": "Lamontville Golden Arrows F.C.",
+"sq": [
+{
+"n": "Sazi Gumbi",
+"pos": "D",
+"nat": "RSA",
+"num": 2,
+"age": null
+},
+{
+"n": "Khulekani Shezi",
+"pos": "D",
+"nat": "RSA",
+"num": 3,
+"age": null
+},
+{
+"n": "Ayanda Jiyane",
+"pos": "D",
+"nat": "RSA",
+"num": 4,
+"age": null
+},
+{
+"n": "Siyanda Mthanti",
+"pos": "M",
+"nat": "RSA",
+"num": 8,
+"age": null
+},
+{
+"n": "Nduduzo Sibiya",
+"pos": "F",
+"nat": "RSA",
+"num": 11,
+"age": 31
+},
+{
+"n": "Velemseni Ndwandwe",
+"pos": "M",
+"nat": "RSA",
+"num": 12,
+"age": 30
+},
+{
+"n": "John Mwengani",
+"pos": "D",
+"nat": "ZAM",
+"num": 13,
+"age": 32
+},
+{
+"n": "Angelo Van Rooi",
+"pos": "M",
+"nat": "RSA",
+"num": 14,
+"age": null
+},
+{
+"n": "Thokozani Khumalo",
+"pos": "F",
+"nat": "RSA",
+"num": 17,
+"age": null
+},
+{
+"n": "Junior Dion",
+"pos": "F",
+"nat": "CHA",
+"num": 18,
+"age": 32
+},
+{
+"n": "Dumisani Msibi",
+"pos": "G",
+"nat": "RSA",
+"num": 19,
+"age": 31
+},
+{
+"n": "Osborn Maluleke",
+"pos": "D",
+"nat": "RSA",
+"num": 20,
+"age": null
+},
+{
+"n": "Jerome Karelse",
+"pos": "F",
+"nat": "RSA",
+"num": 22,
+"age": null
+},
+{
+"n": "Lungelo Dube",
+"pos": "M",
+"nat": "RSA",
+"num": 23,
+"age": null
+},
+{
+"n": "Nqobeko Dlamini",
+"pos": "M",
+"nat": "RSA",
+"num": 24,
+"age": null
+},
+{
+"n": "Ayabulela Maxwele",
+"pos": "M",
+"nat": "RSA",
+"num": 25,
+"age": null
+},
+{
+"n": "Eroine Agnikoi",
+"pos": "D",
+"nat": "CIV",
+"num": 26,
+"age": null
+},
+{
+"n": "Thakasani Mbanjwa",
+"pos": "G",
+"nat": "RSA",
+"num": 27,
+"age": null
+},
+{
+"n": "Ronaldo van Neel",
+"pos": "F",
+"nat": "RSA",
+"num": 28,
+"age": null
+},
+{
+"n": "Sabelo Sithole",
+"pos": "D",
+"nat": "RSA",
+"num": 29,
+"age": null
+},
+{
+"n": "Sbonelo Cele",
+"pos": "D",
+"nat": "RSA",
+"num": 30,
+"age": 25
+},
+{
+"n": "Xolani Ngcobo",
+"pos": "G",
+"nat": "RSA",
+"num": 32,
+"age": null
+},
+{
+"n": "Edward Maova",
+"pos": "G",
+"nat": "NAM",
+"num": 34,
+"age": 32
+},
+{
+"n": "Themba Mantshiyane",
+"pos": "D",
+"nat": "RSA",
+"num": 35,
+"age": null
+},
+{
+"n": "Philani Kumalo",
+"pos": "F",
+"nat": "RSA",
+"num": 36,
+"age": null
+},
+{
+"n": "Ntandoyenkosi Mabaso",
+"pos": "D",
+"nat": "RSA",
+"num": 38,
+"age": null
+},
+{
+"n": "Alwande Booysen",
+"pos": "F",
+"nat": "RSA",
+"num": 39,
+"age": null
+},
+{
+"n": "Lungelo Nguse",
+"pos": "F",
+"nat": "RSA",
+"num": 40,
+"age": null
+},
+{
+"n": "Nhlanhla Zwane",
+"pos": "M",
+"nat": "RSA",
+"num": 41,
+"age": null
+},
+{
+"n": "Tshenzhelani Radzadzhi",
+"pos": "M",
+"nat": "RSA",
+"num": 43,
+"age": null
+},
+{
+"n": "Bongani Cole",
+"pos": "F",
+"nat": "RSA",
+"num": 44,
+"age": null
+},
+{
+"n": "Sboniso Madonsela",
+"pos": "D",
+"nat": "RSA",
+"num": 47,
+"age": null
+},
+{
+"n": "Nhlanhla Gasa",
+"pos": "F",
+"nat": "RSA",
+"num": 49,
+"age": null
+}
+]
 }
 }
