@@ -45643,5 +45643,171 @@
 "age": 19
 }
 ]
+},
+"ESP2/Leganés": {
+"title": "CD Leganés",
+"sq": [
+{
+"n": "Raúl Fernández",
+"pos": "G",
+"nat": "ESP",
+"num": 1,
+"age": 38
+},
+{
+"n": "Marvel",
+"pos": "D",
+"nat": "ESP",
+"num": 2,
+"age": 23
+},
+{
+"n": "Javi Montero",
+"pos": "D",
+"nat": "ESP",
+"num": 3,
+"age": 27
+},
+{
+"n": "Rubén Pulido",
+"pos": "D",
+"nat": "ESP",
+"num": 4,
+"age": 26
+},
+{
+"n": "Ignasi Miquel",
+"pos": "D",
+"nat": "ESP",
+"num": 5,
+"age": 34
+},
+{
+"n": "Lalo Aguilar",
+"pos": "D",
+"nat": "ESP",
+"num": 6,
+"age": 24
+},
+{
+"n": "Rubén Peña",
+"pos": "D",
+"nat": "ESP",
+"num": 7,
+"age": 35
+},
+{
+"n": "Yassine Kechta",
+"pos": "M",
+"nat": "MAR",
+"num": 8,
+"age": 24
+},
+{
+"n": "Álex Millán",
+"pos": "F",
+"nat": "ESP",
+"num": 9,
+"age": 27
+},
+{
+"n": "Zico Buurmeester",
+"pos": "M",
+"nat": "NED",
+"num": 10,
+"age": 24
+},
+{
+"n": "Naim García",
+"pos": "D",
+"nat": "ESP",
+"num": 11,
+"age": 24
+},
+{
+"n": "Luca Zidane",
+"pos": "G",
+"nat": "ALG",
+"num": 13,
+"age": 28
+},
+{
+"n": "Dani Rodríguez",
+"pos": "M",
+"nat": "ESP",
+"num": 14,
+"age": 38
+},
+{
+"n": "Enric Franquesa",
+"pos": "D",
+"nat": "ESP",
+"num": 15,
+"age": 29
+},
+{
+"n": "Unax del Cura",
+"pos": "F",
+"nat": "ESP",
+"num": 16,
+"age": 21
+},
+{
+"n": "Ismaël Gharbi",
+"pos": "M",
+"nat": "TUN",
+"num": 17,
+"age": 22
+},
+{
+"n": "Andrés Campos",
+"pos": "M",
+"nat": "ESP",
+"num": 18,
+"age": 24
+},
+{
+"n": "Patrick Soko",
+"pos": "F",
+"nat": "CMR",
+"num": 19,
+"age": 29
+},
+{
+"n": "Miguel Atienza",
+"pos": "M",
+"nat": "ESP",
+"num": 20,
+"age": 27
+},
+{
+"n": "Álvaro Morata",
+"pos": "F",
+"nat": "ESP",
+"num": 21,
+"age": 34
+},
+{
+"n": "Álex Sancris",
+"pos": "M",
+"nat": "ESP",
+"num": 22,
+"age": 29
+},
+{
+"n": "Álvaro Tejero",
+"pos": "D",
+"nat": "ESP",
+"num": 23,
+"age": 30
+},
+{
+"n": "Amadou Diawara",
+"pos": "M",
+"nat": "GUI",
+"num": 24,
+"age": 29
+}
+]
 }
 }
