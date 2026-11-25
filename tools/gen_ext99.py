@@ -28,6 +28,40 @@ for key,v in R.items():
     fo=[fifa.lookup(p['n'],p.get('age')) for p in sq]
     FN[0]+=sum(1 for x in fo if x);FN[1]+=len(fo)
     out[name]=';'.join('|'.join(map(str,[p['n'].replace(';',',').replace('|','/'),r,mkage(p),p['nat'],p['num'],o or 0])) for p,r,o in zip(sq,rs,fo))
+# ---------- v138: divisões baixas montadas DIRETO do FC26 (sem Wikipedia): ENG3 (League One), ENG4 (League Two), GER3 (3. Liga) ----------
+import csv,re,ast,unicodedata
+W2=json.load(open(D+'wld2.json'))
+NATD=ast.literal_eval(re.search(r"^NAT=(\{.*\})$",open('tools/gen_ext72.py',encoding='utf-8').read(),re.M).group(1))
+NATD.update({'Holland':'NED','Korea Republic':'KOR','China PR':'CHN','Republic of Ireland':'IRL','Turkey':'TUR',"Côte d'Ivoire":'CIV','Bosnia and Herzegovina':'BIH','Congo DR':'COD','Cape Verde Islands':'CPV','Gambia':'GAM','Curaçao':'CUW','Bolivia':'BOL','India':'IND','Azerbaijan':'AZE','Peru':'PER','Korea, South':'KOR'})
+ROLE={'GK':'G','CB':'Z','RB':'L','LB':'L','CDM':'V','CM':'M','CAM':'M','LM':'P','RM':'P','LW':'P','RW':'P','ST':'A','CF':'A'}
+FR=list(csv.DictReader(open(D+'ea_fc26_players.csv',encoding='utf-8-sig')))
+LGS={'ENG3':('England',{'Premier League','EFL Championship','EFL League One','EFL League Two'}),'ENG4':('England',{'Premier League','EFL Championship','EFL League One','EFL League Two'}),
+     'GER3':('Germany',{'Bundesliga','Bundesliga 2','3. Liga'})}
+ALIAS={'Milton Keynes Dons':'MK Dons','Cambridge United':'Cambridge Utd','Wycombe Wanderers':'Wycombe','Ingolstadt':'FC Ingolstadt 04','Erzgebirge Aue':'Erzgebirge Aue','Wehen Wiesbaden':'Wehen Wiesbaden',
+       'Hallescher FC':'Hallescher FC','Viktoria Köln':'Viktoria Köln','Osnabrück':'VfL Osnabrück','Jahn Regensburg':'SSV Jahn Regensburg','Saarbrücken':'1. FC Saarbrücken','1860 München':'1860 München'}
+GEN={'fc','afc','sc','sv','vfl','vfb','ssv','tsv','fsv','fcn','cf','the','1','04','ii'}
+def nn(x):
+    x=unicodedata.normalize('NFD',x).encode('ascii','ignore').decode().lower();return {w for w in re.findall('[a-z0-9]+',x) if w not in GEN}
+direct={};dmiss=[]
+for key,(ctry,lgset) in LGS.items():
+    teams=collections.defaultdict(list)
+    for r in FR:
+        if r['leagueName'] in lgset:teams[r['team']].append(r)
+    tn={t:nn(t) for t in teams}
+    for g in W2.get(key,{}).get('cl',[]):
+        if g.endswith(' II'):dmiss.append((key,g,'reserva'));continue
+        gn=nn(ALIAS.get(g,g));c=[t for t in teams if tn[t]==gn] or [t for t in teams if tn[t] and (tn[t]<=gn or gn<=tn[t]) and len(tn[t]&gn)>=1]
+        if len(c)!=1:dmiss.append((key,g,c));continue
+        pl=sorted(teams[c[0]],key=lambda r:-int(r['overallRating']))[:32]
+        if len(pl)<18:dmiss.append((key,g,len(pl)));continue
+        rows=[]
+        for r in pl:
+            nm=(r['commonName'] or (r['firstName']+' '+r['lastName'])).strip().replace(';',',').replace('|','/')
+            yr=int(re.search(r'/(\d{4})',r['birthdate']).group(1))
+            rows.append('|'.join(map(str,[nm,ROLE.get(r['position'],'M'),2026-yr,NATD.get(r['nationality'],re.sub('[^A-Z]','',r['nationality'].upper())[:3] or 'XXX'),99,int(r['overallRating'])])))
+        direct[g]=';'.join(rows)
+out.update({k:v for k,v in direct.items() if k not in out})
+print('direto do FC26:',len(direct),'clubes | sem par:',dmiss)
 js=('/* ext99 (v136): elencos REAIS (nome, posição, idade, nacionalidade) de ligas fora da base do chat de pesquisa. GERADO por tools/gen_ext99.py a partir de tools/wiki_squads.py (Wikipedia): não editar à mão.\n'
     '   Formato: "Nome|papel|idade|nat|camisa|overall". Overall = FC26 quando casou (0 = não casou): aí o hook distribui o overall que o jogo já calibrou para o clube (melhor camisa/idade = melhor overall). */\n'
     'const RSW='+json.dumps(out,ensure_ascii=False)+';\n')
