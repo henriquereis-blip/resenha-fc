@@ -1,7 +1,8 @@
 # Gera ext99.js: elencos REAIS (Wikipedia, via tools/wiki_squads.py) das ligas que a base do chat de pesquisa não cobre.
 # Uso (raiz do repo): python3 -I tools/gen_ext99.py   -> escreve ext99.js ; depois bash build.sh
 # A Wikipedia não tem overall: o overall é distribuído em tempo de jogo (ext99.js) a partir da força que o jogo já calibra para o clube.
-import json,hashlib,collections
+import json,hashlib,collections,sys
+sys.path.insert(0,'tools');import fifa   # v138: overall do FC26 é a fonte principal; o que não casa fica estimado no jogo
 D='tools/data/'
 R=json.load(open(D+'wiki_squads.json'))
 def h(s,n):return int(hashlib.md5(s.encode()).hexdigest(),16)%n
@@ -18,16 +19,18 @@ def roles(sq):
     return out
 def mkage(p):
     return p['age'] if p.get('age') and 15<=p['age']<=42 else 20+h(p['n'],13)   # sem idade na Wikipedia: 20 a 32, estável por nome
-out={};skip=[]
+out={};skip=[];FN=[0,0]
 for key,v in R.items():
     k,name=key.split('/',1)
     sq=sorted(v['sq'],key=lambda p:p['num'])[:32]   # elenco grande demais (base e reservas) é cortado: camisas baixas primeiro
     if len(sq)<18:skip.append((key,len(sq)));continue
     rs=roles(sq)
-    out[name]=';'.join('|'.join(map(str,[p['n'].replace(';',',').replace('|','/'),r,mkage(p),p['nat'],p['num']])) for p,r in zip(sq,rs))
+    fo=[fifa.lookup(p['n'],p.get('age')) for p in sq]
+    FN[0]+=sum(1 for x in fo if x);FN[1]+=len(fo)
+    out[name]=';'.join('|'.join(map(str,[p['n'].replace(';',',').replace('|','/'),r,mkage(p),p['nat'],p['num'],o or 0])) for p,r,o in zip(sq,rs,fo))
 js=('/* ext99 (v136): elencos REAIS (nome, posição, idade, nacionalidade) de ligas fora da base do chat de pesquisa. GERADO por tools/gen_ext99.py a partir de tools/wiki_squads.py (Wikipedia): não editar à mão.\n'
-    '   Formato: "Nome|papel|idade|nat|camisa". Overall NÃO vem da fonte: o hook distribui o overall que o jogo já calibrou para o clube (melhor camisa/idade = melhor overall). */\n'
+    '   Formato: "Nome|papel|idade|nat|camisa|overall". Overall = FC26 quando casou (0 = não casou): aí o hook distribui o overall que o jogo já calibrou para o clube (melhor camisa/idade = melhor overall). */\n'
     'const RSW='+json.dumps(out,ensure_ascii=False)+';\n')
 js+=open('tools/ext99_tpl.js').read()
 open('ext99.js','w',encoding='utf-8').write(js)
-print('ext99.js',len(js),'bytes;',len(out),'clubes; pulados (<18 jogadores):',skip)
+print('FC26 casou',FN[0],'de',FN[1],'jogadores');print('ext99.js',len(js),'bytes;',len(out),'clubes; pulados (<18 jogadores):',skip)
