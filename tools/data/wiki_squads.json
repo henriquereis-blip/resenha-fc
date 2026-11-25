@@ -56134,5 +56134,446 @@
 "age": null
 }
 ]
+},
+"GER2/Arminia Bielefeld": {
+"title": null,
+"sq": []
+},
+"GER2/Preußen Münster": {
+"title": "SC Preußen Münster",
+"sq": [
+{
+"n": "Morten Behrens",
+"pos": "G",
+"nat": "GER",
+"num": 1,
+"age": null
+},
+{
+"n": "Louis Kolbe",
+"pos": "D",
+"nat": "GER",
+"num": 2,
+"age": null
+},
+{
+"n": "Tim Dietrich",
+"pos": "D",
+"nat": "GER",
+"num": 3,
+"age": null
+},
+{
+"n": "Antonio Tikvić",
+"pos": "D",
+"nat": "CRO",
+"num": 4,
+"age": null
+},
+{
+"n": "Lucas Zeller",
+"pos": "D",
+"nat": "GER",
+"num": 5,
+"age": null
+},
+{
+"n": "Wesley Adeh",
+"pos": "M",
+"nat": "GER",
+"num": 6,
+"age": null
+},
+{
+"n": "Joshua Mees",
+"pos": "F",
+"nat": "GER",
+"num": 8,
+"age": null
+},
+{
+"n": "Marvin Schulz",
+"pos": "M",
+"nat": "GER",
+"num": 10,
+"age": null
+},
+{
+"n": "Oscar Vilhelmsson",
+"pos": "F",
+"nat": "SWE",
+"num": 11,
+"age": null
+},
+{
+"n": "Charalambos Makridis",
+"pos": "M",
+"nat": "GER",
+"num": 14,
+"age": null
+},
+{
+"n": "Simon Scherder",
+"pos": "D",
+"nat": "GER",
+"num": 15,
+"age": null
+},
+{
+"n": "Torge Paetow",
+"pos": "D",
+"nat": "GER",
+"num": 16,
+"age": null
+},
+{
+"n": "Mika Stuhlmacher",
+"pos": "M",
+"nat": "GER",
+"num": 17,
+"age": null
+},
+{
+"n": "Mikail Demirhan",
+"pos": "M",
+"nat": "GER",
+"num": 19,
+"age": null
+},
+{
+"n": "Ryan Johansson",
+"pos": "F",
+"nat": "IRL",
+"num": 20,
+"age": null
+},
+{
+"n": "Rico Preißinger",
+"pos": "M",
+"nat": "GER",
+"num": 21,
+"age": null
+},
+{
+"n": "Malik Batmaz",
+"pos": "F",
+"nat": "TUR",
+"num": 23,
+"age": null
+},
+{
+"n": "Niko Koulis",
+"pos": "D",
+"nat": "GER",
+"num": 24,
+"age": null
+},
+{
+"n": "Luca Bolay",
+"pos": "D",
+"nat": "GER",
+"num": 25,
+"age": null
+},
+{
+"n": "Philipp Maier",
+"pos": "M",
+"nat": "GER",
+"num": 26,
+"age": null
+},
+{
+"n": "Jakob Korte",
+"pos": "M",
+"nat": "GER",
+"num": 27,
+"age": null
+},
+{
+"n": "Montell Ndikom",
+"pos": "F",
+"nat": "GER",
+"num": 28,
+"age": null
+},
+{
+"n": "Leon Tašov",
+"pos": "D",
+"nat": "MKD",
+"num": 29,
+"age": null
+},
+{
+"n": "Marvin Schulz",
+"pos": "M",
+"nat": "GER",
+"num": 30,
+"age": null
+},
+{
+"n": "Felix Higl",
+"pos": "F",
+"nat": "GER",
+"num": 33,
+"age": null
+},
+{
+"n": "Niklas Varelmann",
+"pos": "D",
+"nat": "GER",
+"num": 36,
+"age": null
+},
+{
+"n": "Matthis Harsman",
+"pos": "G",
+"nat": "GER",
+"num": 38,
+"age": null
+},
+{
+"n": "Paul Ervens",
+"pos": "G",
+"nat": "GER",
+"num": 40,
+"age": null
+},
+{
+"n": "Romario Rösch",
+"pos": "F",
+"nat": "GER",
+"num": 43,
+"age": null
+},
+{
+"n": "Samuel Althaus",
+"pos": "M",
+"nat": "GER",
+"num": 44,
+"age": null
+}
+]
+},
+"GER2/Hansa Rostock": {
+"title": "FC Hansa Rostock",
+"sq": [
+{
+"n": "Luca Unbehaun",
+"pos": "G",
+"nat": "GER",
+"num": 1,
+"age": 25
+},
+{
+"n": "Florian Bohnert",
+"pos": "D",
+"nat": "LUX",
+"num": 3,
+"age": 29
+},
+{
+"n": "Kenan Fatkič",
+"pos": "M",
+"nat": "SLO",
+"num": 4,
+"age": 29
+},
+{
+"n": "Marco Schuster",
+"pos": "M",
+"nat": "GER",
+"num": 5,
+"age": 31
+},
+{
+"n": "Jonas Dirkner",
+"pos": "M",
+"nat": "GER",
+"num": 6,
+"age": 24
+},
+{
+"n": "Bernie Lennemann",
+"pos": "F",
+"nat": "GER",
+"num": 7,
+"age": null
+},
+{
+"n": "Ouassim Karada",
+"pos": "D",
+"nat": "GER",
+"num": 8,
+"age": null
+},
+{
+"n": "Andreas Voglsammer",
+"pos": "F",
+"nat": "GER",
+"num": 9,
+"age": 34
+},
+{
+"n": "Paul Stock",
+"pos": "M",
+"nat": "GER",
+"num": 10,
+"age": 29
+},
+{
+"n": "Emil Holten",
+"pos": "F",
+"nat": "DEN",
+"num": 11,
+"age": 30
+},
+{
+"n": "Ahmet Gürleyen",
+"pos": "D",
+"nat": "GER",
+"num": 15,
+"age": 27
+},
+{
+"n": "Lukas Wallner",
+"pos": "D",
+"nat": "AUT",
+"num": 16,
+"age": 23
+},
+{
+"n": "Florian Carstens",
+"pos": "D",
+"nat": "GER",
+"num": 17,
+"age": 28
+},
+{
+"n": "David Hummel",
+"pos": "F",
+"nat": "GER",
+"num": 21,
+"age": null
+},
+{
+"n": "Leon Reichardt",
+"pos": "D",
+"nat": "GER",
+"num": 22,
+"age": null
+},
+{
+"n": "Franz Pfanne",
+"pos": "D",
+"nat": "GER",
+"num": 23,
+"age": 32
+},
+{
+"n": "Philipp Klewin",
+"pos": "G",
+"nat": "GER",
+"num": 25,
+"age": 33
+},
+{
+"n": "David Kopacz",
+"pos": "M",
+"nat": "POL",
+"num": 27,
+"age": 27
+},
+{
+"n": "Peter Kiedl",
+"pos": "F",
+"nat": "AUT",
+"num": 29,
+"age": null
+},
+{
+"n": "Yannic Stein",
+"pos": "G",
+"nat": "GER",
+"num": 30,
+"age": null
+},
+{
+"n": "Jaaso Jantunen",
+"pos": "G",
+"nat": "FIN",
+"num": 31,
+"age": 21
+},
+{
+"n": "Niklas Kölle",
+"pos": "D",
+"nat": "GER",
+"num": 32,
+"age": 27
+},
+{
+"n": "Maximilian Krauß",
+"pos": "M",
+"nat": "GER",
+"num": 35,
+"age": 30
+},
+{
+"n": "Fiete Bock",
+"pos": "M",
+"nat": "GER",
+"num": 36,
+"age": null
+},
+{
+"n": "Miłosz Brzozowski",
+"pos": "M",
+"nat": "POL",
+"num": 37,
+"age": null
+},
+{
+"n": "Erik Maurer",
+"pos": "G",
+"nat": "GER",
+"num": 40,
+"age": null
+},
+{
+"n": "Yannick Michaelis",
+"pos": "F",
+"nat": "GER",
+"num": 41,
+"age": null
+},
+{
+"n": "Benno Dietze",
+"pos": "M",
+"nat": "GER",
+"num": 42,
+"age": null
+},
+{
+"n": "Leon Dajaku",
+"pos": "F",
+"nat": "GER",
+"num": 43,
+"age": 25
+},
+{
+"n": "Felikss Sproģis",
+"pos": "F",
+"nat": "LAT",
+"num": 45,
+"age": null
+},
+{
+"n": "Robin Falk",
+"pos": "M",
+"nat": "GER",
+"num": 46,
+"age": null
+}
+]
 }
 }
