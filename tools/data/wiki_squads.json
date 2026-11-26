@@ -64607,5 +64607,213 @@
 "age": 23
 }
 ]
+},
+"BRA2/Sport": {
+"title": "Sport Club do Recife",
+"sq": [
+{
+"n": "Marcelo Ajul",
+"pos": "D",
+"nat": "BRA",
+"num": 3,
+"age": null
+},
+{
+"n": "Marcelo Benevenuto",
+"pos": "D",
+"nat": "BRA",
+"num": 5,
+"age": 30
+},
+{
+"n": "Biel",
+"pos": "M",
+"nat": "BRA",
+"num": 6,
+"age": 24
+},
+{
+"n": "Patrick de Paula",
+"pos": "M",
+"nat": "BRA",
+"num": 7,
+"age": 27
+},
+{
+"n": "Juan Alano",
+"pos": "M",
+"nat": "BRA",
+"num": 8,
+"age": 30
+},
+{
+"n": "Pedro Perotti",
+"pos": "F",
+"nat": "BRA",
+"num": 9,
+"age": 29
+},
+{
+"n": "Denis",
+"pos": "G",
+"nat": "BRA",
+"num": 12,
+"age": null
+},
+{
+"n": "Murilo Rhikman",
+"pos": "M",
+"nat": "BRA",
+"num": 15,
+"age": 20
+},
+{
+"n": "Neto Pessoa",
+"pos": "F",
+"nat": "BRA",
+"num": 19,
+"age": 32
+},
+{
+"n": "Diego Hernández",
+"pos": "F",
+"nat": "URU",
+"num": 20,
+"age": 26
+},
+{
+"n": "Brenno",
+"pos": "G",
+"nat": "BRA",
+"num": 21,
+"age": 27
+},
+{
+"n": "Thiago Couto",
+"pos": "G",
+"nat": "BRA",
+"num": 26,
+"age": 27
+},
+{
+"n": "Claudinho",
+"pos": "D",
+"nat": "BRA",
+"num": 27,
+"age": 26
+},
+{
+"n": "Habraão",
+"pos": "D",
+"nat": "BRA",
+"num": 28,
+"age": 25
+},
+{
+"n": "Willian Oliveira",
+"pos": "M",
+"nat": "BRA",
+"num": 29,
+"age": 33
+},
+{
+"n": "Chrystian Barletta",
+"pos": "F",
+"nat": "BRA",
+"num": 30,
+"age": 25
+},
+{
+"n": "Marlon Douglas",
+"pos": "F",
+"nat": "BRA",
+"num": 31,
+"age": 29
+},
+{
+"n": "Kayky Almeida",
+"pos": "D",
+"nat": "BRA",
+"num": 33,
+"age": 21
+},
+{
+"n": "Adriano",
+"pos": "G",
+"nat": "BRA",
+"num": 42,
+"age": null
+},
+{
+"n": "Fábio Matheus",
+"pos": "M",
+"nat": "BRA",
+"num": 47,
+"age": null
+},
+{
+"n": "Adriel",
+"pos": "M",
+"nat": "BRA",
+"num": 54,
+"age": null
+},
+{
+"n": "Felipinho",
+"pos": "D",
+"nat": "BRA",
+"num": 60,
+"age": null
+},
+{
+"n": "Patrick",
+"pos": "D",
+"nat": "BRA",
+"num": 63,
+"age": null
+},
+{
+"n": "Rafinha",
+"pos": "D",
+"nat": "BRA",
+"num": 66,
+"age": null
+},
+{
+"n": "Augusto Pucci",
+"pos": "D",
+"nat": "BRA",
+"num": 68,
+"age": null
+},
+{
+"n": "Raí Lopes",
+"pos": "D",
+"nat": "BRA",
+"num": 76,
+"age": null
+},
+{
+"n": "Kervin Andrade",
+"pos": "M",
+"nat": "VEN",
+"num": 80,
+"age": 21
+},
+{
+"n": "Fernando Sobral",
+"pos": "M",
+"nat": "BRA",
+"num": 88,
+"age": 32
+},
+{
+"n": "Edson Lucas",
+"pos": "D",
+"nat": "BRA",
+"num": 96,
+"age": null
+}
+]
 }
 }

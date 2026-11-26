@@ -457,7 +457,9 @@ function slotScore(p,slot,phil,w){
 }
 function bestForSlot(ids,slot,used,phil,w){let best=null,bs=-1e9;for(const id of ids){if(used.has(id))continue;const s=slotScore(P(id),slot,phil,w);if(s>bs){bs=s;best=id}}return best}
 function autoPick(c){
+  {const n0=c.squad.length;
   c.squad=c.squad.filter(id=>P(id)); /* v126: id vazio nunca entra na escalação (antes gerava null quando o elenco ficava curto) */
+  if(c.squad.length<n0){(G._nullLog=G._nullLog||[]).push({s:G.season,r:G.round,club:c.name,lost:n0-c.squad.length,stack:(new Error().stack||'').split('\n').slice(2,7).map(x=>x.trim().slice(0,60)).join(' < ')});if(G._nullLog.length>10)G._nullLog.shift()}}   /* v140: detector da origem do id vazio (G._nullLog) */
   const slots=slotsOf(c.formation);const used=new Set();const xi=[];
   const wn=wantsOf(c.formation);for(const [i,sl] of slots.entries()){const id=bestForSlot(c.squad,sl,used,c.phil,wn[i]);xi.push(id);used.add(id)}
   const rest=c.squad.filter(id=>!used.has(id));const bench=[];
@@ -840,7 +842,7 @@ function newSeason(){
     else p.ovr=clamp(p.ovr-ri(0,2),40,92);
   }
   for(const c of G.clubs){
-    c.squad=c.squad.filter(id=>P(id)); /* v126: id sem jogador (referência solta) é descartado em vez de quebrar a virada; causa de origem em investigação */
+    {const n0=c.squad.length;c.squad=c.squad.filter(id=>P(id));if(c.squad.length<n0){(G._nullLog=G._nullLog||[]).push({s:G.season,r:G.round,club:c.name,lost:n0-c.squad.length,stack:'newSeason'});if(G._nullLog.length>10)G._nullLog.shift()}} /* v126: id sem jogador (referência solta) é descartado em vez de quebrar a virada; causa de origem em investigação */
     const keep=[],drop=[];
     for(const id of c.squad){const p=P(id);if(p.age>=35&&Math.random()<(p.age>=39?1:p.age>=37?0.7:0.3))drop.push(id);else keep.push(id)}
     c.squad=keep;drop.forEach(id=>{delete G.players[id]});
@@ -1818,6 +1820,14 @@ function applyObj(id){
   const poor=G.fin.caixa<baseInc(c)*0.04;
   paperLine(poor?c.name+': '+G.coach+' assume com cofre vazio':G.coach+' assume o '+c.name+' com '+(o.id==='rec'?'missão de arrumar a casa':'novo projeto'),`${o.t}. Dívida de ${bi(fr(c)[0])} segue como herança. ${o.mt}.`);
 }
+/* v140: mínimo da diretoria. A diretoria fixa quanto do superávit e das vendas vai para a dívida (o do objetivo escolhido,
+   ×1,0 se a dívida/receita >= 1,5; ×0,8 se >= 0,8; ×0,5 abaixo disso; 0 sem dívida). O técnico só pode AUMENTAR. */
+function boardMin7(){
+  try{const c=userClub(),o=objOptions(c).find(x=>x.id===(G.fx&&G.fx.obj));if(!o||!(c.debt>0.05))return {pay:0,sd:0,k:0};
+    const rr=c.debt/baseInc(c),k=rr>=1.5?1:rr>=.8?.8:.5,r5=v=>Math.round(v*k*20)/20;return {pay:r5(o.pay),sd:r5(o.sd),k}}catch(e){return {pay:0,sd:0,k:0}}
+}
+const payEff7=()=>Math.max(G.fx.pay||0,boardMin7().pay),sdEff7=()=>Math.max(G.fx.sd||0,boardMin7().sd);
+globalThis.boardMin7=boardMin7;
 hookAround('startCareer','sc7',function(next,__a){let [id,coach,phil,asst]=__a;next(id,coach,phil,asst);applyObj(S.obj);save()});
 hookAround('takeJob','tj7',function(next,__a){let [id]=__a;const r=next(id);ex7();applyObj('equ');return r});
 
@@ -1829,7 +1839,7 @@ hookAround('signFree','sf7',function(next,__a){let [pid]=__a;if(G&&G.fx&&G.fx.ba
 hookAround('sellPlayer','sl7',function(next,__a){let [id]=__a;
   ex7();const o=G.offers.find(x=>x.id===id);const c=userClub();const d0=c.debt;
   const r=next(id);
-  if(!r&&o){const share=Math.min(c.debt,+(o.fee*G.fx.sd).toFixed(2));if(share>0){G.fin.caixa=+(G.fin.caixa-share).toFixed(2);c.debt=+(c.debt-share).toFixed(2);
+  if(!r&&o){const share=Math.min(c.debt,+(o.fee*sdEff7()).toFixed(2));if(share>0){G.fin.caixa=+(G.fin.caixa-share).toFixed(2);c.debt=+(c.debt-share).toFixed(2);
     if(share>=2)paperLine('Venda de '+nameOf(P(o.pid)).replace('*','')+' alivia as contas do '+c.name,'Parte dos '+mi(o.fee)+' vai direto pra dívida: '+mi(share)+'.')}}
   return r;
 });
@@ -1848,7 +1858,7 @@ hookAround('finishRound','ext7_fr7',function(next,A){
   const rr=c.debt/baseInc(c);const enc=(0.08+0.10*Math.min(rr,2.5))*baseInc(c)/38; // estrutura + encargos financeiros pagos em dinheiro
   f.caixa=+(f.caixa-enc-cut).toFixed(2);
   const sup=Math.max(0,l.net-enc-cut);
-  const pay=Math.min(c.debt,sup*G.fx.pay);
+  const pay=Math.min(c.debt,sup*payEff7());
   f.caixa=+(f.caixa-pay).toFixed(2);c.debt=+(c.debt-pay).toFixed(2);
   if(c.debt<0)c.debt=0;
   l.fin={juros:+juros.toFixed(2),enc:+enc.toFixed(2),pay:+pay.toFixed(2),cut:+cut.toFixed(2)};
@@ -1872,7 +1882,7 @@ hookAround('finishRound','ext7_fr7',function(next,A){
 });
 hookAround('endSeason','es7',function(next,__a){
   ex7();const c=userClub();const c0=G.fin.caixa;const r=next();
-  const gain=G.fin.caixa-c0;const share=Math.min(c.debt,Math.max(0,gain*G.fx.sd*0.5));
+  const gain=G.fin.caixa-c0;const share=Math.min(c.debt,Math.max(0,gain*sdEff7()*0.5));
   if(share>0){G.fin.caixa=+(G.fin.caixa-share).toFixed(1);c.debt=+(c.debt-share).toFixed(1)}
   if(G.summary)G.summary.txt+=` Dívida: ${mi(c.debt)} (${Math.round((1-c.debt/(G.fx.debt0||1))*100)}% a menos que no início da sua gestão).`;
   G.fx.cut=G.fx.cut&&G.fx.cut.season>G.season?G.fx.cut:null;
@@ -1904,9 +1914,9 @@ function finCard(){
   <div class="res"><span>Desde que você chegou</span><b class="${pct>=0?'ok':'bad'}">${pct===0?'':pct>0?'−':'+'}${Math.abs(pct)}% (${mi(d0)} → ${mi(c.debt)})</b></div>
   <div class="meter"><i class="${pct>=25?'ok':pct>=0?'warn':'bad'}" style="width:${clampN(pct,0,100)}%"></i></div>
   ${l?`<div class="k">Última rodada: juros +${mi(l.juros)} · estrutura e encargos ${mi(l.enc)} · amortização ${mi(l.pay)}${l.cut?' · TV antecipada −'+mi(l.cut):''}</div>`:''}
-  <div class="k" style="margin-top:8px">Superávit usado pra pagar dívida: <b id="paylbl">${Math.round(fx.pay*100)}%</b></div><input type="range" id="paysl" min="0" max="70" step="5" value="${Math.round(fx.pay*100)}">
-  <div class="k">Vendas que vão pra dívida: <b id="sdlbl">${Math.round(fx.sd*100)}%</b></div><input type="range" id="sdsl" min="0" max="70" step="5" value="${Math.round(fx.sd*100)}">
-  <p class="news">Quanto mais você paga, menos sobra pra contratar. Dívida alta demais por muito tempo vira advertência do Fair Play Financeiro e, no limite, bloqueio de registro.${fx.warned?' <b>Você está em prazo do Fair Play Financeiro.</b>':''}${fx.ban?' <b class="bad">Registro bloqueado.</b>':''}</p>
+  <div class="k" style="margin-top:8px">Superávit usado pra pagar dívida: <b id="paylbl">${Math.round(payEff7()*100)}%</b> <small>(mínimo da diretoria ${Math.round(boardMin7().pay*100)}%)</small></div><input type="range" id="paysl" min="${Math.round(boardMin7().pay*100)}" max="70" step="5" value="${Math.round(payEff7()*100)}">
+  <div class="k">Vendas que vão pra dívida: <b id="sdlbl">${Math.round(sdEff7()*100)}%</b> <small>(mínimo da diretoria ${Math.round(boardMin7().sd*100)}%)</small></div><input type="range" id="sdsl" min="${Math.round(boardMin7().sd*100)}" max="70" step="5" value="${Math.round(sdEff7()*100)}">
+  <p class="news">A diretoria exige um mínimo (mais alto quanto maior a dívida): você pode pagar mais, nunca menos. Quanto mais você paga, menos sobra pra contratar. Dívida alta demais por muito tempo vira advertência do Fair Play Financeiro e, no limite, bloqueio de registro.${fx.warned?' <b>Você está em prazo do Fair Play Financeiro.</b>':''}${fx.ban?' <b class="bad">Registro bloqueado.</b>':''}</p>
   <div class="row2"><button class="btn ghost" data-a="loan">Empréstimo ${mi(loanAmt)}</button><button class="btn ghost" data-a="adv" ${fx.cut&&fx.cut.season>=G.season?'disabled':''}>Antecipar TV ${mi(advAmt)}</button></div>
   <div class="k">Empréstimo: entra caixa agora e a dívida sobe 18% do valor (máx. 2 por temporada). Antecipação: recebe 35% da TV agora e perde essa grana na temporada seguinte.</div></div>`;
 }
@@ -1923,8 +1933,8 @@ Object.assign(A,{
 });
 const _pc7=A.pickclub;A.pickclub=function(d){S.obj=null;return _pc7(d)};
 document.addEventListener('input',e=>{const t=e.target;if(!t||!G||!G.fx)return;
-  if(t.id==='paysl'){G.fx.pay=+t.value/100;const el=document.getElementById('paylbl');if(el)el.textContent=t.value+'%'}
-  if(t.id==='sdsl'){G.fx.sd=+t.value/100;const el=document.getElementById('sdlbl');if(el)el.textContent=t.value+'%'}});
+  if(t.id==='paysl'){G.fx.pay=Math.max(+t.value/100,boardMin7().pay);const el=document.getElementById('paylbl');if(el)el.textContent=t.value+'%'}
+  if(t.id==='sdsl'){G.fx.sd=Math.max(+t.value/100,boardMin7().sd);const el=document.getElementById('sdlbl');if(el)el.textContent=t.value+'%'}});
 document.addEventListener('change',e=>{const t=e.target;if(t&&(t.id==='paysl'||t.id==='sdsl'))save()});
 
 hookAround('setMeta','sm7',function(next,__a){next();
@@ -11388,11 +11398,16 @@ globalThis.objOf=objOf;
 hookAfter('setMeta','ext85_sm',function(){const c=userClub();if(c&&(c.div===0||c.ctry||G.abroad))G.board.metaTxt=objOf(c).label});
 hookAround('metaText','ext85_mt',function(next,__a){let [mp]=__a;const c=userClub();if(c&&(c.div===0||c.ctry||G.abroad))return objOf(c).label;return next(mp)});
 /* orçamento de salários: último resultado frente à meta */
+/* v140: o hook lia G.summary depois do newSeason (que o zera) e nunca agia. Agora lê antes (hookBefore) e aplica depois como fator
+   sobre o teto de salários (o ext77 já ajusta o teto pelo superávit): 1,04 se bateu a meta, 1,0 se ficou perto, 0,97 se errou feio. */
+hookBefore('newSeason','ext85_nsb',function(){
+  try{const c=userClub(),sm=G.summary;if(!c||!sm||sm.season!==G.season){G._wbMul=1;return}
+    const d=sm.pos-sm.meta;G._wbMul=d<=0?1.04:d<=2?1.0:0.97;
+  }catch(e){G._wbMul=1;console.error('ext85 orc '+e.message)}
+});
 hookAfter('newSeason','ext85_ns',function(){
-  try{const c=userClub(),sm=G.summary;if(!c||!sm)return;
-    const d=sm.pos-sm.meta;
-    G.wbMul=d<=0?1.08:d<=2?1.0:0.94;
-    G.wb=+(payroll(c)*1.1*G.wbMul).toFixed(2);
+  try{const c=userClub();if(!c)return;G.wbMul=G._wbMul||1;
+    if(G.wbMul!==1){G.wb=+(wageBudget()*G.wbMul).toFixed(2)}
   }catch(e){console.error('ext85 orc '+e.message)}
 });
 /* demissão: zona de rebaixamento pesa mais (clube grande pesa mais ainda); fugir do rebaixamento é objetivo, então pesa menos */
@@ -11617,9 +11632,10 @@ hookBefore('newSeason','ext92_nsb',function(){
      · fator geral ×0,8 sobre a chance base nas datas
      · temporada perto (meta+2 a +3): ×1,0 (neutra)
    O tempo no cargo (tenureMult, ext75) continua valendo por cima. */
-hookAfter('newSeason','ext93_ns',function(){
+/* v140: era hookAfter e lia G.summary, que o newSeason zera no fim (logic.js): nunca gravava nada e a estabilidade ficava em x1,0. Agora hookBefore. */
+hookBefore('newSeason','ext93_ns',function(){
   try{
-    const u=userClub(),sm=G.summary;if(!u||!sm||sm.season!==G.season-1)return;
+    const u=userClub(),sm=G.summary;if(!u||!sm||sm.season!==G.season)return;
     G.stab93=G.stab93||[];
     const d=sm.pos-sm.meta;
     const k=d<=1?'ok':d<=3?'perto':'erro';
@@ -11636,10 +11652,11 @@ function stabMult93(c){
 globalThis.stabMult93=stabMult93;
 hookAround('shouldFire','ext93_sf',function(next,__a){
   const p=next();
+  if(![9,19,29,37].includes(G.round))return p;   /* v140: a 2ª chance valia em qualquer rodada (nunca rodou antes, pois a estabilidade não era gravada) */
   const c=userClub();if(!c)return p;
   const m=stabMult93(c);
   if(p)return Math.random()<clamp(m*0.8,0,1);   /* fator geral 0,8: a chance base nas datas estava alta (v126: 58% das temporadas) */
-  return m>1?Math.random()<0.3*(m-1):false; /* a decisão base não demitiu: erro seguido dá uma segunda chance (ver 0,3 por ponto acima de 1) */
+  return (m>1&&G.board.conf<40)?Math.random()<0.3*(m-1):false; /* a decisão base não demitiu: erro seguido dá uma segunda chance (0,3 por ponto acima de 1), só com a confiança baixa */
 });
 /* ext94 (v128): clube formador recebe 5% de toda transferência futura do jogador (como o mecanismo de solidariedade da FIFA).
    O formador é o clube de onde o jogador subiu da base (promoção, inclusive da IA) ou o clube que vendeu o garoto da base.
@@ -11814,8 +11831,7 @@ function rsw(name){
 globalThis.rsw99=rsw;
 /* clube estrangeiro completo (carreira lá): nomes reais no lugar dos gerados. O overall segue a distribuição já calibrada do clube:
    por papel, o melhor overall gerado vai para o jogador de melhor 'ordem' (camisa baixa e idade de auge), e assim por diante. */
-hookAround('mkNat42','mk99',function(next,__a){
-  const c=next();
+function fill99(c){
   try{ if(typeof real73==='function'&&real73(c.name))return c;
     const R=rsw(c.name);if(!R)return c;
     const gen=c.squad.map(id=>G.players[id]).filter(Boolean);
@@ -11843,7 +11859,13 @@ hookAround('mkNat42','mk99',function(next,__a){
     }
     autoPick(c);
   }catch(e){console.error('ext99 '+e.message)}
-  return c});
+  return c}
+globalThis.fill99=fill99;
+hookAround('mkNat42','mk99',function(next,__a){return fill99(next())});
+/* Brasil Série B, C e D (clubes 20 a 79 do mundo inicial): mesmo preenchimento com elenco real (a Série A é do ext98) */
+hookAfter('newWorld','ext99_br',function(){
+  try{if(!G||!G.clubs)return;for(const c of G.clubs.slice(20,80))if(c&&rsw(c.name))fill99(c)}catch(e){console.error('ext99br '+e.message)}
+});
 })();
 /* ext100 (v139): torcida com mais causas e efeito.
    1) VENDA: ídolo ou xodó vendido derruba o humor pelo carinho que a torcida tinha (favOf), não só por ser top 3 em overall.
@@ -11899,6 +11921,81 @@ hookAfter('vTorcida','fan100_ui',function(ret){
   }catch(e){console.error('fan100ui '+e.message);return ret}
 });
 })();
+/* ext101 (v140): seletor de liga na tela inicial. "Liga e clube" agora tem um seletor de país: Brasil (as 4 séries, como antes)
+   ou qualquer liga do mundo (ext37 WLD). Em liga estrangeira a carreira começa direto no clube escolhido: o jogo inicia num clube
+   brasileiro de força parecida (só para o setup) e logo muda para o clube de lá pelo mesmo caminho de "aceitar emprego no exterior". */
+(function(){
+const lgOpts=()=>`<label class="fld">País / liga<select id="lgsel">
+  <option value="BRA" ${(S.cl||'BRA')==='BRA'?'selected':''}>🇧🇷 Brasil (Séries A a D)</option>
+  ${WLD.map(w=>`<option value="${w.k}" ${S.cl===w.k?'selected':''}>${w.f} ${esc(w.n)} · ${esc(w.lg)}</option>`).join('')}</select></label>`;
+function foreignList(){
+  const W=wd(),L=W.lg[S.cl];if(!L)return '<p class="hint">Liga indisponível.</p>';
+  const cl=L.cl.slice().sort((a,b)=>b.r-a.r);
+  return `<div class="clubs">${cl.map(c=>`<button class="club ${S.fc&&S.fc.id===c.id?'sel':''}" data-a="pickfclub" data-id="${c.id}"><span class="cn">${esc(c.n)}<small>${esc(wlOf(S.cl).lg)}</small></span><span class="rep">${Math.round(c.r)}</span></button>`).join('')}</div>`;
+}
+hookAround('vClubStep','vcs101',function(next,__a){
+  const cl=S.cl||'BRA';
+  if(cl==='BRA'){S.fc=null;const h=next();return h.replace('<h2>Liga e clube</h2>','<h2>Liga e clube</h2>'+lgOpts())}
+  return `<div class="wrap">${stepper('club')}<button class="back" data-a="step" data-v="coach">‹ Treinador</button><h2>Liga e clube</h2>${lgOpts()}
+  <p class="hint">Você começa direto num clube de ${esc(wlOf(cl).n)}. A força é a nota do clube (58 a 93). Elenco e finanças aparecem depois que você assume.</p>${foreignList()}</div>`;
+});
+/* prévia simplificada do clube estrangeiro (ainda não existe elenco completo) */
+hookAround('vPreview','vpv101',function(next,__a){
+  if(!S.fc)return next();
+  const f=S.fc;
+  return `<div class="wrap pv20">${stepper('preview')}<button class="back" data-a="step" data-v="club">‹ Clubes</button>
+  <div class="hd"><div><h2>${esc(f.n)}</h2><small>${esc(wlOf(f.k).n)} · ${esc(wlOf(f.k).lg)} · força ${Math.round(f.r)}</small></div></div>
+  <div class="card"><div class="res"><span>País</span><b>${wlOf(f.k).f} ${esc(wlOf(f.k).n)}</b></div><div class="res"><span>Liga</span><b>${esc(wlOf(f.k).lg)}</b></div><div class="res"><span>Força do clube</span><b>${Math.round(f.r)}</b></div>
+  <p class="news">Elenco, finanças e a cobrança da diretoria aparecem quando você assume. Clubes mais fortes cobram título; os mais fracos cobram fugir do rebaixamento.</p></div>
+  <button class="btn big" data-a="step" data-v="setup">Escolher o ${esc(f.n)} ›</button></div>`;
+});
+hookAround('vSetup','vsu101',function(next,__a){
+  const h=next();if(!S.fc)return h;
+  const ph=C(S.sc).name;return h.split(ph).join(S.fc.n);
+});
+/* clube-base do setup: brasileiro da 1ª divisão com a força mais próxima do clube escolhido (objetivos e orçamento coerentes) */
+function placeholder(r){
+  return G.clubs.filter(c=>c.div===0).sort((a,b)=>Math.abs(a.rep-r)-Math.abs(b.rep-r))[0];
+}
+Object.assign(A,{
+  pickfclub(d){
+    const W=wd(),L=W.lg[S.cl],x=L&&L.cl.find(c=>c.id===+d.id);if(!x)return;
+    S.fc={k:S.cl,id:x.id,n:x.n,r:x.r};S.sc=placeholder(x.r).id;S.cpv='res';S.sp=null;S.sa=null;S.obj=null;S.step='preview';render();window.scrollTo(0,0)}
+});
+document.addEventListener('change',e=>{const t=e.target;if(t&&t.id==='lgsel'&&G&&G.phase==='start'){S.cl=t.value;S.fc=null;S.sc=null;render()}});
+/* começar: se escolheu clube estrangeiro, muda para ele logo depois de criar a carreira */
+hookAfter('startCareer','sc101',function(){
+  try{
+    const f=S.fc;if(!f)return;S.fc=null;
+    const sp=S.sp,ob=S.obj;
+    if(typeof emigrate!=='function'||!emigrate(f.id))return;
+    const c=userClub();if(c&&sp)c.phil=sp;
+    try{if(ob)applyObj(ob)}catch(e){}
+    addNews('Você começa a carreira no '+c.name+' ('+wlOf(f.k).n+').');
+  }catch(e){console.error('sc101 '+e.message)}
+});
+})();
+/* ext102 (v140): clube do técnico CRESCE (ou encolhe) com o que entrega. Antes só a IA ganhava/perdia reputação por resultado
+   (ext12/ext9) e o patrocínio-base do clube do usuário só mudava por subida/queda de divisão: clube fraco que ia bem não virava marca.
+   No fim de cada temporada, comparando a posição final com a meta:
+     reputação: +0,12 por posição acima da meta (de -0,8 a +1,2); campeão da liga +0,8; Copa/estadual não contam (já têm humor e prêmio)
+     patrocínio-base e TV-base: ×(1 + 1,2% por posição acima da meta), de -6% a +10%
+   A reputação respeita a faixa da divisão (RBAND), então o crescimento é gradual e a subida de divisão continua sendo o grande salto. */
+hookBefore('newSeason','ext102_ns',function(){
+  try{
+    const c=userClub(),sm=G.summary;if(!c||!sm||sm.season!==G.season||sm.pos==null||sm.meta==null)return;
+    if(G._grow102===sm.season)return;G._grow102=sm.season;
+    const d=sm.meta-sm.pos;                       // positivo = ficou acima da meta
+    let dr=clamp(d*0.12,-0.8,1.2)+(sm.champ?0.8:0);
+    const fac=1+clamp(d*0.012,-0.06,0.10);
+    const rb=RBAND[c.div]||[40,95],old=c.rep;
+    c.rep=+clamp(c.rep+dr,rb[0],rb[1]).toFixed(1);
+    c.spBase=+(c.spBase*fac).toFixed(1);c.tv=+(c.tv*(1+(fac-1)*0.5)).toFixed(1);
+    G.growLog=G.growLog||[];G.growLog.push({s:sm.season,club:c.name,pos:sm.pos,meta:sm.meta,rep:[old,c.rep],fac:+fac.toFixed(3)});if(G.growLog.length>20)G.growLog.shift();
+    if(c.rep-old>=0.5)addNews(c.name+' cresce como marca: reputação sobe com a temporada acima do esperado.');
+    else if(old-c.rep>=0.5)addNews(c.name+' perde peso como marca depois de uma temporada abaixo do esperado.');
+  }catch(e){console.error('ext102 '+e.message)}
+});
 newWorld();G.phase='start';render();
 </script>
 <script>if("serviceWorker"in navigator&&/^https?:/.test(location.protocol))addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}))</script></body></html>
