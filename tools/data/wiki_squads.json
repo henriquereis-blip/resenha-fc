@@ -66366,5 +66366,1094 @@
 "age": 27
 }
 ]
+},
+"BRA2/Novorizontino": {
+"title": "Grêmio Novorizontino",
+"sq": [
+{
+"n": "Lucas Ribeiro",
+"pos": "G",
+"nat": "BRA",
+"num": 1,
+"age": null
+},
+{
+"n": "Madson",
+"pos": "D",
+"nat": "BRA",
+"num": 2,
+"age": 34
+},
+{
+"n": "Carlinhos",
+"pos": "D",
+"nat": "BRA",
+"num": 3,
+"age": null
+},
+{
+"n": "Patrick",
+"pos": "D",
+"nat": "BRA",
+"num": 4,
+"age": 27
+},
+{
+"n": "Sander",
+"pos": "D",
+"nat": "BRA",
+"num": 5,
+"age": 36
+},
+{
+"n": "Luís Oyama",
+"pos": "M",
+"nat": "BRA",
+"num": 6,
+"age": 29
+},
+{
+"n": "Ronald Barcellos",
+"pos": "F",
+"nat": "BRA",
+"num": 7,
+"age": 24
+},
+{
+"n": "Tití Ortiz",
+"pos": "F",
+"nat": "ARG",
+"num": 8,
+"age": 34
+},
+{
+"n": "Carlão",
+"pos": "F",
+"nat": "BRA",
+"num": 9,
+"age": 34
+},
+{
+"n": "Rômulo",
+"pos": "M",
+"nat": "BRA",
+"num": 10,
+"age": 25
+},
+{
+"n": "Robson",
+"pos": "F",
+"nat": "BRA",
+"num": 11,
+"age": 35
+},
+{
+"n": "João Scapin",
+"pos": "G",
+"nat": "BRA",
+"num": 12,
+"age": null
+},
+{
+"n": "Eduardo Brock",
+"pos": "D",
+"nat": "BRA",
+"num": 14,
+"age": 35
+},
+{
+"n": "Tavinho",
+"pos": "M",
+"nat": "BRA",
+"num": 15,
+"age": null
+},
+{
+"n": "Vinícius Paiva",
+"pos": "F",
+"nat": "BRA",
+"num": 16,
+"age": 25
+},
+{
+"n": "Matheus Bianqui",
+"pos": "M",
+"nat": "BRA",
+"num": 17,
+"age": 28
+},
+{
+"n": "Léo Naldi",
+"pos": "M",
+"nat": "BRA",
+"num": 18,
+"age": 25
+},
+{
+"n": "Diego Galo",
+"pos": "M",
+"nat": "BRA",
+"num": 19,
+"age": 21
+},
+{
+"n": "Iván Alvariño",
+"pos": "D",
+"nat": "ARG",
+"num": 22,
+"age": null
+},
+{
+"n": "Jhilmar Lora",
+"pos": "D",
+"nat": "PER",
+"num": 24,
+"age": 26
+},
+{
+"n": "Gabriel Bahia",
+"pos": "D",
+"nat": "BRA",
+"num": 26,
+"age": 28
+},
+{
+"n": "Diego Mathias",
+"pos": "F",
+"nat": "BRA",
+"num": 27,
+"age": 27
+},
+{
+"n": "Marlon",
+"pos": "M",
+"nat": "BRA",
+"num": 28,
+"age": 36
+},
+{
+"n": "Paulo Henrique",
+"pos": "G",
+"nat": "BRA",
+"num": 29,
+"age": null
+},
+{
+"n": "Nicolas Careca",
+"pos": "F",
+"nat": "BRA",
+"num": 30,
+"age": 29
+},
+{
+"n": "César Augusto",
+"pos": "G",
+"nat": "BRA",
+"num": 31,
+"age": 31
+},
+{
+"n": "Renato Palm",
+"pos": "D",
+"nat": "BRA",
+"num": 33,
+"age": 35
+},
+{
+"n": "Hector",
+"pos": "M",
+"nat": "BRA",
+"num": 35,
+"age": null
+},
+{
+"n": "Miguel Contiero",
+"pos": "M",
+"nat": "BRA",
+"num": 36,
+"age": null
+},
+{
+"n": "Jardiel",
+"pos": "F",
+"nat": "BRA",
+"num": 40,
+"age": 21
+},
+{
+"n": "Reidiney",
+"pos": "F",
+"nat": "BRA",
+"num": 41,
+"age": null
+},
+{
+"n": "Juninho",
+"pos": "M",
+"nat": "BRA",
+"num": 50,
+"age": 25
+},
+{
+"n": "Maykon Jesus",
+"pos": "D",
+"nat": "BRA",
+"num": 66,
+"age": 21
+},
+{
+"n": "Hélio Borges",
+"pos": "F",
+"nat": "BRA",
+"num": 77,
+"age": 26
+},
+{
+"n": "Arthur Barbosa",
+"pos": "D",
+"nat": "BRA",
+"num": 78,
+"age": null
+},
+{
+"n": "Jordi",
+"pos": "G",
+"nat": "BRA",
+"num": 93,
+"age": 33
+}
+]
+},
+"BRA2/Operário-PR": {
+"title": "Operário Ferroviário Esporte Clube",
+"sq": [
+{
+"n": "Elias Curzel",
+"pos": "G",
+"nat": "BRA",
+"num": 1,
+"age": null
+},
+{
+"n": "Mikael Doka",
+"pos": "D",
+"nat": "BRA",
+"num": 2,
+"age": null
+},
+{
+"n": "William Klaus",
+"pos": "D",
+"nat": "BRA",
+"num": 4,
+"age": null
+},
+{
+"n": "Índio",
+"pos": "M",
+"nat": "BRA",
+"num": 5,
+"age": null
+},
+{
+"n": "Moraes Júnior",
+"pos": "D",
+"nat": "BRA",
+"num": 6,
+"age": null
+},
+{
+"n": "Ángel Torres",
+"pos": "F",
+"nat": "BRA",
+"num": 7,
+"age": null
+},
+{
+"n": "Juan Zuluaga",
+"pos": "M",
+"nat": "COL",
+"num": 8,
+"age": null
+},
+{
+"n": "Vinícius Mingotti",
+"pos": "F",
+"nat": "BRA",
+"num": 9,
+"age": null
+},
+{
+"n": "Gabriel Boschilia",
+"pos": "M",
+"nat": "BRA",
+"num": 10,
+"age": null
+},
+{
+"n": "Aylon",
+"pos": "F",
+"nat": "BRA",
+"num": 11,
+"age": null
+},
+{
+"n": "Talles",
+"pos": "G",
+"nat": "BRA",
+"num": 12,
+"age": null
+},
+{
+"n": "Berto",
+"pos": "F",
+"nat": "CPV",
+"num": 14,
+"age": null
+},
+{
+"n": "Miranda",
+"pos": "D",
+"nat": "BRA",
+"num": 16,
+"age": null
+},
+{
+"n": "Vinícius Diniz",
+"pos": "M",
+"nat": "BRA",
+"num": 20,
+"age": null
+},
+{
+"n": "José Cuenú",
+"pos": "D",
+"nat": "COL",
+"num": 22,
+"age": null
+},
+{
+"n": "João Gabriel",
+"pos": "D",
+"nat": "BRA",
+"num": 23,
+"age": null
+},
+{
+"n": "Maguinho",
+"pos": "D",
+"nat": "BRA",
+"num": 26,
+"age": null
+},
+{
+"n": "Gabriel Feliciano",
+"pos": "D",
+"nat": "BRA",
+"num": 27,
+"age": null
+},
+{
+"n": "Dudu Mosconi",
+"pos": "M",
+"nat": "BRA",
+"num": 28,
+"age": null
+},
+{
+"n": "Edwin Torres",
+"pos": "F",
+"nat": "COL",
+"num": 29,
+"age": null
+},
+{
+"n": "Pedro Vilhena",
+"pos": "M",
+"nat": "BRA",
+"num": 30,
+"age": null
+},
+{
+"n": "Charles Raphael",
+"pos": "M",
+"nat": "BRA",
+"num": 32,
+"age": null
+},
+{
+"n": "Vagner",
+"pos": "G",
+"nat": "BRA",
+"num": 33,
+"age": null
+},
+{
+"n": "Renan Gustavo",
+"pos": "D",
+"nat": "BRA",
+"num": 34,
+"age": null
+},
+{
+"n": "Matheus Trindade",
+"pos": "M",
+"nat": "BRA",
+"num": 39,
+"age": null
+},
+{
+"n": "Diego Monteiro",
+"pos": "G",
+"nat": "BRA",
+"num": 41,
+"age": null
+},
+{
+"n": "Joseph",
+"pos": "D",
+"nat": "BRA",
+"num": 43,
+"age": null
+},
+{
+"n": "Maxwell",
+"pos": "F",
+"nat": "BRA",
+"num": 77,
+"age": null
+},
+{
+"n": "Neto Paraíba",
+"pos": "M",
+"nat": "BRA",
+"num": 88,
+"age": null
+},
+{
+"n": "Pablo",
+"pos": "F",
+"nat": "BRA",
+"num": 92,
+"age": null
+},
+{
+"n": "Caio Dantas",
+"pos": "F",
+"nat": "BRA",
+"num": 99,
+"age": null
+}
+]
+},
+"BRA2/Ponte Preta": {
+"title": "Associação Atlética Ponte Preta",
+"sq": [
+{
+"n": "Guilherme Viana",
+"pos": "G",
+"nat": "BRA",
+"num": 1,
+"age": null
+},
+{
+"n": "Júlio",
+"pos": "D",
+"nat": "BRA",
+"num": 2,
+"age": null
+},
+{
+"n": "Lucas Cunha",
+"pos": "D",
+"nat": "BRA",
+"num": 3,
+"age": 29
+},
+{
+"n": "Diego Leão",
+"pos": "D",
+"nat": "BRA",
+"num": 4,
+"age": null
+},
+{
+"n": "Rodrigo Souza",
+"pos": "M",
+"nat": "BRA",
+"num": 5,
+"age": 39
+},
+{
+"n": "Jota",
+"pos": "D",
+"nat": "BRA",
+"num": 6,
+"age": null
+},
+{
+"n": "Emanuell Ferreira",
+"pos": "F",
+"nat": "BRA",
+"num": 7,
+"age": null
+},
+{
+"n": "André Lima",
+"pos": "M",
+"nat": "BRA",
+"num": 8,
+"age": 26
+},
+{
+"n": "Brandão",
+"pos": "F",
+"nat": "BRA",
+"num": 9,
+"age": null
+},
+{
+"n": "Élvis",
+"pos": "M",
+"nat": "BRA",
+"num": 10,
+"age": 36
+},
+{
+"n": "Diego Porfírio",
+"pos": "D",
+"nat": "BRA",
+"num": 13,
+"age": 27
+},
+{
+"n": "Danilo Barcelos",
+"pos": "D",
+"nat": "BRA",
+"num": 14,
+"age": 35
+},
+{
+"n": "Gabriel Caran",
+"pos": "D",
+"nat": "BRA",
+"num": 15,
+"age": null
+},
+{
+"n": "Karl",
+"pos": "M",
+"nat": "BRA",
+"num": 16,
+"age": 33
+},
+{
+"n": "Miguel Morais",
+"pos": "M",
+"nat": "BRA",
+"num": 17,
+"age": null
+},
+{
+"n": "David da Hora",
+"pos": "F",
+"nat": "BRA",
+"num": 18,
+"age": 26
+},
+{
+"n": "Jonathan Cafú",
+"pos": "F",
+"nat": "BRA",
+"num": 19,
+"age": 35
+},
+{
+"n": "Murilo Cavalcante",
+"pos": "M",
+"nat": "BRA",
+"num": 20,
+"age": null
+},
+{
+"n": "Vitor Ribeiro",
+"pos": "F",
+"nat": "BRA",
+"num": 21,
+"age": null
+},
+{
+"n": "Denis",
+"pos": "M",
+"nat": "BRA",
+"num": 22,
+"age": null
+},
+{
+"n": "Sergio Palacios",
+"pos": "D",
+"nat": "COL",
+"num": 23,
+"age": 21
+},
+{
+"n": "Vinicius Ferrari",
+"pos": "G",
+"nat": "BRA",
+"num": 30,
+"age": null
+},
+{
+"n": "Kevyson",
+"pos": "D",
+"nat": "BRA",
+"num": 32,
+"age": 22
+},
+{
+"n": "Gustavo Telles",
+"pos": "M",
+"nat": "BRA",
+"num": 35,
+"age": 21
+},
+{
+"n": "Gustavo Almeida",
+"pos": "D",
+"nat": "BRA",
+"num": 44,
+"age": null
+}
+]
+},
+"BRA2/Botafogo-SP": {
+"title": "Botafogo Futebol Clube (Ribeirão Preto)",
+"sq": [
+{
+"n": "Victor Souza",
+"pos": "G",
+"nat": "BRA",
+"num": 1,
+"age": null
+},
+{
+"n": "Jonathan",
+"pos": "D",
+"nat": "BRA",
+"num": 2,
+"age": 34
+},
+{
+"n": "Ericson",
+"pos": "D",
+"nat": "BRA",
+"num": 3,
+"age": 27
+},
+{
+"n": "Gustavo Vilar",
+"pos": "D",
+"nat": "BRA",
+"num": 4,
+"age": 26
+},
+{
+"n": "Kelvin",
+"pos": "F",
+"nat": "BRA",
+"num": 7,
+"age": 29
+},
+{
+"n": "Everton Morelli",
+"pos": "M",
+"nat": "BRA",
+"num": 8,
+"age": 29
+},
+{
+"n": "Hygor",
+"pos": "F",
+"nat": "BRA",
+"num": 9,
+"age": 34
+},
+{
+"n": "Rafael Gava",
+"pos": "M",
+"nat": "BRA",
+"num": 10,
+"age": 33
+},
+{
+"n": "Jordan",
+"pos": "G",
+"nat": "BRA",
+"num": 12,
+"age": 28
+},
+{
+"n": "Wallace",
+"pos": "D",
+"nat": "BRA",
+"num": 13,
+"age": 32
+},
+{
+"n": "Carlos Eduardo",
+"pos": "D",
+"nat": "BRA",
+"num": 14,
+"age": 25
+},
+{
+"n": "Gui Mariano",
+"pos": "D",
+"nat": "BRA",
+"num": 15,
+"age": null
+},
+{
+"n": "Matheus Sales",
+"pos": "M",
+"nat": "BRA",
+"num": 16,
+"age": 31
+},
+{
+"n": "Guilherme Queiróz",
+"pos": "F",
+"nat": "BRA",
+"num": 17,
+"age": 36
+},
+{
+"n": "Arthur Caíke",
+"pos": "F",
+"nat": "BRA",
+"num": 18,
+"age": 34
+},
+{
+"n": "Yuri Felipe",
+"pos": "M",
+"nat": "BRA",
+"num": 20,
+"age": null
+},
+{
+"n": "Jadson",
+"pos": "F",
+"nat": "BRA",
+"num": 21,
+"age": 21
+},
+{
+"n": "Gabriel Inocêncio",
+"pos": "D",
+"nat": "BRA",
+"num": 22,
+"age": 32
+},
+{
+"n": "Wesley Santos",
+"pos": "F",
+"nat": "BRA",
+"num": 23,
+"age": null
+},
+{
+"n": "Darlan",
+"pos": "D",
+"nat": "BRA",
+"num": 27,
+"age": null
+},
+{
+"n": "Marco Antônio",
+"pos": "M",
+"nat": "BRA",
+"num": 28,
+"age": null
+},
+{
+"n": "Thiaguinho",
+"pos": "M",
+"nat": "BRA",
+"num": 29,
+"age": null
+},
+{
+"n": "Zé Hugo",
+"pos": "F",
+"nat": "BRA",
+"num": 30,
+"age": 27
+},
+{
+"n": "Pedrinho",
+"pos": "D",
+"nat": "BRA",
+"num": 31,
+"age": null
+},
+{
+"n": "Erik Rebello",
+"pos": "M",
+"nat": "BRA",
+"num": 33,
+"age": null
+},
+{
+"n": "Badaró",
+"pos": "D",
+"nat": "BRA",
+"num": 34,
+"age": null
+}
+]
+},
+"BRA2/Paysandu": {
+"title": "Paysandu Sport Club",
+"sq": [
+{
+"n": "Jean Drosny",
+"pos": "G",
+"nat": "BRA",
+"num": 1,
+"age": 32
+},
+{
+"n": "Edílson",
+"pos": "D",
+"nat": "BRA",
+"num": 2,
+"age": 31
+},
+{
+"n": "Gustavo Henrique",
+"pos": "D",
+"nat": "BRA",
+"num": 3,
+"age": 27
+},
+{
+"n": "Iarley",
+"pos": "D",
+"nat": "BRA",
+"num": 4,
+"age": null
+},
+{
+"n": "Henrico",
+"pos": "M",
+"nat": "BRA",
+"num": 5,
+"age": null
+},
+{
+"n": "Caio Mello",
+"pos": "M",
+"nat": "BRA",
+"num": 8,
+"age": null
+},
+{
+"n": "Ítalo",
+"pos": "F",
+"nat": "BRA",
+"num": 9,
+"age": 30
+},
+{
+"n": "Marcinho",
+"pos": "M",
+"nat": "BRA",
+"num": 10,
+"age": 31
+},
+{
+"n": "Gabriel Mesquita",
+"pos": "G",
+"nat": "BRA",
+"num": 12,
+"age": 28
+},
+{
+"n": "Bruno Bispo",
+"pos": "D",
+"nat": "BRA",
+"num": 14,
+"age": null
+},
+{
+"n": "Castro",
+"pos": "D",
+"nat": "BRA",
+"num": 15,
+"age": 31
+},
+{
+"n": "Eduardo",
+"pos": "D",
+"nat": "BRA",
+"num": 18,
+"age": null
+},
+{
+"n": "Thayllon",
+"pos": "F",
+"nat": "BRA",
+"num": 19,
+"age": 25
+},
+{
+"n": "Nicolás Schiappacasse",
+"pos": "F",
+"nat": "URU",
+"num": 20,
+"age": 27
+},
+{
+"n": "Renan Castro",
+"pos": "D",
+"nat": "BRA",
+"num": 21,
+"age": 31
+},
+{
+"n": "Lucas Rodrigues",
+"pos": "D",
+"nat": "BRA",
+"num": 22,
+"age": null
+},
+{
+"n": "Brian",
+"pos": "M",
+"nat": "BRA",
+"num": 23,
+"age": null
+},
+{
+"n": "Tiago Índio",
+"pos": "M",
+"nat": "BRA",
+"num": 25,
+"age": null
+},
+{
+"n": "Cauã Libonati",
+"pos": "M",
+"nat": "BRA",
+"num": 26,
+"age": null
+},
+{
+"n": "Thalyson",
+"pos": "F",
+"nat": "BRA",
+"num": 30,
+"age": null
+},
+{
+"n": "Facundo Bonifazi",
+"pos": "D",
+"nat": "URU",
+"num": 31,
+"age": 31
+},
+{
+"n": "Pedro Henrique",
+"pos": "M",
+"nat": "BRA",
+"num": 39,
+"age": null
+},
+{
+"n": "Levi",
+"pos": "G",
+"nat": "BRA",
+"num": 40,
+"age": null
+},
+{
+"n": "Marcão",
+"pos": "G",
+"nat": "BRA",
+"num": 41,
+"age": null
+},
+{
+"n": "Pedro Carrerette",
+"pos": "D",
+"nat": "BRA",
+"num": 44,
+"age": 28
+},
+{
+"n": "Radsley",
+"pos": "M",
+"nat": "BRA",
+"num": 55,
+"age": null
+},
+{
+"n": "Kleiton Pego",
+"pos": "F",
+"nat": "BRA",
+"num": 75,
+"age": 27
+},
+{
+"n": "Luciano Taboca",
+"pos": "D",
+"nat": "BRA",
+"num": 77,
+"age": null
+},
+{
+"n": "Pablo Baianinho",
+"pos": "M",
+"nat": "BRA",
+"num": 80,
+"age": 23
+},
+{
+"n": "Kauã Hinkel",
+"pos": "F",
+"nat": "BRA",
+"num": 94,
+"age": null
+},
+{
+"n": "Matheus Vargas",
+"pos": "M",
+"nat": "BRA",
+"num": 96,
+"age": 30
+},
+{
+"n": "Juninho",
+"pos": "F",
+"nat": "BRA",
+"num": 98,
+"age": null
+},
+{
+"n": "Lucas Cardoso",
+"pos": "M",
+"nat": "BRA",
+"num": 99,
+"age": 26
+},
+{
+"n": "Matheus Nogueira",
+"pos": "G",
+"nat": "BRA",
+"num": 13,
+"age": 29
+}
+]
 }
 }

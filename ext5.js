@@ -11,7 +11,7 @@ const ACH={
 };
 const RIV=[['FLA','VAS'],['FLA','FLU'],['FLA','BOT'],['FLU','VAS'],['FLU','BOT'],['PAL','COR'],['PAL','SAO'],['SAO','COR'],['SAO','SAN'],['COR','SAN'],['GRE','INT'],['CAM','CRU'],['BAH','VIT'],['CAP','CFC'],['VAS','BOT']];
 const isClassico=(a,b)=>RIV.some(([x,y])=>(C(a).sig===x&&C(b).sig===y)||(C(a).sig===y&&C(b).sig===x));
-function award(id){ex5();if(G.ach[id])return;G.ach[id]={s:G.season,r:G.round+1};G.newAch.push(id)}
+function award(id){ex5();if(G.ach[id])return;G.ach[id]={s:G.season,r:G.round+1}}   /* v141: sem aviso no letreiro (Conquistas foram removidas do jogo na v115; sobrou só o banner) */
 function ex5(){if(!G)return;G.ach=G.ach||{};G.newAch=G.newAch||[];G.stk=G.stk||{w:0,u:0,cs:0,l:0}}
 const ymd=(r)=>{const d=new Date(Date.UTC(2026+G.season,3,4+7*r));return String(d.getUTCDate()).padStart(2,'0')+'/'+String(d.getUTCMonth()+1).padStart(2,'0')+'/'+d.getUTCFullYear()};
 const gdate=()=>ymd(Math.min(G.round,38));

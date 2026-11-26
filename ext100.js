@@ -6,9 +6,9 @@
    Tudo passa por bump100, que registra o motivo (G.humLog) para a tela da Torcida mostrar "por que o clima mudou". */
 (function(){
 const LOGN=10;
-function bump100(c,d,why){
+function bump100(c,d,why,rd){
   if(!d)return 0;const h0=c.humor;c.humor=clamp(Math.round(c.humor+d),5,100);const real=c.humor-h0;
-  if(real){G.humLog=G.humLog||[];G.humLog.push({s:G.season,r:G.round,why,d:real});if(G.humLog.length>LOGN)G.humLog.shift()}
+  if(real){G.humLog=G.humLog||[];G.humLog.push({s:G.season,r:rd||G.round,why,d:real});if(G.humLog.length>LOGN)G.humLog.shift()}
   return real}
 const isIdol=(p,fv)=>fv>=72||(p.fromBase&&fv>=60);
 /* venda: chamada de logic.js (sellPlayer) e ext37.js (xsell) */
@@ -35,16 +35,17 @@ hookAfter('boardRound','fan100_br',function(ret,__a){
     const m=__a[0],c=userClub();if(!m||!c)return;
     const home=m.h.club.id===c.id,opp=home?m.a.club:m.h.club,gf=home?m.hg:m.ag,ga=home?m.ag:m.hg,gd=gf-ga;
     const weaker=(c.rep-opp.rep)>=4;
-    if(home&&gd<0)bump100(c,gd<=-2||weaker?-2:-1,'Derrota em casa'+(weaker?' para time inferior':gd<=-2?' por goleada':''));
-    else if(home&&gd>0)bump100(c,gd>=3?1.5:1,'Vitória em casa');
-    else if(!home&&gd<0&&weaker)bump100(c,-.6,'Derrota fora para time inferior');
+    if(home&&gd<0)bump100(c,gd<=-2||weaker?-2:-1,'Derrota em casa'+(weaker?' para time inferior':gd<=-2?' por goleada':''),G.round+1);
+    else if(home&&gd>0)bump100(c,gd>=3?1.5:1,'Vitória em casa',G.round+1);
+    else if(!home&&gd<0&&weaker)bump100(c,-.6,'Derrota fora para time inferior',G.round+1);
     const s=c.CH||0;   // CH>0: derrotas seguidas; CH<0: vitórias seguidas (logic.js boardRound)
-    if(s>=3)bump100(c,-clamp((s-2)*.75,.75,1.5),s+' derrotas seguidas');
-    else if(s<=-3)bump100(c,clamp((-s-2)*.75,.75,1.5),(-s)+' vitórias seguidas');
+    if(s>=3)bump100(c,-clamp((s-2)*.75,.75,1.5),s+' derrotas seguidas',G.round+1);
+    else if(s<=-3)bump100(c,clamp((-s-2)*.75,.75,1.5),(-s)+' vitórias seguidas',G.round+1);
   }catch(e){console.error('fan100 '+e.message)}
 });
 /* tela da Torcida: mostra por que o clima mudou */
-hookAfter('vTorcida','fan100_ui',function(ret){
+hookAround('vTorcida','fan100_ui',function(next,__a){
+  const ret=next();
   try{
     const L=(G.humLog||[]).slice(-6).reverse();if(!L.length||typeof ret!=='string')return ret;
     const card='<div class="card"><div class="k">Por que o clima da torcida mudou</div>'+L.map(x=>'<div class="res"><span>'+esc(x.why)+' <small>('+x.s+'ª temp., rod. '+x.r+')</small></span><b class="'+(x.d>0?'ok':'bad')+'">'+(x.d>0?'+':'')+x.d+'</b></div>').join('')+'<p class="news">Ídolo vendido, derrota em casa e sequências ruins pesam mais. Vitórias em sequência e em casa levantam o clima.</p></div>';
