@@ -69176,7 +69176,7 @@
 "sq": []
 },
 "BRA3/Tombense": {
-"title": "Evanilson (footballer, born 1999)",
+"title": "Tombense Futebol Clube",
 "sq": []
 },
 "BRA3/Operário-VG": {
@@ -69597,15 +69597,226 @@
 "sq": []
 },
 "BRA3/Floresta": {
-"title": "Floresta Esporte Clube",
+"title": "William Wallace (Brazilian footballer)",
 "sq": []
 },
 "BRA3/Maringá": {
-"title": "Adilson Maringá",
-"sq": []
+"title": "Maringá Futebol Clube",
+"sq": [
+{
+"n": "Gabriel Affonso",
+"pos": "G",
+"nat": "BRA",
+"num": 1,
+"age": 28
+},
+{
+"n": "Gabriel Souza",
+"pos": "D",
+"nat": "BRA",
+"num": 2,
+"age": null
+},
+{
+"n": "Gabriel Santos",
+"pos": "D",
+"nat": "BRA",
+"num": 3,
+"age": null
+},
+{
+"n": "Wendel Lomar",
+"pos": "D",
+"nat": "BRA",
+"num": 4,
+"age": null
+},
+{
+"n": "Kelvi Gomes",
+"pos": "M",
+"nat": "BRA",
+"num": 5,
+"age": null
+},
+{
+"n": "Thiago Rosa",
+"pos": "D",
+"nat": "BRA",
+"num": 6,
+"age": null
+},
+{
+"n": "Edison Negueba",
+"pos": "F",
+"nat": "BRA",
+"num": 7,
+"age": 26
+},
+{
+"n": "Adeílson Maranhão",
+"pos": "M",
+"nat": "BRA",
+"num": 8,
+"age": null
+},
+{
+"n": "Giovane Gomes",
+"pos": "F",
+"nat": "BRA",
+"num": 9,
+"age": 31
+},
+{
+"n": "Guilherme Pira",
+"pos": "F",
+"nat": "BRA",
+"num": 10,
+"age": 26
+},
+{
+"n": "Danielzinho",
+"pos": "M",
+"nat": "BRA",
+"num": 11,
+"age": null
+},
+{
+"n": "Romário",
+"pos": "G",
+"nat": "BRA",
+"num": 12,
+"age": null
+},
+{
+"n": "Keven",
+"pos": "D",
+"nat": "BRA",
+"num": 13,
+"age": null
+},
+{
+"n": "Felipe",
+"pos": "D",
+"nat": "BRA",
+"num": 14,
+"age": null
+},
+{
+"n": "Rian Patric",
+"pos": "F",
+"nat": "BRA",
+"num": 16,
+"age": null
+},
+{
+"n": "Iago Santana",
+"pos": "F",
+"nat": "BRA",
+"num": 17,
+"age": null
+},
+{
+"n": "Jonathan",
+"pos": "D",
+"nat": "BRA",
+"num": 18,
+"age": null
+},
+{
+"n": "Julio Rodrigues",
+"pos": "F",
+"nat": "BRA",
+"num": 19,
+"age": null
+},
+{
+"n": "Bruno Cheron",
+"pos": "M",
+"nat": "BRA",
+"num": 20,
+"age": null
+},
+{
+"n": "Ronald Camarão",
+"pos": "F",
+"nat": "BRA",
+"num": 21,
+"age": null
+},
+{
+"n": "Paulinho",
+"pos": "M",
+"nat": "BRA",
+"num": 23,
+"age": null
+},
+{
+"n": "Neto",
+"pos": "G",
+"nat": "BRA",
+"num": 25,
+"age": null
+},
+{
+"n": "Lucas Bonifácio",
+"pos": "M",
+"nat": "BRA",
+"num": 28,
+"age": null
+},
+{
+"n": "Raí Natalino",
+"pos": "F",
+"nat": "BRA",
+"num": 29,
+"age": null
+},
+{
+"n": "Ronald Carvalho",
+"pos": "D",
+"nat": "BRA",
+"num": 30,
+"age": null
+},
+{
+"n": "Pedrinho",
+"pos": "F",
+"nat": "BRA",
+"num": 35,
+"age": null
+},
+{
+"n": "Serginho",
+"pos": "M",
+"nat": "BRA",
+"num": 37,
+"age": 36
+},
+{
+"n": "Jesiel",
+"pos": "D",
+"nat": "BRA",
+"num": 44,
+"age": 32
+},
+{
+"n": "Rafinha",
+"pos": "F",
+"nat": "BRA",
+"num": 77,
+"age": null
+},
+{
+"n": "Caíque",
+"pos": "F",
+"nat": "BRA",
+"num": 99,
+"age": 26
+}
+]
 },
 "BRA3/Sampaio Corrêa": {
-"title": "Sampaio Corrêa Futebol e Esporte",
+"title": "Sampaio Corrêa Futebol Clube",
 "sq": []
 },
 "BRA3/Botafogo-PB": {
@@ -69831,7 +70042,169 @@
 ]
 },
 "BRA3/Paraná": {
-"title": "Paraná (footballer)",
+"title": "Paraná Clube",
+"sq": []
+},
+"BRA3/Guarani": {
+"title": "Guarani Futebol Clube",
+"sq": []
+},
+"BRA4/Retrô": {
+"title": "Retrô Futebol Clube Brasil",
+"sq": []
+},
+"BRA4/Treze": {
+"title": "Treze Futebol Clube",
+"sq": []
+},
+"BRA4/Campinense": {
+"title": "Campinense Clube",
+"sq": []
+},
+"BRA4/Moto Club": {
+"title": "Moto Club de São Luís",
+"sq": []
+},
+"BRA4/Altos": {
+"title": "Associação Atlética de Altos",
+"sq": []
+},
+"BRA4/Fluminense-PI": {
+"title": "David Ricardo (footballer)",
+"sq": []
+},
+"BRA4/Juazeirense": {
+"title": "Jacó (footballer)",
+"sq": []
+},
+"BRA4/Jacuipense": {
+"title": "Esporte Clube Jacuipense",
+"sq": []
+},
+"BRA4/Itabaiana": {
+"title": "Associação Olímpica de Itabaiana",
+"sq": []
+},
+"BRA4/Portuguesa": {
+"title": "Associação Atlética Portuguesa (Santos)",
+"sq": []
+},
+"BRA4/Água Santa": {
+"title": "Esporte Clube Água Santa",
+"sq": []
+},
+"BRA4/XV de Piracicaba": {
+"title": "Esporte Clube XV de Novembro (Piracicaba)",
+"sq": []
+},
+"BRA4/São José-RS": {
+"title": "Esporte Clube São José",
+"sq": []
+},
+"BRA4/Pelotas": {
+"title": "Esporte Clube Pelotas",
+"sq": [
+{
+"n": "Bruno Hepp",
+"pos": "G",
+"nat": "BRA",
+"num": 1,
+"age": null
+},
+{
+"n": "Jefferson Sandes",
+"pos": "D",
+"nat": "BRA",
+"num": 2,
+"age": null
+},
+{
+"n": "Stevys",
+"pos": "D",
+"nat": "BRA",
+"num": 3,
+"age": null
+},
+{
+"n": "Elbér",
+"pos": "D",
+"nat": "BRA",
+"num": 6,
+"age": null
+},
+{
+"n": "Ademir",
+"pos": "M",
+"nat": "BRA",
+"num": 8,
+"age": null
+},
+{
+"n": "Gilian",
+"pos": "F",
+"nat": "BRA",
+"num": 11,
+"age": null
+},
+{
+"n": "Igor Rayan",
+"pos": "G",
+"nat": "BRA",
+"num": 12,
+"age": null
+},
+{
+"n": "Anderson Luis",
+"pos": "D",
+"nat": "BRA",
+"num": 13,
+"age": null
+},
+{
+"n": "Arthur",
+"pos": "M",
+"nat": "BRA",
+"num": 14,
+"age": null
+},
+{
+"n": "Gere Itaqui",
+"pos": "D",
+"nat": "BRA",
+"num": 15,
+"age": null
+},
+{
+"n": "Feliphe",
+"pos": "F",
+"nat": "BRA",
+"num": 25,
+"age": null
+}
+]
+},
+"BRA4/Joinville": {
+"title": "Antony (footballer, born 2001)",
+"sq": []
+},
+"BRA4/Hercílio Luz": {
+"title": "Hercílio Luz Futebol Clube",
+"sq": []
+},
+"BRA4/Real Noroeste": {
+"title": "Noroeste",
+"sq": []
+},
+"BRA4/Humaitá": {
+"title": "2026 in Brazilian football",
+"sq": []
+},
+"BRA4/Rio Branco-AC": {
+"title": "Rio Branco Atlético Clube",
+"sq": []
+},
+"BRA4/Nova Iguaçu": {
+"title": "Nova Iguaçu FC",
 "sq": []
 }
 }

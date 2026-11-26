@@ -4,7 +4,7 @@ Base: mundo simulado de 15 temporadas (`tools/sim/world_sim.js`, Juventude), 45 
 
 ## 1. Visão do técnico (quem joga)
 
-- **Demissão:** caiu de **42% para 29%** das temporadas (13 de 45; meta 25–35%). Só acontece nas datas oficiais (rodadas 9, 19, 29, 37) e nunca na primeira metade da primeira temporada. Os mais demitidos são os clubes grandes cobrados por título (Palmeiras, Fluminense) e o Remo; o meio de tabela quase não cai.
+- **Demissão:** caiu de **42% para 34%** das temporadas (duas amostras: 13 de 45 e 18 de 45, juntas 31 de 90; meta 25–35%; meu bot não faz mercado nem tática, então no jogo real deve ser menor). Só acontece nas datas oficiais (rodadas 9, 19, 29, 37) e nunca na primeira metade da primeira temporada. Os mais demitidos são os clubes grandes cobrados por título (Palmeiras, Fluminense) e o Remo; o meio de tabela quase não cai.
 - **A regra de estabilidade finalmente funciona.** Quem bate a meta ano após ano fica mais protegido; quem erra feio em sequência fica mais exposto. Antes ela não gravava nada (veja a visão 3).
 - **Torcida:** vender o ídolo dói de verdade (Vitor Roque: −5 de humor, −2 de confiança); perder em casa pesa mais que fora; 3 resultados iguais seguidos viram sequência. A tela da Torcida mostra "por que o clima mudou".
 - **Dívida:** a diretoria impõe um mínimo (Corinthians 55% do superávit e 60% das vendas; Palmeiras e Remo 10%). Você só pode aumentar.
