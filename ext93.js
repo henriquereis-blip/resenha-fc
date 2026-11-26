@@ -7,9 +7,10 @@
      · fator geral ×0,8 sobre a chance base nas datas
      · temporada perto (meta+2 a +3): ×1,0 (neutra)
    O tempo no cargo (tenureMult, ext75) continua valendo por cima. */
-hookAfter('newSeason','ext93_ns',function(){
+/* v140: era hookAfter e lia G.summary, que o newSeason zera no fim (logic.js): nunca gravava nada e a estabilidade ficava em x1,0. Agora hookBefore. */
+hookBefore('newSeason','ext93_ns',function(){
   try{
-    const u=userClub(),sm=G.summary;if(!u||!sm||sm.season!==G.season-1)return;
+    const u=userClub(),sm=G.summary;if(!u||!sm||sm.season!==G.season)return;
     G.stab93=G.stab93||[];
     const d=sm.pos-sm.meta;
     const k=d<=1?'ok':d<=3?'perto':'erro';

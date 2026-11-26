@@ -24,11 +24,16 @@ globalThis.objOf=objOf;
 hookAfter('setMeta','ext85_sm',function(){const c=userClub();if(c&&(c.div===0||c.ctry||G.abroad))G.board.metaTxt=objOf(c).label});
 hookAround('metaText','ext85_mt',function(next,__a){let [mp]=__a;const c=userClub();if(c&&(c.div===0||c.ctry||G.abroad))return objOf(c).label;return next(mp)});
 /* orçamento de salários: último resultado frente à meta */
+/* v140: o hook lia G.summary depois do newSeason (que o zera) e nunca agia. Agora lê antes (hookBefore) e aplica depois como fator
+   sobre o teto de salários (o ext77 já ajusta o teto pelo superávit): 1,04 se bateu a meta, 1,0 se ficou perto, 0,97 se errou feio. */
+hookBefore('newSeason','ext85_nsb',function(){
+  try{const c=userClub(),sm=G.summary;if(!c||!sm||sm.season!==G.season){G._wbMul=1;return}
+    const d=sm.pos-sm.meta;G._wbMul=d<=0?1.04:d<=2?1.0:0.97;
+  }catch(e){G._wbMul=1;console.error('ext85 orc '+e.message)}
+});
 hookAfter('newSeason','ext85_ns',function(){
-  try{const c=userClub(),sm=G.summary;if(!c||!sm)return;
-    const d=sm.pos-sm.meta;
-    G.wbMul=d<=0?1.08:d<=2?1.0:0.94;
-    G.wb=+(payroll(c)*1.1*G.wbMul).toFixed(2);
+  try{const c=userClub();if(!c)return;G.wbMul=G._wbMul||1;
+    if(G.wbMul!==1){G.wb=+(wageBudget()*G.wbMul).toFixed(2)}
   }catch(e){console.error('ext85 orc '+e.message)}
 });
 /* demissão: zona de rebaixamento pesa mais (clube grande pesa mais ainda); fugir do rebaixamento é objetivo, então pesa menos */
