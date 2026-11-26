@@ -429,7 +429,7 @@ function sellPlayer(offerId){
   const top=c.squad.map(id=>P(id)).sort((a,b)=>b.ovr-a.ovr).slice(0,3).map(x=>x.id);
   c.squad=c.squad.filter(id=>id!==o.pid);const b=C(o.buyer);b.squad.push(o.pid);p.club=b.id;p.listed=false;
   G.fin.caixa=+(G.fin.caixa+o.fee).toFixed(2);
-  if(top.includes(o.pid)){c.humor=clamp(c.humor-6,5,100);G.board.conf=clamp(G.board.conf-3,0,100);addNews('A torcida reclamou da venda de '+p.name+'.')}
+  if(typeof fanSale100==='function')fanSale100(p,c,top.includes(o.pid));   // v139: ídolo/xodó pesa pelo carinho da torcida (ext100)
   G.offers=G.offers.filter(x=>x.pid!==o.pid);
   return null;
 }

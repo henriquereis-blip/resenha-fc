@@ -303,7 +303,7 @@ Object.assign(MACT,{
     const top=c.squad.map(P).filter(Boolean).sort((a,b)=>b.ovr-a.ovr).slice(0,3).map(x=>x.id);
     c.squad=c.squad.filter(i=>i!==p.pid);G.fin.caixa=+(G.fin.caixa+p.fee).toFixed(2);
     wLog(`${pl.name} (${c.sig}) → ${p.cn} (${p.ck})`,p.fee);
-    if(top.includes(p.pid)){c.humor=clamp(c.humor-6,5,100);G.board.conf=clamp(G.board.conf-3,0,100);addNews('A torcida reclamou da venda de '+pl.name+'.')}
+    if(typeof fanSale100==='function')fanSale100(pl,c,top.includes(p.pid));   // v139: ídolo/xodó pesa pelo carinho da torcida (ext100)
     paperLine(`${pl.name} deixa o ${c.name} e vai para o ${p.cn}`,`Negócio de R$ ${p.fee.toFixed(1)} mi.`);
     delete G.players[p.pid];G.offers=G.offers.filter(o=>o.pid!==p.pid);
     try{autoPick(c)}catch(e){}
