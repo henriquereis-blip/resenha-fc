@@ -193,7 +193,9 @@ function slotScore(p,slot,phil,w){
 }
 function bestForSlot(ids,slot,used,phil,w){let best=null,bs=-1e9;for(const id of ids){if(used.has(id))continue;const s=slotScore(P(id),slot,phil,w);if(s>bs){bs=s;best=id}}return best}
 function autoPick(c){
+  {const n0=c.squad.length;
   c.squad=c.squad.filter(id=>P(id)); /* v126: id vazio nunca entra na escalação (antes gerava null quando o elenco ficava curto) */
+  if(c.squad.length<n0){(G._nullLog=G._nullLog||[]).push({s:G.season,r:G.round,club:c.name,lost:n0-c.squad.length,stack:(new Error().stack||'').split('\n').slice(2,7).map(x=>x.trim().slice(0,60)).join(' < ')});if(G._nullLog.length>10)G._nullLog.shift()}}   /* v140: detector da origem do id vazio (G._nullLog) */
   const slots=slotsOf(c.formation);const used=new Set();const xi=[];
   const wn=wantsOf(c.formation);for(const [i,sl] of slots.entries()){const id=bestForSlot(c.squad,sl,used,c.phil,wn[i]);xi.push(id);used.add(id)}
   const rest=c.squad.filter(id=>!used.has(id));const bench=[];
@@ -576,7 +578,7 @@ function newSeason(){
     else p.ovr=clamp(p.ovr-ri(0,2),40,92);
   }
   for(const c of G.clubs){
-    c.squad=c.squad.filter(id=>P(id)); /* v126: id sem jogador (referência solta) é descartado em vez de quebrar a virada; causa de origem em investigação */
+    {const n0=c.squad.length;c.squad=c.squad.filter(id=>P(id));if(c.squad.length<n0){(G._nullLog=G._nullLog||[]).push({s:G.season,r:G.round,club:c.name,lost:n0-c.squad.length,stack:'newSeason'});if(G._nullLog.length>10)G._nullLog.shift()}} /* v126: id sem jogador (referência solta) é descartado em vez de quebrar a virada; causa de origem em investigação */
     const keep=[],drop=[];
     for(const id of c.squad){const p=P(id);if(p.age>=35&&Math.random()<(p.age>=39?1:p.age>=37?0.7:0.3))drop.push(id);else keep.push(id)}
     c.squad=keep;drop.forEach(id=>{delete G.players[id]});

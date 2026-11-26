@@ -59,6 +59,14 @@ function applyObj(id){
   const poor=G.fin.caixa<baseInc(c)*0.04;
   paperLine(poor?c.name+': '+G.coach+' assume com cofre vazio':G.coach+' assume o '+c.name+' com '+(o.id==='rec'?'missão de arrumar a casa':'novo projeto'),`${o.t}. Dívida de ${bi(fr(c)[0])} segue como herança. ${o.mt}.`);
 }
+/* v140: mínimo da diretoria. A diretoria fixa quanto do superávit e das vendas vai para a dívida (o do objetivo escolhido,
+   ×1,0 se a dívida/receita >= 1,5; ×0,8 se >= 0,8; ×0,5 abaixo disso; 0 sem dívida). O técnico só pode AUMENTAR. */
+function boardMin7(){
+  try{const c=userClub(),o=objOptions(c).find(x=>x.id===(G.fx&&G.fx.obj));if(!o||!(c.debt>0.05))return {pay:0,sd:0,k:0};
+    const rr=c.debt/baseInc(c),k=rr>=1.5?1:rr>=.8?.8:.5,r5=v=>Math.round(v*k*20)/20;return {pay:r5(o.pay),sd:r5(o.sd),k}}catch(e){return {pay:0,sd:0,k:0}}
+}
+const payEff7=()=>Math.max(G.fx.pay||0,boardMin7().pay),sdEff7=()=>Math.max(G.fx.sd||0,boardMin7().sd);
+globalThis.boardMin7=boardMin7;
 hookAround('startCareer','sc7',function(next,__a){let [id,coach,phil,asst]=__a;next(id,coach,phil,asst);applyObj(S.obj);save()});
 hookAround('takeJob','tj7',function(next,__a){let [id]=__a;const r=next(id);ex7();applyObj('equ');return r});
 
@@ -70,7 +78,7 @@ hookAround('signFree','sf7',function(next,__a){let [pid]=__a;if(G&&G.fx&&G.fx.ba
 hookAround('sellPlayer','sl7',function(next,__a){let [id]=__a;
   ex7();const o=G.offers.find(x=>x.id===id);const c=userClub();const d0=c.debt;
   const r=next(id);
-  if(!r&&o){const share=Math.min(c.debt,+(o.fee*G.fx.sd).toFixed(2));if(share>0){G.fin.caixa=+(G.fin.caixa-share).toFixed(2);c.debt=+(c.debt-share).toFixed(2);
+  if(!r&&o){const share=Math.min(c.debt,+(o.fee*sdEff7()).toFixed(2));if(share>0){G.fin.caixa=+(G.fin.caixa-share).toFixed(2);c.debt=+(c.debt-share).toFixed(2);
     if(share>=2)paperLine('Venda de '+nameOf(P(o.pid)).replace('*','')+' alivia as contas do '+c.name,'Parte dos '+mi(o.fee)+' vai direto pra dívida: '+mi(share)+'.')}}
   return r;
 });
@@ -89,7 +97,7 @@ hookAround('finishRound','ext7_fr7',function(next,A){
   const rr=c.debt/baseInc(c);const enc=(0.08+0.10*Math.min(rr,2.5))*baseInc(c)/38; // estrutura + encargos financeiros pagos em dinheiro
   f.caixa=+(f.caixa-enc-cut).toFixed(2);
   const sup=Math.max(0,l.net-enc-cut);
-  const pay=Math.min(c.debt,sup*G.fx.pay);
+  const pay=Math.min(c.debt,sup*payEff7());
   f.caixa=+(f.caixa-pay).toFixed(2);c.debt=+(c.debt-pay).toFixed(2);
   if(c.debt<0)c.debt=0;
   l.fin={juros:+juros.toFixed(2),enc:+enc.toFixed(2),pay:+pay.toFixed(2),cut:+cut.toFixed(2)};
@@ -113,7 +121,7 @@ hookAround('finishRound','ext7_fr7',function(next,A){
 });
 hookAround('endSeason','es7',function(next,__a){
   ex7();const c=userClub();const c0=G.fin.caixa;const r=next();
-  const gain=G.fin.caixa-c0;const share=Math.min(c.debt,Math.max(0,gain*G.fx.sd*0.5));
+  const gain=G.fin.caixa-c0;const share=Math.min(c.debt,Math.max(0,gain*sdEff7()*0.5));
   if(share>0){G.fin.caixa=+(G.fin.caixa-share).toFixed(1);c.debt=+(c.debt-share).toFixed(1)}
   if(G.summary)G.summary.txt+=` Dívida: ${mi(c.debt)} (${Math.round((1-c.debt/(G.fx.debt0||1))*100)}% a menos que no início da sua gestão).`;
   G.fx.cut=G.fx.cut&&G.fx.cut.season>G.season?G.fx.cut:null;
@@ -145,9 +153,9 @@ function finCard(){
   <div class="res"><span>Desde que você chegou</span><b class="${pct>=0?'ok':'bad'}">${pct===0?'':pct>0?'−':'+'}${Math.abs(pct)}% (${mi(d0)} → ${mi(c.debt)})</b></div>
   <div class="meter"><i class="${pct>=25?'ok':pct>=0?'warn':'bad'}" style="width:${clampN(pct,0,100)}%"></i></div>
   ${l?`<div class="k">Última rodada: juros +${mi(l.juros)} · estrutura e encargos ${mi(l.enc)} · amortização ${mi(l.pay)}${l.cut?' · TV antecipada −'+mi(l.cut):''}</div>`:''}
-  <div class="k" style="margin-top:8px">Superávit usado pra pagar dívida: <b id="paylbl">${Math.round(fx.pay*100)}%</b></div><input type="range" id="paysl" min="0" max="70" step="5" value="${Math.round(fx.pay*100)}">
-  <div class="k">Vendas que vão pra dívida: <b id="sdlbl">${Math.round(fx.sd*100)}%</b></div><input type="range" id="sdsl" min="0" max="70" step="5" value="${Math.round(fx.sd*100)}">
-  <p class="news">Quanto mais você paga, menos sobra pra contratar. Dívida alta demais por muito tempo vira advertência do Fair Play Financeiro e, no limite, bloqueio de registro.${fx.warned?' <b>Você está em prazo do Fair Play Financeiro.</b>':''}${fx.ban?' <b class="bad">Registro bloqueado.</b>':''}</p>
+  <div class="k" style="margin-top:8px">Superávit usado pra pagar dívida: <b id="paylbl">${Math.round(payEff7()*100)}%</b> <small>(mínimo da diretoria ${Math.round(boardMin7().pay*100)}%)</small></div><input type="range" id="paysl" min="${Math.round(boardMin7().pay*100)}" max="70" step="5" value="${Math.round(payEff7()*100)}">
+  <div class="k">Vendas que vão pra dívida: <b id="sdlbl">${Math.round(sdEff7()*100)}%</b> <small>(mínimo da diretoria ${Math.round(boardMin7().sd*100)}%)</small></div><input type="range" id="sdsl" min="${Math.round(boardMin7().sd*100)}" max="70" step="5" value="${Math.round(sdEff7()*100)}">
+  <p class="news">A diretoria exige um mínimo (mais alto quanto maior a dívida): você pode pagar mais, nunca menos. Quanto mais você paga, menos sobra pra contratar. Dívida alta demais por muito tempo vira advertência do Fair Play Financeiro e, no limite, bloqueio de registro.${fx.warned?' <b>Você está em prazo do Fair Play Financeiro.</b>':''}${fx.ban?' <b class="bad">Registro bloqueado.</b>':''}</p>
   <div class="row2"><button class="btn ghost" data-a="loan">Empréstimo ${mi(loanAmt)}</button><button class="btn ghost" data-a="adv" ${fx.cut&&fx.cut.season>=G.season?'disabled':''}>Antecipar TV ${mi(advAmt)}</button></div>
   <div class="k">Empréstimo: entra caixa agora e a dívida sobe 18% do valor (máx. 2 por temporada). Antecipação: recebe 35% da TV agora e perde essa grana na temporada seguinte.</div></div>`;
 }
@@ -164,8 +172,8 @@ Object.assign(A,{
 });
 const _pc7=A.pickclub;A.pickclub=function(d){S.obj=null;return _pc7(d)};
 document.addEventListener('input',e=>{const t=e.target;if(!t||!G||!G.fx)return;
-  if(t.id==='paysl'){G.fx.pay=+t.value/100;const el=document.getElementById('paylbl');if(el)el.textContent=t.value+'%'}
-  if(t.id==='sdsl'){G.fx.sd=+t.value/100;const el=document.getElementById('sdlbl');if(el)el.textContent=t.value+'%'}});
+  if(t.id==='paysl'){G.fx.pay=Math.max(+t.value/100,boardMin7().pay);const el=document.getElementById('paylbl');if(el)el.textContent=t.value+'%'}
+  if(t.id==='sdsl'){G.fx.sd=Math.max(+t.value/100,boardMin7().sd);const el=document.getElementById('sdlbl');if(el)el.textContent=t.value+'%'}});
 document.addEventListener('change',e=>{const t=e.target;if(t&&(t.id==='paysl'||t.id==='sdsl'))save()});
 
 hookAround('setMeta','sm7',function(next,__a){next();
