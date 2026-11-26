@@ -12,8 +12,7 @@ function rsw(name){
 globalThis.rsw99=rsw;
 /* clube estrangeiro completo (carreira lá): nomes reais no lugar dos gerados. O overall segue a distribuição já calibrada do clube:
    por papel, o melhor overall gerado vai para o jogador de melhor 'ordem' (camisa baixa e idade de auge), e assim por diante. */
-hookAround('mkNat42','mk99',function(next,__a){
-  const c=next();
+function fill99(c){
   try{ if(typeof real73==='function'&&real73(c.name))return c;
     const R=rsw(c.name);if(!R)return c;
     const gen=c.squad.map(id=>G.players[id]).filter(Boolean);
@@ -41,5 +40,11 @@ hookAround('mkNat42','mk99',function(next,__a){
     }
     autoPick(c);
   }catch(e){console.error('ext99 '+e.message)}
-  return c});
+  return c}
+globalThis.fill99=fill99;
+hookAround('mkNat42','mk99',function(next,__a){return fill99(next())});
+/* Brasil Série B, C e D (clubes 20 a 79 do mundo inicial): mesmo preenchimento com elenco real (a Série A é do ext98) */
+hookAfter('newWorld','ext99_br',function(){
+  try{if(!G||!G.clubs)return;for(const c of G.clubs.slice(20,80))if(c&&rsw(c.name))fill99(c)}catch(e){console.error('ext99br '+e.message)}
+});
 })();

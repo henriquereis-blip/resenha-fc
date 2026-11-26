@@ -6,7 +6,7 @@ D='tools/data/'
 W=json.load(open(D+'wld.json'))
 if os.path.exists(D+'wld2.json'):W.update(json.load(open(D+'wld2.json')))   # 2as divisões (clubes do PD do jogo)
 OUT=D+'wiki_squads.json'
-CTRY={'ENG2':'England','ESP2':'Spain','ITA2':'Italy','GER2':'Germany','FRA2':'France','POR2':'Portugal','URU':'Uruguay','COL':'Colombia','CHI':'Chile','PAR':'Paraguay','ECU':'Ecuador','PER':'Peru','BOL':'Bolivia','VEN':'Venezuela','CHN':'China','EGY':'Egypt','MAR':'Morocco','RSA':'South Africa',
+CTRY={'BRA2':'Brazil','BRA3':'Brazil','BRA4':'Brazil','ENG2':'England','ESP2':'Spain','ITA2':'Italy','GER2':'Germany','FRA2':'France','POR2':'Portugal','URU':'Uruguay','COL':'Colombia','CHI':'Chile','PAR':'Paraguay','ECU':'Ecuador','PER':'Peru','BOL':'Bolivia','VEN':'Venezuela','CHN':'China','EGY':'Egypt','MAR':'Morocco','RSA':'South Africa',
       'POR':'Portugal','ARG':'Argentina','NED':'Netherlands','BEL':'Belgium','TUR':'Turkey','SCO':'Scotland','KOR':'South Korea','AUT':'Austria','SUI':'Switzerland','GRE':'Greece','DEN':'Denmark'}
 # clubes soltos de ligas que já têm elenco real na base, mas ficaram sem (menos de 18 jogadores)
 LOOSE={'POR':['Boavista'],'ARG':['Godoy Cruz'],'NED':['Willem II','Cambuur','ADO Den Haag'],'BEL':['Beveren','Kortrijk','Lommel SK'],'TUR':['Amedspor','Çorum','Erzurumspor'],
