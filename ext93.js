@@ -27,8 +27,9 @@ function stabMult93(c){
 globalThis.stabMult93=stabMult93;
 hookAround('shouldFire','ext93_sf',function(next,__a){
   const p=next();
+  if(![9,19,29,37].includes(G.round))return p;   /* v140: a 2ª chance valia em qualquer rodada (nunca rodou antes, pois a estabilidade não era gravada) */
   const c=userClub();if(!c)return p;
   const m=stabMult93(c);
   if(p)return Math.random()<clamp(m*0.8,0,1);   /* fator geral 0,8: a chance base nas datas estava alta (v126: 58% das temporadas) */
-  return m>1?Math.random()<0.3*(m-1):false; /* a decisão base não demitiu: erro seguido dá uma segunda chance (ver 0,3 por ponto acima de 1) */
+  return (m>1&&G.board.conf<40)?Math.random()<0.3*(m-1):false; /* a decisão base não demitiu: erro seguido dá uma segunda chance (0,3 por ponto acima de 1), só com a confiança baixa */
 });
