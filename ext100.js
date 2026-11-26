@@ -35,12 +35,12 @@ hookAfter('boardRound','fan100_br',function(ret,__a){
     const m=__a[0],c=userClub();if(!m||!c)return;
     const home=m.h.club.id===c.id,opp=home?m.a.club:m.h.club,gf=home?m.hg:m.ag,ga=home?m.ag:m.hg,gd=gf-ga;
     const weaker=(c.rep-opp.rep)>=4;
-    if(home&&gd<0)bump100(c,gd<=-2||weaker?-3:-1.5,'Derrota em casa'+(weaker?' para time inferior':gd<=-2?' por goleada':''));
-    else if(home&&gd>0)bump100(c,gd>=3?1.8:1,'Vitória em casa');
-    else if(!home&&gd<0&&weaker)bump100(c,-1.2,'Derrota fora para time inferior');
+    if(home&&gd<0)bump100(c,gd<=-2||weaker?-2:-1,'Derrota em casa'+(weaker?' para time inferior':gd<=-2?' por goleada':''));
+    else if(home&&gd>0)bump100(c,gd>=3?1.5:1,'Vitória em casa');
+    else if(!home&&gd<0&&weaker)bump100(c,-.6,'Derrota fora para time inferior');
     const s=c.CH||0;   // CH>0: derrotas seguidas; CH<0: vitórias seguidas (logic.js boardRound)
-    if(s>=3)bump100(c,-clamp(s-2,1,2),s+' derrotas seguidas');
-    else if(s<=-3)bump100(c,clamp(-s-2,1,2),(-s)+' vitórias seguidas');
+    if(s>=3)bump100(c,-clamp((s-2)*.75,.75,1.5),s+' derrotas seguidas');
+    else if(s<=-3)bump100(c,clamp((-s-2)*.75,.75,1.5),(-s)+' vitórias seguidas');
   }catch(e){console.error('fan100 '+e.message)}
 });
 /* tela da Torcida: mostra por que o clima mudou */
